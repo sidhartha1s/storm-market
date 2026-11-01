@@ -4,9 +4,8 @@
 <body>
 <template>
 <style>
-  /* g-intro-hook: H1-S1 cold open, host 0.00 to 16.90 (nx-h1-s1 data-start 0, so local t = h1-s1 words.json time).
-     Transparent root over Paul's full-frame clip (ins-paul-1). Cues come from the TTS wav; if Paul's clip carries its own audio,
-     re-time every cue below to its transcript. Popfig top left, glance chip + source chip centre-left, one chip at a time.
+  /* g-intro-hook: H1-S1 cold open, host 0.00 to 19.10 (local t = clip time to 7.60, then h1-s1-tail time + 7.60).
+     Transparent root over Paul's full-frame clip (ins-paul-1). Cues come from ins-paul-1's own word times and the tail wav. Popfig top left, glance chip + source chip centre-left, one chip at a time.
      Nothing in the logo spot (centre 1740, 900, 96 px). AbrilFig needs episodes/<slug>/fonts/AbrilFatface-Regular.ttf. */
   @font-face { font-family:'AbrilFig'; src:url('fonts/AbrilFatface-Regular.ttf'); }
   #ih-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
@@ -41,38 +40,39 @@
   <div id="ih-c2f" class="ih-float ih-glanceF"><div id="ih-c2" class="ih-glass ih-glance">135 INDOORS</div></div>
   <div id="ih-s2f" class="ih-float ih-sourceF"><div id="ih-s2" class="ih-glass ih-source">135 of 155 impact-related · inside a structure · NIST Finding 40</div></div>
 
-  <div id="ih-c3f" class="ih-float ih-glanceF"><div id="ih-c3" class="ih-glass ih-glance">0 BELOW GROUND</div></div>
-  <div id="ih-s3f" class="ih-float ih-sourceF"><div id="ih-s3" class="ih-glass ih-source">NIST found no evidence any were underground · Finding 46</div></div>
+  <div id="ih-c3f" class="ih-float ih-glanceF"><div id="ih-c3" class="ih-glass ih-glance">NONE FOUND BELOW GROUND</div></div>
+  <div id="ih-s3f" class="ih-float ih-sourceF"><div id="ih-s3" class="ih-glass ih-source">No evidence any of the lives lost were underground · NIST Finding 46</div></div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
+  /* cue times: ins-paul-1 words.json (0 to 7.60) for chip 1, h1-s1-tail words.json + 7.60 for chips 2 and 3 */
   const tl = gsap.timeline({ paused: true });
 
-  /* OKAY h1-s1 0.00: popfig arrives, in by 0.35 */
+  /* OKAY 0.00: popfig arrives, in by 0.35 */
   tl.fromTo("#ih-pop", { scale: 0.82, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.35, ease: "back.out(1.6)" }, 0);
-  /* GOES h1-s1 1.70: popfig slides out, gone by 2.00, before TORNADO SIREN (1.94 + 0.4) is fully in */
-  tl.to("#ih-pop", { x: -700, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, 1.7);
+  /* GOES 2.86: popfig slides out, gone by 3.16, before TORNADO SIREN (3.06 + 0.4) is fully in */
+  tl.to("#ih-pop", { x: -700, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, 2.86);
 
-  /* OFF. h1-s1 1.94: glance chip 1, out on YOU 3.84; float is 2 legs of 0.95 s, back at y 0 for the exit */
-  tl.fromTo("#ih-c1", { x: -80, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 1.94);
-  tl.fromTo("#ih-c1f", { y: 0 }, { y: -3, duration: 0.95, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 1.94);
-  tl.to("#ih-c1", { x: -700, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 3.84);
+  /* OFF. 3.06: glance chip 1, out on YOU 6.20; float is 4 legs of 0.78 s, back at y 0 for the exit */
+  tl.fromTo("#ih-c1", { x: -80, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 3.06);
+  tl.fromTo("#ih-c1f", { y: 0 }, { y: -3, duration: 0.78, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 3.06);
+  tl.to("#ih-c1", { x: -700, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 6.2);
 
-  /* 135 h1-s1 6.90: glance chip 2. Its source chip starts 6.95, not at OF 7.38 (brief 5): brief 4 truth 3 wants it under the chip after 7.20 */
-  tl.fromTo("#ih-c2", { x: -80, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 6.9);
-  tl.fromTo("#ih-s2", { x: -80, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 6.95);
-  tl.fromTo("#ih-c2f", { y: 0 }, { y: -3, duration: 1.22, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 6.9);
-  tl.fromTo("#ih-s2f", { y: 0 }, { y: -3, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 6.95);
-  /* AND h1-s1 11.78: chip 2 and its source chip out together */
-  tl.to("#ih-c2", { x: -700, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 11.78);
-  tl.to("#ih-s2", { x: -700, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 11.78);
+  /* 135 9.10: glance chip 2. Its source chip starts 9.15, not at OF 9.58 (brief 5): brief 4 truth 3 wants it under the chip right away */
+  tl.fromTo("#ih-c2", { x: -80, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 9.1);
+  tl.fromTo("#ih-s2", { x: -80, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 9.15);
+  tl.fromTo("#ih-c2f", { y: 0 }, { y: -3, duration: 1.22, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 9.1);
+  tl.fromTo("#ih-s2f", { y: 0 }, { y: -3, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 9.15);
+  /* AND 13.98: chip 2 and its source chip out together; 0.5 s (brief 3 says 0.4) so the empty span to BELOW 18.46 is 3.98 s, under the 4.0 s idle gate */
+  tl.to("#ih-c2", { x: -700, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 13.98);
+  tl.to("#ih-s2", { x: -700, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 13.98);
 
-  /* BELOW h1-s1 16.26: glance chip 3 and source chip 3 together (brief 5 staggers the source 0.15; truth 3 says never without it). They ride the cut, no exit. */
-  tl.fromTo("#ih-c3", { x: -80, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 16.26);
-  tl.fromTo("#ih-s3", { x: -80, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 16.31);
-  tl.to("#ih-c3f", { y: -3, duration: 0.74, ease: "sine.inOut" }, 16.26);
-  tl.to("#ih-s3f", { y: -3, duration: 0.69, ease: "sine.inOut" }, 16.31);
+  /* BELOW 18.46: glance chip 3 and source chip 3 together (brief 5 staggers the source 0.15; truth 3 says never without it). They ride the 19.10 cut, no exit. */
+  tl.fromTo("#ih-c3", { x: -80, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 18.46);
+  tl.fromTo("#ih-s3", { x: -80, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 18.51);
+  tl.to("#ih-c3f", { y: -3, duration: 0.64, ease: "sine.inOut" }, 18.46);
+  tl.to("#ih-s3f", { y: -3, duration: 0.59, ease: "sine.inOut" }, 18.51);
 
   window.__timelines["g-intro-hook"] = tl;
 })();

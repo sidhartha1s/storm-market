@@ -152,7 +152,7 @@ window.__timelines = window.__timelines || {};
 
   /* engineering @4.02: chip 1 and the source line */
   tl.fromTo(P + "chip1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.engineering);
-  tl.fromTo(P + "src", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.engineering + 0.1);
+  tl.fromTo(P + "src", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.5);   /* with the basemap: the bare map held 2.7 s in draft-v1 */
   /* tornado @7.26: pulse */
   tl.to(P + "chip1", { scale: 1.05, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, CUES.tornado);
 

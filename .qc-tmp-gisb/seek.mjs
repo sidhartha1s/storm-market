@@ -26,8 +26,9 @@ async function run(order) {
   await p.close();
   return out;
 }
-const fwd = await run(times);
-const back = await run([...times].reverse());
+const norm = (o) => { for (const k in o) o[k] = o[k].split('matrix(1,0,0,1,0,0)').join('').split('matrix(1, 0, 0, 1, 0, 0)').join('none'); return o; };
+const fwd = norm(await run(times));
+const back = norm(await run([...times].reverse()));
 let bad = 0;
 for (const t of times) {
   if (fwd[t] === back[t]) continue;

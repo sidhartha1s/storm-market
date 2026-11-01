@@ -15,13 +15,13 @@
   #sr-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
     background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
   .sr-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
-  #sr-ground, #sr-shell, #sr-room, #sr-house, #sr-npath, .sr-p, .sr-aw { visibility:hidden; opacity:0; }
+  #sr-gnd, #sr-shell, #sr-room, #sr-house, #sr-npath, .sr-p, .sr-aw { visibility:hidden; opacity:0; }
   .sr-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
   #sr-lb-school, #sr-lb-room { visibility:hidden; opacity:0; }
   /* big tier: the brief's tiers (22 label, 30 chip) leave the comp flat-type while slots A/B are held, so the one named thing takes the headline size */
   #sr-lb-room { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; letter-spacing:2px; }
   #sr-lb-sch { font-family:Arial, sans-serif; font-weight:700; font-size:20px; letter-spacing:3px; fill:#93a3b2; }
-  #sr-src { position:absolute; left:96px; top:996px; height:24px; line-height:24px; white-space:nowrap;
+  #sr-source { position:absolute; left:96px; top:996px; height:24px; line-height:24px; white-space:nowrap;
     font-family:Arial, sans-serif; font-weight:700; font-size:20px; color:#c8d3e0; }
   .sr-chipwrap { position:absolute; left:0; right:0; top:902px; height:56px; display:flex; justify-content:center; pointer-events:none; }
   #sr-chip { height:56px; line-height:56px; padding:0 28px; box-sizing:border-box; white-space:nowrap;
@@ -35,7 +35,7 @@
     <g id="sr-cam">
     <g id="sr-draw">
       <clipPath id="sr-pclip"><rect id="sr-pclip-r" x="230" y="780" width="460" height="40"/></clipPath>
-      <path id="sr-ground" d="M110 820H1560" fill="none" stroke="#4a5560" stroke-width="3"/>
+      <path id="sr-gnd" d="M110 820H1560" fill="none" stroke="#4a5560" stroke-width="3"/>
       <path id="sr-shell" d="M260 820V360H1500V820" fill="none" stroke="#2a3644" stroke-width="3"/>
       <g id="sr-room">
         <rect x="718" y="564" width="364" height="256" fill="#15202b"/>
@@ -63,7 +63,7 @@
     <text id="sr-lb-sch" x="1824" y="80" text-anchor="end">SCHEMATIC, NOT TO SCALE</text>
   </svg>
 
-  <div id="sr-src">FEMA case study</div>
+  <div id="sr-source">FEMA case study</div>
   <div class="sr-chipwrap"><div id="sr-chip">NEIGHBORS WITH NOWHERE ELSE MAY USE THEM · FEMA</div></div>
 </div>
 <script>
@@ -87,15 +87,15 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
 
   /* Since @5.92: ground and shell draw on (0.8 s) */
-  [document.querySelector(P + "ground"), document.querySelector(P + "shell"), document.querySelector(P + "house")].forEach(function (p) {
+  [document.querySelector(P + "gnd"), document.querySelector(P + "shell"), document.querySelector(P + "house")].forEach(function (p) {
     const L = Math.ceil(p.getTotalLength()) + 1;
     tl.set(p, { autoAlpha: 1, strokeDasharray: L, strokeDashoffset: L }, 0);
   });
-  tl.to([P + "ground", P + "shell"], { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, CUES.since);
+  tl.to([P + "gnd", P + "shell"], { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, CUES.since);
 
   /* School @7.64 */
   tl.set(P + "lb-school", { autoAlpha: 0, y: 10 }, 0);
-  tl.to(P + "lb-school", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.school);
+  tl.to(P + "lb-school", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.5);   /* with the shell, not on "School": the shell held empty for 1.7 s in draft-v1 */
 
   /* built @8.40: the room rises from the ground line */
   tl.set(P + "room", { autoAlpha: 0, scaleY: 0, svgOrigin: "900 820" }, 0);
@@ -120,6 +120,7 @@ window.__timelines = window.__timelines || {};
 
   /* camera push 2.5 % about the room's base from winds to the cut: the thin dashes alone read as a freeze (freeze_scan 18 Oct);
      at 1.025 the arrow tails reach x 1576, clear of the presenter corner (x >= 1600) */
+  tl.to(P + "cam", { scale: 1.01, svgOrigin: "900 820", duration: CUES.winds, ease: "none" }, 0);   /* slow push from frame 0, so the opening never sits still */
   tl.to(P + "cam", { scale: 1.025, svgOrigin: "900 820", duration: CUES.end - CUES.winds, ease: "sine.inOut" }, CUES.winds);
 
   /* live @14.68: house draws */

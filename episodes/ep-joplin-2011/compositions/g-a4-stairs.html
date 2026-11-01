@@ -249,9 +249,9 @@ window.__timelines = window.__timelines || {};
     const legs = Math.floor((END - 0.7 - at) / dur);
     tl.to(Q + id + " .a4sti-fl", { y: -2, duration: dur, ease: "sine.inOut", yoyo: true, repeat: legs - 1 }, at);
   });
-  tl.to(Q + "chip1float", { y: -3, duration: 0.75, ease: "sine.inOut", yoyo: true, repeat: 15 }, 2.4);
-  tl.to(Q + "chip2float", { y: -3, duration: 0.75, ease: "sine.inOut", yoyo: true, repeat: 11 }, 5.6);
-  tl.to(Q + "srcfloat", { y: -3, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 7 }, 5.8);
+  tl.to(Q + "chip1float", { y: -3, duration: 0.75, ease: "sine.inOut", yoyo: true, repeat: 14 }, 2.4);
+  tl.to(Q + "chip2float", { y: -3, duration: 0.75, ease: "sine.inOut", yoyo: true, repeat: 9 }, 5.6);
+  tl.to(Q + "srcfloat", { y: -3, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 6 }, 5.8);
 
   /* exit, last 0.6 s: chips and source slide out left, the diagram and its ground fade through to the next picture */
   tl.to(Q + "chip1", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, END - 0.6);

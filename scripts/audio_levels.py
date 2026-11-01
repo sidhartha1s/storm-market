@@ -18,10 +18,15 @@ Checks (effective dB = file mean_volume + 20*log10(data-volume)):
      WARN if above narration ref (clip audio shouting over voice).
   5. Any other audible <audio> (no nx-/ins- id and no data-bed attribute) is an
      unclassified element = FAIL — tag it data-bed or use the nx-/ins- convention.
+  6. Narration (nx-*) ending in a burst: a loud run (> -40 dB) in the file's last
+     0.6 s that follows 0.1 s or more of silence (< -55 dB) = FAIL. TTS sometimes
+     appends a full-band click after the last word; it plays as a split second of
+     static at the line's end. Fix: a -v2 copy with the burst silenced, same length.
 
 Usage: python3 scripts/audio_levels.py episodes/<slug>
 Exit 0 = pass. Exit 1 = level defects, do not build the mixdown yet.
 """
+import array
 import math
 import re
 import statistics
@@ -38,6 +43,30 @@ def file_mean_db(p):
          "-f", "null", "-"], capture_output=True, text=True).stderr
     m = re.search(r"mean_volume: (-?[\d.]+) dB", out)
     return float(m.group(1)) if m else None
+
+def tail_burst(p, tail_s=0.6, win_s=0.01):
+    """(peak dB, silence gap s) when the file ends in a loud run after silence, else None."""
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-sseof", f"-{tail_s}", "-i", str(p), "-map", "0:a:0",
+                          "-ac", "1", "-ar", "24000", "-f", "s16le", "-"], capture_output=True).stdout
+    s = array.array("h", raw[: len(raw) // 2 * 2])
+    w = int(24000 * win_s)
+    db = []
+    for i in range(0, len(s) - w + 1, w):
+        ms = sum(v * v for v in s[i:i + w]) / w
+        db.append(10 * math.log10(ms / 32768 ** 2) if ms else -180.0)
+    k = len(db)
+    while k and db[k - 1] > -40:
+        k -= 1
+    if k == len(db):
+        return None  # last window is quiet: a normal ending
+    for _ in range(3):  # step back over the burst's attack (windows between -55 and -40 dB)
+        if k and -55 <= db[k - 1] <= -40:
+            k -= 1
+    gap = 0
+    while k - gap - 1 >= 0 and db[k - gap - 1] < -55:
+        gap += 1
+    return (max(db[k:]), gap * win_s) if gap * win_s >= 0.1 else None
+
 
 els = []
 for m in re.finditer(r"<(audio|video)\b([^>]*)>", html):
@@ -90,6 +119,10 @@ for kind, eid, src, v, is_bed, mean, eff in rows:
     if eid.startswith("nx-"):
         if abs(d) > 3.0:
             fails.append(f"{eid}: narration {d:+.1f} dB off reference")
+        burst = tail_burst(ep / src)
+        if burst:
+            fails.append(f"{eid}: ends in a {burst[0]:.0f} dB burst after {burst[1]:.2f} s of silence ({src}); "
+                         f"write a -v2 copy with the burst silenced, same length")
     elif eid.startswith("ins-"):
         if abs(d) > 2.5:
             fails.append(f"{eid}: insert {d:+.1f} dB vs narration (fix the FILE gain, attr vol is {v})")

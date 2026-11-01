@@ -1,7 +1,7 @@
 # BRIEF g-a3-map-ranch · A3-S10 (second sentence) + A3-S11 · DEEP (Opus 5.5, high effort) · on base `g-master-map`
 
 Read first: `references/mg-quickref.md`, `learnings/mg.md`, `library/inhouse/snippets/tokens.md`. Base: `g-master-map` (copy its BASEMAP block verbatim, as in `g-a3-map-homes`). Overlay on top during a3-s11 0.00–4.90: `g-a3-counter` (glass card, top right).
-Before this host: a3-s10's first sentence (0.00 → 5.10, "In the flattened houses where people got down to the basement, nobody was lost") plays over the basement-survivor clip, the Picture line's first choice. If sourcing finds none, the orchestrator decides that picture; this host still starts on "And".
+Before this host: a3-s10's first sentence (0.00 → 5.10, "In the flattened houses where people got down to the basement, nobody was lost") plays over the basement-survivor clip, the Picture line's first choice. ORCHESTRATOR DECISION 17 Oct (owner: "No picture, the map carries it"): the host now opens 5.32 s earlier, on the g-a3-stair end, so frame 0 shows the map already settled (city, ranch area) under that first sentence; every cue below keeps its narration time, so add 5.32 s to its host-local time.
 
 **BLOCKED layer:** the ranch-home pocket. H15 says what it was, not where. The orchestrator supplies its location (a NIST figure or text) before the pocket layer is built. Build everything else first; the pocket layer is drawn only from a supplied source, never by eye.
 
@@ -35,7 +35,7 @@ The base's projection, north-up, scale bar and street grid, unchanged; framing =
 
 ## 5. PANEL TEXT (exact) and CUES (a3-s10 and a3-s11 words.json)
 Text: "BASEMENTS HELD" · "Ranch homes with basements · early 1980s" · "NIST Finding 46 · Sec. 1.2" · "20th Street & Range Line Road".
-Host: a3-s10 "And" @5.10 → a3-s11 "was." @6.08 + 1.0 (cut to the A4 chapter blackout).
+Host: opens at a3-s10 -0.22 (g-a3-stair end), 5.32 s before a3-s10 "And" @5.10 → a3-s11 "was." @6.08 + 1.0 (cut to the A4 chapter blackout).
 - a3-s10 5.10 "And": city view on from frame 0 (71 dots at .30); source line in.
 - a3-s10 5.74 "neighborhood": push toward the pocket (≤ 1.5x linear, else `logZoom`, 1.0 s); pocket outline draws on.
 - a3-s10 7.06 "basements,": pocket fill in.

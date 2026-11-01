@@ -36,7 +36,7 @@ Text: "INSIDE A BUILDING" · "102" · "of 135" · "BELOW GROUND, NONE FOUND" · 
 Cues (`_list.md` "Cue notation"):
 - card in (the base's entrance) a4-s14 "One" 0.00; count 71 → 102 a4-s14 "building" 0.76 → "patients," 1.88 + 0.6 s.
 - "BELOW GROUND, NONE FOUND" a4-s14 "and" 2.60.
-- hold with the base's drift; exit (the base's) starting a4-s14 4.40 so the card is gone by "started" 5.04, about 5 s on screen.
+- hold with the base's drift; exit (the base's, 0.6 s) on a4-s14 "Their" 4.66, so the card is gone before St. John's lights on "when" 5.34: about 5 s on screen.
 
 ## 6 to 8. Contract, tools, done line, receipt
 `references/mg-brief-template.md` §6 to §8 verbatim, COMPID `g-a4-counter`. Comp-specific: overlay comp, transparent

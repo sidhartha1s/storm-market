@@ -225,10 +225,18 @@ floors/ceilings; taste stays with the model.
   Table the verdicts (the "is it sitting for the egg to hatch" pass). Same pass re-checks clip
   pacing. This is an AI-judgment step — never enforced by script.
 - **Cut-pacing baselines (guidance for the editor's reasoning; the still cap IS code-enforced
-  in sweep):** stills 3-6s MAX with zoom or pan, never longer · video clips up to
+  in sweep):** stills 3-6s MAX, never longer · video clips up to
   12-15s when the clip matches the narration (motion earns time); prefer video everywhere · hooks 2-4s · graphics for as
   long as they keep delivering new information (land time: quick-ref) — never cut ON motion. Deviate whenever the beat demands it — reason per shot.
   Floor from shipped cuts: ep2 had 187 windows, 10.0 s median, 2 picture gaps; uncovered picture gaps in the dozens is a bug.
+- **Footage motion: everything on screen moves; slow Ken Burns is retired** (owner, 17 Oct 26:
+  "whatever you are showing should be moving. Don't put a static image just like that sitting
+  for a long time ... Ken Burns is old. We're not doing that anymore. People don't have attention
+  ... There could be pops, there could be overlays"). A still gets a quick punch zoom in/out, a
+  pop or an overlay on its narration beat, not a slow drift, and not overdone. A video with action
+  beats any still. Blurry public-domain stills are AI-upscaled before use ("All these images ...
+  are really blurry. So, all of them should be upskilled"). A static aerial with no action is not
+  used unless it is the only picture for that beat.
 - **Naming: one asset = one exact filename, cited by filename always** — never prose aliases
   ("cupcake renamed fruit-cake" ban). Different stock files of similar subjects are legitimate
   different shots; the sin is re-showing ONE file under different references. Edit script

@@ -2,6 +2,35 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 18 Oct 26: render_busy picks the worker count that fits instead of refusing
+
+- Measured on the ASUS, live 1-worker draft (hyperframes 0.8.149, 1920x1080, 15 fps): render tree working set 1.6 GB
+  (chrome-headless-shell x5 1,273 MB, node 173 MB, ffmpeg 160 MB), private commit 2.7 GB. A 2-worker draft launched
+  at 3.3 GB free stalled at frame 3699 of 17751 ("Parallel screenshot capture stalled after 60000ms").
+- Before: a Joplin render sat refused 34 minutes at 3.3 GB free under the 4 GB floor. Now `render_busy.py --launch`
+  takes `RENDER_WORKERS` as the request, lowers it to the most workers whose `need_gb()` fits (2.6 GB at 1, 3.9 GB at
+  2, 5.1 GB at 3), prints `[FALLBACK] fewer workers` when it lowers, and refuses only below the 1-worker need. The
+  refusal states GB numbers only. Test: `python3 scripts/test_render_busy.py`.
+
+## 18 Oct 26: a browser job beside running lanes kills the ZBook's ssh
+
+1. Measured twice on ep-joplin-2011. At 15:11, 3 builder lanes plus a 63-frame `hyperframes snapshot` were running. At 15:34,
+   2 lanes plus the node browser gates (`blank_scan`, `overlap_check`, `occlusion_check`) were running. Both times every
+   new ssh session failed: ping and port 22 answered and the key was accepted (`Authenticated ... using "publickey"`), but
+   the server reset the connection at `Entering interactive session`. Windows OpenSSH could not spawn the session process
+   while the box was under memory pressure, with free RAM read at 4.6 GB just before the first drop. The lanes kept running
+   detached; only the controller lost the box for 10 minutes or more.
+   Root cause, measured by another session the same day: 94 orphan Playwright Chrome processes were frozen (parent node
+   dead, every thread Suspended, unkillable, 2.8 GB), plus 285 leftover `playwright_chromiumdev_profile` dirs (1.2 GB).
+   Chrome starts ran at 150 to 420 a minute while lanes and hand-run gates overlapped, and new ssh logins failed 74 of 75
+   between 15:34 and 15:41. The gates leak because they exit without closing the browser: `graphics_qc.mjs:222` exits right
+   after launch, and none of the 7 `.mjs` gates closes the browser in a `finally`.
+2. Rule: on the box that runs lanes, never start a headless-browser job (snapshot, `graphics_qc`, the `.mjs` scans,
+   `run_gates`, a render) while 3 or more lanes are live, and never hard-kill a node gate mid-run (the gate times itself
+   out and closes its browser). Run `~/.claude/scripts/zbook-unfreeze-chrome.ps1` before and after each lane and
+   delete orphan temp profiles. Follow-ups: `try/finally browser.close()` in the 7 `.mjs` gates, and a launch check in
+   `scripts/lanes.py` that refuses the pairing.
+
 ## 12 Oct 26: verify_render judged every draft as a final
 
 1. Measured on a real 113 s draft: `FAIL: fps 15 != composition 30fps (a draft mastered by mistake?)`, exit non-zero.
@@ -196,7 +225,7 @@ short is not) and bump on identical metrics.
   both trees on every launch; `verify_render.sh` fails (exit 2) unless the log's
   `browserGpuMode probe →` line names NVIDIA.
 - Still CPU by design in 0.7.109: ffmpeg frame extraction (~70 s for 48 clips) and audio; no hw-decode switch exists.
-- RAM floor stays 4 GB: the GPU run's capture RSS is ~4 GB vs ~5–6 GB on the iGPU (k2 logs in the 15 Sep session).
+- RAM floor stays 4 GB: the GPU run's capture RSS is ~4 GB vs ~5–6 GB on the iGPU (k2 logs in the 15 Sep session). Superseded 18 Oct 26: per-worker need, see the top entry.
 
 ## 15 Sep 26 — first two Format C (rolling update) builds, ms-indonesia-four-volcanoes + ms-hawaii-lowell-outages
 - **Two-worker draft render + Firefox = 0.8 GB free.** render_busy's floor is right; nothing else launches during a render.
@@ -284,7 +313,7 @@ short is not) and bump on identical metrics.
 - **16 GB is not "room for everything".** frame composites (80 videos in one page) +
   overlap_check + a demo render + faster-whisper concurrently → `mkl_malloc`, `uv_spawn EAGAIN`,
   "Unable to capture screenshot" at frame 390. One browser-heavy job at a time; check
-  `FreePhysicalMemory` before launching (2.5 GB free → `RENDER_WORKERS=2`, 7.5 GB → 3).
+  free RAM before launching (superseded 18 Oct 26: `render_busy.py --launch` picks the worker count).
   Separately: the faster-whisper `small.en` cache on this box is corrupt (`mkl_malloc` regardless
   of RAM) — use `base.en` int8.
 - **Gate noise to expect on a finished episode:** `sweep_episode.py` FAILs on src-less `<section>`

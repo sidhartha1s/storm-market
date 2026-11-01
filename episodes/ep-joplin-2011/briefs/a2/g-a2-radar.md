@@ -1,5 +1,10 @@
 # g-a2-radar · STANDARD (Sonnet 5.5, high) · act a2, segment a2-s8
 
+**Orchestrator answers, 18 Oct 26 (the first build stopped on these two):** (1) Panel G stays under the 1.3x cap: draw it
+at 1.3x its source size at most (504x452 px source, so 655x588 px or smaller), centred on a dark plate, and let the slow
+push end at that size; never upscale past 1.3x and never wait for a re-extract. (2) `compositions/g-a2-countdown.html`
+exists now: copy its clock card as written below.
+
 **Open numbers (left out of the drawing):** the comment like count (1,500) is in `research/comments-for-writer.md` only;
 the card's likes slot stays hidden.
 **Open claim:** "NO TORNADO EMERGENCY" has no facts.md row (script cites the NWS Assessment paragraph before Finding 8

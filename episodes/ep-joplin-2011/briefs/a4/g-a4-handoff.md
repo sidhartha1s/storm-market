@@ -17,17 +17,17 @@ when the head nurse verified the sirens. This picture only names the place; A5 t
 
 ## 2. DATUM, SCALE, ORIENTATION
 - The base's city framing, north-up, with St. John's and the A4 strip both in frame.
-- Keep the counter card's zone (x 1180 to 1824, y 54 to 420) free of labels and highlighted outlines for a4-s14 0.00 to 5.04.
+- Keep the counter card's zone (x 1180 to 1824, y 54 to 420) free of labels and highlighted outlines for a4-s14 0.00 to "when" 5.34.
 - Presenter corner (x ≥ 1600, y ≥ 680) clear.
 
 ## 3. GEOMETRY
-- Under the counter (0.00 to 5.04): the map at 0.7 brightness, the A4 buildings' outlines at 0.5, a slow drift (scale +1 %).
+- Under the counter (0.00 to 5.34): the map at 0.7 brightness, the A4 buildings' outlines at 0.5, a slow drift (scale +1 %).
 - St. John's: the base's outline to a 4 px `#f2f5f8` stroke with fill `rgba(242,245,248,.10)` and one ring pulse (amber
   `#d8a13a`, finite repeats); label "ST. JOHN'S" (diagram-label tier) on its open side.
 - A push toward St. John's (linear, under 1.5x) from the highlight to the end.
 
 ## 4. MUST BE TRUE IN THE PICTURE
-1. Only St. John's is highlighted after 5.04; no other building lights.
+1. Only St. John's is highlighted after 5.34; no other building lights.
 2. Nothing sits under the counter card's text while it is on.
 3. The base's geography is unmoved.
 
@@ -35,7 +35,7 @@ when the head nurse verified the sirens. This picture only names the place; A5 t
 Text: "ST. JOHN'S".
 Cues (`_list.md` "Cue notation"):
 - frame 0: map ground on at the city framing, a4-s14 0.00.
-- St. John's lights + ring + label a4-s14 "started" 5.04; push starts 5.04.
+- St. John's lights + ring + label a4-s14 "when" 5.34; push starts 5.34.
 - hold to the segment end; the host ends at the wav end, a4-s14 7.80 (last word "sirens." 6.88), cut to the chapter
   blackout while the push is still moving.
 

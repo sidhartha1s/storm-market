@@ -1,7 +1,7 @@
 # BRIEF g-a3-counter · A3-S11 · STANDARD (Sonnet 5.5, high effort) · counter visit 1, BASE of the toll counter
 
 Read first: `references/mg-quickref.md` ("RHS stat panel", "Motion and exits": counters), `learnings/mg.md`, `library/inhouse/snippets/tokens.md` (counter tier: Courier New 700 84 `#e74c3c`; counter label Arial 700 20 `#c8d3e0` tracking 6). Exemplars: `library/inhouse/examples/joplin-stat-panel.html`, `episodes/ep-nepal-floods-2026/compositions/g-toll-counter.html`.
-Under it: `g-a3-map-ranch` (the master map; it keeps the card's area clear). Visits 2 (A4, structure.md: 102 of 135) and 3 (A5, 135 of 135) copy this file and change only the from/to values and the source line; build every value as its own text leaf so that is a text edit.
+Under it: `g-a3-map-ranch` (the master map; it keeps the card's area clear). Visits 2 (A4) and 3 (A5) copy this file; their values come from their own act briefs and facts.md rows, never from this one. They change only the from/to values and the source line; build every value as its own text leaf so that is a text edit.
 
 ## 0. What this graphic claims
 So far on the case board: 71 of the 135 people lost inside a building were at home, and none of those the investigators could place was below ground (H26, H19, T3/T11, H5/H6).

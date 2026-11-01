@@ -32,14 +32,14 @@ Cue span = segment-local seconds from the named words.json (`s3 20.54` = a6-s3 w
 | g-a6-board-r7 | a6-s1 | Recommendation board returns, tile 7 lifts out and zooms through to the page | DEEP | base: A5 board; `library/official` stagger-cascade (grid) | s1 0.00 to s1 6.30 |
 | g-a6-doc-rec7 | a6-s1 | NIST page, Recommendation 7, four occupancies underlined on the voice; chip "RECOMMENDATION 7"; source line | STANDARD | base: A1-S6 doc page; `library/inhouse/bulletin-typewriter.html`, official hw-underline | s1 6.30 to s1 17.80 |
 | g-a6-cmt-thriving | a6-s2 | Comment card "By the way, Joplin is thriving..." over the safe-room clip (CLIP NEEDED) | STANDARD | base: A1-S3 comment card | s2 0.46 to s2 5.92 |
-| g-a6-saferoom | a6-s2 | Our schematic of a school safe room, wind held off; chip "NEIGHBORS WITH NOWHERE ELSE MAY USE THEM · FEMA" (N1, N2 chips held) | DEEP | `references/editing-patterns/ep2-met-explainer.html` | s2 5.92 to s2 17.80 |
+| g-a6-saferoom | a6-s2 | Our schematic of a school safe room, wind held off; chip "NEIGHBORS WITH NOWHERE ELSE MAY USE THEM · FEMA" (N1, N2 chips held) | DEEP | `references/editing-patterns/ep2-met-explainer.html` | s2 5.92 to s3 0.00 |
 | g-a6-usmap | a6-s3 | US map; ASCE 7-22 chip; safe-room inset (from g-a6-saferoom) with capacity and walking path; chip "22 STATES · NEW SCHOOLS"; zone fill held (N5) | DEEP | `library/inhouse/master-map-us-canada.html` | s3 0.00 to s3 20.54 |
 | g-a6-cmt-mandatory | a6-s3, a6-s4 | Comment card "I wonder why commercial buildings..." on the question it asks | STANDARD | base: A1-S3 comment card | s3 20.54 to s4 1.68 |
 | g-a6-board-half | a6-s4 | Board, tile 7 lifted and half lit: Schools lit, Apartments and Stores grey; chip "STORES, APARTMENTS: NOTHING LISTED" | DEEP | base: A5 board (state of g-a6-board-r7) | s4 1.68 to s4 8.66 |
 | g-a6-cmt-nurse | a6-s4, a6-s5 | Comment card "Asked a nurse why the windows..." over the West Tower photo | STANDARD | base: A1-S3 comment card | s4 8.66 to s5 3.80 |
 | g-a6-mercy | a6-s5 | Glass text card with Mercy's own words, then chip "DESIGNED FOR 250 MPH"; ALL TEXT HELD (N7) | STANDARD | `references/editing-patterns/ep6-glasscard-popfig-bfmg.html` | s5 3.80 to s5 8.22 |
 | g-a6-siren | a6-s5, a6-s6 | Siren icon with pulsing arcs; chip "NO NATIONAL STANDARD · 2011" (N8 chips held) | STANDARD | base: I1-S2 siren icon | s5 9.86 to s6 14.56 |
-| g-a6-doc-nwsrec2 | a6-s6 | NWS page, Recommendation 2, two phrases underlined; chip "STRONG AND VIOLENT TORNADOES · NWS REC. 2"; source line | STANDARD | base: A1-S6 doc page | s6 14.56 to s6 24.16 |
+| g-a6-doc-nwsrec2 | a6-s6 | NWS page, Recommendation 2, two phrases underlined; chip "STRONG AND VIOLENT TORNADOES · NWS REC. 2"; source line | STANDARD | base: A1-S6 doc page | s6 14.56 to s7 0.00 |
 | g-a6-empty | a6-s7 | Chip "EMPTY THAT EVENING" over the NIST Joplin High School photograph | STANDARD | `library/inhouse/snippets/cards.css` `.glasscard` | s7 9.76 to s7 9.76 + 2.6 |
 | g-a6-map135 | a6-s7 | Master map, 135 dots inside buildings; chip "MOST WERE INDOORS" | DEEP | base: master map, I1-S9 state | after the CCTV clip, 5.0 s (no narration) |
 

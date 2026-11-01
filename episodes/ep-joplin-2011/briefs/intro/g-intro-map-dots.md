@@ -47,7 +47,7 @@ the hospital, two nursing homes, a phone store, a lodge, a theater, and outside 
 - Placed label: "154 placed · 1 not placed · location unknown", Arial 700 22 `#93a3b2` tracking 3, left x 200, baseline 820.
 - Rail card: "135" Courier New 700 110 `#e74c3c` (a count-up leaf); "of 155 impact-related" Arial 700 30 `#dfe7ee`; "Inside a structure"
   Arial 700 26 `#f2f5f8`; "87% · NIST Finding 40" Arial 700 20 `#c8d3e0`. Left-aligned at x 1396; rows 0.3 s apart.
-- Zero: "0" Arial Black 900 96 `#f2f5f8`, centred x 850, sitting on the line (glyph bottom y 872); beside it "NIST found no evidence any were
+- Below-ground mark (ORCHESTRATOR 17 Oct: a bare "0" reads as "nobody"; the locked wording is "found no sign"): "FOUND NO SIGN" Arial Black 900 64 `#f2f5f8`, centred x 850, sitting on the line (glyph bottom y 872); beside it "NIST found no evidence any were
   underground · Finding 46" Arial 700 22 `#c8d3e0`, left x 920, baseline 868. Nothing else touches the line.
 - Source line: x 96, baseline 1010, Arial 700 20 `#c8d3e0`.
 
@@ -55,7 +55,7 @@ the hospital, two nursing homes, a phone store, a lodge, a theater, and outside 
 1. Exactly 154 dots; per group the counts in §1 (count them by script from the DOM, state the counts in the receipt). 12 of the 19 outside dots carry the vehicle ring.
 2. No dot inside a marker belongs to another group; no outside dot inside any marker; no dot outside the path polygon.
 3. The rail reads "135" over "of 155 impact-related", never "of 154".
-4. Nothing but "0" and its source text is on the below-ground line; no dot is on or under it.
+4. Nothing but "FOUND NO SIGN" and its source text is on the below-ground line (no "0" glyph anywhere on it); no dot is on or under it.
 5. Never two spoken type labels at once; no label under a dot, marker or the path edge.
 6. Frame 0 shows the map with no dots (dots begin on "home,").
 
@@ -77,7 +77,7 @@ the hospital, two nursing homes, a phone store, a lodge, a theater, and outside 
 | rail count-up 0 → 135 (power4.out, 0.7 s), rows follow | "135" · "of 155 impact-related" · "Inside a structure" · "87% · NIST Finding 40" (T3) | i1-s8 "135" 0.00 |
 | placed label | "154 placed · 1 not placed · location unknown" (T9, T12) | i1-s8 "building," 2.12 |
 | below-ground line draws left to right (0.8 s), label | "Below ground" | i1-s8 "investigators" 3.00 |
-| "0" drops onto the line (y −40 → 0, 0.35 s, back.out) + its text | "0" · "NIST found no evidence any were underground · Finding 46" (H5, H6) | i1-s8 "below" 5.20 |
+| "FOUND NO SIGN" drops onto the line (y −40 → 0, 0.35 s, back.out) + its text | "FOUND NO SIGN" · "NIST found no evidence any were underground · Finding 46" (H5, H6) | i1-s8 "below" 5.20 |
 | hold | | to the host end: inside dots blip in small groups (≤ 1.5 s apart), rail floats y ±3 px; cut on the host end |
 
 ## 6 to 8

@@ -3,7 +3,7 @@
   Brief briefs/a2/g-a2-doc-cues.md. Two sourced PDF renders on a paper card: NWS Assessment Finding 2d (c), then NIST Finding 45.
   Pages: media/candidates/a2/a2-s10-nwspage_c2_nws-finding2d-crop.png (1529x527), a2-s10-nistpage_c1_nist-finding45-crop-p357.png (1566x353),
   windowed by CSS (overflow:hidden) to the paragraph; multiply-blended onto the #f4f0e6 stock. Never retyped.
-  Scale 0.90 on both (cap height 23 px in the render = 20.7 px on screen, x-height ~14.5). Padding: NWS 27 x 44, NIST 22.5 x 56.
+  Scale 0.90 on both (cap height 23 px in the render = 20.7 px on screen, x-height ~14.5). Padding: NWS 27 x 44, NIST 22.5 x 90.
   Word boxes (src px, measured by column gaps in the line band; baseline = last row above 40 % ink density):
     NWS line 7  "non-routine second siren alert"  x 1026 to 1460, baseline 429
     NIST line 1 "high-intensity cues,"             x 1098 to 1364, baseline 196
@@ -27,14 +27,14 @@
   #a2dc-w1 { left:27px; top:44px; width:1206px; height:429px; }
   #a2dc-i1 { left:-117px; top:-18px; width:1376.1px; }
   #a2dc-u1 { left:833.4px; top:416.1px; width:390.6px; }
-  #a2dc-p2 { top:358px; height:364px; }
-  #a2dc-c2 { height:364px; }
-  #a2dc-w2 { left:22.5px; top:56px; width:1215px; height:252px; }
+  #a2dc-p2 { top:324px; height:432px; }
+  #a2dc-c2 { height:432px; }
+  #a2dc-w2 { left:22.5px; top:90px; width:1215px; height:252px; }
   #a2dc-i2 { left:-54px; top:-23.4px; width:1409.4px; }
-  #a2dc-u2a { left:956.7px; top:213px; width:239.4px; }
-  #a2dc-u2b { left:30.6px; top:251.7px; width:210.6px; }
-  #a2dc-u2c { left:251.1px; top:251.7px; width:408.6px; }
-  #a2dc-u2d { left:669.6px; top:251.7px; width:356.4px; }
+  #a2dc-u2a { left:956.7px; top:247px; width:239.4px; }
+  #a2dc-u2b { left:30.6px; top:285.7px; width:210.6px; }
+  #a2dc-u2c { left:251.1px; top:285.7px; width:408.6px; }
+  #a2dc-u2d { left:669.6px; top:285.7px; width:356.4px; }
   #a2dc-chip { position:absolute; inset:auto; left:96px; top:54px; box-sizing:border-box; padding:20px 30px;
     background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,.14); border-radius:28px; visibility:hidden; }
@@ -76,7 +76,7 @@ window.__timelines = window.__timelines || {};
   };
   tl.set([P+"u1", P+"u2a", P+"u2b", P+"u2c", P+"u2d"], {scaleX:0, transformOrigin:"left center"}, 0);
   tl.set(P+"c1", {transformOrigin:"1070px 404.9px"}, 0);
-  tl.set(P+"c2", {transformOrigin:"1070px 229.7px"}, 0);
+  tl.set(P+"c2", {transformOrigin:"1070px 263.7px"}, 0);
   tl.set([P+"p2", P+"src2"], {x:980, autoAlpha:0}, 0);
   tl.set(P+"chip", {x:-40, autoAlpha:0}, 0);
 

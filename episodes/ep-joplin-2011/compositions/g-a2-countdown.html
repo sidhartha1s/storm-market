@@ -212,6 +212,9 @@ window.__timelines = window.__timelines || {};
   tl.to([P + "west", P + "west-lab"], { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, S3 + 10.92);
 
   /* a2-s4: under g-a2-quote-108 and the NIST photograph; drift and dial only, no state change */
+  /* 18 Oct 26 occlusion gate: chip4 sits under the track-3 NIST stills while host-a2-quote-108 (351.01-357.39 = local 47.92-54.30) is up; hide it for that span so no card ever covers it (no pixel changes) */
+  tl.set(P + "chip4", { autoAlpha: 0 }, 47.92);
+  tl.set(P + "chip4", { autoAlpha: 1 }, 54.30);
 
   /* 5 a2-s5 0.76: 5:17 PM, source NIST Sec. 1.2, chip out; the 5:11 ring has ended (3 min), fades */
   roll("t511", "t517", S5 + 0.76);

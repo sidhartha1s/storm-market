@@ -144,7 +144,7 @@ window.__timelines = window.__timelines || {};
   /* "walls" @5.40 (local 2.80): walls lift 36 px and tilt 8 deg about the top inner corner, feet swing out 33 px; J1/J2 take the wall half, J3/J4 the whole gap */
   tl.to(Q + "wallL", { y: -36, rotation: 8, duration: 0.7, ease: "power3.out" }, 2.8);
   tl.to(Q + "wallR", { y: -36, rotation: -8, duration: 0.7, ease: "power3.out" }, 2.8);
-  tl.to([Q + "j1b", Q + "j2b"], { x: 0, y: -18.7, duration: 0.7, ease: "power3.out" }, 2.8);
+  tl.to([Q + "j1b", Q + "j2b"], { y: -18.7, duration: 0.7, ease: "power3.out" }, 2.8);
   tl.to(Q + "j3a", { x: -16.65, y: -19.86, duration: 0.7, ease: "power3.out" }, 2.8);
   tl.to(Q + "j4a", { x: 16.65, y: -19.86, duration: 0.7, ease: "power3.out" }, 2.8);
   /* the roof leader's tip rides J1 up with the walls (ring edge, label side) */
@@ -152,11 +152,12 @@ window.__timelines = window.__timelines || {};
 
   /* hold: pieces drift (roof y +-3 px, walls +-1 deg), rings ride half of each move; ends at 4.90 where the fade starts */
   tl.to(Q + "roof", { y: -93, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.9);
-  tl.to([Q + "j1a", Q + "j2a"], { y: "-=1.5", duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.9);
+  tl.to(Q + "j1a", { y: -31.5, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.9);
+  tl.to(Q + "j2a", { y: -61.5, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.9);
   tl.to(Q + "wallL", { rotation: 9, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1 }, 3.5);
   tl.to(Q + "wallR", { rotation: -9, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1 }, 3.5);
-  tl.to(Q + "j3a", { x: "-=2.06", y: "-=0.4", duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1 }, 3.5);
-  tl.to(Q + "j4a", { x: "+=2.06", y: "-=0.4", duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1 }, 3.5);
+  tl.to(Q + "j3a", { x: -18.71, y: -20.26, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1 }, 3.5);
+  tl.to(Q + "j4a", { x: 18.71, y: -20.26, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1 }, 3.5);
 
   /* "floor." @6.90 (local 4.30): J3/J4 pulse 1 -> 1.3 -> 1, "Wall to floor" label and leader in */
   tl.to([Q + "j3", Q + "j4"], { scale: 1.3, duration: 0.25, ease: "power2.out" }, 4.3);

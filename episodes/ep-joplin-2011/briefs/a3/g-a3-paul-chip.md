@@ -27,10 +27,10 @@ Overlay, transparent, 1920 × 1080. No scale.
 
 ## 5. PANEL TEXT (exact) and CUES (a3-s8.words.json, see caveat)
 Text: "71 LOST AT HOME" · "NIST Sec. 4.6.2.2".
-Host: a3-s8 "71" @1.10 → "three." @6.04 + 0.4.
+Host: a3-s8 "71" @1.10 → "three." @6.04 + 0.9.
 - 1.10 "71": chip in (popup-chip entrance, 0.45 s, power3.out); source chip in at 1.4.
-- 1.6 → 5.8: both float (y ±3 px, finite repeats).
-- 5.84 → 6.44: both slide out (x −40, autoAlpha 0, power3.in). Paul holds alone after.
+- 1.6 → 6.3: both float (y ±3 px, finite repeats).
+- 6.30 → 6.94: both slide out (x −40, autoAlpha 0, power3.in). Paul holds alone after.
 
 ## 6–8. CONTRACT, TOOLS, DONE LINE, RECEIPT
 `references/mg-brief-template.md` §6, §7, §7a and §8 unchanged, COMPID = `g-a3-paul-chip`, root id `g-a3-paul-chip-root`.

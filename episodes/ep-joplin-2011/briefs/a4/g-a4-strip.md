@@ -51,7 +51,7 @@ Cues (`_list.md` "Cue notation"):
 - frame 0: city framing, strip lit (map ground on from frame 0).
 - push-in a4-s1 "Stick" 0.00 → "explain" 2.14 (logZoom, power2.inOut).
 - outlines brighten a4-s1 "most" 3.02.
-- Walmart marker + label a4-s1 "big" 3.68; Home Depot marker + label a4-s1 "stores," 3.84 + 0.3 s.
+- Walmart marker + label a4-s1 "big" 3.68; Home Depot marker + label a4-s1 "stores" 3.84 + 0.3 s.
 - source line a4-s1 "instead" 4.46.
 - markers keep pulsing; the map drifts (scale +1 %) to the end.
 - host ends at a4-s1 "and" 5.88: a straight cut to the Range Line corridor clip (`_list.md`: S1 clip window). The map

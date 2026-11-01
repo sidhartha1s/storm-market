@@ -89,13 +89,15 @@ window.__timelines = window.__timelines || {};
 
   const tl = gsap.timeline({ paused: true });
   const marks3 = [P+"m07", P+"m08", P+"m09"];
-  tl.set([...marks3, P+"m11"], { scaleY: 0, transformOrigin: "50% 100%" }, 0);
+  /* rise origin = the rect bottom (y 444) in absolute svg units; percent origins resolved to the rect top here (marks sat 88 px high) */
+  const RISE = "0 444";
+  tl.set([...marks3, P+"m11"], { scaleY: 0, svgOrigin: RISE }, 0);
 
   /* frame 0: axis draws 0.00 to 0.70, year labels rise 0.20 to 0.70 */
   tl.to(P+"axis", { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, 0);
   tl.fromTo(P+"years", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.2);
   /* hold float, whole strip: 3 px up and down, about 4 s a cycle, to the host end */
-  tl.to(P+"strip", { y: -3, duration: 14.64 / 7, ease: "sine.inOut", yoyo: true, repeat: 6 }, 0);
+  tl.to(P+"strip", { y: -3, duration: 14.94 / 7, ease: "sine.inOut", yoyo: true, repeat: 6 }, 0);
 
   /* TEST a1-s4 1.46: ticks sweep left to right, done on WEEK. 2.98 */
   tl.to(P+"tickclip-r", { attr: { width: 1514 }, duration: 1.52, ease: "none" }, 1.46);
@@ -103,28 +105,29 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"chip1", { autoAlpha: 0, y: -24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.98);
 
   /* THREE a1-s4 5.18: three marks rise together, labels 0.15 s after, source line */
-  tl.fromTo(marks3, { scaleY: 0, autoAlpha: 0 }, { scaleY: 1, autoAlpha: 1, duration: 0.35, ease: "back.out(1.7)" }, 5.18);
+  tl.fromTo(marks3, { scaleY: 0, autoAlpha: 0, svgOrigin: RISE }, { scaleY: 1, autoAlpha: 1, svgOrigin: RISE, duration: 0.35, ease: "back.out(1.7)" }, 5.18);
   tl.fromTo([P+"l07", P+"l08", P+"l09"], { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.33);
   tl.fromTo(P+"src", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.18);
   /* TIMES a1-s4 5.46: chip 1 out 0.3 s, then chip 2 in (one chip at a time) */
   tl.to(P+"chip1", { autoAlpha: 0, y: -24, duration: 0.3, ease: "power3.in" }, 5.46);
   tl.fromTo(P+"chip2", { autoAlpha: 0, y: -24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.76);
   /* chip 2 drifts to the host end */
-  tl.to(P+"chip2", { x: -10, duration: 14.64 - 6.16, ease: "sine.inOut" }, 6.16);
+  tl.to(P+"chip2", { x: -10, duration: 14.94 - 6.16, ease: "sine.inOut" }, 6.16);
 
   /* TWICE a1-s4 7.80: 2007 + 2009 pulse 1 > 1.18 > 1, their cause lines brighten */
-  tl.to([P+"p07", P+"p09"], { scale: 1.18, transformOrigin: "50% 50%", duration: 0.25, ease: "power2.inOut", yoyo: true, repeat: 1 }, 7.8);
+  tl.to(P+"p07", { scale: 1.18, svgOrigin: "216 400", duration: 0.25, ease: "power2.inOut", yoyo: true, repeat: 1 }, 7.8);
+  tl.to(P+"p09", { scale: 1.18, svgOrigin: "1009 400", duration: 0.25, ease: "power2.inOut", yoyo: true, repeat: 1 }, 7.8);
   tl.to([P+"c07", P+"c09"], { fill: "#f2f5f8", duration: 0.3 }, 7.8);
   /* ONCE a1-s4 9.44: 2008 pulse */
-  tl.to(P+"p08", { scale: 1.18, transformOrigin: "50% 50%", duration: 0.25, ease: "power2.inOut", yoyo: true, repeat: 1 }, 9.44);
+  tl.to(P+"p08", { scale: 1.18, svgOrigin: "666.7 400", duration: 0.25, ease: "power2.inOut", yoyo: true, repeat: 1 }, 9.44);
   tl.to(P+"c08", { fill: "#f2f5f8", duration: 0.3 }, 9.44);
 
   /* NOTHING, a1-s4 11.80: gap bracket draws left to right, 0.70 s */
   tl.to(P+"brclip-r", { attr: { width: 690 }, duration: 0.7, ease: "power1.inOut" }, 11.8);
   /* MAY a1-s4 12.84: 2011 mark rises alone; 22, 13.02: its label */
-  tl.fromTo(P+"m11", { scaleY: 0, autoAlpha: 0 }, { scaleY: 1, autoAlpha: 1, duration: 0.35, ease: "back.out(1.7)" }, 12.84);
+  tl.fromTo(P+"m11", { scaleY: 0, autoAlpha: 0, svgOrigin: RISE }, { scaleY: 1, autoAlpha: 1, svgOrigin: RISE, duration: 0.35, ease: "back.out(1.7)" }, 12.84);
   tl.fromTo(P+"l11", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 13.02);
-  /* hold to 14.64, cut on the host end (full-frame scene) */
+  /* hold to 14.94 (host runs through the 0.3 s seam to ins-paul-2, 18 Oct 26), cut on the host end (full-frame scene) */
   window.__timelines["g-a1-strip-sirens"] = tl;
 })();
 </script>

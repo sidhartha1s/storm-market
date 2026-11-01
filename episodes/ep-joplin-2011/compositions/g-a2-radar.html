@@ -32,13 +32,14 @@
   .a2rd-pm { font:700 30px/30px Arial, sans-serif; color:#dfe7ee; }
   .a2rd-cdt { font:700 20px/20px Arial, sans-serif; letter-spacing:4px; color:#93a3b2; margin-top:4px; }
 
-  .a2rd-src { position:absolute; inset:auto; right:96px; top:54px; padding:10px 18px; border-radius:16px; white-space:nowrap; opacity:0; visibility:hidden; }
-  .a2rd-srctxt { font:700 20px/20px Arial, sans-serif; letter-spacing:2px; color:#c8d3e0; }
+  /* two lines so its text stays right of x 1190 (the still's column), one line would start at x 1050 */
+  .a2rd-src { position:absolute; inset:auto; right:96px; top:54px; padding:10px 18px; border-radius:16px; white-space:nowrap; text-align:right; opacity:0; visibility:hidden; }
+  .a2rd-srctxt { display:block; font:700 20px/24px Arial, sans-serif; letter-spacing:2px; color:#c8d3e0; }
 
   /* chip slot: right-aligned at x 1824, y 140 to 205, one at a time */
-  .a2rd-chip { position:absolute; inset:auto; right:96px; top:140px; height:65px; padding:0 28px; border-radius:20px; white-space:nowrap;
+  .a2rd-chip { position:absolute; inset:auto; right:96px; top:140px; height:65px; padding:0 24px; border-radius:20px; white-space:nowrap;
     opacity:0; visibility:hidden; }
-  .a2rd-chiptxt { font:900 40px/63px 'Arial Black', Arial, sans-serif; letter-spacing:2px; color:#f2f5f8; }
+  .a2rd-chiptxt { font:900 40px/63px 'Arial Black', Arial, sans-serif; letter-spacing:0; color:#f2f5f8; }
 
   /* comment card x 1220 to 1824, y 300 to 600 */
   #a2rd-card { position:absolute; inset:auto; left:1220px; top:300px; width:604px; height:300px; padding:30px 40px; border-radius:28px;
@@ -65,21 +66,21 @@
     <div id="a2rd-t534" class="a2rd-tg"><span class="a2rd-tt">5:34</span><div class="a2rd-ampm"><span class="a2rd-pm">PM</span><span class="a2rd-cdt">CDT</span></div></div>
   </div>
 
-  <div id="a2rd-src" class="a2rd-src a2rd-glass"><span class="a2rd-srctxt">NWS Assessment, Finding 10 and the paragraph before Finding 8</span></div>
+  <div id="a2rd-src" class="a2rd-src a2rd-glass"><span class="a2rd-srctxt">NWS Assessment, Finding 10 and</span><span class="a2rd-srctxt">the paragraph before Finding 8</span></div>
 
   <div id="a2rd-chip1" class="a2rd-chip a2rd-glass"><span class="a2rd-chiptxt">RAIN-WRAPPED</span></div>
   <div id="a2rd-chip2" class="a2rd-chip a2rd-glass"><span class="a2rd-chiptxt">NO TORNADO EMERGENCY</span></div>
 
   <div id="a2rd-card" class="a2rd-glass">
     <div id="a2rd-q">“Joplin didn’t receive a tornado emergency because of how fast it developed.”</div>
-    <div id="a2rd-meta">Comment under a live TV broadcast re-upload</div>
+    <div id="a2rd-meta">In their words</div>
   </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
   const P = "#a2rd-";
-  const D = 22.92;                 /* host data-duration; the exit is its last 0.6 s */
+  const D = 23.22;                 /* host data-duration (22.92 + the 0.3 s seam to ins-paul-3, 18 Oct 26); the exit is its last 0.6 s */
   const EXIT = D - 0.6;
   const tl = gsap.timeline({ paused: true });
 

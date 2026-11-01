@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- ep-joplin-2011 · The Warning Hour · timeline skeleton v0 (17 Oct 26), hand-authored on ep-nepal-floods-2026's layout.
-     Script: edit_script.md (draft 1); narration wavs and durations: audio/manifest.json (77 of 78 segments; z1-s3 has no wav yet).
+     Script: edit_script.md (draft 1); narration wavs and durations: audio/manifest.json (78 of 78 segments; z1-s3 voiced 18 Oct 26).
      Timing rules (Nepal's, with the edit script's 0.7 s blackout): narration starts = previous wav end + 0.30 s seam; 0.15 s after
      the hook line; act seams = 0.7 s chapter blackout from the last word, next voice 0.2 s after it; CTA hinge a3-s8 -> a3-s9 with
      1.0 s dips (config channel.cta dip_in / dip_out), a3-s9 starts on the dip-out end; A6 ends on a 10.8 s declared hold (empty-school
@@ -11,7 +11,10 @@
      times, as in Nepal, so lint_timeline.py and the gates read them.
      Graphic hosts: one per comp in briefs/<act>/_list.md; times = cue span from the list on the nx- starts below (arithmetic beside
      each host). Full-frame comps (track 2) run through a seam of 1.0 s or less to the next full-frame comp or blackout so no black
-     shows between them. Overlays (track 4) need picture under them: footage is not mounted yet, each beat is a comment. -->
+     shows between them. Overlays (track 4) need picture under them: footage is not mounted yet, each beat is a comment.
+     17 Oct 26: footage mounted from the three mounts proposals; then a one-shot retime for the two inserts with their own audio (A1-S9 KSN 9.0 s at 260.89,
+     A2-S10 KSN 6.0 s at the shifted 431.75). ATTRIBUTES ARE CURRENT; ARITHMETIC IN COMMENTS IS PRE-RETIME: add +9.0 to any time >= 260.89 and +15.0 to any
+     time >= 422.75 (a comment's 546.17 is now 561.17). Act markers act-a1 and act-a2 grew by 9.0 and 6.0, the root by 15.0. -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -25,324 +28,687 @@
     .clip { position: absolute; inset: 0; }
     .blackout { position: absolute; inset: 0; background: #000; }
     .hold, .act { position: absolute; inset: 0; pointer-events: none; }
+    .still-wrap { position: absolute; inset: 0; overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    /* Paint order follows data-track-index, not DOM order. 18 Oct 26 frame read: the hook popfig, the 161 card and the
+       quote-108 card were hidden under lower-track clips written after them (24 such pairs). Track 0 (act markers) keeps auto. */
+    #root > [data-composition-id] { position: absolute; inset: 0; }
+    #root > [data-track-index="1"] { z-index: 1; }  #root > [data-track-index="2"] { z-index: 2; }
+    #root > [data-track-index="3"] { z-index: 3; }  #root > [data-track-index="4"] { z-index: 4; }
+    #root > [data-track-index="5"] { z-index: 5; }  #root > [data-track-index="6"] { z-index: 6; }
+    #root > [data-track-index="7"] { z-index: 7; }  #root > [data-track-index="8"] { z-index: 8; }
+    .bridge { background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }   /* dark bridge, tokens.md canvas, never flat black */
+    video.graded { filter: saturate(0.88) contrast(1.06) brightness(0.94); }               /* Nepal's grade, broadcast and news clips only */
+    video.crop-dvids { transform: scale(1.18); transform-origin: 50% 0%; }   /* DVIDS 116445 640x360: burned-in lower third at y 318-345 leaves the frame */
+    video.crop-kshb  { transform: scale(1.45); transform-origin: 0% 10%; }   /* KSHB: bug (x 79-92 %, y 72-86 %) and ticker (> 88 %) leave the frame */
+    video.crop-ksn   { transform: scale(1.15); transform-origin: 50% 20%; }  /* KSN: drops the lower crawl and the black side bars; the KSN logos stay */
+    video.crop-fema  { transform: scale(1.1);  transform-origin: 0% 0%; }    /* FEMA bug bottom right leaves the frame */
+    video.crop-koam  { transform: scale(1.35); transform-origin: 50% 0%; }   /* KOAM: headline, bug and ticker in the bottom 22 %; the top 74 % shows */
+    video.crop-kmbc  { transform: scale(1.25); transform-origin: 0% 0%; }    /* KMBC: bug at x 78-94 %, y 80-90 % leaves the frame */
+    /* presenter circle (references/mg-quickref.md): geometry is !important so the renderer's video{inset:0} cannot win; the ring is its own timed section */
+    .pip { position: absolute !important; inset: auto !important; left: 1640px !important; top: 708px !important;
+      width: 240px !important; height: 240px !important; border-radius: 50% !important; object-fit: cover !important; z-index: 8 !important; }
+    .pipring { position: absolute; left: 1632px; top: 700px; width: 256px; height: 256px; border-radius: 50%; border: 4px solid #d0121f;
+      box-sizing: border-box; z-index: 9; box-shadow: 0 10px 30px rgba(0,0,0,0.55); }
   </style>
 </head>
 <body>
-<div id="root" data-composition-id="ep-joplin-2011" data-start="0" data-width="1920" data-height="1080" data-duration="1140.887" data-fps="30">
+<div id="root" data-composition-id="ep-joplin-2011" data-start="0" data-width="1920" data-height="1080" data-duration="1196.522" data-fps="30">
 
   <!-- ============ NARRATION (77 segments, script order) ============ -->
-  <audio id="nx-h1-s1" src="audio/h1-s1.wav" data-start="0" data-duration="17.56" data-volume="1"></audio>
-  <audio id="nx-t1-s1" src="audio/t1-s1.wav" data-start="17.71" data-duration="9.52" data-volume="1"></audio>
-  <audio id="nx-t1-s2" src="audio/t1-s2.wav" data-start="27.53" data-duration="5.96" data-volume="1"></audio>
-  <audio id="nx-t1-s3" src="audio/t1-s3.wav" data-start="33.79" data-duration="5.24" data-volume="1"></audio>
-  <audio id="nx-i1-s1" src="audio/i1-s1.wav" data-start="39.33" data-duration="14.56" data-volume="1"></audio>
-  <audio id="nx-i1-s2" src="audio/i1-s2.wav" data-start="54.19" data-duration="12.04" data-volume="1"></audio>
-  <audio id="nx-i1-s3" src="audio/i1-s3.wav" data-start="66.53" data-duration="4.16" data-volume="1"></audio>
-  <audio id="nx-i1-s4" src="audio/i1-s4.wav" data-start="70.99" data-duration="6.96" data-volume="1"></audio>
-  <audio id="nx-i1-s5" src="audio/i1-s5.wav" data-start="78.25" data-duration="6.2" data-volume="1"></audio>
-  <audio id="nx-i1-s6" src="audio/i1-s6.wav" data-start="84.75" data-duration="9.8" data-volume="1"></audio>
-  <audio id="nx-i1-s7" src="audio/i1-s7.wav" data-start="94.85" data-duration="9.56" data-volume="1"></audio>
-  <audio id="nx-i1-s8" src="audio/i1-s8.wav" data-start="104.71" data-duration="6.12" data-volume="1"></audio>
-  <audio id="nx-i1-s9" src="audio/i1-s9.wav" data-start="111.13" data-duration="14.48" data-volume="1"></audio>
-  <audio id="nx-a1-s1" src="audio/a1-s1.wav" data-start="126.51" data-duration="14.04" data-volume="1"></audio>
-  <audio id="nx-a1-s2" src="audio/a1-s2.wav" data-start="140.85" data-duration="15.96" data-volume="1"></audio>
-  <audio id="nx-a1-s3" src="audio/a1-s3.wav" data-start="157.11" data-duration="17.92" data-volume="1"></audio>
-  <audio id="nx-a1-s4" src="audio/a1-s4.wav" data-start="175.33" data-duration="14.64" data-volume="1"></audio>
-  <audio id="nx-a1-s5" src="audio/a1-s5.wav" data-start="190.27" data-duration="6.76" data-volume="1"></audio>
-  <audio id="nx-a1-s6" src="audio/a1-s6.wav" data-start="197.33" data-duration="12.96" data-volume="1"></audio>
-  <audio id="nx-a1-s7" src="audio/a1-s7.wav" data-start="210.59" data-duration="20.32" data-volume="1"></audio>
-  <audio id="nx-a1-s8" src="audio/a1-s8.wav" data-start="231.21" data-duration="17.36" data-volume="1"></audio>
-  <audio id="nx-a1-s9" src="audio/a1-s9.wav" data-start="248.87" data-duration="11.72" data-volume="1"></audio>
-  <audio id="nx-a1-s10" src="audio/a1-s10.wav" data-start="260.89" data-duration="19.56" data-volume="1"></audio>
-  <audio id="nx-a1-s11" src="audio/a1-s11.wav" data-start="280.75" data-duration="5.88" data-volume="1"></audio>
-  <audio id="nx-a2-s1" src="audio/a2-s1.wav" data-start="287.53" data-duration="21.48" data-volume="1"></audio>
-  <audio id="nx-a2-s2" src="audio/a2-s2.wav" data-start="309.31" data-duration="9.28" data-volume="1"></audio>
-  <audio id="nx-a2-s3" src="audio/a2-s3.wav" data-start="318.89" data-duration="16.52" data-volume="1"></audio>
-  <audio id="nx-a2-s4" src="audio/a2-s4.wav" data-start="335.71" data-duration="9.76" data-volume="1"></audio>
-  <audio id="nx-a2-s5" src="audio/a2-s5.wav" data-start="345.77" data-duration="7.08" data-volume="1"></audio>
-  <audio id="nx-a2-s6" src="audio/a2-s6.wav" data-start="353.15" data-duration="18.0" data-volume="1"></audio>
-  <audio id="nx-a2-s7" src="audio/a2-s7.wav" data-start="371.45" data-duration="18.96" data-volume="1"></audio>
-  <audio id="nx-a2-s8" src="audio/a2-s8.wav" data-start="390.71" data-duration="22.92" data-volume="1"></audio>
-  <audio id="nx-a2-s9" src="audio/a2-s9.wav" data-start="413.93" data-duration="8.52" data-volume="1"></audio>
-  <audio id="nx-a2-s10" src="audio/a2-s10.wav" data-start="422.75" data-duration="17.72" data-volume="1"></audio>
-  <audio id="nx-a2-s11" src="audio/a2-s11.wav" data-start="440.77" data-duration="9.2" data-volume="1"></audio>
-  <audio id="nx-a2-s12" src="audio/a2-s12.wav" data-start="450.27" data-duration="8.0" data-volume="1"></audio>
-  <audio id="nx-a3-s1" src="audio/a3-s1.wav" data-start="459.17" data-duration="11.12" data-volume="1"></audio>
-  <audio id="nx-a3-s3" src="audio/a3-s3.wav" data-start="470.59" data-duration="12.4" data-volume="1"></audio>
-  <audio id="nx-a3-s4" src="audio/a3-s4.wav" data-start="483.29" data-duration="21.12" data-volume="1"></audio>
-  <audio id="nx-a3-s5" src="audio/a3-s5.wav" data-start="504.71" data-duration="18.04" data-volume="1"></audio>
-  <audio id="nx-a3-s6" src="audio/a3-s6.wav" data-start="523.05" data-duration="7.88" data-volume="1"></audio>
-  <audio id="nx-a3-s7" src="audio/a3-s7.wav" data-start="531.23" data-duration="6.64" data-volume="1"></audio>
-  <audio id="nx-a3-s8" src="audio/a3-s8.wav" data-start="538.17" data-duration="7.0" data-volume="1"></audio>
-  <audio id="nx-a3-s9" src="audio/a3-s9.wav" data-start="571.587" data-duration="11.16" data-volume="1"></audio>
-  <audio id="nx-a3-s10" src="audio/a3-s10.wav" data-start="583.047" data-duration="12.72" data-volume="1"></audio>
-  <audio id="nx-a3-s11" src="audio/a3-s11.wav" data-start="596.067" data-duration="6.84" data-volume="1"></audio>
-  <audio id="nx-a4-s1" src="audio/a4-s1.wav" data-start="603.807" data-duration="7.32" data-volume="1"></audio>
-  <audio id="nx-a4-s3" src="audio/a4-s3.wav" data-start="611.427" data-duration="18.4" data-volume="1"></audio>
-  <audio id="nx-a4-s4" src="audio/a4-s4.wav" data-start="630.127" data-duration="17.32" data-volume="1"></audio>
-  <audio id="nx-a4-s5" src="audio/a4-s5.wav" data-start="647.747" data-duration="30.08" data-volume="1"></audio>
-  <audio id="nx-a4-s6" src="audio/a4-s6.wav" data-start="678.127" data-duration="15.4" data-volume="1"></audio>
-  <audio id="nx-a4-s7" src="audio/a4-s7.wav" data-start="693.827" data-duration="15.0" data-volume="1"></audio>
-  <audio id="nx-a4-s9" src="audio/a4-s9.wav" data-start="709.127" data-duration="24.56" data-volume="1"></audio>
-  <audio id="nx-a4-s10" src="audio/a4-s10.wav" data-start="733.987" data-duration="14.0" data-volume="1"></audio>
-  <audio id="nx-a4-s11" src="audio/a4-s11.wav" data-start="748.287" data-duration="22.24" data-volume="1"></audio>
-  <audio id="nx-a4-s12" src="audio/a4-s12.wav" data-start="770.827" data-duration="12.04" data-volume="1"></audio>
-  <audio id="nx-a4-s13" src="audio/a4-s13.wav" data-start="783.167" data-duration="12.4" data-volume="1"></audio>
-  <audio id="nx-a4-s14" src="audio/a4-s14.wav" data-start="795.867" data-duration="7.8" data-volume="1"></audio>
-  <audio id="nx-a5-s1" src="audio/a5-s1.wav" data-start="804.567" data-duration="11.44" data-volume="1"></audio>
-  <audio id="nx-a5-s2" src="audio/a5-s2.wav" data-start="816.307" data-duration="22.76" data-volume="1"></audio>
-  <audio id="nx-a5-s3" src="audio/a5-s3.wav" data-start="839.367" data-duration="17.32" data-volume="1"></audio>
-  <audio id="nx-a5-s4" src="audio/a5-s4.wav" data-start="856.987" data-duration="18.0" data-volume="1"></audio>
-  <audio id="nx-a5-s5" src="audio/a5-s5.wav" data-start="875.287" data-duration="6.4" data-volume="1"></audio>
-  <audio id="nx-a5-s6" src="audio/a5-s6.wav" data-start="881.987" data-duration="27.48" data-volume="1"></audio>
-  <audio id="nx-a5-s7" src="audio/a5-s7.wav" data-start="909.767" data-duration="10.48" data-volume="1"></audio>
-  <audio id="nx-a5-s8" src="audio/a5-s8.wav" data-start="920.547" data-duration="8.2" data-volume="1"></audio>
-  <audio id="nx-a5-s9" src="audio/a5-s9.wav" data-start="929.047" data-duration="21.2" data-volume="1"></audio>
-  <audio id="nx-a5-s10" src="audio/a5-s10.wav" data-start="950.547" data-duration="17.76" data-volume="1"></audio>
-  <audio id="nx-a5-s11" src="audio/a5-s11.wav" data-start="968.607" data-duration="6.2" data-volume="1"></audio>
-  <audio id="nx-a6-s1" src="audio/a6-s1.wav" data-start="975.707" data-duration="25.12" data-volume="1"></audio>
-  <audio id="nx-a6-s2" src="audio/a6-s2.wav" data-start="1001.127" data-duration="17.8" data-volume="1"></audio>
-  <audio id="nx-a6-s3" src="audio/a6-s3.wav" data-start="1019.227" data-duration="23.32" data-volume="1"></audio>
-  <audio id="nx-a6-s4" src="audio/a6-s4.wav" data-start="1042.847" data-duration="13.12" data-volume="1"></audio>
-  <audio id="nx-a6-s5" src="audio/a6-s5.wav" data-start="1056.267" data-duration="10.68" data-volume="1"></audio>
-  <audio id="nx-a6-s6" src="audio/a6-s6.wav" data-start="1067.247" data-duration="24.16" data-volume="1"></audio>
-  <audio id="nx-a6-s7" src="audio/a6-s7.wav" data-start="1091.707" data-duration="10.56" data-volume="1"></audio>
-  <audio id="nx-z1-s1" src="audio/z1-s1.wav" data-start="1113.967" data-duration="22.92" data-volume="1"></audio>
-  <!-- nx-z1-s3 slot (no wav yet): data-start = z1-s1 end 1136.887 + 0.30 seam = 1137.187. The Z1 signature line (Paul on camera,
-       ins-paul-6, not written) follows it. Both push the root data-duration and the 4.0 s tail out by their length. -->
+  <audio id="nx-h1-s1" src="audio/h1-s1-tail.wav" data-start="7.6" data-duration="12.16" data-volume="1"></audio>  <!-- h1-s1 from "In 2011" (TTS 5.40 s on); Paul speaks the first sentences in ins-paul-1 -->
+  <audio id="nx-t1-s1" src="audio/t1-s1.wav" data-start="19.91" data-duration="9.52" data-volume="1"></audio>
+  <audio id="nx-t1-s2" src="audio/t1-s2.wav" data-start="29.73" data-duration="5.96" data-volume="1"></audio>
+  <audio id="nx-t1-s3" src="audio/t1-s3.wav" data-start="35.99" data-duration="5.24" data-volume="1"></audio>
+  <audio id="nx-i1-s1" src="audio/i1-s1.wav" data-start="41.53" data-duration="14.56" data-volume="1"></audio>
+  <audio id="nx-i1-s2" src="audio/i1-s2.wav" data-start="56.39" data-duration="12.04" data-volume="1"></audio>
+  <audio id="nx-i1-s3" src="audio/i1-s3.wav" data-start="68.73" data-duration="4.16" data-volume="1"></audio>
+  <audio id="nx-i1-s4" src="audio/i1-s4.wav" data-start="73.19" data-duration="6.96" data-volume="1"></audio>
+  <audio id="nx-i1-s5" src="audio/i1-s5.wav" data-start="80.45" data-duration="6.2" data-volume="1"></audio>
+  <audio id="nx-i1-s6" src="audio/i1-s6-v2.wav" data-start="86.95" data-duration="9.8" data-volume="1"></audio>
+  <audio id="nx-i1-s7" src="audio/i1-s7.wav" data-start="97.05" data-duration="9.56" data-volume="1"></audio>
+  <audio id="nx-i1-s8" src="audio/i1-s8.wav" data-start="106.91" data-duration="6.12" data-volume="1"></audio>
+  <audio id="nx-i1-s9" src="audio/i1-s9-v2.wav" data-start="113.33" data-duration="14.48" data-volume="1"></audio>
+  <audio id="nx-a1-s1" src="audio/a1-s1.wav" data-start="128.71" data-duration="14.04" data-volume="1"></audio>
+  <audio id="nx-a1-s2" src="audio/a1-s2-v2.wav" data-start="143.05" data-duration="15.96" data-volume="1"></audio>
+  <audio id="nx-a1-s3" src="audio/a1-s3.wav" data-start="159.31" data-duration="17.92" data-volume="1"></audio>
+  <audio id="nx-a1-s4" src="audio/a1-s4.wav" data-start="177.53" data-duration="14.64" data-volume="1"></audio>
+  <audio id="nx-a1-s6" src="audio/a1-s6.wav" data-start="200.87" data-duration="12.96" data-volume="1"></audio>
+  <audio id="nx-a1-s7" src="audio/a1-s7.wav" data-start="214.13" data-duration="20.32" data-volume="1"></audio>
+  <audio id="nx-a1-s8" src="audio/a1-s8.wav" data-start="234.75" data-duration="17.36" data-volume="1"></audio>
+  <audio id="nx-a1-s9" src="audio/a1-s9.wav" data-start="252.41" data-duration="11.72" data-volume="1"></audio>
+  <audio id="nx-a1-s10" src="audio/a1-s10.wav" data-start="273.43" data-duration="19.56" data-volume="1"></audio>
+  <audio id="nx-a1-s11" src="audio/a1-s11.wav" data-start="293.29" data-duration="5.88" data-volume="1"></audio>
+  <audio id="nx-a2-s1" src="audio/a2-s1-v2.wav" data-start="300.07" data-duration="21.48" data-volume="1"></audio>
+  <audio id="nx-a2-s2" src="audio/a2-s2.wav" data-start="321.85" data-duration="9.28" data-volume="1"></audio>
+  <audio id="nx-a2-s3" src="audio/a2-s3.wav" data-start="331.43" data-duration="16.52" data-volume="1"></audio>
+  <audio id="nx-a2-s4" src="audio/a2-s4.wav" data-start="348.25" data-duration="9.76" data-volume="1"></audio>
+  <audio id="nx-a2-s5" src="audio/a2-s5.wav" data-start="358.31" data-duration="7.08" data-volume="1"></audio>
+  <audio id="nx-a2-s6" src="audio/a2-s6.wav" data-start="365.69" data-duration="18.0" data-volume="1"></audio>
+  <audio id="nx-a2-s7" src="audio/a2-s7.wav" data-start="383.99" data-duration="18.96" data-volume="1"></audio>
+  <audio id="nx-a2-s8" src="audio/a2-s8-v2.wav" data-start="403.25" data-duration="22.92" data-volume="1"></audio>
+  <audio id="nx-a2-s10" src="audio/a2-s10.wav" data-start="441.22" data-duration="17.72" data-volume="1"></audio>
+  <audio id="nx-a2-s11" src="audio/a2-s11.wav" data-start="459.24" data-duration="9.2" data-volume="1"></audio>
+  <audio id="nx-a2-s12" src="audio/a2-s12.wav" data-start="468.74" data-duration="8.0" data-volume="1"></audio>
+  <audio id="nx-a3-s1" src="audio/a3-s1.wav" data-start="477.64" data-duration="11.12" data-volume="1"></audio>
+  <audio id="nx-a3-s3" src="audio/a3-s3.wav" data-start="489.06" data-duration="12.4" data-volume="1"></audio>
+  <audio id="nx-a3-s4" src="audio/a3-s4.wav" data-start="501.76" data-duration="21.12" data-volume="1"></audio>
+  <audio id="nx-a3-s5" src="audio/a3-s5.wav" data-start="523.18" data-duration="18.04" data-volume="1"></audio>
+  <audio id="nx-a3-s6" src="audio/a3-s6.wav" data-start="541.52" data-duration="7.88" data-volume="1"></audio>
+  <audio id="nx-a3-s7" src="audio/a3-s7.wav" data-start="549.7" data-duration="6.64" data-volume="1"></audio>
+  <audio id="nx-a3-s9" src="audio/a3-s9-v2.wav" data-start="591.882" data-duration="11.16" data-volume="1"></audio>
+  <audio id="nx-a3-s10" src="audio/a3-s10.wav" data-start="603.342" data-duration="12.72" data-volume="1"></audio>
+  <audio id="nx-a3-s11" src="audio/a3-s11-v2.wav" data-start="616.362" data-duration="6.84" data-volume="1"></audio>
+  <audio id="nx-a4-s1" src="audio/a4-s1.wav" data-start="624.102" data-duration="7.32" data-volume="1"></audio>
+  <audio id="nx-a4-s3" src="audio/a4-s3.wav" data-start="631.722" data-duration="18.4" data-volume="1"></audio>
+  <audio id="nx-a4-s4" src="audio/a4-s4.wav" data-start="650.422" data-duration="17.32" data-volume="1"></audio>
+  <audio id="nx-a4-s5" src="audio/a4-s5.wav" data-start="668.042" data-duration="30.08" data-volume="1"></audio>
+  <audio id="nx-a4-s6" src="audio/a4-s6.wav" data-start="698.422" data-duration="15.4" data-volume="1"></audio>
+  <audio id="nx-a4-s7" src="audio/a4-s7.wav" data-start="714.122" data-duration="15.0" data-volume="1"></audio>
+  <audio id="nx-a4-s9" src="audio/a4-s9.wav" data-start="729.422" data-duration="24.56" data-volume="1"></audio>
+  <audio id="nx-a4-s10" src="audio/a4-s10.wav" data-start="754.282" data-duration="14.0" data-volume="1"></audio>
+  <audio id="nx-a4-s11" src="audio/a4-s11.wav" data-start="768.582" data-duration="22.24" data-volume="1"></audio>
+  <audio id="nx-a4-s12" src="audio/a4-s12.wav" data-start="791.122" data-duration="12.04" data-volume="1"></audio>
+  <audio id="nx-a4-s13" src="audio/a4-s13.wav" data-start="803.462" data-duration="12.4" data-volume="1"></audio>
+  <audio id="nx-a4-s14" src="audio/a4-s14.wav" data-start="816.162" data-duration="7.8" data-volume="1"></audio>
+  <audio id="nx-a5-s1" src="audio/a5-s1.wav" data-start="824.862" data-duration="11.44" data-volume="1"></audio>
+  <audio id="nx-a5-s2" src="audio/a5-s2.wav" data-start="836.602" data-duration="22.76" data-volume="1"></audio>
+  <audio id="nx-a5-s3" src="audio/a5-s3.wav" data-start="859.662" data-duration="17.32" data-volume="1"></audio>
+  <audio id="nx-a5-s4" src="audio/a5-s4.wav" data-start="877.282" data-duration="18.0" data-volume="1"></audio>
+  <audio id="nx-a5-s5" src="audio/a5-s5.wav" data-start="895.582" data-duration="6.4" data-volume="1"></audio>
+  <audio id="nx-a5-s6" src="audio/a5-s6-v2.wav" data-start="902.282" data-duration="27.48" data-volume="1"></audio>
+  <audio id="nx-a5-s7" src="audio/a5-s7-v2.wav" data-start="930.062" data-duration="10.48" data-volume="1"></audio>
+  <audio id="nx-a5-s9" src="audio/a5-s9.wav" data-start="950.342" data-duration="21.2" data-volume="1"></audio>
+  <audio id="nx-a5-s10" src="audio/a5-s10.wav" data-start="971.842" data-duration="17.76" data-volume="1"></audio>
+  <audio id="nx-a5-s11" src="audio/a5-s11.wav" data-start="989.902" data-duration="6.2" data-volume="1"></audio>
+  <audio id="nx-a6-s1" src="audio/a6-s1.wav" data-start="997.002" data-duration="25.12" data-volume="1"></audio>
+  <audio id="nx-a6-s2" src="audio/a6-s2.wav" data-start="1022.422" data-duration="17.8" data-volume="1"></audio>
+  <audio id="nx-a6-s3" src="audio/a6-s3-v2.wav" data-start="1040.522" data-duration="23.32" data-volume="1"></audio>
+  <audio id="nx-a6-s4" src="audio/a6-s4-v2.wav" data-start="1064.142" data-duration="13.12" data-volume="1"></audio>
+  <audio id="nx-a6-s5" src="audio/a6-s5.wav" data-start="1077.562" data-duration="10.68" data-volume="1"></audio>
+  <audio id="nx-a6-s6" src="audio/a6-s6-v2.wav" data-start="1088.542" data-duration="24.16" data-volume="1"></audio>
+  <audio id="nx-a6-s7" src="audio/a6-s7.wav" data-start="1113.002" data-duration="10.56" data-volume="1"></audio>
+  <audio id="nx-z1-s1" src="audio/z1-s1.wav" data-start="1133.302" data-duration="22.92" data-volume="1"></audio>
+  <!-- nx-z1-s3: z1-s1 end 1151.887 + 0.30 seam = 1152.187, wav 10.84 s (18 Oct 26). The Z1 signature line (Paul on camera,
+       ins-paul-6) follows at 1163.327 and pushes the root data-duration and the 4.0 s tail out by its length. -->
+  <audio id="nx-z1-s3" src="audio/z1-s3-v2.wav" data-start="1156.522" data-duration="10.84" data-volume="1"></audio>
 
-  <!-- ============ CTA (config channel.cta: paul-storm-ready-v7-oct10.mp4, 24.417 s, md5 d67d2240..., staged in media/cta/).
+  <!-- ============ CTA (config channel.cta: paul-storm-ready-v9-oct20.mp4, 24.042 s, md5 bba0b9f3..., staged in media/cta/).
        Hinge per edit_script: after a3-s8's tease (Paul: "...And the tornado still took all three.") and before a3-s9's payoff
        ("At least two of the three weren't down in the basement..."). Start 546.17 = a3-s8 end 545.17 + dip_in 1.0.
-       546.17 / 1140.887 = 0.4787 of runtime, inside window [0.40, 0.60]. ============ -->
-  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v7-oct10.mp4" data-start="546.17" data-duration="24.417" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+       546.17 / 1140.887 = 0.4787 of runtime, inside window [0.40, 0.60]. After the 17 Oct insert retime: 561.17 / 1155.887 = 0.4855, still inside. ============ -->
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v9-oct20.mp4" data-start="566.84" data-duration="24.042" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
 
   <!-- ============ SOUND (not wired yet; edit_script cues): siren SFX (soundreality-civil-defense-siren-128262.mp3) low under Paul
        from 0.00, cut dead on his last word (17.56); siren one second at a1-s4 start (175.33); siren three seconds under a2-s3
        "five-eleven" (318.89); beds and swells are the editor's pick, ducked out under the CTA 546.17-570.587. ============ -->
 
   <!-- ============ STRUCTURE: act markers (track 0), chapter blackouts and CTA dips (track 1), the A6 hold (track 8) ============ -->
-  <section class="clip act" id="act-intro" data-start="0" data-duration="125.61" data-track-index="0"></section>
-  <section class="clip act" id="act-a1" data-start="126.31" data-duration="160.32" data-track-index="0"></section>
-  <section class="clip act" id="act-a2" data-start="287.33" data-duration="170.94" data-track-index="0"></section>
-  <section class="clip act" id="act-a3" data-start="458.97" data-duration="143.937" data-track-index="0"></section>
-  <section class="clip act" id="act-a4" data-start="603.607" data-duration="200.06" data-track-index="0"></section>
-  <section class="clip act" id="act-a5" data-start="804.367" data-duration="170.44" data-track-index="0"></section>
-  <section class="clip act" id="act-a6" data-start="975.507" data-duration="137.56" data-track-index="0"></section>
-  <section class="clip act" id="act-z1" data-start="1113.767" data-duration="27.12" data-track-index="0"></section>
-  <section class="clip blackout" id="bo-1" data-start="125.61" data-duration="0.7" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-2" data-start="286.63" data-duration="0.7" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-3" data-start="458.27" data-duration="0.7" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-cta-in" data-start="545.17" data-duration="1" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-cta-out" data-start="570.587" data-duration="1" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-4" data-start="602.907" data-duration="0.7" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-5" data-start="803.667" data-duration="0.7" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-6" data-start="974.807" data-duration="0.7" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-7" data-start="1113.067" data-duration="0.7" data-track-index="1"></section>
+  <section class="clip act" id="act-intro" data-start="0" data-duration="127.81" data-track-index="0"></section>
+  <section class="clip act" id="act-a1" data-start="128.51" data-duration="170.66" data-track-index="0"></section>
+  <section class="clip act" id="act-a2" data-start="299.87" data-duration="176.87" data-track-index="0"></section>
+  <section class="clip act" id="act-a3" data-start="477.44" data-duration="145.762" data-track-index="0"></section>
+  <section class="clip act" id="act-a4" data-start="623.902" data-duration="200.06" data-track-index="0"></section>
+  <section class="clip act" id="act-a5" data-start="824.662" data-duration="171.44" data-track-index="0"></section>
+  <section class="clip act" id="act-a6" data-start="996.802" data-duration="135.600" data-track-index="0"></section>
+  <section class="clip act" id="act-z1" data-start="1133.102" data-duration="63.42" data-track-index="0"></section>
+  <section class="clip blackout" id="bo-1" data-start="127.81" data-duration="0.7" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-2" data-start="299.17" data-duration="0.7" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-3" data-start="476.74" data-duration="0.7" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-cta-in" data-start="565.84" data-duration="1" data-track-index="1"></section>
+  <!-- v9 CTA is 0.375 s shorter than v8: everything from a3-s9 on moved 0.375 s earlier (20 Oct 26), so the out-dip stays 1.0 s -->
+  <section class="clip blackout" id="bo-cta-out" data-start="590.882" data-duration="1" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-4" data-start="623.202" data-duration="0.7" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-5" data-start="823.962" data-duration="0.7" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-6" data-start="996.102" data-duration="0.7" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-7" data-start="1132.402" data-duration="0.7" data-track-index="1"></section>
   <!-- hold-a6: a6-s7 end 1102.267 to g-a6-map135 end 1113.067 (a6-s7 start 1091.707 + 12.36 chip end + 4.0 CCTV slot + 5.0 map) -->
-  <section class="clip hold" id="hold-a6" data-start="1102.267" data-duration="10.8" data-track-index="8"></section>
+  <!-- insert holds (17 Oct 26): the two KSN inserts play their own audio with no narration under them (DESIGN.md declared hold) -->
+  <section class="clip hold" id="hold-a1-s9-ksn" data-start="264.43" data-duration="9.0" data-track-index="8"></section>
+  <section class="clip hold" id="hold-a2-s10-ksn" data-start="435.22" data-duration="6.0" data-track-index="8"></section>
+  <!-- 21 Oct 26 (owner): the dispatch plays OVER the school CCTV, not after it; the early map135 is gone (Z1 shows that map with its narration). Hold = 8.84 s -->
+  <section class="clip hold" id="hold-a6" data-start="1123.562" data-duration="8.840" data-track-index="8"></section>
 
-  <!-- ============ INTRO · H1 / T1 / I1 (0-125.61). No briefs/intro/_list.md yet: no intro graphic hosts mounted. ============ -->
+  <!-- ============ INTRO · H1 / T1 / I1 (0-125.61). Hosts from briefs/intro/_list.md cue windows; each runs through the 0.3 s seam to the next segment. ============ -->
+  <!-- g-intro-hook (overlay on Paul): h1-s1 0.00 to the clip cut after "ground." 16.90 -->
+  <div id="host-intro-hook" data-composition-id="g-intro-hook" data-composition-src="compositions/g-intro-hook.html" data-start="0" data-duration="19.1" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- g-intro-161 (overlay on the NIST photo): nx-t1-s1 17.71 + "161" 7.32 = 25.03; to the t1-s2 start 27.53 -->
+  <div id="host-intro-161" data-composition-id="g-intro-161" data-composition-src="compositions/g-intro-161.html" data-start="27.23" data-duration="2.5" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- g-intro-map (MASTER MAP base): nx-t1-s2 27.53 to nx-t1-s3 33.79 + wav 5.24 = 39.03, seam to 39.33 -->
+  <div id="host-intro-map" data-composition-id="g-intro-map" data-composition-src="compositions/g-intro-map.html" data-start="29.73" data-duration="11.8" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- g-intro-nobasement: nx-i1-s1 39.33 + "about" 3.52 = 42.85 (CLIP 1 before it); to wav end 53.89, seam to 54.19 -->
+  <div id="host-intro-nobasement" data-composition-id="g-intro-nobasement" data-composition-src="compositions/g-intro-nobasement.html" data-start="45.05" data-duration="11.34" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- g-intro-strip: nx-i1-s2 54.19 to nx-i1-s4 70.99 + wav 6.96 = 77.95, seam to 78.25 -->
+  <div id="host-intro-strip" data-composition-id="g-intro-strip" data-composition-src="compositions/g-intro-strip.html" data-start="56.39" data-duration="24.06" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- g-intro-page-sirens: nx-i1-s5 78.25 to wav end 84.45, seam to 84.75 -->
+  <div id="host-intro-page-sirens" data-composition-id="g-intro-page-sirens" data-composition-src="compositions/g-intro-page-sirens.html" data-start="80.45" data-duration="6.5" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- g-intro-nist: nx-i1-s6 84.75 + "missed" 4.28 = 89.03 (CLIP 2 before it); to wav end 94.55, seam to 94.85 -->
+  <div id="host-intro-nist" data-composition-id="g-intro-nist" data-composition-src="compositions/g-intro-nist.html" data-start="91.23" data-duration="5.82" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- g-intro-map-dots: nx-i1-s7 94.85 to nx-i1-s8 104.71 + wav 6.12 = 110.83, seam to 111.13 -->
+  <div id="host-intro-map-dots" data-composition-id="g-intro-map-dots" data-composition-src="compositions/g-intro-map-dots.html" data-start="97.05" data-duration="16.28" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- g-intro-strip-back: nx-i1-s9 111.13 to "why" 4.46 = 115.59 (CLIP 3 after it) -->
+  <div id="host-intro-strip-back" data-composition-id="g-intro-strip-back" data-composition-src="compositions/g-intro-strip-back.html" data-start="113.33" data-duration="4.46" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- g-intro-page-survivors: nx-i1-s9 111.13 + "After" 7.46 = 118.59; to bo-1 125.61 (wav end) -->
+  <div id="host-intro-page-survivors" data-composition-id="g-intro-page-survivors" data-composition-src="compositions/g-intro-page-survivors.html" data-start="120.79" data-duration="7.02" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- H1-S1 (0-17.56): ins-paul-1, Paul full frame, frame one; popfig "Joplin, Missouri · May 22, 2011" inside the first second; glance chips per the Picture line. -->
   <!-- T1-S1 (17.71): NIST ground photograph of a flattened residential street (NCSTAR 3, caption places it in Joplin's path), hard cut on the first word, never black. -->
   <!-- I1-S1 (39.33): CLIP 1, PD FEMA or NWS video of a Joplin residential street in the path, muted, about 6 s, under the first sentence; else NIST ground photographs. -->
   <!-- I1-S6 (84.75): CLIP 2, news pull of the 20th Street / Range Line Road big-box aftermath, insert inside the intro, transcribed first, under 12 s, Paul over it. -->
   <!-- I1-S9 (111.13): CLIP 3, PD NWS or FEMA footage of the survey team in Joplin, muted under the voice; else NWS assessment photographs. -->
+  <!-- INTRO FOOTAGE (mounts-intro-a2-v2.html, 17 Oct 26). Stills are <stem>-x4.png (upscales made on the ZBook). -->
+  <!-- H1-S1 (18 Oct 26): ins-paul-1 0 to 7.60, then the h1-s1 tail over DVIDS 116445 (Missouri National Guard UH-60, public domain), source 39.0 s on, muted. -->
+  <video id="ins-paul-1" src="media/paul/ins-paul-1/ins-paul-1.mp4" data-start="0" data-duration="7.6" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Okay. A tornado siren goes off. What do you do? You get inside, right?"></video>
+  <video id="v-h1-s1-tail" class="crop-dvids" src="media/candidates/intro/h1-s1_c1_dvids-aerial-path-wide.mp4" data-start="7.6" data-duration="12.16" data-media-start="0" data-track-index="1" muted></video>
+  <!-- T1-S1: Paul's last word 17.56 to host-intro-map 27.53 = 9.97 s, two stills. A 17.56 + 5.90 = 23.46 (NIST NCSTAR 3 Fig 4-14, object-position keeps the bell tower);
+       B 23.46 to 27.53 = 4.07 s (USACE flattened neighborhood, credit USACE), under host-intro-161 25.03-27.53. Punches on 17.71, 23.46 and "161" 25.03. -->
+  <section class="clip still-wrap" id="c-t1-s1-a" data-start="19.76" data-duration="5.90" data-track-index="1"><img id="kb-t1-s1-a" src="media/candidates/intro/t1-s1_c4_nist-fig4-14-demolished-home-x4.png" style="object-position: 50% 30%" alt=""></section>
+  <section class="clip still-wrap" id="c-t1-s1-b" data-start="25.66" data-duration="4.07" data-track-index="1"><img id="kb-t1-s1-b" src="media/candidates/intro/t1-s1_c1_usace-flattened-neighborhood-x4.png" alt=""></section>
+  <!-- I1-S1 CLIP 1: 39.33 to host-intro-nobasement 42.85 = 3.52 s. DVIDS 116445 (public domain) aerial of the residential path, source 0.0-3.52, muted; crop-dvids hides the burned-in credit. -->
+  <video id="v-i1-s1-clip1" class="crop-dvids" src="media/candidates/intro/i1-s1_c1_dvids-aerial-residential-a.mp4" data-start="41.53" data-duration="3.52" data-media-start="0" data-track-index="1" muted></video>
+  <!-- I1-S6 CLIP 2, INSERT (owner yes, picks page 17 Oct 26 18:45, I1-S6_kshb41): 84.75 to host-intro-nist 89.03 = 4.28 s. KSHB 41 / NBC Action News Kansas City,
+       YouTube QFhOkxL37EQ, 480x360, source 0.3-4.58 (narration only: "saws, jackhammers, even blow torches to break up huge slabs of concrete"), claim risk HIGH.
+       Muted, Paul's narration over it; graded; crop-kshb removes bug, ticker, time and temperature (about 5.8x, soft). On screen say "big box store", never a store name.
+       The DVIDS big-box clip this replaces moves to the A2-S7 tail. -->
+  <video id="v-i1-s6-news" class="graded crop-kshb" src="media/candidates/intro/i1-s6_c1_kshb41-home-depot-rubble-insert.mp4" data-start="86.95" data-duration="4.28" data-media-start="0.3" data-track-index="1" muted></video>
+  <!-- I1-S9 CLIP 3: host-intro-strip-back end 115.59 to host-intro-page-survivors 118.59 = 3.00 s. DVIDS 116445 clip B (public domain), a different pass from I1-S1's,
+       source 3.0-6.0, muted. No survey-team footage exists (NWS, FEMA, DVIDS searched). -->
+  <video id="v-i1-s9-clip3" class="crop-dvids" src="media/candidates/intro/i1-s1_c2_dvids-aerial-residential-b.mp4" data-start="117.79" data-duration="3.00" data-media-start="3.0" data-track-index="1" muted></video>
 
   <!-- ============ A1 · SIRENS: BELIEF AGAINST RECORD (126.31-286.63) ============ -->
   <!-- g-a1-gutter: start nx-a1-s1 126.51 + 0.00 = 126.51, opened 0.2 s early at the bo-1 end 126.31 (act opener); end nx-a1-s1 126.51 + wav 14.04 = 140.55 -->
-  <div id="host-a1-gutter" data-composition-id="g-a1-gutter" data-composition-src="compositions/g-a1-gutter.html" data-start="126.31" data-duration="14.24" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-gutter" data-composition-id="g-a1-gutter" data-composition-src="compositions/g-a1-gutter.html" data-start="128.51" data-duration="14.24" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A1-S1 tail: NIST ground photograph of a Joplin street in the path (a1-s1_c3 or c4) after g-a1-gutter; only the 0.3 s seam is left (list: the gap opens or the photo moves). -->
   <!-- A1-S2 (140.85-151.11): NOAA NGS aerial a1-s2_c1_noaa-ngs-aerial-26th-st-crop.jpg under g-a1-quote-120 (a still over 6 s needs a slow push). -->
+  <!-- A1-S1 tail + A1-S2 (mounts-intro-a2-v2.html): g-a1-gutter end 140.55 to g-a1-theater-map 151.11 = 10.56 s, two abutting stills of the same NOAA NGS flight under host-a1-quote-120.
+       A 140.55 + 5.95 = 146.50 (W 26th St crop), punch-in on the theater at 140.85 to 1.35x. B 146.50 to 151.11 = 4.61 s (1280 mosaic), one fast punch onto the theater landing
+       at 150.51 (1.60x, x +120, y -72). HANDOFF: g-a1-theater-map must open on this framing. Owner call open: no lawful ground photo of the theater, this aerial stands in.
+       Credit "aerial, NOAA, 24 May 2011" (NGS flight date). -->
+  <section class="clip still-wrap" id="c-a1-s2-a" data-start="142.75" data-duration="5.95" data-track-index="1"><img id="kb-a1-s2-a" src="media/candidates/a1/a1-s2_c1_noaa-ngs-aerial-26th-st-crop-x4.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a1-s2-b" data-start="148.7" data-duration="4.61" data-track-index="1"><img id="kb-a1-s2-b" src="media/candidates/a1/a1-s2_c2_noaa-ngs-aerial-26th-st-wide-x4.png" alt=""></section>
   <!-- g-a1-quote-120: start nx-a1-s2 140.85 + 0.00 = 140.85; end nx-a1-s2 140.85 + 10.26 "Three" = 151.11 -->
-  <div id="host-a1-quote-120" data-composition-id="g-a1-quote-120" data-composition-src="compositions/g-a1-quote-120.html" data-start="140.85" data-duration="10.26" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-quote-120" data-composition-id="g-a1-quote-120" data-composition-src="compositions/g-a1-quote-120.html" data-start="143.05" data-duration="10.26" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- g-a1-theater-map: start nx-a1-s2 140.85 + 10.26 "Three" = 151.11; end nx-a1-s2 140.85 + wav 15.96 = 156.81, run through the 0.3 s seam to 157.11 -->
-  <div id="host-a1-theater-map" data-composition-id="g-a1-theater-map" data-composition-src="compositions/g-a1-theater-map.html" data-start="151.11" data-duration="6.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-theater-map" data-composition-id="g-a1-theater-map" data-composition-src="compositions/g-a1-theater-map.html" data-start="153.31" data-duration="6.0" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- g-a1-numb: start nx-a1-s3 157.11 + 0.00 = 157.11; end nx-a1-s3 157.11 + wav 17.92 = 175.03, run through the seam to 175.33 -->
-  <div id="host-a1-numb" data-composition-id="g-a1-numb" data-composition-src="compositions/g-a1-numb.html" data-start="157.11" data-duration="18.22" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-numb" data-composition-id="g-a1-numb" data-composition-src="compositions/g-a1-numb.html" data-start="159.31" data-duration="18.22" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- g-a1-strip-sirens: start nx-a1-s4 175.33 + 0.00 = 175.33; end nx-a1-s4 175.33 + wav 14.64 = 189.97 -->
-  <div id="host-a1-strip-sirens" data-composition-id="g-a1-strip-sirens" data-composition-src="compositions/g-a1-strip-sirens.html" data-start="175.33" data-duration="14.64" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-strip-sirens" data-composition-id="g-a1-strip-sirens" data-composition-src="compositions/g-a1-strip-sirens.html" data-start="177.53" data-duration="14.94" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A1-S5 (190.27-197.03): ins-paul-2, Paul full frame, no chip. -->
+  <!-- A1-S5: ins-paul-2, cut 0.56 s after "off." -->
+  <video id="ins-paul-2" src="media/paul/ins-paul-2/ins-paul-2.mp4" data-start="192.47" data-duration="8.4" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Stick with me, because what I'm about to explain is a big part of why Joplin tuned out sirens that rarely went off."></video>
   <!-- g-a1-finding31: start nx-a1-s6 197.33 + 0.00 = 197.33; end nx-a1-s6 197.33 + wav 12.96 = 210.29, run through the seam to 210.59 -->
-  <div id="host-a1-finding31" data-composition-id="g-a1-finding31" data-composition-src="compositions/g-a1-finding31.html" data-start="197.33" data-duration="13.26" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-finding31" data-composition-id="g-a1-finding31" data-composition-src="compositions/g-a1-finding31.html" data-start="200.87" data-duration="13.26" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- g-a1-strip-warnings: start nx-a1-s7 210.59 + 0.00 = 210.59; end nx-a1-s8 231.21 + wav 17.36 = 248.57, run through the seam to 248.87 -->
-  <div id="host-a1-strip-warnings" data-composition-id="g-a1-strip-warnings" data-composition-src="compositions/g-a1-strip-warnings.html" data-start="210.59" data-duration="38.28" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-strip-warnings" data-composition-id="g-a1-strip-warnings" data-composition-src="compositions/g-a1-strip-warnings.html" data-start="214.13" data-duration="38.28" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- g-a1-quote-58: start nx-a1-s9 248.87 + 0.00 = 248.87; end nx-a1-s9 248.87 + wav 11.72 = 260.59, run through the seam to 260.89 -->
-  <div id="host-a1-quote-58" data-composition-id="g-a1-quote-58" data-composition-src="compositions/g-a1-quote-58.html" data-start="248.87" data-duration="12.02" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-quote-58" data-composition-id="g-a1-quote-58" data-composition-src="compositions/g-a1-quote-58.html" data-start="252.41" data-duration="12.02" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A1-S9: live TV broadcast re-upload FagzNHuI5JI, a few seconds of "storms to the north", after g-a1-quote-58 (still a GAP in candidates.md); its own audio needs a narration gap, owner insert gate. -->
+  <!-- A1-S9 INSERT (owner yes, picks page 17 Oct 26 18:45, A1-S9_ksn): g-a1-quote-58 end 260.89 + 9.0 = 269.89, where nx-a1-s10 now starts (everything from 260.89 moved +9.0).
+       KSN / NBC re-upload FagzNHuI5JI (640x480, standard YouTube licence on a broadcast, claim risk HIGH), source 338.0-347.0: "And that's why earlier on in the evening it looked
+       like this was going to stay off to the north of the Joplin area. But it is kind of making its way now into southwestern Missouri." The cut runs through the correction on
+       purpose. Own audio up, no narration under it. Graded; crop-ksn keeps the KSN logos. 1st of 3 uses of the file. Cut the 40-minute file into media/clips before the render. -->
+  <video id="v-a1-s9-ksn" class="graded crop-ksn" src="media/candidates/a1/a1-s9_lead_ksn-broadcast-unvetted.mp4" data-start="264.43" data-duration="9.0" data-media-start="338.0" data-track-index="1" data-volume="1" data-has-audio="true" data-still-ok="live broadcast radar map under the anchor audio"></video>
+  <!-- running caption for the broadcast audio (owner 20 Oct 26: every outside voice is captioned) -->
+  <div id="host-a1-ksn-cap" data-composition-id="g-a1-ksn-cap" data-composition-src="compositions/g-a1-ksn-cap.html" data-start="264.43" data-duration="9.0" data-track-index="2" data-width="1920" data-height="1080" data-caption-for="v-a1-s9-ksn"></div>
   <!-- g-a1-bubble-page: start nx-a1-s10 260.89 + 0.00 = 260.89; end nx-a1-s10 260.89 + 8.76 "Since" = 269.65 -->
-  <div id="host-a1-bubble-page" data-composition-id="g-a1-bubble-page" data-composition-src="compositions/g-a1-bubble-page.html" data-start="260.89" data-duration="8.76" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-bubble-page" data-composition-id="g-a1-bubble-page" data-composition-src="compositions/g-a1-bubble-page.html" data-start="273.43" data-duration="8.76" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- g-a1-ring: start nx-a1-s10 260.89 + 8.76 "Since" = 269.65; end nx-a1-s10 260.89 + wav 19.56 = 280.45, run through the seam to 280.75 -->
-  <div id="host-a1-ring" data-composition-id="g-a1-ring" data-composition-src="compositions/g-a1-ring.html" data-start="269.65" data-duration="11.1" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-ring" data-composition-id="g-a1-ring" data-composition-src="compositions/g-a1-ring.html" data-start="282.19" data-duration="11.1" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- g-a1-second-siren: start nx-a1-s11 280.75 + 0.00 = 280.75; end nx-a1-s11 280.75 + wav 5.88 = 286.63 (bo-2) -->
-  <div id="host-a1-second-siren" data-composition-id="g-a1-second-siren" data-composition-src="compositions/g-a1-second-siren.html" data-start="280.75" data-duration="5.88" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-second-siren" data-composition-id="g-a1-second-siren" data-composition-src="compositions/g-a1-second-siren.html" data-start="293.29" data-duration="5.88" data-track-index="2" data-width="1920" data-height="1080"></div>
 
   <!-- ============ A2 · THE EVENING, 5:09 TO 5:38 (287.33-458.27) ============ -->
   <!-- A2-S1 (287.53-290.55): act opener picture before the countdown, not named in the Picture line. -->
+  <!-- A2-S1 opener (mounts-intro-a2-v2.html): bo-2 end 287.33 to host-a2-countdown 290.55 = 3.22 s. USACE house behind caution tape (Commons PD), credit USACE. Punch on 287.53. -->
+  <section class="clip still-wrap" id="c-a2-s1" data-start="299.87" data-duration="3.22" data-track-index="1"><img id="kb-a2-s1" src="media/candidates/intro/t1-s1_c2_usace-house-caution-tape-x4.png" alt=""></section>
   <!-- g-a2-countdown: start nx-a2-s1 287.53 + 3.02 "1" = 290.55; end nx-a2-s6 353.15 + wav 18.0 = 371.15 (list cue ends "Carl" 12.68; held to the wav end because the optional TV cut sits over it), run through the seam to 371.45 -->
-  <div id="host-a2-countdown" data-composition-id="g-a2-countdown" data-composition-src="compositions/g-a2-countdown.html" data-start="290.55" data-duration="80.9" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a2-countdown" data-composition-id="g-a2-countdown" data-composition-src="compositions/g-a2-countdown.html" data-start="303.09" data-duration="80.9" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A2-S4 (335.71-345.47): NIST ground photograph under g-a2-quote-108; it must sit above the countdown (track 3 cutaway). -->
   <!-- g-a2-quote-108: start nx-a2-s4 335.71 + 2.76 "see." = 338.47; end nx-a2-s4 335.71 + 8.14 "went" + 1.0 = 344.85 -->
-  <div id="host-a2-quote-108" data-composition-id="g-a2-quote-108" data-composition-src="compositions/g-a2-quote-108.html" data-start="338.47" data-duration="6.38" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a2-quote-108" data-composition-id="g-a2-quote-108" data-composition-src="compositions/g-a2-quote-108.html" data-start="351.01" data-duration="6.38" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- A2-S4 (mounts-intro-a2-v2.html): host-a2-quote-108 338.47-344.85 = 6.38 s, two abutting 3.19 s stills on track 3 over the countdown, split at 341.66.
+       A = NIST Fig 3-115 (credit "NIST NCSTAR 3"), B = USACE debris pile (credit USACE). Punches on 338.47 and 341.66. -->
+  <section class="clip still-wrap" id="c-a2-s4-a" data-start="351.01" data-duration="3.19" data-track-index="3" data-overlap-ok="cutaway over g-a2-countdown (track 2) under g-a2-quote-108"><img id="kb-a2-s4-a" src="media/candidates/a2/a2-s4_c3_nist-fig3-115-house-roof-gone-x4.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a2-s4-b" data-start="354.2" data-duration="3.19" data-track-index="3" data-overlap-ok="cutaway over g-a2-countdown (track 2) under g-a2-quote-108"><img id="kb-a2-s4-b" src="media/candidates/intro/t1-s1_c3_usace-debris-two-houses-x4.png" alt=""></section>
   <!-- A2-S6: optional 3 to 4 s live TV cut (FagzNHuI5JI) on track 3 over g-a2-countdown, a different cut from A1-S9's and A2-S10's. -->
+  <!-- A2-S6 INSERT (owner yes, picks page 17 Oct 26 18:45, A2-S6_ksn): last 4.0 s of the countdown narration, 353.15 + 18.0 - 4.0 = 367.15. KSN / NBC re-upload FagzNHuI5JI,
+       source 329.4-333.4 ("The storm does continue to move off to the east northeast."), the span next to A1-S9's 338.0-347.0 so the cut never repeats it.
+       MUTED, narration runs under it; graded; 2nd use of the file. The 40-minute file must be cut into media/clips before the render. -->
+  <video id="v-a2-s6-ksn" class="graded crop-ksn" src="media/candidates/a1/a1-s9_lead_ksn-broadcast-unvetted.mp4" data-start="379.69" data-duration="4.0" data-media-start="329.4" data-track-index="3" data-overlap-ok="TV cutaway over g-a2-countdown" data-callback="different span of the KSN broadcast used at A1-S9: where the storm was said to be heading" data-still-ok="live broadcast radar map" muted></video>
   <!-- g-a2-lead-time: start nx-a2-s7 371.45 + 0.00 = 371.45; end nx-a2-s7 371.45 + 12.54 "didn't" + 1.0 = 384.99 -->
-  <div id="host-a2-lead-time" data-composition-id="g-a2-lead-time" data-composition-src="compositions/g-a2-lead-time.html" data-start="371.45" data-duration="13.54" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a2-lead-time" data-composition-id="g-a2-lead-time" data-composition-src="compositions/g-a2-lead-time.html" data-start="383.99" data-duration="13.54" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A2-S7 tail (384.99-390.71, "Could they at least see the tornado coming?"): picture not named. -->
+  <!-- A2-S7 tail (mounts-intro-a2-v2.html): g-a2-lead-time end 384.99 to g-a2-radar 390.71 = 5.72 s. The DVIDS big-box aerial freed by the KSHB insert at I1-S6
+       (DVIDS 116445, public domain, verified in/out 2.0-9.0), source 2.0-7.72, muted; replaces the USACE house-frame still. -->
+  <video id="v-a2-s7-tail" class="crop-dvids" src="media/candidates/intro/i1-s6_c2_dvids-aerial-bigbox-lot.mp4" data-start="397.53" data-duration="5.72" data-media-start="2.0" data-track-index="1" muted></video>
   <!-- g-a2-radar: start nx-a2-s8 390.71 + 0.00 = 390.71; end nx-a2-s8 390.71 + wav 22.92 = 413.63 (list cue ends "fast," 16.04; held to the wav end because its comment card slides in at the end) -->
-  <div id="host-a2-radar" data-composition-id="g-a2-radar" data-composition-src="compositions/g-a2-radar.html" data-start="390.71" data-duration="22.92" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a2-radar" data-composition-id="g-a2-radar" data-composition-src="compositions/g-a2-radar.html" data-start="403.25" data-duration="23.22" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A2-S9 (413.93-422.45): ins-paul-3, Paul full frame under g-a2-paul-chip; cut on his last word into A2-S10's clip. -->
+  <!-- A2-S9: ins-paul-3, the cut lands on his last word ("again." ends 8.30) -->
+  <video id="ins-paul-3" src="media/paul/ins-paul-3/ins-paul-3.mp4" data-start="426.47" data-duration="8.75" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="At five thirty-eight, the tornado's been on the ground for four minutes. It's just reaching the city, and that's when the tornado sirens go off again."></video>
   <!-- g-a2-paul-chip: start nx-a2-s9 413.93 + 3.28 "four" = 417.21; end nx-a2-s9 413.93 + 7.66 "again." + 1.0 = 422.59, clamped to Paul's line end 422.45 -->
-  <div id="host-a2-paul-chip" data-composition-id="g-a2-paul-chip" data-composition-src="compositions/g-a2-paul-chip.html" data-start="417.21" data-duration="5.24" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a2-paul-chip" data-composition-id="g-a2-paul-chip" data-composition-src="compositions/g-a2-paul-chip.html" data-start="429.51" data-duration="5.71" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- A2-S10: live TV FagzNHuI5JI, 4 to 6 s of the studio taking shelter while the sirens blare, own audio up, BEFORE the voice. No narration gap is reserved: when the owner confirms the insert, everything from 422.75 shifts by its length. -->
+  <!-- A2-S10 INSERT (owner yes, picks page 17 Oct 26 18:45, A2-S10_ksn; A2-S10_studio "koam"): Paul's line end 422.45 + 9.0 + 0.30 seam = 431.75, 6.0 s, to nx-a2-s10 and
+       g-a2-doc-cues at 437.75 (everything from the original 422.75 moved a further +6.0). KSN tower camera, source 762.0-768.0: "Tornado sirens once again going off in Joplin.
+       Those are definitely power flashes." Own audio up, before the voice. Graded. 3rd use of the file. KOAM studio search pending (owner picked KOAM for the studio moment;
+       the six KOAM clips in a2/_work are not searched; this KSN cut is the tower camera, not the studio). -->
+  <video id="v-a2-s10-ksn" class="graded crop-ksn" src="media/candidates/a1/a1-s9_lead_ksn-broadcast-unvetted.mp4" data-start="435.22" data-duration="6.0" data-media-start="762.0" data-track-index="1" data-volume="1" data-has-audio="true" data-callback="third span of the KSN broadcast: the sirens going off again at 5:38" data-still-ok="live tower camera, low motion at night"></video>
+  <div id="host-a2-ksn-cap" data-composition-id="g-a2-ksn-cap" data-composition-src="compositions/g-a2-ksn-cap.html" data-start="435.22" data-duration="6.0" data-track-index="2" data-width="1920" data-height="1080" data-caption-for="v-a2-s10-ksn"></div>
   <!-- g-a2-doc-cues: start nx-a2-s10 422.75 + 0.00 = 422.75; end nx-a2-s10 422.75 + 12.88 "watching" + 1.0 = 436.63, run 0.74 s on to g-a2-map-close at 437.37 -->
-  <div id="host-a2-doc-cues" data-composition-id="g-a2-doc-cues" data-composition-src="compositions/g-a2-doc-cues.html" data-start="422.75" data-duration="14.62" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a2-doc-cues" data-composition-id="g-a2-doc-cues" data-composition-src="compositions/g-a2-doc-cues.html" data-start="441.22" data-duration="14.62" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- g-a2-map-close: start nx-a2-s10 422.75 + 14.62 "And" = 437.37; end nx-a2-s12 450.27 + 6.36 "underneath" + 1.0 = 457.63, run 0.64 s on to bo-3 at 458.27 -->
-  <div id="host-a2-map-close" data-composition-id="g-a2-map-close" data-composition-src="compositions/g-a2-map-close.html" data-start="437.37" data-duration="20.9" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a2-map-close" data-composition-id="g-a2-map-close" data-composition-src="compositions/g-a2-map-close.html" data-start="455.84" data-duration="20.9" data-track-index="2" data-width="1920" data-height="1080"></div>
 
   <!-- ============ A3 · HOMES WITH NOTHING UNDERNEATH (458.97-602.907; the book ad inside) ============ -->
   <!-- g-a3-house-section: start nx-a3-s1 459.17 + 0.00 = 459.17, opened 0.2 s early at the bo-3 end 458.97 (act opener); end nx-a3-s1 459.17 + 9.58 "to." + 0.8 = 469.55 -->
-  <div id="host-a3-house-section" data-composition-id="g-a3-house-section" data-composition-src="compositions/g-a3-house-section.html" data-start="458.97" data-duration="10.58" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a3-house-section" data-composition-id="g-a3-house-section" data-composition-src="compositions/g-a3-house-section.html" data-start="477.44" data-duration="10.58" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- g-a3-map-homes: start nx-a3-s1 459.17 + 9.58 "to." + 0.8 = 469.55; end nx-a3-s3 470.59 + 8.98 "Didn't" = 479.57 -->
-  <div id="host-a3-map-homes" data-composition-id="g-a3-map-homes" data-composition-src="compositions/g-a3-map-homes.html" data-start="469.55" data-duration="10.02" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a3-map-homes" data-composition-id="g-a3-map-homes" data-composition-src="compositions/g-a3-map-homes.html" data-start="488.02" data-duration="10.02" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A3-S3 (479.57-482.99): CLIP NEEDED, aerial or street footage of the flattened one-story houses (PD FEMA or NOAA first). -->
   <!-- A3-S4 (483.29-491.25): NIST ground photograph of a demolished apartment complex; CLIP NEEDED, the wrecked wood-frame complexes, Somerset first. -->
+  <!-- A3-S3 + A3-S4 (mounts-a3-a4.html, gap 10): DVIDS 116446 (public domain), muted. Flattened houses 479.57 (g-a3-map-homes end) to 487.23 (a3-s4 "The" 3.94), source 10.0-17.66;
+       then the generic "aerial of the area" (owner 17 Oct), 487.23 to g-a3-apartments 491.25, source 5.0-9.02. Never captioned Somerset or apartments. 640x360 originals. -->
+  <video id="v-a3-flat" src="media/candidates/a3/a3-s3_c1_dvids-aerial-flattened.mp4" data-start="498.04" data-duration="7.66" data-media-start="10.0" data-track-index="1" muted></video>
+  <video id="v-a3-complexes" src="media/candidates/a3/a3-s4_c2_dvids-aerial-complexes.mp4" data-start="505.7" data-duration="4.02" data-media-start="5.0" data-track-index="1" muted></video>
   <!-- g-a3-apartments: start nx-a3-s4 483.29 + 7.96 "every" = 491.25; end nx-a3-s4 483.29 + 20.48 "it?" + 0.6 = 504.37 -->
-  <div id="host-a3-apartments" data-composition-id="g-a3-apartments" data-composition-src="compositions/g-a3-apartments.html" data-start="491.25" data-duration="13.12" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a3-apartments" data-composition-id="g-a3-apartments" data-composition-src="compositions/g-a3-apartments.html" data-start="509.72" data-duration="13.12" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A3-S5 (504.71-510.49): footage under g-a3-comment, not named; after g-a3-tally, CLIP NEEDED: a survivor who rode it out in a closet, hallway or bathroom, own voice (FEMA first; insert gate). -->
+  <!-- A3-S5 bridge (owner 17 Oct: no clip, the comment card and the tally carry it): g-a3-apartments end 504.37 to g-a3-tally 510.49. Only 504.37-505.19 (0.82 s) shows:
+       g-a3-comment (505.19-510.49) paints its own full-frame dark ground over the rest. 18 Oct 26: the comment moved to track 2 (it IS the picture, so the
+       coverage gate counts it) and the bridge was cut to the 1.12 s that shows; the old 6.12 s bridge tripped "no still over 6s" while hidden. -->
+  <section class="clip bridge" id="br-a3-s5" data-start="522.84" data-duration="1.12" data-track-index="1"></section>
   <!-- g-a3-comment: start nx-a3-s5 504.71 + 0.48 "I" = 505.19; end nx-a3-s5 504.71 + 5.78 "Of" = 510.49 -->
-  <div id="host-a3-comment" data-composition-id="g-a3-comment" data-composition-src="compositions/g-a3-comment.html" data-start="505.19" data-duration="5.3" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a3-comment" data-composition-id="g-a3-comment" data-composition-src="compositions/g-a3-comment.html" data-start="523.66" data-duration="5.3" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- g-a3-tally: start nx-a3-s5 504.71 + 5.78 "Of" = 510.49; end nx-a3-s5 504.71 + 17.16 "up?" + 0.8 = 522.67 -->
-  <div id="host-a3-tally" data-composition-id="g-a3-tally" data-composition-src="compositions/g-a3-tally.html" data-start="510.49" data-duration="12.18" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a3-tally" data-composition-id="g-a3-tally" data-composition-src="compositions/g-a3-tally.html" data-start="528.96" data-duration="12.18" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A3-S6 (523.05-525.65): NIST ground photograph of a wood-frame house with roof and walls separated; CLIP NEEDED, moving footage of the same. -->
+  <!-- A3-S6 (mounts-a3-a4.html, gap 12): g-a3-tally end 522.67 to g-a3-house-joints 525.65 = 2.98 s, split on "came" 524.29. c1 NIST Fig 3-113 roof beside its walls,
+       c2 Fig 3-115 roof deck gone (same figure as A2-S4 A, 186 s earlier). Source "NIST NCSTAR 3". Punches on 522.67 and 524.29. -->
+  <section class="clip still-wrap" id="c-a3-s6-c1" data-start="541.14" data-duration="1.62" data-track-index="1"><img id="kb-a3-s6-c1" src="media/candidates/a3/a3-s6_c1_nist-roof-off-brick-houses-x4.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a3-s6-c2" data-start="542.76" data-duration="1.36" data-track-index="1"><img id="kb-a3-s6-c2" src="media/candidates/a3/a3-s6_c2_nist-roof-system-lost-x4.png" alt=""></section>
   <!-- g-a3-house-joints: start nx-a3-s6 523.05 + 2.60 "mostly" = 525.65; end nx-a3-s6 523.05 + 6.90 "floor." + 1.0 = 530.95 -->
-  <div id="host-a3-house-joints" data-composition-id="g-a3-house-joints" data-composition-src="compositions/g-a3-house-joints.html" data-start="525.65" data-duration="5.3" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a3-house-joints" data-composition-id="g-a3-house-joints" data-composition-src="compositions/g-a3-house-joints.html" data-start="544.12" data-duration="5.3" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A3-S7 (531.23-537.87): NIST ground photograph of an in-home shelter standing in a destroyed house, under g-a3-shelter-chip; CLIP NEEDED, the same in motion. -->
+  <!-- A3-S7 (mounts-a3-a4.html, gap 13): g-a3-house-joints end 530.95 to Paul's slot 538.17. c3 530.95 to "shelter" 533.05 (NIST Fig 3-130); c1 to "came" 536.21
+       (Fig 3-128, steel shelter in a flattened house); c2 to 538.17 (Fig 3-129, portrait, read the frame after the upscale). Cues follow a3-s7.words.json ("Partly"). -->
+  <!-- footage search pending (A3-S7: FEMA or NIST YouTube footage of an in-home shelter standing; replaces these stills if found) -->
+  <section class="clip still-wrap" id="c-a3-s7-c3" data-start="549.42" data-duration="2.10" data-track-index="1"><img id="kb-a3-s7-c3" src="media/candidates/a3/a3-s7_c3_nist-roof-off-house-with-shelter-x4.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a3-s7-c1" data-start="551.52" data-duration="3.16" data-track-index="1"><img id="kb-a3-s7-c1" src="media/candidates/a3/a3-s7_c1_nist-steel-shelter-in-ruin-x4.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a3-s7-c2" data-start="554.68" data-duration="1.96" data-track-index="1"><img id="kb-a3-s7-c2" src="media/candidates/a3/a3-s7_c2_fema-mat-shelter-interior-x4.png" alt=""></section>
   <!-- g-a3-shelter-chip: start nx-a3-s7 531.23 + 1.82 "shelter" = 533.05; end nx-a3-s7 531.23 + 5.82 "it." + 0.8 = 537.85 -->
-  <div id="host-a3-shelter-chip" data-composition-id="g-a3-shelter-chip" data-composition-src="compositions/g-a3-shelter-chip.html" data-start="533.05" data-duration="4.8" data-track-index="4" data-width="1920" data-height="1080"></div>
-  <!-- A3-S8 (538.17-545.17): ins-paul-4, Paul full frame, the tease into the book ad (sweep's "insert within 60s of the CTA" WARN is expected). -->
+  <div id="host-a3-shelter-chip" data-composition-id="g-a3-shelter-chip" data-composition-src="compositions/g-a3-shelter-chip.html" data-start="551.52" data-duration="4.8" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <video id="ins-paul-4" src="media/paul/ins-paul-4/ins-paul-4.mp4" data-start="556.64" data-duration="9.2" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Three of the seventy-one people lost at home had a basement they could get to. And the tornado still took all three."></video>
+  <!-- A3-S8 (18 Oct 26: 556.64-565.84, a 1.0 s hold on his face after "three." 8.20): ins-paul-4, Paul full frame, the tease into the book ad (sweep's "insert within 60s of the CTA" WARN is expected). -->
   <!-- g-a3-paul-chip: start nx-a3-s8 538.17 + 1.10 "71" = 539.27; end nx-a3-s8 538.17 + 6.04 "three." + 0.9 = 545.11 -->
-  <div id="host-a3-paul-chip" data-composition-id="g-a3-paul-chip" data-composition-src="compositions/g-a3-paul-chip.html" data-start="539.27" data-duration="5.84" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a3-paul-chip" data-composition-id="g-a3-paul-chip" data-composition-src="compositions/g-a3-paul-chip.html" data-start="557.84" data-duration="7.58" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- book ad: bo-cta-in 545.17, ins-cta-paul 546.17-570.587, bo-cta-out 570.587; a3-s9 opens on the payoff at 571.587 -->
   <!-- g-a3-stair: start nx-a3-s9 571.587 + 0.00 = 571.587; end nx-a3-s9 571.587 + 10.44 "help?" + 0.8 = 582.827 -->
-  <div id="host-a3-stair" data-composition-id="g-a3-stair" data-composition-src="compositions/g-a3-stair.html" data-start="571.587" data-duration="11.24" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a3-stair" data-composition-id="g-a3-stair" data-composition-src="compositions/g-a3-stair.html" data-start="591.882" data-duration="11.24" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A3-S10 (583.047-588.147): CLIP NEEDED, a basement survivor in their own voice or the damaged ranch-house neighborhood (FEMA first). -->
-  <!-- g-a3-map-ranch: start nx-a3-s10 583.047 + 5.10 "And" = 588.147; end nx-a3-s11 596.067 + 6.08 "was." + 1.0 = 603.147, clamped to bo-4 at 602.907 -->
-  <div id="host-a3-map-ranch" data-composition-id="g-a3-map-ranch" data-composition-src="compositions/g-a3-map-ranch.html" data-start="588.147" data-duration="14.76" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A3-S10: owner 17 Oct picks page "No picture, the map carries it", so g-a3-map-ranch opens on the g-a3-stair end (post-retime 597.827)
+       and carries the first 5.32 s of nx-a3-s10 too; its "And" cue sits 5.10 + 0.22 = 5.32 s into the host. -->
+  <!-- g-a3-map-ranch: start g-a3-stair end 582.827 (post-retime 597.827); end nx-a3-s11 596.067 + 6.08 "was." + 1.0 = 603.147, clamped to bo-4 at 602.907 (post-retime 617.907) -->
+  <div id="host-a3-map-ranch" data-composition-id="g-a3-map-ranch" data-composition-src="compositions/g-a3-map-ranch.html" data-start="603.122" data-duration="20.08" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- g-a3-counter: start nx-a3-s11 596.067 + 0.00 = 596.067; end nx-a3-s11 596.067 + 4.20 "cover," + 0.7 = 600.967 -->
-  <div id="host-a3-counter" data-composition-id="g-a3-counter" data-composition-src="compositions/g-a3-counter.html" data-start="596.067" data-duration="4.9" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a3-counter" data-composition-id="g-a3-counter" data-composition-src="compositions/g-a3-counter.html" data-start="616.362" data-duration="4.9" data-track-index="4" data-width="1920" data-height="1080"></div>
 
   <!-- ============ A4 · STORES, CHURCHES, RESTAURANTS (603.607-803.667) ============ -->
   <!-- g-a4-strip: start nx-a4-s1 603.807 + 0.00 = 603.807, opened 0.2 s early at the bo-4 end 603.607 (act opener); end nx-a4-s1 603.807 + 5.24 "basement," + 0.6 = 609.647 -->
-  <div id="host-a4-strip" data-composition-id="g-a4-strip" data-composition-src="compositions/g-a4-strip.html" data-start="603.607" data-duration="6.04" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4-strip" data-composition-id="g-a4-strip" data-composition-src="compositions/g-a4-strip.html" data-start="623.902" data-duration="6.04" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A4-S1 (609.647-611.127): CLIP NEEDED, the 20th Street / Range Line Road stores after the tornado (PD FEMA first; a news pull only as a short insert). -->
+  <!-- A4-S1 (mounts-a3-a4.html, gap 15): g-a4-strip end 609.647 to g-a4-walmart 611.427 = 1.78 s. DVIDS 116446 Range Line corridor (public domain), source 0.5-2.28
+       (the collapsed Home Depot lot), muted. Not reused at A4-S12. -->
+  <video id="v-a4-strip" src="media/candidates/a4/a4-s1_c1_dvids-rangeline-corridor-aerial.mp4" data-start="629.942" data-duration="1.78" data-media-start="0.5" data-track-index="1" muted></video>
   <!-- g-a4-walmart: start nx-a4-s3 611.427 + 0.00 = 611.427; end nx-a4-s4 630.127 + 16.68 "Depot?" + 1.0 = 647.807 (the NIST Walmart photo, Fig. 3-40, is a cutaway inside it; credit .srclab) -->
-  <div id="host-a4-walmart" data-composition-id="g-a4-walmart" data-composition-src="compositions/g-a4-walmart.html" data-start="611.427" data-duration="36.38" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4-walmart" data-composition-id="g-a4-walmart" data-composition-src="compositions/g-a4-walmart.html" data-start="631.722" data-duration="36.38" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A4-S5 (647.747-652.307): NIST Home Depot photograph (Fig. 4-10) under g-a4-comment; 669.987-674.987: DVIDS Home Depot site aerial under g-a4-hd-panels; CLIP NEEDED, the site with its panels down. -->
+  <!-- A4-S5 (mounts-a3-a4.html, gap 16): NIST Fig 4-10 Home Depot, 647.747 to g-a4-homedepot 652.307 = 4.56 s, spans g-a4-comment's window. Punches on 647.747 and "lot." 649.367.
+       Source "NIST NCSTAR 3". -->
+  <section class="clip still-wrap" id="c-a4-s5-c1" data-start="668.042" data-duration="4.56" data-track-index="1"><img id="kb-a4-s5-c1" src="media/candidates/a4/a4-s5_c1_nist-homedepot-fig4-10-x4.png" alt=""></section>
   <!-- g-a4-comment: start nx-a4-s5 647.747 + 0.00 = 647.747; end nx-a4-s5 647.747 + 3.54 "standing." + 0.6 = 651.887 -->
-  <div id="host-a4-comment" data-composition-id="g-a4-comment" data-composition-src="compositions/g-a4-comment.html" data-start="647.747" data-duration="4.14" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a4-comment" data-composition-id="g-a4-comment" data-composition-src="compositions/g-a4-comment.html" data-start="668.042" data-duration="4.14" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- g-a4-homedepot: start nx-a4-s5 647.747 + 4.56 "About" = 652.307; end nx-a4-s5 647.747 + 20.42 "down." + 1.0 = 669.167 -->
-  <div id="host-a4-homedepot" data-composition-id="g-a4-homedepot" data-composition-src="compositions/g-a4-homedepot.html" data-start="652.307" data-duration="16.86" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4-homedepot" data-composition-id="g-a4-homedepot" data-composition-src="compositions/g-a4-homedepot.html" data-start="672.602" data-duration="16.86" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A4-S5 tail (mounts-a3-a4.html, gap 17): g-a4-homedepot end 669.167 to g-a4-20th 678.127 = 8.96 s. DVIDS 116446 pass over the collapsed Home Depot (public domain),
+       source 16.0-24.96 (steady and wide, frames read), muted; g-a4-hd-panels sits inside it. -->
+  <video id="v-a4-homedepot" src="media/candidates/a4/a4-s5_c5_dvids-homedepot-site-aerial.mp4" data-start="689.462" data-duration="8.96" data-media-start="16.0" data-track-index="1" muted></video>
   <!-- g-a4-hd-panels: start nx-a4-s5 647.747 + 22.24 "tornado" = 669.987; end nx-a4-s5 647.747 + 26.64 "What" + 0.6 = 674.987 -->
-  <div id="host-a4-hd-panels" data-composition-id="g-a4-hd-panels" data-composition-src="compositions/g-a4-hd-panels.html" data-start="669.987" data-duration="5.0" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a4-hd-panels" data-composition-id="g-a4-hd-panels" data-composition-src="compositions/g-a4-hd-panels.html" data-start="690.282" data-duration="5.0" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- g-a4-20th: start nx-a4-s6 678.127 + 0.00 = 678.127; end nx-a4-s7 693.827 + 14.12 "basement?" + 0.8 = 708.747, run 0.38 s on to g-a4-theater-quote at 709.127 -->
-  <div id="host-a4-20th" data-composition-id="g-a4-20th" data-composition-src="compositions/g-a4-20th.html" data-start="678.127" data-duration="31.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4-20th" data-composition-id="g-a4-20th" data-composition-src="compositions/g-a4-20th.html" data-start="698.422" data-duration="31.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A4-S7 Dillon's (mounts-a3-a4.html): track 3 cutaway over g-a4-20th from a4-s7 "if" 702.367 to "But" 706.627 = 4.26 s. NOAA area aerial of 20th Street (Commons PD),
+       building not confirmed, credit "NOAA aerial, May 2011". Punches on 702.367 and "cuts" 704.167. -->
+  <section class="clip still-wrap" id="c-a4-s7-c1" data-start="722.662" data-duration="4.26" data-track-index="3" data-overlap-ok="cutaway over the 20th Street map on the Dillon's survivors line"><img id="kb-a4-s7-c1" src="media/candidates/a4/a4-s7_c1_noaa-aerial-dillons-site-x4.png" alt=""></section>
+  <!-- A4-S9 theater (mounts-a3-a4.html): track 3 cutaway from 709.127 for 2.50 s, then the card. NOAA aerial of 26th Street, theater footprint not marked, no theater caption,
+       credit "NOAA aerial, May 2011". CHECK: read g-a4-theater-quote's frame at 2.6 s before locking. One punch-in on 709.127. -->
+  <section class="clip still-wrap" id="c-a4-s9-c2" data-start="729.422" data-duration="2.50" data-track-index="3" data-overlap-ok="cutaway into the theater quote card"><img id="kb-a4-s9-c2" src="media/candidates/a4/a4-s9_c2_noaa-aerial-stainedglass-theater-wide-x4.png" alt=""></section>
   <!-- g-a4-theater-quote: start nx-a4-s9 709.127 + 0.00 = 709.127; end nx-a4-s9 709.127 + 23.96 "there?" + 0.6 = 733.687, run through the seam to 733.987 -->
-  <div id="host-a4-theater-quote" data-composition-id="g-a4-theater-quote" data-composition-src="compositions/g-a4-theater-quote.html" data-start="709.127" data-duration="24.86" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4-theater-quote" data-composition-id="g-a4-theater-quote" data-composition-src="compositions/g-a4-theater-quote.html" data-start="729.422" data-duration="24.86" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- g-a4-stairs: start nx-a4-s10 733.987 + 0.00 = 733.987; end nx-a4-s10 733.987 + 13.18 "moment." + 1.0 = 748.167 -->
-  <div id="host-a4-stairs" data-composition-id="g-a4-stairs" data-composition-src="compositions/g-a4-stairs.html" data-start="733.987" data-duration="14.18" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <!-- A4-S11 (748.287-770.527): NIST photograph of Harmony Heights Baptist, then the Full Gospel Church site (stand-in NOAA aerials, credit "NOAA aerial, 24 May 2011"), under g-a4-churches. -->
+  <div id="host-a4-stairs" data-composition-id="g-a4-stairs" data-composition-src="compositions/g-a4-stairs.html" data-start="754.282" data-duration="14.18" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A4-S11 (748.287-770.527): NIST photograph of Harmony Heights Baptist, then the Full Gospel Church site (stand-in NOAA aerials, credit "NOAA aerial, May 2011"), under g-a4-churches. -->
+  <!-- A4-S11 + A4-S12 (mounts-a3-a4.html, gap 18): g-a4-stairs end 748.167 to g-a4-cellar 783.167 = 35 s. Moving DVIDS (public domain, muted) between 3 s church stills
+       (NOAA stand-ins, [BLOCKED on owner] per the g-a4-churches brief: building not confirmed; credit "NOAA aerial, May 2011"). Clock on nx-a4-s11 748.287.
+       A 748.167-751.107 flattened-houses aerial, source 17.66-20.6 (callback to A3-S3); HH wide 751.107 on "Harmony"; B 754.107-760.427 path aerial, source 0.5-6.82;
+       HH close 760.427; FG wide 763.427 on "and"; FG close 766.427; C 769.427-783.167 tarped street aerial, source 0.0-13.74, g-a4-above inside it (its card names no place).
+       Same Guard flight as five other clips in the episode: tell the owner. -->
+  <video id="v-a4-churches-open" src="media/candidates/a3/a3-s3_c1_dvids-aerial-flattened.mp4" data-start="768.462" data-duration="2.94" data-media-start="17.66" data-track-index="1" data-callback="the Guard flight's flattened-houses aerial returns 261 s after A3-S3, other seconds of the file, for 'two churches were in the path'" muted></video>
+  <section class="clip still-wrap" id="c-a4-s11-c3" data-start="771.402" data-duration="3.00" data-track-index="1"><img id="kb-a4-s11-c3" src="media/candidates/a4/a4-s11_c3_noaa-aerial-harmony-heights-wide-x4.png" alt=""></section>
+  <video id="v-a4-churches-mid" src="media/candidates/a3/a3-s3_c2_dvids-aerial-path-wide.mp4" data-start="774.402" data-duration="6.32" data-media-start="0.5" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-a4-s11-c1" data-start="780.722" data-duration="3.00" data-track-index="1"><img id="kb-a4-s11-c1" src="media/candidates/a4/a4-s11_c1_noaa-aerial-harmony-heights-site-x4.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s11-c4" data-start="783.722" data-duration="3.00" data-track-index="1"><img id="kb-a4-s11-c4" src="media/candidates/a4/a4-s11_c4_noaa-aerial-full-gospel-wide-x4.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s11-c2" data-start="786.722" data-duration="4.10" data-track-index="1"><img id="kb-a4-s11-c2" src="media/candidates/a4/a4-s11_c2_noaa-aerial-full-gospel-site-x4.png" alt=""></section>
+  <video id="v-a4-above" src="media/candidates/a3/a3-s10_c2_dvids-aerial-tarp-neighborhood.mp4" data-start="790.822" data-duration="12.64" data-media-start="1.1" data-track-index="1" muted></video>
   <!-- g-a4-churches: start nx-a4-s11 748.287 + 13.44 "Three" = 761.727; end nx-a4-s11 748.287 + 21.64 "it?" + 0.6 = 770.527 -->
-  <div id="host-a4-churches" data-composition-id="g-a4-churches" data-composition-src="compositions/g-a4-churches.html" data-start="761.727" data-duration="8.8" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a4-churches" data-composition-id="g-a4-churches" data-composition-src="compositions/g-a4-churches.html" data-start="782.022" data-duration="8.8" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- A4-S12 (770.827-782.607): Range Line corridor aerial under g-a4-above. -->
   <!-- g-a4-above: start nx-a4-s12 770.827 + 3.90 "The" = 774.727; end nx-a4-s12 770.827 + 11.18 "ground?" + 0.6 = 782.607 -->
-  <div id="host-a4-above" data-composition-id="g-a4-above" data-composition-src="compositions/g-a4-above.html" data-start="774.727" data-duration="7.88" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a4-above" data-composition-id="g-a4-above" data-composition-src="compositions/g-a4-above.html" data-start="795.022" data-duration="7.88" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- A4-S13: NIST photograph of the demolished Macadoodles (stand-in NOAA aerial) before the cross-section. -->
   <!-- g-a4-cellar: start nx-a4-s13 783.167 + 0.00 = 783.167; end nx-a4-s13 783.167 + 11.84 "hurt." + 1.0 = 796.007, clamped to g-a4-handoff at 795.867 -->
-  <div id="host-a4-cellar" data-composition-id="g-a4-cellar" data-composition-src="compositions/g-a4-cellar.html" data-start="783.167" data-duration="12.7" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4-cellar" data-composition-id="g-a4-cellar" data-composition-src="compositions/g-a4-cellar.html" data-start="803.462" data-duration="12.7" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- g-a4-handoff: start nx-a4-s14 795.867 + 0.00 = 795.867; end nx-a4-s14 795.867 + 6.88 "sirens." + 0.5 = 803.247, run 0.42 s on to bo-5 at 803.667 -->
-  <div id="host-a4-handoff" data-composition-id="g-a4-handoff" data-composition-src="compositions/g-a4-handoff.html" data-start="795.867" data-duration="7.8" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4-handoff" data-composition-id="g-a4-handoff" data-composition-src="compositions/g-a4-handoff.html" data-start="816.162" data-duration="7.8" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- g-a4-counter: start nx-a4-s14 795.867 + 0.00 = 795.867; end nx-a4-s14 795.867 + 4.66 "Their" = 800.527 -->
-  <div id="host-a4-counter" data-composition-id="g-a4-counter" data-composition-src="compositions/g-a4-counter.html" data-start="795.867" data-duration="4.66" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a4-counter" data-composition-id="g-a4-counter" data-composition-src="compositions/g-a4-counter.html" data-start="816.162" data-duration="4.66" data-track-index="4" data-width="1920" data-height="1080"></div>
 
   <!-- ============ A5 · ST. JOHN'S, GREENBRIAR AND THE AGE GAP (804.367-974.807) ============ -->
   <!-- A5-S1 (804.567-816.007): FEMA still "St. John's Regional Medical Center is a total loss", 24 May 2011 (Jace Anderson/FEMA), then the NIST towers photograph, under g-a5-sjrmc-open. -->
+  <!-- A5-S1 (mounts-a5-z1.html, gap 19): bo-5 end 804.367 to g-a5-condition-gray 816.307, two stills under host-a5-sjrmc-open, cut at 810.367 (6.0 s cap; the brief's "and"
+       810.587 is 0.22 s later). FEMA "total loss" (credit "Jace Anderson/FEMA"), then NIST Fig 3-14 East Tower (780 px source, soft). Punches 804.367, "183" 807.367, 810.367, "four" 813.087. -->
+  <section class="clip still-wrap" id="c-a5-s1-fema-total-loss" data-start="824.662" data-duration="6.0" data-track-index="1"><img id="kb-a5-s1-fema-total-loss" src="media/candidates/a5/a5-s1_c1_fema-total-loss-x4.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-s1-east-tower" data-start="830.662" data-duration="5.94" data-track-index="1"><img id="kb-a5-s1-east-tower" src="media/candidates/a5/a5-s1_c6_nist-east-tower-fig3-14-x4.png" alt=""></section>
   <!-- g-a5-sjrmc-open: start nx-a5-s1 804.567 + 2.80 "183" = 807.367; end nx-a5-s1 804.567 + 12.04 = 816.607 -->
-  <div id="host-a5-sjrmc-open" data-composition-id="g-a5-sjrmc-open" data-composition-src="compositions/g-a5-sjrmc-open.html" data-start="807.367" data-duration="9.24" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a5-sjrmc-open" data-composition-id="g-a5-sjrmc-open" data-composition-src="compositions/g-a5-sjrmc-open.html" data-start="827.662" data-duration="9.24" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- g-a5-condition-gray: start nx-a5-s2 816.307 + 0.00 = 816.307; end nx-a5-s2 816.307 + 23.36 = 839.667 -->
-  <div id="host-a5-condition-gray" data-composition-id="g-a5-condition-gray" data-composition-src="compositions/g-a5-condition-gray.html" data-start="816.307" data-duration="23.36" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a5-condition-gray" data-composition-id="g-a5-condition-gray" data-composition-src="compositions/g-a5-condition-gray.html" data-start="836.602" data-duration="23.36" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A5-S3 (839.367-856.687): footage under g-a5-cc-midmost, not named; NIST generator-building photograph under g-a5-tower-wind; then the Weather Channel re-upload 6nX7J8_mZpE St. John's towers (or CLIP NEEDED, PD FEMA first). -->
   <!-- g-a5-cc-midmost: start nx-a5-s3 839.367 + 0.00 = 839.367; end nx-a5-s3 839.367 + 7.50 = 846.867 -->
-  <div id="host-a5-cc-midmost" data-composition-id="g-a5-cc-midmost" data-composition-src="compositions/g-a5-cc-midmost.html" data-start="839.367" data-duration="7.5" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a5-cc-midmost" data-composition-id="g-a5-cc-midmost" data-composition-src="compositions/g-a5-cc-midmost.html" data-start="859.662" data-duration="7.5" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- g-a5-tower-wind: start nx-a5-s3 839.367 + 7.78 "The" = 847.147; end nx-a5-s3 839.367 + 14.62 "Did" = 853.987 -->
-  <div id="host-a5-tower-wind" data-composition-id="g-a5-tower-wind" data-composition-src="compositions/g-a5-tower-wind.html" data-start="847.147" data-duration="6.84" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a5-tower-wind" data-composition-id="g-a5-tower-wind" data-composition-src="compositions/g-a5-tower-wind.html" data-start="867.442" data-duration="6.84" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- A5-S4 (856.987-863.587): footage under g-a5-cc-standing, not named. -->
+  <!-- A5-S3 + A5-S4 head (mounts-a5-z1.html, gap 20): g-a5-condition-gray end 839.667 to g-a5-map-sjrmc 863.587 = 23.92 s, five stills (no PD video of the towers exists).
+       B1 839.667 + 4.0 NIST Fig 3-15 East Tower from the low southeast; B2 843.667 + 4.32 FEMA bent bronze statue (credit "Jace Anderson/FEMA"), beat "other." 845.387;
+       B3 847.987 + 6.0 NIST Fig 3-20 generator building under g-a5-tower-wind (cut punch only: the chip is placed on the static frame);
+       B4 853.987 + 6.0 CC0 St. John's tower II over the debris field (Commons uploader Intelati, own-work claim unverified, risk accepted) on "Did those towers protect everyone inside",
+       second punch 857.587; B5 859.987 + 3.6 NIST Fig 3-9, both towers standing behind the fence, to g-a5-map-sjrmc 863.587.
+       B4 uses c3 instead of the FEMA total-loss still 49 s after its first use (repeats only well spaced); c3 now covers the old B4 and B5 slots in one 6.0 s still.
+       MIRROR SEARCH PENDING: replace B4 with FEMA footage from the archive.org mirrors (yt_OK_d0dBG8fU, yt_BAhhAvVLXCI, yt_le2dkDg2RpI, yt_dIjev_oD3tE) when found;
+       no Weather Channel re-upload (no licence, not in the folder). -->
+  <section class="clip still-wrap" id="c-a5-s3-east-tower-low" data-start="859.962" data-duration="4.0" data-track-index="1"><img id="kb-a5-s3-east-tower-low" src="media/candidates/a5/a5-s1_c7_nist-east-tower-fig3-15-x4.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-s3-statue" data-start="863.962" data-duration="4.32" data-track-index="1"><img id="kb-a5-s3-statue" src="media/candidates/a5/a5-s1_c2_fema-bronze-statue-x4.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-s3-generator" data-start="868.282" data-duration="6.0" data-track-index="1"><img id="kb-a5-s3-generator" src="media/candidates/a5/a5-s3_c1_nist-generator-fig3-20-x4.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-s3-tower-ruins" data-start="874.282" data-duration="6.0" data-track-index="1"><img id="kb-a5-s3-tower-ruins" src="media/candidates/a5/a5-s1_c3_cc0-tower-ii-ruins-x4.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-s4-west-tower" data-start="880.282" data-duration="3.6" data-track-index="1"><img id="kb-a5-s4-west-tower" src="media/candidates/a5/a5-s1_c5_nist-west-tower-fig3-9-x4.png" alt=""></section>
   <!-- g-a5-cc-standing: start nx-a5-s4 856.987 + 0.00 = 856.987; end nx-a5-s4 856.987 + 6.60 = 863.587 -->
-  <div id="host-a5-cc-standing" data-composition-id="g-a5-cc-standing" data-composition-src="compositions/g-a5-cc-standing.html" data-start="856.987" data-duration="6.6" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a5-cc-standing" data-composition-id="g-a5-cc-standing" data-composition-src="compositions/g-a5-cc-standing.html" data-start="877.282" data-duration="6.6" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- g-a5-map-sjrmc: start nx-a5-s4 856.987 + 6.60 = 863.587; end nx-a5-s4 856.987 + 18.60 = 875.587 -->
-  <div id="host-a5-map-sjrmc" data-composition-id="g-a5-map-sjrmc" data-composition-src="compositions/g-a5-map-sjrmc.html" data-start="863.587" data-duration="12.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a5-map-sjrmc" data-composition-id="g-a5-map-sjrmc" data-composition-src="compositions/g-a5-map-sjrmc.html" data-start="883.882" data-duration="12.0" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A5-S5 (875.287-881.687): NIST photograph of the West Tower (Fig. 3-10) under g-a5-windows. -->
+  <!-- A5-S5 + A5-S6 head (mounts-a5-z1.html, gap 21): g-a5-map-sjrmc end 875.587 to g-a5-greenbriar 892.187, then C4 under that host's transparent first span.
+       C1 875.587 + 6.0 NIST Fig 3-10, NO motion (g-a5-windows' outline is traced on this static frame at scale 2.0513). CALL: host-a5-windows runs to 882.287, so its last
+       0.7 s (exit fade from 881.687) falls on C2; if a frame read shows the outline over the Greenbriar photo, end that host at 881.587.
+       C2 881.587 + 5.3 NIST Fig 3-104 Greenbriar from the east, beat "Greenbrier" 885.107; C3 886.887 + 5.3 Fig 3-105 close rubble, no person, under g-a5-cc-greenbrier;
+       C4 892.187 + 3.74 Fig 3-106 (a5-s6 10.20 to 13.94). -->
+  <section class="clip still-wrap" id="c-a5-s5-west-tower-fig3-10" data-start="895.882" data-duration="6.0" data-track-index="1"><img id="kb-a5-s5-west-tower-fig3-10" src="media/candidates/a5/a5-s5_c1_nist-5th-floor-south-fig3-10-x4.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-s6-greenbriar-east" data-start="901.882" data-duration="5.3" data-track-index="1"><img id="kb-a5-s6-greenbriar-east" src="media/candidates/a5/a5-s6_c1_nist-greenbriar-east-fig3-104-x4.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-s6-greenbriar-close" data-start="907.182" data-duration="5.3" data-track-index="1"><img id="kb-a5-s6-greenbriar-close" src="media/candidates/a5/a5-s6_c2_nist-greenbriar-fig3-105-x4.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-s6-greenbriar-wall" data-start="912.482" data-duration="3.74" data-track-index="1"><img id="kb-a5-s6-greenbriar-wall" src="media/candidates/a5/a5-s6_c3_nist-greenbriar-north-fig3-106-x4.png" alt=""></section>
   <!-- g-a5-windows: start nx-a5-s5 875.287 + 0.86 "fifth" = 876.147; end nx-a5-s5 875.287 + 7.00 = 882.287 -->
-  <div id="host-a5-windows" data-composition-id="g-a5-windows" data-composition-src="compositions/g-a5-windows.html" data-start="876.147" data-duration="6.14" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a5-windows" data-composition-id="g-a5-windows" data-composition-src="compositions/g-a5-windows.html" data-start="896.442" data-duration="5.44" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- A5-S6 (881.987-892.187): NIST photograph of the Greenbriar site, under g-a5-cc-greenbrier and the start of g-a5-greenbriar. -->
   <!-- g-a5-cc-greenbrier: start nx-a5-s6 881.987 + 7.60 "One" = 889.587; end nx-a5-s6 881.987 + 10.30 = 892.287 -->
-  <div id="host-a5-cc-greenbrier" data-composition-id="g-a5-cc-greenbrier" data-composition-src="compositions/g-a5-cc-greenbrier.html" data-start="889.587" data-duration="2.7" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a5-cc-greenbrier" data-composition-id="g-a5-cc-greenbrier" data-composition-src="compositions/g-a5-cc-greenbrier.html" data-start="909.882" data-duration="2.7" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- g-a5-greenbriar: start nx-a5-s6 881.987 + 10.20 = 892.187; end nx-a5-s6 881.987 + 28.08 = 910.067, clamped to g-a5-map-meadows at 909.767 -->
-  <div id="host-a5-greenbriar" data-composition-id="g-a5-greenbriar" data-composition-src="compositions/g-a5-greenbriar.html" data-start="892.187" data-duration="17.58" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a5-greenbriar" data-composition-id="g-a5-greenbriar" data-composition-src="compositions/g-a5-greenbriar.html" data-start="912.482" data-duration="17.58" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- g-a5-map-meadows: start nx-a5-s7 909.767 + 0.00 = 909.767; end nx-a5-s7 909.767 + 11.08 = 920.847 -->
-  <div id="host-a5-map-meadows" data-composition-id="g-a5-map-meadows" data-composition-src="compositions/g-a5-map-meadows.html" data-start="909.767" data-duration="11.08" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a5-map-meadows" data-composition-id="g-a5-map-meadows" data-composition-src="compositions/g-a5-map-meadows.html" data-start="930.062" data-duration="10.78" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- g-a5-counter3: start nx-a5-s7 909.767 + 6.28 "lives" = 916.047; end nx-a5-s7 909.767 + 11.08 = 920.847 -->
-  <div id="host-a5-counter3" data-composition-id="g-a5-counter3" data-composition-src="compositions/g-a5-counter3.html" data-start="916.047" data-duration="4.8" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a5-counter3" data-composition-id="g-a5-counter3" data-composition-src="compositions/g-a5-counter3.html" data-start="936.342" data-duration="4.5" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- A5-S8 (920.547-928.747): ins-paul-5, Paul full frame under g-a5-paul-rates. -->
+  <!-- A5-S8: ins-paul-5, cut 0.56 s after "2." -->
+  <video id="ins-paul-5" src="media/paul/ins-paul-5/ins-paul-5.mp4" data-start="940.842" data-duration="9.5" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="If you were sixty or older in Joplin, about eight in every thousand people your age were lost. If you were under sixty, it was about two."></video>
   <!-- g-a5-paul-rates: start nx-a5-s8 920.547 + 0.96 "sixty" = 921.507; end nx-a5-s8 920.547 + 8.80 = 929.347, clamped to Paul's line end 928.747 -->
-  <div id="host-a5-paul-rates" data-composition-id="g-a5-paul-rates" data-composition-src="compositions/g-a5-paul-rates.html" data-start="921.507" data-duration="7.24" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a5-paul-rates" data-composition-id="g-a5-paul-rates" data-composition-src="compositions/g-a5-paul-rates.html" data-start="941.962" data-duration="8.38" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- g-a5-age-gap: start nx-a5-s9 929.047 + 0.00 = 929.047; end nx-a5-s9 929.047 + 21.80 = 950.847, clamped to g-a5-why at 950.547 -->
-  <div id="host-a5-age-gap" data-composition-id="g-a5-age-gap" data-composition-src="compositions/g-a5-age-gap.html" data-start="929.047" data-duration="21.5" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a5-age-gap" data-composition-id="g-a5-age-gap" data-composition-src="compositions/g-a5-age-gap.html" data-start="950.342" data-duration="21.5" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- g-a5-why: start nx-a5-s10 950.547 + 0.00 = 950.547; end nx-a5-s10 950.547 + 18.36 = 968.907, clamped to g-a5-recs-board at 968.607 -->
-  <div id="host-a5-why" data-composition-id="g-a5-why" data-composition-src="compositions/g-a5-why.html" data-start="950.547" data-duration="18.06" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a5-why" data-composition-id="g-a5-why" data-composition-src="compositions/g-a5-why.html" data-start="971.842" data-duration="18.06" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- g-a5-recs-board: start nx-a5-s11 968.607 + 0.00 = 968.607; end nx-a5-s11 968.607 + 6.80 = 975.407, clamped to bo-6 at 974.807 -->
-  <div id="host-a5-recs-board" data-composition-id="g-a5-recs-board" data-composition-src="compositions/g-a5-recs-board.html" data-start="968.607" data-duration="6.2" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a5-recs-board" data-composition-id="g-a5-recs-board" data-composition-src="compositions/g-a5-recs-board.html" data-start="989.902" data-duration="6.2" data-track-index="2" data-width="1920" data-height="1080"></div>
 
   <!-- ============ A6 · WHAT CHANGED AND WHAT DID NOT (975.507-1113.067) ============ -->
   <!-- g-a6-board-r7: start nx-a6-s1 975.707 + 0.00 = 975.707, opened 0.2 s early at the bo-6 end 975.507 (act opener); end nx-a6-s1 975.707 + 6.30 "NIST" = 982.007 -->
-  <div id="host-a6-board-r7" data-composition-id="g-a6-board-r7" data-composition-src="compositions/g-a6-board-r7.html" data-start="975.507" data-duration="6.5" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a6-board-r7" data-composition-id="g-a6-board-r7" data-composition-src="compositions/g-a6-board-r7.html" data-start="996.802" data-duration="6.5" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- g-a6-doc-rec7: start nx-a6-s1 975.707 + 6.30 "NIST" = 982.007; end nx-a6-s1 975.707 + 17.80 "The" = 993.507 -->
-  <div id="host-a6-doc-rec7" data-composition-id="g-a6-doc-rec7" data-composition-src="compositions/g-a6-doc-rec7.html" data-start="982.007" data-duration="11.5" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a6-doc-rec7" data-composition-id="g-a6-doc-rec7" data-composition-src="compositions/g-a6-doc-rec7.html" data-start="1003.302" data-duration="11.5" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A6-S1 (993.507-1000.827): NIST ground photograph of the Walmart refuge area, reused from A4 (needs data-callback). -->
   <!-- A6-S2 (1001.587-1007.047): CLIP NEEDED, inside a Joplin school safe room, under g-a6-cmt-thriving (PD FEMA first). -->
+  <!-- A6-S1 + A6-S2 (mounts-a5-z1.html, gap 23): g-a6-doc-rec7 end 993.507 to g-a6-saferoom 1007.047 = 13.54 s, 3 s cuts under host-a6-cmt-thriving.
+       E1 993.507 + 4.5 NIST Fig 3-39 Walmart south entrance (a different figure from A4's Fig 3-40, so no repeat).
+       E2 998.007 + 3.0 FEMA "Mitigation Matters", Kelsey Norman Elementary "TORNADO SHELTER" sign, source 29.3-32.3 (PD, no grade, muted). Caption if any "a Joplin school safe room".
+       E3 1001.007 + 3.0 INSERT (owner yes, picks page 17 Oct 26 18:45, A6-S2_koam): KOAM News Now 2023, a Joplin school safe-room exterior, source 3.2-6.2; the verifier marked
+       the file FAIL (burned-in lower third, bug, ticker; crop-koam leaves the top 74 %), span unverified: frame read before the draft. Claim risk medium-high. Graded, muted.
+       E4 1004.007 + 3.04 INSERT (owner yes, A6-S2_kmbc): KMBC 9 2021, the rebuilt Joplin High School, source 60.5-63.54 (inside the shot 58.67-63.63), crop-kmbc removes the bug.
+       Used once (the hospital aerial span 66-72 is not used). Graded, muted. -->
+  <section class="clip still-wrap" id="c-a6-s1-walmart-entrance" data-start="1014.802" data-duration="4.5" data-track-index="1"><img id="kb-a6-s1-walmart-entrance" src="media/candidates/a6/a6-s1_c1_nist-fig3-39-walmart-south-entrance-x4.png" alt=""></section>
+  <video id="v-a6-s2-fema-sign" class="crop-fema" src="media/candidates/a6/a6-s2_c1_fema-kelsey-norman-saferoom.mp4" data-start="1019.302" data-duration="3.0" data-media-start="29.3" data-track-index="1" muted></video>
+  <video id="v-a6-s2-koam" class="graded crop-koam" src="media/candidates/a6/a6-s2_c2_koam-community-saferooms-2023.mp4" data-start="1022.302" data-duration="3.0" data-media-start="3.2" data-track-index="1" muted></video>
+  <video id="v-a6-s2-kmbc" class="graded crop-kmbc" src="media/candidates/a6/a6-s2_c4_kmbc-rebuilt-joplin-2021.mp4" data-start="1025.302" data-duration="3.04" data-media-start="60.5" data-track-index="1" muted></video>
   <!-- g-a6-cmt-thriving: start nx-a6-s2 1001.127 + 0.46 "One" = 1001.587; end nx-a6-s2 1001.127 + 5.92 "Since" = 1007.047 -->
-  <div id="host-a6-cmt-thriving" data-composition-id="g-a6-cmt-thriving" data-composition-src="compositions/g-a6-cmt-thriving.html" data-start="1001.587" data-duration="5.46" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a6-cmt-thriving" data-composition-id="g-a6-cmt-thriving" data-composition-src="compositions/g-a6-cmt-thriving.html" data-start="1022.882" data-duration="5.46" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- g-a6-saferoom: start nx-a6-s2 1001.127 + 5.92 "Since" = 1007.047; end nx-a6-s3 1019.227 + 0.00 = 1019.227 -->
-  <div id="host-a6-saferoom" data-composition-id="g-a6-saferoom" data-composition-src="compositions/g-a6-saferoom.html" data-start="1007.047" data-duration="12.18" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a6-saferoom" data-composition-id="g-a6-saferoom" data-composition-src="compositions/g-a6-saferoom.html" data-start="1028.342" data-duration="12.18" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- g-a6-usmap: start nx-a6-s3 1019.227 + 0.00 = 1019.227; end nx-a6-s3 1019.227 + 20.54 "What" = 1039.767 -->
-  <div id="host-a6-usmap" data-composition-id="g-a6-usmap" data-composition-src="compositions/g-a6-usmap.html" data-start="1019.227" data-duration="20.54" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a6-usmap" data-composition-id="g-a6-usmap" data-composition-src="compositions/g-a6-usmap.html" data-start="1040.522" data-duration="20.54" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A6-S3/S4 (1039.767-1044.527): footage under g-a6-cmt-mandatory, editor's pick (a Joplin store or apartment street). -->
+  <!-- A6-S3/S4 (mounts-a5-z1.html, gap 24): host window 1039.767-1044.527 exactly. FEMA still, the Walgreens on 20th and Range Line reopened 22 Aug 2011 ("Now Open!"),
+       for "a new store or apartment building?"; small crowd, none identifiable. Credit "Elissa Jun/FEMA via NARA/DPLA". -->
+  <section class="clip still-wrap" id="c-a6-s3-walgreens-reopens" data-start="1061.062" data-duration="4.76" data-track-index="1"><img id="kb-a6-s3-walgreens-reopens" src="media/candidates/a6/a6-s2_c6_fema-walgreen-reopens-aug2011-x4.png" alt=""></section>
   <!-- g-a6-cmt-mandatory: start nx-a6-s3 1019.227 + 20.54 "What" = 1039.767; end nx-a6-s4 1042.847 + 1.68 "nothing" = 1044.527 -->
-  <div id="host-a6-cmt-mandatory" data-composition-id="g-a6-cmt-mandatory" data-composition-src="compositions/g-a6-cmt-mandatory.html" data-start="1039.767" data-duration="4.76" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a6-cmt-mandatory" data-composition-id="g-a6-cmt-mandatory" data-composition-src="compositions/g-a6-cmt-mandatory.html" data-start="1061.062" data-duration="4.76" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- g-a6-board-half: start nx-a6-s4 1042.847 + 1.68 "nothing" = 1044.527; end nx-a6-s4 1042.847 + 8.66 "Remember" = 1051.507 -->
-  <div id="host-a6-board-half" data-composition-id="g-a6-board-half" data-composition-src="compositions/g-a6-board-half.html" data-start="1044.527" data-duration="6.98" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a6-board-half" data-composition-id="g-a6-board-half" data-composition-src="compositions/g-a6-board-half.html" data-start="1065.822" data-duration="6.98" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A6-S4/S5 (1051.507-1066.127): NIST West Tower fifth-floor photograph, reused from A5-S5 (needs data-callback), under g-a6-cmt-nurse and g-a6-mercy. -->
+  <!-- A6-S4/S5 (mounts-a5-z1.html, gap 25): g-a6-board-half end 1051.507 to g-a6-siren 1066.127 = 14.62 s.
+       G1 1051.507 + 4.76 NIST Fig 3-11 West Tower north face (a different file from A5's Fig 3-10), beat "windows?" 1053.487.
+       G2 1056.267 + 4.8 "Mercy Hospital Joplin" (Commons, CC BY-SA 4.0, Lightbulb Noob), beat "opened" 1058.507. CALL: overrides the Picture line's "no photo of the new hospital"
+       under the owner's moving-picture rule; caption only "Mercy Hospital Joplin"; share-alike on a punch-zoomed adaptation is the owner's call.
+       G3 1061.067 + 5.06 NIST Fig 3-14 old East Tower, 250 s after its A5 use (callback), beat "Did" 1064.487. -->
+  <section class="clip still-wrap" id="c-a6-s4-west-tower-north" data-start="1072.802" data-duration="4.76" data-track-index="1"><img id="kb-a6-s4-west-tower-north" src="media/candidates/a5/a5-s5_c2_nist-5th-floor-north-fig3-11-x4.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a6-s5-mercy-hospital" data-start="1077.562" data-duration="4.8" data-track-index="1"><img id="kb-a6-s5-mercy-hospital" src="media/candidates/a6/a6-s5_c1_mercy-joplin-ccbysa-x4.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a6-s5-east-tower-old" data-start="1082.362" data-duration="5.06" data-track-index="1" data-callback="the old East Tower's broken glazing returns as the contrast to the new hospital's 250 mph window claim"><img id="kb-a6-s5-east-tower-old" src="media/candidates/a5/a5-s1_c6_nist-east-tower-fig3-14-x4.png" alt=""></section>
   <!-- g-a6-cmt-nurse: start nx-a6-s4 1042.847 + 8.66 "Remember" = 1051.507; end nx-a6-s5 1056.267 + 3.80 "has" = 1060.067 -->
-  <div id="host-a6-cmt-nurse" data-composition-id="g-a6-cmt-nurse" data-composition-src="compositions/g-a6-cmt-nurse.html" data-start="1051.507" data-duration="8.56" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a6-cmt-nurse" data-composition-id="g-a6-cmt-nurse" data-composition-src="compositions/g-a6-cmt-nurse.html" data-start="1072.802" data-duration="8.56" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- g-a6-mercy: start nx-a6-s5 1056.267 + 3.80 "has" = 1060.067; end nx-a6-s5 1056.267 + 8.22 "Did" = 1064.487 -->
-  <div id="host-a6-mercy" data-composition-id="g-a6-mercy" data-composition-src="compositions/g-a6-mercy.html" data-start="1060.067" data-duration="4.42" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a6-mercy" data-composition-id="g-a6-mercy" data-composition-src="compositions/g-a6-mercy.html" data-start="1081.362" data-duration="4.42" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- g-a6-siren: start nx-a6-s5 1056.267 + 9.86 "sirens?" = 1066.127; end nx-a6-s6 1067.247 + 14.56 "The" = 1081.807 -->
-  <div id="host-a6-siren" data-composition-id="g-a6-siren" data-composition-src="compositions/g-a6-siren.html" data-start="1066.127" data-duration="15.68" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a6-siren" data-composition-id="g-a6-siren" data-composition-src="compositions/g-a6-siren.html" data-start="1087.422" data-duration="15.68" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- g-a6-doc-nwsrec2: start nx-a6-s6 1067.247 + 14.56 "The" = 1081.807; end nx-a6-s7 1091.707 + 0.00 = 1091.707 -->
-  <div id="host-a6-doc-nwsrec2" data-composition-id="g-a6-doc-nwsrec2" data-composition-src="compositions/g-a6-doc-nwsrec2.html" data-start="1081.807" data-duration="9.9" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a6-doc-nwsrec2" data-composition-id="g-a6-doc-nwsrec2" data-composition-src="compositions/g-a6-doc-nwsrec2.html" data-start="1103.102" data-duration="9.9" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A6-S7 (1091.707-1104.067): NIST ground photograph of Joplin High School under g-a6-empty; then the CCTV re-upload 64covicCcIY in the 4.0 s slot 1104.067-1108.067 inside hold-a6, its own sound, no narration (insert gate; confirm which school before any caption names one). -->
+  <!-- A6-S7 + hold (mounts-a5-z1.html, gap 26): g-a6-doc-nwsrec2 end 1091.707 to g-a6-map135 1108.067 = 16.36 s.
+       H1 1091.707 + 6.0 NIST Fig 3-69 Joplin High School gymnasium, beat "buildings." 1094.867; H2 1097.707 + 6.0 Fig 3-70 JHS auditorium, under g-a6-empty.
+       H3 1103.707 + 4.36 INSERT (owner "other": "find best action moments and cut accordingly", picks page 17 Oct 26 18:45, A6-S7_cctv): Joplin Globe re-upload 64covicCcIY,
+       East Middle School surveillance, 22 May 2011, claim risk HIGH. Action from a frame-difference pass and contact sheet: source 185.9-190.26 = lobby doors flapping and
+       the glass failing, then debris whirling through the lobby on the 188.25 cut. Starts 0.36 s before the designed 4.0 s slot (two stills cannot fill 12.36 s under the
+       6.0 s cap). The file is SILENT (mean -91 dB): muted. Never caption it JHS: the title card names East Middle School. Graded. -->
+  <section class="clip still-wrap" id="c-a6-s7-jhs-gym" data-start="1113.002" data-duration="6.0" data-track-index="1"><img id="kb-a6-s7-jhs-gym" src="media/candidates/a6/a6-s7_c3_nist-fig3-69-jhs-gymnasium-x4.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a6-s7-jhs-auditorium" data-start="1119.002" data-duration="6.0" data-track-index="1"><img id="kb-a6-s7-jhs-auditorium" src="media/candidates/a6/a6-s7_c4_nist-fig3-70-jhs-auditorium-x4.png" alt=""></section>
+  <video id="v-a6-s7-cctv" class="graded" src="media/candidates/a6/a6-s7_c1_joplinglobe-eastms-cctv.mp4" data-start="1125.002" data-duration="7.4" data-media-start="184.4" data-track-index="1" muted></video>
   <!-- g-a6-empty: start nx-a6-s7 1091.707 + 9.76 "empty." = 1101.467; end nx-a6-s7 1091.707 + 9.76 + 2.6 = 1104.067 -->
-  <div id="host-a6-empty" data-composition-id="g-a6-empty" data-composition-src="compositions/g-a6-empty.html" data-start="1101.467" data-duration="2.6" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a6-empty" data-composition-id="g-a6-empty" data-composition-src="compositions/g-a6-empty.html" data-start="1122.762" data-duration="2.6" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- g-a6-map135: after the CCTV slot, 5.0 s, no narration: start nx-a6-s7 1091.707 + 12.36 + 4.0 = 1108.067; end + 5.0 = 1113.067 (bo-7) -->
-  <div id="host-a6-map135" data-composition-id="g-a6-map135" data-composition-src="compositions/g-a6-map135.html" data-start="1108.067" data-duration="5.0" data-track-index="2" data-width="1920" data-height="1080"></div>
-
-  <!-- ============ Z1 · CLOSE (1113.767-1140.887). No briefs/z1/_list.md yet: no Z1 graphic hosts mounted. ============ -->
+  
+  <!-- ============ Z1 · CLOSE (1113.767-1140.887). Hosts from briefs/z1/_list.md; g-z1-board waits for the z1-s3 wav (open [verify]). ============ -->
+  <!-- g-z1-strip: nx-z1-s1 1113.967 to "That" 10.06 = 1124.027; opened 0.2 s early at the bo-7 end 1113.767 (act opener, closes the 0.20 s seam), so 10.26 s -->
+  <div id="host-z1-strip" data-composition-id="g-z1-strip" data-composition-src="compositions/g-z1-strip.html" data-start="1133.102" data-duration="10.26" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- g-z1-map: "That" 1124.027 to wav end 1136.887, seam to the z1-s3 slot 1137.187 -->
+  <div id="host-z1-map" data-composition-id="g-z1-map" data-composition-src="compositions/g-z1-map.html" data-start="1143.362" data-duration="13.16" data-track-index="2" data-width="1920" data-height="1080" data-callback="the master map returns with all 135 dots: the close answers the intro"></div>
   <!-- Z1-S1 (1113.967-1136.887): calendar strip, then the master map with all 135 dots (needs data-callback: A6's g-a6-map135 ends at bo-7, just before); a few seconds of real Joplin sound under the last sentence. -->
-  <!-- Z1-S3 slot from 1137.187 (no wav); Z1 signature line: ins-paul-6, Paul full frame, over the close card in the tail. -->
+  <!-- Z1-S1 sound INSERT (owner yes, picks page 17 Oct 26 18:45, Z1-S1_radio): Jasper County law enforcement radio, archive.org, CC BY 3.0 US, mark6, source 161-168
+       ("multiple entrapment issues", no personal names), under the last sentence "But" 1113.967 + 15.88 = 1129.847 to the wav end 1136.887 (7.04 s). Volume 0.2 (ambience
+       ceiling); ebur128 per 15 s window before the render. data-bed keeps it a bed for lint check 3. Credit "Jasper County law enforcement radio archive, mark6, archive.org, CC BY 3.0 US". -->
+  <!-- The dispatch radio sat under nx-z1-s1 (two voices at once, owner 19 Oct 26: "audio is wired wrong"); it now plays alone
+       in the silent hold-a6 over the CCTV and the 135 map, at insert level (the 161 to 168.04 s stretch cut to its own file, levelled to the narration ref) -->
+  <!-- 20 Oct 26 (owner: "the sound is staying longer than the visual ... it's not audible ... add a running caption"): the radio
+       ran 2.68 s past the CCTV into the 135 map. It now has its own picture, g-a6-radio (a 7.64 s gap opened at the CCTV end,
+       1129.737; everything after moved +7.64), starting 0.30 s into the card and ending 0.30 s before it, captioned word by word. -->
+  <audio id="ins-a6-jasper-radio" src="media/candidates/a6/jasper-county-radio-1742-ins.wav" data-start="1125.302" data-duration="7.04" data-media-start="0" data-volume="1" data-callback="the one stretch of real Joplin sound, over the school CCTV"></audio>
+  <div id="host-a6-radio-cap" data-composition-id="g-a6-radio-cap" data-composition-src="compositions/g-a6-radio-cap.html" data-start="1125.002" data-duration="7.4" data-track-index="2" data-width="1920" data-height="1080" data-caption-for="ins-a6-jasper-radio"></div>
+  <!-- Score bed (18 Oct 26, draft-v1 had none): one dark-ambient score across the episode, assets/sfx/deapi/score-act1-darkambient.mp3
+       (mean -19.3 dB) self-crossfaded and cut per act with baked 1 s in / 0.8 s out fades, offsets continuous so it never restarts.
+       Each act's bed ends on that act's last narration wav ("the bed drops out on the last word"), a3 stops for the CTA dip.
+       At 0.13 it sits at -37.0 dB effective, 18.5 dB under the narration median (-18.5). bed-a6-v3 (20 Oct 26) runs on through hold-a6 to bo-7: the silent hold read as dead air (v2 looped a lull, -60 dB under the 135 map; v3 loops source 75-101.2 s, min -31 dB).
+       The close runs score-act6-close.mp3 (grief and quiet hope, mean -16.6 dB) and fades out across the end card. -->
+  <audio id="sx-bed-intro" src="media/beds/bed-intro.mp3" data-bed="" data-start="0" data-duration="127.81" data-volume="0.13"></audio>
+  <audio id="sx-bed-a1" src="media/beds/bed-a1.mp3" data-bed="" data-start="128.51" data-duration="170.66" data-volume="0.13"></audio>
+  <audio id="sx-bed-a2" src="media/beds/bed-a2.mp3" data-bed="" data-start="299.87" data-duration="176.87" data-volume="0.13"></audio>
+  <audio id="sx-bed-a3a" src="media/beds/bed-a3a.mp3" data-bed="" data-start="477.44" data-duration="88.4" data-volume="0.13"></audio>
+  <audio id="sx-bed-a3b" src="media/beds/bed-a3b.mp3" data-bed="" data-start="591.882" data-duration="31.32" data-volume="0.13"></audio>
+  <audio id="sx-bed-a4" src="media/beds/bed-a4.mp3" data-bed="" data-start="623.902" data-duration="200.06" data-volume="0.13"></audio>
+  <audio id="sx-bed-a5" src="media/beds/bed-a5.mp3" data-bed="" data-start="824.662" data-duration="171.44" data-volume="0.13"></audio>
+  <audio id="sx-bed-a6" src="media/beds/bed-a6-v3.mp3" data-bed="" data-start="996.802" data-duration="135.600" data-volume="0.13"></audio>
+  <audio id="sx-bed-close" src="media/beds/bed-close-v2.mp3" data-bed="" data-start="1133.102" data-duration="63.42" data-volume="0.13"></audio>
+  <!-- Swells: assets/sfx/sfx-swell.wav (5 s riser) about every 45-60 s, each ending where its narration line ends (riser lands with
+       the line); first one under the hook's "161 lives lost". None inside the CTA window (556.6-592.3) or the KSN holds. Volume 0.4. -->
+  <audio id="sx-swell-01" src="media/sfx/swell.wav" data-bed="" data-start="14.76" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-02" src="media/sfx/swell.wav" data-bed="" data-start="63.43" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-03" src="media/sfx/swell.wav" data-bed="" data-start="122.81" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-04" src="media/sfx/swell.wav" data-bed="" data-start="172.23" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-05" src="media/sfx/swell.wav" data-bed="" data-start="229.45" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-06" src="media/sfx/swell.wav" data-bed="" data-start="287.99" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-07" src="media/sfx/swell.wav" data-bed="" data-start="342.95" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-08" src="media/sfx/swell.wav" data-bed="" data-start="397.95" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-09" src="media/sfx/swell.wav" data-bed="" data-start="453.94" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-10" src="media/sfx/swell.wav" data-bed="" data-start="517.88" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-11" src="media/sfx/swell.wav" data-bed="" data-start="611.065" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-12" src="media/sfx/swell.wav" data-bed="" data-start="662.745" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-13" src="media/sfx/swell.wav" data-bed="" data-start="724.125" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-14" src="media/sfx/swell.wav" data-bed="" data-start="785.825" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-15" src="media/sfx/swell.wav" data-bed="" data-start="831.305" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-16" src="media/sfx/swell.wav" data-bed="" data-start="890.285" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-17" src="media/sfx/swell.wav" data-bed="" data-start="935.545" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-18" src="media/sfx/swell.wav" data-bed="" data-start="984.605" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-19" src="media/sfx/swell.wav" data-bed="" data-start="1035.225" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-20" src="media/sfx/swell.wav" data-bed="" data-start="1083.245" data-duration="5" data-volume="0.4"></audio>
+  <!-- Presenter circle (mg-quickref "Corner circle", 18 Oct 26): Paul's FlashHead face from two passes (7.60 to 556.64 and
+       592.257 to 1179.397, split at the book ad), cut per window by circle_cut.py. Off in his full-frame clips, the CTA,
+       the blackouts, the hook opening and the close card. Read scene by scene on draft-v1 frames: also off under the KSN
+       clips (station graphic in the corner: 264.43, 379.70, 435.22) and where the highlighted path crosses the circle
+       (a3-map-homes 488.02, a3-apartments 509.72, a5-map-sjrmc 884.26). Track 7 face, track 9 ring. -->
+  <video id="pip-w01" class="pip" src="media/pip/paul-w01.mp4" data-start="7.6" data-duration="120.21" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w01" data-start="7.6" data-duration="120.21" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w02" class="pip" src="media/pip/paul-w02.mp4" data-start="128.51" data-duration="63.96" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w02" data-start="128.51" data-duration="63.96" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w03" class="pip" src="media/pip/paul-w03.mp4" data-start="200.87" data-duration="63.56" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w03" data-start="200.87" data-duration="63.56" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w04" class="pip" src="media/pip/paul-w04.mp4" data-start="273.43" data-duration="25.74" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w04" data-start="273.43" data-duration="25.74" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w05" class="pip" src="media/pip/paul-w05.mp4" data-start="299.87" data-duration="79.82" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w05" data-start="299.87" data-duration="79.82" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w06" class="pip" src="media/pip/paul-w06.mp4" data-start="383.99" data-duration="42.48" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w06" data-start="383.99" data-duration="42.48" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w07" class="pip" src="media/pip/paul-w07.mp4" data-start="441.22" data-duration="35.52" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w07" data-start="441.22" data-duration="35.52" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w08" class="pip" src="media/pip/paul-w08.mp4" data-start="477.44" data-duration="10.58" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w08" data-start="477.44" data-duration="10.58" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w09" class="pip" src="media/pip/paul-w09.mp4" data-start="498.04" data-duration="11.68" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w09" data-start="498.04" data-duration="11.68" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w10" class="pip" src="media/pip/paul-w10.mp4" data-start="522.84" data-duration="33.48" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w10" data-start="522.84" data-duration="33.48" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w11" class="pip" src="media/pip/paul-w11.mp4" data-start="591.882" data-duration="31.32" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w11" data-start="591.882" data-duration="31.32" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w12" class="pip" src="media/pip/paul-w12.mp4" data-start="623.902" data-duration="200.06" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w12" data-start="623.902" data-duration="200.06" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w13" class="pip" src="media/pip/paul-w13.mp4" data-start="824.662" data-duration="59.22" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w13" data-start="824.662" data-duration="59.22" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w14" class="pip" src="media/pip/paul-w14.mp4" data-start="895.882" data-duration="44.96" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w14" data-start="895.882" data-duration="44.96" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w15" class="pip" src="media/pip/paul-w15.mp4" data-start="950.342" data-duration="45.76" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w15" data-start="950.342" data-duration="45.76" data-track-index="9"><div class="pipring"></div></section>
+  <!-- pip-w16 ends with nx-a6-s7 (1123.937): through the silent hold after it, the face sat still for 12.8 s (owner 19 Oct 26: "paul is frozen") -->
+  <video id="pip-w16" class="pip" src="media/pip/paul-w16-v2.mp4" data-start="996.802" data-duration="126.76" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w16" data-start="996.802" data-duration="126.76" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w17" class="pip" src="media/pip/paul-w17.mp4" data-start="1133.102" data-duration="34.56" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w17" data-start="1133.102" data-duration="34.56" data-track-index="9"><div class="pipring"></div></section>
+  <!-- g-z1-board: nx-z1-s3 1152.187 for its 10.84 s wav + the 0.30 s seam, cut into ins-paul-6 at 1163.327 -->
+  <div id="host-z1-board" data-composition-id="g-z1-board" data-composition-src="compositions/g-z1-board.html" data-start="1156.522" data-duration="11.14" data-track-index="2" data-width="1920" data-height="1080" data-callback="close: the recommendation board one last time, tile 7 still half lit"></div>
+  <!-- End ask (owner 19 Oct 26, his words, placed before the signature line): two Omni clips at the board end, each cut
+       0.70 s after its last word (e1 "comments." 8.36; e2 "description." 6.10, head trimmed 0.40 s past a conversion blip), staged from assets/end-ask/ (config channel.end_ask) -->
+  <video id="ins-paul-e1" src="media/end-ask/paul-end-ask-v1-oct19-a.mp4" data-start="1167.662" data-duration="9.06" data-media-start="0" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I genuinely appreciate you watching the video till the end. Please like and subscribe and share your suggestions via comments."></video>
+  <video id="ins-paul-e2" src="media/end-ask/paul-end-ask-v1-oct19-b.mp4" data-start="1176.722" data-duration="6.4" data-media-start="0" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I read them all. And if you want the checklist, it's the first link in the description."></video>
+  <!-- Z1 signature line: ins-paul-6 after the end ask, cut 0.70 s after "Hour." 8.70; then the close card, the last 4.0 s -->
+  <video id="ins-paul-6" src="media/paul/ins-paul-6/ins-paul-6.mp4" data-start="1183.122" data-duration="9.4" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Disasters don't ask permission. But they do send warnings. Learn what yours sounds like. This was The Warning Hour."></video>
+  <div id="host-z1-close" data-composition-id="g-z1-close" data-composition-src="compositions/g-z1-close.html" data-start="1192.522" data-duration="4" data-track-index="2" data-width="1920" data-height="1080"></div>
 </div>
 
 <script>
 window.__timelines = window.__timelines || {};
 window.__timelines["ep-joplin-2011"] = gsap.timeline({ paused: true });
+const tl = window.__timelines["ep-joplin-2011"];
+// Quick punch on a still (owner 17 Oct 26: no slow Ken Burns): fast in to s, hold, ease back to 1.0 from at + 1.1. Positions are absolute composition seconds.
+function punch(sel, at, s = 1.10) {
+  tl.fromTo(sel, { scale: 1.0 }, { scale: s, duration: 0.30, ease: "power4.out" }, at);
+  tl.to(sel, { scale: 1.0, duration: 0.45, ease: "power2.inOut" }, at + 1.1);
+}
+/* INTRO */
+punch("#kb-t1-s1-a", 17.71, 1.10);
+punch("#kb-t1-s1-b", 23.46, 1.08);
+punch("#kb-t1-s1-b", 25.03, 1.12);
+/* A1: the theater push onto the NOAA flight, handed to g-a1-theater-map on the B framing */
+tl.fromTo("#kb-a1-s2-a", { scale: 1.0, x: 0, y: 0, transformOrigin: "center" }, { scale: 1.35, x: -20, y: -20, duration: 0.40, ease: "power4.out" }, 140.85);
+tl.fromTo("#kb-a1-s2-b", { scale: 1.0, x: 0, y: 0, transformOrigin: "center" }, { scale: 1.60, x: 120, y: -72, duration: 0.60, ease: "power3.inOut" }, 150.51);
+/* A2 */
+punch("#kb-a2-s1", 296.53, 1.10);
+punch("#kb-a2-s4-a", 347.47, 1.10);
+punch("#kb-a2-s4-b", 350.66, 1.08);
+/* A3 */
+punch("#kb-a3-s6-c1", 537.67, 1.12);
+punch("#kb-a3-s6-c2", 539.29, 1.12);
+punch("#kb-a3-s7-c3", 545.95, 1.12);
+punch("#kb-a3-s7-c1", 548.05, 1.14);
+punch("#kb-a3-s7-c2", 551.21, 1.12);
+/* A4 */
+punch("#kb-a4-s5-c1", 662.372, 1.12);
+punch("#kb-a4-s5-c1", 663.992, 1.22);
+punch("#kb-a4-s7-c1", 716.992, 1.14);
+punch("#kb-a4-s7-c1", 718.792, 1.24);
+punch("#kb-a4-s9-c2", 723.752, 1.18);
+punch("#kb-a4-s11-c3", 765.732, 1.14);
+punch("#kb-a4-s11-c1", 775.052, 1.14);
+punch("#kb-a4-s11-c4", 778.052, 1.14);
+punch("#kb-a4-s11-c2", 781.052, 1.14);
+/* A5: cut punches at the default 1.10, beat punches 1.06. A beat that would land before the cut punch has settled (at + 1.55) is left out. */
+punch("#kb-a5-s1-fema-total-loss", 818.992);
+punch("#kb-a5-s1-fema-total-loss", 821.992, 1.06);
+punch("#kb-a5-s1-east-tower", 824.992);
+punch("#kb-a5-s1-east-tower", 827.712, 1.06);
+punch("#kb-a5-s3-east-tower-low", 854.292);
+punch("#kb-a5-s3-statue", 858.292);
+punch("#kb-a5-s3-statue", 860.012, 1.06);
+punch("#kb-a5-s3-generator", 862.612);
+punch("#kb-a5-s3-tower-ruins", 868.612);
+punch("#kb-a5-s3-tower-ruins", 872.212, 1.06);
+punch("#kb-a5-s4-west-tower", 874.612);
+punch("#kb-a5-s6-greenbriar-east", 896.212);
+punch("#kb-a5-s6-greenbriar-east", 899.732, 1.06);
+punch("#kb-a5-s6-greenbriar-close", 901.512);
+punch("#kb-a5-s6-greenbriar-wall", 906.812);
+/* A6 */
+punch("#kb-a6-s1-walmart-entrance", 1008.132);
+punch("#kb-a6-s3-walgreens-reopens", 1054.392);
+punch("#kb-a6-s4-west-tower-north", 1066.132);
+punch("#kb-a6-s4-west-tower-north", 1068.112, 1.06);
+punch("#kb-a6-s5-mercy-hospital", 1070.892);
+punch("#kb-a6-s5-mercy-hospital", 1073.132, 1.06);
+punch("#kb-a6-s5-east-tower-old", 1075.692);
+punch("#kb-a6-s5-east-tower-old", 1079.112, 1.06);
+punch("#kb-a6-s7-jhs-gym", 1106.332);
+punch("#kb-a6-s7-jhs-gym", 1109.492, 1.06);
+punch("#kb-a6-s7-jhs-auditorium", 1112.332);
 </script>
 </body>
 </html>

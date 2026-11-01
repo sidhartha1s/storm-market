@@ -8,7 +8,7 @@
      (The comment above this host in index.html still carries the pre-retime 1056.267 base; the live nx-a6-s5 starts 1071.267, so 1071.267 + 3.80 = 1075.067.)
      Overlay over c-a6-s5-mercy-hospital (to 1076.067, host-local 1.00) then c-a6-s5-east-tower-old (NIST Fig 3-14, from 1076.067) in index.html.
      Root transparent: no ground.
-     TEXT HELD (brief, open number N7: Mercy "250 mph" is not a facts.md row). Every text slot below is built and cued but EMPTY.
+     TEXT FILLED 18 Oct 26: N7 released by facts.md row C41 (mercy.net, fetched 15:10).
      The orchestrator fills these leaves, in this wording, once a facts.md row exists (the brief's section 5 held text):
        #a6m-l1   a window system designed
        #a6m-l2   to withstand 250 mph winds
@@ -16,11 +16,11 @@
        #a6m-src  mercy.net, Joplin tornado history
        #a6m-h    DESIGNED FOR 250 MPH
      Placement: lower band like g-a6-cmt-nurse (this card lands where that one exits), not the brief's centre y 470: the NIST photographs'
-     windows run to about y 750, so the card (x 120 to 1420, y about 770 to 972) stays under them and clear of the presenter circle (x >= 1600, y >= 680).
+     windows run to about y 750, so the card (x 120 to 1160, y about 770 to 972) stays under them and clear of the presenter circle (x >= 1600, y >= 680).
      The card exits left, not x:980, so it never crosses the circle's corner. */
   #a6m-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
 
-  #a6m-cardwrap { position:absolute; inset:auto; left:120px; width:1300px; bottom:108px; }
+  #a6m-cardwrap { position:absolute; inset:auto; left:120px; width:1040px; bottom:108px; }
   #a6m-card { position:relative; box-sizing:border-box; width:100%; padding:30px 44px 30px 60px; border-radius:28px;
     background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,.14); visibility:hidden; opacity:0; }
@@ -39,7 +39,7 @@
   #a6m-mark { position:absolute; inset:auto; right:40px; top:14px; font-family:Georgia,'Times New Roman',serif; font-size:104px; line-height:104px;
     color:#d8a13a; visibility:hidden; opacity:0; }
   #a6m-src { position:absolute; inset:auto; left:96px; bottom:60px; font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:1px;
-    color:#c8d3e0; visibility:hidden; opacity:0; }
+    color:#c8d3e0; text-shadow:0 1px 4px rgba(4,7,12,.95),0 0 10px rgba(4,7,12,.8); visibility:hidden; opacity:0; }
 </style>
 <div id="a6m-root" data-composition-id="g-a6-mercy" data-width="1920" data-height="1080">
   <div id="a6m-cardwrap">
@@ -47,13 +47,13 @@
       <div id="a6m-rule"></div>
       <div id="a6m-mark">&ldquo;</div>
       <div id="a6m-stage">
-        <div id="a6m-q"><span id="a6m-l1"></span><span id="a6m-l2"></span></div>
-        <div id="a6m-h"></div>
+        <div id="a6m-q"><span id="a6m-l1">a window system designed</span><span id="a6m-l2">to withstand 250 mph winds</span></div>
+        <div id="a6m-h">DESIGNED FOR 250 MPH</div>
       </div>
-      <div id="a6m-qa"></div>
+      <div id="a6m-qa">Mercy</div>
     </div>
   </div>
-  <div id="a6m-src"></div>
+  <div id="a6m-src">mercy.net, Joplin tornado history</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};

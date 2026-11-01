@@ -34,7 +34,7 @@ The page render is the datum (underlines measured on it). Body text at least 26 
 | Page in, push starts | page render | "The" @ 14.56 |
 | Source line | NWS Assessment, Recommendation 2 | "NWS" @ 14.72 |
 | U1 | (page words) impact-based | "impact" @ 16.96 |
-| U2 | tiered information structure | "tears," @ 18.52 (whisper's spelling of "tiers") |
+| U2 | tiered information structure | "tears," @ 18.62 (whisper's spelling of "tiers") |
 | U3 | non-routine warning mechanism | "out" @ 20.10 |
 | U4 | strong and violent tornadoes | "strong" @ 22.10 |
 | Chip | STRONG AND VIOLENT TORNADOES · NWS REC. 2 | "tornadoes." @ 23.06 |

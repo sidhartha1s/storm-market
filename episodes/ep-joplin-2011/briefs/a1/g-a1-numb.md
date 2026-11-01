@@ -45,7 +45,7 @@ degree of credibility (S19). The comment is a viewer's words, and the page is th
   "desensitized or complacent" ±4 px (measure on the image at its final size). If the phrase wraps, use one bar per line, drawn in reading order.
   The bar draws left to right with `scaleX 0 → 1`, `transformOrigin:"left center"`.
 - Chip: glass chip, "NUMB TO SIRENS" in Arial Black 900 52 `#f2f5f8`, tracking 2.
-- Source line: "NWS Assessment, Preface and Finding 2c", Arial 700 20 `#c8d3e0`.
+- Source line: "NWS Assessment, Executive Summary and Finding 2c", Arial 700 20 `#c8d3e0`.
 
 ## 4. MUST BE TRUE IN THE PICTURE
 1. The comment text on screen is the verbatim excerpt with its ellipses, and no word is changed.
@@ -58,7 +58,7 @@ degree of credibility (S19). The comment is a viewer's words, and the page is th
 |---|---|---|
 | ground | | frame 0 |
 | comment card in, rows 1 to 3 | "YouTube comment · RODALCO2007" · "“… no one is paying any attention to the sirens going off. …”" · "under “JOPLIN, MO, Tornado, 22 May 2011”" | panel 0.00 to 0.60, rows from "You've" 0.64 |
-| page in (x 60 → 0, autoAlpha, 0.6 s) + source line | "NWS Assessment, Preface and Finding 2c" | "A" 4.80 |
+| page in (x 60 → 0, autoAlpha, 0.6 s) + source line | "NWS Assessment, Executive Summary and Finding 2c" | "A" 4.80 |
 | underline draws | (none) | "gone" 8.90 to "sirens." 10.04 (1.14 s, power1.inOut) |
 | chip | "NUMB TO SIRENS" (S16) | "sirens." 10.04 |
 | page slow push (scale 1.00 to 1.03, plain `to()`) | | 4.80 to 17.92, continuous |

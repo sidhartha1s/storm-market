@@ -50,15 +50,15 @@ rows only. Cues: `audio/a1-s*.words.json`. Builders: DEEP = Opus 5.5 high, STAND
 
 | comp id | segments | what it shows | DEEP/STANDARD | exemplar | cue span s |
 |---|---|---|---|---|---|
-| g-a1-gutter | a1-s1 | NWS Assessment page, Finding 2b: three resident phrases underlined on the voice; source line | STANDARD | PAGE UNDERLINE base; `library/official/vox-annotate.html` | a1-s1 "Here's" 0.00 to "attention." 13.04 (host 0.00 to 14.04) |
+| g-a1-gutter | a1-s1 | NWS Assessment page, printed p7 above Finding 2c: three resident phrases underlined on the voice; source line | STANDARD | PAGE UNDERLINE base; `library/official/vox-annotate.html` | a1-s1 "Here's" 0.00 to "attention." 13.04 (host 0.00 to 14.04) |
 | g-a1-quote-120 | a1-s2 | Glass quote card (NIST Interview 120, the actor) over the NOAA aerial of the 26th St site | STANDARD | `references/editing-patterns/ep6-glasscard-popfig-bfmg.html` (`.quotecard.glasscard`); `library/inhouse/quote-card.html` (phrase reveal) | a1-s2 "One" 0.00 to "Three" 10.26 |
 | g-a1-theater-map | a1-s2 | MASTER MAP copy: short push to the Stained Glass Theater, 3 markers light; chip 3 LOST HERE; source line | DEEP | MASTER MAP base; `references/editing-patterns/ep3-map-route-fit.html` | a1-s2 "Three" 10.26 to wav end 15.96 |
-| g-a1-numb | a1-s3 | COMMENT CARD (RODALCO2007, its first and only card) + NWS Preface page with "desensitized or complacent" underlined; chip NUMB TO SIRENS; source line | STANDARD | COMMENT CARD base (defined here); PAGE UNDERLINE base | a1-s3 "You've" 0.64 to "off?" 17.14 (host 0.00 to 17.92) |
+| g-a1-numb | a1-s3 | COMMENT CARD (RODALCO2007, its first and only card) + NWS Executive Summary page with "desensitized or complacent" underlined; chip NUMB TO SIRENS; source line | STANDARD | COMMENT CARD base (defined here); PAGE UNDERLINE base | a1-s3 "You've" 0.64 to "off?" 17.14 (host 0.00 to 17.92) |
 | g-a1-strip-sirens | a1-s4 | SIREN STRIP: 229 grey Monday test ticks 2007 to May 2011, 3 red soundings with labels, the empty gap, the 22 May 2011 mark; chips ABOUT 52 TESTS A YEAR, 3 REAL SOUNDINGS; source line | DEEP | SIREN STRIP base; `library/inhouse/stat-timeline.html`, `library/inhouse/event-timeline.html` | a1-s4 "In" 0.00 to "2011." 13.68 (host 0.00 to 14.64) |
 | g-a1-finding31 | a1-s6 | NIST Executive Summary page, Finding 31 sentence underlined in three strokes; chip NO FALSE-ALARM PROBLEM; source line | STANDARD | PAGE UNDERLINE base; `library/official/vox-annotate.html` | a1-s6 "I" 0.00 to "from?" 12.14 (host 0.00 to 12.96) |
 | g-a1-strip-warnings | a1-s7, a1-s8 | SIREN STRIP copy (finished state) above a separate amber tally of 18 warnings, 4 verified, then a recount of 12 warnings, 1 verified; chips 14 OF 18 · NO TORNADO, 11 OF 12, TWO DIFFERENT COUNTS; name card; source lines | DEEP | SIREN STRIP base; `library/inhouse/split-shared-scale.html` (two sets never merged) | a1-s7 "They" 0.00 to a1-s8 "evening." 16.56 (host to a1-s8 wav end 17.36) |
 | g-a1-quote-58 | a1-s9 | Beige cite card (Joplin native, TV said north of town), COMMENT CARD copy ("The sad part…"), then the NIST media sentence on the cite card; chip TRACK: NORTH OF TOWN | STANDARD | `library/inhouse/quote-card.html`; COMMENT CARD base | a1-s9 "Then," 0.00 to "that?" 11.14 (host 0.00 to 11.72) |
-| g-a1-bubble-page | a1-s10 | NWS Assessment page, Finding 2b, "protective bubble" underlined; source line | STANDARD | PAGE UNDERLINE base | a1-s10 "A" 0.00 to "Since" 8.76 |
+| g-a1-bubble-page | a1-s10 | NWS Assessment page, p7 above Finding 2c, "protective bubble" underlined; source line | STANDARD | PAGE UNDERLINE base | a1-s10 "A" 0.00 to "Since" 8.76 |
 | g-a1-ring | a1-s10 | Regional map: Joplin's outline, the one 1971 dot inside, an 80-mile ring, 182 dots; rail chips 1 IN THE CITY, 182 WITHIN 80 MILES; source line | DEEP | `library/inhouse/master-map-us-canada.html` (Natural Earth states, public domain) | a1-s10 "Since" 8.76 to "strength." 18.50 (host 8.76 to 19.56) |
 | g-a1-second-siren | a1-s11 | MASTER MAP copy: two siren rings, labelled First siren and Second siren, the second one pulsing | DEEP | MASTER MAP base + SIREN RING (`g-a2-countdown`) | a1-s11 "The" 0.50 to "meant." 5.18 (host 0.00 to 5.88) |
 
@@ -69,7 +69,7 @@ builder takes the two master-map comps with the a2 map comps. `g-a1-ring` stands
 
 | seg | graphic on the Picture line | comp |
 |---|---|---|
-| a1-s1 | NWS page Finding 2b, three lines underlined; source line | g-a1-gutter |
+| a1-s1 | NWS page p7 above Finding 2c, three lines underlined; source line | g-a1-gutter |
 | a1-s2 | quote card + attribution over the theater picture | g-a1-quote-120 |
 | a1-s2 | three markers on the theater outline on the master map; chip 3 LOST HERE | g-a1-theater-map |
 | a1-s3 | RODALCO2007 comment card; NWS page "desensitized or complacent" underline; chip NUMB TO SIRENS; source line | g-a1-numb |

@@ -76,9 +76,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(Q + "srcfloat", { y: 0 }, { y: -4, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 4, immediateRender: false }, 0.4);
   tl.fromTo(Q + "chipfloat", { y: 0 }, { y: -4, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 2, immediateRender: false }, 2.84);
 
-  /* exit, segment 6.40 to 7.00 = local 5.54 to 6.14: chip and source slide out, the strokes fade through */
-  tl.to([Q + "chip", Q + "src"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 5.54);
-  tl.to([hl, br], { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 5.54);
+  /* exit, local 5.04 to 5.44 (18 Oct 26: host now ends with the Fig 3-10 photo at 5.44, frame read 902.47): chip and source slide out, the strokes fade through */
+  tl.to([Q + "chip", Q + "src"], { x: 980, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 5.04);
+  tl.to([hl, br], { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 5.04);
 
   window.__timelines["g-a5-windows"] = tl;
 })();

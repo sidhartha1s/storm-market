@@ -43,7 +43,7 @@ government's own page; the underline follows Paul's voice.
 | element | text | cue |
 |---|---|---|
 | card in; push starts (ease none, to the host end) | | "But" 0.00 |
-| source line | "NWS Central Region Service Assessment, Joplin, 2011 · Finding 2b" (S17) | "But" 0.00 + 0.3 |
+| source line | "NWS Central Region Service Assessment, Joplin, 2011 · Finding 2c" (S17) | "But" 0.00 + 0.3 |
 | bar 1 draws (to "time," 4.08 + 0.2) | | "sirens" 2.86 |
 | wash over the other lines fades in (0.4 s) | | "sirens" 2.86 |
 | bar 2 draws (0.6 s) | | "even" 4.60 |

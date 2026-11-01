@@ -42,7 +42,7 @@ Numbers: `research/facts.md` rows only. Cues: `audio/<seg>.words.json`.
 ## Graphics
 | comp id | segments | what it shows | DEEP/STANDARD | exemplar | cue span (s) |
 |---|---|---|---|---|---|
-| `g-a4-strip` | A4-S1 | MASTER MAP copy: push into the 20th St / Range Line commercial strip, refuge-area markers in Walmart and Home Depot | DEEP (Opus 5.5 high) | MASTER MAP base; `references/editing-patterns/ep3-map-route-fit.html` | a4-s1 0.00 → "basement," 5.24 (+0.6 exit) |
+| `g-a4-strip` | A4-S1 | MASTER MAP copy: push into the 20th St / Range Line commercial strip, refuge-area markers in Walmart and Home Depot | DEEP (Opus 5.5 high) | MASTER MAP base; `references/editing-patterns/ep3-map-route-fit.html` | a4-s1 0.00 → "and" 5.88 (straight cut to the clip) |
 | `g-a4-walmart` | A4-S3, A4-S4 | Walmart plan: 200 dots, 55 gather at the back refuge band, back wall falls in; section A–A: wall on cabinets, the pocket; 3 LOST chip | DEEP (Opus 5.5 high) | `references/editing-patterns/ep2-met-explainer.html`; official `svg-stroke-trace` | a4-s3 0.00 → a4-s4 "Depot?" 16.68 (+1.0), photo cutaway inside it |
 | `g-a4-comment` | A4-S5 | COMMENT CARD over the NIST Home Depot photo: "what about that Home Depot? Think that'd be a bad spot?" | STANDARD (Sonnet 5.5 high) | COMMENT CARD base (A1-S3); official `testimonial-proof-card` | a4-s5 0.00 → "standing." 3.54 (+0.6) |
 | `g-a4-hd-panels` | A4-S5 | glass label "63 of 73 wall panels collapsed" with a 73-tick strip, over the DVIDS Home Depot site aerial | STANDARD (Sonnet 5.5 high) | `references/editing-patterns/ep6-glasscard-popfig-bfmg.html` | a4-s5 "tornado" 22.24 → "What" 26.64 (+0.6) |
@@ -64,12 +64,12 @@ Numbers: `research/facts.md` rows only. Cues: `audio/<seg>.words.json`.
 | credit, church-site and Macadoodles-site aerials (stand-ins) | A4-S11, A4-S13 | "NOAA aerial, 24 May 2011" (see the stand-in note in `g-a4-churches.md`) |
 
 ## What the Picture lines leave open (the orchestrator decides; each brief follows the reading stated in it)
-- **A4-S1 clip window:** the map holds to "basement," 5.24, then the Range Line corridor clip has "and" 5.88 to the wav end
+- **A4-S1 clip window:** the map holds to a4-s1 "basement," 5.24, then the Range Line corridor clip has a4-s1 "and" 5.88 to the wav end
   7.32 plus the gap before A4-S3: under 2 s unless that gap is long.
 - **A4-S5 order and the panel label:** the photo has only a4-s5 0.00 to "About" 4.56 before the plan, too short for both the
   comment card and the "63 of 73" label. Reading taken: the comment card sits over the photo; the label moves onto the Home
-  Depot site aerial (the Picture line's CLIP NEEDED) from "The tornado center passed" 21.80. The centre line itself waits
-  for A4-S6 as the Picture lines place it. Alternative: start `g-a4-20th` at a4-s5 "The" 21.80 so the line draws on
+  Depot site aerial (the Picture line's CLIP NEEDED) from a4-s5 "The" 21.80 ("The tornado center passed"). The centre line itself waits
+  for A4-S6 as the Picture lines place it. Alternative: start `g-a4-20th` at a4-s5 "The" 21.80 so the line draws on a4-s5
   "passed" 22.88, and put the label back on the photo with a shorter comment hold.
 - **A4-S4 markers:** the Picture line asks for three markers "near the middle of the store"; held back (Open 1).
 - **A4-S7, S9, S11, S13 photos:** no lawful ground photo exists of Dillon's, the theater, either church or Macadoodles

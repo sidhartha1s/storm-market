@@ -21,7 +21,7 @@ Residents told the NWS that storms always blew over and missed Joplin, as if the
 ## 3. GEOMETRY
 - Page: a 1 px `rgba(255,255,255,.14)` edge and a soft shadow (0 20px 60px rgba(0,0,0,.5)).
 - Underline U1: a 6 px Amber 1 `#d8a13a` bar under "protective bubble" only (the Picture line underlines that phrase), 6 px below the baseline, ±4 px glyph to glyph.
-- Source line: "NWS Central Region Service Assessment, Joplin, 2011 · Finding 2b", Arial 700 20 `#c8d3e0`.
+- Source line: "NWS Central Region Service Assessment, Joplin, 2011 · Finding 2c", Arial 700 20 `#c8d3e0`.
 
 ## 4. MUST BE TRUE IN THE PICTURE
 1. The bar sits under "protective bubble" and under nothing else.
@@ -30,7 +30,7 @@ Residents told the NWS that storms always blew over and missed Joplin, as if the
 ## 5. PANEL TEXT (exact) and CUES (a1-s10)
 | element | text | cue |
 |---|---|---|
-| ground + page in (y 30 → 0, autoAlpha, 0.6 s) + source line | "NWS Central Region Service Assessment, Joplin, 2011 · Finding 2b" | frame 0. The source line rises on "believed" 1.08 |
+| ground + page in (y 30 → 0, autoAlpha, 0.6 s) + source line | "NWS Central Region Service Assessment, Joplin, 2011 · Finding 2c" | frame 0. The source line rises on "believed" 1.08 |
 | page push toward the phrase (scale 1.00 to 1.12, plain `to()`, power1.inOut) | | "storms" 1.34 to "protective" 5.14 |
 | U1 draws | | "protective" 5.14 to "around" 5.88 |
 | hold, slow push continues (1.12 to 1.14) | | 5.88 to 8.16 |

@@ -14,7 +14,7 @@
 
   #bh-board { position:absolute; inset:0; }
   #bh-grid { position:absolute; inset:auto; left:380px; top:250px; width:792px; height:552px; opacity:.25; }
-  .bh-tile { position:absolute; box-sizing:border-box; width:180px; height:120px; border-radius:14px; background:#2a3644; border:1px solid #4a5560; }
+  .bh-tile { position:absolute; box-sizing:border-box; width:180px; height:120px; border-radius:14px; background:#2a3644; border:1px solid #4a5560; transform:scale(.96); }  /* lifted state: scale in CSS, so frame 0 is right on a first seek */
   .bh-n { position:absolute; inset:auto; left:16px; top:16px; font-family:Arial,sans-serif; font-weight:700; font-size:30px; line-height:34px; color:#93a3b2; }
 
   /* numerals of tiles 8, 11, 12 sit under the opaque lifted tile (box x 744 to 1176, y 356 to 644); hidden so the sub-rows never share pixels with them */
@@ -99,10 +99,7 @@ window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
   const Q = "#bh-";
-  const tiles = ["1","2","3","4","5","6","8","9","10","11","12","13","14","15","16"].map(n => Q + "t" + n).join(",");
 
-  /* the lifted state: 15 tiles at scale 0.96 around their own centres (opacity .25 is on the grid in CSS) */
-  tl.set(tiles, { scale: 0.96, transformOrigin: "50% 50%" }, 0);
   tl.set(Q+"m3-fill", { transformOrigin: "50% 50%", scale: 1 }, 0);
   tl.set([Q+"m1", Q+"m2", Q+"m3", Q+"m4"], { transformOrigin: "50% 50%" }, 0);
 

@@ -218,7 +218,7 @@ window.__timelines = window.__timelines || {};
      (a seek back from the exit left opacity:1 inline on these and shifted the SVG labels' anti-aliasing) */
   tl.set(Q + "cam", { scale: 1, autoAlpha: 1 }, 0);
   tl.set([Q + "ground", Q + "eyebrow"], { autoAlpha: 1 }, 0);
-  tl.to(Q + "cam", { scale: 1.02, duration: END - 0.5 - 10.96, ease: "none" }, 10.96);
+  tl.to(Q + "cam", { scale: 1.05, duration: END - 0.5 - 0.9, ease: "none" }, 0.9);   /* slow push from 0.9: draft-v1 froze 6.1 s (806.8-812.9) under the small walking figures */
 
   /* exit, last 0.5 s: chip and source slide out left, the diagram and its ground fade through to the next picture */
   tl.to(Q + "chip", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, END - 0.6);

@@ -56,7 +56,7 @@ added on the owner's note:
 | open (0–3 s) | the number, spoken and on the card: "Hawaii is still counting. 41,000 homes dark." | the question the viewer already has: "Why does the sea pull back before a tsunami?" | the headline card: "SHE TIED 13 CHILDREN TOGETHER AND WALKED INTO THE BLIZZARD" |
 | body | who is at risk, what the agency said today (named agency, verbatim quote on screen) | one mechanism, one diagram from the MG library, one real clip | who, where, when; the moment; what happened to them |
 | close | the unresolved tracking line + "the full update is on the channel" | the US stake in one line | the name once more, the date, "the full story is in the documentary" |
-| picture | agency map / PD clip / NOAA loop, 2–4 s per picture, popfig number | real footage 40 %, one designed diagram 40 %, map 20 % | 1–2 archive photographs with slow Ken Burns, the card held static |
+| picture | agency map / PD clip / NOAA loop, 2–4 s per picture, popfig number | real footage 40 %, one designed diagram 40 %, map 20 % | 1–2 archive photographs, the card held static |
 | model | RB Today Weather (news template 1.39M), DiddyKnowThat structure | 4Facts, TheoTheChillOtter | Global Buzz Tv, Past Vault |
 | source per video | the mini's `edit_script.md` and its clip pool | the mini's mechanism beat, or an evergreen from the doc bank | the doc's named-person chapter (Joplin, Tri-State, Katrina) or a dated event with a person |
 

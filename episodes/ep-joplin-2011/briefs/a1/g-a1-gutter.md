@@ -17,7 +17,7 @@ gutter", and came so often they stopped paying attention (S18, S17). These are t
 
 ## 2. DATUM, SCALE, ORIENTATION
 - Ground `radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%)` from frame 0.
-- Page box x 300 to 1560, y 200 to 940. Crop the image to the Finding 2b paragraph and fit it inside the box. Choose the crop so the quoted
+- Page box x 300 to 1560, y 200 to 940. Crop the image to the printed p7 paragraph above Finding 2c and fit it inside the box. Choose the crop so the quoted
   phrases' capital letters are at least 28 px tall on screen.
 - Chip zone: none (the Picture line has no chip). Source line x 96, baseline 1010.
 - Presenter circle: nothing enters x ≥ 1600, y ≥ 680, so the circle may stay on.
@@ -30,7 +30,7 @@ gutter", and came so often they stopped paying attention (S18, S17). These are t
   - U2 "all sirens mean is there is a little more water in the gutter"
   - U3 "bombarded with [sirens] so often that we don't pay attention"
 - Each finished bar stays on, so three bars show by the end.
-- Source line: "NWS Central Region Service Assessment, Joplin, 2011 · Finding 2b", Arial 700 20 `#c8d3e0`.
+- Source line: "NWS Central Region Service Assessment, Joplin, 2011 · Finding 2c", Arial 700 20 `#c8d3e0`.
 
 ## 4. MUST BE TRUE IN THE PICTURE
 1. Each bar sits under its own phrase only and is drawn while that phrase is spoken.
@@ -40,7 +40,7 @@ gutter", and came so often they stopped paying attention (S18, S17). These are t
 ## 5. PANEL TEXT (exact) and CUES (a1-s1)
 | element | text | cue |
 |---|---|---|
-| ground + page (in place at scale 1.00 on frame 0; the first move is the drift below) + source line | "NWS Central Region Service Assessment, Joplin, 2011 · Finding 2b" | frame 0. The source line rises on "said" 1.34 |
+| ground + page (in place at scale 1.00 on frame 0; the first move is the drift below) + source line | "NWS Central Region Service Assessment, Joplin, 2011 · Finding 2c" | frame 0. The source line rises on "said" 1.34 |
 | slow drift toward U1 (page y −20 px over 3 s) | | "They" 2.86 |
 | U1 draws | | "even" 4.56 to "thunderstorms." 5.04 + 0.5 s |
 | drift toward U2 | | "Some" 6.48 |
