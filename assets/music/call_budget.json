@@ -1,5 +1,5 @@
 {
-  "calls_used": 11,
+  "calls_used": 19,
   "log": [
     {
       "outfile": "SCHEMA_PROBE (not saved as a track)",
@@ -98,7 +98,7 @@
       }
     },
     {
-      "outfile": "aftermath-somber.mp3 (take 3, FINAL — piano dropped entirely per owner's take-3 strategy)",
+      "outfile": "aftermath-somber.mp3 (take 3, FINAL \u2014 piano dropped entirely per owner's take-3 strategy)",
       "caption": "slow mournful string adagio, sustained legato cello and viola, soft warm pad, grief and stillness, funeral elegy, extremely sparse, long held notes, no piano, no plucked instruments, no drums, no percussion, no rhythm, free tempo rubato",
       "duration": 120,
       "submit_resp": {
@@ -107,6 +107,74 @@
         }
       },
       "note": "Owner authorized +2 calls (budget bumped 10->12 in gen_music.py) after take 2 (7c2a1d37) failed QC with per-second piano-note transients. Take 3 dropped piano/plucked instruments entirely in favor of sustained string adagio. Spectrogram PASS (continuous phrase-level energy, matches hopeful-resolve/tense-curious PASS pattern) -- promoted to aftermath-somber.mp3. Only 1 of the 2 authorized calls was needed; 1 remains unused."
+    },
+    {
+      "outfile": "elreno-dread-build.mp3",
+      "caption": "dark cinematic documentary underscore, low sustained strings and sub-bass pulse, slow building dread, sparse distant percussion, no melody hook, no drum kit, a storm gathering over open plains",
+      "duration": 120,
+      "model": "AceStep_1_5_XL_Turbo_INT8"
+    },
+    {
+      "outfile": "elreno-storm.mp3",
+      "caption": "tense hybrid orchestral documentary score, driving low string ostinato, sparse deep taiko hits, rising intensity, chaotic storm, no vocals, no drum kit",
+      "duration": 120,
+      "model": "AceStep_1_5_XL_Turbo_INT8"
+    },
+    {
+      "outfile": "elreno-aftermath.mp3",
+      "caption": "somber ambient documentary underscore, soft sustained strings and distant sparse piano notes, quiet devastation after a tornado, slow, spacious, grief",
+      "duration": 120,
+      "model": "AceStep_1_5_XL_Turbo_INT8"
+    },
+    {
+      "outfile": "elreno-people.mp3",
+      "caption": "warm restrained documentary underscore, gentle cello and soft pads, human and reflective, hopeful but heavy, slow tempo, no drums",
+      "duration": 120,
+      "model": "AceStep_1_5_Turbo"
+    },
+    {
+      "outfile": "elreno-dread-build.mp3",
+      "caption": "dark cinematic documentary underscore, low sustained strings and sub-bass pulse, slow building dread, sparse distant percussion, no melody hook, no drum kit, a storm gathering over open plains",
+      "duration": 120,
+      "model": "AceStep_1_5_XL_Turbo_INT8",
+      "submit_resp": {
+        "data": {
+          "request_id": "4aff3d50-c60e-4fbc-b202-9e5b904c7167"
+        }
+      }
+    },
+    {
+      "outfile": "elreno-storm.mp3",
+      "caption": "tense hybrid orchestral documentary score, driving low string ostinato, sparse deep taiko hits, rising intensity, chaotic storm, no vocals, no drum kit",
+      "duration": 120,
+      "model": "AceStep_1_5_XL_Turbo_INT8",
+      "submit_resp": {
+        "data": {
+          "request_id": "a3ee10f5-3287-4de2-ae07-2499aa224b86"
+        }
+      }
+    },
+    {
+      "outfile": "elreno-aftermath.mp3",
+      "caption": "somber ambient documentary underscore, soft sustained strings and distant sparse piano notes, quiet devastation after a tornado, slow, spacious, grief",
+      "duration": 120,
+      "model": "AceStep_1_5_XL_Turbo_INT8",
+      "submit_resp": {
+        "data": {
+          "request_id": "b0212658-b1a1-4343-8083-3771824db77f"
+        }
+      }
+    },
+    {
+      "outfile": "elreno-people.mp3",
+      "caption": "warm restrained documentary underscore, gentle cello and soft pads, human and reflective, hopeful but heavy, slow tempo, no drums",
+      "duration": 120,
+      "model": "AceStep_1_5_Turbo",
+      "submit_resp": {
+        "data": {
+          "request_id": "eefcad65-c964-479b-95d2-0c48d921359f"
+        }
+      }
     }
   ]
 }
