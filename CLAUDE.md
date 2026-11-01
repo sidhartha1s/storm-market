@@ -151,7 +151,9 @@ Per episode in `episodes/<slug>/`. The skill's phase map points at these step nu
    `scripts/verify_render.sh <episode-dir> <basename> <draft|full>` (required: the mode you gave `render.cmd`). Never call a rule fixed from your shot map: re-run the gates on the final `index.html`.
 7. Deliverables: `python3 scripts/master_deliverables.py episodes/<slug> <basename>` makes the 1080p master at
    -14 LUFS and the EN SRT (needs the `nx-*` id on narration audio). No HEVC archive (owner 28 Sep 26: disk). The 1080p
-   `-master.mp4` IS the upload file, no upscale. The moment the final master exists: move the master and SRT (both
+   `-master.mp4` IS the upload file, no upscale. Finals are named in ship order, `E<nn>-<topic>-final-master.mp4` and
+   `.srt` (owner 1 Nov 26: "E01 or E02 then the topic name and then the final master, keep it simple"; E09 = Galveston,
+   new slugs start `e10-`), on both laptops, md5 checked after every copy. The moment the final master exists: move the master and SRT (both
    gitignored) into the MAIN checkout's `episodes/<slug>/renders/` and delete every other render (drafts, the
    pre-master final, previews). Never delete the master. `metadata.md` stays tracked in the episode folder. After
    publish, commit, PR and merge the episode branch, then remove the worktree. `metadata.md` at publish: first URL
