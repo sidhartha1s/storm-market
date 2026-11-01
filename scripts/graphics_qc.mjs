@@ -94,7 +94,9 @@ const PROBE = `(() => {
     const v = t.vars || {};
     const off = (x) => typeof x === 'number' && Math.abs(x) >= 1000 || /^[-+]?(1\\d\\d|[2-9]\\d\\d)%$/.test(String(x));
     const hide = v.opacity === 0 || v.autoAlpha === 0 || off(v.x) || off(v.y) || Math.abs(v.xPercent || 0) >= 100 || Math.abs(v.yPercent || 0) >= 100;
-    R.tweens.push({ start: +st.toFixed(2), dur: +td.toFixed(2), props, ease: String(t.vars && t.vars.ease || 'none'), target: tgt, hide });
+    // text-bearing target: only a slide that carries text can trip the text-geometry checks mid-slide
+    const text = !!(t.targets && t.targets().some(el => el && el.textContent && el.textContent.trim()));
+    R.tweens.push({ start: +st.toFixed(2), dur: +td.toFixed(2), props, ease: String(t.vars && t.vars.ease || 'none'), target: tgt, hide, text });
     R.beats.push(+st.toFixed(2));
     if (td > 4) R.beats.push(+(st + td).toFixed(2)); // long tweens = continuous motion
   }
@@ -290,10 +292,12 @@ for (const f of files) {
 
   /* --- geometry + typography at every beat and each midpoint --- */
   const samples = [...new Set(beats.flatMap((b, i) => [b + 0.35, i < beats.length - 1 ? (b + beats[i+1]) / 2 : b + 0.9]))]
-    .filter(t => t >= 0.4 && t <= probe.duration - 1.0)
-    /* entry/exit slides intentionally park elements off-frame; don't audit geometry mid-slide */
-    .filter(t => !probe.tweens.some(tw => tw.props.includes('x') && tw.dur <= 1.2 &&
-                 tw.start - 0.15 <= t && t <= tw.start + tw.dur + 0.35));
+    .filter(t => t >= 0.4 && t <= probe.duration - 1.0);
+  /* entry/exit slides intentionally park text off-frame: skip the geometry checks while a slide of a
+     text-bearing element runs. Design stats (elements, tiers, background) read every sample: dropping the
+     whole sample made a comp of back-to-back debris slides read as "0 elements on screen" (g-a4-14-timbers). */
+  const midSlide = t => probe.tweens.some(tw => tw.text && tw.props.includes('x') && tw.dur <= 1.2 &&
+                   tw.start - 0.15 <= t && t <= tw.start + tw.dur + 0.35);
   const seenOverlap = new Set(), seenCrop = new Set(), seenOob = new Set(), seenEmpty = new Set(), seenBroken = new Set();
   let tierMax = 0, maxCoverage = 0, maxTextNodes = 0; const elemSamples = []; let gradAny = false;
   for (const t of samples) {
@@ -302,6 +306,7 @@ for (const f of files) {
     maxCoverage = Math.max(maxCoverage, m.coverage || 0);
     maxTextNodes = Math.max(maxTextNodes, m.textNodes || 0);
     elemSamples.push(m.elements || 0); gradAny = gradAny || !!m.gradient;
+    if (midSlide(t)) continue;
     for (const o of m.texts) { const k = o.a + '|' + o.b; if (!seenOverlap.has(k)) { seenOverlap.add(k); add(name, 'text-collision', `"${o.a}" ⨯ "${o.b}" (${o.overlapPct}% at ${t.toFixed(1)}s)`); } }
     for (const o of m.oob) { const k = o.text; if (!seenOob.has(k)) { seenOob.add(k); add(name, 'out-of-frame', `"${o.text}" at x${o.x} y${o.y} → ${o.right}×${o.bottom} (${t.toFixed(1)}s)`); } }
     /* keyed by source AND reason: an undeclared img of the same file still fails beside a declared one */
