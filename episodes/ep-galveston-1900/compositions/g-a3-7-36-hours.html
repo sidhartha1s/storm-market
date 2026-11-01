@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a3-7-36-hours · A3-S6 · ep-galveston-1900 · DEEP (Opus) · brief: briefs/a3/g-a3-7-36-hours.md
+  Claim: Galveston was warned on the morning of Friday the 7th, nearly 36 hours before the disaster; that same day the
+  warning went out all along the Texas coast. So the island had nearly a day and a half.
+  Source: MWR Sept 1900 p. 376 (Boston Herald, 17 Sept 1900). No clock hour, no "moderate", no warning wording on screen.
+  TIMING: audio/a3-s6.words.json, comp-local = segment time. Host 0.00 to 12.90 (segment 12.04 + 0.86 land, cap 13.0).
+    Galveston @0.00 ; Friday @1.20 ; nearly @3.26 ; 36 @3.52 ; hours @4.12 ; disaster @5.00 ; That @6.04 ;
+    warning @7.38 ; coast @9.22 ; so @10.06 ; day @11.40 ; half @11.82
+
+  PART A (0.00 to 6.04): page panel. Scan A3-S6_c1 is 1150 x 1565. Column crop measured on the scan (ink < 110):
+    Herald paragraph text x 569..1028, y 966..1249 -> crop x 560..1038 (478 px), y 960..1253 (293 px).
+    Box 1240 x 760 at left 340, top 260 -> k = 1240 / 478 = 2.59414. Image 2983.3 x 4059.8 at (-1452.7, -2490.4).
+    Lit words measured on the scan (word runs, ink < 110):
+      "nearly thirty-six"          x 924..1026, y 1082..1095 -> band 1 src (921,1081)-(1029,1096) = box (936.5,313.9) 280.2 x 38.9
+      "hours before the disaster"  x 571..727,  y 1096..1108 -> band 2 src (567,1096)-(730,1109) = box (18.2,352.8) 422.8 x 33.7
+    The push scales the whole box (never the image inside it), so the crop and every whole line hold at both ends:
+    scale 0.94 -> 1.0 about box (622.6, 352.8), the lit line. At 1.0 the box spans x 340..1580, y 260..1020.
+  PART B (6.04 to 10.06): g-intro-4 plate, X = (lon + 100) * 90, Y = (41 - lat) * 103.95. Camera V-TX cx 420, cy 1350,
+    s 0.90 -> 0.93 drift. screen = (960 + (X - cx) * s, 540 + (Y - cy) * s).
+    Land: g-intro-4 BASEMAP land clipped to plate box X -760..1600, Y 680..2020, simplified 0.8 plate units (shapely,
+    one-shot). Dropped: the Cuba ring and six islets below Y 1980 (Cuba's west tip lands at screen x >= 1800, y >= 995,
+    the presenter corner; the islets are off frame). Border and state lines clipped to the same box.
+    Coast stroke = land ring 0 vertices 1700 (Sabine Pass, 555.2,1174.6) to 1823 (Rio Grande mouth, 257.6,1561.9),
+    split at vertex 1709 (471.4,1209.3), the mainland vertex nearest Galveston (468.0,1216.2), 7.7 plate units away.
+    Screen at s 0.90: Galveston (1003.2,419.6), Sabine (1078.5,379.4), Rio Grande mouth (812.9,732.1).
+  PART C (10.06 to end): bar x 260..1460 (1200 px) at y 560, h 28. 36 h = 1200 px, 33.33 px per hour. Ends only:
+    FRI MORNING, SAT EVENING.
+-->
+<template>
+<style>
+  #g-a3-7-36-hours-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .ga37-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
+  .ga37-hide { opacity:0; visibility:hidden; }
+  .ga37-part { position:absolute; inset:0; }
+
+  /* source line, top-left */
+  #g-a3-7-36-hours-src { position:absolute; inset:auto; left:96px; top:54px; max-width:1100px; white-space:nowrap; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    font-weight:700; font-size:19px; line-height:1.4; color:#c8d3e0; letter-spacing:1px; }
+
+  /* PART A: page panel */
+  #g-a3-7-36-hours-page { position:absolute; inset:auto; left:340px; top:260px; width:1240px; height:760px; overflow:hidden; border-radius:12px;
+    background:#e9e4d8; box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  .ga37-scan { position:absolute; left:-1452.72px; top:-2490.38px; width:2983.26px; height:4059.83px; max-width:none; }
+  #g-a3-7-36-hours-dim { position:absolute; inset:0; background:rgba(4,7,12,0.45); }
+  /* lit copy of the scan above the dim, clipped to the two lit word runs (box px) */
+  #g-a3-7-36-hours-lit { position:absolute; inset:0;
+    clip-path:polygon(936.5px 313.9px, 1216.7px 313.9px, 1216.7px 352.8px, 441px 352.8px, 441px 386.5px, 18.2px 386.5px, 18.2px 352.8px, 936.5px 352.8px); }
+  .ga37-band { position:absolute; background:#d8a13a; opacity:0.28; mix-blend-mode:multiply; transform-origin:left center; }
+  #g-a3-7-36-hours-band1 { left:936.5px; top:313.9px; width:280.2px; height:38.9px; }
+  #g-a3-7-36-hours-band2 { left:18.2px; top:352.8px; width:422.8px; height:33.7px; }
+
+  /* chips: centred by xPercent in tl.set; inner floats */
+  .ga37-chip { position:absolute; inset:auto; }
+  .ga37-chipin { display:table; padding:24px 48px 22px; border-radius:28px; text-align:center; }
+  .ga37-chipmain { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  #g-a3-7-36-hours-c1 { left:960px; top:150px; }
+  #g-a3-7-36-hours-c2 { left:860px; top:300px; }
+
+  /* PART B: coast map */
+  .ga37-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .ga37-land { fill:#15202b; stroke:#5a768f; stroke-width:2px; stroke-linejoin:round; }
+  .ga37-border { fill:none; stroke:#4a5560; stroke-width:1.5px; }
+  .ga37-states { fill:none; stroke:#2a3644; stroke-width:1.5px; }
+  .ga37-coast { fill:none; stroke:#d8a13a; stroke-width:6.67; stroke-linecap:round; stroke-linejoin:round;
+    filter:drop-shadow(0 0 6px #d8a13a) drop-shadow(0 0 12px rgba(216,161,58,0.6)); }
+  .ga37-lab { font-family:Arial, sans-serif; font-weight:700; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .ga37-labbig { font-family:'Arial Black', Arial, sans-serif; font-weight:900; paint-order:stroke; stroke:#04070c; stroke-width:6px; stroke-linejoin:round; }
+
+  /* PART C: 36 h bar */
+  #g-a3-7-36-hours-track { position:absolute; inset:auto; left:260px; top:560px; width:1200px; height:28px; border-radius:14px; background:#15202b;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,0.10); }
+  #g-a3-7-36-hours-fill { position:absolute; inset:auto; left:260px; top:560px; width:1200px; height:28px; border-radius:14px; background:#d8a13a; transform-origin:left center; }
+  #g-a3-7-36-hours-tick { position:absolute; inset:auto; left:258px; top:546px; width:4px; height:56px; border-radius:2px; background:#f2f5f8;
+    box-shadow:0 0 10px rgba(242,245,248,0.8); }
+  .ga37-end { position:absolute; inset:auto; top:612px; font-weight:700; font-size:26px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  #g-a3-7-36-hours-lfri { left:260px; }
+  #g-a3-7-36-hours-lsat { right:460px; text-align:right; }
+</style>
+<div id="g-a3-7-36-hours-root" data-composition-id="g-a3-7-36-hours" data-width="1920" data-height="1080">
+
+  <!-- PART A: MWR p. 376, Boston Herald paragraph -->
+  <div id="g-a3-7-36-hours-partA" class="ga37-part">
+    <div id="g-a3-7-36-hours-page" class="ga37-hide">
+      <img class="ga37-scan" src="media/candidates/a3/A3-S6_c1_mwr-sept1900-p376_boston-herald-evening-sun.png" alt="">
+      <div id="g-a3-7-36-hours-dim" class="ga37-hide"></div>
+      <div id="g-a3-7-36-hours-lit"><img class="ga37-scan" src="media/candidates/a3/A3-S6_c1_mwr-sept1900-p376_boston-herald-evening-sun.png" alt=""></div>
+      <div id="g-a3-7-36-hours-band1" class="ga37-band"></div>
+      <div id="g-a3-7-36-hours-band2" class="ga37-band"></div>
+    </div>
+    <div id="g-a3-7-36-hours-c1" class="ga37-chip ga37-hide">
+      <div id="g-a3-7-36-hours-c1in" class="ga37-chipin ga37-glass"><span class="ga37-chipmain">NEARLY 36 HOURS</span></div>
+    </div>
+  </div>
+
+  <!-- PART B: Texas coast on the g-intro-4 plate -->
+  <div id="g-a3-7-36-hours-partB" class="ga37-part ga37-hide">
+    <svg class="ga37-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="g-a3-7-36-hours-cam">
+        <path class="ga37-land" vector-effect="non-scaling-stroke" d="M-759.2,1636.1 L-755.9,1648.1 L-752.5,1635.2 L-748.6,1639.4 L-751.7,1645.6 L-739.6,1645.2 L-720.3,1659.9 L-721.2,1663.0 L-732.3,1657.0 L-734.7,1660.9 L-731.8,1665.6 L-736.5,1665.1 L-744.0,1653.1 L-749.5,1651.6 L-727.9,1681.6 L-723.7,1680.0 L-724.4,1663.0 L-718.7,1668.0 L-721.2,1680.2 L-718.1,1688.5 L-725.4,1685.4 L-719.6,1699.8 L-711.8,1707.1 L-702.6,1712.2 L-714.3,1700.7 L-686.2,1719.5 L-679.8,1714.3 L-683.3,1713.1 L-677.7,1712.9 L-673.0,1725.6 L-674.8,1730.0 L-679.8,1727.8 L-674.8,1731.4 L-702.0,1713.9 L-699.8,1717.5 L-633.2,1769.1 L-621.2,1783.1 L-611.4,1805.4 L-587.1,1828.7 L-578.7,1851.9 L-573.4,1852.0 L-559.8,1865.7 L-542.9,1888.8 L-538.6,1886.0 L-540.1,1889.5 L-515.1,1920.1 L-506.9,1979.7 L-490.4,2013.4 L-478.8,2020.0 L214.7,2020.0 L210.8,2012.8 L200.1,1967.5 L213.7,1996.4 L234.0,2020.0 L240.9,2020.0 L215.1,1992.1 L201.5,1965.1 L193.5,1919.5 L194.9,1905.4 L192.7,1913.4 L189.6,1911.6 L193.0,1902.4 L191.1,1898.2 L194.6,1898.2 L202.1,1879.1 L202.2,1886.8 L203.2,1874.0 L200.8,1844.1 L205.0,1794.2 L204.0,1790.6 L201.5,1803.3 L201.7,1791.2 L196.0,1789.1 L204.7,1787.4 L211.4,1713.5 L228.7,1644.6 L255.1,1588.0 L257.6,1561.9 L256.3,1551.5 L252.7,1558.1 L247.0,1559.4 L250.9,1549.8 L242.1,1546.4 L241.6,1531.7 L237.5,1529.5 L239.4,1523.7 L236.1,1524.2 L227.5,1507.7 L232.3,1507.1 L225.6,1476.9 L219.4,1472.2 L220.6,1465.7 L226.7,1468.0 L220.9,1463.8 L219.3,1456.0 L226.7,1453.0 L225.2,1444.8 L229.9,1441.5 L231.7,1427.9 L223.1,1431.2 L201.5,1426.3 L209.9,1423.0 L206.4,1422.3 L200.3,1406.6 L213.3,1424.1 L226.2,1413.7 L228.5,1419.6 L221.3,1425.1 L233.0,1420.5 L246.6,1383.0 L236.5,1376.8 L234.8,1367.4 L226.2,1368.5 L223.1,1364.5 L246.0,1363.9 L249.1,1369.6 L253.4,1368.3 L267.5,1347.5 L268.1,1340.9 L260.5,1344.0 L256.6,1350.8 L250.4,1343.6 L255.8,1337.4 L254.4,1334.8 L268.7,1329.6 L268.2,1336.8 L272.4,1337.4 L278.1,1323.9 L274.9,1338.2 L280.8,1335.7 L289.6,1326.2 L289.7,1316.9 L284.0,1308.1 L291.0,1308.7 L286.8,1303.7 L288.6,1301.5 L301.2,1318.1 L323.7,1306.1 L317.4,1300.0 L310.7,1302.6 L315.6,1298.3 L305.2,1291.2 L301.4,1275.5 L307.9,1277.3 L310.1,1284.1 L316.4,1287.7 L319.8,1285.3 L320.0,1289.3 L315.6,1291.2 L321.5,1289.5 L326.7,1286.2 L322.5,1284.4 L324.2,1277.3 L320.0,1271.9 L325.5,1275.5 L328.9,1285.3 L343.1,1279.5 L340.6,1285.9 L347.7,1286.2 L339.6,1290.3 L361.1,1284.3 L361.4,1287.6 L340.3,1300.5 L385.3,1277.0 L365.4,1286.3 L364.3,1279.8 L395.8,1271.9 L435.7,1242.6 L434.7,1225.7 L439.6,1229.2 L457.8,1214.6 L460.0,1208.3 L466.1,1208.5 L457.4,1201.4 L455.1,1203.5 L453.1,1198.6 L458.3,1195.8 L447.8,1191.0 L451.3,1177.2 L444.2,1173.3 L445.3,1169.5 L457.2,1179.3 L461.2,1178.2 L467.4,1166.1 L473.9,1166.1 L477.7,1175.0 L469.9,1192.3 L496.3,1188.6 L494.6,1192.7 L476.9,1199.3 L468.8,1207.9 L471.4,1209.3 L481.1,1200.4 L530.8,1177.7 L551.2,1177.2 L545.6,1163.6 L553.1,1144.8 L561.6,1147.5 L559.6,1158.4 L549.6,1165.2 L555.2,1174.6 L579.7,1168.1 L612.0,1167.1 L658.5,1184.6 L691.7,1191.9 L714.1,1186.3 L717.8,1182.2 L710.3,1182.9 L707.3,1175.8 L711.0,1173.6 L704.5,1175.1 L701.8,1167.9 L707.3,1167.7 L707.9,1170.9 L721.4,1160.9 L733.7,1161.0 L732.7,1172.7 L752.6,1170.3 L752.0,1180.3 L759.5,1180.6 L759.7,1191.4 L771.4,1188.6 L771.8,1193.2 L783.1,1197.1 L786.8,1183.6 L789.4,1184.2 L786.4,1198.6 L799.1,1212.3 L799.8,1219.2 L796.1,1221.4 L795.5,1212.1 L790.7,1211.7 L789.9,1207.9 L783.6,1213.8 L779.4,1212.1 L780.5,1216.7 L802.8,1227.0 L810.1,1224.7 L809.0,1228.5 L820.4,1233.5 L823.8,1228.5 L830.0,1229.9 L827.5,1234.2 L831.8,1235.4 L840.3,1230.3 L842.3,1232.8 L843.6,1222.9 L847.3,1223.6 L845.8,1215.4 L856.5,1217.2 L860.9,1210.3 L864.6,1222.1 L869.5,1215.0 L874.1,1223.0 L876.5,1219.4 L875.6,1230.0 L879.4,1238.4 L892.8,1229.2 L895.4,1223.6 L892.5,1224.0 L891.4,1217.9 L898.4,1216.4 L894.7,1210.0 L896.6,1212.1 L897.9,1202.8 L881.1,1193.9 L883.6,1187.2 L888.5,1192.9 L891.0,1190.8 L905.3,1199.1 L912.6,1201.3 L916.5,1198.1 L916.2,1204.0 L920.2,1203.7 L923.1,1209.0 L916.4,1214.5 L930.4,1216.1 L945.3,1223.6 L945.4,1220.4 L949.0,1221.4 L946.6,1222.1 L955.5,1238.3 L960.8,1235.0 L961.0,1228.5 L962.6,1234.2 L965.1,1230.8 L952.8,1254.8 L962.1,1242.2 L967.5,1240.7 L967.7,1236.4 L978.0,1247.8 L976.5,1242.4 L980.5,1237.0 L982.4,1239.2 L981.1,1235.0 L984.2,1238.5 L987.9,1232.1 L981.3,1230.8 L989.1,1229.2 L987.1,1224.9 L976.7,1222.8 L979.9,1219.9 L972.3,1210.7 L968.0,1214.6 L964.7,1210.2 L955.7,1209.7 L959.7,1206.8 L941.4,1206.1 L942.9,1198.6 L929.0,1192.5 L921.9,1181.5 L934.2,1182.2 L926.8,1173.6 L946.6,1181.5 L935.9,1171.0 L942.1,1168.8 L946.6,1160.8 L952.8,1167.9 L958.9,1165.1 L955.8,1160.8 L960.1,1155.9 L954.6,1155.9 L956.7,1151.9 L950.9,1150.8 L956.7,1148.6 L949.1,1145.9 L957.1,1138.4 L946.2,1135.5 L939.1,1143.4 L935.8,1154.8 L930.2,1156.4 L924.4,1151.6 L926.2,1148.0 L917.0,1148.9 L914.4,1142.3 L918.0,1138.1 L925.4,1140.0 L932.4,1128.8 L928.7,1125.9 L923.1,1133.1 L923.7,1125.2 L919.0,1133.2 L910.8,1127.4 L900.3,1138.0 L886.9,1141.0 L865.8,1135.1 L861.4,1123.8 L880.0,1103.2 L894.7,1106.0 L902.8,1115.9 L922.4,1118.8 L923.8,1124.2 L936.4,1124.0 L936.4,1127.2 L950.2,1123.7 L952.1,1116.7 L961.2,1111.0 L958.0,1107.0 L960.1,1104.2 L967.2,1110.3 L1002.7,1101.0 L991.6,1099.6 L996.5,1097.5 L1013.2,1106.6 L1026.8,1102.4 L1037.6,1109.8 L1049.8,1101.5 L1067.6,1110.2 L1077.3,1066.8 L1087.9,1082.8 L1085.3,1093.2 L1088.0,1100.5 L1096.1,1101.4 L1095.2,1105.6 L1101.2,1114.4 L1077.3,1120.2 L1111.1,1117.2 L1116.9,1114.8 L1119.2,1110.9 L1115.5,1111.7 L1114.9,1106.0 L1119.9,1110.3 L1127.4,1106.1 L1134.7,1096.7 L1131.6,1093.2 L1138.9,1099.0 L1122.4,1114.6 L1142.4,1109.3 L1155.9,1094.1 L1153.7,1082.7 L1160.1,1087.7 L1161.6,1096.8 L1167.3,1080.3 L1173.5,1085.3 L1168.8,1090.3 L1179.7,1096.7 L1152.5,1106.0 L1205.8,1100.0 L1216.4,1093.5 L1216.0,1089.0 L1222.9,1089.6 L1220.4,1094.0 L1223.2,1095.5 L1241.4,1091.0 L1243.6,1094.7 L1247.6,1093.2 L1250.3,1103.3 L1237.7,1098.1 L1238.2,1102.4 L1231.9,1098.1 L1228.8,1102.4 L1214.0,1101.1 L1254.1,1111.6 L1285.2,1129.5 L1282.0,1119.4 L1273.1,1115.9 L1282.1,1110.3 L1286.2,1117.8 L1298.1,1110.1 L1300.0,1113.8 L1285.2,1123.1 L1298.7,1131.6 L1305.5,1128.8 L1303.9,1132.2 L1308.4,1139.8 L1314.4,1137.7 L1310.2,1141.4 L1288.8,1129.5 L1317.9,1155.0 L1322.8,1164.5 L1321.2,1175.3 L1316.0,1171.7 L1314.1,1156.6 L1312.8,1158.9 L1314.8,1173.0 L1318.9,1176.9 L1349.6,1173.0 L1361.4,1163.8 L1361.2,1171.2 L1394.2,1151.6 L1406.0,1155.2 L1408.6,1153.6 L1409.1,1149.0 L1400.8,1147.3 L1399.2,1142.9 L1408.8,1146.6 L1404.8,1140.9 L1416.5,1133.1 L1423.9,1135.9 L1437.8,1132.4 L1468.7,1151.6 L1481.1,1171.7 L1493.2,1178.0 L1493.6,1192.1 L1510.6,1204.7 L1526.3,1228.7 L1547.9,1229.2 L1554.6,1251.6 L1563.0,1259.1 L1563.3,1269.8 L1558.4,1267.7 L1563.1,1279.1 L1560.2,1304.8 L1549.1,1331.2 L1550.9,1340.3 L1544.8,1363.2 L1546.0,1356.7 L1543.3,1360.9 L1544.2,1369.2 L1554.2,1386.5 L1553.5,1379.6 L1546.6,1368.8 L1558.9,1382.9 L1563.6,1380.9 L1565.7,1365.6 L1569.4,1363.2 L1555.3,1358.9 L1562.0,1354.6 L1557.9,1354.4 L1557.8,1347.4 L1571.3,1357.3 L1572.6,1369.6 L1576.6,1369.9 L1576.7,1360.9 L1581.0,1358.7 L1584.9,1371.0 L1564.0,1398.7 L1567.9,1398.4 L1562.7,1400.9 L1567.0,1403.0 L1560.5,1401.2 L1560.8,1407.3 L1554.1,1400.1 L1556.1,1406.5 L1568.4,1414.2 L1569.4,1426.6 L1591.8,1471.0 L1600.0,1473.7 L1600.0,1458.9 L1595.4,1453.6 L1600.0,1457.6 L1600.0,680.0 L-760.0,680.0Z M236.1,1433.7 L234.8,1435.2 L233.5,1442.3 L234.2,1472.9 L255.0,1548.6 L239.1,1480.6Z M247.1,1386.7 L234.2,1431.5 L238.4,1430.9 L246.7,1403.7 L266.0,1368.5 L251.5,1389.5Z M266.9,1366.7 L283.5,1343.9 L283.9,1338.7 L280.8,1337.8Z M320.1,1315.9 L287.3,1331.8 L284.8,1343.9 L296.8,1332.1 L322.5,1317.2 L321.5,1310.5Z M465.5,1214.4 L439.5,1238.1 L474.8,1212.8 L464.9,1210.0Z M727.5,1180.0 L716.8,1185.4 L734.4,1197.1 L745.2,1186.9Z M1342.3,1176.1 L1330.8,1175.8 L1340.2,1181.5Z M1341.2,1182.2 L1345.6,1184.4 L1352.7,1183.8 L1369.1,1175.1 L1377.7,1167.9 L1351.1,1182.9Z M1003.1,1167.4 L1006.1,1160.8 L1007.0,1152.3 L1006.4,1145.2 L1003.5,1138.6 L1006.4,1150.2Z M970.6,1137.4 L967.5,1132.8 L973.7,1125.9 L958.9,1136.6 L966.6,1135.9 L970.0,1139.9 L973.0,1135.2Z M1052.0,1118.8 L1071.8,1118.0 L1070.2,1114.7Z M1148.3,1109.6 L1213.0,1101.7 L1143.3,1108.9Z M935.1,1927.1 L930.8,1918.8 L922.9,1915.0 L920.6,1919.6 L925.7,1918.8 L931.0,1926.0 L927.2,1931.6 L930.2,1936.5Z M891.7,1198.2 L898.6,1201.3 L889.2,1194.9Z"/>
+        <path class="ga37-border" vector-effect="non-scaling-stroke" d="M239.5,1568.6 L236.2,1572.6 L217.1,1560.9 L197.9,1554.9 L155.2,1547.7 L146.0,1540.3 L117.8,1530.5 L111.1,1523.9 L80.3,1512.8 L69.3,1480.0 L48.9,1449.4 L50.4,1437.6 L44.1,1419.9 L44.5,1398.3 L22.1,1379.4 L-10.1,1333.4 L-26.6,1317.3 L-29.9,1299.1 L-67.9,1228.4 L-129.6,1166.6 L-141.2,1163.3 L-179.2,1164.7 L-204.2,1156.8 L-210.9,1157.5 L-222.9,1167.5 L-235.3,1169.2 L-246.1,1180.5 L-260.3,1224.9 L-278.1,1243.0 L-293.2,1247.3 L-346.8,1217.1 L-359.1,1213.8 L-396.1,1187.8 L-416.0,1158.6 L-421.3,1144.4 L-421.3,1129.5 L-442.6,1082.8 L-496.3,1041.5 L-542.2,998.2 L-553.3,992.6 L-580.1,959.6 L-739.1,958.5 L-739.3,1005.3 L-760.0,1005.3"/>
+        <path class="ga37-states" vector-effect="non-scaling-stroke" d="M-274.8,680.0 L-275.9,935.4 L-599.6,935.5 L-594.1,952.6 L-585.5,959.4 M536.3,830.5 L535.7,774.0 L530.9,771.1 M577.3,1019.5 L569.2,1006.2 L571.1,1000.7 L562.9,989.9 L564.6,986.0 L555.3,977.8 L554.4,957.3 L536.1,935.7 L536.3,830.5 M558.1,1144.9 L566.6,1128.5 L562.0,1104.6 L566.7,1094.2 L564.3,1084.7 L578.4,1058.2 L581.6,1045.3 L578.0,1038.6 L583.7,1035.1 L579.6,1029.4 L579.0,1019.1 L577.3,1019.5 M536.3,830.5 L795.0,830.1 L795.4,834.5 L803.5,839.6 L795.8,855.4 L803.7,861.6 L794.9,866.3 L801.1,876.6 L800.5,887.2 L818.1,901.8 L807.1,920.2 L802.2,920.0 L801.8,934.1 L778.4,952.1 L770.8,979.9 L762.4,987.5 L765.3,998.8 L759.4,1010.6 L755.2,1010.4 L751.5,1013.0 L755.6,1018.1 L753.5,1024.8 L757.9,1033.7 L750.8,1039.5 L923.8,1039.5 L913.9,1072.5 L918.0,1084.6 L929.0,1096.0 L939.2,1123.8 L942.7,1123.4 M1349.4,1039.5 L1116.6,1039.5 L1114.1,1054.4 L1133.5,1073.8 L1130.3,1086.8 L1132.2,1093.6 M1349.4,1039.5 L1361.2,1068.7 L1598.4,1084.8 L1600.0,1089.8"/>
+        <!-- lit Texas coastline: land ring 0, Galveston split vertex (471.4,1209.3) out to Sabine Pass and to the Rio Grande mouth -->
+        <path id="g-a3-7-36-hours-coastE" class="ga37-coast ga37-hide" d="M471.4,1209.3 L481.1,1200.4 L530.8,1177.7 L551.2,1177.2 L545.6,1163.6 L553.1,1144.8 L561.6,1147.5 L559.6,1158.4 L549.6,1165.2 L555.2,1174.6"/>
+        <path id="g-a3-7-36-hours-coastW" class="ga37-coast ga37-hide" d="M471.4,1209.3 L468.8,1207.9 L476.9,1199.3 L494.6,1192.7 L496.3,1188.6 L469.9,1192.3 L477.7,1175.0 L473.9,1166.1 L467.4,1166.1 L461.2,1178.2 L457.2,1179.3 L445.3,1169.5 L444.2,1173.3 L451.3,1177.2 L447.8,1191.0 L458.3,1195.8 L453.1,1198.6 L455.1,1203.5 L457.4,1201.4 L466.1,1208.5 L460.0,1208.3 L457.8,1214.6 L439.6,1229.2 L434.7,1225.7 L435.7,1242.6 L395.8,1271.9 L364.3,1279.8 L365.4,1286.3 L385.3,1277.0 L340.3,1300.5 L361.4,1287.6 L361.1,1284.3 L339.6,1290.3 L347.7,1286.2 L340.6,1285.9 L343.1,1279.5 L328.9,1285.3 L325.5,1275.5 L320.0,1271.9 L324.2,1277.3 L322.5,1284.4 L326.7,1286.2 L321.5,1289.5 L315.6,1291.2 L320.0,1289.3 L319.8,1285.3 L316.4,1287.7 L310.1,1284.1 L307.9,1277.3 L301.4,1275.5 L305.2,1291.2 L315.6,1298.3 L310.7,1302.6 L317.4,1300.0 L323.7,1306.1 L301.2,1318.1 L288.6,1301.5 L286.8,1303.7 L291.0,1308.7 L284.0,1308.1 L289.7,1316.9 L289.6,1326.2 L280.8,1335.7 L274.9,1338.2 L278.1,1323.9 L272.4,1337.4 L268.2,1336.8 L268.7,1329.6 L254.4,1334.8 L255.8,1337.4 L250.4,1343.6 L256.6,1350.8 L260.5,1344.0 L268.1,1340.9 L267.5,1347.5 L253.4,1368.3 L249.1,1369.6 L246.0,1363.9 L223.1,1364.5 L226.2,1368.5 L234.8,1367.4 L236.5,1376.8 L246.6,1383.0 L233.0,1420.5 L221.3,1425.1 L228.5,1419.6 L226.2,1413.7 L213.3,1424.1 L200.3,1406.6 L206.4,1422.3 L209.9,1423.0 L201.5,1426.3 L223.1,1431.2 L231.7,1427.9 L229.9,1441.5 L225.2,1444.8 L226.7,1453.0 L219.3,1456.0 L220.9,1463.8 L226.7,1468.0 L220.6,1465.7 L219.4,1472.2 L225.6,1476.9 L232.3,1507.1 L227.5,1507.7 L236.1,1524.2 L239.4,1523.7 L237.5,1529.5 L241.6,1531.7 L242.1,1546.4 L250.9,1549.8 L247.0,1559.4 L252.7,1558.1 L256.3,1551.5 L257.6,1561.9"/>
+      </g>
+      <!-- screen-size mark: camAt places the *-at group on Galveston's projected point -->
+      <g id="g-a3-7-36-hours-gal-at"><g id="g-a3-7-36-hours-gal">
+        <circle id="g-a3-7-36-hours-gal-ring" r="7" fill="none" stroke="#f2f5f8" stroke-width="2"/>
+        <circle r="7" fill="#f2f5f8"/>
+      </g></g>
+      <!-- HUD, fixed screen positions. Galveston pin (1003,420) at s 0.90 -> label right of and under the pin, open Gulf,
+           clear of the Sabine leg (passes (1014,409) to (1059,388)). TEXAS COAST on Texas land between the US-Mexico
+           border (screen x ~520 at y 430) and the coast (x >= 990 at y 400); the brief's (560,520) sits on the border line. -->
+      <text id="g-a3-7-36-hours-galveston" class="ga37-labbig ga37-hide" x="1028" y="468" font-size="34" fill="#f2f5f8">Galveston</text>
+      <text id="g-a3-7-36-hours-texas" class="ga37-lab ga37-hide" x="640" y="400" font-size="26" letter-spacing="3" fill="#e8c56a">TEXAS COAST</text>
+    </svg>
+  </div>
+
+  <!-- PART C: 36 h bar, FRI MORNING to SAT EVENING, no clock hours -->
+  <div id="g-a3-7-36-hours-partC" class="ga37-part ga37-hide">
+    <div id="g-a3-7-36-hours-bar">
+      <div id="g-a3-7-36-hours-track"></div>
+      <div id="g-a3-7-36-hours-fill"></div>
+      <div id="g-a3-7-36-hours-tick"></div>
+      <div id="g-a3-7-36-hours-lfri" class="ga37-end">FRI MORNING</div>
+      <div id="g-a3-7-36-hours-lsat" class="ga37-end">SAT EVENING</div>
+    </div>
+    <div id="g-a3-7-36-hours-c2" class="ga37-chip ga37-hide">
+      <div id="g-a3-7-36-hours-c2in" class="ga37-chipin ga37-glass"><span class="ga37-chipmain">NEARLY A DAY AND A HALF</span></div>
+    </div>
+  </div>
+
+  <div id="g-a3-7-36-hours-src" class="ga37-glass ga37-hide">Boston Herald, Sept. 17, 1900, reprinted in Monthly Weather Review, Sept. 1900, p. 376</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a3-7-36-hours-";
+  const $ = function (n) { return document.getElementById("g-a3-7-36-hours-" + n); };
+  const DUR = 12.90;
+
+  /* camera (PART B): pure function of comp time, V-TX cx 420 cy 1350, s 0.90 -> 0.93 over 6.04..10.46 */
+  const GAL = [(-94.80 + 100) * 90, (41 - 29.30) * 103.95];                 /* (468.0, 1216.2) */
+  const CX = 420, CY = 1350;
+  const camEl = $("cam"), galAt = $("gal-at");
+  function camAt(t) {
+    const u = Math.min(1, Math.max(0, (t - 6.04) / 4.42));
+    const s = 0.90 + 0.03 * u;
+    camEl.setAttribute("transform", "translate(" + (960 - CX * s).toFixed(2) + "," + (540 - CY * s).toFixed(2) + ") scale(" + s.toFixed(5) + ")");
+    galAt.setAttribute("transform", "translate(" + (960 + (GAL[0] - CX) * s).toFixed(2) + "," + (540 + (GAL[1] - CY) * s).toFixed(2) + ")");
+  }
+  camAt(0);
+
+  const LE = Math.ceil($("coastE").getTotalLength()) + 1;                   /* dash lengths: ceil(len)+1 */
+  const LW = Math.ceil($("coastW").getTotalLength()) + 1;
+
+  const tl = gsap.timeline({ paused: true });
+
+  /* initial states */
+  tl.set(P + "page", { autoAlpha: 0, scale: 0.94, transformOrigin: "622.6px 352.8px" }, 0);
+  tl.set(P + "dim", { autoAlpha: 0 }, 0);
+  tl.set([P + "band1", P + "band2"], { scaleX: 0 }, 0);
+  tl.set([P + "c1", P + "c2"], { autoAlpha: 0, xPercent: -50, y: 24, scale: 0.94 }, 0);
+  tl.set(P + "partB", { autoAlpha: 0 }, 0);
+  tl.set(P + "partC", { autoAlpha: 0 }, 0);
+  tl.set([P + "galveston", P + "texas"], { autoAlpha: 0 }, 0);
+  tl.set(P + "coastE", { strokeDasharray: LE + " " + (LE + 40), strokeDashoffset: LE, autoAlpha: 0 }, 0);
+  tl.set(P + "coastW", { strokeDasharray: LW + " " + (LW + 40), strokeDashoffset: LW, autoAlpha: 0 }, 0);
+  tl.set(P + "fill", { scaleX: 0 }, 0);
+  tl.set(P + "tick", { x: 0 }, 0);
+
+  /* GALVESTON @0.00: page in, source line in; source floats to the end */
+  tl.fromTo(P + "page", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.0);
+  tl.fromTo(P + "src", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.0);
+  tl.to(P + "src", { y: -4, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0.4);
+
+  /* FRIDAY @1.20: push toward the lit line, 0.94 -> 1.0 by 5.90 (box scales, crop holds) */
+  tl.to(P + "page", { scale: 1, duration: 4.70, ease: "power1.inOut" }, 1.20);
+
+  /* NEARLY @3.26: rest of the page dims to 0.55; band 1 "nearly thirty-six" 3.26 -> 4.12, band 2 "hours before the disaster" 4.12 -> 5.00 */
+  tl.to(P + "dim", { autoAlpha: 1, duration: 0.5, ease: "power2.out" }, 3.26);
+  tl.to(P + "band1", { scaleX: 1, duration: 0.86, ease: "power2.inOut" }, 3.26);
+  tl.to(P + "band2", { scaleX: 1, duration: 0.88, ease: "power2.inOut" }, 4.12);
+
+  /* 36 HOURS @3.52: chip C1 over the page's top margin, floats until its exit */
+  tl.to(P + "c1", { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 3.52);
+  tl.to(P + "c1in", { y: -4, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 3.97);
+  /* after "disaster." (ends 5.46): C1 slides out, done at the cut */
+  tl.to(P + "c1", { x: 980, autoAlpha: 0, duration: 0.58, ease: "power3.in" }, 5.46);
+
+  /* COAST @6.04: cut to PART B, Galveston pin on; camera drifts (camAt) */
+  tl.set(P + "partA", { autoAlpha: 0 }, 6.04);
+  tl.set(P + "partB", { autoAlpha: 1 }, 6.04);
+  tl.to({ t: 0 }, { t: 1, duration: 4.46, ease: "none", onUpdate: function () { camAt(6.04 + this.time()); } }, 6.04);
+  tl.fromTo(P + "gal", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "back.out(2)" }, 6.04);
+  tl.fromTo(P + "gal-ring", { scale: 1, opacity: 0.8, transformOrigin: "50% 50%" }, { scale: 2.2, opacity: 0, transformOrigin: "50% 50%", duration: 1.2, ease: "power1.out", repeat: 2 }, 6.40);
+  tl.fromTo(P + "galveston", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 6.24);
+
+  /* WARNING @7.38 to COAST @9.22: the coastline lights outward from Galveston, both legs together */
+  tl.set([P + "coastE", P + "coastW"], { autoAlpha: 1 }, 7.38);
+  tl.to([P + "coastE", P + "coastW"], { strokeDashoffset: 0, duration: 1.84, ease: "power2.inOut" }, 7.38);
+  tl.fromTo(P + "texas", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.92);
+  tl.to(P + "texas", { y: -4, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 9.32);
+
+  /* SO @10.06: dissolve to PART C; bar fills 10.06 -> 11.82, tick rides the fill head */
+  tl.to(P + "partB", { autoAlpha: 0, duration: 0.4, ease: "power1.inOut" }, 10.06);
+  tl.fromTo(P + "partC", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power1.inOut" }, 10.06);
+  tl.to(P + "fill", { scaleX: 1, duration: 1.76, ease: "power1.inOut" }, 10.06);
+  tl.to(P + "tick", { x: 1200, duration: 1.76, ease: "power1.inOut" }, 10.06);
+
+  /* DAY AND A HALF @11.40: chip C2 */
+  tl.to(P + "c2", { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 11.40);
+  tl.to(P + "c2in", { y: -4, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 11.85);
+
+  /* HALF @11.82: fill freezes at 100 %, tick flashes once */
+  tl.to(P + "tick", { scaleY: 1.5, duration: 0.15, ease: "power2.out", yoyo: true, repeat: 1 }, 11.82);
+  tl.to(P + "bar", { y: -4, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 12.10);
+
+  /* exit: fade-through, root to 0 over the last 0.4 s */
+  tl.to(P + "root", { autoAlpha: 0, duration: 0.4, ease: "power1.in" }, DUR - 0.4);
+
+  window.__timelines["g-a3-7-36-hours"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<template>
+<style>
+  #g-a4-8-compass-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .g-a4-8-compass-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  /* source line, top-left, on from frame 0 */
+  #g-a4-8-compass-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    font-weight:700; font-size:22px; line-height:1.3; color:#c8d3e0; }
+  /* page panel: glass card x 120 to 970, y 229 to 851 (padding 14, crop 822 x 594) */
+  #g-a4-8-compass-panel { position:absolute; left:120px; top:229px; width:850px; height:622px; box-sizing:border-box; padding:14px; border-radius:28px; }
+  #g-a4-8-compass-panelin { position:relative; width:822px; height:594px; }
+  /* crop measured by pixel rows on the 1150 x 1563 scan of printed p. 373 (28 Oct 26), LEFT column, scale 1.768:
+     image x 98 to 563 (text 102..562, column rule 565), image y 1031 to 1367 (line gaps 1029-1033 and after 1364).
+     Whole lines at both edges: 9 lines, "Mr. Blagden looked after..." to "near the beach...". Body line pitch ~29 px on screen. */
+  #g-a4-8-compass-crop { position:absolute; left:0; top:0; width:822px; height:594px; overflow:hidden; border-radius:10px; isolation:isolate; background:#e9e4d6; }
+  #g-a4-8-compass-img { position:absolute; left:-173.26px; top:-1822.81px; width:2033.2px; height:2763.4px; max-width:none; }
+  /* page dimmed to about 0.55 except the three warning lines (crop y 449 to 537, checked on a PIL mock of this crop) */
+  #g-a4-8-compass-dimtop { position:absolute; left:0; top:0; width:822px; height:449px; background:rgba(10,16,24,0.45); }
+  #g-a4-8-compass-dimmid { position:absolute; left:0; top:449px; width:822px; height:88px; background:rgba(10,16,24,0.45); }
+  #g-a4-8-compass-dimbot { position:absolute; left:0; top:537px; width:822px; height:57px; background:rgba(10,16,24,0.45); }
+  /* amber bands, #d8a13a, 0.28 resting; multiply so the print stays black */
+  .g-a4-8-compass-band { position:absolute; height:28px; background:#d8a13a; mix-blend-mode:multiply; transform-origin:left center; opacity:0; visibility:hidden; }
+  #g-a4-8-compass-b1 { left:158px; top:449px; width:537px; }  /* "warned, over the telephone and verbally," */
+  #g-a4-8-compass-x1 { left:695px; top:449px; width:127px; }  /* "that the" */
+  #g-a4-8-compass-x2 { left:0; top:479px; width:822px; }      /* "wind would go by the east to the south and that the worst" */
+  #g-a4-8-compass-x3 { left:2px; top:509px; width:222px; }    /* "was yet to come." */
+  #g-a4-8-compass-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #g-a4-8-compass-lab { position:absolute; left:1100px; top:950px; width:400px; text-align:center; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2; }
+  /* chip: glass, centred on x 1300, top 100, width 940 (x 830 to 1770) */
+  #g-a4-8-compass-chip { position:absolute; left:830px; top:100px; width:940px; box-sizing:border-box; padding:14px 20px 12px; border-radius:28px; text-align:center;
+    opacity:0; visibility:hidden; }
+  #g-a4-8-compass-chipmain { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  #g-a4-8-compass-chiptag { display:block; margin-top:4px; font-weight:700; font-size:26px; line-height:1.2; color:#93a3b2; }
+</style>
+<div id="g-a4-8-compass-root" data-composition-id="g-a4-8-compass" data-width="1920" data-height="1080">
+  <svg id="g-a4-8-compass-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="1300" cy="540" r="220" fill="none" stroke="#5a768f" stroke-width="4"/>
+    <g stroke="#5a768f" stroke-width="3" stroke-linecap="butt">
+      <line x1="1300" y1="344" x2="1300" y2="320"/>
+      <line x1="1496" y1="540" x2="1520" y2="540"/>
+      <line x1="1300" y1="736" x2="1300" y2="760"/>
+      <line x1="1104" y1="540" x2="1080" y2="540"/>
+      <line x1="1444.2" y1="395.8" x2="1455.6" y2="384.4"/>
+      <line x1="1444.2" y1="684.2" x2="1455.6" y2="695.6"/>
+      <line x1="1155.8" y1="684.2" x2="1144.4" y2="695.6"/>
+      <line x1="1155.8" y1="395.8" x2="1144.4" y2="384.4"/>
+    </g>
+    <path id="g-a4-8-compass-arc" d="M 1300 300 A 240 240 0 0 1 1300 780" fill="none" stroke="#7fb2e5" stroke-width="6" stroke-linecap="round" stroke-dasharray="755" opacity="0.7"/>
+    <g id="g-a4-8-compass-swing">
+      <g id="g-a4-8-compass-gust">
+        <line x1="1300" y1="320" x2="1300" y2="470" stroke="#7fb2e5" stroke-width="10"/>
+        <polygon points="1300,500 1278,464 1322,464" fill="#7fb2e5"/>
+      </g>
+    </g>
+    <circle cx="1300" cy="540" r="10" fill="#5a768f"/>
+    <g font-family="'Arial Black', Arial, sans-serif" font-weight="900" font-size="52" fill="#f2f5f8" text-anchor="middle" dominant-baseline="central">
+      <text x="1300" y="270">N</text>
+      <text x="1570" y="540">E</text>
+      <text x="1300" y="810">S</text>
+      <text x="1030" y="540">W</text>
+    </g>
+  </svg>
+  <div id="g-a4-8-compass-lab">Wind from</div>
+  <div id="g-a4-8-compass-src" class="g-a4-8-compass-glass">Isaac Cline, Monthly Weather Review, September 1900, p. 373</div>
+  <div id="g-a4-8-compass-panel" class="g-a4-8-compass-glass">
+    <div id="g-a4-8-compass-panelin">
+      <div id="g-a4-8-compass-crop">
+        <img id="g-a4-8-compass-img" src="media/a3/A3-S11_c1_mwr-sept1900-p373_cline-3-30-panel.png" alt="Monthly Weather Review, September 1900, page 373" data-crop-ok="printed p. 373 left column cropped to whole lines around the warning paragraph">
+        <div id="g-a4-8-compass-dimtop"></div>
+        <div id="g-a4-8-compass-dimmid"></div>
+        <div id="g-a4-8-compass-dimbot"></div>
+        <div id="g-a4-8-compass-b1" class="g-a4-8-compass-band"></div>
+        <div id="g-a4-8-compass-x1" class="g-a4-8-compass-band"></div>
+        <div id="g-a4-8-compass-x2" class="g-a4-8-compass-band"></div>
+        <div id="g-a4-8-compass-x3" class="g-a4-8-compass-band"></div>
+      </div>
+    </div>
+  </div>
+  <div id="g-a4-8-compass-chip" class="g-a4-8-compass-glass"><span id="g-a4-8-compass-chipmain">THE WORST WAS YET TO COME</span><span id="g-a4-8-compass-chiptag">Cline's report, p. 373</span></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a4-8-compass-";
+  /* TIMING: audio/a4-s5.words.json, host starts at segment start (0), window 0 to 8.20.
+     report @0.12 ; warned @1.26 ; telephone @1.74 ; person @2.66 ; swing @4.44 ; east @5.12 ; south @5.60 ; worst @6.58 ; come @7.38 */
+  tl.set(P+"swing", {rotation:0, svgOrigin:"1300 540"}, 0);
+  tl.set(P+"gust", {rotation:0, svgOrigin:"1300 540"}, 0);
+  tl.set(P+"arc", {strokeDashoffset:755}, 0);
+  tl.set(P+"panelin", {scale:1}, 0);
+  tl.set(P+"panel", {x:0}, 0);
+  tl.set(P+"chip", {autoAlpha:0, x:980}, 0);
+  tl.set([P+"b1", P+"x1", P+"x2", P+"x3"], {scaleX:0}, 0);
+
+  /* whole window: page panel drifts up 10 px (was a 1.03 scale push, which cut the line ends at the crop edge) */
+  tl.to(P+"panel", {y:-10, duration:7.6, ease:"none"}, 0);
+
+  /* REPORT @0.12: band draws on "warned, over the telephone and verbally" 0.12 to 1.26; the three lines light */
+  tl.to(P+"dimmid", {autoAlpha:0, duration:0.5, ease:"power2.out"}, 0.12);
+  tl.set(P+"b1", {autoAlpha:0.28}, 0.12);
+  tl.to(P+"b1", {scaleX:1, duration:1.14, ease:"power2.inOut"}, 0.12);
+  /* telephone @1.74 and person @2.66: band pulses */
+  tl.to(P+"b1", {autoAlpha:0.6, duration:0.18, ease:"power2.out"}, 1.74);
+  tl.to(P+"b1", {autoAlpha:0.28, duration:0.3, ease:"power2.in"}, 1.92);
+  tl.to(P+"b1", {autoAlpha:0.6, duration:0.18, ease:"power2.out"}, 2.66);
+  tl.to(P+"b1", {autoAlpha:0.28, duration:0.3, ease:"power2.in"}, 2.84);
+
+  /* SWING @4.44: N to E 4.44 to 5.12 ("east" @5.12), E to S 5.12 to 5.60 ("south" @5.60); arc traces the path */
+  tl.to(P+"swing", {rotation:90, duration:0.68, ease:"power2.inOut"}, 4.44);
+  tl.to(P+"swing", {rotation:180, duration:0.48, ease:"power2.inOut"}, 5.12);
+  tl.to(P+"arc", {strokeDashoffset:377, duration:0.68, ease:"power2.inOut"}, 4.44);
+  tl.to(P+"arc", {strokeDashoffset:0, duration:0.48, ease:"power2.inOut"}, 5.12);
+  /* gust wobble +/-2 deg, 1.2 s period, after the swing */
+  tl.to(P+"gust", {rotation:2, duration:0.3, ease:"sine.inOut"}, 5.6);
+  tl.to(P+"gust", {rotation:-2, duration:0.6, ease:"sine.inOut", yoyo:true, repeat:2}, 5.9);
+
+  /* SOUTH @5.60 (was WORST @6.58, 0.52 s read): chip settles 6.10, reads 1.5 s to the 7.6 exit */
+  tl.to(P+"chip", {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 5.6);
+
+  /* bands at 5.80 to 6.06 (were COME @7.38 to 7.60, 0.2 s read): lit by 6.06, read 1.54 s to the 7.6 exit */
+  tl.set([P+"x1", P+"x2", P+"x3"], {autoAlpha:0.28}, 5.8);
+  tl.to(P+"x1", {scaleX:1, duration:0.06, ease:"power2.out"}, 5.8);
+  tl.to(P+"x2", {scaleX:1, duration:0.1, ease:"power2.out"}, 5.9);
+  tl.to(P+"x3", {scaleX:1, duration:0.06, ease:"power2.out"}, 6.0);
+
+  /* 7.60: chip and panel exit begin, out by 8.20 (cut to g-a4-9's map) */
+  tl.to(P+"chip", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 7.6);
+  tl.to(P+"panel", {x:-980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 7.6);
+
+  /* keep the timeline to the host end (8.20) */
+  tl.to(P+"root", {autoAlpha:1, duration:0.06}, 8.14);
+  window.__timelines["g-a4-8-compass"] = tl;
+})();
+</script>
+</template>

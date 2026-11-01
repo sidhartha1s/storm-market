@@ -1,0 +1,217 @@
+<template>
+<style>
+  #g-a4-18-battering-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a4-18-battering-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+
+  /* start-hidden parts (also hidden by tl.set at 0) */
+  .ga418-drift, .ga418-crest { visibility:hidden; opacity:0; }
+
+  /* source line: top-left glass, small radius */
+  #g-a4-18-battering-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box;
+    padding:6px 14px; border-radius:12px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; color:#c8d3e0; letter-spacing:1px; }
+
+  /* HUD labels: never ride a move */
+  #g-a4-18-battering-east { position:absolute; left:1360px; top:54px; white-space:nowrap;
+    font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#93a3b2; letter-spacing:3px; }
+  #g-a4-18-battering-lsea { position:absolute; left:110px; top:920px; white-space:nowrap;
+    font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#93a3b2; letter-spacing:3px; }
+  #g-a4-18-battering-note { position:absolute; left:96px; top:1000px; white-space:nowrap;
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; color:#93a3b2; letter-spacing:2px; }
+
+  /* chips: glass card, radius 28, left edge 96, top 130 */
+  .ga418-chip { position:absolute; left:96px; top:130px; box-sizing:border-box; padding:20px 48px 22px; border-radius:28px;
+    text-align:left; white-space:nowrap; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
+  .ga418-main { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:58px; color:#f2f5f8; }
+  .ga418-tag { display:block; margin-top:6px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#93a3b2; letter-spacing:4px; }
+</style>
+<div id="g-a4-18-battering-root" data-composition-id="g-a4-18-battering" data-width="1920" data-height="1080"
+     data-type-ok="schematic house plate by brief: chips 52 px, plate labels and tags 19-22 px, no mid-tier element in this beat">
+  <svg id="g-a4-18-battering-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <clipPath id="g-a4-18-battering-wclip"><rect x="96" y="0" width="1728" height="804"/></clipPath>
+    </defs>
+
+    <!-- HOUSE PLATE: sea level y 960, 30 px/ft, ground 5.2 ft = y 804, floor y 644, water about 20 ft = y 360 -->
+    <rect x="0" y="804" width="1920" height="156" fill="#15202b"/>
+    <path fill="none" stroke="#93a3b2" stroke-width="2" d="M0,804 L1920,804"/>
+    <path id="g-a4-18-battering-datum" fill="none" stroke="#5a768f" stroke-width="2" stroke-dasharray="8 8" d="M96,960 L1824,960"/>
+
+    <!-- Cline house (shakes as one group): body x 760 to 1240, floor y 644, eave y 104, ridge y 60 (schematic) -->
+    <g id="g-a4-18-battering-house">
+      <polygon fill="#15202b" stroke="#93a3b2" stroke-width="3" stroke-linejoin="round" points="740,104 860,60 1140,60 1260,104"/>
+      <rect x="760" y="104" width="480" height="540" fill="#0b1016" stroke="#93a3b2" stroke-width="3"/>
+      <path fill="none" stroke="#2a3644" stroke-width="2" d="M760,374 L1240,374"/>
+      <rect id="g-a4-18-battering-w0" x="880" y="200" width="60" height="120" fill="#e8c56a" opacity="0.5"/>
+      <rect id="g-a4-18-battering-w1" x="1000" y="200" width="60" height="120" fill="#e8c56a" opacity="0.5"/>
+      <rect id="g-a4-18-battering-w2" x="1120" y="200" width="60" height="120" fill="#e8c56a" opacity="0.5"/>
+      <rect id="g-a4-18-battering-w3" x="880" y="470" width="60" height="120" fill="#e8c56a" opacity="0.2"/>
+      <rect id="g-a4-18-battering-w4" x="1000" y="470" width="60" height="120" fill="#e8c56a" opacity="0.2"/>
+      <rect id="g-a4-18-battering-w5" x="1120" y="470" width="60" height="120" fill="#e8c56a" opacity="0.2"/>
+      <rect x="760" y="434" width="60" height="210" fill="#04070a" stroke="#93a3b2" stroke-width="2"/>
+    </g>
+
+    <!-- front steps (700,804) up to the door sill (760,644): 8 risers of 20 px -->
+    <polygon fill="#2a3644" stroke="#93a3b2" stroke-width="2" stroke-linejoin="round"
+      points="700,804 700,784 707.5,784 707.5,764 715,764 715,744 722.5,744 722.5,724 730,724 730,704 737.5,704 737.5,684 745,684 745,664 752.5,664 752.5,644 760,644 760,804"/>
+
+    <!-- fence (4 ft) with the gate gap at x 560 -->
+    <path fill="none" stroke="#4a5560" stroke-width="4"
+      d="M400,804 V684 M420,804 V684 M440,804 V684 M460,804 V684 M480,804 V684 M500,804 V684 M520,804 V684 M600,804 V684 M620,804 V684 M640,804 V684 M660,804 V684 M680,804 V684 M400,700 H528 M592,700 H680"/>
+    <path fill="none" stroke="#93a3b2" stroke-width="6" d="M534,804 V676 M586,804 V676"/>
+
+    <!-- water at y 360 (local surface y 0, GSAP y 360), amplitude 12 px: control +-24 -->
+    <g clip-path="url(#g-a4-18-battering-wclip)">
+      <g id="g-a4-18-battering-wg">
+        <path id="g-a4-18-battering-wfill" fill="#5a768f" fill-opacity="0.75"
+          d="M96,0 q24,-24 48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 L1824,900 L96,900 Z"/>
+        <path id="g-a4-18-battering-wsurf" fill="none" stroke="#7fb2e5" stroke-width="3"
+          d="M96,0 q24,-24 48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0"/>
+      </g>
+    </g>
+
+    <!-- piers under the floor: x 780 to 1220 every 110 px, y 644 to 804 -->
+    <path fill="none" stroke="#93a3b2" stroke-width="14" d="M780,644 V804 M890,644 V804 M1000,644 V804 M1110,644 V804 M1220,644 V804"/>
+
+    <!-- drifted houses (roofs and upper walls only), each: outer g moves (x, y), inner g rotates about the outer origin.
+         A: 220 wide, lodges first against the wall (x 1240). B: 240 wide, rides on A. C: 220 wide, from the south-east, lowest. -->
+    <g id="g-a4-18-battering-dA" class="ga418-drift">
+      <g id="g-a4-18-battering-rA">
+        <rect x="-100" y="-26" width="200" height="60" fill="#4a5560" stroke="#93a3b2" stroke-width="2"/>
+        <polygon points="-110,-26 -60,-74 60,-74 110,-26" fill="#4a5560" stroke="#93a3b2" stroke-width="2" stroke-linejoin="round"/>
+      </g>
+    </g>
+    <g id="g-a4-18-battering-dB" class="ga418-drift">
+      <g id="g-a4-18-battering-rB">
+        <rect x="-108" y="-28" width="216" height="64" fill="#4a5560" stroke="#93a3b2" stroke-width="2"/>
+        <polygon points="-120,-28 -66,-80 66,-80 120,-28" fill="#4a5560" stroke="#93a3b2" stroke-width="2" stroke-linejoin="round"/>
+      </g>
+    </g>
+    <g id="g-a4-18-battering-dC" class="ga418-drift">
+      <g id="g-a4-18-battering-rC">
+        <rect x="-100" y="-24" width="200" height="56" fill="#4a5560" stroke="#93a3b2" stroke-width="2"/>
+        <polygon points="-110,-24 -60,-70 60,-70 110,-24" fill="#4a5560" stroke="#93a3b2" stroke-width="2" stroke-linejoin="round"/>
+      </g>
+    </g>
+
+    <!-- wave crests from the east, riding the surface at y 350 -->
+    <path id="g-a4-18-battering-k0" class="ga418-crest" fill="#7fb2e5" d="M0,0 q36,-52 90,-44 q-20,22 -32,44 Z"/>
+    <path id="g-a4-18-battering-k1" class="ga418-crest" fill="#7fb2e5" d="M0,0 q36,-52 90,-44 q-20,22 -32,44 Z"/>
+  </svg>
+
+  <div id="g-a4-18-battering-src">Isaac Cline, Monthly Weather Review, September 1900, p. 373</div>
+  <div id="g-a4-18-battering-east">East &rarr;</div>
+  <div id="g-a4-18-battering-lsea">Sea level</div>
+  <div id="g-a4-18-battering-note">Vertical scale 30 px per ft &middot; house: schematic</div>
+
+  <div id="g-a4-18-battering-c0" class="ga418-chip">
+    <span class="ga418-main">BY 8 PM</span>
+    <span class="ga418-tag">houses lodged to the east and southeast</span>
+  </div>
+  <div id="g-a4-18-battering-c1" class="ga418-chip">
+    <span class="ga418-main">A BATTERING RAM</span>
+    <span class="ga418-tag">Cline's report, p. 373</span>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a4-18-battering-";
+  const q = function(id) { return document.querySelector(P + id); };
+  /* a4-s11.words.json: host words 8.52 ("By") to 14.20; comp starts 8.52, comp-local = word time - 8.52. Window 0 to 5.68.
+     By 0.00 · 8 PM @0.16 · drifting 1.24 · houses 1.50 · lodged 2.12 · his 2.74 · and the waves 3.44 · waves 3.74 · battering @4.56 · end 5.68.
+     Deviation: chip 2 in at 3.74 (not 4.56) so it is readable 1.5 s before the cut; it holds into the cut, no slide-out. */
+
+  /* --- start states --- */
+  tl.set([P+"src", P+"c0", P+"c1", P+"dA", P+"dB", P+"dC", P+"k0", P+"k1"], {autoAlpha: 0}, 0);
+  tl.set(P+"wg", {y: 360}, 0);
+  tl.set(P+"house", {x: 0, rotation: 0, svgOrigin: "1000 644", smoothOrigin: false}, 0);
+  tl.set(P+"dA", {x: 2000, y: 338}, 0);
+  tl.set(P+"dB", {x: 2000, y: 316}, 0);
+  tl.set(P+"dC", {x: 2000, y: 420}, 0);
+  tl.set(P+"rA", {rotation: -6, svgOrigin: "0 0", smoothOrigin: false}, 0);
+  tl.set(P+"rB", {rotation: 8, svgOrigin: "0 0", smoothOrigin: false}, 0);
+  tl.set(P+"rC", {rotation: 6, svgOrigin: "0 0", smoothOrigin: false}, 0);
+  tl.set([P+"k0", P+"k1"], {x: 1900, y: 358}, 0);
+  const wins = [0, 1, 2].map(function(k) { return q("w" + k); });
+
+  /* --- whole-window motion: water ripple, amplitude 12 px, 0.9 s period (0.45 s each way), finite repeats past 5.68 --- */
+  const wf = q("wfill"), ws = q("wsurf");
+  const flip = function(d) { return d.replace("q24,-24", "q24,24"); };
+  tl.to(wf, {attr: {d: flip(wf.getAttribute("d"))}, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 12}, 0);
+  tl.to(ws, {attr: {d: flip(ws.getAttribute("d"))}, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 12}, 0);
+
+  /* upper-storey lamp flicker */
+  tl.to(wins[0], {opacity: 0.15, duration: 0.12, ease: "power1.inOut", yoyo: true, repeat: 1}, 0.90);
+  tl.to(wins[2], {opacity: 0.15, duration: 0.12, ease: "power1.inOut", yoyo: true, repeat: 1}, 2.30);
+  tl.to(wins[1], {opacity: 0.15, duration: 0.12, ease: "power1.inOut", yoyo: true, repeat: 1}, 3.20);
+  tl.to(wins[0], {opacity: 0.15, duration: 0.12, ease: "power1.inOut", yoyo: true, repeat: 1}, 4.60);
+
+  /* source line slides in at 0, then drifts */
+  tl.fromTo(P+"src", {autoAlpha: 0, x: -30}, {autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out"}, 0);
+  tl.to(P+"src", {y: -4, duration: 2.0, ease: "sine.inOut", yoyo: true, repeat: 1}, 0.5);
+
+  /* 8 PM @0.16: chip 0 in; out 2.99 to 3.44 */
+  tl.fromTo(P+"c0", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 0.16);
+  tl.to(P+"c0", {y: -4, duration: 2.0, ease: "sine.inOut"}, 0.61);
+  tl.to(P+"c0", {x: -980, autoAlpha: 0, duration: 0.45, ease: "power3.in"}, 2.99);
+
+  /* drifting @1.24: house A slides in from the east, lodges at the wall (centre x 1352), rotation settles to 4 deg */
+  tl.set(P+"dA", {autoAlpha: 1}, 1.24);
+  tl.to(P+"dA", {x: 1352, duration: 0.88, ease: "power2.out"}, 1.24);
+  tl.fromTo(P+"rA", {rotation: -6, svgOrigin: "0 0", smoothOrigin: false}, {rotation: 4, svgOrigin: "0 0", smoothOrigin: false, duration: 0.88, ease: "power2.out"}, 1.24);
+  /* houses @1.50: house B rides in behind A (centre x 1420, y 316), rest -8 deg */
+  tl.set(P+"dB", {autoAlpha: 1}, 1.50);
+  tl.to(P+"dB", {x: 1420, duration: 0.88, ease: "power2.out"}, 1.50);
+  tl.fromTo(P+"rB", {rotation: 8, svgOrigin: "0 0", smoothOrigin: false}, {rotation: -8, svgOrigin: "0 0", smoothOrigin: false, duration: 0.88, ease: "power2.out"}, 1.50);
+  /* lodged @2.12: house C from the south-east, a diagonal from lower right, lands 2.74 (centre x 1428, y 346), rest 12 deg */
+  tl.set(P+"dC", {autoAlpha: 1}, 2.12);
+  tl.to(P+"dC", {x: 1428, y: 346, duration: 0.62, ease: "power2.out"}, 2.12);
+  tl.fromTo(P+"rC", {rotation: 6, svgOrigin: "0 0", smoothOrigin: false}, {rotation: 12, svgOrigin: "0 0", smoothOrigin: false, duration: 0.62, ease: "power2.out"}, 2.12);
+  /* the lodged pile bobs on the water between hits */
+  tl.to(P+"rA", {y: -5, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 3}, 2.74);
+  tl.to(P+"rB", {y: -6, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 3}, 2.74);
+  tl.to(P+"rC", {y: -5, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 3}, 2.74);
+
+  /* waves @3.74: crest k0 arrives from the east 3.14 to 3.74, hit at 3.74; crest k1 arrives for the hit at 4.84 (1.1 s apart);
+     the next hit would be 5.94, past the 5.68 window */
+  tl.set(P+"k0", {autoAlpha: 0.9}, 3.14);
+  tl.to(P+"k0", {x: 1560, duration: 0.60, ease: "power1.in"}, 3.14);
+  tl.to(P+"k0", {autoAlpha: 0, duration: 0.25, ease: "power1.out"}, 3.74);
+  tl.set(P+"k1", {autoAlpha: 0.9}, 4.24);
+  tl.to(P+"k1", {x: 1560, duration: 0.60, ease: "power1.in"}, 4.24);
+  tl.to(P+"k1", {autoAlpha: 0, duration: 0.25, ease: "power1.out"}, 4.84);
+  /* hit 1 at 3.74 and hit 2 at 4.84: pile shoves left 14 px and back, house shakes x +-6, rot +-0.6, 0.2 s */
+  tl.to(P+"dA", {x: 1338, duration: 0.10, ease: "power2.out"}, 3.74);
+  tl.to(P+"dA", {x: 1352, duration: 0.10, ease: "power2.in"}, 3.84);
+  tl.to(P+"dB", {x: 1406, duration: 0.10, ease: "power2.out"}, 3.74);
+  tl.to(P+"dB", {x: 1420, duration: 0.10, ease: "power2.in"}, 3.84);
+  tl.to(P+"dC", {x: 1414, duration: 0.10, ease: "power2.out"}, 3.74);
+  tl.to(P+"dC", {x: 1428, duration: 0.10, ease: "power2.in"}, 3.84);
+  tl.to(P+"house", {x: 6, rotation: 0.6, svgOrigin: "1000 644", smoothOrigin: false, duration: 0.05, ease: "sine.inOut"}, 3.74);
+  tl.to(P+"house", {x: -6, rotation: -0.6, svgOrigin: "1000 644", smoothOrigin: false, duration: 0.10, ease: "sine.inOut"}, 3.79);
+  tl.to(P+"house", {x: 0, rotation: 0, svgOrigin: "1000 644", smoothOrigin: false, duration: 0.05, ease: "sine.inOut"}, 3.89);
+  tl.to(P+"dA", {x: 1338, duration: 0.10, ease: "power2.out"}, 4.84);
+  tl.to(P+"dA", {x: 1352, duration: 0.10, ease: "power2.in"}, 4.94);
+  tl.to(P+"dB", {x: 1406, duration: 0.10, ease: "power2.out"}, 4.84);
+  tl.to(P+"dB", {x: 1420, duration: 0.10, ease: "power2.in"}, 4.94);
+  tl.to(P+"dC", {x: 1414, duration: 0.10, ease: "power2.out"}, 4.84);
+  tl.to(P+"dC", {x: 1428, duration: 0.10, ease: "power2.in"}, 4.94);
+  tl.to(P+"house", {x: 6, rotation: 0.6, svgOrigin: "1000 644", smoothOrigin: false, duration: 0.05, ease: "sine.inOut"}, 4.84);
+  tl.to(P+"house", {x: -6, rotation: -0.6, svgOrigin: "1000 644", smoothOrigin: false, duration: 0.10, ease: "sine.inOut"}, 4.89);
+  tl.to(P+"house", {x: 0, rotation: 0, svgOrigin: "1000 644", smoothOrigin: false, duration: 0.05, ease: "sine.inOut"}, 4.99);
+
+  /* waves @3.74: chip 1 gone (by 3.44); chip 2 in at 3.74, holds 1.5 s+ into the cut at 5.68 */
+  tl.fromTo(P+"c1", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 3.74);
+  tl.to(P+"c1", {y: -4, duration: 1.49, ease: "sine.inOut"}, 4.19);
+
+  window.__timelines["g-a4-18-battering"] = tl;
+})();
+</script>
+</template>

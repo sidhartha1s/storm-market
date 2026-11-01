@@ -1,0 +1,293 @@
+<template>
+<style>
+  #g-a6-6-surge-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a6-6-surge-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+
+  /* start-hidden SVG parts (also hidden by tl.set at 0) */
+  .ga66-crest, .ga66-dot, .ga66-notch, .ga66-ring, #g-a6-6-surge-arc, #g-a6-6-surge-sch,
+  #g-a6-6-surge-wvhi, #g-a6-6-surge-sline, #g-a6-6-surge-cline { visibility:hidden; opacity:0; }
+
+  /* source line: top-left glass, small radius */
+  #g-a6-6-surge-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box;
+    padding:6px 14px; border-radius:12px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; line-height:23px; color:#c8d3e0; letter-spacing:1px; }
+
+  /* diagram labels: HUD layer, never ride the camera push */
+  #g-a6-6-surge-ldatum { position:absolute; left:120px; top:912px; white-space:nowrap; opacity:0; visibility:hidden;
+    font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#93a3b2; letter-spacing:3px; }
+  /* schooner note: fixed in the sea just under the surge line, beside the schooner's run into the face */
+  #g-a6-6-surge-note { position:absolute; left:880px; top:352px; white-space:nowrap; opacity:0; visibility:hidden;
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:23px; color:#93a3b2; letter-spacing:2px; }
+
+  /* chips: glass card, radius 28 (intro shared rules) */
+  .ga66-chip { position:absolute; box-sizing:border-box; padding:24px 40px; border-radius:28px;
+    text-align:center; white-space:nowrap; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
+  .ga66-main { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px; line-height:48px; color:#f2f5f8; }
+  #g-a6-6-surge-c1 { left:120px; top:180px; }
+  #g-a6-6-surge-c2 { left:1420px; top:110px; }
+  #g-a6-6-surge-c3 { left:1420px; top:380px; }
+</style>
+<div id="g-a6-6-surge-root" data-composition-id="g-a6-6-surge" data-width="1920" data-height="1080"
+     data-type-ok="schematic diagram by brief: chips 44 px (shared chip spec), diagram labels 19-22 px, no 52 px element in this beat">
+  <svg id="g-a6-6-surge-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- surge body: tinted #5a768f at the top so the 16 ft body reads against the ground -->
+      <linearGradient id="g-a6-6-surge-wgrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="600">
+        <stop offset="0" stop-color="#24313d"/><stop offset="1" stop-color="#04070c"/>
+      </linearGradient>
+      <!-- water never crosses the wall: everything right of the wall top's seaward corner is cut -->
+      <clipPath id="g-a6-6-surge-cwater"><rect x="0" y="0" width="1156" height="1080"/></clipPath>
+      <!-- surge line (x 96 to 1156) draws left to right -->
+      <clipPath id="g-a6-6-surge-csl"><rect id="g-a6-6-surge-cslr" x="96" y="300" width="0" height="34"/></clipPath>
+      <!-- crest line (x 600 to 1156) draws left to right -->
+      <clipPath id="g-a6-6-surge-ccl"><rect id="g-a6-6-surge-cclr" x="600" y="128" width="0" height="34"/></clipPath>
+    </defs>
+
+    <g id="g-a6-6-surge-cam">
+      <!-- ===== sea / surge body (clipped at x 1156; the wall drawn above hides the rest of the face) ===== -->
+      <g clip-path="url(#g-a6-6-surge-cwater)">
+        <g id="g-a6-6-surge-rise">
+          <!-- static wrapper: local y 0 = calm surface, mean low tide y 900 -->
+          <g transform="translate(0,900)">
+            <rect x="-120" y="10" width="1400" height="800" fill="url(#g-a6-6-surge-wgrad)"/>
+            <g id="g-a6-6-surge-wv">
+              <!-- calm surface, amplitude 6 px, wavelength 60 px -->
+              <g id="g-a6-6-surge-wvlo">
+                <path fill="#24313d" d="M-120,0 q15,-12 30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0
+                  t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0
+                  t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0
+                  t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 L1230,40 L-120,40 Z"/>
+                <path fill="none" stroke="#5a768f" stroke-width="3" d="M-120,0 q15,-12 30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0
+                  t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0
+                  t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0
+                  t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0"/>
+              </g>
+              <!-- risen surface, amplitude 10 px, same wavelength -->
+              <g id="g-a6-6-surge-wvhi">
+                <path fill="#24313d" d="M-120,0 q15,-20 30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0
+                  t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0
+                  t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0
+                  t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 L1230,40 L-120,40 Z"/>
+                <path fill="none" stroke="#5a768f" stroke-width="3" d="M-120,0 q15,-20 30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0
+                  t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0
+                  t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0
+                  t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0"/>
+              </g>
+            </g>
+            <!-- three wave-crest shapes riding the surface; base at local y 0 -->
+            <path id="g-a6-6-surge-k0" class="ga66-crest" fill="#c8d3e0" d="M-70,0 C-45,-4 -20,-30 10,-36 C34,-40 50,-30 48,-18 C42,-26 30,-26 26,-16 C34,-6 52,-2 70,0 Z"/>
+            <path id="g-a6-6-surge-k1" class="ga66-crest" fill="#c8d3e0" d="M-70,0 C-45,-4 -20,-30 10,-36 C34,-40 50,-30 48,-18 C42,-26 30,-26 26,-16 C34,-6 52,-2 70,0 Z"/>
+            <path id="g-a6-6-surge-k2" class="ga66-crest" fill="#c8d3e0" d="M-70,0 C-45,-4 -20,-30 10,-36 C34,-40 50,-30 48,-18 C42,-26 30,-26 26,-16 C34,-6 52,-2 70,0 Z"/>
+          </g>
+        </g>
+      </g>
+
+      <!-- ===== beach wedge (96,930) to the toe (760,864), carried under the wall as its footing ===== -->
+      <path fill="#2a2f36" d="M96,930 L760,864 L1336,864 L1336,1080 L96,1080 Z"/>
+      <!-- land behind the wall, unlabelled -->
+      <rect x="1336" y="864" width="488" height="216" fill="#15202b"/>
+      <!-- the wall: g-a6-3 §3 path, 36 px/ft both ways; toe (760,864), base corner (1336,864), top 1156 to 1336 at y 288 -->
+      <path id="g-a6-6-surge-wall" fill="#8d96a0" stroke="#c8d3e0" stroke-width="3" stroke-linejoin="round"
+            d="M760,864 L1336,864 L1336,288 L1156,288 C1120,700 900,860 760,864 Z"/>
+      <!-- mean low tide datum -->
+      <path fill="none" stroke="#5a768f" stroke-width="1.5" stroke-dasharray="6 8" opacity="0.55" d="M96,900 L1824,900"/>
+
+      <!-- two chips in the wall's top edge (14 x 10 px), shown at their cue -->
+      <rect id="g-a6-6-surge-n0" class="ga66-notch" x="1183" y="286" width="14" height="12" fill="#04070c"/>
+      <rect id="g-a6-6-surge-n1" class="ga66-notch" x="1293" y="286" width="14" height="12" fill="#04070c"/>
+      <circle id="g-a6-6-surge-r0" class="ga66-ring" cx="1190" cy="293" r="15" fill="none" stroke="#d8a13a" stroke-width="2"/>
+      <circle id="g-a6-6-surge-r1" class="ga66-ring" cx="1300" cy="293" r="15" fill="none" stroke="#d8a13a" stroke-width="2"/>
+
+      <!-- surge level 16.2 ft = y 316.8 (900 - 16.2 x 36) -->
+      <g id="g-a6-6-surge-sline" clip-path="url(#g-a6-6-surge-csl)">
+        <path fill="none" stroke="#7fb2e5" stroke-width="2" stroke-dasharray="12 8" d="M96,316.8 L1156,316.8"/>
+      </g>
+      <!-- wave crests 21 ft = y 144 (900 - 21 x 36) -->
+      <g id="g-a6-6-surge-cline" clip-path="url(#g-a6-6-surge-ccl)">
+        <path fill="none" stroke="#f2f5f8" stroke-width="2" stroke-dasharray="12 8" d="M600,144 L1156,144"/>
+      </g>
+
+      <!-- schooner: schematic, NOT to scale (200 x 120 px); keel centre at local (0,0), bow to the right; 4 pieces -->
+      <g id="g-a6-6-surge-sch">
+        <g id="g-a6-6-surge-schk">
+          <g id="g-a6-6-surge-p0" fill="#4a5560" stroke="#93a3b2" stroke-width="1.5" stroke-linejoin="round">
+            <polygon points="-100,-24 -50,-24 -50,0 -86,0"/>
+            <line x1="-75" y1="-24" x2="-75" y2="-120"/>
+            <polygon points="-77,-112 -77,-34 -97,-34 -94,-100"/>
+          </g>
+          <g id="g-a6-6-surge-p1" fill="#4a5560" stroke="#93a3b2" stroke-width="1.5" stroke-linejoin="round">
+            <polygon points="-50,-24 0,-24 0,0 -50,0"/>
+            <line x1="-25" y1="-24" x2="-25" y2="-120"/>
+            <polygon points="-27,-112 -27,-34 -55,-34 -50,-100"/>
+          </g>
+          <g id="g-a6-6-surge-p2" fill="#4a5560" stroke="#93a3b2" stroke-width="1.5" stroke-linejoin="round">
+            <polygon points="0,-24 50,-24 50,0 0,0"/>
+            <line x1="25" y1="-24" x2="25" y2="-120"/>
+            <polygon points="23,-112 23,-34 -5,-34 0,-100"/>
+          </g>
+          <g id="g-a6-6-surge-p3" fill="#4a5560" stroke="#93a3b2" stroke-width="1.5" stroke-linejoin="round">
+            <polygon points="50,-24 100,-28 70,0 50,0"/>
+            <line x1="72" y1="-24" x2="72" y2="-120"/>
+            <polygon points="70,-112 70,-34 44,-34 48,-100"/>
+          </g>
+        </g>
+      </g>
+
+      <!-- spray: arc from the face top, peak (1275,144) = 21 ft, over the wall top to the land side -->
+      <path id="g-a6-6-surge-arc" fill="none" stroke="#c8d3e0" stroke-width="4" stroke-linecap="round" d="M1150,300 Q1275,-12 1400,300"/>
+      <circle id="g-a6-6-surge-d0" class="ga66-dot" r="4" fill="#f2f5f8"/>
+      <circle id="g-a6-6-surge-d1" class="ga66-dot" r="3.5" fill="#c8d3e0"/>
+      <circle id="g-a6-6-surge-d2" class="ga66-dot" r="3" fill="#f2f5f8"/>
+      <circle id="g-a6-6-surge-d3" class="ga66-dot" r="5" fill="#c8d3e0"/>
+      <circle id="g-a6-6-surge-d4" class="ga66-dot" r="3" fill="#f2f5f8"/>
+      <circle id="g-a6-6-surge-d5" class="ga66-dot" r="4" fill="#c8d3e0"/>
+      <circle id="g-a6-6-surge-d6" class="ga66-dot" r="3" fill="#f2f5f8"/>
+      <circle id="g-a6-6-surge-d7" class="ga66-dot" r="4.5" fill="#c8d3e0"/>
+      <circle id="g-a6-6-surge-d8" class="ga66-dot" r="3.5" fill="#f2f5f8"/>
+      <circle id="g-a6-6-surge-d9" class="ga66-dot" r="3" fill="#c8d3e0"/>
+      <circle id="g-a6-6-surge-d10" class="ga66-dot" r="5" fill="#f2f5f8"/>
+      <circle id="g-a6-6-surge-d11" class="ga66-dot" r="4" fill="#c8d3e0"/>
+    </g>
+  </svg>
+
+  <div id="g-a6-6-surge-src">National Weather Service Houston/Galveston &middot; Rosenberg Library<br>Heights as reported, above mean low tide</div>
+  <div id="g-a6-6-surge-ldatum">Mean low tide</div>
+  <div id="g-a6-6-surge-note">Not to scale</div>
+
+  <div id="g-a6-6-surge-c1" class="ga66-chip"><span class="ga66-main">SURGE 16.2 FT</span></div>
+  <div id="g-a6-6-surge-c2" class="ga66-chip"><span class="ga66-main">WAVES 21 FT</span></div>
+  <div id="g-a6-6-surge-c3" class="ga66-chip"><span class="ga66-main">2 SMALL CHIPS</span></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a6-6-surge-";
+  const q = function(id) { return document.querySelector(P + id); };
+  /* a6-s4.words.json, comp-local = word time - 7.06 (host starts at "The" 7.06).
+     surge 7.20 -> 0.14 · 16 7.76 -> 0.70 · waves 9.84 -> 2.78 · 21 10.74 -> 3.68 · A 12.08 -> 5.02
+     WAVES-out 13.20 -> 6.14 · thrown 13.28 -> 6.22 · pounded 14.58 -> 7.52 · it. 15.96 -> 8.90 · (16.30 -> 9.24)
+     wall 16.64 -> 9.58 · two 18.10 -> 11.04 · small 18.44 -> 11.38 · wav end 19.403 -> 12.343
+     Timeline 12.94 = 12.343 + 0.6 land time; root fades over the last 0.4 s. */
+  const END = 12.94;
+  const SURGE_Y = 316.8 - 900;   /* 16.2 ft x 36 px above the calm surface */
+
+  /* --- start states --- */
+  tl.set([P+"src", P+"ldatum", P+"note", P+"c1", P+"c2", P+"c3", P+"arc", P+"sch",
+          P+"sline", P+"cline", P+"wvhi", P+"k0", P+"k1", P+"k2",
+          P+"n0", P+"n1", P+"r0", P+"r1"], {autoAlpha: 0}, 0);
+  tl.set(P+"cam", {svgOrigin: "1156 300"}, 0);
+  tl.set(P+"rise", {y: 0}, 0);
+  tl.set([P+"r0", P+"r1"], {scale: 0.3, transformOrigin: "50% 50%"}, 0);
+  const dots = [];
+  for (let i = 0; i < 12; i++) { dots.push(q("d" + i)); tl.set(dots[i], {x: 1150, y: 300, autoAlpha: 0}, 0); }
+
+  /* --- whole-window motion: surface phase (finite repeats, 10 x 1.294 s = END) and a linear push 1.00 -> 1.03.
+         Push origin (1156,300) keeps 16.2 ft, 17 ft and 21 ft within 5 px of their heights at full push. --- */
+  tl.to(P+"wv", {x: 60, duration: END / 10, ease: "none", repeat: 9}, 0);
+  tl.to(P+"cam", {scale: 1.03, duration: END, ease: "none"}, 0);
+
+  /* 7.06: source line and datum label in; source drifts */
+  tl.fromTo(P+"src", {autoAlpha: 0, x: -30}, {autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out"}, 0);
+  tl.to(P+"src", {y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 4}, 0.5);
+  tl.fromTo(P+"ldatum", {autoAlpha: 0, y: 10}, {autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out"}, 0);
+
+  /* SURGE @7.20: sea rises 0.14 to 1.84 to y 316.8; surface swells from 6 to 10 px; datum label goes under */
+  tl.to(P+"rise", {y: SURGE_Y, duration: 1.7, ease: "power2.inOut"}, 0.14);
+  tl.to(P+"wvhi", {autoAlpha: 1, duration: 1.2, ease: "power1.inOut"}, 0.5);
+  tl.to(P+"wvlo", {autoAlpha: 0, duration: 1.2, ease: "power1.inOut"}, 0.5);
+  tl.to(P+"ldatum", {autoAlpha: 0, y: 10, duration: 0.4, ease: "power2.in"}, 0.4);
+  /* 16 @7.76: chip SURGE 16.2 FT */
+  tl.fromTo(P+"c1", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 0.7);
+  tl.to(P+"c1", {y: -4, duration: 1.9, ease: "sine.inOut", yoyo: true, repeat: 1}, 1.15);
+  /* surge line draws as the water lands */
+  tl.set(P+"sline", {autoAlpha: 1}, 1.5);
+  tl.fromTo(P+"cslr", {attr: {width: 0}}, {attr: {width: 1060}, duration: 0.6, ease: "power2.out"}, 1.5);
+
+  /* --- one wave break: crest k rides from fromX to the face (impact at peak - 0.35), spray peaks at y 144 on `peak`,
+         falls over the wall top to the land side (x 1340 to 1600, 300 px down) by peak + 0.45 --- */
+  const SPRAY = [ /* [peakX, peakY, endX] : peak 144 is the 21 ft lead drop */
+    [1275,144,1600],[1240,156,1360],[1290,162,1520],[1220,175,1345],[1260,150,1450],[1285,185,1580],
+    [1205,196,1340],[1250,168,1400],[1270,205,1480],[1230,190,1380],[1280,158,1550],[1215,212,1420]];
+  const arc = q("arc");
+  const arcLen = Math.ceil(arc.getTotalLength()) + 1;
+  tl.set(arc, {strokeDasharray: arcLen, strokeDashoffset: arcLen}, 0);
+  const brk = function(k, t0, fromX, peak) {
+    const crest = q("k" + k), hit = peak - 0.35;
+    tl.set(crest, {x: fromX, y: 0, scaleY: 1, transformOrigin: "50% 100%", autoAlpha: 0}, t0);
+    tl.to(crest, {autoAlpha: 0.85, duration: 0.2, ease: "power1.out"}, t0);
+    tl.to(crest, {x: 1150, duration: hit - t0, ease: "power1.in"}, t0);
+    tl.to(crest, {scaleY: 2.2, autoAlpha: 0, duration: 0.3, ease: "power2.out"}, hit);
+    tl.set(arc, {strokeDashoffset: arcLen, autoAlpha: 0.9}, hit);
+    tl.to(arc, {strokeDashoffset: 0, duration: 0.6, ease: "power2.out"}, hit);
+    tl.to(arc, {autoAlpha: 0, duration: 0.3, ease: "power1.in"}, peak + 0.2);
+    for (let i = 0; i < 12; i++) {
+      const s = SPRAY[i];
+      tl.set(dots[i], {x: 1145 + (i % 4) * 4, y: 302, autoAlpha: 1}, hit);
+      tl.to(dots[i], {x: s[0], y: s[1], duration: 0.35, ease: "power2.out"}, hit);
+      tl.to(dots[i], {x: s[2], y: s[1] + 300, autoAlpha: 0, duration: 0.45, ease: "power1.in"}, peak);
+    }
+  };
+
+  /* WAVES @9.84, 21 @10.74: first break, spray peak at 3.68; crest line and chip land with it */
+  brk(0, 2.78, 600, 3.68);
+  tl.set(P+"cline", {autoAlpha: 1}, 3.68);
+  tl.fromTo(P+"cclr", {attr: {width: 0}}, {attr: {width: 556}, duration: 0.5, ease: "power2.out"}, 3.68);
+  tl.fromTo(P+"c2", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 3.68);
+  tl.to(P+"c2", {y: -4, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1}, 4.13);
+
+  /* SCHOONER @12.66: break 2 carries the schooner in from the left (5.02 to 5.73), up the face (to 6.22),
+     thrown onto the wall top at (1246,288) on "thrown over" (6.22 to 6.84); SURGE chip out at 5.02, WAVES out at 6.14 */
+  brk(1, 5.02, 110, 6.08);
+  tl.to(P+"c1", {x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in"}, 5.02);
+  tl.set(P+"sch", {x: 70, y: 312, rotation: 0, transformOrigin: "50% 100%"}, 5.02);
+  tl.to(P+"sch", {autoAlpha: 1, duration: 0.3, ease: "power1.out"}, 5.02);
+  tl.fromTo(P+"note", {autoAlpha: 0, y: 10}, {autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out"}, 5.02);
+  tl.to(P+"note", {y: -4, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 2}, 5.42);
+  tl.to(P+"sch", {x: 1040, duration: 0.71, ease: "power1.in"}, 5.02);
+  tl.to(P+"sch", {rotation: -6, duration: 0.355, ease: "sine.inOut", yoyo: true, repeat: 1}, 5.02);
+  tl.to(P+"sch", {x: 1120, y: 250, rotation: -14, duration: 0.49, ease: "power2.out"}, 5.73);
+  tl.to(P+"c2", {x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in"}, 6.14);
+  tl.to(P+"sch", {x: 1190, y: 200, rotation: -4, duration: 0.28, ease: "power2.out"}, 6.22);
+  tl.to(P+"sch", {x: 1246, y: 288, rotation: 0, duration: 0.34, ease: "power2.in"}, 6.5);
+
+  /* POUNDED @14.58 to "it." 15.96: break 3 hits it, it tilts and shakes, then breaks into 4 and slides off the land side by 9.24 */
+  brk(2, 7.58, 600, 8.48);
+  tl.to(P+"sch", {rotation: 7, duration: 0.5, ease: "power2.out"}, 7.52);
+  tl.to(P+"schk", {x: 6, duration: 0.11, ease: "power1.inOut", yoyo: true, repeat: 7}, 7.52);
+  /* piece centres sit at x 1171, 1221, 1271, 1321: slide to just past the landward edge (1336), then drop toward the land */
+  const PIECE = [[180, -18], [140, 12], [100, -10], [60, 22]];
+  for (let i = 0; i < 4; i++) {
+    tl.to(P+"p" + i, {x: PIECE[i][0], rotation: PIECE[i][1], duration: 0.3, ease: "power1.in", transformOrigin: "50% 100%"}, 8.4 + i * 0.04);
+    tl.to(P+"p" + i, {x: PIECE[i][0] + 60 + i * 20, y: 540, rotation: PIECE[i][1] * 3, duration: 0.5, ease: "power2.in"}, 8.7 + i * 0.01);
+    tl.to(P+"p" + i, {autoAlpha: 0, duration: 0.2, ease: "power1.in"}, 9.0 + i * 0.01);
+  }
+  tl.to(P+"note", {autoAlpha: 0, y: 10, duration: 0.3, ease: "power2.in"}, 8.94);
+  tl.set(P+"sch", {autoAlpha: 0}, 9.24);
+
+  /* WALL @16.64: wall edge brightens */
+  tl.to(P+"wall", {stroke: "#f2f5f8", duration: 0.4, ease: "power1.out"}, 9.58);
+
+  /* last break of the window (spray down by 11.33, before the chips label enters at 11.38) */
+  brk(0, 9.98, 600, 10.88);
+
+  /* 2 CHIPS @18.10: notches ring in turn (11.04, 11.38); chip 2 SMALL CHIPS in on "small" 11.38 */
+  tl.to(P+"n0", {autoAlpha: 1, duration: 0.15, ease: "power1.out"}, 11.04);
+  tl.to(P+"r0", {autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)"}, 11.04);
+  tl.to(P+"n1", {autoAlpha: 1, duration: 0.15, ease: "power1.out"}, 11.38);
+  tl.to(P+"r1", {autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)"}, 11.38);
+  tl.to([P+"r0", P+"r1"], {scale: 1.15, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1, stagger: 0.34}, 11.6);
+  tl.fromTo(P+"c3", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 11.38);
+  tl.to(P+"c3", {y: -4, duration: 1.1, ease: "sine.inOut"}, 11.83);
+
+  /* exit: cut to g-a6-7 at A6-S5, root fades to 0 over the last 0.4 s */
+  tl.to(P+"root", {autoAlpha: 0, duration: 0.4, ease: "power1.in"}, END - 0.4);
+  window.__timelines["g-a6-6-surge"] = tl;
+})();
+</script>
+</template>

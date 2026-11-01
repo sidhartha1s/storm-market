@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a6-12-close · A6-S9 · ep-galveston-1900 · standard (Sonnet 5.5) · brief: briefs/a6/g-a6-12-close.md
+  Claim: none. Close card: the 1891 page and the telegraph line fade out, the channel wordmark lands on the closing line.
+  Host start = A6-S9 narration data-start (cue 0.00); comp-local time = a6-s9.words.json time. Segment 11.176 s.
+  ASSUMED host length 12.0 s (11.176 + 0.8 s tail): the black exit below is anchored at 11.5 to 12.0; re-anchor if the editor sets another tail.
+  Page: provenance row for A1-S1_c1 reads verified Y (full page 5, 16 July 1891), so the page is used.
+  Presenter circle OFF (set on the host mount).
+  29 Oct 26: the look is now the channel standard close (library/inhouse/outro-brand.html as shipped in ep-nepal-floods-2026
+  g-outro: Arial Black 120 px wordmark, amber "Warning", amber 600 px rule, glow and grid over the radial ground). The logo
+  PNG, the AbrilFig title and the red rule are gone, so all three batch-A closes match. Cues: This 9.76, was 10.02, the 10.26,
+  warning 10.46, hour 10.74. The 1891 page (opacity 0.35) is what keeps the frame above blackdetect until the wordmark.
+  Round 2 (orchestrator 08:27): the wordmark builds on "This" 9.76 so it reads about 1.7 s; exit 11.5 to 12.0.
+-->
+<template>
+<style>
+  #g-a6-12-close-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a6-12-close-glow { position:absolute; left:360px; top:240px; width:1200px; height:600px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(216,161,58,0.12), rgba(216,161,58,0) 70%); }
+  #g-a6-12-close-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.04) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  #g-a6-12-close-pagewrap { position:absolute; left:510px; top:-34px; width:900px; height:1148px; opacity:0.35; }
+  #g-a6-12-close-page { display:block; width:900px; height:1148px; filter:sepia(0.28) blur(2px); }
+  #g-a6-12-close-wires { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #g-a6-12-close-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #g-a6-12-close-mark { position:absolute; left:0; right:0; top:462px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:120px; line-height:140px; letter-spacing:6px; color:#f2f5f8; white-space:nowrap; }
+  /* word gaps are explicit margins (Nepal g-outro round 2: the whitespace node between inline-block spans rendered ~10 px) */
+  #g-a6-12-close-mark span { display:inline-block; }
+  #g-a6-12-close-w2, #g-a6-12-close-w3 { margin-left:0.33em; }
+  .ga612-amber { color:#d8a13a; }
+  #g-a6-12-close-rule { position:absolute; left:660px; width:600px; top:630px; height:4px; border-radius:2px; background:#d8a13a; }
+  #g-a6-12-close-black { position:absolute; inset:0; background:#000; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a6-12-close-root" data-composition-id="g-a6-12-close" data-width="1920" data-height="1080">
+  <div id="g-a6-12-close-grid"></div>
+  <div id="g-a6-12-close-glow"></div>
+  <div id="g-a6-12-close-pagewrap">
+    <img id="g-a6-12-close-page" src="media/candidates/a1/A1-S1_c1_galveston-daily-news-1891-07-16.jpg" alt="Galveston Daily News, 16 July 1891, page 5" data-crop-ok="full page scan centred; frame clips only the blank margin top and bottom, no text lines are cut">
+  </div>
+  <svg id="g-a6-12-close-wires" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <line id="g-a6-12-close-havana" x1="96" y1="790" x2="1824" y2="790" stroke="#5a768f" stroke-opacity="0.35" stroke-width="3" stroke-dasharray="28 24"/>
+    <line id="g-a6-12-close-lit" x1="96" y1="760" x2="1824" y2="760" stroke="#7fb2e5" stroke-width="3" stroke-linecap="round" style="filter:drop-shadow(0 0 8px #7fb2e5)"/>
+    <circle id="g-a6-12-close-dot" cx="96" cy="760" r="7" fill="#f2f5f8" style="filter:drop-shadow(0 0 10px #7fb2e5)"/>
+  </svg>
+  <div id="g-a6-12-close-stage">
+    <div id="g-a6-12-close-mark"><span id="g-a6-12-close-w1">The</span><span class="ga612-amber" id="g-a6-12-close-w2">Warning</span><span id="g-a6-12-close-w3">Hour</span></div>
+    <div id="g-a6-12-close-rule"></div>
+  </div>
+  <div id="g-a6-12-close-black"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a6-12-close-";
+  const DUR = 12.0;
+  tl.set([P + "w1", P + "w2", P + "w3"], { autoAlpha: 0, y: 10 }, 0);
+  tl.set(P + "rule", { scaleX: 0, transformOrigin: "50% 50%" }, 0);
+  tl.set(P + "black", { autoAlpha: 0 }, 0);
+  tl.set(P + "dot", { x: 0 }, 0);
+
+  /* ambient, whole window (channel standard): slow push on the stage, glow and grid drift, never a static hold */
+  tl.fromTo(P + "stage", { scale: 1 }, { scale: 1.05, transformOrigin: "50% 50%", duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "glow", { x: -80 }, { x: 80, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "grid", { x: 0 }, { x: 70, duration: DUR, ease: "none" }, 0);
+  tl.fromTo([P + "glow", P + "grid"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 0);
+
+  /* "Disasters ... warnings." 0.00-2.64: wire pulse at 0.40 and 2.40 ("send"); the dot repeats every 2.0 s while the line is lit */
+  tl.to(P + "dot", { x: 1728, duration: 1.6, ease: "power1.inOut", repeat: 3, repeatDelay: 0.4 }, 0.40);
+  tl.to(P + "lit", { attr: { "stroke-width": 5 }, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0.40);
+  /* page drifts y -10 over 6 s */
+  tl.to(P + "pagewrap", { y: -10, duration: 6, ease: "none" }, 0);
+
+  /* page stays at 0.35 and leaves as the wordmark lands: "to" @8.86 -> "warning" @10.46. It keeps the frame above
+     blackdetect (verify_render black 1169.49-1174.02 on galveston-draft-1029); it reaches about 0.04 near 10.07, and
+     "The" starts at 10.26, so the dark gap is about 0.2 s */
+  tl.to(P + "pagewrap", { opacity: 0, duration: 1.60, ease: "power1.inOut" }, 8.86);
+  /* "who is sending it" @5.58: Havana dashed line first, then the lit line from "So" @6.76 to 8.42 */
+  tl.to(P + "havana", { opacity: 0, duration: 0.54, ease: "power1.in" }, 5.58);
+  tl.to([P + "lit", P + "dot"], { opacity: 0, duration: 1.66, ease: "power1.inOut" }, 6.76);
+
+  /* THIS @9.76: the wordmark builds on the start of the closing line (match cut, DESIGN.md "Outro"), a quick
+     0.05 s word stagger so it is whole by 10.16 and reads about 1.7 s before the exit (the host tail is fixed at 0.8 s:
+     an index.html change would force every act to re-render); the rule draws on "hour" @10.74 */
+  tl.to([P + "w1", P + "w2", P + "w3"], { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", stagger: 0.05 }, 9.76);
+  tl.to(P + "rule", { scaleX: 1, duration: 0.5, ease: "power3.out" }, 10.74);
+
+  /* EXIT: fade to black over the last 0.5 s of the host (assumed host end 12.0), after the narration ends at 11.18 */
+  tl.to(P + "black", { autoAlpha: 1, duration: 0.5, ease: "power1.in" }, 11.5);
+  window.__timelines["g-a6-12-close"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

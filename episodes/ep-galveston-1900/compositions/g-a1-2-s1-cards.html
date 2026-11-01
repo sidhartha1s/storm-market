@@ -1,0 +1,88 @@
+<template>
+<style>
+  @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+  #g-a1-2-s1-cards-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  /* source line, top-left (glass surface, tokens.md) */
+  #g-a1-2-s1-cards-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+  /* popfig: wrapper drifts in y; sub and big are centred on x 960 by left:50% + xPercent -50 (set in tl.set) */
+  #g-a1-2-s1-cards-pop { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #g-a1-2-s1-cards-sub { position:absolute; left:50%; top:372px; white-space:nowrap; opacity:0; visibility:hidden;
+    font-family:Arial, sans-serif; font-weight:700; font-size:32px; line-height:38px; letter-spacing:6px; color:#e8e3d8;
+    text-shadow:0 0 14px rgba(0,0,0,0.95), 0 3px 10px #000; }
+  #g-a1-2-s1-cards-big { position:absolute; left:50%; top:420px; white-space:nowrap; opacity:0; visibility:hidden;
+    font-family:'AbrilFig', Georgia, serif; font-size:150px; line-height:165px; letter-spacing:0.04em; color:#d0121f;
+    text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+  /* lower-third: outer moves in x, inner drifts in y; card 620 x 140, right edge x 730 (column 3 starts 842.7) */
+  #g-a1-2-s1-cards-lt { position:absolute; left:110px; bottom:110px; width:620px; height:140px; opacity:0; visibility:hidden; }
+  #g-a1-2-s1-cards-ltin { position:absolute; left:0; top:0; width:620px; height:140px; }
+  #g-a1-2-s1-cards-bg { position:absolute; left:0; top:0; width:620px; height:140px; box-sizing:border-box; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  #g-a1-2-s1-cards-name { position:absolute; left:28px; top:18px; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:52px; line-height:57px; color:#f2f5f8; }
+  #g-a1-2-s1-cards-rule { position:absolute; left:28px; top:79px; width:564px; height:3px; background:#d8a13a; transform-origin:left center; opacity:0; visibility:hidden; }
+  #g-a1-2-s1-cards-role { position:absolute; left:28px; top:87px; white-space:nowrap; font-weight:700; font-size:27px; line-height:35px;
+    letter-spacing:1px; color:#f5d98b; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a1-2-s1-cards-root" data-composition-id="g-a1-2-s1-cards" data-width="1920" data-height="1080">
+  <div id="g-a1-2-s1-cards-src">Galveston Daily News, July 16, 1891, p. 5 &middot; Portal to Texas History; Wikimedia Commons, CC0</div>
+  <div id="g-a1-2-s1-cards-pop">
+    <span id="g-a1-2-s1-cards-sub">THURSDAY</span>
+    <span id="g-a1-2-s1-cards-big">JULY 16, 1891</span>
+  </div>
+  <div id="g-a1-2-s1-cards-lt">
+    <div id="g-a1-2-s1-cards-ltin">
+      <div id="g-a1-2-s1-cards-bg"></div>
+      <span id="g-a1-2-s1-cards-name">ISAAC CLINE</span>
+      <div id="g-a1-2-s1-cards-rule"></div>
+      <span id="g-a1-2-s1-cards-role">Weather Bureau, Galveston</span>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a1-2-s1-cards-";
+  /* TIMING: audio/a1-s1.words.json, comp-local = A1-S1 segment time (host starts at A1-S1 0.00).
+     Host end = A1-S1 start + 11.121 + inter-segment gap + 8.766. The gap is not in index.html yet (no a1 mounts):
+     20.4 assumes a 0.5 s gap. If the real gap differs, move the final source-line fade (20.1) to host end - 0.3 and
+     keep the timeline at or past host end.
+     Thursday, @0.64 ; 16th @1.68 ; 1891. 3.18 to 4.08 ; Some @4.62 ; Klein(Cline) @9.04 ; had @9.28 ; S1 ends 11.121 */
+  tl.set(P+"src", {autoAlpha:0, y:8}, 0);
+  tl.set(P+"sub", {autoAlpha:0, xPercent:-50, y:12}, 0);
+  tl.set(P+"big", {autoAlpha:0, xPercent:-50, scale:1.35}, 0);
+  tl.set(P+"lt", {autoAlpha:0, x:-60}, 0);
+  tl.set(P+"role", {autoAlpha:0, y:10}, 0);
+  tl.set(P+"rule", {autoAlpha:1, scaleX:0}, 0);
+
+  /* SRC @0.00: source line in, then drifts y +-4 for the whole window, fades over the last 0.3 s */
+  tl.to(P+"src", {autoAlpha:1, y:0, duration:0.4, ease:"power2.out"}, 0);
+  tl.to(P+"src", {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:8}, 0.4);
+  tl.to(P+"src", {autoAlpha:0, duration:0.3, ease:"power2.in"}, 20.1);
+
+  /* THURSDAY @0.64 */
+  tl.to(P+"sub", {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 0.64);
+  /* JULY 16 @1.68: popfig enter spec (scale 1.35 -> 1) */
+  tl.to(P+"big", {autoAlpha:1, scale:1, duration:0.5, ease:"power4.out"}, 1.68);
+  /* popfig drifts y +-4 from land (0.64) to its exit (4.10): 2 legs of 1.73 s */
+  tl.to(P+"pop", {y:-4, duration:1.73, ease:"sine.inOut", yoyo:true, repeat:1}, 0.64);
+  /* exit 4.10 to 4.55, both lines together, gone before "Some" 4.62 */
+  tl.to([P+"sub", P+"big"], {scale:0.92, autoAlpha:0, duration:0.45, ease:"power2.in"}, 4.10);
+
+  /* CLINE @9.04: lower-third in, rule draws 9.30 to 9.80, role at 9.28 ("had") */
+  tl.fromTo(P+"lt", {x:-60, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 9.04);
+  tl.to(P+"rule", {scaleX:1, duration:0.5, ease:"power2.out"}, 9.30);
+  tl.to(P+"role", {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 9.28);
+  /* card floats from its land time until its exit */
+  tl.to(P+"ltin", {y:-4, duration:0.7, ease:"sine.inOut", yoyo:true, repeat:1}, 9.04);
+  /* exit 10.40 to 11.00, before S1 ends 11.121 and before A1-S2's quote card enters */
+  tl.to(P+"lt", {x:-980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 10.40);
+
+  window.__timelines["g-a1-2-s1-cards"] = tl;
+})();
+</script>
+</template>

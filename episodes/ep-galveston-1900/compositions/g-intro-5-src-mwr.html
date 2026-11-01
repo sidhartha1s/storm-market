@@ -1,0 +1,34 @@
+<template>
+<style>
+  #g-intro-5-src-mwr-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  .g-intro-5-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  /* source line, top-left */
+  #g-intro-5-src-mwr-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    font-weight:700; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+</style>
+<div id="g-intro-5-src-mwr-root" data-composition-id="g-intro-5-src-mwr" data-width="1920" data-height="1080">
+  <div id="g-intro-5-src-mwr-src" class="g-intro-5-glass">Isaac Cline, Monthly Weather Review, Sept. 1900</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-intro-5-src-mwr-";
+  /* TIMING: comp-local 0 = the cut to the MWR page = H1-S5 1.22 ("lost" 1.22, h1-s5.words.json).
+     "wife" 3.26 = local 2.04 (hold marker, no change); H1-S5 ends 3.795 = local 2.575;
+     T1-S1 0.88 ("island") = local 2.575 + gap + 0.88, gap read from index.html (ASSUMED 0 here: length 3.455).
+     To retime: set END to the real host length; only END changes. */
+  const END = 3.455;
+  tl.set(P+"src", {autoAlpha:0, y:8}, 0);
+
+  /* MWR PAGE @1.22 -> local 0: fade and rise */
+  tl.to(P+"src", {autoAlpha:1, y:0, duration:0.4, ease:"power2.out"}, 0);
+  /* drift y +-4, 2.4 s yoyo, from land time to the exit */
+  tl.to(P+"src", {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:1}, 0.4);
+  /* exit: fade in the last 0.3 s, ends on the cut at T1-S1 0.88 */
+  tl.to(P+"src", {autoAlpha:0, duration:0.3, ease:"power2.in"}, END - 0.3);
+  window.__timelines["g-intro-5-src-mwr"] = tl;
+})();
+</script>
+</template>

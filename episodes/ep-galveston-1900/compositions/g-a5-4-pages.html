@@ -1,0 +1,98 @@
+<template>
+<style>
+  #g-a5-4-pages-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a5-4-pages-stage { position:absolute; inset:0; }
+
+  /* tags: top 96, left-aligned over each page */
+  .g-a5-4-pages-tag { position:absolute; inset:auto; top:96px; white-space:nowrap; opacity:0; visibility:hidden;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:34px; line-height:1.2; color:#f2f5f8; letter-spacing:2px; }
+  #g-a5-4-pages-tagL { left:160px; }
+  #g-a5-4-pages-tagR { left:1120px; }
+
+  /* pages: outer carries x + rotation, inner carries the float */
+  .g-a5-4-pages-pg { position:absolute; inset:auto; top:150px; width:640px; height:760px; opacity:0; visibility:hidden; }
+  #g-a5-4-pages-L { left:160px; }
+  #g-a5-4-pages-R { left:1120px; }
+  .g-a5-4-pages-in { position:absolute; inset:0; box-sizing:border-box; box-shadow:0 20px 60px rgba(0,0,0,.6); }
+
+  /* left: the MWR report page, whole page shown (object-fit contain, no line cut) */
+  #g-a5-4-pages-Lin { background:#e8e1d0; overflow:hidden; }
+  #g-a5-4-pages-img { position:absolute; left:0; top:0; width:640px; height:760px; object-fit:contain; }
+
+  /* right: typeset quotation on the beige cite card */
+  #g-a5-4-pages-Rin { background:rgba(232,222,200,.90); padding:56px; color:#2a2622; }
+  #g-a5-4-pages-head { font-family:Georgia, 'Times New Roman', serif; font-weight:700; font-size:34px; line-height:1.25; color:#2a2622; }
+  #g-a5-4-pages-rule { width:96px; height:3px; background:#d8a13a; margin:26px 0 30px; }
+  #g-a5-4-pages-quote { font-family:Georgia, 'Times New Roman', serif; font-size:28px; line-height:1.4; color:#2a2622; }
+  #g-a5-4-pages-foot { position:absolute; left:56px; bottom:48px; font-family:Arial, sans-serif; font-weight:700; font-size:20px; color:#6b6257; letter-spacing:1px; }
+  #g-a5-4-pages-mark { position:absolute; right:48px; bottom:20px; font-family:Georgia, 'Times New Roman', serif; font-size:130px; line-height:1; color:#6b6257; opacity:.45; }
+
+  /* source line: bottom-left glass chip */
+  #g-a5-4-pages-src { position:absolute; inset:auto; left:96px; top:990px; max-width:1100px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    white-space:nowrap; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; color:#c8d3e0; letter-spacing:1px; }
+</style>
+<div id="g-a5-4-pages-root" data-composition-id="g-a5-4-pages" data-width="1920" data-height="1080">
+  <div id="g-a5-4-pages-stage">
+    <div class="g-a5-4-pages-tag" id="g-a5-4-pages-tagL">HIS REPORT &middot; SEPT 1900</div>
+    <div class="g-a5-4-pages-tag" id="g-a5-4-pages-tagR">LATER TELLING</div>
+
+    <div class="g-a5-4-pages-pg" id="g-a5-4-pages-L">
+      <div class="g-a5-4-pages-in" id="g-a5-4-pages-Lin">
+        <img id="g-a5-4-pages-img" src="media/candidates/a3/A3-S10_c2_mwr-sept1900-p372_cline-report.png" alt="">
+      </div>
+    </div>
+
+    <div class="g-a5-4-pages-pg" id="g-a5-4-pages-R">
+      <div class="g-a5-4-pages-in" id="g-a5-4-pages-Rin">
+        <div id="g-a5-4-pages-head">Galveston Hurricane of 1900</div>
+        <div id="g-a5-4-pages-rule"></div>
+        <div id="g-a5-4-pages-quote">The Weather Bureau official in charge locally, Isaac M. Cline, &hellip; drove a horse-drawn cart around low areas warning people to leave.</div>
+        <div id="g-a5-4-pages-foot">Handbook of Texas Online</div>
+        <div id="g-a5-4-pages-mark">&rdquo;</div>
+      </div>
+    </div>
+  </div>
+  <div id="g-a5-4-pages-src">Isaac Cline, Monthly Weather Review, Sept. 1900 &middot; Texas State Historical Association</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a5-4-pages-";
+  /* a5-s3.words.json, host starts at "The" 8.74 -> comp-local = word time - 8.74
+     two @8.82 -> 0.08 | accounts @8.98 -> 0.24 | Klein @9.38 -> 0.64 | don't @10.86 -> 2.12 | match @11.24 -> 2.50 | segment end 11.50 -> 2.76
+     host assumed 8.74 to ~12.50 (3.76 s); timeline 3.8 s; exit anchored to the last 0.6 s */
+  tl.set([P+"L", P+"R", P+"tagL", P+"tagR", P+"src"], {autoAlpha:0}, 0);
+  tl.set(P+"L", {rotation:-1.5, x:-700}, 0);
+  tl.set(P+"R", {rotation:1.5, x:700}, 0);
+  tl.set(P+"stage", {scale:1, transformOrigin:"50% 50%"}, 0);
+
+  /* TWO @0.08: report page slides in; ACCOUNTS @0.24: later telling slides in */
+  tl.to(P+"L", {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 0.08);
+  tl.to(P+"R", {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 0.24);
+
+  /* KLEIN @0.64: tags, 0.2 s stagger; source line with the first tag */
+  tl.fromTo(P+"tagL", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.64);
+  tl.fromTo(P+"tagR", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.84);
+  tl.fromTo(P+"src", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.64);
+
+  /* DON'T @2.12 -> MATCH @2.50: pages ease apart 20 px each, gap 320 -> 360 */
+  tl.to(P+"L", {x:-20, duration:0.54, ease:"power2.out"}, 2.12);
+  tl.to(P+"R", {x:20, duration:0.54, ease:"power2.out"}, 2.12);
+
+  /* motion the whole window: opposite-phase float (y +-4) and a slow push 1.00 -> 1.03 */
+  tl.fromTo(P+"Lin", {y:-4}, {y:4, duration:1.9, ease:"sine.inOut", yoyo:true, repeat:1}, 0);
+  tl.fromTo(P+"Rin", {y:4}, {y:-4, duration:1.9, ease:"sine.inOut", yoyo:true, repeat:1}, 0);
+  tl.to(P+"stage", {scale:1.03, duration:3.8, ease:"none"}, 0);
+
+  /* exit: later-telling page slides out right in the last 0.6 s, report page stays for the next shot */
+  tl.to(P+"R", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 3.15);
+  tl.to(P+"tagR", {autoAlpha:0, duration:0.3, ease:"power2.in"}, 3.15);
+  window.__timelines["g-a5-4-pages"] = tl;
+})();
+</script>
+</template>

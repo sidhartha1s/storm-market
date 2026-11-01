@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a2-9-sept4-map · A2-S8 (whole, 0.00 to 17.904) · ep-galveston-1900 · DEEP (Opus) · brief: briefs/a2/g-a2-9-sept4-map.md
+  Claim: on the Weather Bureau's own map for 4 Sept 1900 the storm sits over western Cuba. Washington's note had it heading
+  for the south Florida coast (dashed: a note, not a track); Belen read it northwest, into the Gulf (solid, ends in open
+  water, never aims at Galveston); Rubiera writes Gangoiti said it would strengthen there (chip C, no quote marks).
+
+  GROUND: media/a2/noaa-map-1900-09-04-gulf.jpg = scan A2-S8_c1 (2048 x 1452) cropped x 400..1520, y 570..1200, resized
+  to 1920 x 1080 (factor 1.7143). Screen = ((scan x - 400) * 1.7143, (scan y - 570) * 1.7143). Still: no camera move.
+  POINTS (screen px, read on the full scan and converted by that formula; brief values in brackets):
+    printed "L" low centre  (1157, 816)  [1157, 814]
+    Galveston station       (273, 341)   [271, 343]   pin placed on the brief value, 2 to 5 px off the read
+    south Florida station   (1263, 410)  [1263, 410]
+    New Orleans (check)     (850, 240)   [842, 235]
+  WASHINGTON ARROW: low -> south Florida, tip 30 px short of the station along the line (brief §3).
+  BELEN ARROW: low -> end (800, 520), quadratic control (1020, 700). End moved 20 px south of the brief's (800, 500):
+    the Louisiana coast sits about 250 px north of (800, 500) on the scan; at (800, 520) the head is about 265 px from
+    Louisiana, 280 from Yucatan, 300 from the Florida west coast. Its straight extension passes about 197 px from the
+    Galveston pin (needs >= 120).
+-->
+<template>
+<style>
+  #g-a2-9-sept4-map-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a2-9-sept4-map-img { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .ga29-dim { position:absolute; inset:0; background:rgba(3,5,8,0.45); pointer-events:none; }
+  .ga29-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .ga29-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-sizing:border-box; }
+  .ga29-src { position:absolute; left:96px; top:54px; max-width:900px; padding:6px 14px; border-radius:12px;
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:1.4; color:#c8d3e0; }
+  .ga29-src span { display:block; white-space:nowrap; }
+  .ga29-gal { position:absolute; left:300px; top:314px; padding:4px 12px; border-radius:12px;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:34px; line-height:40px; color:#f2f5f8; white-space:nowrap; }
+  /* chips: centred on x 960; top 150, not 120, because the two-line source line ends at about y 121 (brief §3 fallback) */
+  .ga29-chipwrap { position:absolute; left:0; width:1920px; top:150px; display:flex; justify-content:center; }
+  .ga29-chip { position:relative; border-radius:28px; padding:18px 34px 18px 46px; overflow:hidden; }
+  /* bar sits in the chip's -in wrapper (a transform tween makes it the containing block, inside the 46 px left padding):
+     left -28 puts it 18 px from the chip edge, top/bottom 0 spans the 56 px text line, clear of the first letter */
+  .ga29-bar { position:absolute; left:-28px; top:0; bottom:0; width:6px; border-radius:3px; }
+  .ga29-main { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px; line-height:56px; color:#f2f5f8; white-space:nowrap; }
+  /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
+  .ga29-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a2-9-sept4-map-root" data-composition-id="g-a2-9-sept4-map" data-width="1920" data-height="1080"
+  data-type-ok="map labels and one-line chips: brief sets Galveston 34 px, chips 44 px, source 19 px, so two tiers by design (no headline on a map comp)">
+  <img id="g-a2-9-sept4-map-img" src="media/a2/noaa-map-1900-09-04-gulf.jpg" alt="NOAA weather map, 4 September 1900, Gulf crop">
+  <div class="ga29-dim" id="g-a2-9-sept4-map-dim"></div>
+
+  <svg class="ga29-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- the Washington arrow is drawn by this solid mask path; the visible dash pattern never moves -->
+      <mask id="g-a2-9-sept4-map-wmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+        <path id="g-a2-9-sept4-map-wmaskp" d="M0,0" fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round"/>
+      </mask>
+    </defs>
+
+    <!-- storm ring on the printed L: outer g breathes, inner circle draws -->
+    <g id="g-a2-9-sept4-map-ringg">
+      <circle id="g-a2-9-sept4-map-ring" class="ga29-hide" cx="1157" cy="816" r="70" fill="none" stroke="#c0392b" stroke-width="2"
+        transform="rotate(-90 1157 816)"/>
+    </g>
+
+    <!-- Washington's note: dashed, 6 px, cold blue -->
+    <g id="g-a2-9-sept4-map-wash">
+      <path id="g-a2-9-sept4-map-wline" class="ga29-hide" d="M0,0" fill="none" stroke="#7fb2e5" stroke-width="6" stroke-linecap="round"
+        stroke-dasharray="18 12" mask="url(#g-a2-9-sept4-map-wmask)"/>
+      <polygon id="g-a2-9-sept4-map-whead" class="ga29-hide" points="0,0 0,0 0,0" fill="#7fb2e5"/>
+    </g>
+
+    <!-- Belen's read: solid, 8 px, amber -->
+    <path id="g-a2-9-sept4-map-bline" class="ga29-hide" d="M1157,816 Q1020,700 800,520" fill="none" stroke="#d8a13a" stroke-width="8" stroke-linecap="round"/>
+    <polygon id="g-a2-9-sept4-map-bhead" class="ga29-hide" points="0,0 0,0 0,0" fill="#d8a13a"/>
+
+    <!-- Galveston pin on the station circle -->
+    <circle id="g-a2-9-sept4-map-galring" cx="271" cy="343" r="7" fill="none" stroke="#f2f5f8" stroke-width="2"/>
+    <circle id="g-a2-9-sept4-map-galdot" cx="271" cy="343" r="7" fill="#f2f5f8"/>
+  </svg>
+
+  <div class="ga29-gal ga29-glass" id="g-a2-9-sept4-map-gal"><div id="g-a2-9-sept4-map-galtxt">Galveston</div></div>
+
+  <div class="ga29-src ga29-glass ga29-hide" id="g-a2-9-sept4-map-src">
+    <span id="g-a2-9-sept4-map-src1">NOAA weather map, Sept. 4, 1900 · NOAA AOML, 2015 ·</span>
+    <span id="g-a2-9-sept4-map-src2">Al Roker, HistoryNet (secondary) · José Rubiera, OnCuba, 2015</span>
+  </div>
+
+  <div class="ga29-chipwrap">
+    <div class="ga29-chip ga29-glass ga29-hide" id="g-a2-9-sept4-map-chipa"><div id="g-a2-9-sept4-map-chipa-in">
+      <div class="ga29-bar" style="background:#7fb2e5"></div>
+      <div class="ga29-main" id="g-a2-9-sept4-map-chipa-t">WASHINGTON, SEPT 4: SOUTH FLORIDA</div>
+    </div></div>
+  </div>
+  <div class="ga29-chipwrap">
+    <div class="ga29-chip ga29-glass ga29-hide" id="g-a2-9-sept4-map-chipb"><div id="g-a2-9-sept4-map-chipb-in">
+      <div class="ga29-bar" style="background:#d8a13a"></div>
+      <div class="ga29-main" id="g-a2-9-sept4-map-chipb-t">BELEN: NORTHWEST, INTO THE GULF</div>
+    </div></div>
+  </div>
+  <div class="ga29-chipwrap">
+    <div class="ga29-chip ga29-glass ga29-hide" id="g-a2-9-sept4-map-chipc"><div id="g-a2-9-sept4-map-chipc-in">
+      <div class="ga29-bar" style="background:#d8a13a"></div>
+      <div class="ga29-main" id="g-a2-9-sept4-map-chipc-t">RUBIERA: STRENGTHEN IN THE GULF</div>
+    </div></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a2-9-sept4-map-";
+  const $ = function (n) { return document.getElementById("g-a2-9-sept4-map-" + n); };
+  const fmt = function (q) { return q[0].toFixed(1) + "," + q[1].toFixed(1); };
+
+  const LOW = [1157, 816], GAL = [271, 343], FLA = [1263, 410];
+
+  /* arrowhead: triangle from tip back along unit dir u, given length and half-width */
+  function head(el, tip, u, len, half) {
+    const b = [tip[0] - u[0] * len, tip[1] - u[1] * len];
+    el.setAttribute("points", [tip, [b[0] - u[1] * half, b[1] + u[0] * half], [b[0] + u[1] * half, b[1] - u[0] * half]].map(fmt).join(" "));
+    return b;
+  }
+
+  /* Washington: tip 30 px short of the Florida station; the line stops 4 px inside the head's base so the cap hides */
+  const wl = Math.hypot(FLA[0] - LOW[0], FLA[1] - LOW[1]);
+  const wu = [(FLA[0] - LOW[0]) / wl, (FLA[1] - LOW[1]) / wl];
+  const WTIP = [FLA[0] - wu[0] * 30, FLA[1] - wu[1] * 30];
+  const WBASE = head($("whead"), WTIP, wu, 30, 14);
+  const WEND = [WBASE[0] + wu[0] * 4, WBASE[1] + wu[1] * 4];
+  const WD = "M" + fmt(LOW) + " L" + fmt(WEND);
+  $("wline").setAttribute("d", WD);
+  $("wmaskp").setAttribute("d", WD);
+
+  /* Belen: tip 20 px past the curve's end along its end tangent (end - control), 34 long */
+  const BEND = [800, 520], BCTL = [1020, 700];
+  const bl = Math.hypot(BEND[0] - BCTL[0], BEND[1] - BCTL[1]);
+  const bu = [(BEND[0] - BCTL[0]) / bl, (BEND[1] - BCTL[1]) / bl];
+  const BTIP = [BEND[0] + bu[0] * 20, BEND[1] + bu[1] * 20];
+  const BBASE = head($("bhead"), BTIP, bu, 34, 17);
+
+  /* dash lengths: ceil(len)+1 */
+  const RL = Math.ceil($("ring").getTotalLength()) + 1;
+  const WML = Math.ceil($("wmaskp").getTotalLength()) + 1;
+  const BL = Math.ceil($("bline").getTotalLength()) + 1;
+
+  const tl = gsap.timeline({ paused: true });
+  tl.set(P + "ring", { strokeDasharray: RL + " " + RL, strokeDashoffset: RL }, 0);
+  tl.set(P + "wmaskp", { strokeDasharray: WML + " " + WML, strokeDashoffset: WML }, 0);
+  tl.set(P + "bline", { strokeDasharray: BL + " " + BL, strokeDashoffset: BL }, 0);
+
+  /* 0.00: scan, dim, Galveston pin and label on from frame 0; source line slides in; pin pulses the whole comp */
+  tl.fromTo(P + "src", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.0);
+  tl.fromTo(P + "galring", { scale: 1, opacity: 0.8, svgOrigin: "271 343" }, { scale: 2.2, opacity: 0, svgOrigin: "271 343", duration: 1.4, ease: "power1.out", repeat: 11 }, 0.0);
+  tl.to(P + "galtxt", { y: -4, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 13 }, 0.4);
+  tl.to(P + "src1", { y: -4, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 13 }, 0.4);
+  tl.to(P + "src2", { y: -4, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 13 }, 0.4);
+
+  /* CUBA @1.08: storm ring draws around the printed L from "reached" 0.72; breathes from 1.08 */
+  tl.set(P + "ring", { autoAlpha: 1 }, 0.72);
+  tl.to(P + "ring", { strokeDashoffset: 0, duration: 0.36, ease: "power2.out" }, 0.72);
+  tl.to(P + "ringg", { scale: 1.08, svgOrigin: "1157 816", duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 9 }, 1.08);
+
+  /* SEPT 4 @3.56: chip A */
+  tl.fromTo(P + "chipa", { y: 24, scale: 0.94, autoAlpha: 0 }, { y: 0, scale: 1, autoAlpha: 1, duration: 0.45, ease: "back.out(1.6)" }, 3.56);
+  tl.to(P + "chipa-in", { y: -4, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 2 }, 4.01);
+
+  /* SOUTH FLORIDA @5.84: Washington arrow draws to "coast." 6.92; head lands at the end */
+  tl.set(P + "wline", { autoAlpha: 1 }, 5.84);
+  tl.to(P + "wmaskp", { strokeDashoffset: 0, duration: 1.08, ease: "power2.inOut" }, 5.84);
+  tl.fromTo(P + "whead", { autoAlpha: 0, scale: 0.4, svgOrigin: fmt(WBASE).replace(",", " ") }, { autoAlpha: 1, scale: 1, svgOrigin: fmt(WBASE).replace(",", " "), duration: 0.22, ease: "back.out(2)" }, 6.78);
+
+  /* 7.40 to 7.88: chip A exits up; the Washington arrow stays at 0.7 */
+  tl.to(P + "chipa", { y: -24, autoAlpha: 0, duration: 0.48, ease: "power2.in" }, 7.40);
+  tl.to(P + "wash", { opacity: 0.7, duration: 0.48, ease: "power2.inOut" }, 7.40);
+
+  /* BELEN @8.00: the low ring flashes amber once */
+  tl.to(P + "ring", { stroke: "#d8a13a", duration: 0.25, ease: "power1.inOut", yoyo: true, repeat: 1 }, 8.00);
+
+  /* NORTHWEST @10.16: Belen arrow draws to "Mexico." 11.82 */
+  tl.set(P + "bline", { autoAlpha: 1 }, 10.16);
+  tl.to(P + "bline", { strokeDashoffset: 0, duration: 1.66, ease: "power2.inOut" }, 10.16);
+  tl.fromTo(P + "bhead", { autoAlpha: 0, scale: 0.4, svgOrigin: fmt(BBASE).replace(",", " ") }, { autoAlpha: 1, scale: 1, svgOrigin: fmt(BBASE).replace(",", " "), duration: 0.22, ease: "back.out(2)" }, 11.66);
+
+  /* INTO @11.10: chip B; exits 12.40 to 12.80 */
+  tl.fromTo(P + "chipb", { y: 24, scale: 0.94, autoAlpha: 0 }, { y: 0, scale: 1, autoAlpha: 1, duration: 0.45, ease: "back.out(1.6)" }, 11.10);
+  tl.to(P + "chipb-in", { y: -4, duration: 0.42, ease: "sine.inOut", yoyo: true, repeat: 1 }, 11.55);
+  tl.to(P + "chipb", { y: -24, autoAlpha: 0, duration: 0.40, ease: "power2.in" }, 12.40);
+
+  /* RUBIERA @13.24: chip C, holds to the end */
+  tl.fromTo(P + "chipc", { y: 24, scale: 0.94, autoAlpha: 0 }, { y: 0, scale: 1, autoAlpha: 1, duration: 0.45, ease: "back.out(1.6)" }, 13.24);
+  tl.to(P + "chipc-in", { y: -4, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 2 }, 13.69);
+
+  /* STRONGER @15.86: Belen arrow thickens 8 -> 11 px, head scales 1 -> 1.2, holding */
+  tl.to(P + "bline", { attr: { "stroke-width": 11 }, duration: 0.5, ease: "back.out(1.6)" }, 15.86);
+  tl.to(P + "bhead", { scale: 1.2, svgOrigin: fmt(BBASE).replace(",", " "), duration: 0.5, ease: "back.out(1.6)" }, 15.86);
+
+  /* exit: whole root, scan included, fades 17.554 -> 17.904 (cut to Paul, A2-S9) */
+  tl.to(P + "root", { autoAlpha: 0, duration: 0.35, ease: "power1.in" }, 17.554);
+
+  window.__timelines["g-a2-9-sept4-map"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

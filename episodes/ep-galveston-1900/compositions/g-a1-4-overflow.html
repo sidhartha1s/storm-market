@@ -1,0 +1,183 @@
+<template>
+<style>
+  #g-a1-4-overflow-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a1-4-overflow-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+
+  /* start-hidden SVG parts (also hidden by tl.set at 0) */
+  #g-a1-4-overflow-sheet, #g-a1-4-overflow-leader { visibility:hidden; opacity:0; }
+
+  /* source line: top-left glass, small radius */
+  #g-a1-4-overflow-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box;
+    padding:6px 14px; border-radius:12px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; color:#c8d3e0; letter-spacing:1px; }
+
+  /* HUD labels: never ride the camera push */
+  #g-a1-4-overflow-lgulf { position:absolute; left:228px; top:827px; white-space:nowrap; opacity:0; visibility:hidden;
+    font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#93a3b2; letter-spacing:3px;
+    paint-order:stroke fill; -webkit-text-stroke:5px #04070c; }
+  #g-a1-4-overflow-head { position:absolute; left:960px; top:332px; white-space:nowrap; opacity:0; visibility:hidden;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:56px; color:#f2f5f8;
+    paint-order:stroke fill; -webkit-text-stroke:6px #04070c; }
+  #g-a1-4-overflow-tag { position:absolute; left:330px; top:600px; white-space:nowrap; opacity:0; visibility:hidden;
+    font-family:Arial, sans-serif; font-weight:700; font-size:26px; line-height:32px; color:#7fb2e5;
+    paint-order:stroke fill; -webkit-text-stroke:5px #04070c; }
+  #g-a1-4-overflow-note { position:absolute; left:96px; top:1000px; white-space:nowrap;
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; color:#93a3b2; letter-spacing:2px; }
+</style>
+<div id="g-a1-4-overflow-root" data-composition-id="g-a1-4-overflow" data-width="1920" data-height="1080">
+  <svg id="g-a1-4-overflow-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g-a1-4-overflow-wgrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0b1016"/><stop offset="1" stop-color="#04070c"/>
+      </linearGradient>
+      <!-- island fill: solid to sea level (y 780), fades out by y 900 -->
+      <linearGradient id="g-a1-4-overflow-igrad" gradientUnits="userSpaceOnUse" x1="0" y1="432" x2="0" y2="900">
+        <stop offset="0" stop-color="#15202b" stop-opacity="1"/>
+        <stop offset="0.7436" stop-color="#15202b" stop-opacity="1"/>
+        <stop offset="1" stop-color="#15202b" stop-opacity="0"/>
+      </linearGradient>
+      <clipPath id="g-a1-4-overflow-cgulf"><rect x="96" y="740" width="264" height="260"/></clipPath>
+      <clipPath id="g-a1-4-overflow-cbay"><rect x="1560" y="740" width="264" height="260"/></clipPath>
+      <!-- overflow sheet reveal: left edge pinned at the foot x 360, right edge tweens 360 -> 451 -->
+      <clipPath id="g-a1-4-overflow-csheet"><rect id="g-a1-4-overflow-csheetr" x="360" y="600" width="0" height="200"/></clipPath>
+      <g id="g-a1-4-overflow-house">
+        <rect x="-14" y="-15" width="28" height="15" fill="#4a5560"/>
+        <polygon points="-15,-15 0,-24 15,-15" fill="#93a3b2"/>
+      </g>
+    </defs>
+
+    <g id="g-a1-4-overflow-cam">
+      <!-- Gulf of Mexico (left, south): amplitude 6 px, wavelength 60 px -->
+      <g clip-path="url(#g-a1-4-overflow-cgulf)">
+        <g id="g-a1-4-overflow-wgulf">
+          <path fill="url(#g-a1-4-overflow-wgrad)" d="M-204,780 q15,-12 30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 L426,1000 L-204,1000 Z"/>
+          <path fill="none" stroke="#5a768f" stroke-width="3" d="M-204,780 q15,-12 30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0"/>
+        </g>
+      </g>
+      <!-- Galveston Bay (right, north): calmer, amplitude 3 px, wavelength 80 px; unlabelled here -->
+      <g clip-path="url(#g-a1-4-overflow-cbay)">
+        <g id="g-a1-4-overflow-wbay">
+          <path fill="url(#g-a1-4-overflow-wgrad)" d="M1496,780 q20,-6 40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 L2016,1000 L1496,1000 Z"/>
+          <path fill="none" stroke="#5a768f" stroke-width="3" d="M1496,780 q20,-6 40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0"/>
+        </g>
+      </g>
+
+      <!-- island cross-section: 40 px per ft above sea level (y 780); crest 8.7 ft = y 432, shoulders 4 ft = y 620 -->
+      <path id="g-a1-4-overflow-fill" fill="url(#g-a1-4-overflow-igrad)" d="M360,780 L520,640 L720,620 L900,432 L1020,432 L1200,620 L1400,640 L1560,780 L1560,900 L360,900 Z"/>
+      <path id="g-a1-4-overflow-top" fill="none" stroke="#93a3b2" stroke-width="3" stroke-linejoin="round" d="M360,780 L520,640 L720,620 L900,432 L1020,432 L1200,620 L1400,640 L1560,780"/>
+      <!-- mean sea level datum -->
+      <path id="g-a1-4-overflow-datum" fill="none" stroke="#5a768f" stroke-width="1.5" stroke-dasharray="6 8" opacity="0.55" d="M96,780 L1824,780"/>
+
+      <!-- overflow sheet on the Gulf beach slope (360,780)->(520,640): 8 px vertical (about 6 px thick), leading edge ends x 451, y 700 -->
+      <g id="g-a1-4-overflow-sheet" clip-path="url(#g-a1-4-overflow-csheet)">
+        <path fill="#7fb2e5" fill-opacity="0.55" d="M360,780 L451,700.4 L451,692.4 L360,772 Z"/>
+        <path fill="none" stroke="#7fb2e5" stroke-width="2" d="M360,772 L451,692.4"/>
+      </g>
+
+      <!-- 22 houses on the profile, placed by the script (first house x 560, beyond the slope top at 520) -->
+      <use id="g-a1-4-overflow-h0" href="#g-a1-4-overflow-house"/>
+      <use id="g-a1-4-overflow-h1" href="#g-a1-4-overflow-house"/>
+      <use id="g-a1-4-overflow-h2" href="#g-a1-4-overflow-house"/>
+      <use id="g-a1-4-overflow-h3" href="#g-a1-4-overflow-house"/>
+      <use id="g-a1-4-overflow-h4" href="#g-a1-4-overflow-house"/>
+      <use id="g-a1-4-overflow-h5" href="#g-a1-4-overflow-house"/>
+      <use id="g-a1-4-overflow-h6" href="#g-a1-4-overflow-house"/>
+      <use id="g-a1-4-overflow-h7" href="#g-a1-4-overflow-house"/>
+      <use id="g-a1-4-overflow-h8" href="#g-a1-4-overflow-house"/>
+      <use id="g-a1-4-overflow-h9" href="#g-a1-4-overflow-house"/>
+      <use id="g-a1-4-overflow-h10" href="#g-a1-4-overflow-house"/>
+      <use id="g-a1-4-overflow-h11" href="#g-a1-4-overflow-house"/>
+      <use id="g-a1-4-overflow-h12" href="#g-a1-4-overflow-house"/>
+      <use id="g-a1-4-overflow-h13" href="#g-a1-4-overflow-house"/>
+      <use id="g-a1-4-overflow-h14" href="#g-a1-4-overflow-house"/>
+      <use id="g-a1-4-overflow-h15" href="#g-a1-4-overflow-house"/>
+      <use id="g-a1-4-overflow-h16" href="#g-a1-4-overflow-house"/>
+      <use id="g-a1-4-overflow-h17" href="#g-a1-4-overflow-house"/>
+      <use id="g-a1-4-overflow-h18" href="#g-a1-4-overflow-house"/>
+      <use id="g-a1-4-overflow-h19" href="#g-a1-4-overflow-house"/>
+      <use id="g-a1-4-overflow-h20" href="#g-a1-4-overflow-house"/>
+      <use id="g-a1-4-overflow-h21" href="#g-a1-4-overflow-house"/>
+
+      <!-- tag leader: (400,640) to 6 px short of the leading edge (451,700); length 78.7, dash 80 -->
+      <path id="g-a1-4-overflow-leader" fill="none" stroke="#7fb2e5" stroke-width="1" stroke-dasharray="80" stroke-dashoffset="80" d="M400,640 L447.1,695.4"/>
+    </g>
+  </svg>
+
+  <div id="g-a1-4-overflow-src">Texas State Historical Association</div>
+  <div id="g-a1-4-overflow-lgulf">Gulf of Mexico</div>
+  <div id="g-a1-4-overflow-head">Sand island</div>
+  <div id="g-a1-4-overflow-tag">'Overflows'</div>
+  <div id="g-a1-4-overflow-note">Vertical scale exaggerated</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a1-4-overflow-";
+  const q = function(id) { return document.querySelector(P + id); };
+  /* a1-s3.words.json, host = segment start (A1-S3 0.00 to 5.46), comp-local = word time.
+     sand 0.64 · Gulf, 1.60 · high 3.12 · over 4.14 · swept 3.86 · beachfront. 4.52 · Down 5.46 (cut).
+     Timeline ends 5.46 (host end); the fade-through sits in the last 0.3 s. */
+
+  /* --- place the 22 houses on the profile, evenly by arc length (x 560 to 1360), visible from frame 0 --- */
+  const PTS = [[360,780],[520,640],[720,620],[900,432],[1020,432],[1200,620],[1400,640],[1560,780]];
+  const yAt = function(x) {
+    for (let i = 0; i < PTS.length - 1; i++) {
+      const a = PTS[i], b = PTS[i + 1];
+      if (x >= a[0] && x <= b[0]) return a[1] + (b[1] - a[1]) * (x - a[0]) / (b[0] - a[0]);
+    }
+    return 780;
+  };
+  const xs = [], arc = [0];
+  for (let x = 560; x <= 1360; x += 0.5) xs.push(x);
+  for (let i = 1; i < xs.length; i++) arc.push(arc[i - 1] + Math.hypot(0.5, yAt(xs[i]) - yAt(xs[i - 1])));
+  const total = arc[arc.length - 1];
+  for (let k = 0, j = 0; k < 22; k++) {
+    const want = total * k / 21;
+    while (j < arc.length - 1 && arc[j] < want) j++;
+    tl.set(q("h" + k), {x: xs[j], y: yAt(xs[j])}, 0);
+  }
+
+  /* --- start states --- */
+  tl.set([P+"src", P+"lgulf", P+"head", P+"tag", P+"sheet", P+"leader"], {autoAlpha: 0}, 0);
+  tl.set([P+"lgulf", P+"head"], {xPercent: -50}, 0);
+  tl.set(P+"cam", {svgOrigin: "960 780"}, 0);
+
+  /* --- whole-window motion: waves (phase as x, ease none) and a slow camera push 1.00 -> 1.03 about the datum foot --- */
+  /* host window is 5.46 (index.html mount; g-a1-5 holds track 2 from 137.794), so every tween ends by 5.46 */
+  tl.to(P+"wgulf", {x: 110, duration: 5.46, ease: "none"}, 0);
+  tl.to(P+"wbay", {x: -74, duration: 5.46, ease: "none"}, 0);
+  tl.to(P+"cam", {scale: 1.03, duration: 5.46, ease: "none"}, 0);
+
+  /* ISLAND @0.00: finished cross-section on frame 0; source line in, then drifts */
+  tl.fromTo(P+"src", {autoAlpha: 0, x: -30}, {autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out"}, 0);
+  tl.to(P+"src", {y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 1}, 0.4);
+
+  /* sand @0.64: headline in, then drifts */
+  tl.fromTo(P+"head", {autoAlpha: 0, y: 10}, {autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out"}, 0.64);
+  tl.to(P+"head", {y: -4, duration: 2.235, ease: "sine.inOut", yoyo: true, repeat: 1}, 0.99);
+
+  /* Gulf @1.60: water label in, then drifts */
+  tl.fromTo(P+"lgulf", {autoAlpha: 0, y: 10}, {autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out"}, 1.6);
+  tl.to(P+"lgulf", {y: -4, duration: 1.755, ease: "sine.inOut", yoyo: true, repeat: 1}, 1.95);
+
+  /* OVERFLOW @3.86: sheet runs up the beach slope from "high" 3.12 to x 451 on "beachfront." 4.52, back down 4.60 to 5.30 */
+  tl.set(P+"sheet", {autoAlpha: 1}, 3.12);
+  tl.fromTo(P+"csheetr", {attr: {width: 0}}, {attr: {width: 91}, duration: 1.4, ease: "power2.out"}, 3.12);
+  tl.to(P+"csheetr", {attr: {width: 0}, duration: 0.7, ease: "power2.in"}, 4.6);
+
+  /* swept @3.86: tag and leader in; tag stays, drifts */
+  tl.fromTo(P+"tag", {autoAlpha: 0, y: 10}, {autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out"}, 3.86);
+  tl.set(P+"leader", {autoAlpha: 1}, 3.86);
+  tl.to(P+"leader", {strokeDashoffset: 0, duration: 0.4, ease: "power2.out"}, 3.86);
+  tl.to(P+"tag", {y: -4, duration: 0.625, ease: "sine.inOut", yoyo: true, repeat: 1}, 4.21);
+
+  /* exit: fade-through to the coast map at 5.46, root to 0 over 5.16 to 5.46 */
+  tl.to(P+"root", {autoAlpha: 0, duration: 0.3, ease: "power1.in"}, 5.16);
+  window.__timelines["g-a1-4-overflow"] = tl;
+})();
+</script>
+</template>

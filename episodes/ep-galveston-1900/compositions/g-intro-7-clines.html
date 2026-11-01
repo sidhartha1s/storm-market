@@ -1,0 +1,75 @@
+<template>
+<style>
+  #g-intro-7-clines-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  /* source line, top-left (glass surface, tokens.md) */
+  #g-intro-7-clines-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+  /* lower-third: outer moves in x, inner drifts in y; card top edge ~ y 834 */
+  #g-intro-7-clines-lt { position:absolute; left:110px; bottom:110px; width:600px; height:136px; opacity:0; visibility:hidden; }
+  #g-intro-7-clines-ltin { position:absolute; left:0; top:0; width:600px; height:136px; }
+  /* glass background: resized by scaleX only, never width */
+  #g-intro-7-clines-bg { position:absolute; left:0; top:0; width:600px; height:136px; box-sizing:border-box; border-radius:28px; overflow:hidden;
+    transform-origin:left center;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  #g-intro-7-clines-band { position:absolute; left:0; top:0; width:120px; height:136px;
+    background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.08), rgba(255,255,255,0)); }
+  /* text window: lines swap through its overflow */
+  #g-intro-7-clines-win { position:absolute; left:28px; top:18px; width:544px; height:100px; overflow:hidden; }
+  .g-intro-7-name { position:absolute; left:0; top:0; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:57px; color:#f2f5f8; opacity:0; visibility:hidden; }
+  .g-intro-7-role { position:absolute; left:0; top:64px; white-space:nowrap; font-weight:700; font-size:27px; line-height:35px; letter-spacing:1px; color:#f5d98b; opacity:0; visibility:hidden; }
+</style>
+<div id="g-intro-7-clines-root" data-composition-id="g-intro-7-clines" data-width="1920" data-height="1080">
+  <div id="g-intro-7-clines-src">Isaac Cline, Monthly Weather Review, Sept. 1900</div>
+  <div id="g-intro-7-clines-lt">
+    <div id="g-intro-7-clines-ltin">
+      <div id="g-intro-7-clines-bg"><div id="g-intro-7-clines-band"></div></div>
+      <div id="g-intro-7-clines-win">
+        <span id="g-intro-7-clines-nameA" class="g-intro-7-name">ISAAC CLINE</span>
+        <span id="g-intro-7-clines-roleA" class="g-intro-7-role">Local Forecast Official, Galveston</span>
+        <span id="g-intro-7-clines-nameB" class="g-intro-7-name">JOSEPH CLINE</span>
+        <span id="g-intro-7-clines-roleB" class="g-intro-7-role">Observer &middot; his brother</span>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-intro-7-clines-";
+  /* TIMING: audio/i1-s1.words.json, comp-local = segment time (host 0.00 to 8.10).
+     ISAAC @2.74 ; weather @4.04 ; His @5.24 ; Joseph @5.60 ; observer @7.20 ; observer ends 7.50 ; The storm @8.10 (g-intro-8 cuts in) */
+  tl.set(P+"src", {autoAlpha:0}, 0);
+  tl.set(P+"lt", {autoAlpha:0, x:-60}, 0);
+  tl.set([P+"nameA", P+"roleA", P+"nameB", P+"roleB"], {autoAlpha:0}, 0);
+
+  /* source line: in at 0, drifts through the 0 to 2.74 gap and on, fades with the card */
+  tl.to(P+"src", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0);
+  tl.to(P+"src", {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:2}, 0.4);
+
+  /* ISAAC @2.74: card in with name 1; role 1 @4.04 */
+  tl.fromTo(P+"lt", {x:-60, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 2.74);
+  tl.fromTo(P+"nameA", {autoAlpha:0, y:40}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 2.74);
+  tl.fromTo(P+"roleA", {autoAlpha:0, y:40}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 4.04);
+  /* card floats from its land time */
+  tl.to(P+"ltin", {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:1}, 3.34);
+  /* light band: left to right and back, 2.3 s each way, done at 7.94 s inside the 8.10 s host */
+  tl.fromTo(P+"band", {x:-120}, {x:600, duration:2.3, ease:"sine.inOut", yoyo:true, repeat:1}, 3.34);
+
+  /* His @5.24: line A exits up through the overflow, card narrows for name 2 */
+  tl.to([P+"nameA", P+"roleA"], {y:-40, autoAlpha:0, duration:0.3, ease:"power2.in"}, 5.24);
+  tl.to(P+"bg", {scaleX:0.86, duration:0.36, ease:"power2.inOut"}, 5.24);
+  /* Joseph @5.60: name 2 rises in; role 2 @5.90 as name 2 lands, so it settles by 6.30 and holds 1.2 s before the 7.50 exit */
+  tl.fromTo(P+"nameB", {autoAlpha:0, y:40}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 5.60);
+  tl.fromTo(P+"roleB", {autoAlpha:0, y:40}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 5.90);
+
+  /* exit 7.50 to 8.10, ends where g-intro-8-track cuts in ("The storm" @8.10) */
+  tl.to(P+"lt", {x:-980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 7.50);
+  tl.to(P+"src", {autoAlpha:0, duration:0.6, ease:"power2.in"}, 7.50);
+  window.__timelines["g-intro-7-clines"] = tl;
+})();
+</script>
+</template>

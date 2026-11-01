@@ -1,0 +1,94 @@
+<template>
+<style>
+  #g-a4-1-gulf-rising-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .g-a4-1-gulf-rising-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  /* source line, top-left, visible on frame 0 */
+  #g-a4-1-gulf-rising-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    font-weight:700; font-size:19px; line-height:1.3; color:#c8d3e0; }
+  /* page panel: glass card x 160 to 900, y 195 to 885 (740 x 690; 26 whole printed lines at scale 1.48 fill it), push 1.00 to 1.04 on the whole card so the crop never moves */
+  #g-a4-1-gulf-rising-page { position:absolute; left:160px; top:195px; width:740px; height:690px; box-sizing:border-box; padding:20px; border-radius:28px; transform-origin:center center; }
+  /* crop box 700 x 650. Measured on the 1150 x 1563 scan (media/a3 copy of PDF p. 3, printed p. 373): right column image x 577 to 1050 (column rule 574-575 excluded, ink ends 1037),
+     image y 209 to 648.4 = printed lines 1 to 26 of the right column ("the center of the city" through "Cline went ... telegraph offices ..." block), 16.9 px line pitch, scale 1.48.
+     Amber band = image x 577-1050, y 378 to 411.8 = lines 11 and 12 ("3:30 p. m.: Gulf rising, water covers streets of about half" / "city.") -> crop box y 250 to 300. */
+  #g-a4-1-gulf-rising-crop { position:absolute; left:20px; top:20px; width:700px; height:650px; overflow:hidden; border-radius:10px; isolation:isolate; background:#e9e4d6; }
+  #g-a4-1-gulf-rising-img { position:absolute; left:-853.96px; top:-309.32px; width:1702px; height:2313.24px; max-width:none; }
+  #g-a4-1-gulf-rising-dimtop { position:absolute; left:0; top:0; width:700px; height:250px; background:rgba(4,7,12,0.45); }
+  #g-a4-1-gulf-rising-dimbot { position:absolute; left:0; top:300px; width:700px; height:350px; background:rgba(4,7,12,0.45); }
+  #g-a4-1-gulf-rising-band { position:absolute; left:0; top:250px; width:700px; height:50px; background:#d8a13a; opacity:0.28; mix-blend-mode:multiply; }
+  /* chip: right edge 1824, top 120 */
+  #g-a4-1-gulf-rising-chip { position:absolute; right:96px; top:120px; box-sizing:border-box; padding:14px 28px 14px; border-radius:28px; opacity:0; visibility:hidden; }
+  #g-a4-1-gulf-rising-chipmain { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  #g-a4-1-gulf-rising-chiptag { display:block; margin-top:6px; font-weight:700; font-size:22px; color:#93a3b2; letter-spacing:2px; }
+  /* telegraph form: x 980 to 1760, y 300 to 760 */
+  #g-a4-1-gulf-rising-form { position:absolute; left:980px; top:300px; width:780px; height:460px; box-sizing:border-box; border-radius:6px; background:#f4f0e6; overflow:hidden;
+    box-shadow:0 18px 50px rgba(0,0,0,0.55); border:1px solid #6b6257; }
+  #g-a4-1-gulf-rising-stripe { position:absolute; left:0; top:0; width:780px; height:8px; background:#8e2020; }
+  #g-a4-1-gulf-rising-head { position:absolute; left:40px; top:30px; font-family:Georgia, 'Times New Roman', serif; font-weight:700; font-size:34px; letter-spacing:6px; line-height:1.2; color:#2a2622; }
+  .g-a4-1-gulf-rising-rule { position:absolute; left:40px; width:700px; height:1px; background:#6b6257; }
+  .g-a4-1-gulf-rising-line { position:absolute; left:50px; height:56px; font-family:'Courier New', monospace; font-weight:700; font-size:44px; line-height:56px; color:#2a2622; white-space:pre; }
+  .g-a4-1-gulf-rising-w { display:inline-block; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-1-gulf-rising-root" data-composition-id="g-a4-1-gulf-rising" data-width="1920" data-height="1080">
+  <div id="g-a4-1-gulf-rising-src" class="g-a4-1-gulf-rising-glass">Isaac Cline, Monthly Weather Review, September 1900, p. 373</div>
+  <div id="g-a4-1-gulf-rising-page" class="g-a4-1-gulf-rising-glass">
+    <div id="g-a4-1-gulf-rising-crop">
+      <img id="g-a4-1-gulf-rising-img" src="media/a3/A3-S10_c1_mwr-sept1900-p373_cline-3-30.png" alt="Monthly Weather Review, September 1900, page 373" data-crop-ok="page 373 cropped to whole lines of the right column around the 3:30 sentence">
+      <div id="g-a4-1-gulf-rising-dimtop"></div>
+      <div id="g-a4-1-gulf-rising-dimbot"></div>
+      <div id="g-a4-1-gulf-rising-band"></div>
+    </div>
+  </div>
+  <div id="g-a4-1-gulf-rising-chip" class="g-a4-1-gulf-rising-glass">
+    <span id="g-a4-1-gulf-rising-chipmain">SAT &middot; 3:30 PM</span>
+    <span id="g-a4-1-gulf-rising-chiptag">special observation</span>
+  </div>
+  <div id="g-a4-1-gulf-rising-form">
+    <div id="g-a4-1-gulf-rising-stripe"></div>
+    <div id="g-a4-1-gulf-rising-head">TELEGRAM</div>
+    <div class="g-a4-1-gulf-rising-rule" style="top:84px"></div>
+    <div class="g-a4-1-gulf-rising-rule" style="top:170px"></div>
+    <div class="g-a4-1-gulf-rising-rule" style="top:260px"></div>
+    <div class="g-a4-1-gulf-rising-rule" style="top:350px"></div>
+    <div class="g-a4-1-gulf-rising-line" style="top:128px"><span id="g-a4-1-gulf-rising-w0" class="g-a4-1-gulf-rising-w">GULF</span> <span id="g-a4-1-gulf-rising-w1" class="g-a4-1-gulf-rising-w">RISING</span></div>
+    <div class="g-a4-1-gulf-rising-line" style="top:218px"><span id="g-a4-1-gulf-rising-w2" class="g-a4-1-gulf-rising-w">WATER</span> <span id="g-a4-1-gulf-rising-w3" class="g-a4-1-gulf-rising-w">COVERS</span> <span id="g-a4-1-gulf-rising-w4" class="g-a4-1-gulf-rising-w">STREETS</span></div>
+    <div class="g-a4-1-gulf-rising-line" style="top:308px"><span id="g-a4-1-gulf-rising-w5" class="g-a4-1-gulf-rising-w">OF</span> <span id="g-a4-1-gulf-rising-w6" class="g-a4-1-gulf-rising-w">ABOUT</span> <span id="g-a4-1-gulf-rising-w7" class="g-a4-1-gulf-rising-w">HALF</span> <span id="g-a4-1-gulf-rising-w8" class="g-a4-1-gulf-rising-w">CITY</span></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a4-1-gulf-rising-";
+  /* TIMING: audio/a4-s1.words.json (segment time = comp time, comp starts at 0, host 4.58 s).
+     wrote @0.14 ; GULF @0.82 ; RISING @1.14 ; WATER @1.62 ; COVERS @2.26 ; STREETS @2.68 ; OF @3.04 ; ABOUT @3.22 ; HALF @3.42 ; CITY @3.74 ; city. ends @4.14 */
+  /* frame 0 (CUT FROM CTA @0.00): page with band, empty form and source line are already on screen; no set needed */
+
+  /* page push, continuous over the whole window (ease none, 'to' from the resting state) */
+  tl.to(P+"page", {scale:1.04, duration:4.58, ease:"none"}, 0);
+
+  /* wrote @0.14: chip in, then drifts until just before the exit */
+  tl.fromTo(P+"chip", {autoAlpha:0, x:60}, {autoAlpha:1, x:0, duration:0.45, ease:"power3.out"}, 0.14);
+  tl.to(P+"chip", {y:-5, duration:1.1, ease:"sine.inOut", yoyo:true, repeat:2}, 0.6);
+
+  /* typed words: each rises in over 0.12 s from its spoken start (a rise, as g-a4-5-telegram types: nine short x slides
+     back to back left graphics_qc no settled moment to measure, so the comp read as 0 elements) */
+  const W = [["w0",0.82],["w1",1.14],["w2",1.62],["w3",2.26],["w4",2.68],["w5",3.04],["w6",3.22],["w7",3.42],["w8",3.74]];
+  W.forEach(function(p) { /* GULF @0.82 ... CITY @3.74 */
+    tl.fromTo(P+p[0], {autoAlpha:0, y:8}, {autoAlpha:1, y:0, duration:0.12, ease:"power2.out"}, p[1]);
+  });
+
+  /* exit: form and chip slide out from 4.00; band pulses once at 4.14; page fades 4.20 to 4.58 into g-a4-2's map */
+  tl.to(P+"form", {x:980, autoAlpha:0, duration:0.5, ease:"power3.in"}, 4.0);
+  tl.to(P+"chip", {x:980, autoAlpha:0, duration:0.5, ease:"power3.in"}, 4.0);
+  tl.to(P+"band", {opacity:0.45, duration:0.2, ease:"power2.out"}, 4.14);
+  tl.to(P+"band", {opacity:0.28, duration:0.2, ease:"power2.in"}, 4.34);
+  tl.to(P+"page", {autoAlpha:0, duration:0.38, ease:"power2.in"}, 4.2);
+  tl.to(P+"src", {autoAlpha:0, duration:0.38, ease:"power2.in"}, 4.2);
+  /* keep the timeline at or past the host end (4.58) */
+  tl.to(P+"root", {opacity:1, duration:0.1}, 4.58);
+  window.__timelines["g-a4-1-gulf-rising"] = tl;
+})();
+</script>
+</template>

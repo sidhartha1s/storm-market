@@ -1,0 +1,68 @@
+<template>
+<style>
+  #g-a1-10-cline-return-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  /* source line, top-left (glass surface, tokens.md) */
+  #g-a1-10-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+  /* lower-third: outer moves in x, inner drifts in y; right edge x 710 (column under it spans x 828 to 1092) */
+  #g-a1-10-lt { position:absolute; left:110px; bottom:110px; width:600px; height:136px; opacity:0; visibility:hidden; }
+  #g-a1-10-ltin { position:absolute; left:0; top:0; width:600px; height:136px; }
+  #g-a1-10-bg { position:absolute; left:0; top:0; width:600px; height:136px; box-sizing:border-box; border-radius:28px; overflow:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  #g-a1-10-band { position:absolute; left:0; top:0; width:120px; height:136px;
+    background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.08), rgba(255,255,255,0)); }
+  #g-a1-10-win { position:absolute; left:28px; top:18px; width:544px; height:100px; overflow:hidden; }
+  #g-a1-10-name { position:absolute; left:0; top:0; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:57px; color:#f2f5f8; opacity:0; visibility:hidden; }
+  #g-a1-10-role { position:absolute; left:0; top:64px; white-space:nowrap; font-weight:700; font-size:27px; line-height:35px; letter-spacing:1px; color:#f5d98b; opacity:0; visibility:hidden; }
+  #g-a1-10-rule { position:absolute; left:28px; top:124px; width:544px; height:3px; background:#d8a13a; transform-origin:left center; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a1-10-cline-return-root"data-composition-id="g-a1-10-cline-return" data-width="1920" data-height="1080">
+  <div id="g-a1-10-src">Galveston Daily News, July 16, 1891</div>
+  <div id="g-a1-10-lt">
+    <div id="g-a1-10-ltin">
+      <div id="g-a1-10-bg"><div id="g-a1-10-band"></div></div>
+      <div id="g-a1-10-win">
+        <span id="g-a1-10-name">ISAAC CLINE</span>
+        <span id="g-a1-10-role">Weather Bureau, Galveston</span>
+      </div>
+      <div id="g-a1-10-rule"></div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a1-10-";
+  /* TIMING: audio/a1-s6.words.json, comp-local = A1-S6 time (host 0.00 to 2.84).
+     now @0.00 (PAGE) ; set @0.18 (CLINE) ; his @0.48 (role) ; exit 2.24 to 2.84 ; "Its" @2.84 (cut to g-a1-11) */
+  tl.set(P+"src", {autoAlpha:0}, 0);
+  tl.set(P+"lt", {autoAlpha:0, x:-60}, 0);
+  tl.set([P+"name", P+"role", P+"rule"], {autoAlpha:0}, 0);
+  tl.set(P+"rule", {scaleX:0}, 0);
+
+  /* PAGE @0.00: source line in (0.3 s), drifts +-4 px until the exit */
+  tl.to(P+"src", {autoAlpha:1, duration:0.3, ease:"power2.out"}, 0);
+  tl.to(P+"src", {y:-4, duration:1.2, ease:"sine.inOut", yoyo:true, repeat:1}, 0.3);
+
+  /* CLINE @0.18: lower-third in with the name */
+  tl.fromTo(P+"lt", {x:-60, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 0.18);
+  tl.fromTo(P+"name", {autoAlpha:0, y:40}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.18);
+  /* accent rule 0.40 to 0.90 */
+  tl.to(P+"rule", {autoAlpha:1, scaleX:1, duration:0.5, ease:"power3.out"}, 0.40);
+  /* his @0.48: role line */
+  tl.fromTo(P+"role", {autoAlpha:0, y:40}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.48);
+  /* card floats from its land time; light band sweeps the whole hold */
+  tl.to(P+"ltin", {y:-4, duration:1.0, ease:"sine.inOut", yoyo:true, repeat:1}, 0.78);
+  tl.fromTo(P+"band", {x:-120}, {x:600, duration:1.9, ease:"sine.inOut"}, 0.18);
+
+  /* exit 2.24 to 2.84, done where g-a1-11 cuts in ("Its" @2.84) */
+  tl.to(P+"lt", {x:-980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 2.24);
+  tl.to(P+"src", {autoAlpha:0, duration:0.6, ease:"power2.in"}, 2.24);
+  window.__timelines["g-a1-10-cline-return"] = tl;
+})();
+</script>
+</template>

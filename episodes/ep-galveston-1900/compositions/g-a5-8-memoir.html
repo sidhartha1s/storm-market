@@ -1,0 +1,91 @@
+<template>
+<style>
+  @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+  #g-a5-8-memoir-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a5-8-memoir-card { position:absolute; inset:0; transform-origin:50% 50%; }
+
+  /* source line: top-left glass, outside the pushed card */
+  #g-a5-8-memoir-src { position:absolute; inset:auto; left:96px; top:54px; max-width:1200px; box-sizing:border-box;
+    padding:6px 14px; border-radius:12px; opacity:0; visibility:hidden; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; color:#c8d3e0; letter-spacing:1px; }
+
+  /* spine: flat drawn book spine, centred x 760 (left 685 + 75) */
+  #g-a5-8-memoir-spine { position:absolute; inset:auto; left:685px; top:160px; width:150px; height:760px; box-sizing:border-box;
+    background:#15202b; border:2px solid #93a3b2; border-radius:6px; opacity:0; visibility:hidden; }
+  /* title box is rotated -90 by GSAP; centre (75, 365) inside the spine, wipes left to right in its own frame = bottom to top on screen */
+  #g-a5-8-memoir-title { position:absolute; inset:auto; left:75px; top:365px; width:700px; height:44px; line-height:44px; text-align:center; white-space:nowrap;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:32px; letter-spacing:1px; color:#f2f5f8;
+    clip-path:inset(0 100% 0 0); visibility:hidden; }
+  #g-a5-8-memoir-title span { display:inline-block; }
+  #g-a5-8-memoir-author { position:absolute; inset:auto; left:0; right:0; top:700px; text-align:center; white-space:nowrap;
+    font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:4px; color:#d8a13a; opacity:0; visibility:hidden; }
+
+  /* popfig beside the spine, centred x 1240 */
+  #g-a5-8-memoir-pop { position:absolute; inset:auto; left:940px; width:600px; top:395px; text-align:center; white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a5-8-memoir-big { display:block; font-family:'AbrilFig', Georgia, serif; font-size:150px; line-height:150px; color:#d0121f; letter-spacing:0.04em;
+    text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+  #g-a5-8-memoir-sub { position:absolute; inset:auto; left:940px; width:600px; top:605px; text-align:center; white-space:nowrap; opacity:0; visibility:hidden;
+    font-family:Arial, sans-serif; font-weight:700; font-size:32px; letter-spacing:0.42em; color:#e8e3d8;
+    text-shadow:0 0 14px rgba(0,0,0,0.95), 0 3px 10px #000; }
+</style>
+<div id="g-a5-8-memoir-root" data-composition-id="g-a5-8-memoir" data-width="1920" data-height="1080">
+  <div id="g-a5-8-memoir-src">Texas State Historical Association Handbook &middot; Wikipedia summary of later accounts</div>
+  <div id="g-a5-8-memoir-card">
+    <div id="g-a5-8-memoir-spine">
+      <div id="g-a5-8-memoir-title"><span id="g-a5-8-memoir-w1">STORMS,</span> <span id="g-a5-8-memoir-w2">FLOODS</span> AND <span id="g-a5-8-memoir-w3">SUNSHINE</span></div>
+      <div id="g-a5-8-memoir-author">CLINE</div>
+    </div>
+    <div id="g-a5-8-memoir-pop"><span id="g-a5-8-memoir-big">1945</span></div>
+    <div id="g-a5-8-memoir-sub">HIS MEMOIR</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a5-8-memoir-";
+  /* a5-s5.words.json cues, host starts 12.52 (comp-local = word time - 12.52), host window 0 to 6.94:
+     The @12.52 (spine rises), memoir, @14.06 (title wipe 1.54), Storms, @14.88 (2.36), Floods, @15.86 (3.34),
+     Sunshine, @16.20 (3.68), 1945. @17.70 (5.18), segment ends 18.46 + 1.0 s land = 6.94 */
+  tl.set([P+"src", P+"spine", P+"author", P+"pop", P+"sub"], {autoAlpha:0}, 0);
+  tl.set(P+"title", {rotation:-90, xPercent:-50, yPercent:-50, autoAlpha:1}, 0);
+  tl.set(P+"spine", {transformOrigin:"50% 100%"}, 0);
+
+  /* whole window: slow push 1.00 to 1.04 on the card */
+  tl.to(P+"card", {scale:1.04, duration:6.94, ease:"none"}, 0);
+
+  /* source line in at 0, fades before the cut */
+  tl.fromTo(P+"src", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0);
+  tl.to(P+"src", {autoAlpha:0, duration:0.4, ease:"power2.in"}, 6.5);
+
+  /* The @12.52 -> 0: spine rises from y +120 */
+  tl.fromTo(P+"spine", {autoAlpha:0, y:120}, {autoAlpha:1, y:0, duration:0.6, ease:"power3.out"}, 0);
+  /* sway 1 deg, 3 s sine yoyo, 3 passes cover the window */
+  tl.to(P+"spine", {rotation:1, duration:3, ease:"sine.inOut", yoyo:true, repeat:2}, 0.6);
+
+  /* memoir, @14.06 -> 1.54: title wipes on bottom to top; CLINE at 14.40 -> 1.88 */
+  tl.to(P+"title", {clipPath:"inset(0 0% 0 0)", duration:0.6, ease:"power2.out"}, 1.54);
+  tl.fromTo(P+"author", {autoAlpha:0, y:12}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 1.88);
+
+  /* Storms, @14.88 -> 2.36; Floods, @15.86 -> 3.34; Sunshine, @16.20 -> 3.68: 0.3 s brightness pulse each */
+  [["w1", 2.36], ["w2", 3.34], ["w3", 3.68]].forEach(function(c) {
+    tl.to(P+c[0], {color:"#ffe3a0", textShadow:"0 0 14px rgba(255,214,120,0.9)", duration:0.15, ease:"power2.out"}, c[1]);
+    tl.to(P+c[0], {color:"#f2f5f8", textShadow:"0 0 0 rgba(255,214,120,0)", duration:0.15, ease:"power2.in"}, c[1] + 0.15);
+  });
+
+  /* 1945. @17.70 -> 5.18: popfig punches in (lands 5.58); HIS MEMOIR rises in once it has landed, 5.60
+     (at 5.38 the still-scaled 1945 covered the sub line) */
+  tl.fromTo(P+"pop", {autoAlpha:0, scale:2.2}, {autoAlpha:1, scale:1, duration:0.4, ease:"power4.in"}, 5.18);
+  tl.fromTo(P+"sub", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 5.60);
+
+  /* exit: popfig out, then the spine slides out right in the last 0.6 s */
+  tl.to([P+"pop", P+"sub"], {scale:0.92, autoAlpha:0, duration:0.5, ease:"power2.in"}, 6.44); /* spoken-word punch, 0.86 s settled; the 6.94 host end leaves no room for 1.5 s */
+  tl.to(P+"spine", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 6.34);
+
+  window.__timelines["g-a5-8-memoir"] = tl;
+})();
+</script>
+</template>

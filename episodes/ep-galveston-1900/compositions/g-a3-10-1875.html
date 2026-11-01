@@ -1,0 +1,140 @@
+<template>
+<style>
+  #g-a3-10-1875-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a3-10-1875-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  /* line art: strokes #93a3b2 3 px, fills #15202b, roof #5a768f (brief section 3) */
+  .g-a3-10-ln { fill:#15202b; stroke:#93a3b2; stroke-width:3; }
+  #g-a3-10-1875-roof { fill:#5a768f; stroke:#93a3b2; stroke-width:3; }
+  #g-a3-10-1875-floor { stroke:#93a3b2; stroke-width:5; fill:none; }
+  #g-a3-10-1875-win { fill:#15202b; stroke:#93a3b2; stroke-width:3; }
+  .g-a3-10-mark { stroke:#d8a13a; stroke-width:4; stroke-dasharray:30 6; fill:none; }
+  #g-a3-10-1875-lab { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:34px; fill:#e8c56a; text-anchor:middle; opacity:0; visibility:hidden; }
+  #g-a3-10-1875-note { font-family:Arial, sans-serif; font-weight:700; font-size:22px; fill:#93a3b2; opacity:0; visibility:hidden; }
+
+  /* source lines, top-left glass (tokens.md surfaces) */
+  .g-a3-10-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+
+  /* chips: wrapper centres on x 960 (drift), chip moves (entry and exit) */
+  .g-a3-10-cw { position:absolute; left:0; top:120px; width:1920px; display:flex; justify-content:center; }
+  .g-a3-10-chip { padding:14px 32px; border-radius:28px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px; line-height:44px; color:#f2f5f8;
+    opacity:0; visibility:hidden; }
+
+  /* part B: page panel, column crop of the p. 376 scan; source x 563 to 1040, y 440 to 760, scale 2.6 */
+  #g-a3-10-1875-pn { position:absolute; left:280px; top:140px; width:1240px; height:832px; opacity:0; visibility:hidden; }
+  #g-a3-10-1875-pnin { position:absolute; left:0; top:0; width:1240px; height:832px; overflow:hidden; border-radius:10px;
+    background:#f4f0e6; box-shadow:0 20px 60px rgba(0,0,0,0.6); }
+  #g-a3-10-1875-img { position:absolute; left:-1464px; top:-1144px; width:2990px; height:auto; }
+  /* dim above and below the quoted lines (source y 518 to 585 -> panel y 203 to 377) */
+  #g-a3-10-1875-vt { position:absolute; left:0; top:0; width:1240px; height:203px; background:rgba(4,7,12,0.45); }
+  #g-a3-10-1875-vb { position:absolute; left:0; top:377px; width:1240px; height:455px; background:rgba(4,7,12,0.45); }
+  #g-a3-10-1875-band { position:absolute; left:0; top:203px; width:1240px; height:174px; background:#d8a13a; mix-blend-mode:multiply;
+    transform-origin:left center; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a3-10-1875-root" data-composition-id="g-a3-10-1875" data-width="1920" data-height="1080" data-type-ok="two tiers by design: 44 px chips and 34 px mark label over small source lines; no headline tier in a one-house drawing">
+  <svg id="g-a3-10-1875-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <g id="g-a3-10-1875-dr">
+      <line x1="300" y1="860" x2="1500" y2="860" stroke="#93a3b2" stroke-width="3"/>
+      <rect class="g-a3-10-ln" x="630" y="560" width="20" height="300"/>
+      <rect class="g-a3-10-ln" x="750" y="560" width="20" height="300"/>
+      <rect class="g-a3-10-ln" x="870" y="560" width="20" height="300"/>
+      <rect class="g-a3-10-ln" x="990" y="560" width="20" height="300"/>
+      <rect class="g-a3-10-ln" x="600" y="300" width="440" height="260"/>
+      <polygon id="g-a3-10-1875-roof" points="580,300 820,200 1060,300"/>
+      <rect id="g-a3-10-1875-win" x="700" y="380" width="90" height="100"/>
+      <rect class="g-a3-10-ln" x="940" y="420" width="60" height="140"/>
+      <line id="g-a3-10-1875-floor" x1="600" y1="560" x2="1040" y2="560"/>
+      <rect class="g-a3-10-ln" x="1200" y="360" width="120" height="500"/>
+      <line id="g-a3-10-1875-m1" class="g-a3-10-mark" x1="620" y1="640" x2="620" y2="640"/>
+      <line id="g-a3-10-1875-m2" class="g-a3-10-mark" x1="1200" y1="640" x2="1200" y2="640"/>
+      <text id="g-a3-10-1875-lab" x="1260" y="622">1875</text>
+    </g>
+    <text id="g-a3-10-1875-note" x="300" y="940">Schematic &#183; not to scale</text>
+  </svg>
+  <div id="g-a3-10-1875-srcA" class="g-a3-10-src">National Park Service &middot; New York Evening Sun, Sept. 20, 1900</div>
+  <div id="g-a3-10-1875-srcB" class="g-a3-10-src">New York Evening Sun, Sept. 20, 1900, reprinted in Monthly Weather Review, p. 376</div>
+  <div id="g-a3-10-1875-cw1" class="g-a3-10-cw"><div id="g-a3-10-1875-c1" class="g-a3-10-chip">1875 HIGH WATER</div></div>
+  <div id="g-a3-10-1875-cw2" class="g-a3-10-cw"><div id="g-a3-10-1875-c2" class="g-a3-10-chip">FIRST FLOOR ABOVE IT</div></div>
+  <div id="g-a3-10-1875-pn">
+    <div id="g-a3-10-1875-pnin">
+      <img id="g-a3-10-1875-img" src="media/candidates/a3/A3-S9_c1_mwr-sept1900-p376_evening-sun-1875.png" alt="Monthly Weather Review, September 1900, page 376" data-crop-ok="column crop of a document page: whole lines of the right column inside the window, the rest of the sheet is not wanted">
+      <div id="g-a3-10-1875-vt"></div>
+      <div id="g-a3-10-1875-vb"></div>
+      <div id="g-a3-10-1875-band"></div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a3-10-1875-";
+  /* TIMING: audio/a3-s9.words.json, comp-local = segment time (host 0.00 to 16.02, narration ends 15.42).
+     Most @0.00 ; oldest @2.20 ; remembered @5.30 ; 1875 @6.48 ; Many @8.12 ; above @10.90 ; The water @12.22 ; line @12.90 ; beat ends @13.58 ; was. ends @15.42 */
+
+  /* hidden states (CSS hides them too) */
+  tl.set(P+"srcA", {autoAlpha:0}, 0);
+  tl.set(P+"srcB", {autoAlpha:0}, 0);
+  tl.set(P+"note", {autoAlpha:0}, 0);
+  tl.set(P+"lab", {autoAlpha:0, y:10}, 0);
+  tl.set([P+"c1", P+"c2"], {autoAlpha:0, y:24, x:0, scale:0.94}, 0);
+  tl.set([P+"cw1", P+"cw2"], {y:0}, 0);
+  tl.set(P+"pn", {autoAlpha:0, y:30, x:0}, 0);
+  tl.set(P+"pnin", {scale:1, transformOrigin:"50% 50%"}, 0);
+  tl.set(P+"band", {autoAlpha:0, scaleX:0}, 0);
+  tl.set(P+"dr", {scale:1, svgOrigin:"960 100"}, 0);
+
+  /* Most @0.00: house already drawn, source line in; house sits alone until 1.44 while the drawing pushes in */
+  tl.to(P+"srcA", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0);
+  tl.to(P+"srcA", {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:4}, 0.4);
+  tl.to(P+"note", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0);
+  tl.to(P+"dr", {scale:1.04, svgOrigin:"960 100", duration:12.22, ease:"none"}, 0);
+
+  /* oldest residents @2.20: window lights to 2.80 */
+  tl.to(P+"win", {fill:"#f5d98b", duration:0.6, ease:"power2.out"}, 2.20);
+
+  /* remembered @5.30: mark paints left to right, over the piers then the wall (593 px/s, 5.30 to 6.48) */
+  tl.to(P+"m1", {attr:{x2:1040}, duration:0.708, ease:"none"}, 5.30);
+  tl.to(P+"m2", {attr:{x2:1320}, duration:0.202, ease:"none"}, 6.278);
+
+  /* 1875 @6.48: label and chip C1 in */
+  tl.to(P+"lab", {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 6.48);
+  tl.fromTo(P+"c1", {autoAlpha:0, y:24, scale:0.94}, {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)"}, 6.48);
+  tl.to(P+"cw1", {y:-4, duration:1.12, ease:"sine.inOut", yoyo:true, repeat:1}, 6.93);
+
+  /* Many @8.12: C1 out by 8.72, floor line brightens */
+  tl.to(P+"c1", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 8.12);
+  tl.to(P+"floor", {stroke:"#f2f5f8", duration:0.6, ease:"power2.out"}, 8.12);
+
+  /* above @10.90: C2 in, out before the dissolve ends */
+  tl.fromTo(P+"c2", {autoAlpha:0, y:24, scale:0.94}, {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)"}, 10.90);
+  tl.to(P+"cw2", {y:-4, duration:0.9, ease:"sine.inOut", yoyo:true, repeat:1}, 11.35);
+  tl.to(P+"c2", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 11.80);
+
+  /* The water @12.22: part A dissolves 0.5 s into the page */
+  tl.to(P+"dr", {autoAlpha:0, duration:0.5, ease:"power2.in"}, 12.22);
+  tl.to(P+"note", {autoAlpha:0, duration:0.5, ease:"power2.in"}, 12.22);
+  /* source lines share one slot: A leaves 12.22 to 12.52, then B comes in, so they never share a frame */
+  tl.to(P+"srcA", {autoAlpha:0, duration:0.3, ease:"power2.in"}, 12.22);
+  tl.to(P+"srcB", {autoAlpha:1, duration:0.3, ease:"power2.out"}, 12.52);
+  tl.to(P+"srcB", {y:-4, duration:1.3, ease:"sine.inOut", yoyo:true, repeat:1}, 12.82);
+  tl.fromTo(P+"pn", {autoAlpha:0, y:30}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 12.22);
+  tl.to(P+"pnin", {scale:1.04, duration:3.8, ease:"none"}, 12.22);
+
+  /* line @12.90 to beat @13.30: amber band draws behind the quoted lines */
+  tl.to(P+"band", {autoAlpha:1, scaleX:1, duration:0.4, ease:"power2.out"}, 12.90);
+
+  /* exit: page slides out in the last 0.6 s (15.42 to 16.02), source line fades with it */
+  tl.to(P+"pn", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 15.42);
+  tl.to(P+"srcB", {autoAlpha:0, duration:0.6, ease:"power2.in"}, 15.42);
+
+  window.__timelines["g-a3-10-1875"] = tl;
+})();
+</script>
+</template>

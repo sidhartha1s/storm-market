@@ -1,0 +1,142 @@
+<template>
+<style>
+  #g-a3-5-barometer-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a3-5-barometer-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .ga35-lab { font-family:Arial, sans-serif; font-weight:700; font-size:26px; fill:#93a3b2; }
+  #g-a3-5-barometer-unit { font-family:Arial, sans-serif; font-weight:700; font-size:22px; fill:#93a3b2; letter-spacing:4px; }
+
+  /* source line: top-left glass, small radius (intro _list "Common placement") */
+  #g-a3-5-barometer-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box;
+    padding:6px 14px; border-radius:12px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; color:#c8d3e0; letter-spacing:1px; }
+
+  /* reading stack: right column, left edge x 1180, rows 76 px apart from top 300 */
+  #g-a3-5-barometer-stack { position:absolute; left:1180px; top:300px; width:520px; height:292px; }
+  .ga35-row { position:absolute; left:0; width:520px; height:64px; box-sizing:border-box; padding:0 28px;
+    display:flex; align-items:center; justify-content:space-between; border-radius:28px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  #g-a3-5-barometer-r1 { top:0; } #g-a3-5-barometer-r2 { top:76px; }
+  #g-a3-5-barometer-r3 { top:152px; } #g-a3-5-barometer-r4 { top:228px; }
+  .ga35-val { display:inline-block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px; line-height:64px; color:#f2f5f8; }
+  .ga35-hr { font-family:Arial, sans-serif; font-weight:700; font-size:24px; line-height:64px; color:#93a3b2; letter-spacing:2px; }
+</style>
+<div id="g-a3-5-barometer-root" data-composition-id="g-a3-5-barometer" data-width="1920" data-height="1080"
+     data-type-ok="measured dial by brief: readings 44 px, scale labels 26 px, unit, hours and source 19-24 px; no 52 px element in this beat">
+  <svg id="g-a3-5-barometer-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <!-- dial face: centre (760,560), r 330; scale 28.50 to 30.50 in, angle(p) = -225 + (p - 28.50) * 135 -->
+    <circle cx="760" cy="560" r="330" fill="#0b1016" stroke="#5a768f" stroke-width="4"/>
+    <!-- 21 ticks every 0.10 in (13.5 deg); majors every 0.50 are 28 px, minors 14 px; static, never GSAP-moved -->
+    <g stroke="#93a3b2" stroke-width="4" stroke-linecap="round">
+      <line x1="1086" y1="560" x2="1058" y2="560" transform="rotate(-225 760 560)"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-211.5 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-198 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-184.5 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-171 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1058" y2="560" transform="rotate(-157.5 760 560)"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-144 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-130.5 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-117 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-103.5 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1058" y2="560" transform="rotate(-90 760 560)"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-76.5 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-63 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-49.5 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-36 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1058" y2="560" transform="rotate(-22.5 760 560)"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-9 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(4.5 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(18 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(31.5 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1058" y2="560" transform="rotate(45 760 560)"/>
+    </g>
+    <!-- major labels at radius 250 (computed from angle(p)); ticks end at r 298 so none touches a numeral -->
+    <text class="ga35-lab" x="583.2" y="736.8" text-anchor="middle" dominant-baseline="central">28.5</text>
+    <text class="ga35-lab" x="529.0" y="464.3" text-anchor="middle" dominant-baseline="central">29.0</text>
+    <text class="ga35-lab" x="760" y="310" text-anchor="middle" dominant-baseline="central">29.5</text>
+    <text class="ga35-lab" x="991.0" y="464.3" text-anchor="middle" dominant-baseline="central">30.0</text>
+    <text class="ga35-lab" x="936.8" y="736.8" text-anchor="middle" dominant-baseline="central">30.5</text>
+    <text id="g-a3-5-barometer-unit" x="760" y="700" text-anchor="middle" dominant-baseline="central">INCHES</text>
+
+    <!-- fall trail at r 230 from 29.87 (-40.05 deg) back to 28.75 (-191.25 deg); length 606.96 -> dash 608.
+         Offset follows the needle: 29.60 -> 461.4, 29.25 -> 271.4, 28.75 -> 0 -->
+    <!-- 28 Oct 26: trail moved in to r 205 (length 540.98 -> dash 542): at r 230 it ran through the "29.0" label (r 250, ~30 px half-width) -->
+    <path id="g-a3-5-barometer-trail" d="M916.9 428.1 A205 205 0 0 0 558.9 600.0" fill="none" stroke="#c0392b"
+          stroke-width="8" stroke-linecap="round" stroke-opacity="0.7" stroke-dasharray="542" stroke-dashoffset="542"/>
+
+    <!-- needle drawn at 29.87 (-40.05 deg, tip 982.0,373.4); GSAP rotation is the delta from that angle around svgOrigin 760 560 -->
+    <g id="g-a3-5-barometer-needle">
+      <line x1="760" y1="560" x2="982.0" y2="373.4" stroke="#f2f5f8" stroke-width="6" stroke-linecap="round"/>
+    </g>
+    <circle cx="760" cy="560" r="11" fill="#d8a13a"/>
+  </svg>
+
+  <div id="g-a3-5-barometer-src">Captain Halsey, in Monthly Weather Review, September 1900, p. 374</div>
+
+  <div id="g-a3-5-barometer-stack">
+    <div class="ga35-row" id="g-a3-5-barometer-r1"><span class="ga35-val" id="g-a3-5-barometer-v1">29.87</span></div>
+    <div class="ga35-row" id="g-a3-5-barometer-r2"><span class="ga35-val" id="g-a3-5-barometer-v2">29.60</span><span class="ga35-hr" id="g-a3-5-barometer-h2">6 AM</span></div>
+    <div class="ga35-row" id="g-a3-5-barometer-r3"><span class="ga35-val" id="g-a3-5-barometer-v3">29.25</span><span class="ga35-hr" id="g-a3-5-barometer-h3">10 AM</span></div>
+    <div class="ga35-row" id="g-a3-5-barometer-r4"><span class="ga35-val" id="g-a3-5-barometer-v4">28.75</span><span class="ga35-hr" id="g-a3-5-barometer-h4">1 PM</span></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* comp-local time = a3-s4 word time - 8.06; host 8.06 to 14.20 plus 0.94 s land = 7.14 s */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a3-5-barometer-";
+  const N = P + "needle";
+  const ROT = { svgOrigin: "760 560" };
+
+  tl.set(N, { rotation: 0, svgOrigin: "760 560" }, 0);
+  tl.set(P + "stack", { x: 0, y: 0 }, 0);
+
+  /* THEN @8.06: finished dial on the cut, source line and row 1 in, needle at 29.87 (-40.05 deg) */
+  tl.fromTo(P + "src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 0);
+  tl.fromTo(P + "r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0);
+  tl.to(N, Object.assign({ rotation: 0.4, duration: 0.45, ease: "sine.inOut" }, ROT), 0.1);
+  tl.to(N, Object.assign({ rotation: 0, duration: 0.39, ease: "sine.inOut" }, ROT), 0.55);
+  /* cards drift y +-4 for the whole window (sine, 1.2 s halves, 5 legs; 2.4 s would leave one turn in a 6.5 s window) */
+  tl.to(P + "stack", { y: -4, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 4 }, 0.4);
+
+  /* BAROMETER @9.00: needle shivers +-1 deg */
+  tl.to(N, Object.assign({ rotation: -1, duration: 0.1, ease: "sine.inOut" }, ROT), 0.94);
+  tl.to(N, Object.assign({ rotation: 1, duration: 0.14, ease: "sine.inOut" }, ROT), 1.04);
+  tl.to(N, Object.assign({ rotation: -0.6, duration: 0.14, ease: "sine.inOut" }, ROT), 1.18);
+  tl.to(N, Object.assign({ rotation: 0.5, duration: 0.18, ease: "sine.inOut" }, ROT), 1.32);
+  tl.to(N, Object.assign({ rotation: 0, duration: 0.48, ease: "sine.inOut" }, ROT), 1.5);
+
+  /* FALL @10.04: needle to 29.60 (-76.50 deg, delta -36.45) 10.04 to 10.60; row 2 lands with the needle */
+  tl.to(N, Object.assign({ rotation: -36.45, duration: 0.56, ease: "power2.inOut" }, ROT), 1.98);
+  tl.to(P + "trail", { strokeDashoffset: 411.3, duration: 0.56, ease: "power2.inOut" }, 1.98);
+  tl.fromTo(P + "r2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.54);
+  /* BY @10.76: needle to 29.25 (-123.75 deg, delta -83.70) 10.76 to 11.38; row 3 lands with the needle */
+  tl.to(N, Object.assign({ rotation: -83.7, duration: 0.62, ease: "power2.inOut" }, ROT), 2.7);
+  tl.to(P + "trail", { strokeDashoffset: 242.0, duration: 0.62, ease: "power2.inOut" }, 2.7);
+  tl.fromTo(P + "r3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.32);
+  /* needle settles at 29.25 (within +-0.5 deg) until "28" */
+  tl.to(N, Object.assign({ rotation: -83.2, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, ROT), 3.4);
+
+  /* 28.75 @12.52: needle to 28.75 (-191.25 deg, delta -151.20) 12.52 to 13.30, power2.out */
+  tl.to(N, Object.assign({ rotation: -151.2, duration: 0.78, ease: "power2.out" }, ROT), 4.46);
+  tl.to(P + "trail", { strokeDashoffset: 0, duration: 0.78, ease: "power2.out" }, 4.46);
+  /* .75 @13.02: row 4 enters (needle at about 28.81 here); fully landed at 13.32 as the needle lands */
+  tl.fromTo(P + "r4", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 4.96);
+  /* 13.30: reading turns red, small punch */
+  tl.to(P + "v4", { color: "#d0121f", duration: 0.25, ease: "power2.out" }, 5.24);
+  tl.fromTo(P + "v4", { scale: 1 }, { scale: 1.08, transformOrigin: "left center", duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 5.24);
+  /* needle settles at 28.75 (within +-0.5 deg) to the end */
+  tl.to(N, Object.assign({ rotation: -150.7, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, ROT), 5.3);
+  tl.to(N, Object.assign({ rotation: -151.6, duration: 0.42, ease: "sine.inOut", yoyo: true, repeat: 1 }, ROT), 6.1);
+
+  /* exit: cards slide out in the last 0.6 s (6.54 to 7.14), dial holds to the cut into A3-S5's sea */
+  tl.to(P + "stack", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 6.54);
+
+  window.__timelines["g-a3-5-barometer"] = tl;
+})();
+</script>
+</template>

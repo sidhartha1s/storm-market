@@ -1,0 +1,131 @@
+<template>
+<style>
+  #g-a5-14-havana-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a5-14-havana-card { position:absolute; inset:0; transform-origin:50% 50%; }
+  #g-a5-14-havana-grp { position:absolute; inset:0; }
+
+  /* source line: top-left glass, outside the pushed card */
+  #g-a5-14-havana-src { position:absolute; inset:auto; left:96px; top:54px; max-width:900px; box-sizing:border-box;
+    padding:6px 14px; border-radius:12px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:23px; color:#c8d3e0; letter-spacing:1px; }
+
+  /* Stockman tag: centred row, tag hugs its text */
+  #g-a5-14-havana-tagrow { position:absolute; inset:auto; left:0; top:124px; width:1920px; display:flex; justify-content:center; pointer-events:none; }
+  #g-a5-14-havana-tag { box-sizing:border-box; padding:12px 28px; border-radius:28px; white-space:nowrap; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-family:Arial, sans-serif; font-weight:700; font-size:24px; letter-spacing:3px; color:#f2f5f8; }
+
+  /* typeset mastheads on the beige cite card (a title card, not a scan) */
+  .g-a5-14-havana-mast { position:absolute; inset:auto; top:220px; width:760px; box-sizing:border-box; padding:40px 30px; text-align:center;
+    background:rgba(232,222,200,0.90); border-radius:6px; opacity:0; visibility:hidden; }
+  #g-a5-14-havana-m1 { left:160px; }
+  #g-a5-14-havana-m2 { left:1000px; }
+  .g-a5-14-havana-name { display:block; white-space:nowrap; font-family:Georgia, 'Times New Roman', serif; font-weight:700; font-size:66px; line-height:80px; color:#2a2622; }
+  .g-a5-14-havana-city { display:block; margin-top:10px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:4px; color:#6b6257; }
+
+  /* date chips (glass) */
+  .g-a5-14-havana-chip { position:absolute; inset:auto; top:480px; width:760px; height:130px; box-sizing:border-box; padding:20px 30px;
+    display:flex; align-items:center; justify-content:center; text-align:center; border-radius:28px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:34px; line-height:42px; color:#f2f5f8; text-wrap:balance; }
+  #g-a5-14-havana-c1 { left:160px; }
+  #g-a5-14-havana-c2 { left:1000px; }
+
+  /* archive box end label, x 700 to 1220, top 640 to 840 */
+  #g-a5-14-havana-box { position:absolute; inset:auto; left:700px; top:640px; width:520px; height:200px; box-sizing:border-box;
+    background:#f4f0e6; border-radius:6px; border:2px solid #6b6257; text-align:center; opacity:0; visibility:hidden; }
+  #g-a5-14-havana-bx1 { position:absolute; inset:auto; left:0; right:0; top:28px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:4px; color:#2a2622; }
+  #g-a5-14-havana-rule { position:absolute; inset:auto; left:80px; width:360px; top:62px; height:3px; background:#d8a13a; transform-origin:0% 50%; }
+  #g-a5-14-havana-bx2 { position:absolute; inset:auto; left:0; right:0; top:80px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:64px; color:#2a2622; white-space:nowrap; }
+  #g-a5-14-havana-bx3 { position:absolute; inset:auto; left:0; right:0; top:156px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; color:#6b6257; }
+</style>
+<div id="g-a5-14-havana-root" data-composition-id="g-a5-14-havana" data-width="1920" data-height="1080">
+  <div id="g-a5-14-havana-src">National Archives, Weather Bureau records, RG 27, box 1475, as cited by Jamie L. Pietruska (2016)</div>
+  <div id="g-a5-14-havana-card">
+    <div id="g-a5-14-havana-tagrow"><div id="g-a5-14-havana-tag">W. B. STOCKMAN &middot; WEATHER BUREAU, HAVANA</div></div>
+    <div id="g-a5-14-havana-grp">
+      <div id="g-a5-14-havana-m1" class="g-a5-14-havana-mast"><span class="g-a5-14-havana-name">La Discusi&oacute;n</span><span class="g-a5-14-havana-city">HAVANA</span></div>
+      <div id="g-a5-14-havana-m2" class="g-a5-14-havana-mast"><span class="g-a5-14-havana-name">Diario de la Marina</span><span class="g-a5-14-havana-city">HAVANA</span></div>
+      <div id="g-a5-14-havana-c1" class="g-a5-14-havana-chip">LA DISCUSI&Oacute;N &middot; OCT 27 &middot; NOV 14, 1900</div>
+      <div id="g-a5-14-havana-c2" class="g-a5-14-havana-chip">DIARIO DE LA MARINA &middot; OCT 30, 1900</div>
+    </div>
+    <div id="g-a5-14-havana-box">
+      <div id="g-a5-14-havana-bx1">NATIONAL ARCHIVES</div>
+      <div id="g-a5-14-havana-rule"></div>
+      <div id="g-a5-14-havana-bx2">RG 27 &middot; BOX 1475</div>
+      <div id="g-a5-14-havana-bx3">WEATHER BUREAU RECORDS</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a5-14-havana-";
+  /* a5-s9.words.json, segment 20.90 s, host starts at segment 0 (comp-local = word time), host window 0 to 21.90 (20.90 + 1.0 land):
+     Havana @0.46 src; papers @1.06 mastheads; stockmen @1.60 tag; October @3.48 tag out; Discusion @5.20 M1 bright, chip 5.40;
+     Dario @6.74 M2 bright, chip 7.44 (Marina); Clippings @10.46 group shrink; National @13.42 box; Washington @19.60 pulse */
+  tl.set([P+"src", P+"tag", P+"m1", P+"m2", P+"c1", P+"c2", P+"box"], {autoAlpha:0}, 0);
+  tl.set(P+"tag", {xPercent:0}, 0);
+  tl.set(P+"grp", {transformOrigin:"960px 220px"}, 0);
+  tl.set(P+"rule", {scaleX:0}, 0);
+
+  /* whole window: slow push 1.00 to 1.04 on the card */
+  tl.to(P+"card", {scale:1.04, duration:21.9, ease:"none"}, 0);
+
+  /* Havana, @0.46: source line in; fades before the cut */
+  tl.fromTo(P+"src", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.46);
+  tl.to(P+"src", {autoAlpha:0, duration:0.4, ease:"power2.in"}, 21.4);
+
+  /* papers @1.06: both mastheads rise in, dimmed, empty of chips, 0.2 s apart */
+  tl.fromTo(P+"m1", {autoAlpha:0, y:60}, {autoAlpha:0.55, y:0, duration:0.6, ease:"power3.out"}, 1.06);
+  tl.fromTo(P+"m2", {autoAlpha:0, y:60}, {autoAlpha:0.55, y:0, duration:0.6, ease:"power3.out"}, 1.26);
+
+  /* stockmen @1.60: Stockman tag drops in; October @3.48: tag out */
+  tl.fromTo(P+"tag", {autoAlpha:0, y:-24}, {autoAlpha:1, y:0, duration:0.45, ease:"back.out(1.6)"}, 1.60);
+  tl.to(P+"tag", {autoAlpha:0, y:-20, duration:0.4, ease:"power2.in"}, 3.48);
+
+  /* Discusion @5.20: M1 brightens with a small pop; chip 1 whole at 5.40 */
+  tl.to(P+"m1", {autoAlpha:1, scale:1.03, duration:0.3, ease:"power2.out"}, 5.20);
+  tl.to(P+"m1", {scale:1, duration:0.3, ease:"power2.inOut"}, 5.50);
+  tl.fromTo(P+"c1", {autoAlpha:0, y:24, scale:0.94}, {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)"}, 5.40);
+
+  /* Dario @6.74: M2 brightens; chip 2 in at 7.44 (Marina) */
+  tl.to(P+"m2", {autoAlpha:1, scale:1.03, duration:0.3, ease:"power2.out"}, 6.74);
+  tl.to(P+"m2", {scale:1, duration:0.3, ease:"power2.inOut"}, 7.04);
+  tl.fromTo(P+"c2", {autoAlpha:0, y:24, scale:0.94}, {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)"}, 7.44);
+
+  /* drift from each card's land time: y +-4, 1.2 s sine yoyo, finite repeats ending before the exit */
+  tl.to(P+"m1", {y:-4, duration:1.2, ease:"sine.inOut", yoyo:true, repeat:15}, 1.7);
+  tl.to(P+"m2", {y:4, duration:1.2, ease:"sine.inOut", yoyo:true, repeat:14}, 1.9);
+  tl.to(P+"c1", {y:-4, duration:1.2, ease:"sine.inOut", yoyo:true, repeat:11}, 5.9);
+  tl.to(P+"c2", {y:4, duration:1.2, ease:"sine.inOut", yoyo:true, repeat:9}, 7.95);
+
+  /* Clippings @10.46: mastheads and chips scale 0.85 and rise 60 px as one move */
+  tl.to(P+"grp", {scale:0.85, y:-60, duration:0.6, ease:"power2.inOut"}, 10.46);
+
+  /* National @13.42: box label rises from y +80; ARCHIVES @13.72: amber rule draws under the name */
+  tl.fromTo(P+"box", {autoAlpha:0, y:80}, {autoAlpha:1, y:0, duration:0.6, ease:"power3.out"}, 13.42);
+  tl.to(P+"rule", {scaleX:1, duration:0.5, ease:"power2.out"}, 13.72);
+  tl.to(P+"box", {y:-4, duration:1.2, ease:"sine.inOut", yoyo:true, repeat:5}, 14.1);
+
+  /* Washington @19.60: box pulses once */
+  tl.to(P+"box", {scale:1.04, duration:0.2, ease:"power2.out"}, 19.60);
+  tl.to(P+"box", {scale:1, duration:0.2, ease:"power2.in"}, 19.80);
+
+  /* exit: all cards slide out right, 0.08 s stagger, the last one ends at 21.90 */
+  tl.to(P+"m1", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 20.98);
+  tl.to(P+"m2", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 21.06);
+  tl.to(P+"c1", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 21.14);
+  tl.to(P+"c2", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 21.22);
+  tl.to(P+"box", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 21.30);
+
+  window.__timelines["g-a5-14-havana"] = tl;
+})();
+</script>
+</template>

@@ -1,0 +1,83 @@
+<template>
+<style>
+  @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+  #g-intro-3-sept8-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+
+  /* source line: top-left glass, small radius */
+  #g-intro-3-sept8-src { position:absolute; inset:auto; left:96px; top:54px; max-width:900px; box-sizing:border-box;
+    padding:6px 14px; border-radius:12px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; color:#c8d3e0; letter-spacing:1px; }
+
+  /* popfig zone: centre, top 38% */
+  #g-intro-3-sept8-scrim { position:absolute; inset:auto; left:360px; top:300px; width:1200px; height:420px; opacity:0; visibility:hidden; }
+  #g-intro-3-sept8-scrimin { position:absolute; inset:0; background:radial-gradient(ellipse closest-side at 50% 50%, rgba(4,7,12,0.55), rgba(4,7,12,0)); }
+  #g-intro-3-sept8-pop { position:absolute; inset:auto; left:0; right:0; top:38%; text-align:center; white-space:nowrap; opacity:0; visibility:hidden; transform-origin:center; }
+  #g-intro-3-sept8-big { display:block; opacity:0; visibility:hidden; font-family:'AbrilFig', Georgia, serif; font-size:150px; color:#d0121f; letter-spacing:0.04em;
+    text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+  #g-intro-3-sept8-sub { display:block; margin-top:10px; opacity:0; visibility:hidden; font-family:Arial, sans-serif; font-weight:700; font-size:32px; color:#e8e3d8;
+    letter-spacing:0.42em; text-shadow:0 0 14px rgba(0,0,0,0.95), 0 3px 10px #000; }
+
+  /* chip zone: same centre, strictly after the popfig */
+  #g-intro-3-sept8-chip { position:absolute; inset:auto; left:50%; top:560px; box-sizing:border-box; padding:30px 52px; border-radius:28px;
+    text-align:center; white-space:nowrap; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
+  #g-intro-3-sept8-main { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; color:#f2f5f8; line-height:1.1; }
+  #g-intro-3-sept8-tag { display:block; margin-top:12px; opacity:0; visibility:hidden; font-family:Arial, sans-serif; font-weight:700; font-size:22px; color:#93a3b2; letter-spacing:4px; }
+</style>
+<div id="g-intro-3-sept8-root" data-composition-id="g-intro-3-sept8" data-width="1920" data-height="1080">
+  <div id="g-intro-3-sept8-src">Isaac Cline, Monthly Weather Review, Sept. 1900 &middot; NOAA</div>
+  <div id="g-intro-3-sept8-scrim"><div id="g-intro-3-sept8-scrimin"></div></div>
+  <div id="g-intro-3-sept8-pop">
+    <span id="g-intro-3-sept8-big">SEPT 8, 1900</span>
+    <span id="g-intro-3-sept8-sub">THE STORM &middot; SATURDAY</span>
+  </div>
+  <div id="g-intro-3-sept8-chip">
+    <span id="g-intro-3-sept8-main"><span>AT LEAST</span> <span id="g-intro-3-sept8-num">1,000</span> <span>LIVES</span></span>
+    <span id="g-intro-3-sept8-tag">Cline's own count</span>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-intro-3-sept8-";
+  /* h1-s3.words.json cues (segment-local, host 0.00 to 8.07): SATURDAY @1.38, Galveston @4.50, At @5.48, 6 @5.78, ",000" @6.12, lost @7.00 */
+  tl.set([P+"src", P+"scrim", P+"pop", P+"big", P+"sub", P+"chip", P+"tag"], {autoAlpha:0}, 0);
+  tl.set(P+"chip", {xPercent:-50}, 0);
+
+  /* source line in at 0.00, drifts the whole window (0.00 to 8.07) */
+  tl.fromTo(P+"src", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0);
+  tl.to(P+"src", {y:-4, duration:2.0175, ease:"sine.inOut", yoyo:true, repeat:3}, 0.5);
+
+  /* SATURDAY @1.38: sub slams in, big line 0.12 s later; wrapper just un-hides, children carry the entrance */
+  tl.set(P+"pop", {autoAlpha:1}, 1.38);
+  tl.to(P+"scrim", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 1.38);
+  tl.fromTo(P+"sub", {autoAlpha:0, scale:1.35}, {autoAlpha:1, scale:1, duration:0.5, ease:"power4.out"}, 1.38);
+  tl.fromTo(P+"big", {autoAlpha:0, scale:1.35}, {autoAlpha:1, scale:1, duration:0.5, ease:"power4.out"}, 1.5);
+  /* popfig drift 1.88 to 4.50 */
+  tl.to(P+"pop", {y:-4, duration:1.31, ease:"sine.inOut", yoyo:true, repeat:1}, 1.88);
+  /* Galveston @4.50: popfig out 4.50 to 4.95, fully gone before the chip */
+  tl.to(P+"pop", {scale:0.92, autoAlpha:0, duration:0.45, ease:"power2.in"}, 4.5);
+  tl.to(P+"scrim", {autoAlpha:0, duration:0.45, ease:"power2.in"}, 4.5);
+
+  /* AT LEAST @5.48: chip in with its first frame carrying "AT LEAST" */
+  tl.fromTo(P+"chip", {autoAlpha:0, y:24, scale:0.94}, {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)"}, 5.48);
+  /* 6 @5.78 to ",000" end 6.68: count 1,000 to 6,000, power3.out, never past 6,000 */
+  const cnt = {v:1000};
+  tl.to(cnt, {v:6000, duration:0.9, ease:"power3.out", onUpdate:function() {
+      const el = document.getElementById("g-intro-3-sept8-num");
+      if (el) el.textContent = Math.round(cnt.v).toLocaleString("en-US");
+  }}, 5.78);
+  /* lost @7.00: Cline's own count fades up */
+  tl.fromTo(P+"tag", {autoAlpha:0, y:10}, {autoAlpha:1, y:0, duration:0.4, ease:"power2.out"}, 7.0);
+  /* chip drift between entrance end 5.93 and exit 7.47 */
+  tl.to(P+"chip", {y:-4, duration:1.54, ease:"sine.inOut"}, 5.93);
+  /* exit anchored to the last 0.6 s, ends 8.07 on the hard cut */
+  tl.to(P+"chip", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 7.47);
+  window.__timelines["g-intro-3-sept8"] = tl;
+})();
+</script>
+</template>

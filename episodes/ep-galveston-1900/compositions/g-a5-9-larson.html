@@ -1,0 +1,138 @@
+<template>
+<style>
+  #g-a5-9-larson-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a5-9-larson-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size:120px 120px; }
+  #g-a5-9-larson-glow { position:absolute; left:-200px; top:80px; width:1300px; height:900px; border-radius:50%;
+    background:radial-gradient(ellipse, rgba(216,161,58,0.08), rgba(216,161,58,0) 70%); }
+
+  .g-a5-9-larson-glass { position:absolute; box-sizing:border-box; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
+
+  /* source line: top-left, small glass */
+  #g-a5-9-larson-src { left:96px; top:54px; max-width:1100px; padding:6px 14px; border-radius:12px;
+    font-weight:700; font-size:19px; color:#c8d3e0; letter-spacing:1px; white-space:nowrap; }
+
+  /* title block: centred x 960, top 240 */
+  #g-a5-9-larson-title { position:absolute; left:0; top:240px; width:1920px; text-align:center; opacity:0; visibility:hidden; }
+  #g-a5-9-larson-t1 { display:block; font-family:Georgia, 'Times New Roman', serif; font-size:96px; line-height:110px; color:#f2f5f8; }
+  #g-a5-9-larson-yr { display:block; margin-top:14px; font-weight:700; font-size:32px; line-height:40px; color:#d8a13a; letter-spacing:6px; }
+  #g-a5-9-larson-yr span { display:inline-block; opacity:0; visibility:hidden; }
+  #g-a5-9-larson-rule { width:360px; height:2px; margin:22px auto 0; background:#93a3b2; }
+
+  /* lower-third */
+  #g-a5-9-larson-lt { left:110px; bottom:110px; padding:20px 36px 22px 32px; border-radius:28px; }
+  #g-a5-9-larson-name { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:58px; color:#f2f5f8; }
+  #g-a5-9-larson-role { display:block; margin-top:6px; font-weight:700; font-size:24px; color:#93a3b2; letter-spacing:3px; }
+
+  /* chip C1 */
+  #g-a5-9-larson-c1 { left:360px; width:1200px; top:560px; height:100px; border-radius:28px; display:flex; align-items:center; justify-content:center; white-space:nowrap; }
+  #g-a5-9-larson-c1 span { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:40px; color:#f2f5f8; opacity:0; visibility:hidden; display:inline-block; }
+  #g-a5-9-larson-c1 .sp { width:14px; }
+  #g-a5-9-larson-w2 { color:#d8a13a !important; }
+
+  /* quote card Q */
+  #g-a5-9-larson-q { left:260px; right:260px; top:300px; height:340px; border-radius:28px; }
+  .g-a5-9-larson-line { position:absolute; left:48px; right:48px; height:62px; font-family:Georgia, 'Times New Roman', serif; font-size:44px; line-height:62px; white-space:nowrap; color:#f2f5f8; }
+  .g-a5-9-larson-line span { display:inline-block; opacity:0; visibility:hidden; }
+  #g-a5-9-larson-l1 { top:36px; }
+  #g-a5-9-larson-l2 { top:100px; }
+  #g-a5-9-larson-l3 { top:164px; }
+  #g-a5-9-larson-attr { position:absolute; left:48px; bottom:34px; font-weight:700; font-size:24px; color:#d8a13a; letter-spacing:1px; opacity:0; visibility:hidden; }
+  #g-a5-9-larson-qrule { position:absolute; left:48px; bottom:84px; width:240px; height:3px; background:#d8a13a; transform-origin:left center; }
+</style>
+<div id="g-a5-9-larson-root" data-composition-id="g-a5-9-larson" data-width="1920" data-height="1080">
+  <div id="g-a5-9-larson-grid"></div>
+  <div id="g-a5-9-larson-glow"></div>
+
+  <div class="g-a5-9-larson-glass" id="g-a5-9-larson-src">Erik Larson, Isaac's Storm, 1999 (as summarised by Wikipedia) &middot; Salon, Sept. 29, 1999</div>
+
+  <div id="g-a5-9-larson-title">
+    <span id="g-a5-9-larson-t1">ISAAC'S STORM</span>
+    <span id="g-a5-9-larson-yr"><span id="g-a5-9-larson-y1">1</span><span id="g-a5-9-larson-y2">9</span><span id="g-a5-9-larson-y3">9</span><span id="g-a5-9-larson-y4">9</span></span>
+    <div id="g-a5-9-larson-rule"></div>
+  </div>
+
+  <div class="g-a5-9-larson-glass" id="g-a5-9-larson-lt">
+    <span id="g-a5-9-larson-name">ERIK LARSON</span>
+    <span id="g-a5-9-larson-role">AUTHOR, ISAAC'S STORM</span>
+  </div>
+
+  <div class="g-a5-9-larson-glass" id="g-a5-9-larson-c1">
+    <span id="g-a5-9-larson-w1">NO OTHER SURVIVOR</span><span class="sp"></span><span id="g-a5-9-larson-w2">KNOWN TO</span><span class="sp"></span><span id="g-a5-9-larson-w3">BACK IT</span>
+  </div>
+
+  <div class="g-a5-9-larson-glass" id="g-a5-9-larson-q">
+    <div class="g-a5-9-larson-line" id="g-a5-9-larson-l1"><span id="g-a5-9-larson-p1">&ldquo;Most likely [Isaac] did go to the beach</span></div>
+    <div class="g-a5-9-larson-line" id="g-a5-9-larson-l2"><span id="g-a5-9-larson-p2">and warn some people &mdash;</span> <span id="g-a5-9-larson-p3">but did he warn 6,000?</span></div>
+    <div class="g-a5-9-larson-line" id="g-a5-9-larson-l3"><span id="g-a5-9-larson-p4">I don't see how that is possible.&rdquo;</span></div>
+    <div id="g-a5-9-larson-qrule"></div>
+    <div id="g-a5-9-larson-attr">Erik Larson, Salon, Sept. 29, 1999</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a5-9-larson-";
+  /* a5-s6.words.json cues (segment-local, host 0.00 to 13.90): Eric 0.00, Larson 0.24, 1999 1.44, says 3.74, no 3.94, survivor ~4.5, known to 5.00, back it 5.46, He 6.84, interviewer 7.26, Most likely 8.16, warn some people 8.86, did he warn 6,000 12.16, I don't see 13.00 */
+  tl.set([P+"src", P+"title", P+"lt", P+"c1", P+"q", P+"w1", P+"w2", P+"w3", P+"y1", P+"y2", P+"y3", P+"y4", P+"p1", P+"p2", P+"p3", P+"p4", P+"attr"], {autoAlpha:0}, 0);
+  tl.set(P+"qrule", {scaleX:0}, 0);
+
+  /* ambient, whole window to 13.95 */
+  tl.fromTo(P+"grid", {x:0}, {x:240, duration:14.02, ease:"none"}, 0);
+  tl.fromTo(P+"glow", {x:0, y:0}, {x:700, y:80, duration:14.02, ease:"none"}, 0);
+
+  /* Eric @0.00: title block in, slow scale for 6.84 s */
+  tl.fromTo(P+"title", {autoAlpha:0, y:30}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 0);
+  tl.to(P+"title", {scale:1.03, duration:6.84, ease:"sine.inOut"}, 0.5);
+
+  /* Larson @0.24: lower-third and source line in */
+  tl.fromTo(P+"lt", {autoAlpha:0, x:-60}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.24);
+  tl.fromTo(P+"src", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.4, ease:"power3.out"}, 0.24);
+  tl.to(P+"src", {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:4}, 0.64);
+  tl.to(P+"lt", {y:-5, duration:1.5, ease:"sine.inOut", yoyo:true, repeat:1}, 0.74);
+
+  /* 1999 @1.44: year types on, one digit per 0.12 s */
+  tl.fromTo(P+"y1", {autoAlpha:0, y:8}, {autoAlpha:1, y:0, duration:0.12, ease:"power2.out"}, 1.44);
+  tl.fromTo(P+"y2", {autoAlpha:0, y:8}, {autoAlpha:1, y:0, duration:0.12, ease:"power2.out"}, 1.56);
+  tl.fromTo(P+"y3", {autoAlpha:0, y:8}, {autoAlpha:1, y:0, duration:0.12, ease:"power2.out"}, 1.68);
+  tl.fromTo(P+"y4", {autoAlpha:0, y:8}, {autoAlpha:1, y:0, duration:0.12, ease:"power2.out"}, 1.80);
+
+  /* says @3.74: lower-third out */
+  tl.to(P+"lt", {x:-980, autoAlpha:0, duration:0.5, ease:"power3.in"}, 3.74);
+
+  /* no @3.94: C1 in, words in spoken order */
+  tl.fromTo(P+"c1", {autoAlpha:0, y:24, scale:0.94}, {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)"}, 3.94);
+  tl.fromTo(P+"w1", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.3, ease:"power3.out"}, 3.94); /* NO OTHER SURVIVOR @3.94 */
+  tl.fromTo(P+"w2", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.3, ease:"power3.out"}, 5.00); /* KNOWN TO @5.00 */
+  tl.fromTo(P+"w3", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.3, ease:"power3.out"}, 5.46); /* BACK IT @5.46 */
+  tl.to(P+"c1", {y:-4, duration:0.9, ease:"sine.inOut", yoyo:true, repeat:1}, 5.0);
+
+  /* He @6.84: C1 slides right, title fades up and away; both gone by 7.26 */
+  tl.to(P+"c1", {x:980, autoAlpha:0, duration:0.42, ease:"power3.in"}, 6.84);
+  tl.to(P+"title", {y:-40, autoAlpha:0, duration:0.42, ease:"power2.in"}, 6.84);
+
+  /* interviewer @7.26: Q in, attribution at 7.60, lines on the voice */
+  tl.fromTo(P+"q", {autoAlpha:0, y:40}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 7.26);
+  tl.to(P+"qrule", {scaleX:1, duration:0.8, ease:"power2.out"}, 7.4);
+  tl.fromTo(P+"attr", {autoAlpha:0, x:-16}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 7.60);
+  tl.fromTo(P+"p1", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.3, ease:"power3.out"}, 8.16); /* Most likely @8.16 */
+  tl.fromTo(P+"p2", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.3, ease:"power3.out"}, 8.86); /* warn some people @8.86 */
+  tl.fromTo(P+"p3", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.3, ease:"power3.out"}, 12.16); /* did he warn 6,000 @12.16 */
+  tl.fromTo(P+"p4", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.3, ease:"power3.out"}, 13.00); /* I don't see @13.00 */
+  /* card float through the long hold 9.2 to 13.3 */
+  tl.to(P+"q", {y:-8, duration:2.0, ease:"sine.inOut", yoyo:true, repeat:1}, 9.2);
+  tl.to(P+"src", {x:6, duration:2.0, ease:"sine.inOut", yoyo:true, repeat:1}, 9.2);
+
+  /* exit 13.30 to 13.90 */
+  tl.to(P+"q", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 13.30);
+  tl.to(P+"src", {autoAlpha:0, duration:0.6, ease:"power2.in"}, 13.30);
+
+  window.__timelines["g-a5-9-larson"] = tl;
+})();
+</script>
+</template>

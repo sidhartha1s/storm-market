@@ -39,6 +39,55 @@ references before 6 Oct 26 are not backfilled unless the owner asks.
 
 _Joplin 2011 episode research, 15 Oct 26: four more reference videos for the locked angle (sirens: belief vs record; 135 indoors, 0 below ground), plus our own old upload. Beat list per comment: the episode's devq page._
 
+### Galveston 1900: three reference videos (Accidental Scholar, Patrick History Remaker, 321 MPH)
+Teardown of all four references (the 4th, ehatt600, has comments turned off): `episodes/ep-galveston-1900/research/teardowns.md`.
+https://www.youtube.com/watch?v=6HCRqcWztvo (Accidental Scholar, uploaded 12 Apr 26), https://www.youtube.com/watch?v=AD6vhXoLfS4 (Patrick History Remaker, uploaded 6 Jun 26), https://www.youtube.com/watch?v=jyonhaE0kDM (321 MPH, uploaded 1 Oct 26).
+Pulled 26 Oct 26: Top order 300 / 234 / 145 comments (the videos have fewer), newest 150 each; views 733,602 / 702,821 / 290,805 and likes 9,935 / 5,786 / 2,638 that day.
+
+**Why it landed**
+- The AI visuals are the top praise on Accidental Scholar: "Now this is a worthy use of AI. Bringing history back to life." (887, 6 months ago).
+- Locals vouch: "Im from Galveston and this was well put together" (311, 6 months ago).
+- The voice on Patrick History Remaker: "Whoever is narrating this thank you! The voice is perfect" (26, 4 months ago).
+- 321 MPH is praised for explaining the surge: "this has to be the best explanation of how a hurricane is actually a water event vs wind event I've ever heard.  Nice work!" (45, 8 days ago).
+- AI is the attack line on the other two: "Ai slop" (0, 4 months ago); "10 seconds in, saw you used AI slop, downvoted and clicking out. DO BETTER." (0, 4 months ago).
+
+**Viewer beliefs the angle meets**
+- Viewers already hold "Cuba was ignored", not "nobody could have known". A word search for "no warning", "could not have known", "nobody" and "no one knew" found none of the second belief in the three pulls.
+- Cuba is known from the book: "This was re-accounted in a book called \" Isaac's Storm.\"  It too, noted the cuban forcaster where dismissed." (243, 6 months ago).
+- Cuba is already a grievance: "Warnings did indeed go unheard! The Cubans tried to warn, but because they were Cubans, they were dismissed as second class weather observers." (89, 6 months ago).
+- And a plain shrug: "Washington did not believe a hurricane was coming." (16, 2 weeks ago, quoted from the video).
+- The city-pride belief is the biggest single line: "Galveston is immune and the Titanic is unsinkable." (395, 6 months ago). Also "Pride comes before a fall" (19, 4 months ago).
+- Washington as excusable: "Considering that VA, MD or the mid-atlantic don't experience strong hurricanes frequently like the Gulf states, Washington could've honestly blew it out their ass." (16, 2 weeks ago).
+- Cline as blameless or the culprit, split: "As far as Willis Moore being responsible for doing wrong. I think he needed to be accountable. As far as Isaac Klein, no. He was only a weather observer who relayed his observations back to Washington DC." (0, 4 months ago). Against it: "Galveston suffered tremendous losses because of an arrogant and foolish weather forecaster, not because the city thought it was invulnerable." (3, 6 months ago).
+- Racism, not rivalry: "Arrogance, pride, professional rivalry, hubris. Don't forget the racism." (2, 4 months ago); "The foundation of the arrogance was racism. Thousands died thanks the racist head of the weather bureau who thought people in Mexico and Cuba were inferior to him." (0, 11 days ago).
+- Today's politics: "Politics Over Lives And Here We STILL ARE IN 2026" (30, 6 months ago).
+
+**Corrections and pushback**
+- Joseph Cline: "Actually isaac didn't save his three daughters. His brother joseph saves his youngest child" (33, 6 months ago).
+- Building facts: "Lucas terrace was demolished and only a few survivors." (31, 6 months ago). "Correction:  Spindletop gusher took place in Beaumont/, TX not Houston." (5, 6 months ago).
+- Houston: "Houston remained a small town until WWII. Beaumont was the big coastal city back then, though it was never that big. You have stretched a lot of truth in this story." (4, 4 months ago).
+- Water or wind: "Sorry to contradict but a Hurricane can be either a water OR a wind event." (7, 2 weeks ago).
+- Cuba telegraph doubt: "Ok I have to stop right here. Talking about telegraph lines being down. But you’re telling me a telegraph was sent from Cuba to Washington DC" (0, 5 months ago).
+- Copying: "This a direct synopsis of \"Issac's Storm\", by Erik Larson - great book. Possible copyright issue here..." (2, 4 days ago).
+- Pronunciation: "younambiguosly is diabolical pronunciation (good video though loved it)" (6, 2 weeks ago).
+
+**The newest 150**
+- A viewer learns Cuba had forecasters: "Are there still forecasters in Cuba today? I learned something!" (1, 4 days ago).
+- Still arguing blame: "Politics has no business circumventing science or medicine. Dangerous" (0, 13 hours ago).
+- Warning doubt: "Did he warn people? Maybe. Considering the high body count, the chaos afterwards, and the grief and anguish that consumed the survivors, I doubt his warning would've been on people's minds." (9, 13 days ago).
+
+**What they add or ask for**
+- Next topic: "Please make a video like this of the hurricane of 1919 in Corpus Christi, Texas" (21, 4 months ago).
+- Missing storm: "You forgot to mention Hurricane Rita which was in 2005 the same year as Katrina." (16, 2 weeks ago).
+- Source book, named all over: "Isaac's Storm by Erik Larson is the most harrowing book I ever read.  This is a very good video!" (87, 2 weeks ago).
+
+**For our scripts**
+- Do not spend the hook on "Cuba was ignored". Viewers hold it, and three of four references tell it.
+- The audience reads "pride" as the whole cause: "Pride comes before a fall" (19, 4 months ago). The 1891 quote and the telegraph policy are what the references lack.
+- Name Cline's role precisely. Viewers split between "arrogant forecaster" (3) and "only a weather observer" (0).
+- The Isaac's Storm overlap is a risk: "Possible copyright issue here..." (2, 4 days ago). Source from primary papers, not the book.
+- Name one Moore, one Cline and one telegraph fact each and source them, because viewers correct building and town facts (33, 5, 4 likes above).
+
 ### "Joplin: The Worst-Case Tornado Scenario" (June First)
 https://www.youtube.com/watch?v=syfeDcNgmL0, uploaded 22 May 26.
 Pulled 15 Oct 26: 300 from the Top order and the 150 newest; 1,212,861 views and 16,388 likes that day.

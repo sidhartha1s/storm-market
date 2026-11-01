@@ -1,0 +1,100 @@
+<template>
+<style>
+  #g-a5-5-report-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+
+  /* page wrappers: crop width 1288 (column 1240 + 24 px margin each side), centred x 850, top 140.
+     transform-origin sits on the lit line's centre so the push keeps that line at frame y ~475.
+     max push 1.14: page spans x 116..1584, clear of the presenter circle corner (x >= 1600, y >= 680). */
+  .g-a5-5-report-pg { position:absolute; inset:auto; left:206px; top:140px; width:1288px; transform-origin:644px 335px; opacity:0; visibility:hidden; }
+  .g-a5-5-report-img { display:block; width:1288px; height:auto; }
+  /* whole lines: both crops are 468 x 244 (scale 2.752), measured by pixel rows 28 Oct 26.
+     telephone: half line at y 0-7 and blank margin under y 208 cut away; strand: partial lines at y 0-3 and 240-243 cut away. */
+  #g-a5-5-report-img1 { clip-path:inset(22px 0 96px 0); }
+  #g-a5-5-report-img2 { clip-path:inset(14px 0 14px 0); }
+  /* lit bars on the measured line boxes (wrapper px = image px x 2.752):
+     bar1 "public was warned, over the telephone..." image y 126-140; bar2 "office seeking advice. I went down on Strand street" + "advised ... merchants" image y 119-152 */
+  .g-a5-5-report-bar { position:absolute; inset:auto; left:11px; width:1266px; border-radius:6px;
+    background:rgba(216,161,58,0.32); transform-origin:left center; opacity:0; visibility:hidden; }
+  #g-a5-5-report-bar1 { top:341px; height:48px; }
+  #g-a5-5-report-bar2 { top:326px; height:96px; }
+
+  /* source line, top-left glass (tokens.md) */
+  #g-a5-5-report-src { position:absolute; inset:auto; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; line-height:1.3; color:#c8d3e0; letter-spacing:1px; opacity:0; visibility:hidden; }
+
+  /* lower-third: outer moves in x, inner floats in y; card top edge ~ y 834 */
+  #g-a5-5-report-lt { position:absolute; inset:auto; left:110px; bottom:110px; width:720px; height:136px; opacity:0; visibility:hidden; }
+  #g-a5-5-report-ltin { position:absolute; left:0; top:0; width:720px; height:136px; box-sizing:border-box; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  #g-a5-5-report-name { position:absolute; left:28px; top:16px; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:57px; color:#f2f5f8; }
+  #g-a5-5-report-role { position:absolute; left:28px; top:80px; white-space:nowrap; font-weight:700; font-size:27px; line-height:35px; letter-spacing:1px; color:#f5d98b; }
+</style>
+<div id="g-a5-5-report-root" data-composition-id="g-a5-5-report" data-width="1920" data-height="1080">
+  <!-- crops expected from the orchestrator: media/doc/mwr-1900-09-cline-telephone.jpg (the "public was warned" line) and media/doc/mwr-1900-09-cline-strand.jpg (the "Strand street" line) -->
+  <div class="g-a5-5-report-pg" id="g-a5-5-report-pg1">
+    <img class="g-a5-5-report-img" id="g-a5-5-report-img1" src="media/doc/mwr-1900-09-cline-telephone.jpg" alt="Monthly Weather Review, September 1900: Cline's special report, the public was warned over the telephone and verbally">
+    <div class="g-a5-5-report-bar" id="g-a5-5-report-bar1"></div>
+  </div>
+  <div class="g-a5-5-report-pg" id="g-a5-5-report-pg2">
+    <img class="g-a5-5-report-img" id="g-a5-5-report-img2" src="media/doc/mwr-1900-09-cline-strand.jpg" alt="Monthly Weather Review, September 1900: Cline's special report, he went down on Strand street and advised wholesale commission merchants">
+    <div class="g-a5-5-report-bar" id="g-a5-5-report-bar2"></div>
+  </div>
+  <div id="g-a5-5-report-src">Isaac Cline, Monthly Weather Review, Sept. 1900 (NWS Heritage reprint)</div>
+  <div id="g-a5-5-report-lt">
+    <div id="g-a5-5-report-ltin">
+      <span id="g-a5-5-report-name">ISAAC CLINE</span>
+      <span id="g-a5-5-report-role">SPECIAL REPORT &middot; MWR, SEPT 1900</span>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a5-5-report-";
+  /* TIMING: audio/a5-s4.words.json, comp-local = segment time (host 0.00 to 10.32 + 1.0 land = 11.32).
+     report @0.64 ; September. @3.60 ; public @4.64 ; telephone @5.66 ; and @7.98 ; Strand @8.54 ; merchants. ends 10.00 */
+  tl.set(P+"pg1", {autoAlpha:0, scale:1}, 0);
+  tl.set(P+"pg2", {autoAlpha:0, scale:1.08}, 0);
+  tl.set([P+"bar1", P+"bar2"], {autoAlpha:0, scaleX:0}, 0);
+  tl.set(P+"src", {autoAlpha:0}, 0);
+  tl.set(P+"lt", {autoAlpha:0, x:-60}, 0);
+
+  /* 0.00: page on, push toward line 1 runs to 7.9; source line in */
+  tl.to(P+"pg1", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0);
+  tl.to(P+"pg1", {scale:1.08, duration:7.9, ease:"none"}, 0);
+  tl.to(P+"src", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0);
+  tl.to(P+"src", {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:3}, 0.4);
+
+  /* REPORT @0.64: lower-third in; floats until it leaves */
+  tl.fromTo(P+"lt", {x:-60, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 0.64);
+  tl.to(P+"ltin", {y:-4, duration:1.2, ease:"sine.inOut", yoyo:true, repeat:1}, 1.24);
+  /* September. @3.60: lower-third slides left, done 4.20 */
+  tl.to(P+"lt", {x:-980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 3.60);
+
+  /* PUBLIC @4.64: bar 1 draws over 0.5 s, page dims to 0.55 around it; telephone @5.66 bar at full */
+  tl.to(P+"bar1", {autoAlpha:1, duration:0.1, ease:"none"}, 4.64);
+  tl.to(P+"bar1", {scaleX:1, duration:0.5, ease:"power2.out"}, 4.64);
+  tl.to(P+"img1", {opacity:0.55, duration:0.5, ease:"power2.out"}, 4.64);
+
+  /* and @7.98: bar 1 fades first, crop 1 hands to crop 2, push moves to line 2 (1.08 to 1.14 runs to the host end) */
+  tl.to(P+"bar1", {autoAlpha:0, duration:0.3, ease:"power2.in"}, 7.98);
+  tl.to(P+"pg1", {autoAlpha:0, duration:0.3, ease:"power2.in"}, 7.98);
+  tl.to(P+"pg2", {autoAlpha:1, duration:0.3, ease:"power2.out"}, 7.98);
+  tl.to(P+"pg2", {scale:1.14, duration:3.34, ease:"none"}, 7.98);
+
+  /* STRAND @8.54: bar 2 draws, done 9.04, page dims; holds through merchants. 10.00 */
+  tl.to(P+"bar2", {autoAlpha:1, duration:0.1, ease:"none"}, 8.54);
+  tl.to(P+"bar2", {scaleX:1, duration:0.5, ease:"power2.out"}, 8.54);
+  tl.to(P+"img2", {opacity:0.55, duration:0.5, ease:"power2.out"}, 8.54);
+
+  /* exit: root fade-through over the last 0.4 s of the 11.32 s host */
+  tl.to(P+"root", {autoAlpha:0, duration:0.4, ease:"power2.in"}, 10.92);
+  window.__timelines["g-a5-5-report"] = tl;
+})();
+</script>
+</template>

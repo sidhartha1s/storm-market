@@ -1,0 +1,117 @@
+<template>
+<style>
+  #g-a3-6-hove-to-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  .g-a3-6-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  /* source line, top-left */
+  #g-a3-6-hove-to-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    font-weight:700; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+  /* chips: centred x 960 by xPercent in tl.set, top 420 */
+  .g-a3-6-chip { position:absolute; left:50%; top:420px; opacity:0; visibility:hidden; }
+  /* darker glass base: chips sit over white foam and a bright rail, 0.55 glass left the tags weak (same fix as g-a3-8) */
+  .g-a3-6-chip .g-a3-6-chipin { display:table; padding:22px 44px 24px; border-radius:28px; text-align:left; background:rgba(10,16,24,0.84); }
+  .g-a3-6-lead { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px; letter-spacing:2px; line-height:1.15; color:#f2f5f8; white-space:nowrap; }
+  .g-a3-6-fig { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:72px; letter-spacing:2px; line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  .g-a3-6-fig2 { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:64px; letter-spacing:2px; line-height:1.1; color:#f2f5f8; white-space:nowrap; opacity:0; visibility:hidden; }
+  .g-a3-6-tag { display:block; margin-top:14px; font-weight:700; font-size:22px; letter-spacing:4px; color:#dfe7ee; white-space:nowrap; }
+  /* page panel: glass frame 1280 x 481 centred x 900; inner window 1240 x 441 = crop x 568..1040, y 862..1030 of the p. 374 scan, scale 2.6271 */
+  /* window bottom moved to the line gap at scan y 1020 (row-measured 28 Oct 26): 441 -> 415 px, so "scription by Captain Halsey" is no longer half-cut */
+  #g-a3-6-hove-to-pan { position:absolute; left:260px; top:300px; width:1280px; height:455px; opacity:0; visibility:hidden; }
+  #g-a3-6-hove-to-panin { position:absolute; inset:0; border-radius:20px; box-sizing:border-box; padding:20px; }
+  #g-a3-6-hove-to-pg { position:relative; width:1240px; height:415px; overflow:hidden; border-radius:6px; background:rgba(10,16,24,0.9); }
+  .g-a3-6-img { position:absolute; width:3021px; height:4119px; max-width:none; }
+  #g-a3-6-hove-to-base { left:-1492px; top:-2265px; opacity:0.55; }
+  .g-a3-6-band { position:absolute; height:45px; overflow:hidden; background:rgba(216,161,58,0.28); clip-path:inset(0 100% 0 0); }
+  /* bright copy of the page inside each band keeps the quoted lines at full brightness while the rest sits at 0.55 */
+  .g-a3-6-band .g-a3-6-img { opacity:1; }
+</style>
+<div id="g-a3-6-hove-to-root" data-composition-id="g-a3-6-hove-to" data-width="1920" data-height="1080">
+  <div id="g-a3-6-hove-to-src" class="g-a3-6-glass">Monthly Weather Review, September 1900, p. 374</div>
+
+  <div id="g-a3-6-hove-to-c1" class="g-a3-6-chip">
+    <div id="g-a3-6-hove-to-c1in" class="g-a3-6-chipin g-a3-6-glass">
+      <span class="g-a3-6-lead">MORE THAN</span>
+      <span class="g-a3-6-fig">100 MPH</span>
+      <span class="g-a3-6-tag">Halsey&rsquo;s guess</span>
+    </div>
+  </div>
+
+  <div id="g-a3-6-hove-to-c2" class="g-a3-6-chip">
+    <div id="g-a3-6-hove-to-c2in" class="g-a3-6-chipin g-a3-6-glass">
+      <span class="g-a3-6-lead">STOPPED &middot;</span>
+      <span id="g-a3-6-hove-to-noon" class="g-a3-6-fig2">NOON TO 3 PM</span>
+      <span class="g-a3-6-tag">hove to</span>
+    </div>
+  </div>
+
+  <div id="g-a3-6-hove-to-pan">
+    <div id="g-a3-6-hove-to-panin" class="g-a3-6-glass">
+      <div id="g-a3-6-hove-to-pg">
+        <img id="g-a3-6-hove-to-base" class="g-a3-6-img" src="media/candidates/a3/A3-S4_c1_mwr-sept1900-p374_halsey-louisiana.png" alt="MWR Sept 1900 p. 374" data-crop-ok="column crop of a document page: whole lines inside the window, the rest of the sheet is not wanted">
+        <!-- band A: line "fact that this is the only vessel ... have en-", from "the only" -->
+        <div id="g-a3-6-hove-to-bA" class="g-a3-6-band" style="left:381px; top:236px; width:846px;">
+          <img class="g-a3-6-img" style="left:-1873px; top:-2501px;" src="media/candidates/a3/A3-S4_c1_mwr-sept1900-p374_halsey-louisiana.png" alt="" data-crop-ok="column crop of a document page: whole lines inside the window">
+        </div>
+        <!-- band B: whole line "countered the storm in the Gulf of Mexico indicates that the" (was cut at "Gulf o|f") -->
+        <div id="g-a3-6-hove-to-bB" class="g-a3-6-band" style="left:11px; top:281px; width:1216px;">
+          <img class="g-a3-6-img" style="left:-1503px; top:-2546px;" src="media/candidates/a3/A3-S4_c1_mwr-sept1900-p374_halsey-louisiana.png" alt="" data-crop-ok="column crop of a document page: whole lines inside the window">
+        </div>
+        <!-- band C: whole line "Weather Bureau warnings and advices were generally ob-", so the lit run has no gap -->
+        <div id="g-a3-6-hove-to-bC" class="g-a3-6-band" style="left:11px; top:326px; width:1216px;">
+          <img class="g-a3-6-img" style="left:-1503px; top:-2591px;" src="media/candidates/a3/A3-S4_c1_mwr-sept1900-p374_halsey-louisiana.png" alt="" data-crop-ok="column crop of a document page: whole lines inside the window">
+        </div>
+        <!-- band D: line "served at Gulf ports." -->
+        <div id="g-a3-6-hove-to-bD" class="g-a3-6-band" style="left:13px; top:370px; width:415px;">
+          <img class="g-a3-6-img" style="left:-1505px; top:-2635px;" src="media/candidates/a3/A3-S4_c1_mwr-sept1900-p374_halsey-louisiana.png" alt="" data-crop-ok="column crop of a document page: whole lines inside the window">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a3-6-hove-to-";
+  /* TIMING: audio/a3-s5.words.json, comp-local = segment time (host starts at segment start).
+     more @1.28 ; The(sea) @3.30 ; stopped @4.68 ; noon @6.32 ; His @7.64 ; only @8.10 ; have @9.32 ; met @9.42 ; Gulf @10.28 ; warnings @12.66 ; heated @13.64 ; ports. @14.56 */
+  tl.set(P+"src", {autoAlpha:0, y:0}, 0);
+  tl.set([P+"c1", P+"c2"], {autoAlpha:0, xPercent:-50, y:24, scale:0.94}, 0);
+  tl.set(P+"noon", {autoAlpha:0, scale:1.3, transformOrigin:"left center"}, 0);
+  tl.set(P+"pan", {autoAlpha:0, x:0, y:24}, 0);
+  tl.set(P+"panin", {scale:1, transformOrigin:"50% 50%"}, 0);
+  tl.set([P+"bA", P+"bB", P+"bC", P+"bD"], {clipPath:"inset(0 100% 0 0)"}, 0);
+
+  /* source line: in at 0, drifts the whole window, out with the panel */
+  tl.to(P+"src", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0);
+  tl.to(P+"src", {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:5}, 0.4);
+  tl.to(P+"src", {autoAlpha:0, duration:0.5, ease:"power2.in"}, 15.0);
+
+  /* MORE THAN 100 @1.28: chip C1 in, drifts, out by 3.90 (sea line @3.30) */
+  tl.to(P+"c1", {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)"}, 1.28);
+  tl.to(P+"c1in", {y:-4, duration:1.2, ease:"sine.inOut", yoyo:true, repeat:1}, 1.73);
+  tl.to(P+"c1", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 3.30);
+
+  /* STOPPED @4.68: chip C2 in; NOON TO 3 PM pops on "noon" @6.32; out by 7.64 */
+  tl.to(P+"c2", {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)"}, 4.68);
+  tl.to(P+"c2in", {y:-4, duration:1.2, ease:"sine.inOut", yoyo:true, repeat:2}, 5.13);
+  tl.to(P+"noon", {autoAlpha:1, scale:1, duration:0.4, ease:"power4.out"}, 6.32);
+  tl.to(P+"c2", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 7.04);
+
+  /* His @7.64: page panel dissolves in over 0.4 s and starts a slow push to 15.0 */
+  tl.to(P+"pan", {autoAlpha:1, y:0, duration:0.4, ease:"power2.out"}, 7.64);
+  tl.to(P+"panin", {scale:1.05, duration:7.36, ease:"none"}, 7.64);
+
+  /* ONLY SHIP @8.10: amber band draws line A, then line B to "Gulf" @10.28 */
+  tl.to(P+"bA", {clipPath:"inset(0 0% 0 0)", duration:1.2, ease:"power2.inOut"}, 8.10);
+  tl.to(P+"bB", {clipPath:"inset(0 0% 0 0)", duration:0.8, ease:"power2.inOut"}, 9.42);
+  /* warnings @12.66: band extends to "warnings ... generally observed at Gulf ports" (lines C, D) */
+  tl.to(P+"bC", {clipPath:"inset(0 0% 0 0)", duration:0.9, ease:"power2.inOut"}, 12.66);
+  tl.to(P+"bD", {clipPath:"inset(0 0% 0 0)", duration:0.8, ease:"power2.inOut"}, 13.64);
+
+  /* exit: panel slides out in the last 0.6 s, overshooting the slide; A3-S6 opens on MWR p. 376 */
+  tl.to(P+"pan", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 15.0);
+  window.__timelines["g-a3-6-hove-to"] = tl;
+})();
+</script>
+</template>

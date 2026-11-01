@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a5-7-ride · A5-S5 6.04 to 12.52 · ep-galveston-1900 · DEEP (Opus) · brief: briefs/a5/g-a5-7-ride.md
+  Claim: later tellings put Cline in a cart through the low parts of town, others on horseback along the beach.
+  Neither has a route on record: both lines are SCHEMATIC sketches (no pins, streets, times or distances on them).
+
+  BASE: g-a5-3-island-map was not on disk when this was built, so the map layer is built from its brief's geometry:
+    projection = g-intro-4's plate, X = (lon + 100) * 90, Y = (41 - lat) * 103.95 (about 0.93 plate px per km here).
+    island = Natural Earth 10m coastline record 741 (Galveston Island, 33 vertices, closed ring), cartopy cache
+             ne_10m_coastline.shp. Mainland and Bolivar = NE 10m coastline record 206, vertices 555 to 721,
+             closed to the north at lat 30.6. One-shot transform, numbers pasted by hand; do not hand-edit the paths.
+    city tone = the island clipped at 22 % of its length (principal axis, 46.1 km) from the NE tip (SCHEMATIC).
+    g-a5-3 fit: island bbox to x 200-1720, y 330-720 -> s0 13.815 (12.85 px/km); its end state = 1.05 push about the
+             city centroid -> s 14.506.
+    THIS COMP'S FINAL FRAMING: city bbox fills x 300 to 1620 -> s 121.107 (112.6 px/km). Zoom from g-a5-3's end
+             state = 8.349x, so the push is a log-space zoom (logZoom rule) about the fixed point F (1154.27, 369.81).
+  GEOMETRY: every map path below is in FINAL-FRAMING screen px. The camera group scales it by z = K^(u-1) about F,
+    u = power2.inOut(t / 1.16), K = 8.34896: z = 0.1198 at frame 0 (g-a5-3's end framing), 1 at 1.16.
+  CART LINE: 7 cubic legs inside the amber area, 905.8 px long; nearest approach to any coast 53 px (checked
+    numerically on 280 samples). BEACH LINE: the city's Gulf shore (695.3,1055.9)-(1620.0,364.3), 3 % to 97 %,
+    offset 14 px inland: (714.6,1023.9) -> (1583.9,373.8), 1085 px.
+  PRESENTER CORNER (x >= 1600, y >= 680): water only at frame 0, through the push and at the final framing; no land,
+    label or shimmer enters it, so the circle may stay on.
+
+  CUES (a5-s5.words.json; comp-local = word time - 6.04)
+    0.00  "through" 6.04   frame 0 = g-a5-3 end framing, city lit; push 0.00 -> 1.16 (power2.inOut, log space)
+    0.50  "low" 6.54       "Low parts of town" label in
+    0.74  "parts" 6.78     cart line draws 0.74 -> 2.56, ease none, cart glyph on its head
+    2.56                   cart glyph bobs y +-3, 0.8 s yoyo, to 5.76
+    3.42  "Other" 9.46     cart line and glyph dim to 0.45
+    4.48  "horseback," 10.52  chip LATER TELLINGS: ON HORSEBACK in
+    5.22  "riding" 11.26   beach line draws 5.22 -> 6.36, ease none, horse glyph on its head
+    5.64  "beach." 11.68   "Gulf beach" label in
+    6.18 -> 6.48           root fades to 0 (cut at "The" 12.52 to g-a5-8)
+-->
+<template>
+<style>
+  #g-a5-7-ride-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .ga57-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .ga57-main { fill:#15202b; stroke:#2a3644; stroke-width:2px; stroke-linejoin:round; }
+  .ga57-isl { stroke:#93a3b2; stroke-width:2px; stroke-linejoin:round; }
+  .ga57-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); font-weight:700; font-size:19px; line-height:1.4; color:#c8d3e0; white-space:nowrap; }
+  .ga57-chip { position:absolute; left:580px; top:330px; box-sizing:border-box; padding:18px 28px; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px;
+    line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  .ga57-lab { position:absolute; font-weight:700; font-size:24px; line-height:28px; color:#f2f5f8; white-space:nowrap;
+    text-shadow:0 2px 6px rgba(0,0,0,0.85); }
+  .ga57-note { position:absolute; left:96px; top:990px; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2;
+    white-space:nowrap; text-shadow:0 2px 6px rgba(0,0,0,0.85); }
+  .ga57-scale { position:absolute; left:96px; top:930px; width:260px; height:40px; }
+  .ga57-scalebar { position:absolute; left:0; top:14px; width:113px; height:4px; background:#93a3b2; }
+  .ga57-scaletick { position:absolute; top:6px; width:3px; height:20px; background:#93a3b2; }
+  .ga57-scalelab { position:absolute; left:128px; top:2px; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2;
+    white-space:nowrap; text-shadow:0 2px 6px rgba(0,0,0,0.85); }
+  /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
+  .ga57-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-7-ride-root" data-composition-id="g-a5-7-ride" data-width="1920" data-height="1080"
+  data-type-ok="full-frame map: diagram labels, one chip and a note, no headline by design (brief section 3)">
+  <svg class="ga57-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <!-- Gulf shimmer: screen space, bottom-right water; checked off land at every 0.01 s of the push -->
+    <g id="g-a5-7-ride-shim" stroke="#7fb2e5" stroke-width="2" stroke-linecap="round" opacity="0.22">
+      <line id="g-a5-7-ride-sh1" x1="1180" y1="905" x2="1360" y2="905"/>
+      <line id="g-a5-7-ride-sh2" x1="1290" y1="830" x2="1470" y2="830"/>
+      <line id="g-a5-7-ride-sh3" x1="1380" y1="975" x2="1520" y2="975"/>
+      <line id="g-a5-7-ride-sh4" x1="1060" y1="1010" x2="1220" y2="1010"/>
+    </g>
+    <!-- camera layer: final-framing px; camAt sets translate(F(1-z)) scale(z) -->
+    <g id="g-a5-7-ride-cam">
+      <!--BASEMAP:g-a5-7 (NE 10m, see header)-->
+      <path class="ga57-main" vector-effect="non-scaling-stroke" d="M-11692.6,8631.5 L-11760.0,8477.3 L-10292.9,7926.1 L-9885.7,7883.1 L-9383.7,7912.3 L-8892.3,7877.9 L-8412.8,7757.0 L-7944.5,7531.1 L-6693.8,6702.8 L-5952.7,6166.0 L-5762.4,6089.7 L-5519.0,6062.0 L-5392.1,5979.0 L-4804.9,5460.1 L-4217.7,4788.1 L-3907.3,4614.9 L-3116.0,3982.8 L-3032.2,3822.0 L-3014.9,3649.8 L-3018.9,3436.7 L-3107.2,2910.1 L-3118.7,2639.7 L-3018.9,2358.5 L-3159.5,2032.7 L-3242.4,1928.2 L-3053.1,2029.6 L-2879.2,2054.2 L-2738.2,2121.8 L-2646.8,2358.5 L-2347.0,2183.8 L-2094.2,1988.1 L-1374.8,1147.0 L-1369.1,1112.2 L-1382.4,1008.7 L-1374.8,975.4 L-1342.5,967.7 L-1251.6,984.6 L-1219.6,975.4 L-996.5,809.4 L-895.0,701.8 L-847.5,545.1 L-773.0,545.1 L-601.4,686.5 L-434.6,585.6 L-308.7,345.8 L-259.0,72.3 L-172.1,-174.6 L29.3,-236.1 L257.3,-174.6 L424.5,-55.8 L455.1,-109.0 L487.9,-128.0 L524.2,-134.7 L565.9,-149.5 L79.0,-373.4 L-62.5,-400.0 L-180.0,-487.6 L-482.5,-1009.6 L-492.3,-981.9 L-493.6,-943.0 L-507.3,-936.8 L-531.3,-936.8 L-533.5,-905.1 L-528.2,-881.5 L-482.5,-837.5 L-482.5,-743.2 L-761.9,-754.5 L-807.2,-922.5 L-819.6,-1131.5 L-1003.2,-1267.8 L-1003.2,-1353.8 L-845.3,-1406.1 L-690.5,-1484.9 L-550.1,-1428.4 L-456.0,-1585.1 L-378.9,-1689.7 L-1208.5,-1910.1 L-1644.5,-2267.2 L-1558.0,-2603.7 L-1443.1,-2725.6 L-1266.1,-2924.4 L-1215.1,-3072.1 L-1493.2,-3321.8 L-1555.2,-3555.5 L-1478.6,-3746.8 L-1229.1,-3939.0 L-1368.3,-4085.6 L-1481.3,-4171.7 L-1585.3,-4197.1 L-1698.0,-4222.4 L-1785.1,-4308.6 L-1932.4,-4342.4 L-2082.2,-4416.0 L-1953.7,-4880.2 L-1754.3,-4864.0 L-1675.3,-4708.3 L-1552.8,-4509.5 L-1374.8,-4455.5 L-1015.1,-4309.8 L-827.0,-4180.8 L-711.5,-4123.7 L-637.8,-3835.2 L-507.5,-3691.5 L-363.7,-3721.2 L-33.1,-3823.9 L109.6,-4041.3 L265.7,-4475.2 L508.5,-4880.7 L507.4,-5111.8 L722.6,-5286.1 L852.8,-5156.6 L1083.2,-5172.0 L1227.1,-5215.9 L1399.6,-5288.8 L1514.9,-5289.3 L1673.6,-5217.6 L1775.1,-5015.8 L1847.6,-4900.5 L1862.7,-4698.4 L1935.4,-4482.1 L1965.2,-4207.9 L1852.1,-3630.0 L1710.1,-3138.6 L1496.1,-2733.6 L1347.0,-2504.5 L1218.2,-2289.0 L1082.2,-2262.4 L958.7,-2327.0 L933.1,-2248.7 L1024.4,-2112.2 L1284.0,-2041.7 L1484.7,-2094.6 L1938.0,-2226.6 L2916.6,-2398.9 L3396.4,-2675.4 L3569.8,-2597.6 L3742.8,-2435.7 L3955.6,-2353.2 L4121.1,-2476.1 L4219.1,-2568.4 L4226.6,-2392.7 L4155.2,-2165.7 L4017.3,-2063.8 L3827.5,-2038.2 L3279.7,-2068.9 L3184.4,-2041.3 L3056.7,-1957.2 L2731.6,-1611.0 L2648.6,-1555.6 L2538.6,-1502.4 L2413.6,-1462.4 L2156.8,-1418.9 L1875.2,-1267.8 L991.7,-393.9 L898.1,-225.8 L946.5,-103.4 L1201.9,-55.8 L1423.7,-158.2 L1986.9,-837.5 L2384.3,-1130.5 L5861.4,-2720.5 L7161.8,-3215.3 L8082.9,-3736.3 L8404.5,-3883.8 L8860.4,-4025.2 L9106.1,-4052.9 L10423.3,-4025.2 L14965.6,-15584.1 L-17733.2,-15584.1 L-17733.2,8631.5 Z"/>
+      <!-- rest of the island (SW 78 %), Cold blue 1: g-a5-3 end 0.85 -> 0.4 over the push -->
+      <path id="g-a5-7-ride-rest" class="ga57-isl" vector-effect="non-scaling-stroke" fill="#5a768f" fill-opacity="0.85" d="M300.0,666.9 L119.8,717.2 L67.9,782.3 L-22.6,975.4 L-481.6,1344.2 L-519.8,1405.2 L-607.1,1576.2 L-763.6,1752.8 L-1032.5,1941.4 L-1754.4,2507.2 L-2269.8,2845.2 L-2498.4,3158.8 L-2654.1,3438.1 L-2564.0,3443.0 L-2211.7,3122.7 L-808.9,2117.2 L-202.9,1727.6 L695.3,1055.9 Z"/>
+      <!-- city end (NE 22 %, SCHEMATIC limit), Amber 1: g-a5-3 end 1.0 -> 0.6 over the push -->
+      <path id="g-a5-7-ride-city" class="ga57-isl" vector-effect="non-scaling-stroke" fill="#d8a13a" fill-opacity="1" d="M640.4,115.3 L501.6,102.5 L492.3,29.3 L448.0,24.1 L424.5,29.3 L411.6,66.1 L411.6,102.0 L398.3,122.5 L343.3,115.3 L343.3,201.4 L531.3,236.2 L560.2,389.9 L490.5,560.0 L383.2,639.9 L361.9,649.6 L300.0,666.9 L695.3,1055.9 L1620.0,364.3 Z"/>
+      <!--/BASEMAP-->
+      <!-- beach line: city's Gulf shore, 14 px inland; drawn by tweening x2/y2 so the 14 8 dashes stay put -->
+      <line id="g-a5-7-ride-beach" class="ga57-hide" x1="714.6" y1="1023.9" x2="714.6" y2="1023.9" stroke="#7fb2e5" stroke-width="4" stroke-dasharray="14 8"/>
+      <!-- cart line: hand-drawn wander through the amber interior, jitter baked into the control points -->
+      <path id="g-a5-7-ride-cart" class="ga57-hide" fill="none" stroke="#f2f5f8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
+        d="M650,522 C690,500 720,478 762,471 C800,465 818,512 851,556 C880,590 920,512 961,501 C1000,492 1020,585 1061,598 C1100,610 1120,530 1162,521 C1200,513 1222,570 1262,561 C1300,552 1318,492 1352,472"/>
+      <!-- cart glyph, 28 px: the outer group is placed on the line head by the draw tween; the inner group bobs -->
+      <g id="g-a5-7-ride-cartat"><g id="g-a5-7-ride-cartg" class="ga57-hide">
+        <rect x="-13" y="-17" width="20" height="9" rx="1.5" fill="#f2f5f8" stroke="#04070c" stroke-width="1.5"/>
+        <line x1="7" y1="-12" x2="15" y2="-8" stroke="#f2f5f8" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="-8" cy="-5" r="4.5" fill="#04070c" stroke="#f2f5f8" stroke-width="2"/>
+        <circle cx="3" cy="-5" r="4.5" fill="#04070c" stroke="#f2f5f8" stroke-width="2"/>
+      </g></g>
+      <!-- horse-and-rider glyph, 32 px, rides the beach line head -->
+      <g id="g-a5-7-ride-horse" class="ga57-hide">
+        <g stroke="#04070c" stroke-width="1.2" fill="#f2f5f8">
+          <ellipse cx="0" cy="-14" rx="10" ry="5"/>
+          <path d="M7,-17 L13,-26 L17,-24 L11,-13 Z"/>
+          <circle cx="0" cy="-27" r="3"/>
+        </g>
+        <g stroke="#f2f5f8" stroke-width="2.5" stroke-linecap="round" fill="none">
+          <path d="M-7,-10 L-8,-1 M-3,-10 L-2,-1 M4,-10 L4,-1 M8,-11 L10,-1 M-10,-15 L-15,-9 M0,-19 L-1,-24"/>
+        </g>
+      </g>
+    </g>
+  </svg>
+  <div class="ga57-src" id="g-a5-7-ride-src">Texas State Historical Association · Wikipedia summary of later accounts</div>
+  <!-- labels: fixed HUD at final-framing positions; never on the cart or beach line -->
+  <div class="ga57-lab ga57-hide" id="g-a5-7-ride-low" style="left:530px; top:580px; width:240px; text-align:center;">Low parts of town</div>
+  <div class="ga57-lab ga57-hide" id="g-a5-7-ride-gulf" style="left:1175px; top:752px;">Gulf beach</div>
+  <div class="ga57-chip ga57-hide" id="g-a5-7-ride-chip">LATER TELLINGS: ON HORSEBACK</div>
+  <!-- scale bar at the final framing (112.6 px per km); above the note, which owns top 990 -->
+  <div class="ga57-scale ga57-hide" id="g-a5-7-ride-scale">
+    <div class="ga57-scalebar"></div><div class="ga57-scaletick" style="left:0;"></div><div class="ga57-scaletick" style="left:110px;"></div>
+    <div class="ga57-scalelab" id="g-a5-7-ride-scalelab">1 km</div>
+  </div>
+  <div class="ga57-note ga57-hide" id="g-a5-7-ride-note">SCHEMATIC · NO ROUTE ON RECORD</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a5-7-ride-";
+  const $ = function (n) { return document.getElementById("g-a5-7-ride-" + n); };
+
+  /* camera: pure function of comp time; log-space zoom about F (logLerpScale, helpers.js logZoom) */
+  const K = 8.34896, FX = 1154.27, FY = 369.81, PUSH = 1.16;
+  const ease = gsap.parseEase("power2.inOut");
+  const camEl = $("cam");
+  function camAt(t) {
+    const u = ease(Math.min(1, Math.max(0, t / PUSH)));
+    const z = Math.exp(Math.log(K) * (u - 1));
+    camEl.setAttribute("transform", "translate(" + (FX * (1 - z)).toFixed(2) + "," + (FY * (1 - z)).toFixed(2) + ") scale(" + z.toFixed(5) + ")");
+  }
+  camAt(0);
+
+  /* cart line: dash length ceil(len)+1; the glyph sits at min(len, drawn length), same linear progress as the dash */
+  const cart = $("cart");
+  const CLEN = cart.getTotalLength(), CL = Math.ceil(CLEN) + 1;
+  const cartAt = $("cartat");
+  function placeCart(p) {
+    const q = cart.getPointAtLength(Math.min(CLEN, CL * p));
+    cartAt.setAttribute("transform", "translate(" + q.x.toFixed(2) + "," + q.y.toFixed(2) + ")");
+  }
+  placeCart(0);
+  const cartProg = { p: 0 };
+
+  const tl = gsap.timeline({ paused: true });
+  tl.to({ t: 0 }, { t: 1, duration: 6.48, ease: "none", onUpdate: function () { camAt(this.time()); } }, 0);
+
+  /* 0.00 ("through" 6.04): g-a5-3 end framing, city lit; tones settle to 0.6 / 0.4 over the push */
+  tl.set(cart, { strokeDasharray: CL + " " + CL, strokeDashoffset: CL }, 0);
+  tl.set(P + "horse", { x: 714.6, y: 1023.9 }, 0);
+  tl.set(P + "cartg", { y: 0 }, 0);
+  tl.set(P + "chip", { y: 24, scale: 0.94, transformOrigin: "0% 50%" }, 0);
+  tl.fromTo(P + "city", { attr: { "fill-opacity": 1 } }, { attr: { "fill-opacity": 0.6 }, duration: 1.16, ease: "power2.inOut" }, 0);
+  tl.fromTo(P + "rest", { attr: { "fill-opacity": 0.85 } }, { attr: { "fill-opacity": 0.4 }, duration: 1.16, ease: "power2.inOut" }, 0);
+  /* Gulf shimmer, 9.3 px/s for the whole window */
+  tl.to([P + "sh1", P + "sh3"], { x: 60, duration: 6.48, ease: "none" }, 0);
+  tl.to([P + "sh2", P + "sh4"], { x: -60, duration: 6.48, ease: "none" }, 0);
+
+  /* LOW @6.54 -> 0.50: label in under the cart line's start */
+  tl.fromTo(P + "low", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.50);
+
+  /* PARTS @6.78 -> 0.74: cart line draws to 2.56 (8.60), glyph on its head */
+  tl.set([cart, P + "cartg"], { autoAlpha: 1 }, 0.74);
+  tl.to(cart, { strokeDashoffset: 0, duration: 1.82, ease: "none" }, 0.74);
+  tl.fromTo(cartProg, { p: 0 }, { p: 1, duration: 1.82, ease: "none", onUpdate: function () { placeCart(cartProg.p); } }, 0.74);
+
+  /* settle @1.16: scale bar for the final framing */
+  tl.fromTo(P + "scale", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1.16);
+  /* note waits for the settled framing: the island outline crosses it while the push runs */
+  tl.fromTo(P + "note", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1.16);
+
+  /* 2.56 -> 5.76: glyph bobs at the line's end */
+  tl.fromTo(P + "cartg", { y: 0 }, { y: -3, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 2.56);
+
+  /* OTHER @9.46 -> 3.42: cart line dims */
+  tl.to([cart, P + "cartg"], { opacity: 0.45, duration: 0.4, ease: "power2.out" }, 3.42);
+
+  /* HORSEBACK @10.52 -> 4.48: chip in, then drifts */
+  tl.fromTo(P + "chip", { autoAlpha: 0, y: 24, scale: 0.94 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, 4.48);
+  tl.to(P + "chip", { y: -4, duration: 1.2, ease: "sine.inOut" }, 4.93);
+
+  /* RIDING @11.26 -> 5.22: beach line draws SW -> NE to 6.36, horse on its head */
+  tl.set([P + "beach", P + "horse"], { autoAlpha: 1 }, 5.22);
+  tl.to(P + "beach", { attr: { x2: 1583.9, y2: 373.8 }, duration: 1.14, ease: "none" }, 5.22);
+  tl.to(P + "horse", { x: 1583.9, y: 373.8, duration: 1.14, ease: "none" }, 5.22);
+
+  /* BEACH @11.68 -> 5.64: label below the line's mid-point, over the water */
+  tl.fromTo(P + "gulf", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.64);
+
+  /* exit: cut at "The" 12.52 to the book spine; root to 0 over the last 0.3 s */
+  tl.to(P + "root", { autoAlpha: 0, duration: 0.3, ease: "power1.in" }, 6.18);
+
+  window.__timelines["g-a5-7-ride"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

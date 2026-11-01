@@ -1,0 +1,157 @@
+<template>
+<style>
+  #g-a3-9-swell-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  /* plan view: everything that dims to 0.4 in Part B lives in this layer */
+  #g-a3-9-swell-plan { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #g-a3-9-swell-svg { position:absolute; left:0; top:0; }
+  /* start-hidden in CSS as well as by the timeline (mg-quickref "Motion and exits") */
+  #g-a3-9-swell-tide, #g-a3-9-swell-shaft, #g-a3-9-swell-head { opacity:0; }
+  #g-a3-9-swell-schem { position:absolute; left:96px; top:1000px; white-space:nowrap;
+    font-weight:700; font-size:19px; line-height:24px; color:#93a3b2; }
+  #g-a3-9-swell-windlab { position:absolute; left:556px; top:333px; white-space:nowrap;
+    font-weight:700; font-size:26px; line-height:34px; letter-spacing:3px; color:#7fb2e5; opacity:0; visibility:hidden; }
+  /* source line, top-left on the glass surface (shared spec) */
+  #g-a3-9-swell-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+  /* chip C1: left 1000, top 150; text measured 759 px (Arial Black 44), card 815 px, right edge 1815 */
+  #g-a3-9-swell-chip { position:absolute; left:1000px; top:150px; box-sizing:border-box; padding:16px 28px; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a3-9-swell-chiptx { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px; line-height:52px; color:#f2f5f8; }
+  /* lower-third: outer moves in x, inner drifts in y; role line measured 566 px, card 640 px, top edge y 834 */
+  #g-a3-9-swell-lt { position:absolute; left:110px; bottom:110px; width:640px; height:136px; opacity:0; visibility:hidden; }
+  #g-a3-9-swell-ltin { position:absolute; left:0; top:0; width:640px; height:136px; box-sizing:border-box; border-radius:28px; overflow:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  #g-a3-9-swell-name { position:absolute; left:28px; top:18px; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:52px; line-height:57px; color:#f2f5f8; opacity:0; visibility:hidden; }
+  #g-a3-9-swell-role { position:absolute; left:28px; top:82px; white-space:nowrap; font-weight:700; font-size:27px; line-height:35px;
+    letter-spacing:1px; color:#f5d98b; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a3-9-swell-root" data-composition-id="g-a3-9-swell" data-width="1920" data-height="1080">
+  <div id="g-a3-9-swell-plan">
+    <svg id="g-a3-9-swell-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+      <defs>
+        <!-- Gulf side of the shoreline (200,860)-(1500,300), extended to the frame edges: y 946.15 at x 0, y 119.08 at x 1920 -->
+        <clipPath id="g-a3-9-swell-gulfclip"><polygon points="0,946.15 1920,119.08 1920,1080 0,1080"/></clipPath>
+        <!-- back fade for the crest train, in the crest frame (local y = distance toward the SE) -->
+        <linearGradient id="g-a3-9-swell-fadegrad" gradientUnits="userSpaceOnUse" x1="0" y1="300" x2="0" y2="450">
+          <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#000000"/>
+        </linearGradient>
+        <mask id="g-a3-9-swell-fademask" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" x="-700" y="-900" width="1400" height="1500">
+          <rect x="-700" y="-900" width="1400" height="1500" fill="url(#g-a3-9-swell-fadegrad)"/>
+        </mask>
+      </defs>
+      <!-- land (the island), above-left of the shoreline -->
+      <polygon id="g-a3-9-swell-land" points="0,0 1920,0 1920,119.08 0,946.15" fill="#15202b"/>
+      <!-- Gulf, below-right -->
+      <polygon id="g-a3-9-swell-gulf" points="0,946.15 1920,119.08 1920,1080 0,1080" fill="#04070c"/>
+      <!-- swell crests: 5 lines, 900 px, 110 px apart, bearing 45 deg; the outer group is static (rotate -45 puts local x along SW-NE,
+           local +y toward the SE), the inner group moves toward local -y = NW. Anchor (955,616) computed: front crest centre 74.6 px off the shore. -->
+      <g clip-path="url(#g-a3-9-swell-gulfclip)">
+        <g transform="translate(955 616) rotate(-45)" mask="url(#g-a3-9-swell-fademask)">
+          <g id="g-a3-9-swell-crests" stroke="#5a768f" stroke-width="4" stroke-linecap="round" fill="none">
+            <line x1="-450" y1="0" x2="450" y2="0"/>
+            <line x1="-450" y1="110" x2="450" y2="110"/>
+            <line x1="-450" y1="220" x2="450" y2="220"/>
+            <line x1="-450" y1="330" x2="450" y2="330"/>
+            <line x1="-450" y1="440" x2="450" y2="440"/>
+          </g>
+        </g>
+      </g>
+      <!-- tide band: 14 px amber on the land side (centre 9 px inland along the shore normal), creeps inland 0 to 60 px -->
+      <g id="g-a3-9-swell-tide">
+        <line x1="-100" y1="989.23" x2="2020" y2="76.00" transform="translate(-3.56 -8.27)" stroke="#d8a13a" stroke-width="14" stroke-opacity="0.6"/>
+      </g>
+      <!-- shoreline, drawn on at 0 (length 2090.6 px, dash 2092) -->
+      <line id="g-a3-9-swell-shore" x1="0" y1="946.15" x2="1920" y2="119.08" stroke="#93a3b2" stroke-width="3" stroke-dasharray="2092" stroke-dashoffset="2092"/>
+      <!-- wind arrow over the land: from the north, pointing south toward the sea, tip at (520,460) -->
+      <g id="g-a3-9-swell-wind">
+        <line id="g-a3-9-swell-shaft" x1="520" y1="240" x2="520" y2="436" stroke="#7fb2e5" stroke-width="8" stroke-linecap="round" stroke-dasharray="197" stroke-dashoffset="197"/>
+        <polygon id="g-a3-9-swell-head" points="502,432 538,432 520,460" fill="#7fb2e5"/>
+      </g>
+    </svg>
+    <div id="g-a3-9-swell-schem">Schematic</div>
+    <div id="g-a3-9-swell-windlab">WIND: NORTH</div>
+  </div>
+  <div id="g-a3-9-swell-src">Isaac Cline, Monthly Weather Review, Sept. 1900, p. 372</div>
+  <div id="g-a3-9-swell-chip"><span id="g-a3-9-swell-chiptx">SWELL FROM THE SOUTHEAST</span></div>
+  <div id="g-a3-9-swell-lt">
+    <div id="g-a3-9-swell-ltin">
+      <span id="g-a3-9-swell-name">JOSEPH CLINE</span>
+      <span id="g-a3-9-swell-role">Observer &middot; on duty until nearly midnight</span>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a3-9-swell-";
+  /* TIMING: audio/a3-s8.words.json, comp-local = segment time (host 0.00 to 19.20; last word "midnight" ends 18.54).
+     Then @0.00 ; swell @1.94 ; southeast @3.24 ; It kept coming @4.16 ; tide @6.76 ; wind @9.24 ; north @10.36 ;
+     You'd @12.14 ; wind @12.56 ; sand @15.10 ; Joseph @16.08 ; Cline @16.24 ; worked @16.56 ; midnight @18.14-18.54 */
+
+  /* transforms and hidden states at 0 */
+  tl.set(P+"crests", {y:0}, 0);
+  tl.set(P+"tide", {x:0, y:0, autoAlpha:0}, 0);
+  tl.set(P+"shore", {strokeDashoffset:2092}, 0);
+  tl.set(P+"shaft", {autoAlpha:0, strokeDashoffset:197}, 0);
+  /* head scales about its own apex in SVG user space: a % transformOrigin on the polygon put the apex ~18 px off the shaft */
+  tl.set(P+"head", {autoAlpha:0, scale:0, svgOrigin:"520 460", smoothOrigin:false}, 0);
+  tl.set(P+"wind", {scale:1, svgOrigin:"520 350", smoothOrigin:false}, 0);
+  tl.set(P+"windlab", {autoAlpha:0, x:-16, y:0}, 0);
+  tl.set(P+"src", {autoAlpha:0, y:0}, 0);
+  tl.set(P+"chip", {autoAlpha:0, x:0, y:24, scale:0.94, transformOrigin:"left center"}, 0);
+  tl.set(P+"lt", {autoAlpha:0, x:-60}, 0);
+  tl.set(P+"ltin", {y:0}, 0);
+  tl.set([P+"name", P+"role"], {autoAlpha:0, y:40}, 0);
+  tl.set(P+"plan", {opacity:1}, 0);
+
+  /* Then @0.00: plan view on from frame 0, shoreline draws, source line in and floats for the whole host */
+  tl.to(P+"shore", {strokeDashoffset:0, duration:0.9, ease:"power2.out"}, 0);
+  tl.to(P+"src", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0);
+  tl.to(P+"src", {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:6}, 0.4);
+
+  /* SWELL @1.94: crests travel NW at 40 px/s; one 110 px step = 2.75 s, seamless wrap (back crest fades in under the mask).
+     6 steps: 1.94 to 18.44 */
+  tl.to(P+"crests", {y:-110, duration:2.75, ease:"none", repeat:5}, 1.94);
+
+  /* SOUTHEAST @3.24: chip C1 in; It kept coming @4.16: out by 4.76 */
+  tl.fromTo(P+"chip", {autoAlpha:0, y:24, scale:0.94}, {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)"}, 3.24);
+  tl.to(P+"chip", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 4.16);
+
+  /* TIDE @6.76: band appears on the shore and creeps inland 60 px along the shore normal, 6.76 to 15.10, ease none */
+  tl.fromTo(P+"tide", {autoAlpha:0}, {autoAlpha:1, duration:0.3, ease:"power1.out"}, 6.76);
+  tl.to(P+"tide", {x:-23.74, y:-55.10, duration:8.34, ease:"none"}, 6.76);
+
+  /* WIND NORTH @9.24: arrow draws south, head lands; label in on "north" @10.36 */
+  tl.fromTo(P+"shaft", {autoAlpha:0, strokeDashoffset:197}, {autoAlpha:1, strokeDashoffset:0, duration:0.6, ease:"power2.out"}, 9.24);
+  tl.fromTo(P+"head", {autoAlpha:0, scale:0, svgOrigin:"520 460", smoothOrigin:false}, {autoAlpha:1, scale:1, svgOrigin:"520 460", smoothOrigin:false, duration:0.35, ease:"back.out(2)"}, 9.74);
+  tl.fromTo(P+"windlab", {autoAlpha:0, x:-16}, {autoAlpha:1, x:0, duration:0.45, ease:"power3.out"}, 10.36);
+  tl.to(P+"windlab", {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:1}, 10.81);
+
+  /* wind @12.56: arrow pulses once */
+  tl.to(P+"wind", {scale:1.12, svgOrigin:"520 350", smoothOrigin:false, duration:0.2, ease:"power2.out", yoyo:true, repeat:1}, 12.56);
+
+  /* JOSEPH @16.08: Part B. No footage sourced: fallback holds the plan dimmed to 0.4 (orchestrator: set 0 if footage is mounted beneath) */
+  tl.to(P+"plan", {opacity:0.4, duration:0.5, ease:"power1.inOut"}, 16.08);
+  tl.to(P+"windlab", {autoAlpha:0, duration:0.4, ease:"power2.in"}, 16.08);
+
+  /* Cline @16.24: lower-third in with the name; worked @16.56: role line */
+  tl.fromTo(P+"lt", {x:-60, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 16.24);
+  tl.fromTo(P+"name", {autoAlpha:0, y:40}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 16.24);
+  tl.fromTo(P+"role", {autoAlpha:0, y:40}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 16.56);
+  tl.to(P+"ltin", {y:-4, duration:0.9, ease:"sine.inOut", yoyo:true, repeat:1}, 16.84);
+
+  /* exit: last 0.6 s of the 19.20 s host */
+  tl.to(P+"lt", {x:-980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 18.60);
+  tl.to(P+"src", {autoAlpha:0, duration:0.6, ease:"power2.in"}, 18.60);
+
+  window.__timelines["g-a3-9-swell"] = tl;
+})();
+</script>
+</template>

@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a5-3-island-map · A5-S3 0.00 to 8.74 · ep-galveston-1900 · DEEP (Opus) · brief: briefs/a5/g-a5-3-island-map.md
+  Claim: the tolls differ because they count different areas, the city (6,000 to 8,000) or the whole island
+  (10,000 to 12,000); even the lowest is about one in six of the city's 38,000 (TSHA, NPS).
+
+  BASE OF A FAMILY: g-a5-7-ride copies the plate, camera, island, city cut and coast from this file.
+  PLATE: the g-intro-4 plate, unchanged: X = (lon + 100) * 90, Y = (41 - lat) * 103.95 (north up).
+  GEOMETRY (plate units, between GEO markers, do not hand-edit): Natural Earth 10m coastline, unsimplified
+    (cartopy cache ne_10m_coastline.shp, the source g-intro-4 used): Galveston Island = record 741 (33 points, closed);
+    mainland + Bolivar Peninsula = record 206 points 557..721, closed by an off-frame box to the north-west.
+    g-intro-4's 0.025 deg simplified basemap holds the island as 4 points, so the raw 10m ring is used here.
+  FIT (one-shot python, numbers only): island plate box X 439.51..474.80, Y 1209.96..1238.19 fitted to the box
+    x 200..1720, y 330..720 with aspect kept: s0 = 13.81485 px per plate unit (height binds), plate centre
+    (457.15713, 1224.07507) -> screen (960, 525). Island on screen at k = 1: x 716..1204, y 330..720.
+    px per km: 12.80 E-W, 12.95 N-S, 12.85 along the island axis (46.75 km SW tip to NE tip, 600.5 px).
+    Scale bar 10 km = 128 px (E-W), widened with the push (scaleX = k).
+  CITY CUT (SCHEMATIC, no research row for the 1900 limit): straight cut perpendicular to the SW-NE diameter at
+    22 % of its length from the NE tip; cut point plate (467.0389, 1218.3523). City polygon = NE side, rest = SW side.
+    City = 22 % of the length, 31 % of the area (the bay-side lobe at the east end falls in the city part).
+  CAMERA: k(t) = 1 + 0.05 * t / 8.74 (ease none), scaled about the city centroid, plate (468.6554, 1213.9712)
+    = screen (1118.85, 385.42), so the C1 leader end never moves. screen = A + (S(p) - A) * k.
+    Linear: a 5 % push, under the 1.5x logZoom threshold.
+  CIRCLE CORNER (x >= 1600, y >= 680): 0 land points of island or coast there at k = 1 and k = 1.05; no label or
+    shimmer there. The presenter circle may stay on for this window.
+  CUES (a5-s3.words.json, comp time = segment time; host A5-S3 0.00 to 8.74):
+    0.00 "The"     ground, coast, grey island, labels Gulf/Bay, scale bar, source line on from frame 0
+    1.70 "city"    city end fills amber 0.5 s, "City of Galveston" label
+    1.90           C1 CITY: 6,000 TO 8,000 + leader to the amber centroid
+    3.14 "whole"   rest of the island fills blue, sweep NE -> SW 0.8 s power2.out
+    3.38 "island." "Rest of the island" label, C2 WHOLE ISLAND: 10,000 TO 12,000 + leader to the island's mid-length
+    4.70 "lowest"  C2 dims to 0.6, C1 border brightens amber
+    5.68 "one"     six person glyphs pop in left to right, 0.08 s apart
+    6.90 "six"     the sixth glyph turns red
+    7.24 "who"     tag ABOUT 1 IN 6 · CITY OF 38,000
+    8.00 "city."   hold; 8.44 -> 8.74 root fades to 0 (cut to g-a5-4 at "The" 8.74)
+  LAYERS: #...-cam (plate units, the only camera-transformed element); #...-hud svg (leaders, shimmer, screen px);
+    map labels ride per-frame anchors set by camAt (wrapper left/top), HUD chips are fixed.
+-->
+<template>
+<style>
+  #g-a5-3-island-map-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .ga53-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .ga53-land { fill:#15202b; stroke:#2a3644; stroke-width:2px; stroke-linejoin:round; }
+  .ga53-isl { fill:#4a5560; stroke:#93a3b2; stroke-width:2px; stroke-linejoin:round; }
+  .ga53-city { fill:#d8a13a; stroke:#93a3b2; stroke-width:2px; stroke-linejoin:round; }
+  .ga53-rest { fill:#5a768f; fill-opacity:0.85; stroke:#93a3b2; stroke-width:2px; stroke-linejoin:round; }
+  .ga53-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); font-weight:700; font-size:19px; line-height:1.4; color:#c8d3e0; white-space:nowrap; }
+  .ga53-geo { position:absolute; font-weight:700; font-size:22px; line-height:26px; letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
+  .ga53-anchor { position:absolute; left:0; top:0; }
+  .ga53-lab { font-weight:700; font-size:26px; line-height:26px; color:#f2f5f8; white-space:nowrap; text-shadow:0 2px 6px rgba(0,0,0,0.85); }
+  .ga53-chip { position:absolute; top:120px; box-sizing:border-box; padding:18px 28px; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px;
+    line-height:52px; color:#f2f5f8; white-space:nowrap; }
+  .ga53-tally { position:absolute; left:1538px; top:260px; width:286px; height:72px; }
+  .ga53-man { position:absolute; top:0; width:36px; height:72px; fill:#93a3b2; overflow:visible; }
+  .ga53-tag { position:absolute; right:96px; top:346px; font-weight:700; font-size:22px; line-height:26px; letter-spacing:2px; color:#93a3b2; white-space:nowrap; }
+  .ga53-bar { position:absolute; left:96px; top:980px; width:128px; height:12px; box-sizing:border-box;
+    border-left:2px solid #93a3b2; border-right:2px solid #93a3b2; border-bottom:3px solid #93a3b2; }
+  .ga53-small { position:absolute; font-weight:700; font-size:19px; line-height:22px; color:#93a3b2; white-space:nowrap; }
+  /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
+  .ga53-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-3-island-map-root" data-composition-id="g-a5-3-island-map" data-width="1920" data-height="1080"
+  data-type-ok="map: the 44 px chips are the top tier by the A5 chip spec (a 52 px C2 would run into C1); map labels 26 px, notes 19 to 22 px">
+  <svg class="ga53-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <clipPath id="g-a5-3-island-map-sweep" clipPathUnits="userSpaceOnUse">
+        <path id="g-a5-3-island-map-sweep-q" d="M0,0Z"/>
+      </clipPath>
+    </defs>
+    <!-- camera layer: plate units -->
+    <g id="g-a5-3-island-map-cam">
+      <!--GEO:g-a5-3-->
+      <path class="ga53-land" vector-effect="non-scaling-stroke" d="M376.44,1275.21 L379.80,1274.85 L383.94,1275.09 L388.00,1274.81 L391.96,1273.81 L395.83,1271.95 L406.15,1265.11 L412.27,1260.67 L413.84,1260.04 L415.86,1259.82 L416.90,1259.13 L421.75,1254.85 L426.60,1249.30 L429.16,1247.87 L435.70,1242.65 L436.39,1241.32 L436.53,1239.90 L436.50,1238.14 L435.77,1233.79 L435.67,1231.56 L436.50,1229.23 L435.34,1226.54 L434.65,1225.68 L436.22,1226.52 L437.65,1226.72 L438.82,1227.28 L439.57,1229.23 L442.05,1227.79 L444.13,1226.18 L450.07,1219.23 L450.12,1218.94 L450.01,1218.09 L450.07,1217.81 L450.34,1217.75 L451.09,1217.89 L451.36,1217.81 L453.20,1216.44 L454.04,1215.56 L454.43,1214.26 L455.04,1214.26 L456.46,1215.43 L457.84,1214.60 L458.88,1212.62 L459.29,1210.36 L460.01,1208.32 L461.67,1207.81 L463.55,1208.32 L464.93,1209.30 L465.18,1208.86 L465.46,1208.70 L465.76,1208.65 L466.10,1208.53 L462.08,1206.68 L460.91,1206.46 L459.94,1205.73 L457.44,1201.42 L457.36,1201.65 L457.35,1201.97 L457.24,1202.02 L457.04,1202.02 L457.02,1202.29 L457.07,1202.48 L457.44,1202.85 L457.44,1203.62 L455.14,1203.53 L454.76,1202.14 L454.66,1200.42 L453.14,1199.29 L453.14,1198.58 L454.45,1198.15 L455.72,1197.50 L456.88,1197.97 L457.66,1196.67 L458.30,1195.81 L451.45,1193.99 L447.85,1191.04 L448.56,1188.26 L449.51,1187.25 L450.97,1185.61 L451.39,1184.39 L449.10,1182.33 L448.58,1180.40 L449.22,1178.82 L451.28,1177.24 L450.13,1176.02 L449.19,1175.31 L448.34,1175.10 L447.41,1174.90 L446.69,1174.18 L445.47,1173.90 L444.23,1173.30 L445.29,1169.46 L446.94,1169.60 L447.59,1170.88 L448.60,1172.52 L450.07,1172.97 L453.04,1174.17 L454.60,1175.24 L455.55,1175.71 L456.16,1178.09 L457.24,1179.28 L458.42,1179.03 L461.15,1178.19 L462.33,1176.39 L463.62,1172.81 L465.63,1169.46 L465.62,1167.55 L467.39,1166.11 L468.47,1167.18 L470.37,1167.05 L471.56,1166.69 L472.98,1166.09 L473.94,1166.09 L475.25,1166.68 L476.08,1168.34 L476.68,1169.30 L476.81,1170.96 L477.41,1172.75 L477.65,1175.02 L476.72,1179.79 L475.55,1183.84 L473.78,1187.19 L472.55,1189.08 L471.49,1190.86 L470.36,1191.08 L469.34,1190.55 L469.13,1191.19 L469.89,1192.32 L472.03,1192.90 L473.69,1192.46 L477.43,1191.38 L485.51,1189.95 L489.47,1187.67 L490.90,1188.31 L492.33,1189.65 L494.09,1190.33 L495.46,1189.31 L496.26,1188.55 L496.33,1190.00 L495.74,1191.88 L494.60,1192.72 L493.03,1192.93 L488.51,1192.68 L487.72,1192.91 L486.67,1193.60 L483.98,1196.46 L483.30,1196.92 L482.39,1197.36 L481.36,1197.69 L479.24,1198.04 L476.91,1199.29 L469.62,1206.51 L468.84,1207.90 L469.24,1208.91 L471.35,1209.30 L473.18,1208.45 L477.83,1202.85 L481.11,1200.43 L509.83,1187.30 L520.56,1183.21 L528.17,1178.91 L530.82,1177.69 L534.59,1176.52 L536.62,1176.30 L547.49,1176.52 L547.49,1100.00 L300.00,1100.00 L300.00,1275.21Z"/>
+      <path id="g-a5-3-island-map-isl" class="ga53-isl" vector-effect="non-scaling-stroke" d="M466.71,1210.71 L465.57,1210.61 L465.49,1210.00 L465.13,1209.96 L464.93,1210.00 L464.83,1210.31 L464.83,1210.60 L464.72,1210.77 L464.26,1210.71 L464.26,1211.42 L465.81,1211.71 L466.05,1212.98 L465.48,1214.38 L464.59,1215.04 L464.42,1215.12 L462.42,1215.68 L461.99,1216.22 L461.24,1217.81 L457.45,1220.86 L457.13,1221.36 L456.41,1222.78 L455.12,1224.23 L452.90,1225.79 L446.94,1230.46 L442.68,1233.25 L440.80,1235.84 L439.51,1238.15 L440.25,1238.19 L443.16,1235.55 L454.75,1227.24 L459.75,1224.03 L474.80,1212.77Z"/>
+      <path id="g-a5-3-island-map-rest" class="ga53-rest ga53-hide" vector-effect="non-scaling-stroke" clip-path="url(#g-a5-3-island-map-sweep)" d="M464.64,1215.01 L464.59,1215.04 L464.42,1215.12 L462.42,1215.68 L461.99,1216.22 L461.24,1217.81 L457.45,1220.86 L457.13,1221.36 L456.41,1222.78 L455.12,1224.23 L452.90,1225.79 L446.94,1230.46 L442.68,1233.25 L440.80,1235.84 L439.51,1238.15 L440.25,1238.19 L443.16,1235.55 L454.75,1227.24 L459.75,1224.03 L467.14,1218.50Z"/>
+      <path id="g-a5-3-island-map-city" class="ga53-city ga53-hide" vector-effect="non-scaling-stroke" d="M466.71,1210.71 L465.57,1210.61 L465.49,1210.00 L465.13,1209.96 L464.93,1210.00 L464.83,1210.31 L464.83,1210.60 L464.72,1210.77 L464.26,1210.71 L464.26,1211.42 L465.81,1211.71 L466.05,1212.98 L465.48,1214.38 L464.64,1215.01 L467.14,1218.50 L474.80,1212.77Z"/>
+      <!--/GEO:g-a5-3-->
+    </g>
+  </svg>
+
+  <!-- HUD: screen px. Shimmer on the Gulf, chip leaders (endpoints set by camAt) -->
+  <svg class="ga53-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g-a5-3-island-map-shg" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#93a3b2" stop-opacity="0"/>
+        <stop offset="0.5" stop-color="#93a3b2" stop-opacity="0.35"/>
+        <stop offset="1" stop-color="#93a3b2" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <rect id="g-a5-3-island-map-shimmer" x="520" y="949" width="380" height="2" fill="url(#g-a5-3-island-map-shg)"/>
+    <line id="g-a5-3-island-map-l1" class="ga53-hide" x1="1500" y1="210" x2="1118.85" y2="385.42" stroke="#d8a13a" stroke-width="1"/>
+    <line id="g-a5-3-island-map-l2" class="ga53-hide" x1="880" y1="210" x2="960" y2="544.12" stroke="#7fb2e5" stroke-width="1"/>
+  </svg>
+
+  <!-- fixed map labels -->
+  <div class="ga53-geo" id="g-a5-3-island-map-gulf" style="left:560px; top:848px; width:400px; text-align:center;">Gulf of Mexico</div>
+  <div class="ga53-geo" id="g-a5-3-island-map-bay" style="left:905px; top:66px;">Galveston Bay</div>
+
+  <!-- map labels on per-frame anchors -->
+  <div class="ga53-anchor" id="g-a5-3-island-map-citylab-at">
+    <div class="ga53-lab ga53-hide" id="g-a5-3-island-map-citylab">City of Galveston</div>
+  </div>
+  <div class="ga53-anchor" id="g-a5-3-island-map-restlab-at" style="width:300px; text-align:center;">
+    <div class="ga53-lab ga53-hide" id="g-a5-3-island-map-restlab">Rest of the island</div>
+  </div>
+
+  <!-- scale bar and notes, bottom-left -->
+  <div class="ga53-bar" id="g-a5-3-island-map-bar"></div>
+  <div class="ga53-small" id="g-a5-3-island-map-km" style="left:242px; top:973px;">10 km</div>
+  <div class="ga53-small" id="g-a5-3-island-map-note" style="left:96px; top:998px;">City limit: schematic</div>
+
+  <div class="ga53-src" id="g-a5-3-island-map-src">Texas State Historical Association · National Park Service</div>
+
+  <!-- chips -->
+  <div class="ga53-chip ga53-hide" id="g-a5-3-island-map-c2" style="left:96px;">WHOLE ISLAND: 10,000 TO 12,000</div>
+  <div class="ga53-chip ga53-hide" id="g-a5-3-island-map-c1" style="right:96px;">CITY: 6,000 TO 8,000</div>
+
+  <!-- tally: six people, one red -->
+  <div class="ga53-tally" id="g-a5-3-island-map-tally">
+    <svg class="ga53-man ga53-hide" id="g-a5-3-island-map-m1" style="left:0px;" viewBox="0 0 36 72"><circle cx="18" cy="10" r="9"/><rect x="7" y="22" width="22" height="50" rx="9"/></svg>
+    <svg class="ga53-man ga53-hide" id="g-a5-3-island-map-m2" style="left:50px;" viewBox="0 0 36 72"><circle cx="18" cy="10" r="9"/><rect x="7" y="22" width="22" height="50" rx="9"/></svg>
+    <svg class="ga53-man ga53-hide" id="g-a5-3-island-map-m3" style="left:100px;" viewBox="0 0 36 72"><circle cx="18" cy="10" r="9"/><rect x="7" y="22" width="22" height="50" rx="9"/></svg>
+    <svg class="ga53-man ga53-hide" id="g-a5-3-island-map-m4" style="left:150px;" viewBox="0 0 36 72"><circle cx="18" cy="10" r="9"/><rect x="7" y="22" width="22" height="50" rx="9"/></svg>
+    <svg class="ga53-man ga53-hide" id="g-a5-3-island-map-m5" style="left:200px;" viewBox="0 0 36 72"><circle cx="18" cy="10" r="9"/><rect x="7" y="22" width="22" height="50" rx="9"/></svg>
+    <svg class="ga53-man ga53-hide" id="g-a5-3-island-map-m6" style="left:250px;" viewBox="0 0 36 72"><circle cx="18" cy="10" r="9"/><rect x="7" y="22" width="22" height="50" rx="9"/></svg>
+  </div>
+  <div class="ga53-tag ga53-hide" id="g-a5-3-island-map-tag">ABOUT 1 IN 6 · CITY OF 38,000</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a5-3-island-map-";
+  const $ = function (n) { return document.getElementById("g-a5-3-island-map-" + n); };
+  const D = 8.74;
+
+  /* plate -> screen fit (header FIT) and the push about the city centroid (header CAMERA) */
+  const S0 = 13.81485, CX = 457.15713, CY = 1224.07507;
+  const OX = 960 - CX * S0, OY = 525 - CY * S0;
+  const CITY_C = [468.6554, 1213.9712];
+  const AX = OX + CITY_C[0] * S0, AY = OY + CITY_C[1] * S0;          /* (1118.85, 385.42) */
+  const NE_TIP = [474.8032, 1212.7685], MID = [457.1571, 1225.4589], REST_AT = [452.814, 1236.743];
+  const camEl = $("cam"), l1 = $("l1"), l2 = $("l2"), cityAt = $("citylab-at"), restAt = $("restlab-at");
+  function camAt(t) {
+    const k = 1 + 0.05 * Math.min(1, Math.max(0, t / D));
+    const s = S0 * k, tx = AX * (1 - k) + OX * k, ty = AY * (1 - k) + OY * k;
+    const pr = function (p) { return [tx + p[0] * s, ty + p[1] * s]; };
+    camEl.setAttribute("transform", "translate(" + tx.toFixed(2) + "," + ty.toFixed(2) + ") scale(" + s.toFixed(5) + ")");
+    const c = pr(CITY_C), m = pr(MID), ne = pr(NE_TIP), ra = pr(REST_AT);
+    l1.setAttribute("x2", c[0].toFixed(2)); l1.setAttribute("y2", c[1].toFixed(2));
+    l2.setAttribute("x2", m[0].toFixed(2)); l2.setAttribute("y2", m[1].toFixed(2));
+    cityAt.style.left = (ne[0] + 18).toFixed(1) + "px"; cityAt.style.top = (ne[1] + 23).toFixed(1) + "px";
+    restAt.style.left = (ra[0] - 150).toFixed(1) + "px"; restAt.style.top = (ra[1] - 13).toFixed(1) + "px";
+  }
+  camAt(0);
+
+  /* blue sweep clip: a band along the island axis from the city cut to past the SW tip (plate units) */
+  const CUT = [467.0389, 1218.3523], SW = [439.5111, 1238.1492], W = 12;
+  const len = Math.hypot(SW[0] - CUT[0], SW[1] - CUT[1]);
+  const ux = (SW[0] - CUT[0]) / len, uy = (SW[1] - CUT[1]) / len, nx = -uy, ny = ux;
+  function quad(f) {
+    const b = [CUT[0] - ux * 0.5, CUT[1] - uy * 0.5];
+    const e = [CUT[0] + ux * (len + 1.5) * f, CUT[1] + uy * (len + 1.5) * f];
+    const q = [[b[0] + nx * W, b[1] + ny * W], [e[0] + nx * W, e[1] + ny * W], [e[0] - nx * W, e[1] - ny * W], [b[0] - nx * W, b[1] - ny * W]];
+    return "M" + q.map(function (p) { return p[0].toFixed(3) + "," + p[1].toFixed(3); }).join(" L") + "Z";
+  }
+
+  const DL1 = Math.ceil(Math.hypot(1500 - 1118.85, 210 - 385.42)) + 1;     /* dash lengths: ceil(len)+1, end fixed */
+  const DL2 = Math.ceil(Math.hypot(880 - 952.0, 210 - 552.1)) + 1;         /* longest reach, at k = 1.05 */
+
+  const tl = gsap.timeline({ paused: true });
+  /* camera push, whole window */
+  tl.to({ t: 0 }, { t: 1, duration: D, ease: "none", onUpdate: function () { camAt(this.time()); } }, 0);
+  tl.set(P + "bar", { scaleX: 1, transformOrigin: "0% 50%" }, 0);
+  tl.to(P + "bar", { scaleX: 1.05, duration: D, ease: "none" }, 0);
+  /* Gulf shimmer, 110 px over 8.74 s = 12.6 px/s */
+  tl.set(P + "shimmer", { x: 0 }, 0);
+  tl.to(P + "shimmer", { x: 110, duration: D, ease: "none" }, 0);
+  tl.set(P + "sweep-q", { attr: { d: quad(0) } }, 0);
+  tl.set(P + "l1", { strokeDasharray: DL1 + " " + DL1, strokeDashoffset: DL1 }, 0);
+  tl.set(P + "l2", { strokeDasharray: DL2 + " " + DL2, strokeDashoffset: DL2 }, 0);
+
+  /* CITY @1.70: the city end fills amber, label in */
+  tl.fromTo(P + "city", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power2.out" }, 1.70);
+  tl.fromTo(P + "citylab", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1.70);
+  /* C1 @1.90 + leader to the amber centroid */
+  tl.fromTo(P + "c1", { autoAlpha: 0, y: 24, scale: 0.94 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 1.90);
+  tl.set(P + "l1", { autoAlpha: 1 }, 2.05);
+  tl.to(P + "l1", { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 2.05);
+  tl.to(P + "c1", { y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.35);
+
+  /* WHOLE @3.14: the rest of the island fills blue, sweep NE -> SW */
+  tl.set(P + "rest", { autoAlpha: 1 }, 3.14);
+  tl.to(P + "sweep-q", { attr: { d: quad(1) }, duration: 0.8, ease: "power2.out" }, 3.14);
+  /* ISLAND @3.38: label and C2 + leader to the island's mid-length (lands on the blue part) */
+  tl.fromTo(P + "restlab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.38);
+  tl.fromTo(P + "c2", { autoAlpha: 0, y: 24, scale: 0.94 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 3.38);
+  tl.set(P + "l2", { autoAlpha: 1 }, 3.53);
+  tl.to(P + "l2", { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, 3.53);
+  tl.to(P + "c2", { y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 3.83);
+
+  /* LOWEST @4.70: C2 dims, C1 border brightens */
+  tl.to([P + "c2", P + "l2"], { opacity: 0.6, duration: 0.4, ease: "power2.out" }, 4.70);
+  tl.to(P + "c1", { borderColor: "rgba(216,161,58,0.95)", duration: 0.4, ease: "power2.out" }, 4.70);
+
+  /* 1 IN 6 @5.68: six people pop in, 0.08 s apart */
+  for (let i = 1; i <= 6; i++) {
+    tl.fromTo(P + "m" + i, { autoAlpha: 0, y: 14, scale: 0.4, transformOrigin: "50% 100%" },
+      { autoAlpha: 1, y: 0, scale: 1, transformOrigin: "50% 100%", duration: 0.35, ease: "back.out(2)" }, 5.68 + (i - 1) * 0.08);
+  }
+  /* SIX @6.90: the last one turns red */
+  tl.to(P + "m6", { fill: "#d0121f", duration: 0.3, ease: "power2.out" }, 6.90);
+  tl.to(P + "m6", { scale: 1.15, transformOrigin: "50% 100%", duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, 6.90);
+  /* WHO @7.24: tag line */
+  tl.fromTo(P + "tag", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.24);
+
+  /* CITY. @8.00 holds; cut to g-a5-4 at 8.74: root fades over the last 0.3 s */
+  tl.to(P + "root", { autoAlpha: 0, duration: 0.3, ease: "power1.in" }, 8.44);
+
+  window.__timelines["g-a5-3-island-map"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

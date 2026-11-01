@@ -1,0 +1,138 @@
+<template>
+<style>
+  @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+  #g-a5-11-panel-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+
+  /* RHS stat panel (mg-quickref): x 1100 to 1920. Children use panel-local coordinates (page frame x = 1100 + left). */
+  #g-a5-11-panel-pnl { position:absolute; inset:auto; right:0; top:0; bottom:0; width:820px; box-sizing:border-box; opacity:0; visibility:hidden;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); }
+
+  #g-a5-11-panel-title { position:absolute; inset:auto; left:90px; top:140px; white-space:nowrap; opacity:0; visibility:hidden;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1.1; color:#f2f5f8; letter-spacing:1px; }
+
+  .g-a5-11-panel-tag { position:absolute; inset:auto; top:214px; white-space:nowrap; opacity:0; visibility:hidden;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:26px; line-height:1.2; color:#f2f5f8; letter-spacing:2px; }
+  #g-a5-11-panel-tagL { left:90px; }
+  #g-a5-11-panel-tagR { left:394px; }
+
+  /* pages 260 x 340, tops at 260 (outer: reveal, inner: float) */
+  .g-a5-11-panel-pg { position:absolute; inset:auto; top:260px; width:260px; height:340px; opacity:0; visibility:hidden; }
+  #g-a5-11-panel-L { left:90px; }
+  #g-a5-11-panel-R { left:394px; }
+  .g-a5-11-panel-in { position:absolute; inset:0; box-sizing:border-box; box-shadow:0 12px 36px rgba(0,0,0,.6); overflow:hidden; }
+  #g-a5-11-panel-Lin { background:#e8e1d0; }
+  #g-a5-11-panel-img { position:absolute; left:0; top:0; width:260px; height:340px; object-fit:contain; opacity:1; }
+  /* RETUNE: bars sit on the left column of the p372 crop at the "Special report" lines; the telephone and Strand street lines are on a later page that is not on disk yet (open item 6) */
+  .g-a5-11-panel-bar { position:absolute; inset:auto; left:22px; width:102px; height:12px; border-radius:3px; background:rgba(216,161,58,.32); opacity:0; visibility:hidden; }
+  #g-a5-11-panel-bar1 { top:266px; }
+  #g-a5-11-panel-bar2 { top:296px; }
+
+  #g-a5-11-panel-Rin { background:rgba(232,222,200,.90); padding:22px 20px; opacity:.55; color:#2a2622; }
+  #g-a5-11-panel-head { font-family:Georgia, 'Times New Roman', serif; font-weight:700; font-size:17px; line-height:1.25; color:#2a2622; }
+  #g-a5-11-panel-rule { width:48px; height:2px; background:#d8a13a; margin:12px 0 14px; }
+  #g-a5-11-panel-quote { font-family:Georgia, 'Times New Roman', serif; font-size:15px; line-height:1.4; color:#2a2622; }
+  #g-a5-11-panel-foot { position:absolute; left:20px; bottom:16px; font-family:Arial, sans-serif; font-weight:700; font-size:11px; color:#6b6257; letter-spacing:1px; }
+
+  .g-a5-11-panel-lab { position:absolute; inset:auto; top:620px; width:260px; opacity:0; visibility:hidden; white-space:normal;
+    font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:1.25; color:#93a3b2; letter-spacing:1px; }
+  #g-a5-11-panel-labL { left:90px; width:300px; white-space:nowrap; font-size:19px; letter-spacing:0.5px; color:#c8d3e0; }
+  #g-a5-11-panel-labR { left:394px; color:#c8d3e0; }
+
+  /* popfig: after the panel is gone, centre x 1460, big line centre y 470 */
+  #g-a5-11-panel-scrim { position:absolute; inset:auto; left:1050px; top:330px; width:900px; height:300px; opacity:0; visibility:hidden; }
+  #g-a5-11-panel-scrimin { position:absolute; inset:0; background:radial-gradient(ellipse closest-side at 50% 50%, rgba(4,7,12,0.55), rgba(4,7,12,0)); }
+  #g-a5-11-panel-pop { position:absolute; inset:auto; left:1050px; width:900px; top:400px; text-align:center; white-space:nowrap; opacity:0; visibility:hidden; transform-origin:center; }
+  #g-a5-11-panel-popin { display:block; }
+  #g-a5-11-panel-big { display:block; font-family:'AbrilFig', Georgia, serif; font-size:110px; line-height:1.1; color:#d0121f; letter-spacing:0.04em;
+    text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+  #g-a5-11-panel-sub { display:block; margin-top:10px; font-family:Arial, sans-serif; font-weight:700; font-size:32px; color:#e8e3d8;
+    letter-spacing:0.2em; text-shadow:0 0 14px rgba(0,0,0,0.95), 0 3px 10px #000; }
+</style>
+<div id="g-a5-11-panel-root" data-composition-id="g-a5-11-panel" data-width="1920" data-height="1080">
+  <div id="g-a5-11-panel-pnl">
+    <div id="g-a5-11-panel-title">THE TWO ACCOUNTS</div>
+    <div class="g-a5-11-panel-tag" id="g-a5-11-panel-tagL">SEPT 1900</div>
+    <div class="g-a5-11-panel-tag" id="g-a5-11-panel-tagR">LATER</div>
+
+    <div class="g-a5-11-panel-pg" id="g-a5-11-panel-L">
+      <div class="g-a5-11-panel-in" id="g-a5-11-panel-Lin">
+        <img id="g-a5-11-panel-img" src="media/candidates/a3/A3-S10_c2_mwr-sept1900-p372_cline-report.png" alt="">
+        <div class="g-a5-11-panel-bar" id="g-a5-11-panel-bar1"></div>
+        <div class="g-a5-11-panel-bar" id="g-a5-11-panel-bar2"></div>
+      </div>
+    </div>
+
+    <div class="g-a5-11-panel-pg" id="g-a5-11-panel-R">
+      <div class="g-a5-11-panel-in" id="g-a5-11-panel-Rin">
+        <div id="g-a5-11-panel-head">Galveston Hurricane of 1900</div>
+        <div id="g-a5-11-panel-rule"></div>
+        <div id="g-a5-11-panel-quote">&hellip; drove a horse-drawn cart around low areas warning people to leave.</div>
+        <div id="g-a5-11-panel-foot">Handbook of Texas Online</div>
+      </div>
+    </div>
+
+    <div class="g-a5-11-panel-lab" id="g-a5-11-panel-labL">TELEPHONE &middot; MERCHANTS</div>
+    <div class="g-a5-11-panel-lab" id="g-a5-11-panel-labR">RIDE &middot; NOT KNOWN TO BE BACKED</div>
+  </div>
+
+  <div id="g-a5-11-panel-scrim"><div id="g-a5-11-panel-scrimin"></div></div>
+  <div id="g-a5-11-panel-pop">
+    <div id="g-a5-11-panel-popin">
+      <span id="g-a5-11-panel-big">1900 &rarr; LATER</span>
+      <span id="g-a5-11-panel-sub">THE REPORT &middot; THE RIDE</span>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a5-11-panel-";
+  /* ins-paul-5-v2.mp4 whisper words minus data-media-start 0.88 (clip 6.98 s, host starts at clip start)
+     Put @0.26 | side @0.96 | side, @1.42 | ride @2.34 | no @4.72 | known @5.48 | have @5.92 | up. @6.46 | speech end 6.64
+     host = clip 6.98 s; popfig squeezed into the last 0.9 s (the line ends at 6.64) */
+  tl.set([P+"pnl", P+"title", P+"tagL", P+"tagR", P+"L", P+"R", P+"labL", P+"labR", P+"bar1", P+"bar2", P+"scrim", P+"pop"], {autoAlpha:0}, 0);
+  tl.set(P+"bar1", {scaleX:0, transformOrigin:"left center"}, 0);
+  tl.set(P+"bar2", {scaleX:0, transformOrigin:"left center"}, 0);
+
+  /* PUT @0.26: panel slides in (0.1 to 0.8, settled by "two side") */
+  tl.fromTo(P+"pnl", {x:660, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.7, ease:"power3.out"}, 0.1);
+  tl.fromTo(P+"title", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.3);
+
+  /* SIDE BY SIDE @0.96: left page, then right page 0.2 s later, tags with them */
+  tl.fromTo(P+"L", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.96);
+  tl.fromTo(P+"tagL", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.96);
+  tl.fromTo(P+"R", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 1.16);
+  tl.fromTo(P+"tagR", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 1.16);
+
+  /* SIDE, @1.42: both report bars draw 0.3 s apart, page dims around them, label in */
+  tl.to(P+"bar1", {autoAlpha:1, duration:0.1, ease:"none"}, 1.42);
+  tl.to(P+"bar1", {scaleX:1, duration:0.5, ease:"power2.out"}, 1.42);
+  tl.to(P+"bar2", {autoAlpha:1, duration:0.1, ease:"none"}, 1.72);
+  tl.to(P+"bar2", {scaleX:1, duration:0.5, ease:"power2.out"}, 1.72);
+  tl.to(P+"img", {opacity:0.55, duration:0.5, ease:"power2.out"}, 1.42);
+  tl.fromTo(P+"labL", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 1.42);
+
+  /* RIDE @2.34: right page brightens; its label waits for NO @4.72 */
+  tl.to(P+"Rin", {opacity:1, duration:0.5, ease:"power2.out"}, 2.34);
+  tl.fromTo(P+"labR", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 4.72);
+
+  /* motion all window: pages float y +-3 (to the panel exit), popfig drifts after */
+  tl.fromTo(P+"Lin", {y:-3}, {y:3, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:3}, 0);
+  tl.fromTo(P+"Rin", {y:3}, {y:-3, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:3}, 0);
+
+  /* KNOWN @5.48: panel out 5.52 to 6.12 (the "have backed it up" tail is the popfig's) */
+  tl.to(P+"pnl", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 5.52);
+
+  /* popfig in 6.12 to 6.52, as "backed it up." (6.04 to 6.64) lands */
+  tl.fromTo(P+"scrim", {autoAlpha:0}, {autoAlpha:1, duration:0.4, ease:"power2.out"}, 6.12);
+  tl.fromTo(P+"pop", {scale:1.15, autoAlpha:0}, {scale:0.85, autoAlpha:1, duration:0.4, ease:"power4.out"}, 6.12);
+  tl.to(P+"popin", {y:-8, duration:0.86, ease:"sine.inOut"}, 6.12);
+
+  /* exit ends on the host end (6.98) */
+  tl.to(P+"pop", {scale:0.78, autoAlpha:0, duration:0.4, ease:"power2.in"}, 6.58);
+  tl.to(P+"scrim", {autoAlpha:0, duration:0.4, ease:"power2.in"}, 6.58);
+  window.__timelines["g-a5-11-panel"] = tl;
+})();
+</script>
+</template>

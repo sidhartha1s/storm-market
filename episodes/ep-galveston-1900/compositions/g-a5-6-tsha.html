@@ -1,0 +1,68 @@
+<template>
+<style>
+  #g-a5-6-tsha-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+
+  /* source line: top-left glass, small radius */
+  #g-a5-6-tsha-src { position:absolute; inset:auto; left:96px; top:54px; max-width:900px; box-sizing:border-box;
+    padding:6px 14px; border-radius:12px; opacity:0; visibility:hidden; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; color:#c8d3e0; letter-spacing:1px; }
+
+  /* beige cite card: right edge 1560 and bottom 820 keep the presenter corner (x>=1600, y>=680) clear */
+  #g-a5-6-tsha-card { position:absolute; inset:auto; left:360px; top:200px; width:1200px; height:620px; box-sizing:border-box;
+    padding:64px; border-radius:12px; opacity:0; visibility:hidden;
+    background:rgba(232,222,200,0.90); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  #g-a5-6-tsha-eyebrow { display:block; font-family:Arial, sans-serif; font-weight:700; font-size:22px; color:#6b6257; letter-spacing:4px; }
+  #g-a5-6-tsha-title { display:block; margin-top:14px; font-family:Georgia, 'Times New Roman', serif; font-size:56px; line-height:1.15; color:#2a2622; }
+  #g-a5-6-tsha-body { margin-top:28px; }
+  .g-a5-6-tsha-line { display:block; white-space:nowrap; font-family:Georgia, 'Times New Roman', serif; font-size:40px; line-height:1.4; color:#2a2622; }
+  .g-a5-6-tsha-t { position:relative; display:inline-block; isolation:isolate; }
+  .g-a5-6-tsha-bar { position:absolute; inset:auto; left:-10px; right:-10px; top:3px; bottom:3px; z-index:-1;
+    background:rgba(216,161,58,0.32); opacity:0; visibility:hidden; }
+  #g-a5-6-tsha-foot { display:block; margin-top:26px; font-family:Georgia, 'Times New Roman', serif; font-size:24px; color:#6b6257; }
+</style>
+<div id="g-a5-6-tsha-root" data-composition-id="g-a5-6-tsha" data-width="1920" data-height="1080">
+  <div id="g-a5-6-tsha-src">Texas State Historical Association, Handbook of Texas</div>
+  <div id="g-a5-6-tsha-card">
+    <span id="g-a5-6-tsha-eyebrow">HANDBOOK OF TEXAS</span>
+    <span id="g-a5-6-tsha-title">Galveston Hurricane of 1900</span>
+    <div id="g-a5-6-tsha-body">
+      <span class="g-a5-6-tsha-line" id="g-a5-6-tsha-l1"><span class="g-a5-6-tsha-t">The Weather Bureau official in charge locally,</span></span>
+      <span class="g-a5-6-tsha-line" id="g-a5-6-tsha-l2"><span class="g-a5-6-tsha-t">Isaac M. Cline, &hellip;</span></span>
+      <span class="g-a5-6-tsha-line" id="g-a5-6-tsha-l3"><span class="g-a5-6-tsha-t">drove a horse-drawn cart around low areas<span class="g-a5-6-tsha-bar" id="g-a5-6-tsha-b1"></span></span></span>
+      <span class="g-a5-6-tsha-line" id="g-a5-6-tsha-l4"><span class="g-a5-6-tsha-t">warning people to leave.<span class="g-a5-6-tsha-bar" id="g-a5-6-tsha-b2"></span></span></span>
+    </div>
+    <span id="g-a5-6-tsha-foot">Texas State Historical Association</span>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a5-6-tsha-";
+  /* a5-s5.words.json, host 2.70 to 6.04 (comp-local = word time - 2.70): "Texas'" @2.70, Handbook @3.54, "drove" @4.72, cut at "through" @6.04 */
+  tl.set([P+"src", P+"card"], {autoAlpha:0}, 0);
+  tl.set([P+"b1", P+"b2"], {scaleX:0, transformOrigin:"left center"}, 0);
+
+  /* Texas' @2.70 -> 0.00: card rises in; source line at 0.20 */
+  tl.fromTo(P+"card", {autoAlpha:0, y:40}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 0);
+  tl.fromTo(P+"src", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0.2);
+
+  /* whole window: card float y +-4 (down 1.4 s, back 1.4 s) and slow push 1.00 to 1.03 */
+  tl.to(P+"card", {y:-4, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:1}, 0.5);
+  tl.to(P+"card", {scale:1.03, duration:3.34, ease:"none"}, 0);
+  tl.to(P+"src", {y:-3, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:1}, 0.7);
+
+  /* drove @4.72 -> 2.02: bar draws under the cart clause (two lines) to 2.70; the rest dims to 0.55 */
+  tl.fromTo(P+"b1", {autoAlpha:0, scaleX:0}, {autoAlpha:1, scaleX:1, duration:0.4, ease:"power2.out"}, 2.02);
+  tl.fromTo(P+"b2", {autoAlpha:0, scaleX:0}, {autoAlpha:1, scaleX:1, duration:0.3, ease:"power2.out"}, 2.40);
+  tl.to([P+"eyebrow", P+"title", P+"l1", P+"l2", P+"foot"], {opacity:0.55, duration:0.5, ease:"power2.out"}, 2.02);
+
+  /* cut at 6.04 -> 3.34: root fades over the last 0.3 s */
+  tl.to("#g-a5-6-tsha-root", {autoAlpha:0, duration:0.3, ease:"power2.in"}, 3.04);
+  window.__timelines["g-a5-6-tsha"] = tl;
+})();
+</script>
+</template>

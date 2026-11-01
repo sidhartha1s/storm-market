@@ -1,0 +1,230 @@
+<template>
+<style>
+  /* base: g-intro-6-island (datum, scale, profile, water, bracket copied; brief §3 lists the changes) */
+  #g-a5-16-island-return-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a5-16-island-return-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+
+  /* start-hidden SVG parts (also hidden by tl.set at 0) */
+  #g-a5-16-island-return-bracket, #g-a5-16-island-return-tick0, #g-a5-16-island-return-gold,
+  #g-a5-16-island-return-sand, #g-a5-16-island-return-gulfhi { visibility:hidden; opacity:0; }
+
+  /* source line: top-left glass, small radius */
+  #g-a5-16-island-return-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box;
+    padding:6px 14px; border-radius:12px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; color:#c8d3e0; letter-spacing:1px; }
+
+  /* diagram labels: HUD layer, never ride the camera move; never tweened in transform, so the CSS centring is safe */
+  .ga516-lab { position:absolute; white-space:nowrap; opacity:0; visibility:hidden; transform:translateX(-50%);
+    font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#93a3b2; letter-spacing:3px; }
+  #g-a5-16-island-return-lgulf { left:228px; top:827px; }
+  /* above y 680: the circle corner (x>=1600, y>=680) holds only bay water */
+  #g-a5-16-island-return-lbay { left:1692px; top:600px; }
+  #g-a5-16-island-return-lsea { right:990px; top:748px; transform:none; }
+  #g-a5-16-island-return-note { position:absolute; left:96px; top:1000px; white-space:nowrap; opacity:0; visibility:hidden;
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; color:#93a3b2; letter-spacing:2px; }
+
+  /* chips: glass card, radius 28 */
+  .ga516-chip { position:absolute; box-sizing:border-box; padding:24px 52px; border-radius:28px;
+    text-align:center; white-space:nowrap; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
+  .ga516-main { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px; line-height:48px; color:#f2f5f8; }
+  .ga516-tag { display:block; margin-bottom:6px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#93a3b2; letter-spacing:4px; }
+  /* C1 = intro C2's spot (right of the bracket top); C2 centred x 960, top 150 */
+  #g-a5-16-island-return-c1 { left:1000px; top:290px; padding:18px 44px 20px; text-align:left; }
+  #g-a5-16-island-return-c2 { left:960px; top:150px; }
+</style>
+<div id="g-a5-16-island-return-root" data-composition-id="g-a5-16-island-return" data-width="1920" data-height="1080"
+     data-type-ok="schematic diagram by brief, same as g-intro-6-island: chips 44 px, diagram labels 19-22 px, no 52 px element in this beat">
+  <svg id="g-a5-16-island-return-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g-a5-16-island-return-wgrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0b1016"/><stop offset="1" stop-color="#04070c"/>
+      </linearGradient>
+      <!-- island fill: solid to sea level (y 780), fades out by y 900 -->
+      <linearGradient id="g-a5-16-island-return-igrad" gradientUnits="userSpaceOnUse" x1="0" y1="432" x2="0" y2="900">
+        <stop offset="0" stop-color="#15202b" stop-opacity="1"/>
+        <stop offset="0.7436" stop-color="#15202b" stop-opacity="1"/>
+        <stop offset="1" stop-color="#15202b" stop-opacity="0"/>
+      </linearGradient>
+      <!-- sand tint layer over the fill, same fade; its opacity is tweened to 0.25 on "sand" -->
+      <linearGradient id="g-a5-16-island-return-sgrad" gradientUnits="userSpaceOnUse" x1="0" y1="432" x2="0" y2="900">
+        <stop offset="0" stop-color="#c8b98a" stop-opacity="1"/>
+        <stop offset="0.7436" stop-color="#c8b98a" stop-opacity="1"/>
+        <stop offset="1" stop-color="#c8b98a" stop-opacity="0"/>
+      </linearGradient>
+      <clipPath id="g-a5-16-island-return-cgulf"><rect x="96" y="740" width="264" height="260"/></clipPath>
+      <clipPath id="g-a5-16-island-return-cbay"><rect x="1560" y="740" width="264" height="260"/></clipPath>
+      <!-- bracket draws upward: rect bottom pinned at 782, top tweens 782 -> 428 -->
+      <clipPath id="g-a5-16-island-return-cbr"><rect id="g-a5-16-island-return-cbrr" x="930" y="782" width="60" height="0"/></clipPath>
+
+      <!-- wreckage glyphs: 4 fixed plank piles, planks 22-30 x 4 px, rotated -35 to +35 deg;
+           local y 0 = ground line, the lowest plank's bottom sits on it -->
+      <g id="g-a5-16-island-return-wa" fill="#4a5560">
+        <rect x="-13" y="-2" width="26" height="4" transform="translate(-4,-3.8) rotate(-8)"/>
+        <rect x="-15" y="-2" width="30" height="4" transform="translate(6,-8.8) rotate(28)"/>
+        <rect x="-11" y="-2" width="22" height="4" transform="translate(-8,-9) rotate(-32)"/>
+      </g>
+      <g id="g-a5-16-island-return-wb" fill="#4a5560">
+        <rect x="-14" y="-2" width="28" height="4" transform="translate(2,-3) rotate(4)"/>
+        <rect x="-12" y="-2" width="24" height="4" transform="translate(-7,-9.5) rotate(-35)"/>
+        <rect x="-13" y="-2" width="26" height="4" transform="translate(7,-10) rotate(20)"/>
+        <rect x="-11" y="-2" width="22" height="4" transform="translate(1,-14) rotate(-12)"/>
+      </g>
+      <g id="g-a5-16-island-return-wc" fill="#4a5560">
+        <rect x="-15" y="-2" width="30" height="4" transform="translate(0,-2.8) rotate(-3)"/>
+        <rect x="-11" y="-2" width="22" height="4" transform="translate(-6,-10) rotate(33)"/>
+        <rect x="-13" y="-2" width="26" height="4" transform="translate(8,-9) rotate(-22)"/>
+      </g>
+      <g id="g-a5-16-island-return-wd" fill="#4a5560">
+        <rect x="-12" y="-2" width="24" height="4" transform="translate(-6,-4.5) rotate(12)"/>
+        <rect x="-14" y="-2" width="28" height="4" transform="translate(7,-6.2) rotate(-18)"/>
+        <rect x="-11" y="-2" width="22" height="4" transform="translate(0,-12) rotate(35)"/>
+        <rect x="-13" y="-2" width="26" height="4" transform="translate(-2,-15) rotate(-6)"/>
+      </g>
+    </defs>
+
+    <g id="g-a5-16-island-return-cam">
+      <!-- Gulf of Mexico (left, south): calm, amplitude 4 px, wavelength 60 px -->
+      <g clip-path="url(#g-a5-16-island-return-cgulf)">
+        <g id="g-a5-16-island-return-wgulf">
+          <path fill="url(#g-a5-16-island-return-wgrad)" d="M-204,780 q15,-8 30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 L426,1000 L-204,1000 Z"/>
+          <path fill="none" stroke="#5a768f" stroke-width="3" d="M-204,780 q15,-8 30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0"/>
+          <!-- Gulf surface highlight for "Gulf" @19.14: the water at its own level only -->
+          <path id="g-a5-16-island-return-gulfhi" fill="none" stroke="#7fb2e5" stroke-width="3" d="M-204,780 q15,-8 30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0"/>
+        </g>
+      </g>
+      <!-- Galveston Bay (right, north): calm, amplitude 2 px, wavelength 80 px -->
+      <g clip-path="url(#g-a5-16-island-return-cbay)">
+        <g id="g-a5-16-island-return-wbay">
+          <path fill="url(#g-a5-16-island-return-wgrad)" d="M1496,780 q20,-4 40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 L2016,1000 L1496,1000 Z"/>
+          <path fill="none" stroke="#5a768f" stroke-width="3" d="M1496,780 q20,-4 40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0"/>
+        </g>
+      </g>
+
+      <!-- island cross-section: 40 px per ft above sea level (y 780); crest 8.7 ft = y 432, shoulders 4 ft = y 620 -->
+      <path id="g-a5-16-island-return-fill" fill="url(#g-a5-16-island-return-igrad)" d="M360,780 L520,640 L720,620 L900,432 L1020,432 L1200,620 L1400,640 L1560,780 L1560,900 L360,900 Z"/>
+      <path id="g-a5-16-island-return-sand" fill="url(#g-a5-16-island-return-sgrad)" d="M360,780 L520,640 L720,620 L900,432 L1020,432 L1200,620 L1400,640 L1560,780 L1560,900 L360,900 Z"/>
+      <!-- wet line: the water has been over it (#5a768f, was #93a3b2 in the intro) -->
+      <path id="g-a5-16-island-return-top" fill="none" stroke="#5a768f" stroke-width="3" stroke-linejoin="round" d="M360,780 L520,640 L720,620 L900,432 L1020,432 L1200,620 L1400,640 L1560,780"/>
+      <path id="g-a5-16-island-return-gold" fill="none" stroke="#d8a13a" stroke-width="3" stroke-linecap="round" d="M900,432 L1020,432"/>
+      <!-- mean sea level datum -->
+      <path id="g-a5-16-island-return-datum" fill="none" stroke="#5a768f" stroke-width="1.5" stroke-dasharray="6 8" opacity="0.55" d="M96,780 L1824,780"/>
+
+      <!-- 22 wreckage piles at the intro's 22 house positions (even by arc length, x 560 to 1360),
+           each rotated to the local slope so it lies on the profile; static transforms: only opacity is tweened.
+           w9 and w12 straddle the crest kink: rotation split (-25 / 25) keeps both ends within ~2 px -->
+      <use id="g-a5-16-island-return-w0" href="#g-a5-16-island-return-wa" transform="translate(560,636) rotate(-5.7)"/>
+      <use id="g-a5-16-island-return-w1" href="#g-a5-16-island-return-wc" transform="translate(606,631.4) rotate(-5.7)"/>
+      <use id="g-a5-16-island-return-w2" href="#g-a5-16-island-return-wb" transform="translate(651.5,626.9) rotate(-5.7)"/>
+      <use id="g-a5-16-island-return-w3" href="#g-a5-16-island-return-wd" transform="translate(697,622.3) rotate(-5.7)"/>
+      <use id="g-a5-16-island-return-w4" href="#g-a5-16-island-return-wc" transform="translate(736,603.3) rotate(-46.2)"/>
+      <use id="g-a5-16-island-return-w5" href="#g-a5-16-island-return-wa" transform="translate(767.5,570.4) rotate(-46.2)"/>
+      <use id="g-a5-16-island-return-w6" href="#g-a5-16-island-return-wd" transform="translate(799,537.5) rotate(-46.2)"/>
+      <use id="g-a5-16-island-return-w7" href="#g-a5-16-island-return-wb" transform="translate(831,504.1) rotate(-46.2)"/>
+      <use id="g-a5-16-island-return-w8" href="#g-a5-16-island-return-wa" transform="translate(862.5,471.2) rotate(-46.2)"/>
+      <use id="g-a5-16-island-return-w9" href="#g-a5-16-island-return-wc" transform="translate(894,438.3) rotate(-25)"/>
+      <use id="g-a5-16-island-return-w10" href="#g-a5-16-island-return-wd" transform="translate(937.5,432)"/>
+      <use id="g-a5-16-island-return-w11" href="#g-a5-16-island-return-wb" transform="translate(983,432)"/>
+      <use id="g-a5-16-island-return-w12" href="#g-a5-16-island-return-wc" transform="translate(1026.5,438.8) rotate(25)"/>
+      <use id="g-a5-16-island-return-w13" href="#g-a5-16-island-return-wa" transform="translate(1058,471.7) rotate(46.2)"/>
+      <use id="g-a5-16-island-return-w14" href="#g-a5-16-island-return-wb" transform="translate(1089.5,504.6) rotate(46.2)"/>
+      <use id="g-a5-16-island-return-w15" href="#g-a5-16-island-return-wd" transform="translate(1121.5,538) rotate(46.2)"/>
+      <use id="g-a5-16-island-return-w16" href="#g-a5-16-island-return-wa" transform="translate(1153,570.9) rotate(46.2)"/>
+      <use id="g-a5-16-island-return-w17" href="#g-a5-16-island-return-wc" transform="translate(1184.5,603.8) rotate(46.2)"/>
+      <use id="g-a5-16-island-return-w18" href="#g-a5-16-island-return-wb" transform="translate(1223.5,622.4) rotate(5.7)"/>
+      <use id="g-a5-16-island-return-w19" href="#g-a5-16-island-return-wd" transform="translate(1269,626.9) rotate(5.7)"/>
+      <use id="g-a5-16-island-return-w20" href="#g-a5-16-island-return-wa" transform="translate(1314.5,631.5) rotate(5.7)"/>
+      <use id="g-a5-16-island-return-w21" href="#g-a5-16-island-return-wc" transform="translate(1360,636) rotate(5.7)"/>
+
+      <!-- measure bracket at x 960: sea level (780) to crest (432) = 348 px = 8.7 ft x 40 -->
+      <path id="g-a5-16-island-return-tick0" fill="none" stroke="#d8a13a" stroke-width="3" d="M945,780 L975,780"/>
+      <g id="g-a5-16-island-return-bracket" clip-path="url(#g-a5-16-island-return-cbr)">
+        <path fill="none" stroke="#d8a13a" stroke-width="3" stroke-dasharray="10 7" d="M960,780 L960,432"/>
+        <path fill="none" stroke="#d8a13a" stroke-width="3" d="M945,432 L975,432"/>
+      </g>
+    </g>
+  </svg>
+
+  <div id="g-a5-16-island-return-src">NOAA AOML, 2015 &middot; National Park Service</div>
+  <div id="g-a5-16-island-return-lgulf" class="ga516-lab">Gulf of Mexico</div>
+  <div id="g-a5-16-island-return-lbay" class="ga516-lab">Galveston Bay</div>
+  <div id="g-a5-16-island-return-lsea" class="ga516-lab">Sea level</div>
+  <div id="g-a5-16-island-return-note">Vertical scale exaggerated</div>
+
+  <div id="g-a5-16-island-return-c1" class="ga516-chip">
+    <span class="ga516-tag">HIGHEST POINT</span>
+    <span class="ga516-main">ABOUT 8.7 FT</span>
+  </div>
+  <div id="g-a5-16-island-return-c2" class="ga516-chip"><span class="ga516-main">A CITY TO PUT BACK</span></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a5-16-island-return-";
+  /* a5-s10.words.json, comp-local = word time - 9.94 (host starts at "And" 9.94).
+     the 10.10 -> 0.16 · island 10.16 -> 0.22 · sand 12.84 -> 2.90 · under 13.88 -> 3.94 · highest 15.00 -> 5.06
+     with 16.02 -> 6.08 · city 16.46 -> 6.52 · put 16.88 -> 6.94 · So 18.00 -> 8.06 · Gulf 19.14 -> 9.20
+     over? ends 20.16 -> 10.22; + 1.0 s land time = timeline 11.22; fade to black in the last 0.6 s. */
+  const END = 11.22;
+  const wrecks = [];
+  for (let k = 0; k < 22; k++) wrecks.push(P + "w" + k);
+
+  /* --- start states: frame 0 is the finished picture (sea, datum, profile, wreckage) --- */
+  tl.set([P+"src", P+"lgulf", P+"lbay", P+"lsea", P+"note", P+"c1", P+"c2",
+          P+"bracket", P+"tick0", P+"gold", P+"sand", P+"gulfhi"], {autoAlpha: 0}, 0);
+  tl.set(P+"c2", {xPercent: -50}, 0);
+  tl.set(P+"cam", {svgOrigin: "960 780", scale: 1.06}, 0);
+
+  /* --- whole-window motion: calm waves (phase as x, ease none, one tween over the host) --- */
+  tl.to(P+"wgulf", {x: 240, duration: END, ease: "none"}, 0);
+  tl.to(P+"wbay", {x: -160, duration: END, ease: "none"}, 0);
+
+  /* the @10.10: source line in, labels and scale note fade up, source drifts */
+  tl.fromTo(P+"src", {autoAlpha: 0, x: -30}, {autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out"}, 0.16);
+  tl.to(P+"src", {y: -4, duration: 2.6, ease: "sine.inOut", yoyo: true, repeat: 3}, 0.66);
+  tl.to([P+"lgulf", P+"lbay", P+"note"], {autoAlpha: 1, duration: 0.5, ease: "power2.out", stagger: 0.1}, 0.16);
+
+  /* ISLAND @10.16: slow pull-out 1.06 -> 1.00 to 13.06, then a slow push 1.00 -> 1.03 to the end */
+  tl.to(P+"cam", {scale: 1.0, duration: 2.90, ease: "none"}, 0.22);
+  tl.to(P+"cam", {scale: 1.03, duration: END - 3.12, ease: "none"}, 3.12);
+
+  /* SAND @12.84: profile brightens toward sand (0.25), back to base by "under" 13.88 */
+  tl.to(P+"sand", {autoAlpha: 0.25, duration: 0.6, ease: "power2.out"}, 2.90);
+  tl.to(P+"sand", {autoAlpha: 0, duration: 0.44, ease: "power2.in"}, 3.50);
+
+  /* NINE FEET @14.08 (under @13.88): bracket draws up 13.88 to 15.18, crest stroke turns amber on arrival */
+  tl.to([P+"bracket", P+"tick0", P+"lsea"], {autoAlpha: 1, duration: 0.25, ease: "power2.out"}, 3.94);
+  tl.fromTo(P+"cbrr", {attr: {y: 782, height: 0}}, {attr: {y: 428, height: 354}, duration: 1.30, ease: "power2.out"}, 3.94);
+  tl.to(P+"gold", {autoAlpha: 1, duration: 0.35, ease: "power2.out"}, 5.0);
+
+  /* HIGHEST @15.00: C1 in to the right of the bracket top */
+  tl.fromTo(P+"c1", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 5.06);
+  tl.to(P+"c1", {y: -4, duration: 1.2, ease: "sine.inOut"}, 5.51);
+  /* with @16.02: C1 dims */
+  tl.to(P+"c1", {opacity: 0.6, duration: 0.3, ease: "power2.out"}, 6.08);
+
+  /* CITY @16.46: wreckage pulses once, left to right */
+  tl.fromTo(wrecks, {opacity: 0.7}, {opacity: 1, duration: 0.35, ease: "power2.out", stagger: 0.02, immediateRender: false}, 6.52);
+
+  /* PUT @16.88: C2 in, centred at x 960 */
+  tl.fromTo(P+"c2", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 6.94);
+  tl.to(P+"c2", {y: -4, duration: 0.67, ease: "sine.inOut"}, 7.39);
+
+  /* SO @18.00: C1 and C2 slide out right by 18.60; the island holds alone for the question */
+  tl.to([P+"c1", P+"c2"], {x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in"}, 8.06);
+
+  /* GULF @19.14: the Gulf surface brightens (0.5) for 0.8 s, at its own level only */
+  tl.to(P+"gulfhi", {autoAlpha: 0.5, duration: 0.3, ease: "power2.out"}, 9.20);
+  tl.to(P+"gulfhi", {autoAlpha: 0, duration: 0.5, ease: "power2.in"}, 9.50);
+
+  /* exit: fade to black over the last 0.6 s into the A5 -> A6 chapter blackout */
+  tl.to(P+"root", {autoAlpha: 0, duration: 0.6, ease: "power1.in"}, END - 0.6);
+  window.__timelines["g-a5-16-island-return"] = tl;
+})();
+</script>
+</template>

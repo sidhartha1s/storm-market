@@ -1,0 +1,79 @@
+<template>
+<style>
+  #g-a1-7-clause-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .g-a1-7-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  /* camera group: source px of the 1412 x 1802 original; screen = (960 + (sx-cx)*s, 540 + (sy-cy)*s) */
+  #g-a1-7-clause-cam { position:absolute; left:0; top:0; width:1412px; height:1802px; transform-origin:0 0; }
+  /* column 3 only (source x 405 to 610, y 20 to 870): the crop is x 400 to 615, y 0 to 880 */
+  #g-a1-7-clause-col { position:absolute; left:405px; top:20px; width:205px; height:850px; overflow:hidden; background:#d9d2bd; box-shadow:0 0 6px rgba(0,0,0,0.6); }
+  #g-a1-7-clause-img { position:absolute; left:-5px; top:-20px; width:215px; height:880px; }
+  /* highlights: 7.5 source px tall, amber multiply, drawn left to right */
+  .g-a1-7-hl { position:absolute; height:7.5px; background:#d8a13a; mix-blend-mode:multiply; transform-origin:left center; opacity:0; visibility:hidden; }
+  #g-a1-7-clause-h0 { left:548px; top:587.95px; width:55px; }
+  #g-a1-7-clause-ha { left:418px; top:819.25px; width:185px; }
+  #g-a1-7-clause-hb { left:418px; top:827.75px; width:185px; }
+  #g-a1-7-clause-hc { left:418px; top:836.25px; width:34px; }
+  /* source line, top-left */
+  #g-a1-7-clause-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    font-weight:700; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a1-7-clause-root" data-composition-id="g-a1-7-clause" data-width="1920" data-height="1080" data-type-ok="one source line over a document page; the page carries the text">
+  <div id="g-a1-7-clause-cam">
+    <div id="g-a1-7-clause-col"><img id="g-a1-7-clause-img" src="media/a1/gdn-1891-p5-col3.jpg" alt=""></div>
+    <div id="g-a1-7-clause-h0" class="g-a1-7-hl"></div>
+    <div id="g-a1-7-clause-ha" class="g-a1-7-hl"></div>
+    <div id="g-a1-7-clause-hb" class="g-a1-7-hl"></div>
+    <div id="g-a1-7-clause-hc" class="g-a1-7-hl"></div>
+  </div>
+  <div id="g-a1-7-clause-src" class="g-a1-7-glass">Isaac Cline, Galveston Daily News, July 16, 1891</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a1-7-clause-";
+  /* TIMING: audio/a1-s4.words.json, comp-local = S4 time - 1.64 (host 1.64 to 4.62, 2.98 s).
+     sentence, @1.64 -> 0.00 ; and @2.48 -> 0.84 ; pan starts @2.82 -> 1.18, lands 3.60 -> 1.96 ;
+     territory @3.62 -> 1.98 ; island. end @3.78 -> 2.14 ; spread @4.10 -> 2.46 ; exit 4.32 -> 2.68 */
+
+  /* camera: a pure function of comp time, so seeking is safe */
+  const cam = P + "cam";
+  const cx = 507;
+  function apply(t) {
+    let s, cy;
+    if (t <= 1.18) { s = 4.0 + 0.04 * t / 1.18; cy = 592; }                       /* P0 drift 4.0 to 4.04 */
+    else if (t <= 1.96) {                                                          /* P1 pan down, power2.inOut */
+      const p = (t - 1.18) / 0.78;
+      const e = p < 0.5 ? 2 * p * p : 1 - 2 * (1 - p) * (1 - p);
+      s = 4.04; cy = 592 + 240 * e;
+    } else { s = 4.04 + 0.06 * Math.min(1, (t - 1.96) / 1.02); cy = 832; }       /* P1b drift 4.04 to 4.10 */
+    gsap.set(cam, { x: 960 - cx * s, y: 540 - cy * s, scale: s });
+  }
+  tl.set(P + "cam", { transformOrigin: "0 0" }, 0);
+  apply(0);
+  const clock = { t: 0 };
+  tl.to(clock, { t: 2.98, duration: 2.98, ease: "none", onUpdate: function() { apply(clock.t); } }, 0);
+
+  tl.set(P + "src", { autoAlpha: 0 }, 0);
+  tl.set([P + "h0", P + "ha", P + "hb", P + "hc"], { autoAlpha: 0, scaleX: 0 }, 0);
+
+  /* COLUMN @1.64: source line in */
+  tl.to(P + "src", { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 0);
+  tl.to(P + "src", { y: -4, duration: 2.4, ease: "sine.inOut" }, 0.3);
+
+  /* AS THERE IS TOO @2.48 */
+  tl.to(P + "h0", { scaleX: 1, autoAlpha: 0.32, duration: 0.5, ease: "power2.out" }, 0.84);
+
+  /* TERRITORY @3.62 ; ISLAND @3.78 ; SPREAD @4.10 */
+  tl.to(P + "ha", { scaleX: 1, autoAlpha: 0.32, duration: 0.5, ease: "power2.out" }, 1.98);
+  tl.to(P + "hb", { scaleX: 1, autoAlpha: 0.32, duration: 0.5, ease: "power2.out" }, 2.14);
+  tl.to(P + "hc", { scaleX: 1, autoAlpha: 0.32, duration: 0.3, ease: "power2.out" }, 2.46);
+
+  /* exit @4.32: fade-through to g-a1-8 at 4.62 */
+  tl.to(P + "root", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 2.68);
+  window.__timelines["g-a1-7-clause"] = tl;
+})();
+</script>
+</template>

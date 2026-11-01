@@ -1,0 +1,144 @@
+<template>
+<style>
+  @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+  #g-a3-11-cline-5am-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  /* source line, top-left (glass surface, tokens.md) */
+  #g-a3-11-cline-5am-src { position:absolute; inset:auto; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+  /* lower-third: outer moves in x, inner drifts in y; card top edge ~ y 834 */
+  #g-a3-11-cline-5am-lt { position:absolute; inset:auto; left:110px; bottom:110px; width:600px; height:136px; opacity:0; visibility:hidden; }
+  #g-a3-11-cline-5am-ltin { position:absolute; left:0; top:0; width:600px; height:136px; box-sizing:border-box; border-radius:28px; overflow:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  #g-a3-11-cline-5am-name { position:absolute; left:28px; top:18px; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:57px; color:#f2f5f8; }
+  #g-a3-11-cline-5am-role { position:absolute; left:28px; top:82px; white-space:nowrap; font-weight:700; font-size:27px; line-height:35px; letter-spacing:1px; color:#f5d98b; }
+  /* chip: mid-left, left edge x 110, top 420 */
+  #g-a3-11-cline-5am-chip { position:absolute; inset:auto; left:110px; top:420px; opacity:0; visibility:hidden; }
+  #g-a3-11-cline-5am-chipin { box-sizing:border-box; padding:20px 32px 22px; border-radius:28px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  #g-a3-11-cline-5am-chipmain { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px; line-height:50px; color:#f2f5f8; }
+  #g-a3-11-cline-5am-chiptag { display:block; margin-top:6px; font-weight:700; font-size:22px; line-height:28px; letter-spacing:4px; color:#93a3b2; }
+  /* popfig (cards.css .popfig), centred, with a local scrim so the red reads over pre-dawn footage */
+  #g-a3-11-cline-5am-scrim { position:absolute; inset:auto; left:360px; top:290px; width:1200px; height:460px; opacity:0; visibility:hidden; }
+  /* scrim strong enough for the white MWR page beneath (0.55 let the print cut through ABOUT) */
+  #g-a3-11-cline-5am-scrimin { position:absolute; inset:0; opacity:0.9;
+    background:radial-gradient(ellipse closest-side at 50% 50%, rgba(4,7,12,0.92), rgba(4,7,12,0.8) 62%, rgba(4,7,12,0)); }
+  /* amber band over the "About 5 a.m. ... to Washington." lines of the p. 372 still (index c-a3-p372, settled from 575.705);
+     boxes measured in frame px on the 577.425 s snapshot; the band leaves before the cut to the byline still at 580.105 */
+  .g-a3-11-band { position:absolute; inset:auto; height:28px; border-radius:4px; background:rgba(216,161,58,0.32);
+    transform-origin:left center; opacity:0; visibility:hidden; }
+  /* push: a copy of the p. 372 still, fitted exactly like index's object-fit:cover (1150x1563 -> 1920x2609, top -764), so the swap at 10.00 is seamless.
+     It scales 1.797 about (1920, 1390): the right edge stays on the frame edge and the banded lines land at x 166..1561, y ~430..640,
+     clear of the presenter circle corner (x >= 1600, y >= 680). Bands ride inside it in still-frame px. */
+  #g-a3-11-cline-5am-pg { position:absolute; inset:auto; left:0; top:0; width:1920px; height:1080px; transform-origin:1920px 1390px; opacity:0; visibility:hidden; }
+  #g-a3-11-cline-5am-pgimg { position:absolute; left:0; top:-764px; width:1920px; height:2609px; }
+  #g-a3-11-cline-5am-bd1 { left:1040px; top:838px; width:676px; }
+  #g-a3-11-cline-5am-bd2 { left:944px; top:866px; width:772px; }
+  #g-a3-11-cline-5am-bd3 { left:944px; top:895px; width:772px; }
+  #g-a3-11-cline-5am-bd4 { left:944px; top:923px; width:482px; }
+  #g-a3-11-cline-5am-pop { position:absolute; inset:auto; left:0; top:410px; width:1920px; text-align:center; white-space:nowrap; }
+  #g-a3-11-cline-5am-big { display:block; opacity:0; visibility:hidden; transform-origin:center;
+    font-family:'AbrilFig', Georgia, serif; font-size:150px; line-height:1.1; color:#d0121f; letter-spacing:0.04em;
+    text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+  #g-a3-11-cline-5am-sub { display:block; margin-top:10px; opacity:0; visibility:hidden; transform-origin:center;
+    font-weight:700; font-size:32px; color:#e8e3d8; letter-spacing:3px;
+    text-shadow:0 0 14px rgba(0,0,0,0.95), 0 3px 10px #000; }
+  /* pre-dawn tint over Part B footage: cool blue from the bottom, slow rise; also the mover for the voice-only tail */
+  #g-a3-11-cline-5am-dawn { position:absolute; inset:auto; left:0; top:-60px; width:1920px; height:1200px; opacity:0; visibility:hidden; pointer-events:none; }
+  #g-a3-11-cline-5am-dawnin { position:absolute; left:0; top:0; width:1920px; height:1200px;
+    background:linear-gradient(0deg, rgba(14,34,66,0.55), rgba(8,16,34,0.22) 55%, rgba(8,16,34,0)); }
+</style>
+<div id="g-a3-11-cline-5am-root" data-composition-id="g-a3-11-cline-5am" data-width="1920" data-height="1080">
+  <div id="g-a3-11-cline-5am-pg">
+    <img id="g-a3-11-cline-5am-pgimg" src="media/a3/A3-S10_c2_mwr-sept1900-p372_cline-report.png" alt="">
+    <div id="g-a3-11-cline-5am-bd1" class="g-a3-11-band"></div>
+    <div id="g-a3-11-cline-5am-bd2" class="g-a3-11-band"></div>
+    <div id="g-a3-11-cline-5am-bd3" class="g-a3-11-band"></div>
+    <div id="g-a3-11-cline-5am-bd4" class="g-a3-11-band"></div>
+  </div>
+  <div id="g-a3-11-cline-5am-dawn"><div id="g-a3-11-cline-5am-dawnin"></div></div>
+  <div id="g-a3-11-cline-5am-src">Isaac Cline, Monthly Weather Review, Sept. 1900, pp. 372-373</div>
+  <div id="g-a3-11-cline-5am-lt">
+    <div id="g-a3-11-cline-5am-ltin">
+      <span id="g-a3-11-cline-5am-name">ISAAC CLINE</span>
+      <span id="g-a3-11-cline-5am-role">Local Forecast Official, Galveston</span>
+    </div>
+  </div>
+  <div id="g-a3-11-cline-5am-chip">
+    <div id="g-a3-11-cline-5am-chipin">
+      <span id="g-a3-11-cline-5am-chipmain">CLINE'S HOUSE, 1900: 5.2 FT</span>
+      <span id="g-a3-11-cline-5am-chiptag">ground elevation, his report</span>
+    </div>
+  </div>
+  <div id="g-a3-11-cline-5am-scrim"><div id="g-a3-11-cline-5am-scrimin"></div></div>
+  <div id="g-a3-11-cline-5am-pop">
+    <span id="g-a3-11-cline-5am-big">ABOUT 5 AM</span>
+    <span id="g-a3-11-cline-5am-sub">SATURDAY, SEPT 8</span>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a3-11-cline-5am-";
+  /* TIMING: audio/a3-s10.words.json, comp-local = segment time (host 0.00 to 16.66).
+     Klein @0.00 ; few blocks @3.40 ; beach @4.28 ; tide. ends 7.18 ; At @7.68 ; about @7.80 ; five @7.98 ; Saturday @8.56 ;
+     Joseph @9.80 ; him. ends 10.44 ; The tide @10.76 ; Washington. ends 16.66 */
+  tl.set(P+"src", {autoAlpha:0}, 0);
+  tl.set(P+"lt", {autoAlpha:0, x:-60}, 0);
+  tl.set(P+"chip", {autoAlpha:0, y:24, scale:0.94}, 0);
+  tl.set(P+"scrim", {autoAlpha:0}, 0);
+  tl.set(P+"big", {autoAlpha:0, scale:1.35}, 0);
+  tl.set(P+"sub", {autoAlpha:0, scale:1.35}, 0);
+  tl.set(P+"dawn", {autoAlpha:0}, 0);
+
+  /* CLINE @0.00: source line and lower-third in together */
+  tl.to(P+"src", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0);
+  tl.to(P+"src", {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:3}, 0.4);
+  tl.fromTo(P+"lt", {x:-60, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 0);
+  tl.to(P+"ltin", {y:-4, duration:1.7, ease:"sine.inOut", yoyo:true, repeat:1}, 0.6);
+  /* few blocks @3.40: lower-third out by 4.00 */
+  tl.to(P+"lt", {x:-980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 3.40);
+
+  /* beach @4.28 (5.2 FT): chip in, floats, out 7.08 to 7.68 */
+  tl.fromTo(P+"chip", {y:24, scale:0.94, autoAlpha:0}, {y:0, scale:1, autoAlpha:1, duration:0.45, ease:"back.out(1.6)"}, 4.28);
+  tl.to(P+"chipin", {y:-4, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:1}, 4.73);
+  tl.to(P+"chip", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 7.08);
+
+  /* At about five @7.80/7.98: scrim, then ABOUT 5 AM; SATURDAY, SEPT 8 with "Saturday" @8.56 */
+  tl.to(P+"scrim", {autoAlpha:1, duration:0.3, ease:"power2.out"}, 7.80);
+  tl.to(P+"scrimin", {opacity:1, duration:1.1, ease:"sine.inOut", yoyo:true, repeat:1}, 7.80);
+  tl.to(P+"big", {scale:1, autoAlpha:1, duration:0.5, ease:"power4.out"}, 7.98);
+  tl.to(P+"sub", {scale:1, autoAlpha:1, duration:0.5, ease:"power4.out"}, 8.56);
+  tl.to(P+"pop", {y:-4, duration:1.0, ease:"sine.inOut", yoyo:true, repeat:1}, 8.48);
+  /* Joseph called @9.80: popfig out to 10.25 */
+  tl.to([P+"big", P+"sub"], {scale:0.92, autoAlpha:0, duration:0.45, ease:"power2.in"}, 9.80);
+  tl.to(P+"scrim", {autoAlpha:0, duration:0.45, ease:"power2.in"}, 9.80);
+  /* source line leaves with the popfig */
+  tl.to(P+"src", {autoAlpha:0, duration:0.45, ease:"power2.in"}, 9.80);
+
+  /* The tide @10.76: the four "About 5 a.m." lines light one after another on the p. 372 still, out 12.30 to 12.60 before the cut at 12.68 */
+  const BD = [P+"bd1", P+"bd2", P+"bd3", P+"bd4"];
+  tl.set(BD, {autoAlpha:0, scaleX:0}, 0);
+  /* 10.00: the page copy takes over from the index still (identical framing) and pushes in to 10.70; hard off at the cut 12.68 */
+  tl.set(P+"pg", {autoAlpha:1, scale:1}, 10.00);
+  tl.to(P+"pg", {scale:1.797, duration:0.7, ease:"power2.inOut"}, 10.00);
+  tl.set(P+"pg", {autoAlpha:0}, 12.68);
+  tl.set(BD, {autoAlpha:1}, 10.30);
+  tl.to(P+"bd1", {scaleX:1, duration:0.35, ease:"power2.out"}, 10.30);
+  tl.to(P+"bd2", {scaleX:1, duration:0.35, ease:"power2.out"}, 10.76);
+  tl.to(P+"bd3", {scaleX:1, duration:0.35, ease:"power2.out"}, 11.20);
+  tl.to(P+"bd4", {scaleX:1, duration:0.30, ease:"power2.out"}, 11.64);
+  tl.to(BD, {autoAlpha:0, duration:0.3, ease:"power2.in"}, 12.30);
+
+  /* The tide @10.76 to 16.66: no text over the street. A faint pre-dawn tint rises slowly (the comp's own mover), out at the end. */
+  tl.to(P+"dawn", {autoAlpha:1, duration:0.9, ease:"power2.out"}, 9.80);
+  tl.fromTo(P+"dawnin", {y:60}, {y:-40, duration:6.26, ease:"none"}, 10.40);
+  tl.to(P+"dawn", {autoAlpha:0, duration:0.6, ease:"power2.in"}, 16.06);
+  window.__timelines["g-a3-11-cline-5am"] = tl;
+})();
+</script>
+</template>

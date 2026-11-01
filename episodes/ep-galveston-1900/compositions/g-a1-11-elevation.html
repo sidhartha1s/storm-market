@@ -1,0 +1,311 @@
+<template>
+<style>
+  #g-a1-11-elevation-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a1-11-elevation-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+
+  /* start-hidden SVG parts (also hidden by tl.set at 0) */
+  .ga111-bld, #g-a1-11-elevation-cline, #g-a1-11-elevation-gold { visibility:hidden; opacity:0; }
+
+  /* source lines: top-left glass, small radius; S6 line swaps for the S7 line */
+  .ga111-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box;
+    padding:6px 14px; border-radius:12px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:23px; color:#c8d3e0; letter-spacing:1px; }
+
+  /* diagram labels: HUD layer, never ride the camera push */
+  .ga111-lab { position:absolute; white-space:nowrap;
+    font-family:Arial, sans-serif; font-weight:700; font-size:26px; line-height:30px; color:#93a3b2; letter-spacing:3px;
+    -webkit-text-stroke:5px #04070c; paint-order:stroke fill; }
+  .ga111-hid { opacity:0; visibility:hidden; }
+  /* water labels centred by a fixed box (no transform: they show on frame 0 and never move) */
+  #g-a1-11-elevation-lgulf { left:78px; width:300px; text-align:center; top:827px; }
+  /* above y 680 (circle corner is x>=1600, y>=680); centred x 1692 */
+  #g-a1-11-elevation-lbay { left:1542px; width:300px; text-align:center; top:600px; }
+  #g-a1-11-elevation-lsea { right:990px; top:748px; }
+  /* baseline 318 -> top 296; baseline 526 -> top 504 (22 px on a 26 px line) */
+  #g-a1-11-elevation-lhoop { left:96px; top:296px; }
+  #g-a1-11-elevation-lman { left:300px; top:504px; }
+  #g-a1-11-elevation-note { position:absolute; left:96px; top:1000px; white-space:nowrap;
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; color:#93a3b2; letter-spacing:2px; }
+
+  /* chips: glass card, radius 28 */
+  .ga111-chip { position:absolute; box-sizing:border-box; padding:18px 28px; border-radius:28px;
+    text-align:center; white-space:nowrap; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10);
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:40px; line-height:52px; color:#f2f5f8; }
+  /* C1 to C3 stack top-right, right edge x 1824 */
+  #g-a1-11-elevation-c1 { right:96px; top:130px; }
+  #g-a1-11-elevation-c2 { right:96px; top:236px; }
+  #g-a1-11-elevation-c3 { right:96px; top:342px; }
+  /* C4 centred x 960, top 140 */
+  #g-a1-11-elevation-c4 { left:960px; top:140px; font-size:52px; line-height:64px; }
+</style>
+<div id="g-a1-11-elevation-root" data-composition-id="g-a1-11-elevation" data-width="1920" data-height="1080">
+  <svg id="g-a1-11-elevation-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g-a1-11-elevation-wgrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0b1016"/><stop offset="1" stop-color="#04070c"/>
+      </linearGradient>
+      <!-- island fill: solid to sea level (y 780), fades out by y 900 -->
+      <linearGradient id="g-a1-11-elevation-igrad" gradientUnits="userSpaceOnUse" x1="0" y1="432" x2="0" y2="900">
+        <stop offset="0" stop-color="#15202b" stop-opacity="1"/>
+        <stop offset="0.7436" stop-color="#15202b" stop-opacity="1"/>
+        <stop offset="1" stop-color="#15202b" stop-opacity="0"/>
+      </linearGradient>
+      <clipPath id="g-a1-11-elevation-cgulf"><rect x="96" y="740" width="264" height="260"/></clipPath>
+      <clipPath id="g-a1-11-elevation-cbay"><rect x="1560" y="740" width="264" height="260"/></clipPath>
+      <!-- draw-up reveals: rect bottom pinned at 782, top tweens upward -->
+      <clipPath id="g-a1-11-elevation-cbr"><rect id="g-a1-11-elevation-cbrr" x="930" y="782" width="60" height="0"/></clipPath>
+      <clipPath id="g-a1-11-elevation-ccl"><rect id="g-a1-11-elevation-cclr" x="740" y="782" width="52" height="0"/></clipPath>
+      <clipPath id="g-a1-11-elevation-choop"><rect id="g-a1-11-elevation-choopr" x="130" y="782" width="70" height="0"/></clipPath>
+      <clipPath id="g-a1-11-elevation-cman"><rect id="g-a1-11-elevation-cmanr" x="250" y="782" width="100" height="0"/></clipPath>
+      <!-- average line reveals left to right -->
+      <clipPath id="g-a1-11-elevation-cavg"><rect id="g-a1-11-elevation-cavgr" x="358" y="610" width="0" height="20"/></clipPath>
+      <g id="g-a1-11-elevation-house">
+        <rect x="-14" y="-15" width="28" height="15" fill="#4a5560"/>
+        <polygon points="-15,-15 0,-24 15,-15" fill="#93a3b2"/>
+      </g>
+      <!-- warehouse 30 wide x 24 tall, darker than the houses: buildings sit at gap midpoints 32 px apart on the slopes, so the
+           old 44 x 36 grey block (same grey as a house) overlapped its neighbours and buried the houses (frame read r4).
+           At 30 wide no two buildings touch; the houses draw in front and stay the lighter shape. -->
+      <g id="g-a1-11-elevation-ware">
+        <rect x="-15" y="-20" width="30" height="20" fill="#2a3644"/>
+        <polygon points="-16,-20 16,-20 12,-24 -12,-24" fill="#3d4b5b"/>
+      </g>
+    </defs>
+
+    <g id="g-a1-11-elevation-cam">
+      <!-- Gulf of Mexico (left, south): amplitude 6 px, wavelength 60 px -->
+      <g clip-path="url(#g-a1-11-elevation-cgulf)">
+        <g id="g-a1-11-elevation-wgulf">
+          <path fill="url(#g-a1-11-elevation-wgrad)" d="M-204,780 q15,-12 30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 L426,1000 L-204,1000 Z"/>
+          <path fill="none" stroke="#5a768f" stroke-width="3" d="M-204,780 q15,-12 30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0"/>
+        </g>
+      </g>
+      <!-- Galveston Bay (right, north): calmer, amplitude 3 px, wavelength 80 px -->
+      <g clip-path="url(#g-a1-11-elevation-cbay)">
+        <g id="g-a1-11-elevation-wbay">
+          <path fill="url(#g-a1-11-elevation-wgrad)" d="M1496,780 q20,-6 40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 L2016,1000 L1496,1000 Z"/>
+          <path fill="none" stroke="#5a768f" stroke-width="3" d="M1496,780 q20,-6 40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0"/>
+        </g>
+      </g>
+
+      <!-- island cross-section: 40 px per ft above sea level (y 780); crest 8.7 ft = y 432, shoulders 4 ft = y 620 -->
+      <path id="g-a1-11-elevation-fill" fill="url(#g-a1-11-elevation-igrad)" d="M360,780 L520,640 L720,620 L900,432 L1020,432 L1200,620 L1400,640 L1560,780 L1560,900 L360,900 Z"/>
+      <path id="g-a1-11-elevation-top" fill="none" stroke="#93a3b2" stroke-width="3" stroke-linejoin="round" d="M360,780 L520,640 L720,620 L900,432 L1020,432 L1200,620 L1400,640 L1560,780"/>
+      <path id="g-a1-11-elevation-gold" fill="none" stroke="#d8a13a" stroke-width="3" stroke-linecap="round" d="M900,432 L1020,432"/>
+      <!-- mean sea level datum -->
+      <path id="g-a1-11-elevation-datum" fill="none" stroke="#5a768f" stroke-width="1.5" stroke-dasharray="6 8" opacity="0.55" d="M96,780 L1824,780"/>
+
+      <!-- average 4 ft line at y 620 (160 px), behind the houses and buildings -->
+      <g id="g-a1-11-elevation-avg" clip-path="url(#g-a1-11-elevation-cavg)">
+        <path fill="none" stroke="#d8a13a" stroke-width="2" stroke-dasharray="10 7" d="M360,620 L1560,620"/>
+      </g>
+
+      <!-- 14 S7 buildings: in gaps between houses, drawn behind them, placed on the profile by the script -->
+      <use id="g-a1-11-elevation-b0" class="ga111-bld" href="#g-a1-11-elevation-ware"/>
+      <use id="g-a1-11-elevation-b1" class="ga111-bld" href="#g-a1-11-elevation-ware"/>
+      <use id="g-a1-11-elevation-b2" class="ga111-bld" href="#g-a1-11-elevation-ware"/>
+      <use id="g-a1-11-elevation-b3" class="ga111-bld" href="#g-a1-11-elevation-ware"/>
+      <use id="g-a1-11-elevation-b4" class="ga111-bld" href="#g-a1-11-elevation-ware"/>
+      <use id="g-a1-11-elevation-b5" class="ga111-bld" href="#g-a1-11-elevation-ware"/>
+      <use id="g-a1-11-elevation-b6" class="ga111-bld" href="#g-a1-11-elevation-ware"/>
+      <use id="g-a1-11-elevation-b7" class="ga111-bld" href="#g-a1-11-elevation-ware"/>
+      <use id="g-a1-11-elevation-b8" class="ga111-bld" href="#g-a1-11-elevation-ware"/>
+      <use id="g-a1-11-elevation-b9" class="ga111-bld" href="#g-a1-11-elevation-ware"/>
+      <use id="g-a1-11-elevation-b10" class="ga111-bld" href="#g-a1-11-elevation-ware"/>
+      <use id="g-a1-11-elevation-b11" class="ga111-bld" href="#g-a1-11-elevation-ware"/>
+      <use id="g-a1-11-elevation-b12" class="ga111-bld" href="#g-a1-11-elevation-ware"/>
+      <use id="g-a1-11-elevation-b13" class="ga111-bld" href="#g-a1-11-elevation-ware"/>
+
+      <!-- 22 houses, placed on the profile by the script (left to right), visible from frame 0 -->
+      <use id="g-a1-11-elevation-h0" href="#g-a1-11-elevation-house"/>
+      <use id="g-a1-11-elevation-h1" href="#g-a1-11-elevation-house"/>
+      <use id="g-a1-11-elevation-h2" href="#g-a1-11-elevation-house"/>
+      <use id="g-a1-11-elevation-h3" href="#g-a1-11-elevation-house"/>
+      <use id="g-a1-11-elevation-h4" href="#g-a1-11-elevation-house"/>
+      <use id="g-a1-11-elevation-h5" href="#g-a1-11-elevation-house"/>
+      <use id="g-a1-11-elevation-h6" href="#g-a1-11-elevation-house"/>
+      <use id="g-a1-11-elevation-h7" href="#g-a1-11-elevation-house"/>
+      <use id="g-a1-11-elevation-h8" href="#g-a1-11-elevation-house"/>
+      <use id="g-a1-11-elevation-h9" href="#g-a1-11-elevation-house"/>
+      <use id="g-a1-11-elevation-h10" href="#g-a1-11-elevation-house"/>
+      <use id="g-a1-11-elevation-h11" href="#g-a1-11-elevation-house"/>
+      <use id="g-a1-11-elevation-h12" href="#g-a1-11-elevation-house"/>
+      <use id="g-a1-11-elevation-h13" href="#g-a1-11-elevation-house"/>
+      <use id="g-a1-11-elevation-h14" href="#g-a1-11-elevation-house"/>
+      <use id="g-a1-11-elevation-h15" href="#g-a1-11-elevation-house"/>
+      <use id="g-a1-11-elevation-h16" href="#g-a1-11-elevation-house"/>
+      <use id="g-a1-11-elevation-h17" href="#g-a1-11-elevation-house"/>
+      <use id="g-a1-11-elevation-h18" href="#g-a1-11-elevation-house"/>
+      <use id="g-a1-11-elevation-h19" href="#g-a1-11-elevation-house"/>
+      <use id="g-a1-11-elevation-h20" href="#g-a1-11-elevation-house"/>
+      <use id="g-a1-11-elevation-h21" href="#g-a1-11-elevation-house"/>
+
+      <!-- Cline's house: amber copy laid exactly over h5 (x ~767, the house nearest the 5.2 ft ground at x 766) -->
+      <g id="g-a1-11-elevation-cline">
+        <rect x="-14" y="-15" width="28" height="15" fill="#d8a13a"/>
+        <polygon points="-15,-15 0,-24 15,-15" fill="#e8c56a"/>
+      </g>
+
+      <!-- crest bracket at x 960: sea level (780) to crest (432) = 348 px = 8.7 ft x 40 -->
+      <g id="g-a1-11-elevation-bracket" clip-path="url(#g-a1-11-elevation-cbr)">
+        <path fill="none" stroke="#d8a13a" stroke-width="3" d="M945,780 L975,780"/>
+        <path fill="none" stroke="#d8a13a" stroke-width="3" stroke-dasharray="10 7" d="M960,780 L960,432"/>
+        <path fill="none" stroke="#d8a13a" stroke-width="3" d="M945,432 L975,432"/>
+      </g>
+      <!-- Cline's bracket at x 766: 780 to 572 = 208 px = 5.2 ft x 40 -->
+      <g id="g-a1-11-elevation-clbr" clip-path="url(#g-a1-11-elevation-ccl)">
+        <path fill="none" stroke="#d8a13a" stroke-width="2" d="M754,780 L778,780"/>
+        <path fill="none" stroke="#d8a13a" stroke-width="2" stroke-dasharray="8 6" d="M766,780 L766,572"/>
+        <path fill="none" stroke="#d8a13a" stroke-width="2" d="M754,572 L778,572"/>
+      </g>
+
+      <!-- ghost hoop on the datum over the Gulf: rim 10 ft = y 380 -->
+      <g id="g-a1-11-elevation-hoop" clip-path="url(#g-a1-11-elevation-choop)" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="8 6">
+        <path d="M150,780 L150,380"/>
+        <rect x="147" y="330" width="6" height="70"/>
+        <path d="M150,380 L186,380"/>
+      </g>
+      <!-- ghost tall man: 6 ft = 240 px, feet y 780, head top y 540, centred x 300 -->
+      <g id="g-a1-11-elevation-man" clip-path="url(#g-a1-11-elevation-cman)" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="8 6">
+        <circle cx="300" cy="558" r="18"/>
+        <path d="M292,576 L292,584 L266,592 Q258,595 258,604 L258,680 L268,680 L268,612 L272,612 L272,780 L296,780 L296,690 L304,690 L304,780 L328,780 L328,612 L332,612 L332,680 L342,680 L342,604 Q342,595 334,592 L308,584 L308,576 Z"/>
+      </g>
+    </g>
+  </svg>
+
+  <div id="g-a1-11-elevation-src1" class="ga111-src">National Park Service &middot; Ohio State University, Origins &middot; Isaac Cline, Monthly Weather Review, Sept. 1900</div>
+  <div id="g-a1-11-elevation-src2" class="ga111-src">Texas State Historical Association &middot; Port of Galveston</div>
+  <div id="g-a1-11-elevation-lgulf" class="ga111-lab">Gulf of Mexico</div>
+  <div id="g-a1-11-elevation-lbay" class="ga111-lab">Galveston Bay</div>
+  <div id="g-a1-11-elevation-lsea" class="ga111-lab">Sea level</div>
+  <div id="g-a1-11-elevation-lhoop" class="ga111-lab ga111-hid">Basketball hoop</div>
+  <div id="g-a1-11-elevation-lman" class="ga111-lab ga111-hid">Tall man</div>
+  <div id="g-a1-11-elevation-note">Vertical scale exaggerated</div>
+
+  <div id="g-a1-11-elevation-c1" class="ga111-chip">HIGHEST POINT ABOUT 8.7 FT</div>
+  <div id="g-a1-11-elevation-c2" class="ga111-chip">AVERAGE ABOUT 4 FT</div>
+  <div id="g-a1-11-elevation-c3" class="ga111-chip">CLINE'S HOUSE, 1900: 5.2 FT</div>
+  <div id="g-a1-11-elevation-c4" class="ga111-chip">WORLD'S FOREMOST COTTON PORT &middot; 1899</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a1-11-elevation-";
+  const q = function(id) { return document.querySelector(P + id); };
+  /* Host starts at A1-S6 "Its" 2.84: nx-a1-s6 196.611 + 2.84 = 199.451.
+     S6 word -> local = t - 2.84. S7 word -> local = (212.759 - 199.451) + t = 13.308 + t.
+     Host ends at S7 wav end 212.759 + 6.673 = 219.432, so duration 19.981. */
+  const D = 19.981;
+
+  /* --- houses on the profile, evenly by arc length (x 560 to 1360), exactly as g-intro-6 --- */
+  const PTS = [[360,780],[520,640],[720,620],[900,432],[1020,432],[1200,620],[1400,640],[1560,780]];
+  const yAt = function(x) {
+    for (let i = 0; i < PTS.length - 1; i++) {
+      const a = PTS[i], b = PTS[i + 1];
+      if (x >= a[0] && x <= b[0]) return a[1] + (b[1] - a[1]) * (x - a[0]) / (b[0] - a[0]);
+    }
+    return 780;
+  };
+  const xs = [], arc = [0];
+  for (let x = 560; x <= 1360; x += 0.5) xs.push(x);
+  for (let i = 1; i < xs.length; i++) arc.push(arc[i - 1] + Math.hypot(0.5, yAt(xs[i]) - yAt(xs[i - 1])));
+  const total = arc[arc.length - 1];
+  const homes = [];
+  for (let k = 0, j = 0; k < 22; k++) {
+    const want = total * k / 21;
+    while (j < arc.length - 1 && arc[j] < want) j++;
+    homes.push([xs[j], yAt(xs[j])]);
+  }
+  for (let k = 0; k < 22; k++) tl.set(q("h" + k), {x: homes[k][0], y: homes[k][1]}, 0);
+
+  /* Cline's house = h5 (x ~767.5, nearest x 766) */
+  tl.set(P+"cline", {x: homes[5][0], y: homes[5][1], scale: 1, autoAlpha: 0, transformOrigin: "50% 100%"}, 0);
+
+  /* 14 buildings at the midpoints of 14 of the 21 house gaps, left to right.
+     Skipped: gaps 4, 5 (either side of Cline's house), 10 (the crest bracket at x 960), 11, 16, 18, 20. */
+  const GAPS = [0, 1, 2, 3, 6, 7, 8, 9, 12, 13, 14, 15, 17, 19];
+  const blds = [];
+  for (let n = 0; n < 14; n++) {
+    const g = GAPS[n];
+    const bx = (homes[g][0] + homes[g + 1][0]) / 2;
+    blds.push(q("b" + n));
+    tl.set(blds[n], {x: bx, y: yAt(bx), scaleY: 0, autoAlpha: 0, transformOrigin: "50% 100%"}, 0);
+  }
+
+  /* --- start states --- */
+  tl.set([P+"src1", P+"src2", P+"lhoop", P+"lman", P+"c1", P+"c2", P+"c3", P+"c4", P+"gold"], {autoAlpha: 0}, 0);
+  tl.set([P+"lman", P+"c4"], {xPercent: -50}, 0);
+  tl.set(P+"cam", {svgOrigin: "960 540"}, 0);
+
+  /* --- whole-window motion: wave phase, camera push 1.00 -> 1.03 about (960, 540) --- */
+  tl.to(P+"wgulf", {x: 240, duration: D, ease: "none"}, 0);
+  tl.to(P+"wbay", {x: -160, duration: D, ease: "none"}, 0);
+  tl.to(P+"cam", {scale: 1.03, duration: D, ease: "none"}, 0);
+
+  /* PLATE @2.84 (local 0): finished plate on frame 0; source line in; crest bracket draws up 0 to 0.76 */
+  tl.fromTo(P+"src1", {autoAlpha: 0, x: -30}, {autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out"}, 0);
+  tl.to(P+"src1", {y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 4}, 0.5);
+  tl.fromTo(P+"cbrr", {attr: {y: 782, height: 0}}, {attr: {y: 428, height: 354}, duration: 0.76, ease: "power2.out"}, 0);
+  tl.to(P+"gold", {autoAlpha: 1, duration: 0.3, ease: "power2.out"}, 0.66);
+
+  /* average @3.00 (local 0.16): C1 in */
+  tl.fromTo(P+"c1", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 0.16);
+  tl.to(P+"c1", {y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 3}, 0.61);
+
+  /* FOUR @4.62 (local 1.78): average line draws left to right 0.6 s; C2 in */
+  tl.fromTo(P+"cavgr", {attr: {width: 0}}, {attr: {width: 1204}, duration: 0.6, ease: "power2.inOut"}, 1.78);
+  tl.fromTo(P+"c2", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 1.78);
+  tl.to(P+"c2", {y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 3}, 2.23);
+
+  /* HOOP @6.44 (local 3.60): ghost hoop draws up from the datum 0.6 s; label at "hoop." 6.78 (local 3.94) */
+  tl.fromTo(P+"choopr", {attr: {y: 782, height: 0}}, {attr: {y: 326, height: 456}, duration: 0.6, ease: "power2.out"}, 3.6);
+  tl.fromTo(P+"lhoop", {autoAlpha: 0, y: 14}, {autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out"}, 3.94);
+
+  /* CLINE @9.52 "Klein's" (local 6.68): Cline's house turns amber 0.3 s, scale pulse 1 -> 1.15 -> 1 */
+  tl.to(P+"cline", {autoAlpha: 1, duration: 0.3, ease: "power2.out"}, 6.68);
+  tl.to(P+"cline", {scale: 1.15, duration: 0.25, ease: "power2.out"}, 6.68);
+  tl.to(P+"cline", {scale: 1, duration: 0.35, ease: "power2.inOut"}, 6.93);
+
+  /* 5.2 @11.52 (local 8.68): Cline's bracket draws up to "feet." 12.32 (local 9.48); C3 in at 11.82 (local 8.98) */
+  tl.fromTo(P+"cclr", {attr: {y: 782, height: 0}}, {attr: {y: 568, height: 214}, duration: 0.8, ease: "power2.out"}, 8.68);
+  tl.fromTo(P+"c3", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 8.98);
+  tl.to(P+"c3", {y: -4, duration: 2.4, ease: "sine.inOut"}, 9.43);
+
+  /* "That" @13.02 (local 10.18): ghost man draws up 0.6 s; TALL MAN @14.60 (local 11.76): label in */
+  tl.fromTo(P+"cmanr", {attr: {y: 782, height: 0}}, {attr: {y: 536, height: 246}, duration: 0.6, ease: "power2.out"}, 10.18);
+  tl.fromTo(P+"lman", {autoAlpha: 0, y: 14}, {autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out"}, 11.76);
+
+  /* S6 15.00 to 15.40 (local 12.16 to 12.56): C1 to C3 up and out, hoop, man and labels fade, average line rests at 0.6 */
+  tl.to([P+"c1", P+"c2", P+"c3"], {y: -24, autoAlpha: 0, duration: 0.4, ease: "power2.in"}, 12.16);
+  tl.to([P+"hoop", P+"man", P+"lhoop", P+"lman"], {autoAlpha: 0, duration: 0.4, ease: "power2.in"}, 12.16);
+  tl.to(P+"avg", {opacity: 0.6, duration: 0.4, ease: "power2.out"}, 12.16);
+
+  /* S7 "1899," @0.14 (local 13.448): source line swaps */
+  tl.to(P+"src1", {autoAlpha: 0, x: -30, duration: 0.35, ease: "power2.in"}, 13.448);
+  tl.fromTo(P+"src2", {autoAlpha: 0, x: -30}, {autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out"}, 13.6);
+  tl.to(P+"src2", {y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 1}, 14.1);
+
+  /* BUILD @1.96 "Galveston" (local 15.268): 14 buildings rise left to right from their base, 0.04 s apart */
+  tl.to(blds, {scaleY: 1, autoAlpha: 1, duration: 0.5, ease: "back.out(1.7)", stagger: 0.04}, 15.268);
+
+  /* COTTON PORT @2.60 "world's" (local 15.908): C4 in */
+  tl.fromTo(P+"c4", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 15.908);
+  tl.to(P+"c4", {y: -4, duration: 1.5, ease: "sine.inOut", yoyo: true, repeat: 1}, 16.358);
+
+  /* FEW FEET @5.34 "a few feet" (local 18.648): average line pulses 0.6 -> 1 -> 0.6 over 0.8 s */
+  tl.to(P+"avg", {opacity: 1, duration: 0.4, ease: "sine.inOut"}, 18.648);
+  tl.to(P+"avg", {opacity: 0.6, duration: 0.4, ease: "sine.inOut"}, 19.048);
+
+  /* exit: C4 slides out over the last 0.6 s, root fades over the last 0.4 s */
+  tl.to(P+"c4", {x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in"}, 19.381);
+  tl.to(P+"root", {autoAlpha: 0, duration: 0.4, ease: "power1.in"}, 19.581);
+  window.__timelines["g-a1-11-elevation"] = tl;
+})();
+</script>
+</template>

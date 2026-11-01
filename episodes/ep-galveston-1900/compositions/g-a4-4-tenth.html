@@ -1,0 +1,119 @@
+<template>
+<style>
+  #g-a4-4-tenth-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a4-4-tenth-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .ga44-mlab { font-family:Arial, sans-serif; font-weight:700; font-size:26px; }
+  #g-a4-4-tenth-unit { font-family:Arial, sans-serif; font-weight:700; font-size:22px; fill:#93a3b2; letter-spacing:4px; }
+  #g-a4-4-tenth-m2, #g-a4-4-tenth-l2 { opacity:0; visibility:hidden; }
+
+  /* source line: top-left glass, small radius */
+  #g-a4-4-tenth-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box;
+    padding:6px 14px; border-radius:12px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; color:#c8d3e0; letter-spacing:1px; }
+
+  /* chip: left edge 1180, top 420, width 560 (right edge 1740, above y 680) */
+  #g-a4-4-tenth-chip { position:absolute; left:1180px; top:420px; width:560px; box-sizing:border-box; padding:22px 28px 20px;
+    border-radius:28px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  .ga44-main { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; white-space:nowrap; }
+  #g-a4-4-tenth-tag { margin-top:8px; font-weight:700; font-size:22px; line-height:30px; color:#93a3b2; }
+</style>
+<div id="g-a4-4-tenth-root" data-composition-id="g-a4-4-tenth" data-width="1920" data-height="1080">
+  <svg id="g-a4-4-tenth-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <!-- dial face: centre (760,560), r 330, 270 deg sweep, 135 deg per inch; ticks every 0.1 in (13.5 deg), no inch numerals -->
+    <circle cx="760" cy="560" r="330" fill="#0b1016" stroke="#5a768f" stroke-width="4"/>
+    <g stroke="#93a3b2" stroke-width="4" stroke-linecap="round">
+      <line x1="1086" y1="560" x2="1058" y2="560" transform="rotate(-225 760 560)"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-211.5 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-198 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-184.5 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-171 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1058" y2="560" transform="rotate(-157.5 760 560)"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-144 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-130.5 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-117 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-103.5 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1058" y2="560" transform="rotate(-90 760 560)"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-76.5 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-63 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-49.5 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-36 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1058" y2="560" transform="rotate(-22.5 760 560)"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(-9 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(4.5 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(18 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1072" y2="560" transform="rotate(31.5 760 560)" stroke-width="3"/>
+      <line x1="1086" y1="560" x2="1058" y2="560" transform="rotate(45 760 560)"/>
+    </g>
+    <text id="g-a4-4-tenth-unit" x="760" y="700" text-anchor="middle" dominant-baseline="central">BAROMETER</text>
+
+    <!-- mark 1 at -90 deg (12 o'clock): tip r 334, base r 352 -->
+    <polygon id="g-a4-4-tenth-m1" points="760,226 751,208 769,208" fill="#d8a13a"/>
+    <text id="g-a4-4-tenth-l1" class="ga44-mlab" x="760" y="186" text-anchor="middle" dominant-baseline="central" fill="#d8a13a">8 PM FRI</text>
+
+    <!-- mark 2 at -103.5 deg: tip r 334 (682.0,235.2), base centre r 352 (677.8,217.7) -->
+    <polygon id="g-a4-4-tenth-m2" points="682,235.2 686.6,215.6 669.1,219.8" fill="#f2f5f8"/>
+    <text id="g-a4-4-tenth-l2" class="ga44-mlab" x="560" y="210" text-anchor="middle" dominant-baseline="central" fill="#f2f5f8">5 AM SAT</text>
+
+    <!-- bracket arc r 350 from -90 to -103.5 deg; length 82.5 -> dash 84 -->
+    <path id="g-a4-4-tenth-arc" d="M760 210 A350 350 0 0 0 678.3 219.7" fill="none" stroke="#e74c3c"
+          stroke-width="4" stroke-linecap="butt" stroke-dasharray="84" stroke-dashoffset="84"/>
+
+    <!-- needle drawn at -90 deg (up), length 290; GSAP rotation is the delta around svgOrigin 760 560 -->
+    <g id="g-a4-4-tenth-needle">
+      <line x1="760" y1="560" x2="760" y2="270" stroke="#f2f5f8" stroke-width="6" stroke-linecap="round"/>
+    </g>
+    <circle cx="760" cy="560" r="11" fill="#d8a13a"/>
+  </svg>
+
+  <div id="g-a4-4-tenth-src">Isaac Cline, Monthly Weather Review, September 1900, p. 372</div>
+
+  <div id="g-a4-4-tenth-chip">
+    <div class="ga44-main">ONLY 0.1 IN</div>
+    <div class="ga44-main">LOWER</div>
+    <div id="g-a4-4-tenth-tag">than 8 PM the night before</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* comp-local time = a4-s2 word time - 6.90; host 6.90 to 11.14 = 4.24 s */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a4-4-tenth-";
+  const N = P + "needle";
+  const O = { svgOrigin: "760 560" };
+
+  tl.set(N, { rotation: 0, svgOrigin: "760 560" }, 0);
+
+  /* OFFICE @6.90: dial, 8 PM FRI mark and needle on it from frame 0; source line in */
+  tl.fromTo(P + "src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 0);
+  /* needle trembles +-0.3 deg on the mark until the creep starts */
+  tl.to(N, Object.assign({ rotation: 0.3, duration: 0.6, ease: "sine.inOut" }, O), 0);
+  tl.to(N, Object.assign({ rotation: 0, duration: 0.48, ease: "sine.inOut" }, O), 0.6);
+
+  /* BAROMETER @7.98: needle creeps from -90 to -103.5 deg (delta -13.5) 1.08 to 2.40 */
+  tl.to(N, Object.assign({ rotation: -13.5, duration: 1.32, ease: "power1.inOut" }, O), 1.08);
+
+  /* TENTH @9.24: 5 AM SAT mark and label in, bracket arc draws 0.5 s */
+  tl.fromTo(P + "m2", { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2.34);
+  tl.fromTo(P + "l2", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2.34);
+  tl.to(P + "arc", { strokeDashoffset: 0, duration: 0.5, ease: "power2.inOut" }, 2.34);
+
+  /* settle wobble +-0.3 deg around -13.5 after the needle lands */
+  tl.to(N, Object.assign({ rotation: -13.8, duration: 0.6, ease: "sine.inOut" }, O), 2.4);
+  tl.to(N, Object.assign({ rotation: -13.2, duration: 0.6, ease: "sine.inOut" }, O), 3.0);
+  tl.to(N, Object.assign({ rotation: -13.5, duration: 0.64, ease: "sine.inOut" }, O), 3.6);
+
+  /* LOWER @10.02 (cue given up: chip in at 1.74 so it settles 2.14 and reads 1.5 s before the 3.64 exit); float, then slide out in the last 0.6 s */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1.74);
+  tl.to(P + "chip", { y: -4, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.4);
+  tl.to(P + "chip", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 3.64);
+
+  window.__timelines["g-a4-4-tenth"] = tl;
+})();
+</script>
+</template>

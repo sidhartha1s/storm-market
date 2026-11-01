@@ -1,0 +1,145 @@
+<template>
+<style>
+  #g-a6-1-board-root { position:absolute; inset:0; overflow:hidden; background:#0f1d2c; font-family:Arial, sans-serif; }
+
+  /* photo: left frame of the Keystone stereo card (source px x 100 to 498), cover-fit 4.82x, window shows source y 190 to 414 */
+  #g-a6-1-board-photo { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden; }
+  #g-a6-1-board-pushin { position:absolute; left:0; top:0; width:1920px; height:1080px; transform-origin:50% 50%; }
+  #g-a6-1-board-img { position:absolute; left:-482px; top:-916px; width:4820px; height:2444px; max-width:none; }
+  #g-a6-1-board-dim { position:absolute; inset:0; background:rgba(3,5,8,0.28); }
+
+  /* blueprint sheet */
+  #g-a6-1-board-sheet { position:absolute; left:0; top:0; width:1920px; height:1080px; background:#0f1d2c; opacity:0; visibility:hidden; overflow:hidden; }
+  #g-a6-1-board-grid { position:absolute; left:0; top:0; width:2000px; height:1080px; opacity:0.18;
+    background-image:linear-gradient(to right, #5a768f 1px, transparent 1px), linear-gradient(to bottom, #5a768f 1px, transparent 1px);
+    background-size:48px 48px; }
+  #g-a6-1-board-frame { position:absolute; left:64px; top:64px; width:1792px; height:952px; box-sizing:border-box; border:2px solid #93a3b2; opacity:0.35; }
+
+  .g-a6-1-item { position:absolute; left:0; width:1920px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:64px; line-height:72px; color:#f2f5f8; opacity:0; visibility:hidden; }
+  #g-a6-1-board-i1 { top:230px; }
+  #g-a6-1-board-i2 { top:470px; }
+  #g-a6-1-board-wall { position:absolute; left:660px; top:320px; width:600px; height:90px; opacity:0; visibility:hidden; }
+  #g-a6-1-board-houses { position:absolute; left:832px; top:560px; width:256px; height:34px; opacity:0; visibility:hidden; }
+
+  /* source line, top-left (glass, shared spec) */
+  #g-a6-1-board-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:24px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+
+  /* lower-third: absolute with no width, so the card is longest line + 2 x 32 px */
+  #g-a6-1-board-lt { position:absolute; left:110px; bottom:110px; opacity:0; visibility:hidden; }
+  #g-a6-1-board-ltin { position:relative; box-sizing:border-box; padding:32px; border-radius:28px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  .g-a6-1-name { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px; line-height:50px; color:#f2f5f8; margin-top:10px; opacity:0; visibility:hidden; }
+  #g-a6-1-board-n1 { margin-top:0; }
+  #g-a6-1-board-tag { display:block; font-weight:700; font-size:24px; line-height:30px; letter-spacing:3px; color:#f5d98b; margin-top:14px; opacity:0; visibility:hidden; }
+
+  /* chip, top-right: right edge x 1824 */
+  #g-a6-1-board-chip { position:absolute; right:96px; top:140px; opacity:0; visibility:hidden; }
+  #g-a6-1-board-chipin { box-sizing:border-box; padding:14px 32px; border-radius:28px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:40px; line-height:48px; color:#f2f5f8; }
+</style>
+<div id="g-a6-1-board-root" data-composition-id="g-a6-1-board" data-width="1920" data-height="1080">
+  <div id="g-a6-1-board-photo">
+    <div id="g-a6-1-board-pushin">
+      <img id="g-a6-1-board-img" src="media/candidates/a6/A6-S1_c1_ruins-searching-for-dead.jpg" data-crop-ok="one half of a stereo card, cover-fit by design" alt="Ruins of Galveston, 1900, men searching the debris">
+      <div id="g-a6-1-board-dim"></div>
+    </div>
+  </div>
+
+  <div id="g-a6-1-board-sheet">
+    <div id="g-a6-1-board-grid"></div>
+    <div id="g-a6-1-board-frame"></div>
+    <div class="g-a6-1-item" id="g-a6-1-board-i1">1 &middot; SEAWALL</div>
+    <svg id="g-a6-1-board-wall" viewBox="0 0 600 90" width="600" height="90" xmlns="http://www.w3.org/2000/svg">
+      <path id="g-a6-1-board-wallpath" d="M0 86 L170 86 C250 84 292 58 312 6 L420 6 L420 86 L600 86" fill="none" stroke="#7fb2e5" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+    </svg>
+    <div class="g-a6-1-item" id="g-a6-1-board-i2">2 &middot; RAISE THE CITY</div>
+    <div id="g-a6-1-board-houses">
+      <svg viewBox="0 0 256 34" width="256" height="34" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="12" width="40" height="22" fill="#4a5560"/><polygon points="0,12 20,0 40,12" fill="#93a3b2"/>
+        <rect x="54" y="12" width="40" height="22" fill="#4a5560"/><polygon points="54,12 74,0 94,12" fill="#93a3b2"/>
+        <rect x="108" y="12" width="40" height="22" fill="#4a5560"/><polygon points="108,12 128,0 148,12" fill="#93a3b2"/>
+        <rect x="162" y="12" width="40" height="22" fill="#4a5560"/><polygon points="162,12 182,0 202,12" fill="#93a3b2"/>
+        <rect x="216" y="12" width="40" height="22" fill="#4a5560"/><polygon points="216,12 236,0 256,12" fill="#93a3b2"/>
+      </svg>
+    </div>
+  </div>
+
+  <div id="g-a6-1-board-src">Rosenberg Library &middot; American Society of Civil Engineers</div>
+
+  <div id="g-a6-1-board-lt">
+    <div id="g-a6-1-board-ltin">
+      <span class="g-a6-1-name" id="g-a6-1-board-n1">HENRY MARTYN ROBERT</span>
+      <span class="g-a6-1-name" id="g-a6-1-board-n2">ALFRED NOBLE</span>
+      <span class="g-a6-1-name" id="g-a6-1-board-n3">HENRY CLAY RIPLEY</span>
+      <span id="g-a6-1-board-tag">BOARD OF ENGINEERS &middot; 1901 TO 1902</span>
+    </div>
+  </div>
+
+  <div id="g-a6-1-board-chip"><div id="g-a6-1-board-chipin">REPORT &middot; JAN 25, 1902</div></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a6-1-board-";
+  /* TIMING: audio/a6-s1.words.json, comp-local = segment time (host 0.00 to 8.617).
+     three @2.26 ; engineers 2.52 to 2.92 ; They @3.58 ; two @4.24 ; plan @4.70 ; out. 5.82 to 6.16 ; Nobody @6.68 ; hold. ends 8.42 */
+  tl.set(P+"src", {autoAlpha:0}, 0);
+  tl.set(P+"sheet", {autoAlpha:0}, 0);
+  tl.set(P+"lt", {autoAlpha:0, x:-60}, 0);
+  tl.set([P+"n1", P+"n2", P+"n3", P+"tag"], {autoAlpha:0}, 0);
+  tl.set([P+"i1", P+"i2", P+"wall", P+"houses", P+"chip"], {autoAlpha:0}, 0);
+
+  /* photo push 0 to 4.40, runs under the sheet fade */
+  tl.to(P+"pushin", {scale:1.05, duration:4.4, ease:"none"}, 0);
+
+  /* source line: in 0.20, floats to the end */
+  tl.to(P+"src", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0.2);
+  tl.to(P+"src", {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:2}, 0.6);
+
+  /* THREE @2.26: card and name 1 in; names at 2.46, 2.66; tag 2.82 (after engineers 2.52) */
+  tl.fromTo(P+"lt", {x:-60, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 2.26);
+  tl.fromTo(P+"n1", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 2.26);
+  tl.fromTo(P+"n2", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 2.46);
+  tl.fromTo(P+"n3", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 2.66);
+  tl.fromTo(P+"tag", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 2.82);
+  tl.to(P+"ltin", {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:1}, 2.86);
+
+  /* SHEET @3.58: sheet fades in over the photo; grid drifts 8 px/s to the end (3.58 + 5.04 = 8.62) */
+  tl.to(P+"sheet", {autoAlpha:1, duration:0.8, ease:"power2.inOut"}, 3.58);
+  tl.to(P+"grid", {x:-40, duration:5.04, ease:"none"}, 3.58);
+
+  /* TWO-PART @4.24: item 1 in, wall profile draws 4.24 to 4.90 */
+  tl.fromTo(P+"i1", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 4.24);
+  const wp = document.getElementById("g-a6-1-board-wallpath");
+  const L = Math.ceil(wp.getTotalLength()) + 1;
+  tl.set(wp, {attr:{"stroke-dasharray":L, "stroke-dashoffset":L}}, 0);
+  tl.set(P+"wall", {autoAlpha:1}, 4.24);
+  tl.to(wp, {attr:{"stroke-dashoffset":0}, duration:0.66, ease:"power2.out"}, 4.24);
+
+  /* plan @4.70: item 2 in; houses rise 4.90 to 5.60 */
+  tl.fromTo(P+"i2", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 4.7);
+  tl.fromTo(P+"houses", {autoAlpha:0, y:30}, {autoAlpha:1, y:0, duration:0.7, ease:"back.out(1.6)"}, 4.9);
+
+  /* 5.20: lower-third out */
+  tl.to(P+"lt", {x:-980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 5.2);
+
+  /* after "out." 5.82: chip in at 6.02, floats, exits last 0.6 s */
+  tl.fromTo(P+"chip", {y:24, scale:0.94, autoAlpha:0}, {y:0, scale:1, autoAlpha:1, duration:0.45, ease:"back.out(1.6)"}, 6.02);
+  tl.to(P+"chipin", {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:0}, 6.47);
+  tl.to(P+"chip", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 8.017);
+
+  /* Nobody @6.68: icons dim to 0.55; the wall stroke pulses 0.55 to 0.9 (open question) */
+  tl.to([P+"wall", P+"houses"], {opacity:0.55, duration:0.4, ease:"power2.out"}, 6.68);
+  tl.fromTo(wp, {opacity:0.55}, {opacity:0.9, duration:1.2, ease:"sine.inOut", yoyo:true, repeat:1}, 6.68);
+
+  window.__timelines["g-a6-1-board"] = tl;
+})();
+</script>
+</template>

@@ -1,0 +1,169 @@
+<template>
+<style>
+  #g-a6-7-flood-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a6-7-flood-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+
+  /* start-hidden flood squares (also hidden by tl.set at 0) */
+  .ga67-fl { opacity:0; visibility:hidden; }
+
+  /* source line: top-left glass, small radius */
+  #g-a6-7-flood-src { position:absolute; left:96px; top:54px; max-width:1120px; box-sizing:border-box;
+    padding:6px 14px; border-radius:12px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; line-height:24px; color:#c8d3e0; letter-spacing:1px; }
+
+  /* HUD label: fixed, full brightness all window */
+  #g-a6-7-flood-lplan { position:absolute; left:120px; top:960px; font-weight:700; font-size:22px; line-height:26px;
+    color:#93a3b2; letter-spacing:3px; white-space:nowrap; opacity:0.75; }
+
+  /* glass chips */
+  .ga67-chip { position:absolute; box-sizing:border-box; border-radius:28px; white-space:nowrap; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
+  #g-a6-7-flood-c1 { left:120px; top:150px; width:432px; padding:14px 36px 16px; }
+  #g-a6-7-flood-c1main { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:40px; line-height:44px; color:#93a3b2; letter-spacing:2px; }
+  #g-a6-7-flood-c1fig { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:60px; color:#f2f5f8; }
+  #g-a6-7-flood-bar { display:block; width:360px; height:6px; margin-top:10px; border-radius:3px; background:#7fb2e5; }
+
+  #g-a6-7-flood-c2, #g-a6-7-flood-c3 { top:640px; width:640px; padding:24px 32px; }
+  #g-a6-7-flood-c2 { left:240px; }
+  #g-a6-7-flood-c3 { left:1040px; }
+  .ga67-eye { display:block; font-weight:700; font-size:24px; line-height:28px; color:#93a3b2; letter-spacing:3px; margin-bottom:10px; }
+  .ga67-row { display:flex; gap:18px; align-items:baseline; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:64px; line-height:72px; height:72px; }
+  #g-a6-7-flood-c2a, #g-a6-7-flood-c2n { color:#f2f5f8; }
+  #g-a6-7-flood-c3fig { color:#f5d98b; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a6-7-flood-root" data-composition-id="g-a6-7-flood" data-width="1920" data-height="1080">
+  <svg id="g-a6-7-flood-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g-a6-7-flood-gulf" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1d3a55"/><stop offset="1" stop-color="#04070c"/>
+      </linearGradient>
+    </defs>
+
+    <!-- plan: north up, SCHEMATIC, NOT TO SCALE. Grid 6 x 3 squares, x 300..1500, y 300..828; pushed 1.00 -> 1.03 -->
+    <g id="g-a6-7-flood-cam">
+      <!-- Gulf (south) -->
+      <rect x="0" y="846" width="1920" height="234" fill="url(#g-a6-7-flood-gulf)"/>
+      <!-- bay strip (north) -->
+      <rect x="240" y="232" width="1320" height="38" fill="#1d3a55" opacity="0.7"/>
+      <!-- island band inside the dikes -->
+      <rect x="240" y="270" width="1320" height="566" fill="#1b2430"/>
+      <!-- 18 sand squares: col x = 300 + 200 i, row y = 300 + 176 j, 3 px gap -->
+      <g fill="#7a6c4c" stroke="#a89868" stroke-width="2">
+        <rect x="303" y="303" width="194" height="170"/><rect x="503" y="303" width="194" height="170"/><rect x="703" y="303" width="194" height="170"/>
+        <rect x="903" y="303" width="194" height="170"/><rect x="1103" y="303" width="194" height="170"/><rect x="1303" y="303" width="194" height="170"/>
+        <rect x="303" y="479" width="194" height="170"/><rect x="503" y="479" width="194" height="170"/><rect x="703" y="479" width="194" height="170"/>
+        <rect x="903" y="479" width="194" height="170"/><rect x="1103" y="479" width="194" height="170"/><rect x="1303" y="479" width="194" height="170"/>
+        <rect x="303" y="655" width="194" height="170"/><rect x="503" y="655" width="194" height="170"/><rect x="703" y="655" width="194" height="170"/>
+        <rect x="903" y="655" width="194" height="170"/><rect x="1103" y="655" width="194" height="170"/><rect x="1303" y="655" width="194" height="170"/>
+      </g>
+      <!-- flood shading, 7 of 18: northern row (6) + first square of the middle row -->
+      <g fill="#2f5d86">
+        <rect id="g-a6-7-flood-f0" class="ga67-fl" x="303" y="303" width="194" height="170"/>
+        <rect id="g-a6-7-flood-f1" class="ga67-fl" x="503" y="303" width="194" height="170"/>
+        <rect id="g-a6-7-flood-f2" class="ga67-fl" x="703" y="303" width="194" height="170"/>
+        <rect id="g-a6-7-flood-f3" class="ga67-fl" x="903" y="303" width="194" height="170"/>
+        <rect id="g-a6-7-flood-f4" class="ga67-fl" x="1103" y="303" width="194" height="170"/>
+        <rect id="g-a6-7-flood-f5" class="ga67-fl" x="1303" y="303" width="194" height="170"/>
+        <rect id="g-a6-7-flood-f6" class="ga67-fl" x="303" y="479" width="194" height="170"/>
+      </g>
+      <!-- seawall line -->
+      <line x1="240" y1="840" x2="1560" y2="840" stroke="#c8d3e0" stroke-width="8" stroke-linecap="round"/>
+    </g>
+
+    <!-- HUD labels (not scaled by the push) -->
+    <g id="g-a6-7-flood-hud" font-family="Arial, sans-serif" font-weight="700" font-size="22" fill="#93a3b2" letter-spacing="3">
+      <text x="1560" y="258" text-anchor="end">BAY</text>
+      <text x="240" y="880">SEAWALL</text>
+      <text x="1560" y="880" text-anchor="end">GULF</text>
+    </g>
+  </svg>
+
+  <div id="g-a6-7-flood-src">National Weather Service Houston/Galveston · Galveston and Texas History Center, Rosenberg Library</div>
+  <div id="g-a6-7-flood-lplan">Schematic plan</div>
+
+  <div id="g-a6-7-flood-c1" class="ga67-chip">
+    <span id="g-a6-7-flood-c1main">FLOODED</span>
+    <span id="g-a6-7-flood-c1fig">40 HOURS</span>
+    <span id="g-a6-7-flood-bar"></span>
+  </div>
+
+  <div id="g-a6-7-flood-c2" class="ga67-chip">
+    <span class="ga67-eye">ALONG THE COAST</span>
+    <div class="ga67-row"><span id="g-a6-7-flood-c2a">AT LEAST</span><span id="g-a6-7-flood-c2n">0</span></div>
+  </div>
+
+  <div id="g-a6-7-flood-c3" class="ga67-chip">
+    <span class="ga67-eye">INSIDE GALVESTON</span>
+    <div class="ga67-row"><span id="g-a6-7-flood-c3fig">12 OR FEWER</span></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* host: A6-S5 0.00 to 12.92 (starts at segment start); comp-local time = word time; duration 12.92 */
+  const D = 12.92;
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a6-7-flood-";
+  const F = [P+"f0", P+"f1", P+"f2", P+"f3", P+"f4", P+"f5", P+"f6"];
+  const cnt = { v: 0 };
+  const c2n = document.querySelector(P+"c2n");
+
+  tl.set([P+"src", P+"c1", P+"c2", P+"c3", P+"c3fig"].concat(F), {autoAlpha: 0}, 0);
+  tl.set(P+"cam", {svgOrigin: "900 565"}, 0);
+  tl.set(P+"bar", {scaleX: 0, transformOrigin: "left center"}, 0);
+
+  /* whole-window motion: plan push 1.00 -> 1.03 linear */
+  tl.to(P+"cam", {scale: 1.03, duration: D, ease: "none"}, 0);
+
+  /* source line @0.20, then drifts */
+  tl.fromTo(P+"src", {autoAlpha: 0, x: -30}, {autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out"}, 0.2);
+  tl.to(P+"src", {y: -4, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 7}, 0.7);
+
+  /* water @0.14: 7 squares seep in, bay edge first, 0.227 s apart, each 0.3 s (0.14 to 1.80); then ripple 0.45 <-> 0.6 */
+  tl.fromTo(F[0], {autoAlpha: 0}, {autoAlpha: 0.45, duration: 0.3, ease: "power2.out"}, 0.14);
+  tl.fromTo(F[1], {autoAlpha: 0}, {autoAlpha: 0.45, duration: 0.3, ease: "power2.out"}, 0.367);
+  tl.fromTo(F[2], {autoAlpha: 0}, {autoAlpha: 0.45, duration: 0.3, ease: "power2.out"}, 0.594);
+  tl.fromTo(F[3], {autoAlpha: 0}, {autoAlpha: 0.45, duration: 0.3, ease: "power2.out"}, 0.821);
+  tl.fromTo(F[4], {autoAlpha: 0}, {autoAlpha: 0.45, duration: 0.3, ease: "power2.out"}, 1.048);
+  tl.fromTo(F[5], {autoAlpha: 0}, {autoAlpha: 0.45, duration: 0.3, ease: "power2.out"}, 1.275);
+  tl.fromTo(F[6], {autoAlpha: 0}, {autoAlpha: 0.45, duration: 0.3, ease: "power2.out"}, 1.502);
+  tl.fromTo(F[0], {opacity: 0.45}, {opacity: 0.6, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 9}, 0.44);
+  tl.fromTo(F[1], {opacity: 0.45}, {opacity: 0.6, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 9}, 0.667);
+  tl.fromTo(F[2], {opacity: 0.45}, {opacity: 0.6, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 9}, 0.894);
+  tl.fromTo(F[3], {opacity: 0.45}, {opacity: 0.6, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 9}, 1.121);
+  tl.fromTo(F[4], {opacity: 0.45}, {opacity: 0.6, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 9}, 1.348);
+  tl.fromTo(F[5], {opacity: 0.45}, {opacity: 0.6, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 9}, 1.575);
+  tl.fromTo(F[6], {opacity: 0.45}, {opacity: 0.6, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 9}, 1.802);
+
+  /* 40 HOURS @3.20: C1 in, clock bar runs 3.20 to 4.20 (full before C1 leaves at 4.30) */
+  tl.fromTo(P+"c1", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 3.2);
+  tl.to(P+"bar", {scaleX: 1, duration: 1.0, ease: "none"}, 3.2);
+  /* C1 out 4.30 */
+  tl.to(P+"c1", {x: -700, autoAlpha: 0, duration: 0.5, ease: "power3.in"}, 4.3);
+
+  /* At @4.46: plan and labels dim to 0.35 */
+  tl.to([P+"cam", P+"hud"], {opacity: 0.35, duration: 0.4, ease: "power2.out"}, 4.46);
+
+  /* 275 @4.68: C2 in, count-up 4.68 to 5.62 */
+  tl.fromTo(P+"c2", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 4.68);
+  tl.to(cnt, {v: 275, duration: 0.94, ease: "power3.out", onUpdate: function() { c2n.textContent = Math.round(cnt.v); }}, 4.68);
+  tl.to(P+"c2", {y: -4, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 5}, 5.13);
+
+  /* Galveston, @9.94: C3 in with its eyebrow */
+  tl.fromTo(P+"c3", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 9.94);
+  /* dozen @11.70: 12 OR FEWER lands */
+  tl.fromTo(P+"c3fig", {autoAlpha: 0, y: 18, scale: 0.9}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.8)"}, 11.7);
+  tl.to(P+"c3", {y: -4, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1}, 10.39);
+
+  /* 12.32: C2 and C3 slide out, done 12.92 */
+  tl.to(P+"c2", {x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in"}, 12.32);
+  tl.to(P+"c3", {x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in"}, 12.32);
+
+  window.__timelines["g-a6-7-flood"] = tl;
+})();
+</script>
+</template>

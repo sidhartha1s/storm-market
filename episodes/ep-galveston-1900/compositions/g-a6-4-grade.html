@@ -1,0 +1,284 @@
+<template>
+<style>
+  #g-a6-4-grade-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a6-4-grade-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+
+  /* start-hidden SVG parts (also hidden by the timeline at 0) */
+  .ga64-sand, #g-a6-4-grade-flash, #g-a6-4-grade-dots, #g-a6-4-grade-jacks, #g-a6-4-grade-fill,
+  #g-a6-4-grade-bracket, #g-a6-4-grade-church, #g-a6-4-grade-cjacks { visibility:hidden; opacity:0; }
+  #g-a6-4-grade-dikes { opacity:0.6; }
+
+  /* source line: top-left glass, small radius */
+  #g-a6-4-grade-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box;
+    padding:6px 14px; border-radius:12px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; color:#c8d3e0; letter-spacing:1px; }
+
+  /* diagram labels: HUD layer, never ride the plan push */
+  .ga64-lab { position:absolute; white-space:nowrap; font-family:Arial, sans-serif; font-weight:700;
+    font-size:22px; line-height:26px; color:#93a3b2; letter-spacing:3px; }
+  /* bay and harbour labels sit over the tan fill blocks once they fill: dark backing so they read (were grey on tan) */
+  #g-a6-4-grade-lbay, #g-a6-4-grade-lharb { padding:3px 12px; border-radius:8px; background:rgba(10,16,24,0.84); color:#dfe7ee; }
+  #g-a6-4-grade-lbay { left:480px; top:270px; }
+  #g-a6-4-grade-lgulf { left:400px; top:872px; }
+  #g-a6-4-grade-lharb { right:880px; top:290px; opacity:0; visibility:hidden; } /* right edge at x 1040 */
+  #g-a6-4-grade-lground { left:1130px; top:836px; } /* follows the mechanism panel's -40 shift */
+  #g-a6-4-grade-note { position:absolute; left:120px; top:940px; white-space:nowrap;
+    font-family:Arial, sans-serif; font-weight:700; font-size:20px; color:#93a3b2; letter-spacing:2px; }
+
+  /* chips: glass card, radius 28 */
+  .ga64-chip { position:absolute; box-sizing:border-box; padding:24px 52px; border-radius:28px;
+    white-space:nowrap; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
+  .ga64-main { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px; line-height:48px; color:#f2f5f8; }
+  .ga64-tag { display:block; margin-top:6px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#93a3b2; letter-spacing:4px; }
+  #g-a6-4-grade-c1 { left:120px; top:150px; }
+  /* chips follow the mechanism panel's -40 shift (left 1180 -> 1140) */
+  #g-a6-4-grade-c2 { left:1140px; top:150px; }
+  /* brief put C3 at top 450; at 44 px the chip runs to about x 1544 and would sit on the raised house (x 1330-1550, y 420-600), so it sits above the roof */
+  #g-a6-4-grade-c3 { left:1140px; top:300px; }
+  #g-a6-4-grade-c4 { left:1140px; top:150px; }
+</style>
+<div id="g-a6-4-grade-root" data-composition-id="g-a6-4-grade" data-width="1920" data-height="1080"
+     data-type-ok="schematic diagram by brief: chips 44 px, diagram labels 19-22 px, no 52 px element in this beat">
+  <svg id="g-a6-4-grade-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <clipPath id="g-a6-4-grade-cplan"><rect x="96" y="230" width="960" height="700"/></clipPath>
+      <!-- bracket draws upward: rect bottom pinned at 822, top tweens 822 -> 598 -->
+      <clipPath id="g-a6-4-grade-cbr"><rect id="g-a6-4-grade-cbrr" x="1220" y="822" width="60" height="0"/></clipPath>
+    </defs>
+
+    <!-- ===== PLAN PANEL (left), schematic, north up ===== -->
+    <g clip-path="url(#g-a6-4-grade-cplan)">
+      <g id="g-a6-4-grade-cam">
+        <!-- bay (north) and Gulf (south) water -->
+        <rect x="60" y="200" width="1040" height="760" fill="#0b1016"/>
+        <g id="g-a6-4-grade-waves" fill="none" stroke="#5a768f" stroke-width="2" stroke-dasharray="26 22" opacity="0.35">
+          <path d="M40,262 L1100,262"/>
+          <path d="M40,312 L1100,312"/>
+          <path d="M40,910 L1100,910"/>
+          <path d="M40,926 L1100,926"/>
+        </g>
+        <!-- island band, WSW to ENE, city at the east end -->
+        <path fill="#15202b" stroke="#93a3b2" stroke-width="2" stroke-linejoin="round"
+              d="M96,372 L1000,340 L1036,372 L1036,786 L1010,808 L96,862 Z"/>
+
+        <!-- sand fill per section, in fill order: east to west by column, top to bottom (step 0.119412 s) -->
+        <rect id="g-a6-4-grade-s0"  class="ga64-sand" x="870" y="380" width="120" height="120" fill="#c9a46b"/>
+        <rect id="g-a6-4-grade-s1"  class="ga64-sand" x="870" y="506" width="120" height="120" fill="#c9a46b"/>
+        <rect id="g-a6-4-grade-s2"  class="ga64-sand" x="870" y="632" width="120" height="120" fill="#c9a46b"/>
+        <rect id="g-a6-4-grade-s3"  class="ga64-sand" x="744" y="380" width="120" height="120" fill="#c9a46b"/>
+        <rect id="g-a6-4-grade-s4"  class="ga64-sand" x="744" y="506" width="120" height="120" fill="#c9a46b"/>
+        <rect id="g-a6-4-grade-s5"  class="ga64-sand" x="744" y="632" width="120" height="120" fill="#c9a46b"/>
+        <rect id="g-a6-4-grade-s6"  class="ga64-sand" x="618" y="380" width="120" height="120" fill="#c9a46b"/>
+        <rect id="g-a6-4-grade-s7"  class="ga64-sand" x="618" y="506" width="120" height="120" fill="#c9a46b"/>
+        <rect id="g-a6-4-grade-s8"  class="ga64-sand" x="618" y="632" width="120" height="120" fill="#c9a46b"/>
+        <rect id="g-a6-4-grade-s9"  class="ga64-sand" x="492" y="380" width="120" height="120" fill="#c9a46b"/>
+        <rect id="g-a6-4-grade-s10" class="ga64-sand" x="492" y="506" width="120" height="120" fill="#c9a46b"/>
+        <rect id="g-a6-4-grade-s11" class="ga64-sand" x="492" y="632" width="120" height="120" fill="#c9a46b"/>
+        <rect id="g-a6-4-grade-s12" class="ga64-sand" x="366" y="380" width="120" height="120" fill="#c9a46b"/>
+        <rect id="g-a6-4-grade-s13" class="ga64-sand" x="366" y="506" width="120" height="120" fill="#c9a46b"/>
+        <rect id="g-a6-4-grade-s14" class="ga64-sand" x="366" y="632" width="120" height="120" fill="#c9a46b"/>
+        <rect id="g-a6-4-grade-s15" class="ga64-sand" x="240" y="380" width="120" height="120" fill="#c9a46b"/>
+        <rect id="g-a6-4-grade-s16" class="ga64-sand" x="240" y="506" width="120" height="120" fill="#c9a46b"/>
+        <rect id="g-a6-4-grade-s17" class="ga64-sand" x="240" y="632" width="120" height="120" fill="#c9a46b"/>
+
+        <!-- dikes: 6 x 3 squares of 120 px, 6 px gaps, top-left (240, 380) -->
+        <g id="g-a6-4-grade-dikes" fill="none" stroke="#5a768f" stroke-width="3">
+          <rect x="240" y="380" width="120" height="120"/><rect x="366" y="380" width="120" height="120"/><rect x="492" y="380" width="120" height="120"/>
+          <rect x="618" y="380" width="120" height="120"/><rect x="744" y="380" width="120" height="120"/><rect x="870" y="380" width="120" height="120"/>
+          <rect x="240" y="506" width="120" height="120"/><rect x="366" y="506" width="120" height="120"/><rect x="492" y="506" width="120" height="120"/>
+          <rect x="618" y="506" width="120" height="120"/><rect x="744" y="506" width="120" height="120"/><rect x="870" y="506" width="120" height="120"/>
+          <rect x="240" y="632" width="120" height="120"/><rect x="366" y="632" width="120" height="120"/><rect x="492" y="632" width="120" height="120"/>
+          <rect x="618" y="632" width="120" height="120"/><rect x="744" y="632" width="120" height="120"/><rect x="870" y="632" width="120" height="120"/>
+        </g>
+        <!-- "one walled-off section" flash: the square that starts filling at 6.54 (fill order 6, column 3, row 0) -->
+        <rect id="g-a6-4-grade-flash" x="618" y="380" width="120" height="120" fill="none" stroke="#f2f5f8" stroke-width="5"/>
+
+        <!-- seawall along the grid's south edge, unlabelled -->
+        <path fill="none" stroke="#c8d3e0" stroke-width="6" stroke-linecap="round" d="M230,770 L1010,770"/>
+
+        <!-- sand pipe from the harbor entrance (1010, 340) into the NE square; length 180 -> dash 181 -->
+        <path id="g-a6-4-grade-pipe" fill="none" stroke="#c9a46b" stroke-width="6" stroke-linejoin="round"
+              stroke-dasharray="181" stroke-dashoffset="181" d="M1010,340 L930,340 L930,440"/>
+        <path id="g-a6-4-grade-dots" fill="none" stroke="#f5d98b" stroke-width="10" stroke-linecap="round"
+              stroke-dasharray="0 18" d="M1010,340 L930,340 L930,440"/>
+      </g>
+    </g>
+
+    <!-- ===== MECHANISM PANEL (right), cross-section, 20 px per ft; old ground y 820, 11 ft = 220 px -> y 600 ===== -->
+    <!-- presenter circle on here (pip-w15): the panel was 1150-1824 and ran under it. Static shift -40 (no mover carries it)
+         and ground 450 wide, so the panel spans screen x 1110-1560, clear of the corner x >= 1600, y >= 680 -->
+    <g transform="translate(-40 0)">
+    <rect x="1150" y="820" width="450" height="80" fill="#0b1016"/>
+    <!-- jackscrews 8 x 60, base y 880, in the ground under the house; stretch x4.6667 to reach y 600 -->
+    <g id="g-a6-4-grade-jacks" fill="#d8a13a">
+      <rect id="g-a6-4-grade-j0" x="1396" y="820" width="8" height="60"/>
+      <rect id="g-a6-4-grade-j1" x="1446" y="820" width="8" height="60"/>
+      <rect id="g-a6-4-grade-j2" x="1506" y="820" width="8" height="60"/>
+      <rect id="g-a6-4-grade-j3" x="1556" y="820" width="8" height="60"/>
+    </g>
+    <!-- sand fill under the raised house: y 600 to 820, rises from the bottom -->
+    <rect id="g-a6-4-grade-fill" x="1150" y="600" width="450" height="220" fill="#c9a46b"/>
+    <!-- 1900 ground line -->
+    <path fill="none" stroke="#93a3b2" stroke-width="3" d="M1150,820 L1600,820"/>
+
+    <!-- house glyph (g-intro-6 house scaled to 220 x 180): body 1375-1585 x 707-820, roof 1370-1590 x 640-707 -->
+    <g id="g-a6-4-grade-house">
+      <rect x="1375" y="707" width="210" height="113" fill="#4a5560"/>
+      <polygon points="1370,707 1480,640 1590,707" fill="#93a3b2"/>
+    </g>
+
+    <!-- church glyph on the raised ground: nave 260 x 170 (1340-1600, 430-600) with a 110 px steeple to y 320 -->
+    <!-- church jacks, base y 630 in the new ground; stretch x2 to lift the church 30 px -->
+    <g id="g-a6-4-grade-cjacks" fill="#d8a13a">
+      <rect id="g-a6-4-grade-cj0" x="1376" y="600" width="8" height="30"/>
+      <rect id="g-a6-4-grade-cj1" x="1426" y="600" width="8" height="30"/>
+      <rect id="g-a6-4-grade-cj2" x="1506" y="600" width="8" height="30"/>
+      <rect id="g-a6-4-grade-cj3" x="1556" y="600" width="8" height="30"/>
+    </g>
+    <g id="g-a6-4-grade-church">
+      <g id="g-a6-4-grade-cbody">
+        <rect x="1340" y="480" width="260" height="120" fill="#4a5560"/>
+        <polygon points="1340,480 1470,430 1600,480" fill="#93a3b2"/>
+        <rect x="1445" y="370" width="50" height="90" fill="#4a5560"/>
+        <polygon points="1440,370 1470,320 1500,370" fill="#93a3b2"/>
+        <g id="g-a6-4-grade-win" fill="#f5d98b" opacity="0.4">
+          <rect x="1372" y="512" width="26" height="46" rx="13"/>
+          <rect x="1457" y="512" width="26" height="46" rx="13"/>
+          <rect x="1542" y="512" width="26" height="46" rx="13"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- 11 ft bracket at x 1250: 820 -> 600 = 220 px = 11 ft x 20 px -->
+    <g id="g-a6-4-grade-bracket" clip-path="url(#g-a6-4-grade-cbr)" fill="none" stroke="#f2f5f8" stroke-width="3">
+      <path d="M1250,820 L1250,600"/>
+      <path d="M1235,820 L1265,820"/>
+      <path d="M1235,600 L1265,600"/>
+    </g>
+    </g>
+  </svg>
+
+  <div id="g-a6-4-grade-src">American Society of Civil Engineers &middot; Texas State Historical Association</div>
+  <div id="g-a6-4-grade-lbay" class="ga64-lab">Galveston Bay</div>
+  <div id="g-a6-4-grade-lgulf" class="ga64-lab">Gulf of Mexico</div>
+  <div id="g-a6-4-grade-lharb" class="ga64-lab">Harbor entrance</div>
+  <div id="g-a6-4-grade-lground" class="ga64-lab">1900 ground</div>
+  <div id="g-a6-4-grade-note">Schematic plan</div>
+
+  <div id="g-a6-4-grade-c1" class="ga64-chip"><span class="ga64-main">1903 TO 1911</span></div>
+  <div id="g-a6-4-grade-c2" class="ga64-chip"><span class="ga64-main">ABOUT 2,000</span><span class="ga64-tag">BUILDINGS</span></div>
+  <div id="g-a6-4-grade-c3" class="ga64-chip"><span class="ga64-main">UP TO 11 FT</span></div>
+  <div id="g-a6-4-grade-c4" class="ga64-chip"><span class="ga64-main">ABOUT 3,000 TONS</span></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a6-4-grade-";
+  /* a6-s3.words.json; host 0.00 to 21.46, comp-local = word time.
+     bigger 0.84 · 1903 2.10 · dredges 3.54 · harbor 4.78 · city 5.82 · one 6.56 · 2,000 8.90 · jacked 10.16
+     sand 12.28 · In 13.64 · rose 14.56 · 11 15.50 · church 16.84 · 3,000 17.70 · services 19.52 · up 21.22 (ends 21.40) */
+  const SAND = [];
+  for (let k = 0; k < 18; k++) SAND.push(P + "s" + k);
+  const CHIPS = [P+"c1", P+"c2", P+"c3", P+"c4"];
+  const JACKS = [P+"j0", P+"j1", P+"j2", P+"j3"];
+  const CJACKS = [P+"cj0", P+"cj1", P+"cj2", P+"cj3"];
+
+  /* sand blocks grow upward by attr y/height from each cell's own bottom edge (absolute user units). The scaleY +
+     percent transformOrigin form drew the settled blocks about one row (122 px) above the grid in the r4 frames
+     (origin taken from a bbox GSAP measured before layout; that read is not reproduced, so no bbox is used now). */
+  const SAND_Y = SAND.map(function (s, k) { return 380 + 126 * (k % 3); });   /* rows y 380 / 506 / 632, as the markup */
+
+  /* --- start states --- */
+  tl.set([P+"src", P+"lharb", P+"flash", P+"dots", P+"jacks", P+"fill", P+"bracket", P+"church"].concat(CHIPS), {autoAlpha: 0}, 0);
+  tl.set(SAND, {autoAlpha: 0, attr: {y: function (i) { return SAND_Y[i] + 120; }, height: 0}}, 0);
+  tl.set(JACKS, {scaleY: 0, transformOrigin: "50% 100%"}, 0);
+  tl.set(CJACKS, {scaleY: 1, transformOrigin: "50% 100%"}, 0);
+  tl.set(P+"fill", {scaleY: 0, transformOrigin: "50% 100%"}, 0);
+  tl.set(P+"dikes", {opacity: 0.6}, 0);
+  tl.set(P+"cam", {svgOrigin: "1010 340", scale: 1}, 0);
+
+  /* --- whole-window motion: water hatching drifts, sand dots run the pipe (visible from 4.40) --- */
+  tl.to(P+"waves", {x: 96, duration: 21.46, ease: "none"}, 0);
+  tl.fromTo(P+"dots", {attr: {"stroke-dashoffset": 0}}, {attr: {"stroke-dashoffset": -1288}, duration: 21.46, ease: "none"}, 0);
+
+  /* plan push in the gaps, about the harbor entrance so the pipe head holds still */
+  tl.to(P+"cam", {scale: 1.012, duration: 2.10, ease: "none"}, 0);
+  tl.to(P+"cam", {scale: 1.03, duration: 3.64, ease: "none"}, 13.20);
+
+  /* source line in at 0.20, drifts */
+  tl.fromTo(P+"src", {autoAlpha: 0, x: -30}, {autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out"}, 0.2);
+  tl.to(P+"src", {y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 7}, 0.7);
+
+  /* bigger @0.84: dikes pulse once 0.6 -> 1 -> 0.8 */
+  tl.to(P+"dikes", {opacity: 1, duration: 0.3, ease: "power2.out"}, 0.84);
+  tl.to(P+"dikes", {opacity: 0.8, duration: 0.4, ease: "power2.in"}, 1.14);
+
+  /* 1903 @2.10: C1 in */
+  tl.fromTo(P+"c1", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 2.1);
+  tl.to(P+"c1", {y: -4, duration: 2.0, ease: "sine.inOut", yoyo: true, repeat: 1}, 2.55);
+
+  /* SAND @3.54: pipe draws from the entrance 3.54 to 4.40, then the dots show */
+  tl.to(P+"pipe", {attr: {"stroke-dashoffset": 0}, duration: 0.86, ease: "power2.inOut"}, 3.54);
+  tl.fromTo(P+"dots", {autoAlpha: 0}, {autoAlpha: 1, duration: 0.3, ease: "power2.out"}, 4.4);
+  /* harbor @4.78 */
+  tl.fromTo(P+"lharb", {autoAlpha: 0, y: 12}, {autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out"}, 4.78);
+
+  /* city @5.82: sections fill one after another, 0.35 s each, all done by 8.20 */
+  tl.fromTo(SAND, {autoAlpha: 0, attr: {y: function (i) { return SAND_Y[i] + 120; }, height: 0}},
+    {autoAlpha: 1, attr: {y: function (i) { return SAND_Y[i]; }, height: 120}, duration: 0.35, ease: "power2.out", stagger: 0.119412}, 5.82);
+
+  /* one @6.56: C1 out; the section starting to fill flashes its dike */
+  tl.to(P+"c1", {x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in"}, 6.56);
+  tl.fromTo(P+"flash", {autoAlpha: 0}, {autoAlpha: 1, duration: 0.15, ease: "power2.out"}, 6.56);
+  tl.to(P+"flash", {autoAlpha: 0, duration: 0.5, ease: "power2.in"}, 7.1);
+
+  /* 2,000 @8.90: C2 in */
+  tl.fromTo(P+"c2", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 8.9);
+  tl.to(P+"c2", {y: -4, duration: 2.1, ease: "sine.inOut", yoyo: true, repeat: 1}, 9.35);
+
+  /* JACKS @10.16: screws rise into place under the house */
+  tl.set(P+"jacks", {autoAlpha: 1}, 10.16);
+  tl.to(JACKS, {scaleY: 1, duration: 0.3, ease: "power3.out", stagger: 0.02}, 10.16);
+  /* 10.54 to 11.80: house goes up 220 px, screws stretch 60 -> 280 px from their base (same ease, so tops stay under the house) */
+  tl.to(P+"house", {y: -220, duration: 1.26, ease: "power2.inOut"}, 10.54);
+  tl.to(JACKS, {scaleY: 4.666667, duration: 1.26, ease: "power2.inOut"}, 10.54);
+
+  /* so @11.94 / sand @12.28: sand rises under the raised house 12.28 to 13.20 */
+  tl.set(P+"fill", {autoAlpha: 1}, 12.28);
+  tl.to(P+"fill", {scaleY: 1, duration: 0.92, ease: "power2.out"}, 12.28);
+
+  /* In @13.64: C2 out */
+  tl.to(P+"c2", {x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in"}, 13.64);
+
+  /* rose @14.56: bracket draws up 14.56 to 15.40 */
+  tl.set(P+"bracket", {autoAlpha: 1}, 14.56);
+  tl.fromTo(P+"cbrr", {attr: {y: 822, height: 0}}, {attr: {y: 598, height: 224}, duration: 0.84, ease: "power2.out"}, 14.56);
+  /* 11 FT @15.50: C3 in, out at 16.40 */
+  tl.fromTo(P+"c3", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 15.5);
+  tl.to(P+"c3", {x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in"}, 16.4);
+
+  /* CHURCH @16.84: house cross-fades to the church (0.5 s); the bracket goes with it */
+  tl.to([P+"house", P+"jacks", P+"bracket"], {autoAlpha: 0, duration: 0.5, ease: "power1.inOut"}, 16.84);
+  tl.fromTo([P+"church", P+"cjacks"], {autoAlpha: 0}, {autoAlpha: 1, duration: 0.5, ease: "power1.inOut"}, 16.84);
+
+  /* 3,000 @17.70: C4 in, floats to the end */
+  tl.fromTo(P+"c4", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 17.7);
+  tl.to(P+"c4", {y: -4, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1}, 18.15);
+
+  /* services @19.52: church goes up 30 px on its jacks while the windows glow, 19.52 to 21.10 */
+  tl.to(P+"church", {y: -30, duration: 1.58, ease: "none"}, 19.52);
+  tl.to(CJACKS, {scaleY: 2, duration: 1.58, ease: "none"}, 19.52);
+  tl.fromTo(P+"win", {opacity: 0.4}, {opacity: 0.8, duration: 1.2, ease: "sine.inOut"}, 19.52);
+
+  /* exit: cut to g-a6-5, root fades to 0 over the last 0.4 s (21.06 to 21.46) */
+  tl.to(P+"root", {autoAlpha: 0, duration: 0.4, ease: "power1.in"}, 21.06);
+  window.__timelines["g-a6-4-grade"] = tl;
+})();
+</script>
+</template>

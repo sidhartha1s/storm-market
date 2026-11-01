@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a6-5-track1915 · A6-S4 0.00 to 7.06 · ep-galveston-1900 · standard · brief: briefs/a6/g-a6-5-track1915.md
+  Claim: in August 1915 another big hurricane came ashore about 30 miles southwest of Galveston.
+  Source line: National Weather Service Houston/Galveston (sources-a6.md §4) + Rosenberg Library. TRACK IS SCHEMATIC:
+  HURDAT2 was not fetched in this lane (browser-free, no net pull), so one arrow from the SE Gulf to the landfall point.
+
+  PLATE (as g-intro-4 / g-intro-8): X = (lon + 100) * 90, Y = (41 - lat) * 103.95, north up.
+    Coastline = the Texas coast ring of g-intro-8-track's land path (Natural Earth 10m, public domain), the points near
+    Galveston copied by hand (indices 1696..1735, 1743..1758 of that ring) and closed inland; Galveston Island = that file's
+    4-point island polygon. Bay shoreline is the source ring's, not redrawn.
+  PIN: Galveston (-94.80, 29.30) = plate (468.0, 1216.2).
+  LANDFALL: on the coast segment Follets Island (435.7,1242.6)->(395.8,1271.9) at u = 0.065 = plate (433.1, 1244.5)
+    = lon -95.188, lat 29.028; distance to the pin by the brief's rule (1 deg lat = 69 mi, 1 deg lon = 60.4 mi) = 30.0 mi
+    (27.9 mi at the segment's NE vertex, so the point sits inside 30 +-5 mi).
+  CAMERA (static, brief §2): cx,cy = midpoint = (450.553, 1230.360); s = 300 / 44.92 plate px = 6.6785;
+    screen = 960 + (X - cx) * s, 540 + (Y - cy) * s  ->  translate(-2049.004, -7676.913) scale(6.678464) on #plate.
+    Pin screen (1076.52, 445.53); landfall screen (843.48, 634.47); separation 300.0 px. The 1.00 -> 1.03 drift is a GSAP
+    scale of #world about (960,540), linear over the whole host.
+  TRACK (screen px, inside #world): M1480,1150 Q1130,880 843.48,634.47 -- enters from below the frame (ring top edge y > 1080
+    at the start), approaches from the SE, ends on the coast at the landfall point. Ring and track head share one d
+    (getPointAtLength), so the ring sits on the head at every time.
+  CORNER: ring, track and pin all stay at x < 1600 for the whole window (track x runs 1480 -> 843; pin x 1076), so the
+    corner x >= 1600, y >= 680 stays empty and the presenter circle can stay on.
+-->
+<template>
+<style>
+  #g-a6-5-track1915-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .ga65-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .ga65-land { fill:#15202b; stroke:#5a768f; stroke-width:2px; stroke-linejoin:round; }
+  .ga65-lab { font-family:Arial, sans-serif; font-weight:700; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .ga65-labbig { font-family:'Arial Black', Arial, sans-serif; font-weight:900; paint-order:stroke; stroke:#04070c; stroke-width:6px; stroke-linejoin:round; }
+  .ga65-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  .ga65-src { position:absolute; left:96px; top:54px; max-width:1100px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    font-weight:700; font-size:19px; line-height:1.4; color:#c8d3e0; white-space:nowrap; }
+  .ga65-chip { position:absolute; left:120px; top:150px; }
+  .ga65-chipin { display:table; padding:18px 32px; border-radius:28px; }
+  .ga65-chipmain { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
+  .ga65-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a6-5-track1915-root" data-composition-id="g-a6-5-track1915" data-width="1920" data-height="1080">
+  <svg class="ga65-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <g id="g-a6-5-track1915-world">
+      <!-- plate units, fixed framing (static; the drift is on #world) -->
+      <g id="g-a6-5-track1915-plate" transform="translate(-2049.004,-7676.913) scale(6.678464)">
+        <path class="ga65-land" vector-effect="non-scaling-stroke" d="M691.7,1191.9 L658.5,1184.6 L612.0,1167.1 L579.7,1168.1 L555.2,1174.6 L549.6,1165.2 L559.6,1158.4 L561.6,1147.5 L553.1,1144.8 L545.6,1163.6 L551.2,1177.2 L530.8,1177.7 L481.1,1200.4 L471.4,1209.3 L468.8,1207.9 L476.9,1199.3 L494.6,1192.7 L496.3,1188.6 L469.9,1192.3 L477.7,1175.0 L473.9,1166.1 L467.4,1166.1 L461.2,1178.2 L457.2,1179.3 L445.3,1169.5 L444.2,1173.3 L451.3,1177.2 L447.8,1191.0 L458.3,1195.8 L453.1,1198.6 L455.1,1203.5 L457.4,1201.4 L466.1,1208.5 L460.0,1208.3 L457.8,1214.6 L439.6,1229.2 L434.7,1225.7 L435.7,1242.6 L395.8,1271.9 L364.3,1279.8 L343.1,1279.5 L325.5,1275.5 L320.0,1271.9 L307.9,1277.3 L301.4,1275.5 L250.0,1275.0 L250.0,1000.0 L700.0,1000.0 Z"/>
+        <!-- Galveston Island: the 4-point sliver of the source file -->
+        <path class="ga65-land" vector-effect="non-scaling-stroke" d="M464.9,1210.0 L474.8,1212.8 L439.5,1238.1 L465.5,1214.4 Z"/>
+      </g>
+      <!-- schematic track: screen px, drawn by strokeDashoffset behind the ring -->
+      <path id="g-a6-5-track1915-trk" d="M1480,1150 Q1130,880 843.48,634.47" fill="none" stroke="#f2f5f8" stroke-width="5" stroke-linecap="round"/>
+      <!-- distance bracket: landfall (843.48,634.47) to pin (1076.52,445.53); end ticks 20 px, perpendicular -->
+      <line id="g-a6-5-track1915-brk" class="ga65-hide" x1="843.48" y1="634.47" x2="1076.52" y2="445.53" stroke="#d8a13a" stroke-width="2"/>
+      <line id="g-a6-5-track1915-tickl" class="ga65-hide" x1="837.2" y1="626.7" x2="849.8" y2="642.3" stroke="#d8a13a" stroke-width="2"/>
+      <line id="g-a6-5-track1915-tickg" class="ga65-hide" x1="1070.2" y1="437.7" x2="1082.8" y2="453.3" stroke="#d8a13a" stroke-width="2"/>
+      <!-- Galveston pin -->
+      <circle id="g-a6-5-track1915-halo" cx="1076.52" cy="445.53" r="7" fill="none" stroke="#f2f5f8" stroke-width="2" opacity="0"/>
+      <circle id="g-a6-5-track1915-pin" cx="1076.52" cy="445.53" r="7" fill="#f2f5f8"/>
+      <!-- storm ring: 96 px outer (r 45 + 3); position written by place(d); pulse and spin on nested groups -->
+      <g id="g-a6-5-track1915-ring-at" class="ga65-hide">
+        <g id="g-a6-5-track1915-ring-pulse">
+          <g style="filter:drop-shadow(0 0 8px rgba(242,245,248,0.85)) drop-shadow(0 0 18px rgba(127,178,229,0.55))">
+            <circle r="45" fill="rgba(242,245,248,0.06)" stroke="#f2f5f8" stroke-width="6"/>
+          </g>
+          <g id="g-a6-5-track1915-ring-spin">
+            <circle r="32" fill="none" stroke="#7fb2e5" stroke-width="4" stroke-dasharray="16 14" stroke-linecap="round"/>
+          </g>
+        </g>
+      </g>
+    </g>
+    <!-- HUD: fixed screen positions, outside the drift -->
+    <g id="g-a6-5-track1915-hud">
+      <text id="g-a6-5-track1915-galv" class="ga65-labbig ga65-hide" x="1112" y="466" font-size="52" fill="#f2f5f8">Galveston</text>
+      <!-- 30 MILES: inland (NW) side of the bracket midpoint (960,540), 24 px off the line; right end at x 944, baseline y 521 -->
+      <text id="g-a6-5-track1915-lab30" class="ga65-lab ga65-hide" x="944" y="521" text-anchor="end" font-size="28" fill="#d8a13a">30 MILES</text>
+    </g>
+  </svg>
+  <div class="ga65-src ga65-glass ga65-hide" id="g-a6-5-track1915-src">National Weather Service Houston/Galveston &middot; Rosenberg Library &middot; Track: schematic</div>
+  <div class="ga65-chip ga65-hide" id="g-a6-5-track1915-chip">
+    <div class="ga65-chipin ga65-glass" id="g-a6-5-track1915-chipin"><span class="ga65-chipmain" id="g-a6-5-track1915-chipt">AUGUST 1915</span></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a6-5-track1915-";
+  const $ = function (n) { return document.getElementById("g-a6-5-track1915-" + n); };
+
+  const trk = $("trk"), brk = $("brk"), ringAt = $("ring-at");
+  const TOT = trk.getTotalLength();
+  const TLC = Math.ceil(TOT) + 1;                                              /* dash lengths: ceil(len)+1 */
+  const BLC = Math.ceil(brk.getTotalLength()) + 1;
+  trk.style.strokeDasharray = TLC + " " + TLC;
+  brk.style.strokeDasharray = BLC + " " + BLC;
+  brk.style.strokeDashoffset = BLC;
+  /* ring = track head: both written from the same d, so the ring sits on the head at every time (seek-safe) */
+  function place(d) {
+    const p = trk.getPointAtLength(Math.min(d, TOT));
+    ringAt.setAttribute("transform", "translate(" + p.x.toFixed(2) + "," + p.y.toFixed(2) + ")");
+    trk.style.strokeDashoffset = (TLC - d).toFixed(2);
+  }
+  place(0);
+  const st = { d: 0 };
+
+  const tl = gsap.timeline({ paused: true });
+  tl.set(P + "world", { scale: 1, svgOrigin: "960 540" }, 0);
+  tl.set(P + "ring-pulse", { scale: 1, svgOrigin: "0 0" }, 0);
+
+  /* whole window: camera drift 1.00 -> 1.03 linear, ring spin, pin halo */
+  tl.to(P + "world", { scale: 1.03, svgOrigin: "960 540", duration: 7.06, ease: "none" }, 0);
+  tl.to(P + "ring-spin", { rotation: 360, svgOrigin: "0 0", duration: 7.06, ease: "none" }, 0);
+  tl.fromTo(P + "halo", { scale: 1, opacity: 0.8, svgOrigin: "1076.52 445.53" }, { scale: 2.2, opacity: 0, svgOrigin: "1076.52 445.53", duration: 1.4, ease: "power1.out", repeat: 4 }, 0);
+
+  /* PLATE + PIN 0.00: plate and pin are on from the first frame; label lands */
+  tl.fromTo(P + "galv", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.0);
+  tl.fromTo(P + "src", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.2);
+  tl.to(P + "src", { y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 2 }, 0.6);
+
+  /* AUG 1915 @0.46 ("August" 0.46): rail chip in, lands by 0.96 ("1915," 0.96) */
+  tl.fromTo(P + "chip", { autoAlpha: 0, y: 24, scale: 0.94 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 0.46);
+  tl.to(P + "chipin", { y: -4, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 5 }, 1.0);
+
+  /* TRACK @2.40 ("another" 2.40): ring enters from below the frame and runs the track; on the coast at "ashore," 3.70 */
+  tl.set(ringAt, { autoAlpha: 1 }, 2.38);
+  tl.to(st, { d: TOT, duration: 1.3, ease: "power1.inOut", onUpdate: function () { place(st.d); } }, 2.40);
+
+  /* 30 MILES @4.80 ("about" 4.62, "30" 4.80, "miles" 5.20): bracket draws landfall -> pin 4.62 to 5.20, label in at 5.20 */
+  tl.set(P + "brk", { autoAlpha: 1 }, 4.62);
+  tl.fromTo(P + "tickl", { autoAlpha: 0, scale: 0.2, svgOrigin: "843.48 634.47" }, { autoAlpha: 1, scale: 1, svgOrigin: "843.48 634.47", duration: 0.25, ease: "back.out(2)" }, 4.62);
+  tl.to(P + "brk", { strokeDashoffset: 0, duration: 0.58, ease: "power2.inOut" }, 4.62);
+  tl.fromTo(P + "tickg", { autoAlpha: 0, scale: 0.2, svgOrigin: "1076.52 445.53" }, { autoAlpha: 1, scale: 1, svgOrigin: "1076.52 445.53", duration: 0.25, ease: "back.out(2)" }, 5.0);
+  tl.fromTo(P + "lab30", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.2);
+
+  /* SOUTHWEST @5.56 ("southwest" 5.56): landfall pulses once, ring scale 1 -> 1.15 -> 1 */
+  tl.to(P + "ring-pulse", { scale: 1.15, svgOrigin: "0 0", duration: 0.25, ease: "power2.out" }, 5.56);
+  tl.to(P + "ring-pulse", { scale: 1, svgOrigin: "0 0", duration: 0.25, ease: "power2.in" }, 5.81);
+
+  /* 6.46 ("city." 6.38 to 6.62): chip and label out */
+  tl.to(P + "chip", { x: -760, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 6.46);
+  tl.to(P + "lab30", { x: -140, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 6.46);
+
+  /* EXIT: root holds to 7.06 for the cut to g-a6-6, fades over the last 0.3 s */
+  tl.to(P + "root", { autoAlpha: 0, duration: 0.3, ease: "power1.in" }, 6.76);
+
+  window.__timelines["g-a6-5-track1915"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

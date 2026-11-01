@@ -1,0 +1,87 @@
+<template>
+<style>
+  @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+  #g-a3-12-330-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  .g-a3-12-330-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  /* source line, top-left, in with the panel */
+  #g-a3-12-330-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    font-weight:700; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+  /* popfig: centred on x 1280 (right half, clear of the clip's face zone), top 38%; y 410 to about 600, left of nothing in the x>=1600 corner */
+  #g-a3-12-330-pf { position:absolute; left:1080px; width:640px; top:38%; text-align:center; white-space:nowrap; transform-origin:center; }
+  #g-a3-12-330-pfin { display:block; }
+  #g-a3-12-330-pfbig { display:block; font-family:'AbrilFig', Georgia, serif; font-size:150px; line-height:1.1; color:#d0121f; letter-spacing:0.04em; opacity:0; visibility:hidden;
+    text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+  #g-a3-12-330-pfsub { display:block; margin-top:10px; font-family:Arial, sans-serif; font-weight:700; font-size:32px; color:#e8e3d8; letter-spacing:0.42em; opacity:0; visibility:hidden;
+    text-shadow:0 0 14px rgba(0,0,0,0.95), 0 3px 10px #000; }
+  /* panel: glass card 525 x 207 at left 1000, top 200 (right edge 1525, bottom 407; nothing in x>=1600, y>=680) */
+  #g-a3-12-330-panel { position:absolute; left:1180px; top:200px; width:638px; box-sizing:border-box; padding:14px; border-radius:28px; opacity:0; visibility:hidden; }
+  #g-a3-12-330-panelin { position:relative; width:610px; height:108px; }
+  /* crop measured on the 1150 x 1563 scan: right column, image x 577 to 1046 (column rule at 574-575 and left column ink to 568 excluded, right ink ends 1037),
+     image y 209 to 378 = printed lines "the center of the city" through "under water added the following to the special observation at";
+     the next line holds the message text and is cropped out. Scale 1.06. */
+  #g-a3-12-330-crop { position:absolute; left:0; top:0; width:610px; height:108px; overflow:hidden; border-radius:10px; isolation:isolate; background:#e9e4d6; }
+  #g-a3-12-330-img { position:absolute; left:-750.1px; top:-406.9px; width:1495px; height:2032px; max-width:none; }
+  #g-a3-12-330-dim { position:absolute; left:0; top:0; width:610px; height:84px; background:rgba(10,16,24,0.46); }
+  #g-a3-12-330-dimline { position:absolute; left:0; top:84px; width:610px; height:24px; background:rgba(10,16,24,0.46); }
+  /* opaque slab over the message words on the 3:30 line (image x 663 on): the message is never readable */
+  #g-a3-12-330-msgmask { position:absolute; left:112px; top:84px; width:498px; height:24px; background:#141c26; }
+  /* amber band on the 3:30 line (image y 378 to 394 -> crop y 84 to 106) */
+  #g-a3-12-330-band { position:absolute; left:0; top:84px; width:610px; height:22px; background:#d8a13a; opacity:0.72; mix-blend-mode:multiply; transform-origin:left center; visibility:hidden; }
+</style>
+<div id="g-a3-12-330-root" data-composition-id="g-a3-12-330" data-width="1920" data-height="1080">
+  <div id="g-a3-12-330-src" class="g-a3-12-330-glass">Isaac Cline, Monthly Weather Review, Sept. 1900, p. 373</div>
+  <div id="g-a3-12-330-pf"><div id="g-a3-12-330-pfin"><span id="g-a3-12-330-pfbig">3:30 PM</span><span id="g-a3-12-330-pfsub">SATURDAY, SEPT 8</span></div></div>
+  <div id="g-a3-12-330-panel" class="g-a3-12-330-glass">
+    <div id="g-a3-12-330-panelin">
+      <div id="g-a3-12-330-crop">
+        <img id="g-a3-12-330-img" src="media/candidates/a3/A3-S11_c1_mwr-sept1900-p373_cline-3-30-panel.png" alt="Monthly Weather Review, September 1900, page 373" data-crop-ok="page 373 cropped to whole lines of the right column around the 3:30 sentence; the message text line is cut out on purpose">
+        <div id="g-a3-12-330-dim"></div>
+        <div id="g-a3-12-330-dimline"></div>
+        <div id="g-a3-12-330-band"></div>
+        <div id="g-a3-12-330-msgmask"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a3-12-330-";
+  /* TIMING: ins-paul-4-v2.mp4 whisper words (clip 9.944 s, host starts at clip start).
+     3:30 @0.22 (".30" @0.44) ; Isaac @2.50 ; line @3.54 ; Washington @4.02 ; wires @5.88 ; down @6.06 ; Nobody @7.10 */
+  tl.set(P+"src", {autoAlpha:0}, 0);
+  tl.set(P+"pfbig", {autoAlpha:0, scale:1.35}, 0);
+  tl.set(P+"pfsub", {autoAlpha:0, y:16}, 0);
+  tl.set(P+"pf", {scale:1}, 0);
+  tl.set(P+"panel", {autoAlpha:0, y:24, scale:0.94}, 0);
+  tl.set(P+"band", {scaleX:0}, 0);
+
+  /* 3:30 @0.22: sub in at 0.22, big slams in at 0.34; both drift until the exit */
+  tl.to(P+"pfsub", {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.22);
+  tl.to(P+"pfbig", {autoAlpha:1, scale:1, duration:0.5, ease:"power4.out"}, 0.34);
+  tl.to(P+"pfin", {y:-4, duration:1.2, ease:"sine.inOut", yoyo:true, repeat:1}, 0.84);
+  /* Isaac @2.50: popfig out 2.50 to 2.95 (before the panel at 3.54) */
+  tl.to(P+"pf", {autoAlpha:0, scale:0.92, duration:0.45, ease:"power2.in"}, 2.50);
+
+  /* line @3.54: panel and source line in; amber band draws 3.54 to 4.02 (Washington @4.02) */
+  tl.to(P+"panel", {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)"}, 3.54);
+  tl.to(P+"src", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 3.54);
+  tl.to(P+"dimline", {autoAlpha:0, duration:0.48, ease:"power2.out"}, 3.54);
+  tl.set(P+"band", {autoAlpha:1}, 3.54);
+  tl.to(P+"band", {scaleX:1, duration:0.48, ease:"power2.out"}, 3.54);
+  /* drift on the inner box and the source line, ends before the exit at 7.10 */
+  tl.to(P+"panelin", {y:-4, duration:1.5, ease:"sine.inOut", yoyo:true, repeat:1}, 3.99);
+  tl.to(P+"src", {y:-4, duration:1.5, ease:"sine.inOut", yoyo:true, repeat:1}, 3.94);
+  /* wires @5.88, down @6.06: band turns red at 6.06 */
+  tl.to(P+"band", {backgroundColor:"#c0392b", duration:0.3, ease:"power2.out"}, 6.06);
+  /* Nobody @7.10: panel and source line out by 7.70; Paul alone until the cut */
+  tl.to(P+"panel", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 7.10);
+  tl.to(P+"src", {autoAlpha:0, duration:0.6, ease:"power2.in"}, 7.10);
+  /* keep the timeline to the host end (9.944, mount in index.html); nothing is on screen from 7.70 */
+  tl.to(P+"root", {autoAlpha:1, duration:0.06}, 9.884);
+  window.__timelines["g-a3-12-330"] = tl;
+})();
+</script>
+</template>
