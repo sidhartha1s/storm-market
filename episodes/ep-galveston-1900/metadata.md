@@ -22,8 +22,8 @@ Nine years before the storm, Galveston's own newspaper told its readers no hurri
 Sources and courtesy credits: Galveston Daily News, 16 July 1891 (Portal to Texas History, transcription via Wikimedia Commons, CC0); Isaac Cline, "Special Report on the Galveston Hurricane", Monthly Weather Review, September 1900 (NWS Heritage); E. B. Garriott, "West Indian Hurricane of September 1 to 12, 1900", Monthly Weather Review; NOAA Atlantic Oceanographic and Meteorological Laboratory on the 1900 telegraph rule; U.S. Weather Bureau publications and daily weather maps via the Internet Archive and NOAA Central Library (public domain); Library of Congress and Wikimedia Commons photographs of Galveston after the storm (public domain, Detroit Publishing Co. postcards); Thomas Edison film "Searching Ruins on Broadway, Galveston" (1900, Library of Congress, public domain); Pexels and Pixabay stock (free licences).
 
 Chapters
-0:00 An absurd delusion
-1:53 The man who wrote it
+0:00 The weatherman's promise
+1:53 An absurd delusion
 4:03 Havana
 6:45 The turn that never came
 10:25 Saturday
