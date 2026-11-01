@@ -41,6 +41,22 @@ REPO = Path(__file__).resolve().parent.parent
 SEG_ID = r"([A-Z]\d+-S\d+[a-z]?)\b"  # segment id at the start of a heading, e.g. 'A3-S5'
 
 
+def segment_blocks(md: str):
+    """(segment id, heading line, body) for every heading whose text starts with a segment id. Splits on ANY
+    markdown heading, so a '## SECTION' boundary (and any note under it) never leaks into the previous segment."""
+    for b in re.split(r"\n#{1,6} ", "\n" + md.replace("\r\n", "\n"))[1:]:
+        header, _, rest = b.partition("\n")
+        m = re.match(SEG_ID, header)
+        if m:
+            yield m.group(1).lower(), header, rest
+
+
+def open_verify_ids(md: str):
+    """Segment ids whose heading block (narration, Picture, Rows, notes) still carries an open [verify] marker.
+    script-scaling.md "Section lock" counts every marker on the section, not only those in the spoken line."""
+    return {sid for sid, header, rest in segment_blocks(md) if "[verify" in header + rest}
+
+
 class SegmentParseError(Exception):
     """A segment's markdown doesn't parse unambiguously into narration text."""
 
@@ -69,13 +85,7 @@ def parse_segments(md: str):
     must hard-fail on 0, not skip loud.
     """
     segs = []
-    blocks = re.split(r"\n#{1,6} ", "\n" + md.replace("\r\n", "\n"))
-    for b in blocks[1:]:
-        header, _, rest = b.partition("\n")
-        m = re.match(SEG_ID, header)
-        if not m:
-            continue
-        sid = m.group(1).lower()
+    for sid, _, rest in segment_blocks(md):
         # Scan the WHOLE block (already heading-delimited, so this can never cross into a
         # later segment or section) for blockquote paragraphs — 'Visual:' notes sit BEFORE
         # the quote in some episodes (ep3-tristate, ep1-joplin) and AFTER it in others
@@ -232,7 +242,8 @@ def main():
     # marker on it is resolved. TTS is the mechanical backstop for that rule: never voice a
     # segment that still carries one, whether it's in the --only set or the whole script.
     selected = [(sid, text) for sid, text in segs if not only or sid in only]
-    unresolved = sorted(sid for sid, text in selected if "[verify" in text)
+    open_ids = open_verify_ids(script_md)  # a marker anywhere on the segment, not only in the spoken line
+    unresolved = sorted(sid for sid, _ in selected if sid in open_ids)
     if unresolved:
         sys.exit(f"[tts_episode] FAIL — {len(unresolved)} segment(s) still carry an open "
                  f"[verify] marker, not TTS-safe: {unresolved} (script-scaling.md 'Script "
