@@ -1,7 +1,7 @@
 # g-a5-6-reviews · A5-S5 · standard · Sonnet 5.5, high effort
 
 Read first: `references/mg-quickref.md` (whole file), `library/inhouse/snippets/tokens.md`, `learnings/mg.md`. Template: `references/mg-brief-template.md`.
-Start from: official `split-tilt-cards` (`library/official/`, two equal cards from opposite wings; use the arrival, drop the 3D tilt to under 6°) and `library/inhouse/quote-card.html` (Georgia italic quote, phrase reveal).
+Start from: `library/inhouse/quote-card.html` (panel, Georgia italic quote, phrase reveal) for both report cards and the quote card. The official catalog block `split-tilt-cards` (two cards arriving from opposite wings) is the motion reference only: it is not in `library/official/`, so read it with `npx hyperframes catalog --query "split tilt cards"` and never install it into the episode.
 
 ## 0. What this graphic claims
 Two reviews came the next summer: the city's, by an NYU Wagner team, out 2 Jun 2023; the state's, by Guidehouse, out 4 Aug 2023 with 12 recommendations. One of the state's lines, eight words: "Clearly communicate the risks associated with weather events."

@@ -7,8 +7,8 @@
     panel      x200..1500 y210..790 r28 gradient #15202b -> #0b1016, 1px rgba(255,255,255,.14)
     header     Courier New 700 26 #93a3b2 ls2, left260, tops 250/290/330 (line box 40)
     divider    x260..1440 y390
-    body       Courier New 700 36 #dfe7ee ls1, left260, tops 430/494/558 (line box 64)
-    char pitch body 36*0.6 + 1 = 22.6 px; header 26*0.6 + 2 = 17.6 px
+    text lines Courier New 700 36 #dfe7ee ls1, left260, tops 430/494/558 (line box 64)
+    char pitch text lines 36*0.6 + 1 = 22.6 px; header 26*0.6 + 2 = 17.6 px
     rule       4px #d8a13a, y476, under "very large and powerful" = chars 5..27 of L1:
                left 260 + 5*22.6 = 373, width 23*22.6 - 1 = 518.8 -> 519
     cursor     20x40 block #dfe7ee, follows the typed end (top = line top + 12)

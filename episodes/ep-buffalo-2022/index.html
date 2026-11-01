@@ -8,16 +8,18 @@
      A3-S12 -> A4-S1 by the orchestrator 28 Oct 26 to sit inside channel.cta.window (A3-S12 -> A4-S1 is now a plain seam, bo-a4).
      GROUND PLATES (gp-*): two comps are shorter than their segment + 0.30 s seam and the next beat is also a comp, so a plain
      ground section (the root colour) covers 0.30 to 0.40 s. Where the next beat is footage, the footage starts early instead.
-     PAUL: the hook line is his real Flow clips ins-paul-1 + ins-paul-2, the A3-S12 tease is ins-paul-4 (29 Oct 26; no TTS under them).
-     RETIME 29 Oct 26, two one-shot uniform shifts (orchestrator's call): (1) the real hook runs to 17.156, 1.551 s past the old 15.605,
-     so every data-start and still punch at or after 15.605 moved +1.551 s and sx-bed-a1 runs on to 166.551; (2) ins-paul-4 needs 5.56 s
-     against the old 4.12 s slot, so everything from bo-a4 (old 702.574) on moved a further +1.44 s and sx-bed-a4 runs on to 193.44.
-     Times written in the comments below are the pre-retime ones unless marked: add 1.551 from 15.605, and 2.991 from old 702.574. A5 graphics g-a5-1 to g-a5-10 mounted
+     PAUL: all six Flow clips are mounted (29 Oct 26; no TTS under his words): hook ins-paul-1 + ins-paul-2, A1-S7 ins-paul-3,
+     A3-S12 tease ins-paul-4, A4-S10 tail ins-paul-5, A5-S8 first sentence ins-paul-6.
+     RETIME 29 Oct 26, five one-shot uniform shifts (orchestrator's call; Paul speaks slower than the TTS), in old (28 Oct) times:
+     (1) +1.551 from 15.605 (hook); (2) +1.44 from bo-a4 702.574 (clip 4); (3) +1.284 from bo-a5 883.287 (clip 5);
+     (4) +2.271 from nx-a1-s8 256.81 (clip 3); (5) +4.15 from nx-a5-s8 1012.74 (clip 6). Beds that end where a shift starts run on by it
+     (sx-bed-a1 166.551, a2 169.271, a4 193.44, a5 268.284, a6 56.337), so no bed gap opens. Times written in the comments below
+     are the 28 Oct ones unless marked: add 1.551 from 15.605, 3.822 from 256.81, 5.262 from 702.574, 6.546 from 883.287, 10.696 from 1012.74. A5 graphics g-a5-1 to g-a5-10 mounted
      28 Oct 26; the old A5 stand-in stills under the opaque full-frame comps were removed the same day (never visible). Presenter circle windows pip-w1..w7 mounted 28 Oct 26 (see PRESENTER CIRCLE); beds mounted; no SFX yet. g-a3-10-hochul-lt
      mounted text-only 28 Oct 26 (no licensed Hochul still).
-     END: g-a5-10-close runs its 4.0 s tail past A5-S9 (brief), so the episode is 1071.31 s after both shifts (was 1065.823, then
+     END: g-a5-10-close runs its 4.0 s tail past A5-S9 (brief), so the episode is 1079.015 s after the five shifts (was 1065.823, then
      1068.819, then 1068.319 when the 0.5 s seam after the end ask went, 28 Oct 26, to put e1 inside config end_ask.last_s).
-     CTA at 503.751 s of 1071.31 s = 0.470 (after both shifts), inside config channel.cta.window [0.40, 0.60]. -->
+     CTA at 506.022 s of 1079.015 s = 0.469 (after the five shifts), inside config channel.cta.window [0.40, 0.60]. -->
      <!-- A2-S10 -> CTA: g-a2-11 (16.40 s) is cut at 15.736 s so the dip-in sits 0.087 s after the last word (lint dip_in 1.0 + 0.1). -->
 <html lang="en">
 <head>
@@ -43,7 +45,7 @@
   </style>
 </head>
 <body>
-<div id="root" data-composition-id="ep-buffalo-2022" data-start="0" data-width="1920" data-height="1080" data-duration="1072.594" data-fps="30">
+<div id="root" data-composition-id="ep-buffalo-2022" data-start="0" data-width="1920" data-height="1080" data-duration="1075.719" data-fps="30">
 
   <!-- ============ NARRATION (ffprobe wav durations, tempo 0.94) ============ -->
   <!-- h1-s1 is Paul's on-camera line: spoken by ins-paul-1 + ins-paul-2 (PICTURE, track 1), so no TTS here (29 Oct 26) -->
@@ -61,70 +63,72 @@
   <audio id="nx-a1-s5" src="audio/a1-s5.wav" data-start="192.888" data-duration="34.535" data-volume="0.89"></audio>
   <audio id="nx-a1-s6" src="audio/a1-s6.wav" data-start="228.213" data-duration="23.89" data-volume="0.89"></audio>
   <!-- a1-s7 is spoken by ins-paul-3 (PICTURE, track 1) since 29 Oct 26, so no TTS here -->
-  <audio id="nx-a1-s8" src="audio/a1-s8.wav" data-start="258.361" data-duration="13.111" data-volume="0.89"></audio>
-  <audio id="nx-a1-s9" src="audio/a1-s9.wav" data-start="272.262" data-duration="18.771" data-volume="0.89"></audio>
-  <audio id="nx-a1-s10" src="audio/a1-s10.wav" data-start="291.662" data-duration="10.713" data-volume="0.89"></audio>
+  <audio id="nx-a1-s8" src="audio/a1-s8.wav" data-start="260.632" data-duration="13.111" data-volume="0.89"></audio>
+  <audio id="nx-a1-s9" src="audio/a1-s9.wav" data-start="274.533" data-duration="18.771" data-volume="0.89"></audio>
+  <audio id="nx-a1-s10" src="audio/a1-s10.wav" data-start="293.933" data-duration="10.713" data-volume="0.89"></audio>
   <!-- A2 (no A2-S6) -->
-  <audio id="nx-a2-s1" src="audio/a2-s1.wav" data-start="303.962" data-duration="22.237" data-volume="0.89"></audio>
-  <audio id="nx-a2-s2" src="audio/a2-s2.wav" data-start="326.802" data-duration="14.803" data-volume="0.89"></audio>
-  <audio id="nx-a2-s3" src="audio/a2-s3.wav" data-start="341.962" data-duration="24.873" data-volume="0.89"></audio>
-  <audio id="nx-a2-s4" src="audio/a2-s4.wav" data-start="367.382" data-duration="13.312" data-volume="0.89"></audio>
-  <audio id="nx-a2-s5" src="audio/a2-s5.wav" data-start="381.484" data-duration="13.551" data-volume="0.89"></audio>
-  <audio id="nx-a2-s7" src="audio/a2-s7.wav" data-start="395.825" data-duration="35.837" data-volume="0.89"></audio>
-  <audio id="nx-a2-s8" src="audio/a2-s8.wav" data-start="432.025" data-duration="36.375" data-volume="0.89"></audio>
-  <audio id="nx-a2-s9" src="audio/a2-s9.wav" data-start="469.025" data-duration="17.2" data-volume="0.89"></audio>
-  <audio id="nx-a2-s10" src="audio/a2-s10.wav" data-start="487.015" data-duration="15.649" data-volume="0.89"></audio>
+  <audio id="nx-a2-s1" src="audio/a2-s1.wav" data-start="306.233" data-duration="22.237" data-volume="0.89"></audio>
+  <audio id="nx-a2-s2" src="audio/a2-s2.wav" data-start="329.073" data-duration="14.803" data-volume="0.89"></audio>
+  <audio id="nx-a2-s3" src="audio/a2-s3.wav" data-start="344.233" data-duration="24.873" data-volume="0.89"></audio>
+  <audio id="nx-a2-s4" src="audio/a2-s4.wav" data-start="369.653" data-duration="13.312" data-volume="0.89"></audio>
+  <audio id="nx-a2-s5" src="audio/a2-s5.wav" data-start="383.755" data-duration="13.551" data-volume="0.89"></audio>
+  <audio id="nx-a2-s7" src="audio/a2-s7.wav" data-start="398.096" data-duration="35.837" data-volume="0.89"></audio>
+  <audio id="nx-a2-s8" src="audio/a2-s8.wav" data-start="434.296" data-duration="36.375" data-volume="0.89"></audio>
+  <audio id="nx-a2-s9" src="audio/a2-s9.wav" data-start="471.296" data-duration="17.2" data-volume="0.89"></audio>
+  <audio id="nx-a2-s10" src="audio/a2-s10.wav" data-start="489.286" data-duration="15.649" data-volume="0.89"></audio>
   <!-- A3 (no A3-S5); a3-s12 is Paul's tease, TTS take stands in for ins-paul-4 -->
-  <audio id="nx-a3-s1" src="audio/a3-s1.wav" data-start="528.793" data-duration="14.808" data-volume="0.89"></audio>
-  <audio id="nx-a3-s2" src="audio/a3-s2.wav" data-start="543.993" data-duration="14.18" data-volume="0.89"></audio>
-  <audio id="nx-a3-s3" src="audio/a3-s3.wav" data-start="558.473" data-duration="16.55" data-volume="0.89"></audio>
-  <audio id="nx-a3-s4" src="audio/a3-s4.wav" data-start="575.813" data-duration="14.65" data-volume="0.89"></audio>
-  <audio id="nx-a3-s6" src="audio/a3-s6.wav" data-start="591.253" data-duration="18.51" data-volume="0.89"></audio>
-  <audio id="nx-a3-s7" src="audio/a3-s7.wav" data-start="610.063" data-duration="16.625" data-volume="0.89"></audio>
-  <audio id="nx-a3-s8" src="audio/a3-s8.wav" data-start="627.188" data-duration="19.925" data-volume="0.89"></audio>
-  <audio id="nx-a3-s9" src="audio/a3-s9.wav" data-start="647.413" data-duration="14.369" data-volume="0.89"></audio>
-  <audio id="nx-a3-s10" src="audio/a3-s10.wav" data-start="662.572" data-duration="23.984" data-volume="0.89"></audio>
-  <audio id="nx-a3-s11" src="audio/a3-s11.wav" data-start="686.856" data-duration="12.649" data-volume="0.89"></audio>
+  <audio id="nx-a3-s1" src="audio/a3-s1.wav" data-start="531.064" data-duration="14.808" data-volume="0.89"></audio>
+  <audio id="nx-a3-s2" src="audio/a3-s2.wav" data-start="546.264" data-duration="14.18" data-volume="0.89"></audio>
+  <audio id="nx-a3-s3" src="audio/a3-s3.wav" data-start="560.744" data-duration="16.55" data-volume="0.89"></audio>
+  <audio id="nx-a3-s4" src="audio/a3-s4.wav" data-start="578.084" data-duration="14.65" data-volume="0.89"></audio>
+  <audio id="nx-a3-s6" src="audio/a3-s6.wav" data-start="593.524" data-duration="18.51" data-volume="0.89"></audio>
+  <audio id="nx-a3-s7" src="audio/a3-s7.wav" data-start="612.334" data-duration="16.625" data-volume="0.89"></audio>
+  <audio id="nx-a3-s8" src="audio/a3-s8.wav" data-start="629.459" data-duration="19.925" data-volume="0.89"></audio>
+  <audio id="nx-a3-s9" src="audio/a3-s9.wav" data-start="649.684" data-duration="14.369" data-volume="0.89"></audio>
+  <audio id="nx-a3-s10" src="audio/a3-s10.wav" data-start="664.843" data-duration="23.984" data-volume="0.89"></audio>
+  <audio id="nx-a3-s11" src="audio/a3-s11.wav" data-start="689.127" data-duration="12.649" data-volume="0.89"></audio>
   <!-- a3-s12 is spoken by ins-paul-4 (PICTURE, track 1) since 29 Oct 26, so no TTS here -->
   <!-- A4 (plain act seam since the hinge moved to a2/a3, orchestrator 28 Oct 26) -->
-  <audio id="nx-a4-s1" src="audio/a4-s1.wav" data-start="706.265" data-duration="19.214" data-volume="0.89"></audio>
-  <audio id="nx-a4-s2" src="audio/a4-s2.wav" data-start="726.179" data-duration="17.903" data-volume="0.89"></audio>
-  <audio id="nx-a4-s3" src="audio/a4-s3.wav" data-start="744.382" data-duration="12.265" data-volume="0.89"></audio>
-  <audio id="nx-a4-s4" src="audio/a4-s4.wav" data-start="757.147" data-duration="16.849" data-volume="0.89"></audio>
-  <audio id="nx-a4-s5" src="audio/a4-s5.wav" data-start="774.296" data-duration="23.292" data-volume="0.89"></audio>
-  <audio id="nx-a4-s6" src="audio/a4-s6.wav" data-start="797.888" data-duration="18.843" data-volume="0.89"></audio>
-  <audio id="nx-a4-s7" src="audio/a4-s7.wav" data-start="817.231" data-duration="9.86" data-volume="0.89"></audio>
-  <audio id="nx-a4-s8" src="audio/a4-s8.wav" data-start="827.631" data-duration="17.591" data-volume="0.89"></audio>
-  <audio id="nx-a4-s9" src="audio/a4-s9.wav" data-start="845.831" data-duration="24.315" data-volume="0.89"></audio>
-  <audio id="nx-a4-s10" src="audio/a4-s10.wav" data-start="870.746" data-duration="7.25" data-volume="0.89"></audio>
+  <audio id="nx-a4-s1" src="audio/a4-s1.wav" data-start="708.536" data-duration="19.214" data-volume="0.89"></audio>
+  <audio id="nx-a4-s2" src="audio/a4-s2.wav" data-start="728.45" data-duration="17.903" data-volume="0.89"></audio>
+  <audio id="nx-a4-s3" src="audio/a4-s3.wav" data-start="746.653" data-duration="12.265" data-volume="0.89"></audio>
+  <audio id="nx-a4-s4" src="audio/a4-s4.wav" data-start="759.418" data-duration="16.849" data-volume="0.89"></audio>
+  <audio id="nx-a4-s5" src="audio/a4-s5.wav" data-start="776.567" data-duration="23.292" data-volume="0.89"></audio>
+  <audio id="nx-a4-s6" src="audio/a4-s6.wav" data-start="800.159" data-duration="18.843" data-volume="0.89"></audio>
+  <audio id="nx-a4-s7" src="audio/a4-s7.wav" data-start="819.502" data-duration="9.86" data-volume="0.89"></audio>
+  <audio id="nx-a4-s8" src="audio/a4-s8.wav" data-start="829.902" data-duration="17.591" data-volume="0.89"></audio>
+  <audio id="nx-a4-s9" src="audio/a4-s9.wav" data-start="848.102" data-duration="24.315" data-volume="0.89"></audio>
+  <audio id="nx-a4-s10" data-cut-by="ins-paul-5" src="audio/a4-s10.wav" data-start="873.017" data-duration="7.25" data-volume="0.89"></audio>
   <!-- A5 -->
-  <audio id="nx-a5-s1" src="audio/a5-s1.wav" data-start="888.262" data-duration="18.749" data-volume="0.89"></audio>
-  <audio id="nx-a5-s2" src="audio/a5-s2.wav" data-start="907.511" data-duration="16.737" data-volume="0.89"></audio>
-  <audio id="nx-a5-s3" src="audio/a5-s3.wav" data-start="924.748" data-duration="21.075" data-volume="0.89"></audio>
-  <audio id="nx-a5-s4" src="audio/a5-s4.wav" data-start="946.323" data-duration="13.626" data-volume="0.89"></audio>
-  <audio id="nx-a5-s5" src="audio/a5-s5.wav" data-start="960.449" data-duration="25.299" data-volume="0.89"></audio>
-  <audio id="nx-a5-s6" src="audio/a5-s6.wav" data-start="986.248" data-duration="15.731" data-volume="0.89"></audio>
-  <audio id="nx-a5-s7" src="audio/a5-s7.wav" data-start="1002.479" data-duration="14.036" data-volume="0.89"></audio>
-  <audio id="nx-a5-s8" src="audio/a5-s8.wav" data-start="1017.015" data-duration="25.189" data-volume="0.89"></audio>
-  <audio id="nx-a5-s9" src="audio/a5-s9.wav" data-start="1058.204" data-duration="10.394" data-volume="0.89"></audio>
+  <audio id="nx-a5-s1" src="audio/a5-s1.wav" data-start="890.533" data-duration="18.749" data-volume="0.89"></audio>
+  <audio id="nx-a5-s2" src="audio/a5-s2.wav" data-start="909.782" data-duration="16.737" data-volume="0.89"></audio>
+  <audio id="nx-a5-s3" src="audio/a5-s3.wav" data-start="927.019" data-duration="21.075" data-volume="0.89"></audio>
+  <audio id="nx-a5-s4" src="audio/a5-s4.wav" data-start="948.594" data-duration="13.626" data-volume="0.89"></audio>
+  <audio id="nx-a5-s5" src="audio/a5-s5.wav" data-start="962.72" data-duration="25.299" data-volume="0.89"></audio>
+  <audio id="nx-a5-s6" src="audio/a5-s6.wav" data-start="988.519" data-duration="15.731" data-volume="0.89"></audio>
+  <audio id="nx-a5-s7" src="audio/a5-s7.wav" data-start="1004.75" data-duration="14.036" data-volume="0.89"></audio>
+  <!-- a5-s8's first sentence is spoken by ins-paul-6 (29 Oct 26): the TTS starts at its 3.60 (in the pause before "and" 3.70),
+       0.304 s after Paul's last word (1023.436); g-a5-9 starts at Paul's end and its cues are the TTS time - 3.296 (was start 1027.036 = host + 3.60, a 3.8 s silent gap) -->
+  <audio id="nx-a5-s8" data-cut-by="ins-paul-6" src="audio/a5-s8.wav" data-start="1023.74" data-duration="21.589" data-media-start="3.6" data-volume="0.89"></audio>
+  <audio id="nx-a5-s9" src="audio/a5-s9.wav" data-start="1061.329" data-duration="10.394" data-volume="0.89"></audio>
 
   <!-- ============ SOUND: music beds (DeAPI scores, claim-free, assets/sfx/deapi/README.md). Off under the CTA + its dips (501.2-527.242)
        and under the end ask (1038.429-1053.929). Each file is the README duration minus its ~3 s silent tail. Not yet volumedetect-compensated:
        the tension score is LOUD (README mean -11.5 dB), so 0.08. ============ -->
   <audio id="sx-bed-a1" src="media/beds/score-act1-darkambient.mp3" data-bed="" data-start="0" data-duration="166.551" data-volume="0.13"></audio>
   <audio id="sx-bed-a2" src="media/beds/score-act2-unease.mp3" data-bed="" data-start="166.551" data-duration="169.271" data-volume="0.13"></audio>
-  <audio id="sx-bed-a3" src="media/beds/score-act3-urgent.mp3" data-bed="" data-start="333.551" data-duration="169.2" data-volume="0.13"></audio>
-  <audio id="sx-bed-a4" src="media/beds/score-act4-stormhybrid.mp3" data-bed="" data-start="528.793" data-duration="193.44"data-volume="0.13"></audio>
-  <audio id="sx-bed-a5" src="media/beds/score-act5-tension.mp3" data-bed="" data-start="722.233" data-duration="268.284" data-volume="0.08"></audio>
-  <audio id="sx-bed-a6" src="media/beds/score-act3-somber.mp3" data-bed="" data-start="990.517" data-duration="52.187" data-volume="0.13"></audio>
+  <audio id="sx-bed-a3" src="media/beds/score-act3-urgent.mp3" data-bed="" data-start="335.822" data-duration="169.2" data-volume="0.13"></audio>
+  <audio id="sx-bed-a4" src="media/beds/score-act4-stormhybrid.mp3" data-bed="" data-start="531.064" data-duration="193.44"data-volume="0.13"></audio>
+  <audio id="sx-bed-a5" src="media/beds/score-act5-tension.mp3" data-bed="" data-start="724.504" data-duration="268.284" data-volume="0.08"></audio>
+  <audio id="sx-bed-a6" src="media/beds/score-act3-somber.mp3" data-bed="" data-start="992.788" data-duration="53.041" data-volume="0.13"></audio>
 
   <!-- ============ PICTURE, track 1 (footage under every overlay comp for its whole host window) ============ -->
   <!-- H1-S1: Paul's hook line, Flow clips 1 and 2 (logo over the Flow star, 1080p: the -v2 files). Trimmed to speech by silencedetect
        -35 dB + raw-01.words.json: clip 1 speaks 0 to 9.650 (+0.15 tail), clip 2 from 0.278 (-0.15 head) to 7.184, so a 0.30 s pause at
        the 1->2 jump cut and the 0.30 s seam into nx-h1-s2 (voice ends 16.856, h1-s2 at 17.156). The hook ran 1.551 s past its old
        15.605 window: everything from 15.605 on moved +1.551 s (orchestrator 29 Oct 26: retime, no jump cuts inside the takes). -->
-  <video id="ins-paul-1" src="media/paul/ins-paul-1/ins-paul-1-v2.mp4" data-start="0" data-duration="9.8" data-media-start="0" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Look at this with me. Two days before Christmas Eve, four years ago, the weather service in Buffalo wrote this down: blizzard warning, starting Friday morning."></video>
-  <video id="ins-paul-2" src="media/paul/ins-paul-2/ins-paul-2-v2.mp4" data-start="9.8" data-duration="7.356" data-media-start="0.128" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="They were right about almost all of it. And still, forty-six people in Erie County lost their lives."></video>
+  <video id="ins-paul-1" src="media/paul/ins-paul-1/ins-paul-1-v3.mp4" data-start="0" data-duration="9.8" data-media-start="0" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Look at this with me. Two days before Christmas Eve, four years ago, the weather service in Buffalo wrote this down: blizzard warning, starting Friday morning."></video>
+  <video id="ins-paul-2" src="media/paul/ins-paul-2/ins-paul-2-v3.mp4" data-start="9.8" data-duration="7.356" data-media-start="0.128" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="They were right about almost all of it. And still, forty-six people in Erie County lost their lives."></video>
   <!-- H1-S2: DVIDS 7576030, Guard soldier at a front door, 30 Dec 2022 (pick), under g-intro-2 chips -->
   <section class="clip still-wrap" id="c-h2-door" data-start="17.156" data-duration="4.7" data-track-index="1"><img id="kb-h2-door" src="media/intro/H1-S2_c1_guard-welfare-door.jpg" alt=""></section>
   <!-- 28 Oct 26 (no still over 6 s): the welfare-check beat cuts to DVIDS 7576032, a soldier knocking at a second door, same series, 30 Dec 2022 -->
@@ -143,126 +147,134 @@
        (cadence: a segment ending on a graphic, floor 0.30). On camera for "Then the warning said it in", then g-a1-7 cuts in over his
        voice (opaque, so he is never under it) with its "travel" cue on his "Travel" (+0.30 s), and lifts the quote as he says it.
        7.819 s against the TTS slot's 5.548 s: a1-s8 and everything after moved +2.271 s. -->
-  <video id="ins-paul-3" src="media/paul/ins-paul-3/ins-paul-3-v2.mp4" data-start="252.813" data-duration="7.819" data-media-start="1.325" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Then the warning said it in four plain words. 'Travel is strongly discouraged.'"></video>
-  <video id="v-a1-s10-street" src="media/a1/A1-S10_c1_rain-night-street.mp4" data-start="291.662" data-duration="4.6" data-track-index="1" muted></video>
-  <section class="clip blackout" id="bo-a2" data-start="303.262" data-duration="0.7" data-track-index="1"></section>
+  <video id="ins-paul-3" src="media/paul/ins-paul-3/ins-paul-3-v3.mp4" data-start="252.813" data-duration="7.819" data-media-start="1.325" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Then the warning said it in four plain words. 'Travel is strongly discouraged.'"></video>
+  <video id="v-a1-s10-street" src="media/a1/A1-S10_c2_heavy-rain-street-169-trim.mp4" data-start="293.933" data-duration="4.6" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-a2" data-start="305.533" data-duration="0.7" data-track-index="1"></section>
 
   <!-- A2-S1 8.60 to 19.40: the stock beat alone (windshield pick, then the backup for cadence), between g-a2-1 and g-a2-2 -->
-  <video id="v-a2-s1-wind" src="media/a2/A2-S1_c1_rainy-street-windshield.mp4" data-start="312.562" data-duration="5.4" data-track-index="1" muted></video>
-  <video id="v-a2-s1-wipers" src="media/a2/A2-S1_c2_wipers-wet-windshield.mp4" data-start="317.962" data-duration="5.4" data-track-index="1" muted></video>
+  <video id="v-a2-s1-wind" src="media/a2/A2-S1_c1_rainy-street-windshield.mp4" data-start="314.833" data-duration="5.4" data-track-index="1" muted></video>
+  <video id="v-a2-s1-wipers" src="media/a2/A2-S1_c2_wipers-wet-windshield.mp4" data-start="320.233" data-duration="5.4" data-track-index="1" muted></video>
   <!-- A2-S2 to A2-S10: full-frame comps. g-a2-11 is cut at the CTA dip-in (501.2), 0.66 s before its own fade ends -->
 
   <!-- ============ CTA (config channel.cta: paul-storm-ready-v9-oct20.mp4, 24.042 s, md5 bba0b9f3..., staged in media/cta/) ============ -->
   <!-- Hinge moved to the a2/a3 seam (orchestrator 28 Oct 26; edit_script still names A3-S12 -> A4-S1): a2-s10 ends 501.113,
        bo-cta-in 501.2, ins-cta-paul 502.2-526.242 (0.470 of 1068.319), bo-cta-out 526.242; a3-s1 opens at 527.242.
-       After the 29 Oct 26 retime (+1.551): bo-cta-in 502.751, ins-cta-paul 503.751-527.793 (0.470 of 1071.31), a3-s1 528.793.
+       After the 29 Oct 26 retime (+3.822 here): bo-cta-in 505.022, ins-cta-paul 506.022-530.064 (0.469 of 1079.015), a3-s1 531.064.
        The dip-out middle is the a2/a3 render seam. -->
-  <section class="clip blackout" id="bo-cta-in" data-start="502.751" data-duration="1.0" data-track-index="1"></section>
-  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v9-oct20.mp4" data-start="503.751" data-duration="24.042" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
-  <section class="clip blackout" id="bo-cta-out" data-start="527.793" data-duration="1.0" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-cta-in" data-start="505.022" data-duration="1.0" data-track-index="1"></section>
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v9-oct20.mp4" data-start="506.022" data-duration="24.042" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+  <section class="clip blackout" id="bo-cta-out" data-start="530.064" data-duration="1.0" data-track-index="1"></section>
 
   <!-- A3-S1 0 to 11.60: Carrotflower, Main and Laurel St, 23 Dec 2022, CC BY-SA 4.0, soft focus under g-a3-1 -->
-  <section class="clip still-wrap" id="c-a3-s1-laurel" data-start="528.793" data-duration="5.8" data-track-index="1"><img id="kb-a3-s1-laurel" class="soft" src="media/a3/A3-S1_c1_laurel-street.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a3-s1-laurel" data-start="531.064" data-duration="5.8" data-track-index="1"><img id="kb-a3-s1-laurel" class="soft" src="media/a3/A3-S1_c1_laurel-street.jpg" alt=""></section>
   <!-- then Carrotflower Laurel St, 24 Dec 2022 (a second frame of the same street, CC BY-SA 4.0), also soft under the name card -->
-  <section class="clip still-wrap" id="c-a3-s1-laurel2" data-start="534.593" data-duration="5.8" data-track-index="1" data-callback="the Laurel St storm frame first seen here returns at A3-S11 and A5-S1 as the street the story keeps coming back to"><img id="kb-a3-s1-laurel2" class="soft" src="media/a5/A4-S10_c2_laurel-street.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a3-s1-laurel2" data-start="536.864" data-duration="5.8" data-track-index="1" data-callback="the Laurel St storm frame first seen here returns at A3-S11 and A5-S1 as the street the story keeps coming back to"><img id="kb-a3-s1-laurel2" class="soft" src="media/a5/A4-S10_c2_laurel-street.jpg" alt=""></section>
   <!-- A3-S2: g-a3-3 is 0.10 s shorter than its wav; the next beat (g-a3-4) is a comp, so a ground plate covers the seam.
        On track 2 (the comp lane it bridges), not track 1: a src-less track-1 section was read by sweep_episode.py as the next still (28 Oct 26). -->
-  <section class="clip ground" id="gp-a3-s2" data-start="558.073" data-duration="0.4" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a3-s2" data-start="560.344" data-duration="0.4" data-track-index="2"></section>
   <!-- A3-S7: Carrotflower, abandoned vehicles on West Utica St, 27 Dec 2022, CC BY-SA 4.0 (starts on g-a3-7's end) under g-a3-8;
        then Carrotflower Laurel St parked cars in whiteout (23 Dec), sharp, then the Carrotflower Delaware Ave bulldozer (27 Dec): all three are
        Carrotflower CC BY-SA, because g-a3-8's "Photo: Andre Carrotflower" credit stays on screen the whole window -->
-  <section class="clip still-wrap" id="c-a3-s7-utica" data-start="609.613" data-duration="5.9" data-track-index="1"><img id="kb-a3-s7-utica" src="media/a3/A4-S3_c2_abandoned-vehicles-utica.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a3-s7-laurel" data-start="615.513" data-duration="5.9" data-track-index="1" data-callback="the act-3 street returns sharp under the abandoned-car quotes: the parked cars the name card blurred"><img id="kb-a3-s7-laurel" src="media/a3/A3-S1_c1_laurel-street.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a3-s7-dozer" data-start="621.413" data-duration="5.775" data-track-index="1"><img id="kb-a3-s7-dozer" src="media/a5/A4-S1_c3_bulldozer-burger-king.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a3-s7-utica" data-start="611.884" data-duration="5.9" data-track-index="1"><img id="kb-a3-s7-utica" src="media/a3/A4-S3_c2_abandoned-vehicles-utica.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a3-s7-laurel" data-start="617.784" data-duration="5.9" data-track-index="1" data-callback="the act-3 street returns sharp under the abandoned-car quotes: the parked cars the name card blurred"><img id="kb-a3-s7-laurel" src="media/a3/A3-S1_c1_laurel-street.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a3-s7-dozer" data-start="623.684" data-duration="5.775" data-track-index="1"><img id="kb-a3-s7-dozer" src="media/a5/A4-S1_c3_bulldozer-burger-king.jpg" alt=""></section>
   <!-- A3-S9 0 to 6.70: STAND-IN for the Hochul briefing still (none licensed): Carrotflower, Main St Cold Spring, 24 Dec 2022,
        then DVIDS 7576033 Guard soldiers on welfare checks at a Buffalo door (30 Dec); no overlay comp, so no credit pill to match -->
-  <section class="clip still-wrap" id="c-a3-s9-main" data-start="646.928" data-duration="3.6" data-track-index="1"><img id="kb-a3-s9-main" src="media/a3/A4-S10_c3_cold-spring-main-street.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a3-s9-guard" data-start="650.528" data-duration="3.585" data-track-index="1"><img id="kb-a3-s9-guard" src="media/a5/A5-S7_c2_dvids-welfare-checks-residents.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a3-s9-main" data-start="649.199" data-duration="3.6" data-track-index="1"><img id="kb-a3-s9-main" src="media/a3/A4-S10_c3_cold-spring-main-street.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a3-s9-guard" data-start="652.799" data-duration="3.585" data-track-index="1"><img id="kb-a3-s9-guard" src="media/a5/A5-S7_c2_dvids-welfare-checks-residents.jpg" alt=""></section>
   <!-- A3-S11: STAND-IN for the single-car-under-a-streetlight shot: Carrotflower Laurel St whiteout video, 23 Dec 2022 evening, CC BY-SA 4.0, muted, under g-a3-13;
        then the 24 Dec Carrotflower Laurel St frame (snow-covered SUV) while g-a3-13's Carrotflower credit is up (to 693.905),
        then DVIDS 7574755 Buffalo residential street at night (27 Dec) after the comp ends -->
-  <video id="v-a3-s11-whiteout" src="media/a3/I1-S2_c3_laurel-street-whiteout-commons.webm" data-start="686.292" data-duration="6.0" data-track-index="1" muted></video>
-  <section class="clip still-wrap" id="c-a3-s11-laurel" data-start="692.292" data-duration="4.0" data-track-index="1" data-callback="the Laurel St frame from the name card returns sharp: a car buried where the choice is made"><img id="kb-a3-s11-laurel" src="media/a5/A4-S10_c2_laurel-street.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a3-s11-night" data-start="696.292" data-duration="3.713" data-track-index="1"><img id="kb-a3-s11-night" src="media/a3/A3-S11_c3_dvids-7574755.jpg" alt=""></section>
+  <video id="v-a3-s11-whiteout" src="media/a3/I1-S2_c3_laurel-street-whiteout-commons.webm" data-start="688.563" data-duration="6.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-a3-s11-laurel" data-start="694.563" data-duration="4.0" data-track-index="1" data-callback="the Laurel St frame from the name card returns sharp: a car buried where the choice is made"><img id="kb-a3-s11-laurel" src="media/a5/A4-S10_c2_laurel-street.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a3-s11-night" data-start="698.563" data-duration="3.713" data-track-index="1"><img id="kb-a3-s11-night" src="media/a3/A3-S11_c3_dvids-7574755.jpg" alt=""></section>
   <!-- A3-S12: Paul's tease, Flow clip 4 (logo + 1080p: -v2). Speech 1.068 to 5.978 in the clip (silencedetect -35 dB; Whisper puts
        "They" at 0.62 but the take is silent until 1.068), so media from 0.918 (0.15 s head) and 0.50 s after his last word to the
        act-4 blackout, as the old TTS seam had. 5.56 s against the old 4.12 s slot: bo-a4 and everything after moved a second +1.44 s. -->
-  <video id="ins-paul-4" src="media/paul/ins-paul-4/ins-paul-4-v2.mp4" data-start="700.005" data-duration="5.56" data-media-start="0.918" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="They had called for help, and help had set out. So where was it?"></video>
-  <section class="clip blackout" id="bo-a4" data-start="705.565" data-duration="0.7" data-track-index="1"></section>
+  <video id="ins-paul-4" src="media/paul/ins-paul-4/ins-paul-4-v3.mp4" data-start="702.276" data-duration="5.56" data-media-start="0.918" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="They had called for help, and help had set out. So where was it?"></video>
+  <section class="clip blackout" id="bo-a4" data-start="707.836" data-duration="0.7" data-track-index="1"></section>
 
   <!-- A4-S1: DVIDS 7571852, runway snowblower on I-90, 26 Dec 2022 (pick) under g-a4-1 -->
   <!-- 28 Oct 26 (no still over 6 s): 4 cuts of the clearing effort under the quote: the I-90 snowblower, DVIDS 7571853 skid steers in
        Cheektowaga (26 Dec), the Delaware Ave bulldozer (27 Dec), the abandoned vehicles on West Utica St (27 Dec); g-a4-1 has no photo credit pill -->
-  <section class="clip still-wrap" id="c-a4-s1-blower" data-start="706.265" data-duration="5.0" data-track-index="1"><img id="kb-a4-s1-blower" src="media/a4/A4-S1_c1_snowblower-i90.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a4-s1-skid" data-start="711.265" data-duration="5.0" data-track-index="1"><img id="kb-a4-s1-skid" src="media/a5/A4-S1_c2_skid-steer-cheektowaga.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a4-s1-dozer" data-start="716.265" data-duration="5.0" data-track-index="1" data-callback="the clearing equipment returns under the stuck-quote: one machine at a time against the drifts"><img id="kb-a4-s1-dozer" src="media/a5/A4-S1_c3_bulldozer-burger-king.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a4-s1-utica" data-start="721.265" data-duration="4.914" data-track-index="1" data-callback="the abandoned cars from the A3 quotes return as the stuck line is spoken"><img id="kb-a4-s1-utica" src="media/a3/A4-S3_c2_abandoned-vehicles-utica.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s1-blower" data-start="708.536" data-duration="5.0" data-track-index="1"><img id="kb-a4-s1-blower" src="media/a4/A4-S1_c1_snowblower-i90.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s1-skid" data-start="713.536" data-duration="5.0" data-track-index="1"><img id="kb-a4-s1-skid" src="media/a5/A4-S1_c2_skid-steer-cheektowaga.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s1-dozer" data-start="718.536" data-duration="5.0" data-track-index="1" data-callback="the clearing equipment returns under the stuck-quote: one machine at a time against the drifts"><img id="kb-a4-s1-dozer" src="media/a5/A4-S1_c3_bulldozer-burger-king.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s1-utica" data-start="723.536" data-duration="4.914" data-track-index="1" data-callback="the abandoned cars from the A3 quotes return as the stuck line is spoken"><img id="kb-a4-s1-utica" src="media/a3/A4-S3_c2_abandoned-vehicles-utica.jpg" alt=""></section>
   <!-- A4-S2: g-a4-2 full frame. A4-S3: DVIDS 7572837 again, held close on the ambulance (starts on g-a4-2's end) under g-a4-3;
        then DVIDS 7572836 airmen pushing a pickup (25 Dec), then DVIDS 7576030 Guard members at a door (30 Dec): all DVIDS, matching g-a4-3's DVIDS pill -->
-  <section class="clip still-wrap" id="c-a4-s3-amb" data-start="744.079" data-duration="5.0" data-track-index="1" data-callback="A4 names what I1 only showed: the same ambulance, held close"><img id="kb-a4-s3-amb" src="media/intro/I1-S2_c1_amr-ambulance-recovery.jpg" alt="" style="object-position: 50% 45%;"></section>
-  <section class="clip still-wrap" id="c-a4-s3-drifts" data-start="749.079" data-duration="4.0" data-track-index="1" data-callback="the intro's drift rescue returns as A4 explains why rescuers could not reach the stranded"><img id="kb-a4-s3-drifts" src="media/a4/A4-S6_c2_motorists-drifts.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a4-s3-door" data-start="753.079" data-duration="4.068" data-track-index="1"><img id="kb-a4-s3-door" src="media/a4/A4-S8_c2_knock-residence.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s3-amb" data-start="746.35" data-duration="5.0" data-track-index="1" data-callback="A4 names what I1 only showed: the same ambulance, held close"><img id="kb-a4-s3-amb" src="media/intro/I1-S2_c1_amr-ambulance-recovery.jpg" alt="" style="object-position: 50% 45%;"></section>
+  <section class="clip still-wrap" id="c-a4-s3-drifts" data-start="751.35" data-duration="4.0" data-track-index="1" data-callback="the intro's drift rescue returns as A4 explains why rescuers could not reach the stranded"><img id="kb-a4-s3-drifts" src="media/a4/A4-S6_c2_motorists-drifts.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s3-door" data-start="755.35" data-duration="4.068" data-track-index="1"><img id="kb-a4-s3-door" src="media/a4/A4-S8_c2_knock-residence.jpg" alt=""></section>
   <!-- A4-S4: g-a4-4 is 0.001 s longer than its wav; the next beat (g-a4-5) is a comp, so a ground plate covers the 0.30 s seam.
        On track 2 (the comp lane it bridges), not track 1: a src-less track-1 section was read by sweep_episode.py as the next still (28 Oct 26). -->
-  <section class="clip ground" id="gp-a4-s4" data-start="773.997" data-duration="0.299" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a4-s4" data-start="776.268" data-duration="0.299" data-track-index="2"></section>
   <!-- A4-S5: g-a4-5 then g-a4-6, full frame. A4-S6: DVIDS 7572835 (D1), motorist and his dog, 24 Dec 2022 (starts on g-a4-6's end); g-a4-7 panel from 8.80;
        then the Guard's own work returns under the guard-bars count and its DVIDS pill (snowblower, skid steers, DVIDS 7572837 ambulance dig-out) -->
-  <section class="clip still-wrap" id="c-a4-s6-dog" data-start="797.586" data-duration="6.0" data-track-index="1"><img id="kb-a4-s6-dog" src="media/a4/A4-S6_c1_motorist-dog-drifts.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a4-s6-blower" data-start="803.586" data-duration="4.5" data-track-index="1" data-callback="the I-90 snowblower returns under the count of Guard members on duty"><img id="kb-a4-s6-blower" src="media/a4/A4-S1_c1_snowblower-i90.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a4-s6-skid" data-start="808.086" data-duration="4.5" data-track-index="1" data-callback="the Guard skid steers return under the count of Guard members on duty"><img id="kb-a4-s6-skid" src="media/a5/A4-S1_c2_skid-steer-cheektowaga.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a4-s6-dig" data-start="812.586" data-duration="4.645" data-track-index="1"><img id="kb-a4-s6-dig" src="media/a4/A4-S3_c1_ambulance-dig-out.jpg" alt="" style="object-position: 50% 62%;"></section>
+  <section class="clip still-wrap" id="c-a4-s6-dog" data-start="799.857" data-duration="6.0" data-track-index="1"><img id="kb-a4-s6-dog" src="media/a4/A4-S6_c1_motorist-dog-drifts.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s6-blower" data-start="805.857" data-duration="4.5" data-track-index="1" data-callback="the I-90 snowblower returns under the count of Guard members on duty"><img id="kb-a4-s6-blower" src="media/a4/A4-S1_c1_snowblower-i90.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s6-skid" data-start="810.357" data-duration="4.5" data-track-index="1" data-callback="the Guard skid steers return under the count of Guard members on duty"><img id="kb-a4-s6-skid" src="media/a5/A4-S1_c2_skid-steer-cheektowaga.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s6-dig" data-start="814.857" data-duration="4.645" data-track-index="1"><img id="kb-a4-s6-dig" src="media/a4/A4-S3_c1_ambulance-dig-out.jpg" alt="" style="object-position: 50% 62%;"></section>
   <!-- A4-S7: DVIDS 7572836 (D2), airmen helping motorists, 25 Dec 2022, soft focus (not Waldman) under g-a4-8; then DVIDS 7576030 Guard at a door (30 Dec), soft -->
-  <section class="clip still-wrap" id="c-a4-s7-d2" data-start="817.231" data-duration="5.2" data-track-index="1"><img id="kb-a4-s7-d2" class="soft" src="media/a4/A4-S7_c1_guard-airmen-drifts-25dec.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a4-s7-knock" data-start="822.431" data-duration="5.2" data-track-index="1" data-callback="the Guard at a Buffalo door from A4-S3 returns, soft, under the Waldman card"><img id="kb-a4-s7-knock" class="soft" src="media/a4/A4-S8_c2_knock-residence.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s7-d2" data-start="819.502" data-duration="5.2" data-track-index="1"><img id="kb-a4-s7-d2" class="soft" src="media/a4/A4-S7_c1_guard-airmen-drifts-25dec.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s7-knock" data-start="824.702" data-duration="5.2" data-track-index="1" data-callback="the Guard at a Buffalo door from A4-S3 returns, soft, under the Waldman card"><img id="kb-a4-s7-knock" class="soft" src="media/a4/A4-S8_c2_knock-residence.jpg" alt=""></section>
   <!-- A4-S8: DVIDS 7576033 (D5), welfare checks with Buffalo residents, 30 Dec 2022, under g-a4-9; then DVIDS 7576032 knock at a door,
        DVIDS 7578226 toys handed out on welfare checks (30 Dec), DVIDS 7574755 Guard clearing a Buffalo street at night (27 Dec) -->
-  <section class="clip still-wrap" id="c-a4-s8-welfare" data-start="827.631" data-duration="4.6" data-track-index="1"><img id="kb-a4-s8-welfare" src="media/a4/A4-S8_c1_welfare-check-residents.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a4-s8-knock2" data-start="832.231" data-duration="4.5" data-track-index="1" data-callback="the hook's welfare-check knock returns as the Guard tally is counted"><img id="kb-a4-s8-knock2" src="media/a5/A4-S8_c3_knock-residence-2.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a4-s8-toys" data-start="836.731" data-duration="4.5" data-track-index="1"><img id="kb-a4-s8-toys" src="media/a5/A5-S7_c1_dvids-toys-welfare-check.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a4-s8-night" data-start="841.231" data-duration="4.6" data-track-index="1" data-callback="the night clearing on a Buffalo street from A3-S11 returns under the Guard tally"><img id="kb-a4-s8-night" src="media/a3/A3-S11_c3_dvids-7574755.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s8-welfare" data-start="829.902" data-duration="4.6" data-track-index="1"><img id="kb-a4-s8-welfare" src="media/a4/A4-S8_c1_welfare-check-residents.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s8-knock2" data-start="834.502" data-duration="4.5" data-track-index="1" data-callback="the hook's welfare-check knock returns as the Guard tally is counted"><img id="kb-a4-s8-knock2" src="media/a5/A4-S8_c3_knock-residence-2.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s8-toys" data-start="839.002" data-duration="4.5" data-track-index="1"><img id="kb-a4-s8-toys" src="media/a5/A5-S7_c1_dvids-toys-welfare-check.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s8-night" data-start="843.502" data-duration="4.6" data-track-index="1" data-callback="the night clearing on a Buffalo street from A3-S11 returns under the Guard tally"><img id="kb-a4-s8-night" src="media/a3/A3-S11_c3_dvids-7574755.jpg" alt=""></section>
   <!-- A4-S9: g-a4-10 full frame. A4-S10: Carrotflower "Snowy door", 24 Dec 2022, CC BY-SA 4.0, push toward the door, under g-a4-11;
        then Carrotflower Laurel St (23 Dec) and Cold Spring Main St (24 Dec), the empty streets of the people who stayed in -->
-  <section class="clip still-wrap" id="c-a4-s10-door" data-start="870.731" data-duration="3.6"data-track-index="1"><img id="kb-a4-s10-door" src="media/a4/A4-S10_c1_snowy-door.jpg" alt="" style="object-position: 50% 55%;"></section>
-  <section class="clip still-wrap" id="c-a4-s10-laurel" data-start="874.331" data-duration="3.665"data-track-index="1" data-callback="the act-3 street returns as the stay-home quote is read"><img id="kb-a4-s10-laurel" src="media/a3/A3-S1_c1_laurel-street.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s10-door" data-start="873.002" data-duration="3.6"data-track-index="1"><img id="kb-a4-s10-door" src="media/a4/A4-S10_c1_snowy-door.jpg" alt="" style="object-position: 50% 96%; transform-origin: 85% 80%;"></section>
+  <section class="clip still-wrap" id="c-a4-s10-laurel" data-start="876.602" data-duration="3.665"data-track-index="1" data-callback="the act-3 street returns as the stay-home quote is read"><img id="kb-a4-s10-laurel" src="media/a3/A3-S1_c1_laurel-street.jpg" alt=""></section>
   <!-- A4-S10 from "The Weather Service warning had said..." (a4-s10.wav 7.50): Paul's Flow clip 5 (logo + 1080p: -v2) replaces the TTS
        tail, the Cold Spring Main St still and the rest of g-a4-11 (29 Oct 26). nx-a4-s10 is cut at 7.25 (after "alone." 7.00).
        Speech 0.419 to 9.335 in the clip (silencedetect -35 dB), so media from 0.269 (0.15 s head, 0.40 s after "alone.") and 0.50 s
        after his last word to the act-5 blackout. 9.566 s against the TTS tail's 8.282 s: bo-a5 and everything after moved +1.284 s. -->
-  <video id="ins-paul-5" src="media/paul/ins-paul-5/ins-paul-5-v2.mp4" data-start="877.996" data-duration="9.566" data-media-start="0.269" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="The Weather Service warning had said travel was strongly discouraged, and staying home was the advice. So what happened to the people who stayed home?"></video>
-  <section class="clip blackout" id="bo-a5" data-start="887.562" data-duration="0.7" data-track-index="1"></section>
+  <video id="ins-paul-5" src="media/paul/ins-paul-5/ins-paul-5-v3.mp4" data-start="880.267" data-duration="9.566" data-media-start="0.269" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="The Weather Service warning had said travel was strongly discouraged, and staying home was the advice. So what happened to the people who stayed home?"></video>
+  <section class="clip blackout" id="bo-a5" data-start="889.833" data-duration="0.7" data-track-index="1"></section>
 
   <!-- A5: g-a5-1 and g-a5-8 overlay the footage below; g-a5-2 to g-a5-7, g-a5-9, g-a5-10 are full frame over the older stand-ins. -->
   <!-- A5-S1: Pexels snowy suburban street at night (pick, not Buffalo, uncaptioned), then STAND-IN Carrotflower Laurel St, 24 Dec 2022 -->
-  <video id="v-a5-s1-street" src="media/a5/A5-S1_c1_snowy-suburban-street-night.mp4" data-start="888.262" data-duration="12.0" data-track-index="1" muted></video>
-  <section class="clip still-wrap" id="c-a5-s1-laurel" data-start="900.262" data-duration="3.6" data-track-index="1" data-callback="the Laurel St storm frame returns as the dark-house count opens act 5"><img id="kb-a5-s1-laurel" src="media/a5/A4-S10_c2_laurel-street.jpg" alt=""></section>
+  <video id="v-a5-s1-street" src="media/a5/A5-S1_c1_snowy-suburban-street-night.mp4" data-start="890.533" data-duration="12.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-a5-s1-laurel" data-start="902.533" data-duration="3.6" data-track-index="1" data-callback="the Laurel St storm frame returns as the dark-house count opens act 5"><img id="kb-a5-s1-laurel" src="media/a5/A4-S10_c2_laurel-street.jpg" alt=""></section>
   <!-- then DVIDS 7574755, a Buffalo residential street at night, 27 Dec 2022, under the last of g-a5-1's dark chips -->
-  <section class="clip still-wrap" id="c-a5-s1-night" data-start="903.862" data-duration="3.649" data-track-index="1" data-callback="the night street returns under the dark-house chips: the same dark blocks"><img id="kb-a5-s1-night" src="media/a3/A3-S11_c3_dvids-7574755.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-s1-night" data-start="906.133" data-duration="3.649" data-track-index="1" data-callback="the night street returns under the dark-house chips: the same dark blocks"><img id="kb-a5-s1-night" src="media/a3/A3-S11_c3_dvids-7574755.jpg" alt=""></section>
   <!-- A5-S2 to A5-S6 (903.236 to 998.204): g-a5-2 to g-a5-7 are full frame with an opaque ground, so no footage sits under them.
        The old stand-in stills (c-a5-s2-res, c-a5-s3-dozer, c-a5-s4-skid, c-a5-s5-blower, c-a5-s6-amb) were never visible and were removed
        28 Oct 26 (sweep "no still over 6s"); track 2 covers the picture. -->
   <!-- A5-S7 0 to 9.74: Carrotflower "2022 Christmas brunch, Buffalo, New York - 20221225.jpg", CC BY-SA 4.0 (orchestrator 28 Oct 26: use it, credit on screen
        via g-a5-8 and in the description). FILE NOT STAGED YET: the candidate on disk is an HTML error page; fetch the real JPEG to this path.
        g-a5-8's CHRISTMAS DAY chip may only sit over this photo. Then DVIDS 7578226 toys during welfare checks from S7 +9.74 (faces to blur). -->
-  <section class="clip still-wrap" id="c-a5-s7-brunch" data-start="1002.479" data-duration="6.0" data-track-index="1"><img id="kb-a5-s7-brunch" src="media/a5/A5-S7_c3_christmas-brunch-buffalo.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a5-s7-welfare" data-start="1008.479" data-duration="3.74" data-track-index="1"><img id="kb-a5-s7-welfare" src="media/a5/A5-S7_c2_dvids-welfare-checks-residents.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a5-s7-toys" data-start="1012.219" data-duration="4.796" data-track-index="1"><img id="kb-a5-s7-toys" src="media/a5/A5-S7_c1_dvids-toys-welfare-check.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-s7-brunch" data-start="1004.75" data-duration="6.0" data-track-index="1"><img id="kb-a5-s7-brunch" src="media/a5/A5-S7_c3_christmas-brunch-buffalo.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-s7-welfare" data-start="1010.75" data-duration="3.74" data-track-index="1"><img id="kb-a5-s7-welfare" src="media/a5/A5-S7_c2_dvids-welfare-checks-residents.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-s7-toys" data-start="1014.49" data-duration="4.796" data-track-index="1"><img id="kb-a5-s7-toys" src="media/a5/A5-S7_c1_dvids-toys-welfare-check.jpg" alt=""></section>
+  <!-- A5-S8 first sentence (29 Oct 26): Paul's Flow clip 6 (logo + 1080p: -v2). Speech 1.10 to 4.95 in the clip (0.1 s RMS; the take
+       has a -41 dB floor), media from 0.95, 0.15 s after his last word. KNOWN: "ban" at about 4.6 s may sound like "band" (orchestrator:
+       mount, no retake; the TTS take said "band" too). g-a5-9 then plays from its own 0 on the cut, so its tally, "22 OF 46" and halfway
+       line land in a 3.85 s bed-only beat (declared hold) before the narrator resumes on "and help struggled". 4.15 s added: +4.15 from here. -->
+  <video id="ins-paul-6" src="media/paul/ins-paul-6/ins-paul-6-v3.mp4" data-start="1019.286" data-duration="4.15" data-media-start="0.95" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Many were out there because the morning commute had started before the ban did."></video>
+  <!-- 29 Oct 26 (gap fix): the 3.85 s hold hold-a5-s8 is gone. nx-a5-s8 starts 1023.74, 0.304 s after Paul; g-a5-9 starts at his end
+       (1023.436) and its cues are the TTS time - 3.296. Everything from the end ask on moved -3.296 (e1 1045.829, e2 1054.912,
+       a5-s9 + close 1061.329, root 1075.719) so the 3.8 s hole after "again." does not open. -->
   <!-- A5-S8 (summary zone): g-a5-9 is full frame with an opaque ground from 1012.74; the hidden Laurel St stand-in (c-a5-s8-laurel,
        1012.74 to 1025.336) was removed 28 Oct 26 (sweep "no still over 6s"). The sunrise roadway stays under "the next winter" -->
-  <video id="v-a5-s8-sunrise" src="media/a5/A2-S1_c4_sunrise-snowy-roadway.mp4" data-start="1029.611" data-duration="13.093" data-track-index="1" muted></video>
+  <video id="v-a5-s8-sunrise" src="media/a5/A2-S1_c4_sunrise-snowy-roadway.mp4" data-start="1036.032" data-duration="9.797" data-track-index="1" muted></video>
   <!-- END ASK (config channel.end_ask, staged unchanged in media/end-ask/), right before the signature line -->
-  <video id="ins-paul-e1" src="media/end-ask/paul-end-ask-v1-oct19-a.mp4" data-start="1042.704" data-duration="9.083" data-media-start="0" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I genuinely appreciate you watching the video till the end. Please like and subscribe and share your suggestions via comments."></video>
-  <video id="ins-paul-e2" src="media/end-ask/paul-end-ask-v1-oct19-b.mp4" data-start="1051.787" data-duration="6.417" data-media-start="0" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I read them all. And if you want the checklist, it's the first link in the description."></video>
+  <video id="ins-paul-e1" src="media/end-ask/paul-end-ask-v1-oct19-a.mp4" data-start="1045.829" data-duration="9.083" data-media-start="0" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I genuinely appreciate you watching the video till the end. Please like and subscribe and share your suggestions via comments."></video>
+  <video id="ins-paul-e2" src="media/end-ask/paul-end-ask-v1-oct19-b.mp4" data-start="1054.912" data-duration="6.417" data-media-start="0" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I read them all. And if you want the checklist, it's the first link in the description."></video>
   <!-- A5-S9 signature: STAND-IN for the title card (not built): Pexels aerial of houses in snow at night -->
   <!-- 28 Oct 26: e1 sat 30.39 s before the end (config end_ask.last_s 30, sweep FAIL). The 0.5 s seam after e2 is gone: the
        signature line nx-a5-s9 and the close host g-a5-10-close start on e2's end (1054.429 -> 1053.929, -0.5 s), this aerial
        ends with the line (11.894 -> 11.394), root 1068.819 -> 1068.319; e1 now starts 29.89 s before the end. -->
-  <video id="v-a5-s9-aerial" src="media/a5/A5-S1_c2_aerial-houses-snow-night.mp4" data-start="1058.204" data-duration="11.394" data-track-index="1" muted></video>
+  <video id="v-a5-s9-aerial" src="media/a5/A5-S1_c2_aerial-houses-snow-night.mp4" data-start="1061.329" data-duration="11.394" data-track-index="1" muted></video>
 
   <!-- PRESENTER CIRCLE (28 Oct 26, hand-mounted; mg-quickref "Corner circle", worked example ep-e2e-moore). Face pass:
        media/face/ep-buffalo-2022-face.mp4@0.000 (covers the whole timeline from 0, so each window seeks to its own start and
        the lips stay on the narration). Windows = narration spans (nx start to wav end, seams inside a run kept) minus:
        H1-S1 (Paul's hook line, ins-paul-1 + ins-paul-2 0-17.156 after the retime), the CTA and its dips (501.2-527.242), A3-S12 (Paul's
-       ins-paul-4, 700.005-705.565 after the retime), the chapter blackouts, g-a4-7-guard-bars 803.697-813.737 (#gb-panel right:0, 820 px wide, full
+       ins-paul-4), ins-paul-3 / ins-paul-5 / ins-paul-6 (split windows w2b, w7b, 29 Oct 26), the chapter blackouts, g-a4-7-guard-bars 803.697-813.737 (#gb-panel right:0, 820 px wide, full
        height: bars and numbers under the corner), the end ask (1038.429-1053.929) and the A5-S9 signature over g-a5-10-close.
        No broadcast clips in this episode. Every other comp keeps the corner clear (header or measured CSS: right edges <= 1598). -->
   <video id="pip-w1" class="pip" src="media/pip/paul-w1.mp4" data-start="17.156" data-duration="79.559" data-track-index="7" muted></video>
@@ -271,18 +283,22 @@
        (offset 160.722 = old a1-s8 256.81 - old w2 start 96.088), so the lips stay on the narration. -->
   <video id="pip-w2" class="pip" src="media/pip/paul-w2.mp4" data-start="97.639" data-duration="154.464" data-track-index="7" muted></video>
   <section class="pipring" id="ring-w2" data-start="97.639" data-duration="154.464" data-track-index="9"></section>
-  <video id="pip-w2b" class="pip" src="media/pip/paul-w2.mp4" data-start="258.361" data-duration="44.014" data-media-start="160.722" data-track-index="7" muted></video>
-  <section class="pipring" id="ring-w2b" data-start="258.361" data-duration="44.014" data-track-index="9"></section>
-  <video id="pip-w3" class="pip" src="media/pip/paul-w3.mp4" data-start="303.962" data-duration="198.702" data-track-index="7" muted></video>
-  <section class="pipring" id="ring-w3" data-start="303.962" data-duration="198.702" data-track-index="9"></section>
-  <video id="pip-w4" class="pip" src="media/pip/paul-w4.mp4" data-start="528.793" data-duration="170.712" data-track-index="7" muted></video>
-  <section class="pipring" id="ring-w4" data-start="528.793" data-duration="170.712" data-track-index="9"></section>
-  <video id="pip-w5" class="pip" src="media/pip/paul-w5.mp4" data-start="706.265" data-duration="100.423" data-track-index="7" muted></video>
-  <section class="pipring" id="ring-w5" data-start="706.265" data-duration="100.423" data-track-index="9"></section>
-  <video id="pip-w6" class="pip" src="media/pip/paul-w6.mp4" data-start="817.231" data-duration="60.765" data-track-index="7" muted></video>
-  <section class="pipring" id="ring-w6" data-start="817.231" data-duration="60.765" data-track-index="9"></section>
-  <video id="pip-w7" class="pip" src="media/pip/paul-w7.mp4" data-start="888.262" data-duration="153.942" data-track-index="7" muted></video>
-  <section class="pipring" id="ring-w7" data-start="888.262" data-duration="153.942" data-track-index="9"></section>
+  <video id="pip-w2b" class="pip" src="media/pip/paul-w2.mp4" data-start="260.632" data-duration="44.014" data-media-start="160.722" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w2b" data-start="260.632" data-duration="44.014" data-track-index="9"></section>
+  <video id="pip-w3" class="pip" src="media/pip/paul-w3.mp4" data-start="306.233" data-duration="198.702" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w3" data-start="306.233" data-duration="198.702" data-track-index="9"></section>
+  <video id="pip-w4" class="pip" src="media/pip/paul-w4.mp4" data-start="531.064" data-duration="170.712" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w4" data-start="531.064" data-duration="170.712" data-track-index="9"></section>
+  <video id="pip-w5" class="pip" src="media/pip/paul-w5.mp4" data-start="708.536" data-duration="100.423" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w5" data-start="708.536" data-duration="100.423" data-track-index="9"></section>
+  <video id="pip-w6" class="pip" src="media/pip/paul-w6-trim.mp4" data-start="819.502" data-duration="60.765" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w6" data-start="819.502" data-duration="60.765" data-track-index="9"></section>
+  <!-- 29 Oct 26: w7 is split around Paul's ins-paul-6 and the silent tally beat after it (A5-S8): w7 ends with a5-s7, w7b picks the
+       same face file up where the a5-s8 TTS resumes (offset 132.353 = old a5-s8 1012.74 + 3.60 - old w7 start 883.987). -->
+  <video id="pip-w7" class="pip" src="media/pip/paul-w7.mp4" data-start="890.533" data-duration="128.253" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w7" data-start="890.533" data-duration="128.253" data-track-index="9"></section>
+  <video id="pip-w7b" class="pip" src="media/pip/paul-w7.mp4" data-start="1023.74" data-duration="21.589" data-media-start="132.353" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w7b" data-start="1023.74" data-duration="21.589" data-track-index="9"></section>
 
   <!-- ============ GRAPHICS, track 2 (host start = segment narration start + the brief's offset; duration = comp length, cut at the next beat) ============ -->
   <div id="host-g-intro-1-popfig" data-composition-id="g-intro-1-popfig" data-composition-src="compositions/g-intro-1-popfig.html" data-start="0" data-duration="5.4" data-track-index="2" data-width="1920" data-height="1080"></div>
@@ -300,84 +316,85 @@
   <div id="host-g-a1-5-watch-timeline" data-composition-id="g-a1-5-watch-timeline" data-composition-src="compositions/g-a1-5-watch-timeline.html" data-start="192.888" data-duration="35.325" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-g-a1-6-warning-card" data-composition-id="g-a1-6-warning-card" data-composition-src="compositions/g-a1-6-warning-card.html" data-start="228.213" data-duration="24.6" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-g-a1-7-travel-line" data-composition-id="g-a1-7-travel-line" data-composition-src="compositions/g-a1-7-travel-line.html" data-start="255.084" data-duration="5.548" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a1-8-afd-rare" data-composition-id="g-a1-8-afd-rare" data-composition-src="compositions/g-a1-8-afd-rare.html" data-start="258.361" data-duration="13.901" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a1-9-update-card" data-composition-id="g-a1-9-update-card" data-composition-src="compositions/g-a1-9-update-card.html" data-start="272.262" data-duration="19.4" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a1-10-street-clock" data-composition-id="g-a1-10-street-clock" data-composition-src="compositions/g-a1-10-street-clock.html" data-start="291.662" data-duration="11.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a1-8-afd-rare" data-composition-id="g-a1-8-afd-rare" data-composition-src="compositions/g-a1-8-afd-rare.html" data-start="260.632" data-duration="13.901" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a1-9-update-card" data-composition-id="g-a1-9-update-card" data-composition-src="compositions/g-a1-9-update-card.html" data-start="274.533" data-duration="19.4" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a1-10-street-clock" data-composition-id="g-a1-10-street-clock" data-composition-src="compositions/g-a1-10-street-clock.html" data-start="293.933" data-duration="11.6" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A2 -->
-  <div id="host-g-a2-1-log-724" data-composition-id="g-a2-1-log-724" data-composition-src="compositions/g-a2-1-log-724.html" data-start="303.962" data-duration="8.6" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a2-2-warning-clock" data-composition-id="g-a2-2-warning-clock" data-composition-src="compositions/g-a2-2-warning-clock.html" data-start="323.362" data-duration="3.44" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a2-3-log-806" data-composition-id="g-a2-3-log-806" data-composition-src="compositions/g-a2-3-log-806.html" data-start="326.802" data-duration="15.16" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a2-4-flash-freeze" data-composition-id="g-a2-4-flash-freeze" data-composition-src="compositions/g-a2-4-flash-freeze.html" data-start="341.962" data-duration="25.42" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a2-5-log-839" data-composition-id="g-a2-5-log-839" data-composition-src="compositions/g-a2-5-log-839.html" data-start="367.382" data-duration="9.2" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a2-6-quarter-mile" data-composition-id="g-a2-6-quarter-mile" data-composition-src="compositions/g-a2-6-quarter-mile.html" data-start="376.582" data-duration="4.902" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a2-7-temp-line" data-composition-id="g-a2-7-temp-line" data-composition-src="compositions/g-a2-7-temp-line.html" data-start="381.484" data-duration="14.341" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a2-8-officials-clock" data-composition-id="g-a2-8-officials-clock" data-composition-src="compositions/g-a2-8-officials-clock.html" data-start="395.825" data-duration="36.2" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a2-9-ban-bracket" data-composition-id="g-a2-9-ban-bracket" data-composition-src="compositions/g-a2-9-ban-bracket.html" data-start="432.025" data-duration="37.0" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a2-10-blame-quote" data-composition-id="g-a2-10-blame-quote" data-composition-src="compositions/g-a2-10-blame-quote.html" data-start="469.025" data-duration="17.99" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a2-11-both-lanes" data-composition-id="g-a2-11-both-lanes" data-composition-src="compositions/g-a2-11-both-lanes.html" data-start="487.015" data-duration="15.736" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-1-log-724" data-composition-id="g-a2-1-log-724" data-composition-src="compositions/g-a2-1-log-724.html" data-start="306.233" data-duration="8.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-2-warning-clock" data-composition-id="g-a2-2-warning-clock" data-composition-src="compositions/g-a2-2-warning-clock.html" data-start="325.633" data-duration="3.44" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-3-log-806" data-composition-id="g-a2-3-log-806" data-composition-src="compositions/g-a2-3-log-806.html" data-start="329.073" data-duration="15.16" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-4-flash-freeze" data-composition-id="g-a2-4-flash-freeze" data-composition-src="compositions/g-a2-4-flash-freeze.html" data-start="344.233" data-duration="25.42" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-5-log-839" data-composition-id="g-a2-5-log-839" data-composition-src="compositions/g-a2-5-log-839.html" data-start="369.653" data-duration="9.2" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-6-quarter-mile" data-composition-id="g-a2-6-quarter-mile" data-composition-src="compositions/g-a2-6-quarter-mile.html" data-start="378.853" data-duration="4.902" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-7-temp-line" data-composition-id="g-a2-7-temp-line" data-composition-src="compositions/g-a2-7-temp-line.html" data-start="383.755" data-duration="14.341" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-8-officials-clock" data-composition-id="g-a2-8-officials-clock" data-composition-src="compositions/g-a2-8-officials-clock.html" data-start="398.096" data-duration="36.2" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-9-ban-bracket" data-composition-id="g-a2-9-ban-bracket" data-composition-src="compositions/g-a2-9-ban-bracket.html" data-start="434.296" data-duration="37.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-10-blame-quote" data-composition-id="g-a2-10-blame-quote" data-composition-src="compositions/g-a2-10-blame-quote.html" data-start="471.296" data-duration="17.99" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-11-both-lanes" data-composition-id="g-a2-11-both-lanes" data-composition-src="compositions/g-a2-11-both-lanes.html" data-start="489.286" data-duration="15.736" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A3: g-a3-10-hochul-lt is text-only (no licensed Hochul still), over the A3-S9 stand-in, nx-a3-s9 3.20 to 6.70 -->
-  <div id="host-g-a3-10-hochul-lt" data-composition-id="g-a3-10-hochul-lt" data-composition-src="compositions/g-a3-10-hochul-lt.html" data-start="650.613" data-duration="3.5" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a3-1-ban-namecard" data-composition-id="g-a3-1-ban-namecard" data-composition-src="compositions/g-a3-1-ban-namecard.html" data-start="528.793" data-duration="11.6" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a3-2-six-min-map" data-composition-id="g-a3-2-six-min-map" data-composition-src="compositions/g-a3-2-six-min-map.html" data-start="540.393" data-duration="3.6" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a3-3-phone-911" data-composition-id="g-a3-3-phone-911" data-composition-src="compositions/g-a3-3-phone-911.html" data-start="543.993" data-duration="14.08" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a3-4-map-evening" data-composition-id="g-a3-4-map-evening" data-composition-src="compositions/g-a3-4-map-evening.html" data-start="558.473" data-duration="10.8" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a3-5-steele-quote" data-composition-id="g-a3-5-steele-quote" data-composition-src="compositions/g-a3-5-steele-quote.html" data-start="569.273" data-duration="6.54" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a3-6-tally-27dec" data-composition-id="g-a3-6-tally-27dec" data-composition-src="compositions/g-a3-6-tally-27dec.html" data-start="575.813" data-duration="15.44" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a3-7-warning-card" data-composition-id="g-a3-7-warning-card" data-composition-src="compositions/g-a3-7-warning-card.html" data-start="591.253" data-duration="18.36" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a3-8-abandoned-quotes" data-composition-id="g-a3-8-abandoned-quotes" data-composition-src="compositions/g-a3-8-abandoned-quotes.html" data-start="610.063" data-duration="16.38" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a3-9-ten-doors" data-composition-id="g-a3-9-ten-doors" data-composition-src="compositions/g-a3-9-ten-doors.html" data-start="627.188" data-duration="19.74" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a3-11-fuel-gauge" data-composition-id="g-a3-11-fuel-gauge" data-composition-src="compositions/g-a3-11-fuel-gauge.html" data-start="654.113" data-duration="8.459" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a3-12-windchill-chart" data-composition-id="g-a3-12-windchill-chart" data-composition-src="compositions/g-a3-12-windchill-chart.html" data-start="662.572" data-duration="23.72" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a3-13-two-choices" data-composition-id="g-a3-13-two-choices" data-composition-src="compositions/g-a3-13-two-choices.html" data-start="689.756" data-duration="5.7" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-10-hochul-lt" data-composition-id="g-a3-10-hochul-lt" data-composition-src="compositions/g-a3-10-hochul-lt.html" data-start="652.884" data-duration="3.5" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-1-ban-namecard" data-composition-id="g-a3-1-ban-namecard" data-composition-src="compositions/g-a3-1-ban-namecard.html" data-start="531.064" data-duration="11.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-2-six-min-map" data-composition-id="g-a3-2-six-min-map" data-composition-src="compositions/g-a3-2-six-min-map.html" data-start="542.664" data-duration="3.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-3-phone-911" data-composition-id="g-a3-3-phone-911" data-composition-src="compositions/g-a3-3-phone-911.html" data-start="546.264" data-duration="14.08" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-4-map-evening" data-composition-id="g-a3-4-map-evening" data-composition-src="compositions/g-a3-4-map-evening.html" data-start="560.744" data-duration="10.8" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-5-steele-quote" data-composition-id="g-a3-5-steele-quote" data-composition-src="compositions/g-a3-5-steele-quote.html" data-start="571.544" data-duration="6.54" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-6-tally-27dec" data-composition-id="g-a3-6-tally-27dec" data-composition-src="compositions/g-a3-6-tally-27dec.html" data-start="578.084" data-duration="15.44" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-7-warning-card" data-composition-id="g-a3-7-warning-card" data-composition-src="compositions/g-a3-7-warning-card.html" data-start="593.524" data-duration="18.36" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-8-abandoned-quotes" data-composition-id="g-a3-8-abandoned-quotes" data-composition-src="compositions/g-a3-8-abandoned-quotes.html" data-start="612.334" data-duration="16.38" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-9-ten-doors" data-composition-id="g-a3-9-ten-doors" data-composition-src="compositions/g-a3-9-ten-doors.html" data-start="629.459" data-duration="19.74" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-11-fuel-gauge" data-composition-id="g-a3-11-fuel-gauge" data-composition-src="compositions/g-a3-11-fuel-gauge.html" data-start="656.384" data-duration="8.459" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-12-windchill-chart" data-composition-id="g-a3-12-windchill-chart" data-composition-src="compositions/g-a3-12-windchill-chart.html" data-start="664.843" data-duration="23.72" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-13-two-choices" data-composition-id="g-a3-13-two-choices" data-composition-src="compositions/g-a3-13-two-choices.html" data-start="692.027" data-duration="5.7" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A4 -->
-  <div id="host-g-a4-1-stuck-quote" data-composition-id="g-a4-1-stuck-quote" data-composition-src="compositions/g-a4-1-stuck-quote.html" data-start="706.265" data-duration="19.9" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a4-2-sinking-fleet" data-composition-id="g-a4-2-sinking-fleet" data-composition-src="compositions/g-a4-2-sinking-fleet.html" data-start="726.179" data-duration="17.9" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a4-3-day-chip" data-composition-id="g-a4-3-day-chip" data-composition-src="compositions/g-a4-3-day-chip.html" data-start="744.382" data-duration="12.26" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a4-4-dispatch-screen" data-composition-id="g-a4-4-dispatch-screen" data-composition-src="compositions/g-a4-4-dispatch-screen.html" data-start="757.147" data-duration="16.85" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a4-5-response-clock" data-composition-id="g-a4-5-response-clock" data-composition-src="compositions/g-a4-5-response-clock.html" data-start="774.296" data-duration="14.9" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a4-6-relief-line" data-composition-id="g-a4-6-relief-line" data-composition-src="compositions/g-a4-6-relief-line.html" data-start="789.196" data-duration="8.39" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a4-7-guard-bars" data-composition-id="g-a4-7-guard-bars" data-composition-src="compositions/g-a4-7-guard-bars.html" data-start="806.688" data-duration="10.04" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a4-8-waldman-card" data-composition-id="g-a4-8-waldman-card" data-composition-src="compositions/g-a4-8-waldman-card.html" data-start="817.231" data-duration="10.4" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a4-9-guard-tally" data-composition-id="g-a4-9-guard-tally" data-composition-src="compositions/g-a4-9-guard-tally.html" data-start="827.631" data-duration="18.2" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a4-10-ems-pins" data-composition-id="g-a4-10-ems-pins" data-composition-src="compositions/g-a4-10-ems-pins.html" data-start="845.831" data-duration="24.9" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a4-11-door-quote" data-composition-id="g-a4-11-door-quote" data-composition-src="compositions/g-a4-11-door-quote.html" data-start="870.746" data-duration="7.25"data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-1-stuck-quote" data-composition-id="g-a4-1-stuck-quote" data-composition-src="compositions/g-a4-1-stuck-quote.html" data-start="708.536" data-duration="19.9" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-2-sinking-fleet" data-composition-id="g-a4-2-sinking-fleet" data-composition-src="compositions/g-a4-2-sinking-fleet.html" data-start="728.45" data-duration="17.9" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-3-day-chip" data-composition-id="g-a4-3-day-chip" data-composition-src="compositions/g-a4-3-day-chip.html" data-start="746.653" data-duration="12.26" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-4-dispatch-screen" data-composition-id="g-a4-4-dispatch-screen" data-composition-src="compositions/g-a4-4-dispatch-screen.html" data-start="759.418" data-duration="16.85" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-5-response-clock" data-composition-id="g-a4-5-response-clock" data-composition-src="compositions/g-a4-5-response-clock.html" data-start="776.567" data-duration="14.9" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-6-relief-line" data-composition-id="g-a4-6-relief-line" data-composition-src="compositions/g-a4-6-relief-line.html" data-start="791.467" data-duration="8.39" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-7-guard-bars" data-composition-id="g-a4-7-guard-bars" data-composition-src="compositions/g-a4-7-guard-bars.html" data-start="808.959" data-duration="10.04" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-8-waldman-card" data-composition-id="g-a4-8-waldman-card" data-composition-src="compositions/g-a4-8-waldman-card.html" data-start="819.502" data-duration="10.4" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-9-guard-tally" data-composition-id="g-a4-9-guard-tally" data-composition-src="compositions/g-a4-9-guard-tally.html" data-start="829.902" data-duration="18.2" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-10-ems-pins" data-composition-id="g-a4-10-ems-pins" data-composition-src="compositions/g-a4-10-ems-pins.html" data-start="848.102" data-duration="24.9" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-11-door-quote" data-cut-by="ins-paul-5" data-composition-id="g-a4-11-door-quote" data-composition-src="compositions/g-a4-11-door-quote.html" data-start="873.017" data-duration="7.25" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A5 (briefs/a5/_list.md; cues are segment-relative, so host start = segment start). Hosts that run into the next beat are cut at it:
        g-a5-3 at A5-S3 (0.163 s of its fade cut), g-a5-4 at A5-S4, g-a5-5 at A5-S5, g-a5-6 at A5-S6, g-a5-7 at A5-S7, g-a5-9 at the end ask. -->
-  <div id="host-g-a5-1-dark-chips" data-composition-id="g-a5-1-dark-chips" data-composition-src="compositions/g-a5-1-dark-chips.html" data-start="888.262" data-duration="18.75" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a5-2-hotel-card" data-composition-id="g-a5-2-hotel-card" data-composition-src="compositions/g-a5-2-hotel-card.html" data-start="907.511" data-duration="7.9" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a5-3-lockport-map" data-composition-id="g-a5-3-lockport-map" data-composition-src="compositions/g-a5-3-lockport-map.html" data-start="915.411" data-duration="9.337" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a5-4-tally-final" data-composition-id="g-a5-4-tally-final" data-composition-src="compositions/g-a5-4-tally-final.html" data-start="924.748" data-duration="21.575" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a5-5-city-bars" data-composition-id="g-a5-5-city-bars" data-composition-src="compositions/g-a5-5-city-bars.html" data-start="946.323" data-duration="14.126" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a5-6-reviews" data-composition-id="g-a5-6-reviews" data-composition-src="compositions/g-a5-6-reviews.html" data-start="960.449" data-duration="25.799" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a5-7-county-plan" data-composition-id="g-a5-7-county-plan" data-composition-src="compositions/g-a5-7-county-plan.html" data-start="986.248" data-duration="16.231" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a5-8-brunch-chip" data-composition-id="g-a5-8-brunch-chip" data-composition-src="compositions/g-a5-8-brunch-chip.html" data-start="1002.479" data-duration="14.04" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a5-9-ban-card" data-composition-id="g-a5-9-ban-card" data-composition-src="compositions/g-a5-9-ban-card.html" data-start="1017.015" data-duration="25.689" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a5-10-close" data-composition-id="g-a5-10-close" data-composition-src="compositions/g-a5-10-close.html" data-start="1058.204" data-duration="14.39" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a5-1-dark-chips" data-composition-id="g-a5-1-dark-chips" data-composition-src="compositions/g-a5-1-dark-chips.html" data-start="890.533" data-duration="18.75" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a5-2-hotel-card" data-composition-id="g-a5-2-hotel-card" data-composition-src="compositions/g-a5-2-hotel-card.html" data-start="909.782" data-duration="7.9" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a5-3-lockport-map" data-composition-id="g-a5-3-lockport-map" data-composition-src="compositions/g-a5-3-lockport-map.html" data-start="917.682" data-duration="9.337" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a5-4-tally-final" data-composition-id="g-a5-4-tally-final" data-composition-src="compositions/g-a5-4-tally-final.html" data-start="927.019" data-duration="21.575" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a5-5-city-bars" data-composition-id="g-a5-5-city-bars" data-composition-src="compositions/g-a5-5-city-bars.html" data-start="948.594" data-duration="14.126" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a5-6-reviews" data-composition-id="g-a5-6-reviews" data-composition-src="compositions/g-a5-6-reviews.html" data-start="962.72" data-duration="25.799" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a5-7-county-plan" data-composition-id="g-a5-7-county-plan" data-composition-src="compositions/g-a5-7-county-plan.html" data-start="988.519" data-duration="16.231" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a5-8-brunch-chip" data-composition-id="g-a5-8-brunch-chip" data-composition-src="compositions/g-a5-8-brunch-chip.html" data-start="1004.75" data-duration="14.04" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a5-9-ban-card" data-composition-id="g-a5-9-ban-card" data-composition-src="compositions/g-a5-9-ban-card.html" data-start="1023.436" data-duration="22.393" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a5-10-close" data-composition-id="g-a5-10-close" data-composition-src="compositions/g-a5-10-close.html" data-start="1061.329" data-duration="14.39" data-track-index="2" data-width="1920" data-height="1080"></div>
 
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
-  const DUR = 1072.594;
+  const DUR = 1075.719;
   const tl = gsap.timeline({ paused: true });
   /* stills get a quick punch on their cut (no slow Ken Burns: DESIGN.md "Footage motion"); the overlay comps carry the motion after */
   const stills = [
     ["#kb-h2-door", 17.156], ["#kb-h2-knock", 21.856],
     ["#kb-i2-amb", 53.131], ["#kb-i2-blower", 58.531], ["#kb-i2-drifts", 63.931],
-    ["#kb-a3-s1-laurel", 528.793], ["#kb-a3-s1-laurel2", 534.593],
-    ["#kb-a3-s7-utica", 609.613], ["#kb-a3-s7-laurel", 615.513], ["#kb-a3-s7-dozer", 621.413],
-    ["#kb-a3-s9-main", 646.928], ["#kb-a3-s9-guard", 650.528],
-    ["#kb-a3-s11-laurel", 692.292], ["#kb-a3-s11-night", 696.292],
-    ["#kb-a4-s1-blower", 706.265], ["#kb-a4-s1-skid", 711.265], ["#kb-a4-s1-dozer", 716.265], ["#kb-a4-s1-utica", 721.265],
-    ["#kb-a4-s3-amb", 744.079], ["#kb-a4-s3-drifts", 749.079], ["#kb-a4-s3-door", 753.079],
-    ["#kb-a4-s6-dog", 797.586], ["#kb-a4-s6-blower", 803.586], ["#kb-a4-s6-skid", 808.086], ["#kb-a4-s6-dig", 812.586],
-    ["#kb-a4-s7-d2", 817.231], ["#kb-a4-s7-knock", 822.431],
-    ["#kb-a4-s8-welfare", 827.631], ["#kb-a4-s8-knock2", 832.231], ["#kb-a4-s8-toys", 836.731], ["#kb-a4-s8-night", 841.231],
-    ["#kb-a4-s10-door", 870.731], ["#kb-a4-s10-laurel", 874.331],
-    ["#kb-a5-s1-laurel", 900.262], ["#kb-a5-s1-night", 903.862],
-    ["#kb-a5-s7-brunch", 1002.479], ["#kb-a5-s7-welfare", 1008.479], ["#kb-a5-s7-toys", 1012.219]
+    ["#kb-a3-s1-laurel", 531.064], ["#kb-a3-s1-laurel2", 536.864],
+    ["#kb-a3-s7-utica", 611.884], ["#kb-a3-s7-laurel", 617.784], ["#kb-a3-s7-dozer", 623.684],
+    ["#kb-a3-s9-main", 649.199], ["#kb-a3-s9-guard", 652.799],
+    ["#kb-a3-s11-laurel", 694.563], ["#kb-a3-s11-night", 698.563],
+    ["#kb-a4-s1-blower", 708.536], ["#kb-a4-s1-skid", 713.536], ["#kb-a4-s1-dozer", 718.536], ["#kb-a4-s1-utica", 723.536],
+    ["#kb-a4-s3-amb", 746.35], ["#kb-a4-s3-drifts", 751.35], ["#kb-a4-s3-door", 755.35],
+    ["#kb-a4-s6-dog", 799.857], ["#kb-a4-s6-blower", 805.857], ["#kb-a4-s6-skid", 810.357], ["#kb-a4-s6-dig", 814.857],
+    ["#kb-a4-s7-d2", 819.502], ["#kb-a4-s7-knock", 824.702],
+    ["#kb-a4-s8-welfare", 829.902], ["#kb-a4-s8-knock2", 834.502], ["#kb-a4-s8-toys", 839.002], ["#kb-a4-s8-night", 843.502],
+    ["#kb-a4-s10-laurel", 876.602],
+    ["#kb-a5-s1-laurel", 902.533], ["#kb-a5-s1-night", 906.133],
+    ["#kb-a5-s7-brunch", 1004.75], ["#kb-a5-s7-welfare", 1010.75], ["#kb-a5-s7-toys", 1014.49]
   ];
   stills.forEach(([sel, at]) => tl.fromTo(sel, { scale: 1.08 }, { scale: 1, duration: 0.6, ease: "power3.out" }, at));
+  tl.fromTo("#kb-a4-s10-door", { scale: 1 }, { scale: 1.15, duration: 3.6, ease: "power1.inOut" }, 873.002); // slow push on the door, 1.00 to 1.15 over its 3.6 s window
   tl.set({}, {}, DUR);
   window.__timelines["ep-buffalo-2022"] = tl;
 })();
