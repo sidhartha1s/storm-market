@@ -1,0 +1,143 @@
+<!--
+  g-a1-10-street-clock · A1-S10 · 11.6 s. Cues: seconds from A1-S10 start (audio/a1-s10.words.json).
+  0 to 4.06 s: comp is TRANSPARENT over the unlabelled stock street (media/candidates/a1/A1-S10_c1_rain-night-street.mp4, Pexels 12570193, mounted by the orchestrator on a lower track). No place label over it; only the glass time chip "THU DEC 22 · NIGHT" (0.18-4.21).
+  Then the g-a1-5 axis, dimmed. Axis (84 h = x 160..1540, 16.4286 px/h, from the g-a1-5 header):
+    Tue 160.0 · Wed 554.3 · Thu 948.6 · Fri 00:00 1342.9 · WATCH 396.0 · WARNING 1012.6 · UPDATE 1257.4 · IN EFFECT 7 AM Fri 1457.9
+    Rain span 6:54 PM Thu (h 66.900) x 1259.1 to 6:58 AM Fri (h 78.967) x 1457.3 -> band width 198.2.
+  g-a1-6 / g-a1-9 were not on disk when this was built: warning card and update card are re-drawn here from the g-a1-5 geometry and the g-a1-5 brief section 3 (warning lower lane, update upper lane top 648).
+-->
+<template>
+<style>
+  #g-a1-10-street-clock-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    font-family: Arial, sans-serif; color:#f2f5f8; }
+  .sc-fill { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #sc-ground { background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); opacity:0; visibility:hidden; }
+  .sc-hide { opacity:0; visibility:hidden; }
+  .sc-t { position:absolute; white-space:pre; }
+  /* clock chip: HUD, never rides the push */
+  #sc-chip1 { left:200px; top:110px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px;
+    line-height:56px; color:#e8c56a; transform-origin:left center; }
+  #sc-chip2 { left:200px; top:176px; font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:36px;
+    letter-spacing:3px; color:#e74c3c; }
+  /* rail */
+  #sc-rail { position:absolute; left:160px; top:898px; width:1380px; height:4px; background:#4a5560; }
+  .sc-tick { position:absolute; top:892px; width:2px; height:16px; background:#4a5560; }
+  #sc-tk0 { left:159px; } #sc-tk1 { left:553.3px; } #sc-tk2 { left:947.6px; } #sc-tk3 { left:1341.9px; }
+  .sc-day { top:914px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; letter-spacing:3px; color:#93a3b2; }
+  #sc-d0 { left:172px; } #sc-d1 { left:566.3px; } #sc-d2 { left:960.6px; } #sc-d3 { left:1354.9px; }
+  #sc-eff { position:absolute; left:1455.9px; top:886px; width:4px; height:28px; background:#c0392b; transform-origin:center center; }
+  #sc-efflbl { left:1440px; top:920px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px;
+    letter-spacing:2px; color:#e74c3c; }
+  /* cards */
+  .sc-card { position:absolute; width:380px; height:104px; box-sizing:border-box; border-radius:20px;
+    border:1px solid rgba(255,255,255,.14); background:linear-gradient(180deg, #15202b, #0b1016); }
+  .sc-c1 { left:24px; top:18px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:24px; line-height:30px; color:#f2f5f8; }
+  .sc-c2 { left:24px; top:62px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#d8a13a; }
+  #sc-wcard { left:206px; top:760px; }
+  #sc-gcard { left:822.6px; top:760px; }
+  #sc-ucard { left:1067.4px; top:648px; }
+  .sc-stem { position:absolute; width:2px; background:#93a3b2; }
+  #sc-wstem { left:395px; top:864px; height:36px; }
+  #sc-gstem { left:1011.6px; top:864px; height:36px; }
+  #sc-ustem { left:1256.4px; top:752px; height:148px; }
+  .sc-dot { position:absolute; top:893px; width:14px; height:14px; border-radius:7px; background:#d8a13a; }
+  #sc-wdot { left:389px; } #sc-gdot { left:1005.6px; } #sc-udot { left:1250.4px; }
+  /* rain span */
+  #sc-band { position:absolute; left:1259.1px; top:895px; width:198.2px; height:10px; background:#5a768f; transform-origin:left center; }
+  .sc-rt { position:absolute; top:880px; width:1px; height:10px; background:#7fb2e5; }
+  #sc-rt0 { left:1264px; } #sc-rt1 { left:1288px; } #sc-rt2 { left:1312px; } #sc-rt3 { left:1336px; }
+  #sc-rt4 { left:1360px; } #sc-rt5 { left:1384px; } #sc-rt6 { left:1408px; } #sc-rt7 { left:1432px; }
+  #sc-rainlbl { left:1270px; top:840px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px;
+    letter-spacing:2px; color:#7fb2e5; }
+  /* 0-4.1 time chip over the street footage: glass card (tokens.md), so the opening stretch is never still */
+  #sc-thu { position:absolute; left:176px; top:96px; padding:14px 24px; border-radius:20px; white-space:pre;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px;
+    line-height:56px; color:#e8c56a; }
+  #sc-source { left:96px; bottom:54px; font-size:19px; line-height:24px; font-weight:400; color:#c8d3e0; }
+</style>
+<div id="g-a1-10-street-clock-root" data-composition-id="g-a1-10-street-clock" data-width="1920" data-height="1080">
+  <div id="sc-ground" class="sc-fill"></div>
+
+  <div id="sc-layer" class="sc-fill">
+    <div id="sc-rail" class="sc-hide"></div>
+    <div id="sc-tk0" class="sc-tick sc-hide"></div><div id="sc-tk1" class="sc-tick sc-hide"></div>
+    <div id="sc-tk2" class="sc-tick sc-hide"></div><div id="sc-tk3" class="sc-tick sc-hide"></div>
+    <span id="sc-d0" class="sc-t sc-day sc-hide">TUE</span><span id="sc-d1" class="sc-t sc-day sc-hide">WED</span>
+    <span id="sc-d2" class="sc-t sc-day sc-hide">THU</span><span id="sc-d3" class="sc-t sc-day sc-hide">FRI</span>
+
+    <div id="sc-wstem" class="sc-stem sc-hide"></div><div id="sc-wdot" class="sc-dot sc-hide"></div>
+    <div id="sc-wcard" class="sc-card sc-hide">
+      <span class="sc-t sc-c1">WINTER STORM WATCH</span><span class="sc-t sc-c2">TUE DEC 20 · 2:22 PM</span>
+    </div>
+    <div id="sc-gstem" class="sc-stem sc-hide"></div><div id="sc-gdot" class="sc-dot sc-hide"></div>
+    <div id="sc-gcard" class="sc-card sc-hide">
+      <span class="sc-t sc-c1">BLIZZARD WARNING</span><span class="sc-t sc-c2">THU DEC 22 · 3:54 AM</span>
+    </div>
+    <div id="sc-ustem" class="sc-stem sc-hide"></div><div id="sc-udot" class="sc-dot sc-hide"></div>
+    <div id="sc-ucard" class="sc-card sc-hide">
+      <span class="sc-t sc-c1">UPDATE</span><span class="sc-t sc-c2">THU DEC 22 · 6:48 PM</span>
+    </div>
+
+    <div id="sc-band" class="sc-hide"></div>
+    <div id="sc-rain" class="sc-fill sc-hide">
+      <div id="sc-rt0" class="sc-rt"></div><div id="sc-rt1" class="sc-rt"></div><div id="sc-rt2" class="sc-rt"></div><div id="sc-rt3" class="sc-rt"></div>
+      <div id="sc-rt4" class="sc-rt"></div><div id="sc-rt5" class="sc-rt"></div><div id="sc-rt6" class="sc-rt"></div><div id="sc-rt7" class="sc-rt"></div>
+    </div>
+    <span id="sc-rainlbl" class="sc-t sc-hide">THU NIGHT · RAIN</span>
+    <div id="sc-eff" class="sc-hide"></div>
+    <span id="sc-efflbl" class="sc-t sc-hide">7 AM FRI</span>
+  </div>
+
+  <div id="sc-thu" class="sc-hide">THU DEC 22 · NIGHT</div>
+  <span id="sc-chip1" class="sc-t sc-hide">FRI DEC 23 · 7:00 AM</span>
+  <span id="sc-chip2" class="sc-t sc-hide">WARNING IN EFFECT</span>
+  <div id="sc-source" class="sc-t sc-hide">Buffalo airport ASOS, IEM archive</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const $ = (id) => "#sc-" + id;
+  const DIM = ["rail", "tk0", "tk1", "tk2", "tk3", "d0", "d1", "d2", "d3", "wstem", "wdot", "gstem", "gdot", "gcard", "ustem", "udot", "ucard"].map($);
+
+  /* 0 to 4.06 "On Thursday night at the Buffalo airport, the snow still hadn't started.": the street plays with no place
+     label; "Thursday" @0.18 a glass time chip lands top-left, floats, and leaves on "The" @4.06 as the ground comes in */
+  tl.fromTo($("thu"), { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.18);
+  tl.fromTo($("thu"), { y: 0 }, { y: -4, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 0.63);
+  tl.to($("thu"), { x: -40, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, 3.86);
+
+  /* "The watch" @4.06: ground and dimmed timeline fade in; watch card 0.8 now, back to 0.3 at 5.0 */
+  tl.to($("ground"), { autoAlpha: 1, duration: 0.6, ease: "power2.out" }, 4.06);
+  tl.to(DIM, { autoAlpha: 0.3, duration: 0.6, ease: "power2.out" }, 4.06);
+  tl.to($("wcard"), { autoAlpha: 0.8, duration: 0.6, ease: "power2.out" }, 4.06);
+  tl.to($("wcard"), { autoAlpha: 0.3, duration: 0.4, ease: "power2.inOut" }, 5.0);
+  tl.to([$("eff"), $("efflbl")], { autoAlpha: 1, duration: 0.6, ease: "power2.out" }, 4.06);
+
+  /* "Friday morning," @4.80: rain band draws from x 1259.1, ticks fall 60 px/s, label and source in */
+  tl.fromTo($("band"), { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.5, ease: "power3.out" }, 4.8);
+  tl.to($("rain"), { autoAlpha: 1, duration: 0.3 }, 5.0);
+  const ticks = [0, 1, 2, 3, 4, 5, 6, 7].map((i) => "#sc-rt" + i);
+  ticks.forEach((t, i) => tl.to(t, { y: 30, duration: 0.5, ease: "none", repeat: 11 }, 5.0 + i * 0.07)); /* 60 px/s to ~11.5 */
+  tl.fromTo($("rainlbl"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.08);
+  tl.fromTo($("source"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 5.08);
+
+  /* "the warning said seven." @6.16-6.68: warning card 0.8 then 0.3, tick pulse, chip line 1 at 6.40, line 2 at 6.68 */
+  tl.to($("gcard"), { autoAlpha: 0.8, duration: 0.3, ease: "power2.out" }, 6.16);
+  tl.to($("gcard"), { autoAlpha: 0.3, duration: 0.4, ease: "power2.inOut" }, 6.68);
+  tl.to($("eff"), { scale: 1.4, duration: 0.2, ease: "sine.out" }, 6.16);
+  tl.to($("eff"), { scale: 1, duration: 0.2, ease: "sine.in" }, 6.36);
+  tl.fromTo($("chip1"), { autoAlpha: 0, scale: 1.2 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 6.4);
+  tl.fromTo($("chip2"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.68);
+
+  /* "So what would that rapid switch from rain to snow do to a road?" @7.52: slow push toward the in-effect tick, chip stays fixed */
+  tl.to($("layer"), { scale: 1.08, transformOrigin: "1457px 900px", duration: 4.08, ease: "none" }, 7.52);
+
+  /* tail @10.6-11.6: content fades to black; the near-black ground stays as the hand-off to the chapter blackout */
+  tl.to([DIM, $("eff"), $("efflbl"), $("band"), $("rain"), $("rainlbl"), $("chip1"), $("chip2"), $("source")].flat(),
+    { autoAlpha: 0, duration: 1.0, ease: "power1.in" }, 10.6);
+
+  window.__timelines["g-a1-10-street-clock"] = tl;
+})();
+</script>
+</template>

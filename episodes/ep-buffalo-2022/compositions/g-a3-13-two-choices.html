@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a3-13-two-choices (A3-S11, standard): two glass chips, one at a time, STAY: THE CAR GETS BURIED, then WALK: FROSTBITE IN AS / LITTLE AS 30 MIN.
+  Overlay on the Carrotflower Laurel St night still (slow push done in index.html). Host starts at 2.90 of a3-s11; comp-local = t - 2.90. Comp duration 5.70 s.
+  Cue times from audio/a3-s11.words.json. Two tiers by design (52 chips, 19 credit/source): declared flat-type exemption on the root.
+  Chips sit lower-left, ending right of nothing near x 1600 and above y 680 is not touched (corner empty).
+-->
+<template>
+<style>
+  #g-a3-13-two-choices-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; font-family:Arial, sans-serif; }
+  #tw-stack { position:absolute; inset:0; }
+  .tw-chip { position:absolute; inset:auto; left:110px; bottom:110px; display:table; box-sizing:border-box; padding:22px 34px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; opacity:0; visibility:hidden; }
+  .tw-row { display:flex; flex-direction:row; align-items:baseline; white-space:nowrap; }
+  .tw-verb { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#e8c56a; margin-right:16px; opacity:0; visibility:hidden; }
+  .tw-rest { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; opacity:0; visibility:hidden; }
+  .tw-col { display:block; }
+  .tw-col .tw-rest { display:block; }
+  .tw-pill { position:absolute; inset:auto; display:table; box-sizing:border-box; padding:5px 12px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:14px;
+    font-family:Arial, sans-serif; font-weight:400; font-size:19px; line-height:1.3; color:#c8d3e0; }
+  #tw-credit { right:96px; top:54px; }
+  #tw-src { left:110px; bottom:54px; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a3-13-two-choices-root" data-composition-id="g-a3-13-two-choices" data-width="1920" data-height="1080" data-type-ok="two tiers by design: 52 px chips, 19 px credit and source">
+  <div id="tw-stack">
+    <div class="tw-chip" id="tw-c1"><div class="tw-row" id="tw-r1"><span class="tw-verb" id="tw-v1">STAY:</span><span class="tw-rest" id="tw-t1">THE CAR GETS BURIED</span></div></div>
+    <div class="tw-chip" id="tw-c2"><div class="tw-row" id="tw-r2"><span class="tw-verb" id="tw-v2">WALK:</span><div class="tw-col"><span class="tw-rest" id="tw-t2a">FROSTBITE IN AS</span><span class="tw-rest" id="tw-t2b">LITTLE AS 30 MIN</span></div></div></div>
+  </div>
+  <div class="tw-pill" id="tw-credit">Photo: Andre Carrotflower / Wikimedia Commons / CC BY-SA 4.0</div>
+  <div class="tw-pill" id="tw-src">NWS Buffalo Blizzard Warning, 22 Dec 2022</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#tw-c1", "#tw-c2", "#tw-v1", "#tw-t1", "#tw-v2", "#tw-t2a", "#tw-t2b", "#tw-src"], { autoAlpha: 0 }, 0);
+
+  /* whole-window float so something always moves: 3 x 1.9 s = 5.7 s */
+  tl.fromTo("#tw-stack", { y: 0 }, { y: -4, duration: 1.9, ease: "sine.inOut", yoyo: true, repeat: 2 }, 0);
+
+  /* C1. "Stay" @2.96 -> 0.06; rest "car" @3.36 -> 0.46 */
+  tl.fromTo("#tw-c1", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 0.06);
+  tl.fromTo("#tw-v1", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 0.06);
+  tl.fromTo("#tw-t1", { autoAlpha: 0, x: 24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.46);
+  /* "burying" @4.28 -> 1.38: the car going under */
+  tl.to("#tw-r1", { y: 8, duration: 0.6, ease: "power2.inOut" }, 1.38);
+  /* "or" @4.74 -> 1.84: C1 out */
+  tl.to("#tw-c1", { x: -80, autoAlpha: 0, duration: 0.36, ease: "power3.in" }, 1.84);
+
+  /* C2. "walk" @5.24 -> 2.34; rest 2.74; source pill with C2 */
+  tl.fromTo("#tw-c2", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 2.34);
+  tl.fromTo("#tw-v2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 2.34);
+  tl.fromTo("#tw-t2a", { autoAlpha: 0, x: 24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 2.74);
+  tl.fromTo("#tw-t2b", { autoAlpha: 0, x: 24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 3.0);
+  tl.fromTo("#tw-src", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 2.34);
+  /* "cold" @6.14 -> 3.24 */
+  tl.to("#tw-t2b", { color: "#ffffff", duration: 0.25, ease: "power2.out" }, 3.24);
+  /* "door," @7.24 -> 4.34: hold float */
+  tl.to("#tw-r2", { y: -4, duration: 0.9, ease: "sine.inOut" }, 4.34);
+  /* "whichever way" @8.00 -> 5.10: C2, pill and credit out, ends 5.70 */
+  tl.to(["#tw-c2", "#tw-src", "#tw-credit"], { x: -80, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 5.1);
+
+  window.__timelines["g-a3-13-two-choices"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

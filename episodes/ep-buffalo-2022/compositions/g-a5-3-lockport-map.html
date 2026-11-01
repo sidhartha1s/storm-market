@@ -1,0 +1,208 @@
+<!--
+  g-a5-3-lockport-map · A5-S2 (7.90 s to end) · DEEP · full-frame Erie + Niagara county map, no footage under it.
+  Comp 9.50 s (host S2 +7.90 to S2 +17.40; wav ends S2 +16.74, trim at mount). Cues: seconds from A5-S2 start
+  (audio/a5-s2.words.json) minus 7.90; spoken time in each comment.
+  Projection (brief section 2): equirectangular, cos 42.6 N, x = 860 + (lon + 78.8597) * 662.5, y = 640 - (lat - 42.8925) * 900.
+  Paths: the projected px paths already built in compositions/g-intro-4-morning-map.html (same Census / Natural Earth
+    sources, simplified 0.35 px at its scale = 0.58 px here), carried to this scale by one static affine group transform
+    derived from the two projections (no data re-fetched; no shell in this build):
+      g-intro-4: x = 960 + (lon + 79.3) * 397.3, y = 540 - (lat - 42.6) * 540
+      here:      x' = 1.667506 x - 1032.505,  y' = 1.666667 y + 3.25   (#lk-geo transform)
+    Lake Erie (incl. upper Niagara River, Grand Island ring), Lake Ontario: Natural Earth 10m ne_10m_lakes.
+    US-Canada border: ne_10m_admin_0_countries USA/CAN shared edge (dashed 6/6).
+    Erie County NY: Census cb_2022_us_county_500k GEOID 36029. Box here x 676.4..1123.4, y 454.4..1048.8.
+    Niagara County NY (36063): ASSEMBLED, not read from the 36063 polygon: south edge = Erie's Census north edge
+      (Tonawanda Creek, shared with 36063); east edge = the meridian of Erie's Census east edge (old x 1292.0, the
+      West Transit line that also bounds Niagara; g-a4-10's Census Niagara/Genesee edge sits on the same meridian);
+      north = the ne_10m_lakes Lake Ontario shore; west = the ne_10m border down the Niagara River. Box here about
+      x 726..1122, y 195..465.
+    Pins: Buffalo city Census interior point 42.8924919 N, 78.8596862 W -> (860.0, 640.0);
+      Lockport city 43.1698 N, 78.6956 W (brief value, cb_2022_36_place_500k not re-read) -> (968.7, 390.4).
+    Travel line Buffalo -> Lockport: dx 108.7, dy -249.6, length about 272.2 px (measured at runtime, dash ceil(len)+1),
+      bearing about 23.5 deg; it crosses the Erie/Niagara line at about y 465.
+  Layers: #lk-ground (radial ground) under #lk-cam (map, travel line, pins, BUFFALO label; slow push 1 -> 1.06 about
+    (915, 515)); chips, icon panel and source are a fixed HUD layer outside the camera.
+-->
+<template>
+<style>
+  #g-a5-3-lockport-map-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family: Arial, sans-serif; color:#f2f5f8; }
+  .lk-fill { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #lk-ground { background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .lk-hide { opacity:0; visibility:hidden; }
+  .lk-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .lk-t { position:absolute; white-space:nowrap; }
+
+  /* pins: wrapper is a 0x0 point at the Census interior point; children centre on it */
+  .lk-pinwrap { position:absolute; width:0; height:0; }
+  #lk-pw-bu { left:860px; top:640px; }
+  #lk-pin-bu { position:absolute; left:-4.5px; top:-4.5px; width:9px; height:9px; border-radius:50%; background:#93a3b2; }
+  #lk-pw-lk { left:968.7px; top:390.4px; }
+  #lk-pin-lk { position:absolute; left:-5.5px; top:-5.5px; width:11px; height:11px; border-radius:50%; background:#e74c3c; }
+  #lk-ring-lk { position:absolute; left:-5.5px; top:-5.5px; width:11px; height:11px; box-sizing:border-box; border-radius:50%;
+    border:2px solid #e74c3c; opacity:0; }
+
+  /* BUFFALO: left of the pin, right edge x 836, centre y 640, 0.6 land-colour backing over the river / border */
+  #lk-lab-bu { right:1084px; top:623px; padding:2px 8px; border-radius:4px; background:rgba(11,16,22,0.6);
+    font-weight:700; font-size:26px; line-height:30px; letter-spacing:4px; color:#93a3b2; }
+
+  /* glass chips (g-intro-2-toll-chips) */
+  .lk-glass { position:absolute; box-sizing:border-box; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  #lk-chip { left:1014px; top:345px; display:flex; flex-direction:row; align-items:baseline; padding:18px 30px; }
+  #lk-chip-a { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:52px; color:#f2f5f8; }
+  #lk-chip-b { display:block; white-space:pre; font-weight:700; font-size:30px; line-height:30px; letter-spacing:4px; color:#93a3b2; }
+  #lk-co { left:1180px; top:790px; padding:18px 24px; }
+  #lk-co-t { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:32px; line-height:32px; color:#e8c56a; }
+
+  /* furnace icon panel: box x 1180..1560, y 480..760 */
+  #lk-panel { left:1180px; top:480px; width:380px; height:280px; overflow:hidden; }
+  #lk-icon { position:absolute; left:-1px; top:-1px; width:380px; height:280px; overflow:hidden; }
+
+  .lk-src { left:96px; bottom:54px; font-weight:400; font-size:19px; line-height:24px; color:#c8d3e0; }
+</style>
+<div id="g-a5-3-lockport-map-root" data-composition-id="g-a5-3-lockport-map" data-width="1920" data-height="1080">
+
+  <div id="lk-ground" class="lk-fill"></div>
+
+  <!-- camera: map, travel line, pins, BUFFALO label -->
+  <div id="lk-cam" class="lk-fill">
+    <svg id="lk-map" class="lk-svg" viewBox="0 0 1920 1080">
+      <!-- land -->
+      <rect x="-60" y="-60" width="2040" height="1200" fill="#0b1016"/>
+      <g id="lk-geo" transform="matrix(1.667506 0 0 1.666667 -1032.505 3.25)">
+        <!-- Lake Erie (ne_10m_lakes; inner ring = Grand Island) -->
+        <path fill="#04070a" fill-rule="evenodd" stroke="#2a3644" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke" d="M146.2,1010.1 274.2,947.5 301.6,942.2 311.7,935.7 325.9,932.7 328.3,930.6 333.2,924.3 336.5,921.5 343.8,919.3 359.1,917.1 371.8,907.7 495.1,865.6 501.4,860.2 507.4,856.5 532.6,851.3 598.2,814.1 609.6,804.1 613.1,803.0 617.3,800.1 622.5,787.7 632.5,781.2 638.9,774.4 646.3,769.9 655.1,773.7 651.4,778.6 647.2,780.6 637.5,780.9 635.5,782.3 630.5,789.5 628.1,791.8 628.1,796.0 637.8,793.0 657.3,780.1 674.3,773.7 692.2,758.5 708.5,753.1 726.0,740.0 780.5,717.1 788.6,710.5 799.7,705.1 829.5,681.0 856.6,670.6 863.5,664.2 869.9,656.7 892.1,644.2 910.8,618.6 922.6,612.5 926.6,608.1 932.8,599.5 936.9,597.0 956.7,588.7 977.5,574.9 985.8,563.3 1012.0,555.3 1017.2,552.5 1019.3,550.2 1024.1,542.3 1030.7,527.7 1032.4,525.4 1040.9,521.5 1047.3,512.1 1055.6,492.2 1066.7,478.4 1081.6,469.2 1112.6,455.0 1120.5,449.4 1126.6,442.5 1130.5,432.9 1131.8,419.9 1131.8,407.3 1131.1,402.6 1128.8,395.7 1120.4,379.5 1118.3,373.6 1115.3,349.8 1113.6,346.8 1106.2,339.8 1104.5,335.0 1107.8,322.9 1121.7,308.1 1123.7,296.2 1113.0,282.7 1068.8,277.3 1052.9,266.6 1049.2,276.0 1057.9,284.1 1066.5,294.1 1062.3,309.1 1062.4,318.6 1071.3,329.6 1090.9,344.5 1108.2,353.3 1112.8,360.8 1108.7,371.9 1101.7,378.6 1092.9,383.5 1048.7,394.0 1044.5,397.8 1041.5,404.9 1034.3,403.0 1017.2,392.4 998.6,388.7 932.8,392.5 901.6,388.4 896.3,389.8 892.8,393.2 890.0,397.0 886.7,399.9 882.3,401.0 849.1,398.7 838.3,400.3 830.9,405.4 823.8,407.6 802.8,398.3 794.2,395.7 787.2,397.8 771.3,405.7 762.9,407.5 747.6,414.5 731.6,414.5 607.3,436.1 589.8,444.0 567.5,466.8 561.3,470.1 555.4,474.9 548.9,497.0 543.7,503.3 539.6,501.6 534.7,492.4 531.2,494.1 528.1,497.1 521.4,501.3 505.5,519.9 501.6,530.2 505.7,540.2 546.4,538.3 551.3,545.9 562.7,549.4 643.9,555.5 663.6,562.6 658.7,562.3 652.6,563.3 646.8,565.3 638.3,571.0 632.3,570.1 621.3,566.3 581.9,562.6 550.2,552.8 539.5,551.2 478.8,555.0 461.9,549.6 452.5,545.0 402.3,533.7 381.7,521.5 372.4,520.3 311.4,504.0 193.6,502.4 141.9,513.3 118.8,529.1 102.6,535.1 94.3,539.7 83.8,549.4 70.0,555.3 65.9,558.7 59.2,566.8 32.2,592.8 23.6,603.3 -30.0,645.0 -30.0,1110.0 31.3,1110.0 146.2,1010.1M1080.0,328.8 1074.5,321.6 1070.4,318.3 1070.0,314.8 1075.3,296.5 1074.6,288.7 1082.0,288.3 1088.9,286.4 1095.5,285.7 1101.7,288.7 1112.0,292.4 1115.5,297.3 1113.9,304.0 1093.4,336.7 1086.5,335.3 1080.0,328.8"/>
+        <!-- Lake Ontario (ne_10m_lakes) -->
+        <path fill="#04070a" stroke="#2a3644" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke" d="M931.6,-24.1 925.8,-24.1 901.5,-28.1 892.1,-26.0 886.6,-18.2 882.5,-8.3 877.3,-0.1 869.0,3.6 860.8,5.3 852.4,9.6 845.1,15.7 840.3,22.3 837.2,34.3 836.1,45.9 834.1,57.1 807.8,99.7 781.7,128.4 771.4,146.2 772.3,166.5 785.0,182.6 804.1,193.7 843.3,207.4 862.7,210.9 902.6,208.6 922.3,210.7 938.9,219.3 947.9,221.3 956.2,216.6 963.5,210.4 987.6,200.4 1001.5,189.1 1009.9,183.8 1047.8,177.5 1055.6,173.8 1082.9,169.0 1134.0,148.9 1176.9,141.4 1202.6,128.8 1325.4,110.1 1386.3,118.8 1434.1,111.2 1576.3,137.9 1586.2,142.7 1586.3,148.4 1597.2,151.7 1625.6,177.5 1642.1,185.1 1660.0,185.3 1709.9,167.0 1728.1,163.2 1880.5,170.5 1877.6,177.9 1880.3,181.9 1883.4,184.6 1887.1,185.7 1891.1,185.3 1894.8,184.0 1897.4,175.2 1897.1,167.9 1899.5,163.2 1901.5,161.6 1942.5,153.0 1950.0,149.6 1950.0,-30.0 936.3,-30.0 931.6,-24.1Z"/>
+        <!-- US-Canada border (ne_10m_admin_0_countries shared edge), dashed 6/6 -->
+        <path fill="none" stroke="#2a3644" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke" d="M-30.0,880.2 174.7,751.3 583.9,666.6 1071.5,430.5 1093.9,410.3 1111.4,383.8 1115.3,361.7 1112.9,352.3 1104.5,345.6 1095.1,342.2 1085.7,336.9 1075.9,328.8 1070.4,322.8 1066.5,316.8 1068.0,305.4 1070.4,297.3 1069.9,292.6 1067.0,287.9 1057.1,276.5 1054.2,271.9 1053.3,266.8 1053.1,259.1 1054.8,253.6 1057.1,249.2 1058.7,244.7 1059.9,231.9 1057.8,183.4 1056.0,174.0 1042.8,139.0 1009.9,73.2 1178.2,-9.2 1203.1,-17.2 1936.7,-13.8 1950.0,-21.8"/>
+        <!-- Niagara County (assembled, see header): fill lights on "Niagara County" -->
+        <path id="lk-niag" fill="#7fb2e5" fill-opacity="0" stroke="#5a768f" stroke-opacity="0.6" stroke-width="2" stroke-linejoin="round" vector-effect="non-scaling-stroke" d="M1071.5,287.3 1075.4,286.4 1099.1,287.4 1100.9,287.8 1114.3,294.4 1120.4,300.2 1121.7,303.6 1122.8,312.1 1126.1,311.0 1126.9,312.2 1128.4,312.4 1131.3,311.4 1134.3,311.6 1136.2,312.1 1138.3,313.6 1142.1,313.8 1143.0,313.5 1145.4,311.0 1146.7,308.0 1148.6,305.8 1148.0,302.6 1145.8,298.1 1146.2,296.9 1147.1,296.3 1153.1,296.1 1155.7,295.1 1156.8,294.2 1155.8,291.0 1156.2,289.9 1158.8,288.1 1163.9,288.1 1167.2,288.7 1171.0,286.2 1174.9,285.7 1178.0,286.6 1180.4,286.3 1181.2,285.7 1185.0,278.5 1187.6,277.5 1188.8,277.9 1190.8,280.2 1192.7,279.1 1194.6,279.4 1195.4,277.1 1199.6,277.4 1201.8,276.1 1203.4,277.3 1203.4,278.4 1204.9,280.5 1205.6,280.7 1206.4,278.3 1208.2,278.7 1212.4,277.3 1214.9,278.0 1218.9,280.5 1219.6,280.4 1219.6,277.8 1218.6,276.9 1219.3,275.6 1221.5,276.2 1221.9,275.0 1221.5,271.4 1221.9,271.5 1223.8,273.6 1224.5,273.2 1226.2,273.5 1225.8,274.5 1225.1,274.9 1227.5,278.0 1228.8,278.1 1230.6,276.8 1231.5,278.1 1233.1,278.8 1231.3,281.9 1232.0,282.6 1231.6,283.8 1232.5,283.9 1233.4,281.9 1235.8,283.2 1237.4,282.6 1237.5,283.0 1235.4,284.4 1235.5,284.8 1236.5,285.1 1237.6,284.1 1237.7,284.9 1238.4,285.1 1239.8,284.9 1240.0,286.4 1240.5,286.5 1241.3,285.5 1241.7,282.9 1243.6,284.5 1245.0,283.4 1244.4,282.5 1245.2,282.2 1246.0,280.7 1244.0,278.3 1244.2,277.2 1245.4,276.0 1246.0,276.7 1246.8,276.8 1246.4,278.0 1247.1,278.6 1246.8,279.4 1247.6,280.9 1248.3,280.7 1249.1,279.7 1248.4,279.5 1247.9,277.7 1248.3,277.0 1247.5,276.1 1251.9,276.4 1252.8,273.4 1252.4,272.9 1253.9,271.5 1254.7,271.7 1254.9,272.7 1256.0,272.7 1253.7,275.2 1257.7,273.8 1258.3,272.7 1257.9,271.8 1259.7,270.7 1260.2,271.8 1261.2,271.9 1261.4,273.6 1259.4,273.6 1259.2,275.3 1260.9,276.0 1261.0,274.8 1261.8,275.4 1261.8,276.3 1261.1,276.4 1261.9,276.9 1261.8,277.6 1262.6,277.7 1262.6,276.8 1263.4,277.8 1265.1,276.2 1265.4,276.8 1266.6,276.2 1266.3,275.3 1267.1,275.2 1267.2,276.0 1266.7,276.3 1267.4,276.7 1269.0,276.4 1268.9,275.6 1269.6,276.0 1272.2,275.2 1272.3,274.7 1271.6,274.6 1271.9,272.8 1273.2,272.4 1273.7,271.1 1274.5,272.0 1274.4,273.6 1274.9,273.1 1276.4,273.7 1276.5,274.6 1275.4,273.7 1275.8,274.5 1275.4,275.6 1277.6,275.9 1276.7,277.2 1279.1,277.3 1278.0,278.9 1279.2,279.9 1280.3,279.4 1280.8,279.7 1280.7,278.6 1282.2,279.3 1283.9,277.5 1285.1,278.0 1285.1,278.8 1287.0,278.2 1287.1,277.4 1288.1,278.3 1287.9,279.3 1289.0,278.5 1288.8,279.9 1291.7,277.6 1290.5,276.6 1292.0,276.1 1292.0,115.2 1202.6,128.8 1176.9,141.4 1134.0,148.9 1082.9,169.0 1055.6,173.8 1056.0,174.0 1057.8,183.4 1059.9,231.9 1058.7,244.7 1057.1,249.2 1054.8,253.6 1053.1,259.1 1053.3,266.8 1054.2,271.9 1057.1,276.5 1067.0,287.9Z"/>
+        <!-- Erie County NY, cb_2022_us_county_500k GEOID 36029: 2 px outline at 60 % -->
+        <path id="lk-erie" fill="none" stroke="#5a768f" stroke-opacity="0.6" stroke-width="2" stroke-linejoin="round" vector-effect="non-scaling-stroke" d="M1024.8,556.3 1027.3,545.3 1028.2,544.7 1029.0,544.9 1030.8,543.1 1031.6,538.6 1033.6,538.0 1034.9,532.8 1040.2,528.1 1042.1,523.9 1043.7,524.1 1045.5,522.9 1047.9,518.4 1050.1,518.4 1053.9,515.8 1054.5,503.1 1055.2,501.6 1057.7,499.1 1058.5,495.2 1060.6,490.7 1062.1,490.6 1067.0,487.8 1068.4,488.2 1070.6,486.9 1071.4,485.7 1073.2,485.7 1076.7,483.5 1078.7,484.0 1082.7,483.1 1091.3,476.8 1092.0,474.9 1093.4,474.0 1095.0,473.9 1101.4,468.7 1104.8,468.4 1111.7,465.9 1115.7,461.5 1118.0,460.2 1126.7,452.3 1127.8,450.6 1129.1,450.3 1132.5,447.3 1134.9,443.0 1137.4,440.7 1137.4,435.1 1136.2,431.9 1135.1,431.6 1130.1,419.8 1130.1,417.9 1130.7,416.4 1131.6,416.0 1131.5,414.2 1133.3,415.7 1134.9,414.7 1134.5,411.8 1135.6,411.1 1132.5,403.4 1130.0,403.9 1122.9,390.6 1123.7,389.4 1122.2,386.2 1116.5,378.4 1116.7,365.4 1115.3,360.0 1111.4,352.7 1106.1,347.8 1094.4,346.8 1089.1,340.9 1074.6,332.0 1071.3,326.8 1070.0,315.2 1074.5,308.4 1077.1,298.6 1079.4,293.7 1076.4,288.5 1071.5,287.3 1075.4,286.4 1099.1,287.4 1100.9,287.8 1114.3,294.4 1120.4,300.2 1121.7,303.6 1122.8,312.1 1126.1,311.0 1126.9,312.2 1128.4,312.4 1131.3,311.4 1134.3,311.6 1136.2,312.1 1138.3,313.6 1142.1,313.8 1143.0,313.5 1145.4,311.0 1146.7,308.0 1148.6,305.8 1148.0,302.6 1145.8,298.1 1146.2,296.9 1147.1,296.3 1153.1,296.1 1155.7,295.1 1156.8,294.2 1155.8,291.0 1156.2,289.9 1158.8,288.1 1163.9,288.1 1167.2,288.7 1171.0,286.2 1174.9,285.7 1178.0,286.6 1180.4,286.3 1181.2,285.7 1185.0,278.5 1187.6,277.5 1188.8,277.9 1190.8,280.2 1192.7,279.1 1194.6,279.4 1195.4,277.1 1199.6,277.4 1201.8,276.1 1203.4,277.3 1203.4,278.4 1204.9,280.5 1205.6,280.7 1206.4,278.3 1208.2,278.7 1212.4,277.3 1214.9,278.0 1218.9,280.5 1219.6,280.4 1219.6,277.8 1218.6,276.9 1219.3,275.6 1221.5,276.2 1221.9,275.0 1221.5,271.4 1221.9,271.5 1223.8,273.6 1224.5,273.2 1226.2,273.5 1225.8,274.5 1225.1,274.9 1227.5,278.0 1228.8,278.1 1230.6,276.8 1231.5,278.1 1233.1,278.8 1231.3,281.9 1232.0,282.6 1231.6,283.8 1232.5,283.9 1233.4,281.9 1235.8,283.2 1237.4,282.6 1237.5,283.0 1235.4,284.4 1235.5,284.8 1236.5,285.1 1237.6,284.1 1237.7,284.9 1238.4,285.1 1239.8,284.9 1240.0,286.4 1240.5,286.5 1241.3,285.5 1241.7,282.9 1243.6,284.5 1245.0,283.4 1244.4,282.5 1245.2,282.2 1246.0,280.7 1244.0,278.3 1244.2,277.2 1245.4,276.0 1246.0,276.7 1246.8,276.8 1246.4,278.0 1247.1,278.6 1246.8,279.4 1247.6,280.9 1248.3,280.7 1249.1,279.7 1248.4,279.5 1247.9,277.7 1248.3,277.0 1247.5,276.1 1251.9,276.4 1252.8,273.4 1252.4,272.9 1253.9,271.5 1254.7,271.7 1254.9,272.7 1256.0,272.7 1253.7,275.2 1257.7,273.8 1258.3,272.7 1257.9,271.8 1259.7,270.7 1260.2,271.8 1261.2,271.9 1261.4,273.6 1259.4,273.6 1259.2,275.3 1260.9,276.0 1261.0,274.8 1261.8,275.4 1261.8,276.3 1261.1,276.4 1261.9,276.9 1261.8,277.6 1262.6,277.7 1262.6,276.8 1263.4,277.8 1265.1,276.2 1265.4,276.8 1266.6,276.2 1266.3,275.3 1267.1,275.2 1267.2,276.0 1266.7,276.3 1267.4,276.7 1269.0,276.4 1268.9,275.6 1269.6,276.0 1272.2,275.2 1272.3,274.7 1271.6,274.6 1271.9,272.8 1273.2,272.4 1273.7,271.1 1274.5,272.0 1274.4,273.6 1274.9,273.1 1276.4,273.7 1276.5,274.6 1275.4,273.7 1275.8,274.5 1275.4,275.6 1277.6,275.9 1276.7,277.2 1279.1,277.3 1278.0,278.9 1279.2,279.9 1280.3,279.4 1280.8,279.7 1280.7,278.6 1282.2,279.3 1283.9,277.5 1285.1,278.0 1285.1,278.8 1287.0,278.2 1287.1,277.4 1288.1,278.3 1287.9,279.3 1289.0,278.5 1288.8,279.9 1291.7,277.6 1290.5,276.6 1292.0,276.1 1292.5,316.8 1292.0,395.6 1283.3,395.4 1282.6,442.4 1292.4,442.6 1292.2,489.3 1292.9,526.5 1292.2,574.4 1290.3,576.0 1287.6,575.4 1286.9,576.2 1286.4,575.8 1284.5,576.2 1284.3,575.1 1282.9,575.6 1282.4,575.2 1281.3,577.8 1278.9,577.9 1278.2,579.0 1274.8,579.7 1274.6,579.1 1273.2,579.0 1273.2,580.4 1270.7,582.6 1270.3,583.7 1266.9,582.1 1265.3,582.6 1264.6,583.6 1264.7,584.8 1262.8,584.4 1262.4,586.3 1258.6,584.4 1258.4,585.0 1259.1,585.6 1256.9,586.2 1256.3,587.6 1255.4,588.0 1255.0,586.8 1254.1,586.8 1252.5,589.3 1251.0,588.6 1250.6,587.1 1249.4,587.4 1248.7,588.3 1246.6,587.5 1246.5,586.8 1244.6,586.4 1243.8,587.0 1243.8,588.7 1242.9,589.2 1239.3,587.2 1236.8,588.9 1235.9,588.9 1235.6,589.5 1236.0,590.1 1234.9,590.5 1234.1,592.0 1233.1,592.5 1232.2,591.6 1229.4,591.7 1227.7,594.0 1227.3,595.4 1225.7,595.0 1224.6,595.8 1222.7,595.0 1220.8,597.5 1220.5,598.8 1218.4,598.0 1217.7,598.3 1217.7,599.0 1216.7,599.2 1216.1,598.3 1214.4,598.5 1213.3,598.1 1212.8,599.7 1211.6,600.8 1209.8,600.2 1209.4,601.2 1208.6,601.1 1208.0,602.9 1206.2,602.3 1204.8,605.0 1205.3,605.8 1203.9,607.2 1201.8,606.6 1201.0,609.2 1198.6,608.2 1198.2,607.1 1198.6,605.0 1198.2,602.2 1197.5,601.3 1197.1,601.2 1195.9,602.3 1194.2,602.1 1193.6,602.9 1192.8,602.3 1192.8,601.2 1191.5,601.6 1191.3,602.7 1186.9,603.4 1185.9,605.5 1183.2,604.6 1182.8,605.7 1183.6,607.3 1183.1,608.5 1178.6,608.2 1177.9,611.1 1173.1,609.9 1172.6,610.3 1172.8,610.8 1174.7,611.8 1175.1,613.6 1173.6,614.7 1172.3,614.7 1171.1,613.3 1169.6,612.8 1167.9,613.5 1167.9,615.1 1170.4,615.8 1170.3,617.0 1169.0,617.5 1166.3,618.2 1165.3,617.9 1160.8,614.2 1159.8,614.2 1157.0,616.1 1154.8,616.2 1150.0,620.6 1148.0,620.2 1147.7,621.9 1145.9,621.6 1143.5,624.9 1142.6,624.9 1141.3,623.8 1140.1,623.8 1138.5,624.9 1137.1,624.5 1135.4,625.3 1131.6,625.3 1131.0,626.4 1130.2,626.6 1127.8,625.5 1125.7,627.3 1124.9,627.2 1124.0,625.3 1123.1,625.4 1121.4,626.9 1120.5,626.0 1119.4,622.1 1118.7,621.5 1116.7,623.0 1114.3,622.1 1113.0,624.1 1110.8,625.0 1110.2,624.0 1110.5,621.9 1111.6,621.3 1111.6,619.3 1108.7,616.3 1107.0,615.6 1105.0,613.6 1103.6,611.4 1098.8,611.1 1098.2,609.6 1096.3,608.9 1093.7,601.2 1094.6,597.2 1092.5,597.4 1089.1,592.6 1087.4,592.0 1087.0,590.7 1084.7,591.1 1085.7,589.5 1086.0,587.8 1084.2,586.9 1083.9,585.6 1084.6,583.7 1083.2,581.3 1082.5,578.2 1081.0,576.8 1077.8,576.3 1076.5,574.7 1075.3,575.4 1073.9,575.3 1069.4,572.5 1066.9,572.0 1066.0,570.6 1063.4,573.7 1058.8,572.9 1057.8,574.4 1055.0,573.6 1048.4,569.3 1046.2,569.0 1044.8,567.3 1043.6,567.0 1043.0,566.1 1046.9,564.9 1047.1,564.1 1046.1,563.4 1043.5,563.8 1042.5,563.2 1042.5,562.2 1041.6,561.1 1042.0,559.9 1041.1,559.2 1038.9,560.3 1037.0,559.4 1037.8,557.2 1036.1,556.1 1033.5,556.2 1030.6,558.6 1029.2,558.9Z"/>
+      </g>
+    </svg>
+
+    <!-- travel line Buffalo -> Lockport: dashed 10/8, revealed by a mask line drawn with stroke-dashoffset -->
+    <svg id="lk-trav-svg" class="lk-svg" viewBox="0 0 1920 1080">
+      <defs>
+        <mask id="lk-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+          <line id="lk-rev" x1="860" y1="640" x2="968.7" y2="390.4" stroke="#ffffff" stroke-width="10" stroke-linecap="butt"/>
+        </mask>
+      </defs>
+      <g id="lk-trav-g" class="lk-hide">
+        <line id="lk-trav" x1="860" y1="640" x2="968.7" y2="390.4" stroke="#dfe7ee" stroke-width="3" stroke-dasharray="10 8" mask="url(#lk-mask)"/>
+      </g>
+      <!-- marker: 12 px dot + 2 px ring, rides the line head by per-leg attr tween -->
+      <g id="lk-mk-g" class="lk-hide">
+        <circle id="lk-mkr" cx="860" cy="640" r="10" fill="none" stroke="#f2f5f8" stroke-opacity="0.55" stroke-width="2"/>
+        <circle id="lk-mk" cx="860" cy="640" r="6" fill="#f2f5f8"/>
+      </g>
+    </svg>
+
+    <div id="lk-pw-bu" class="lk-pinwrap lk-hide"><div id="lk-pin-bu"></div></div>
+    <div id="lk-lab-bu" class="lk-t lk-hide">BUFFALO</div>
+    <div id="lk-pw-lk" class="lk-pinwrap lk-hide"><div id="lk-ring-lk"></div><div id="lk-pin-lk"></div></div>
+  </div>
+
+  <!-- HUD: place chip, furnace icon panel, CO chip, source -->
+  <div id="lk-chip" class="lk-glass lk-hide"><span id="lk-chip-a">LOCKPORT</span><span id="lk-chip-b"> · NIAGARA COUNTY</span></div>
+
+  <div id="lk-panel" class="lk-glass lk-hide">
+    <svg id="lk-icon" viewBox="1180 480 380 280">
+      <defs>
+        <clipPath id="lk-clip"><rect x="1180" y="480" width="380" height="280" rx="28"/></clipPath>
+      </defs>
+      <g clip-path="url(#lk-clip)">
+        <!-- roof eave and house wall section -->
+        <line x1="1192" y1="500" x2="1300" y2="534" stroke="#2a3644" stroke-width="8" stroke-linecap="round"/>
+        <rect x="1214" y="520" width="48" height="250" fill="#2a3644" stroke="#5a768f" stroke-opacity="0.5" stroke-width="1.5"/>
+        <line x1="1214" y1="566" x2="1262" y2="566" stroke="#3a4a5c" stroke-width="1"/>
+        <line x1="1214" y1="612" x2="1262" y2="612" stroke="#3a4a5c" stroke-width="1"/>
+        <line x1="1214" y1="658" x2="1262" y2="658" stroke="#3a4a5c" stroke-width="1"/>
+        <!-- furnace vent pipe, out of the wall low at (1262, 690), elbow down -->
+        <rect x="1262" y="682" width="66" height="16" fill="#93a3b2"/>
+        <rect x="1314" y="682" width="16" height="34" rx="2" fill="#93a3b2"/>
+        <rect x="1311" y="712" width="22" height="6" rx="2" fill="#93a3b2"/>
+        <!-- snow mass: top edge rises from below the panel to about y 646..672, burying the vent -->
+        <path id="lk-snow" fill="#dfe7ee" fill-opacity="0.9" d="M1262,780 L1262,646 C1292,634 1330,652 1372,648 C1420,644 1462,662 1500,660 C1524,659 1546,666 1566,674 L1566,780 Z"/>
+        <!-- CO wisp: from the buried vent mouth, curling back through the wall into the house -->
+        <path id="lk-wisp" fill="none" stroke="#93a3b2" stroke-opacity="0.5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M1322,716 C1336,690 1316,668 1296,664 C1276,660 1270,640 1262,628 C1250,612 1232,618 1226,604 C1220,590 1236,580 1244,592"/>
+      </g>
+    </svg>
+  </div>
+
+  <div id="lk-co" class="lk-glass lk-hide"><span id="lk-co-t">CARBON MONOXIDE</span></div>
+
+  <div id="lk-src" class="lk-t lk-src lk-hide">Erie County Executive Mark Poloncarz, via WIVB</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const $ = (id) => "#lk-" + id;
+  const el = (id) => document.getElementById("lk-" + id);
+  const END = 9.5; // host S2 +7.90 to S2 +17.40
+
+  // dash lengths measured, ceil(len)+1
+  const LD = Math.ceil(el("rev").getTotalLength()) + 1;  // about 273 + 1
+  const LW = Math.ceil(el("wisp").getTotalLength()) + 1;
+  const BU = { x: 860, y: 640 };      // Buffalo city INTPT 42.8924919 N, 78.8596862 W
+  const LK = { x: 968.7, y: 390.4 };  // Lockport city 43.1698 N, 78.6956 W
+
+  // transforms and dash state start in tl.set at 0
+  tl.set($("cam"), { transformOrigin: "915px 515px", scale: 1 }, 0);
+  tl.set([$("pw-bu"), $("pw-lk")].join(","), { transformOrigin: "0px 0px", scale: 1 }, 0);
+  tl.set($("lab-bu"), { transformOrigin: "right center", scale: 1, y: 0 }, 0);
+  tl.set($("ring-lk"), { transformOrigin: "50% 50%", scale: 1 }, 0);
+  tl.set($("rev"), { strokeDasharray: LD, strokeDashoffset: LD }, 0);
+  tl.set($("mk-g"), { y: 0 }, 0);
+  tl.set($("wisp"), { strokeDasharray: LW, strokeDashoffset: LW }, 0);
+  tl.set($("snow"), { y: 120 }, 0);
+  tl.set($("chip"), { x: 0, y: 0 }, 0);
+  tl.set($("panel"), { y: 0 }, 0);
+  tl.set($("co"), { transformOrigin: "50% 50%", scale: 1, y: 0 }, 0);
+  tl.set($("src"), { y: 0 }, 0);
+
+  /* cut from g-a5-2 @7.90 (0.00): ground, land, lakes, county outlines on frame 0; slow push the whole window */
+  tl.to($("cam"), { scale: 1.06, duration: END, ease: "none" }, 0);
+
+  /* "Northeast of Buffalo," @8.04 (0.14): Buffalo pin + label */
+  tl.fromTo($("pw-bu"), { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(1.7)" }, 0.14);
+  tl.fromTo($("lab-bu"), { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(1.7)" }, 0.14);
+
+  /* (0.60 -> 2.20): travel line draws from Buffalo, marker rides its head (same duration and ease) */
+  tl.set([$("trav-g"), $("mk-g")].join(","), { autoAlpha: 1 }, 0.6);
+  tl.fromTo($("rev"), { strokeDashoffset: LD }, { strokeDashoffset: 0, duration: 1.6, ease: "power2.inOut" }, 0.6);
+  tl.fromTo([$("mk"), $("mkr")].join(","), { attr: { cx: BU.x, cy: BU.y } }, { attr: { cx: LK.x, cy: LK.y }, duration: 1.6, ease: "power2.inOut" }, 0.6);
+
+  /* "Niagara County," @9.62 (1.72): Niagara County fill lights to 0.18 */
+  tl.fromTo($("niag"), { attr: { "fill-opacity": 0 } }, { attr: { "fill-opacity": 0.18 }, duration: 0.6, ease: "power2.out" }, 1.72);
+
+  /* marker arrives (2.20): Lockport pin in, ring pulses 6 x 1.2 s (2.20 -> 9.40), marker floats 1 px (2.20 -> 8.60) */
+  tl.fromTo($("pw-lk"), { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(1.7)" }, 2.2);
+  tl.fromTo($("ring-lk"), { scale: 1, opacity: 0.6 }, { scale: 2.2, opacity: 0, duration: 1.2, ease: "power1.out", repeat: 5 }, 2.2);
+  tl.fromTo($("mk-g"), { y: 0 }, { y: -1, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 7 }, 2.2);
+
+  /* "Lockport" @12.62 (4.72): place chip and source */
+  tl.fromTo($("chip"), { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 4.72);
+  tl.fromTo($("src"), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 4.72);
+
+  /* "carbon monoxide" @14.14 (6.24): icon panel at 6.10, CO chip at 6.24, wisp draws 6.30 -> 7.30 */
+  tl.fromTo($("panel"), { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.1);
+  tl.fromTo($("co"), { autoAlpha: 0, scale: 1.15 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 6.24);
+  tl.fromTo($("wisp"), { strokeDashoffset: LW }, { strokeDashoffset: 0, duration: 1.0, ease: "power1.inOut" }, 6.3);
+
+  /* "snow buried his furnace." @15.50 (7.60): snow top edge rises over the vent, done 8.50 */
+  tl.fromTo($("snow"), { y: 120 }, { y: 0, duration: 0.9, ease: "power2.out" }, 7.6);
+
+  /* after "furnace." @16.48 (8.90): labels and chips out, map fades through to the ground by 9.50 */
+  tl.to([$("lab-bu"), $("chip"), $("panel"), $("co"), $("src")].join(","), { autoAlpha: 0, y: -10, duration: 0.44, ease: "power2.in", stagger: 0.04 }, 8.9);
+  tl.to($("cam"), { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 8.9);
+
+  window.__timelines["g-a5-3-lockport-map"] = tl;
+})();
+</script>
+</template>

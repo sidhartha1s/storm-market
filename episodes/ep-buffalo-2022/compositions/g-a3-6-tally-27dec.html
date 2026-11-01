@@ -1,0 +1,170 @@
+<!--
+  g-a3-6-tally-27dec · A3-S4 · DEEP · full-frame 31-block tally, 15.50 s (wav 14.65 s + exit tail).
+  Claim: evening of Tue 27 Dec 2022, county had sorted a toll of 31; 17 found outside, 3 in a vehicle; 17 > 15.5 (half of 31).
+  Source: research/*eaths.md (the toll file) section 1 row "27 Dec (evening)" (county health dept via NPR/KAXE), section 3 (17/31 = 55 %, not shown).
+  Family: compositions/g-intro-6-count-tally.html (same ground, palette, type); fill idea from library/inhouse/ranked-bars.html.
+  Geometry (px, root coordinates): block i = 0..30 at x = 250 + 46 i, w 40, y 470, h 120, r 6; bar span 250-1670.
+    OUTSIDE i 0-16 x 250-1026 (centre 638) #f2f5f8; IN A VEHICLE i 17-19 x 1032-1164 (centre 1098) #d8a13a;
+    OTHER CAUSES i 20-30 x 1170-1670 (centre 1420) #2a3644.
+  Halfway line x 960 (bar midpoint, 15.5 blocks; inside block 15 = 940-980), y 430-610; tag HALF top 396.
+  Labels top 620, centred on their runs (padding-left = tracking cancels the trailing letter-space):
+    OUTSIDE tracking 8, ink ~556-720; IN A VEHICLE tracking 4 (at 8 its ink reached x ~969, under the 970 limit), ink ~991-1205;
+    OTHER CAUSES tracking 8, ink ~1273-1567. Readout "17 OF 31" centred x 960, top 270.
+  Corner x >= 1600, y >= 680 stays empty. Cues: seconds from A3-S4 start (audio/a3-s4.words.json).
+-->
+<template>
+<style>
+  #g-a3-6-tally-27dec-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    font-family: Arial, sans-serif; color:#f2f5f8; }
+  #ty-ground { position:absolute; inset:0; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .ty-fill { position:absolute; inset:0; }
+  .ty-hide { opacity:0; visibility:hidden; }
+  .ty-t { position:absolute; white-space:nowrap; }
+  /* blocks: outline wrapper positioned by tl.set x from the formula, fill child grows from the bottom */
+  .ty-b { position:absolute; left:250px; top:470px; width:40px; height:120px; border-radius:6px; box-sizing:border-box;
+    border:1px solid rgba(255,255,255,.14); background:transparent; }
+  .ty-f { position:absolute; inset:-1px; border-radius:6px; background:#2a3644; }
+  #ty-sheenclip { position:absolute; left:250px; top:470px; width:776px; height:120px; overflow:hidden; }
+  #ty-sheen { position:absolute; left:-120px; top:0; width:120px; height:120px;
+    background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.45), rgba(255,255,255,0)); }
+  /* halfway datum */
+  #ty-half { position:absolute; left:958.5px; top:430px; width:3px; height:180px;
+    background:repeating-linear-gradient(180deg, #e74c3c 0 10px, transparent 10px 18px); }
+  #ty-halftag { left:910px; top:396px; width:100px; text-align:center; padding-left:6px; box-sizing:border-box;
+    font-size:22px; line-height:26px; font-weight:700; letter-spacing:6px; color:#e74c3c; }
+  /* run labels: section header tier */
+  .ty-lab { top:620px; width:400px; text-align:center; font-size:26px; line-height:30px; font-weight:700; box-sizing:border-box; }
+  #ty-lab-out { left:438px; letter-spacing:8px; padding-left:8px; color:#f2f5f8; }
+  #ty-lab-veh { left:898px; letter-spacing:4px; padding-left:4px; color:#d8a13a; }
+  #ty-lab-oth { left:1220px; letter-spacing:8px; padding-left:8px; color:#93a3b2; }
+  /* readout */
+  #ty-read { left:0; top:270px; width:1920px; text-align:center; font-family:'Arial Black', Arial, sans-serif;
+    font-weight:900; font-size:84px; line-height:84px; }
+  #ty-r17 { color:#f2f5f8; }
+  #ty-rof { color:#93a3b2; }
+  /* top-left date chip + headline */
+  #ty-eyebrow { left:96px; top:96px; font-size:22px; line-height:26px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  #ty-head { left:96px; top:132px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; }
+  #ty-src { left:96px; bottom:54px; font-size:19px; line-height:24px; font-weight:400; color:#c8d3e0; }
+</style>
+<div id="g-a3-6-tally-27dec-root" data-composition-id="g-a3-6-tally-27dec" data-width="1920" data-height="1080">
+  <div id="ty-ground"></div>
+  <div id="ty-layer" class="ty-fill">
+    <div id="ty-toplft" class="ty-fill">
+      <div id="ty-eyebrow" class="ty-t ty-hide">TUE · DEC 27 · EVENING</div>
+      <div id="ty-head" class="ty-t ty-hide">THE COUNTY'S EARLY COUNT</div>
+    </div>
+    <div id="ty-bar" class="ty-fill">
+      <div id="ty-b0" class="ty-b ty-hide"><div id="ty-f0" class="ty-f ty-hide"></div></div>
+      <div id="ty-b1" class="ty-b ty-hide"><div id="ty-f1" class="ty-f ty-hide"></div></div>
+      <div id="ty-b2" class="ty-b ty-hide"><div id="ty-f2" class="ty-f ty-hide"></div></div>
+      <div id="ty-b3" class="ty-b ty-hide"><div id="ty-f3" class="ty-f ty-hide"></div></div>
+      <div id="ty-b4" class="ty-b ty-hide"><div id="ty-f4" class="ty-f ty-hide"></div></div>
+      <div id="ty-b5" class="ty-b ty-hide"><div id="ty-f5" class="ty-f ty-hide"></div></div>
+      <div id="ty-b6" class="ty-b ty-hide"><div id="ty-f6" class="ty-f ty-hide"></div></div>
+      <div id="ty-b7" class="ty-b ty-hide"><div id="ty-f7" class="ty-f ty-hide"></div></div>
+      <div id="ty-b8" class="ty-b ty-hide"><div id="ty-f8" class="ty-f ty-hide"></div></div>
+      <div id="ty-b9" class="ty-b ty-hide"><div id="ty-f9" class="ty-f ty-hide"></div></div>
+      <div id="ty-b10" class="ty-b ty-hide"><div id="ty-f10" class="ty-f ty-hide"></div></div>
+      <div id="ty-b11" class="ty-b ty-hide"><div id="ty-f11" class="ty-f ty-hide"></div></div>
+      <div id="ty-b12" class="ty-b ty-hide"><div id="ty-f12" class="ty-f ty-hide"></div></div>
+      <div id="ty-b13" class="ty-b ty-hide"><div id="ty-f13" class="ty-f ty-hide"></div></div>
+      <div id="ty-b14" class="ty-b ty-hide"><div id="ty-f14" class="ty-f ty-hide"></div></div>
+      <div id="ty-b15" class="ty-b ty-hide"><div id="ty-f15" class="ty-f ty-hide"></div></div>
+      <div id="ty-b16" class="ty-b ty-hide"><div id="ty-f16" class="ty-f ty-hide"></div></div>
+      <div id="ty-b17" class="ty-b ty-hide"><div id="ty-f17" class="ty-f ty-hide"></div></div>
+      <div id="ty-b18" class="ty-b ty-hide"><div id="ty-f18" class="ty-f ty-hide"></div></div>
+      <div id="ty-b19" class="ty-b ty-hide"><div id="ty-f19" class="ty-f ty-hide"></div></div>
+      <div id="ty-b20" class="ty-b ty-hide"><div id="ty-f20" class="ty-f ty-hide"></div></div>
+      <div id="ty-b21" class="ty-b ty-hide"><div id="ty-f21" class="ty-f ty-hide"></div></div>
+      <div id="ty-b22" class="ty-b ty-hide"><div id="ty-f22" class="ty-f ty-hide"></div></div>
+      <div id="ty-b23" class="ty-b ty-hide"><div id="ty-f23" class="ty-f ty-hide"></div></div>
+      <div id="ty-b24" class="ty-b ty-hide"><div id="ty-f24" class="ty-f ty-hide"></div></div>
+      <div id="ty-b25" class="ty-b ty-hide"><div id="ty-f25" class="ty-f ty-hide"></div></div>
+      <div id="ty-b26" class="ty-b ty-hide"><div id="ty-f26" class="ty-f ty-hide"></div></div>
+      <div id="ty-b27" class="ty-b ty-hide"><div id="ty-f27" class="ty-f ty-hide"></div></div>
+      <div id="ty-b28" class="ty-b ty-hide"><div id="ty-f28" class="ty-f ty-hide"></div></div>
+      <div id="ty-b29" class="ty-b ty-hide"><div id="ty-f29" class="ty-f ty-hide"></div></div>
+      <div id="ty-b30" class="ty-b ty-hide"><div id="ty-f30" class="ty-f ty-hide"></div></div>
+      <div id="ty-sheenclip"><div id="ty-sheen"></div></div>
+    </div>
+    <div id="ty-half" class="ty-hide"></div>
+    <div id="ty-halftag" class="ty-t ty-hide">HALF</div>
+    <div id="ty-lab-out" class="ty-t ty-lab ty-hide">OUTSIDE</div>
+    <div id="ty-lab-veh" class="ty-t ty-lab ty-hide">IN A VEHICLE</div>
+    <div id="ty-lab-oth" class="ty-t ty-lab ty-hide">OTHER CAUSES</div>
+    <div id="ty-read" class="ty-t ty-hide"><span id="ty-r17">17</span><span id="ty-rof"> OF 31</span></div>
+    <div id="ty-src" class="ty-t ty-hide">Erie County health department, via NPR/KAXE, 27 Dec 2022</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#ty-";
+  const N = 31, PITCH = 46;
+  const B = [], F = [];
+  for (let i = 0; i < N; i++) { B.push(P + "b" + i); F.push(P + "f" + i); }
+  const OUT = B.slice(0, 17), VEH_F = F.slice(17, 20), OUT_F = F.slice(0, 17);
+
+  /* frame 0: ground only; blocks placed by the formula x = 250 + 46 i (CSS left 250 + x offset) */
+  for (let i = 0; i < N; i++) tl.set(B[i], { x: PITCH * i, transformOrigin: "50% 100%" }, 0);
+  tl.set(F, { scaleY: 0, transformOrigin: "50% 100%" }, 0);
+  tl.set(P + "half", { scaleY: 0, transformOrigin: "50% 0%" }, 0);
+  tl.set(P + "read", { scale: 1.2, transformOrigin: "50% 50%" }, 0);
+  tl.set(P + "layer", { transformOrigin: "50% 50%" }, 0);
+
+  /* "She wasn't the only one" @0.00: 31 empty outlines in, left to right */
+  tl.fromTo(B, { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out", stagger: 0.01 }, 0);
+  /* whole-window drift so nothing sits still between cues: layer y 0 -> -8 over the host */
+  tl.to(P + "layer", { y: -8, duration: 14.3, ease: "none" }, 0.6);
+  /* newest group floats: empty bar */
+  tl.to(P + "bar", { y: -3, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.7);
+
+  /* "December" @2.86: date eyebrow; "27th" @3.14: headline + source */
+  tl.fromTo(P + "eyebrow", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.86);
+  tl.fromTo(P + "head", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 3.14);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.14);
+  /* newest group floats: top-left pair */
+  tl.to(P + "toplft", { y: -3, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, 3.7);
+
+  /* "31" @5.84: every block fills dim from the bottom, left to right (30 x 0.03 = 0.9 s) */
+  tl.set(F, { autoAlpha: 1 }, 5.84);
+  tl.to(F, { scaleY: 1, duration: 0.3, ease: "power3.out", stagger: 0.03 }, 5.84);
+  /* newest group floats: filled bar */
+  tl.to(P + "bar", { y: -3, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1 }, 7.0);
+
+  /* "17" @8.40: blocks 0-16 turn white, each 1 -> 1.08 -> 1 (16 x 0.04 = 0.64 s) */
+  tl.to(OUT_F, { backgroundColor: "#f2f5f8", duration: 0.2, ease: "power2.out", stagger: 0.04 }, 8.40);
+  tl.to(OUT, { scale: 1.08, duration: 0.12, ease: "power2.out", yoyo: true, repeat: 1, stagger: 0.04 }, 8.40);
+
+  /* "outside." @9.28: OUTSIDE label */
+  tl.fromTo(P + "lab-out", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.28);
+
+  /* "Three" @10.30: blocks 17-19 turn amber */
+  tl.to(VEH_F, { backgroundColor: "#d8a13a", duration: 0.25, ease: "power2.out", stagger: 0.08 }, 10.30);
+  tl.to(B.slice(17, 20), { scale: 1.08, duration: 0.12, ease: "power2.out", yoyo: true, repeat: 1, stagger: 0.08 }, 10.30);
+
+  /* "vehicle," @11.12: IN A VEHICLE; OTHER CAUSES at 70 % @11.40 */
+  tl.fromTo(P + "lab-veh", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.12);
+  tl.fromTo(P + "lab-oth", { autoAlpha: 0, y: 10 }, { autoAlpha: 0.7, y: 0, duration: 0.4, ease: "power3.out" }, 11.40);
+
+  /* "count," @12.46: halfway line draws top to bottom; HALF @12.80 */
+  tl.set(P + "half", { autoAlpha: 1 }, 12.46);
+  tl.to(P + "half", { scaleY: 1, duration: 0.5, ease: "power2.out" }, 12.46);
+  tl.fromTo(P + "halftag", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 12.80);
+
+  /* "outside was" @13.32: sheen crosses the white run (x 250 -> 1026: -120 + 896 = 776 clears its right end); label to #fff */
+  tl.fromTo(P + "sheen", { x: 0 }, { x: 896, duration: 0.6, ease: "power2.inOut" }, 13.32);
+  tl.to(P + "lab-out", { color: "#ffffff", duration: 0.3, ease: "power2.out" }, 13.32);
+
+  /* "more than half." @13.86: 17 OF 31 */
+  tl.fromTo(P + "read", { autoAlpha: 0, scale: 1.2 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power4.out" }, 13.86);
+
+  /* exit after "half." ends @14.46: whole layer pulls back and fades, ground stays; 14.90 -> 15.50 */
+  tl.to(P + "layer", { scale: 0.96, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 14.90);
+
+  window.__timelines["g-a3-6-tally-27dec"] = tl;
+})();
+</script>
+</template>

@@ -1,0 +1,28 @@
+# Fact check round 5, hook slice: H1-S1, H1-S2, H1-S3, T1-S1 (Buffalo 2022 blizzard)
+
+Checked 26 Oct 2026 against the current edit_script.md. No new fetch: every claim is covered by accepted evidence (D = research/deaths.md, N = research/nws.md, R2 = fact_check_r2_h1t1.md, R3 = fact_check_r3_a.md / r3_b.md, R4 = fact_check_r4_a.md / r4_b.md). The count of 46 is still the WIVB page (published 19 Jan 2023); no later count was found in R3 or R4 and none was re-searched this round.
+
+| # | segment | claim / marker (first words) | verdict | evidence |
+|---|---|---|---|---|
+| 1 | H1-S1 | "A blizzard warning hits your town at Christmas." Popfig "BUFFALO, NY · DEC 23, 2022" | CONFIRMED | R4 row 1: Blizzard Warning issued 3:54 a.m. Thu 22 Dec, in effect 7 a.m. Fri 23 Dec to 7 a.m. Sun 25 Dec (WWUS41 KBUF 220854). "At Christmas" = Christmas weekend. "You stay home" is the hook's framing, not a fact. |
+| 2 | H1-S2 | "But around Buffalo, the county counted forty-six people who lost their lives." [verify: Erie County count 46, Poloncarz via WIVB, secondary; three cases still pending] | CORRECTED (hedge dropped) | R3 r3-S3-b and R4 r4-S3-b: WIVB (19 Jan 2023) "46 in Erie County and 47 total"; same page says three more cases are not yet finalized by the medical examiner, no later count found. A flat "counted forty-six" reads as the final number and can be overtaken. The script already hedges the same figure in I1-S3 ("At least forty-six"), so hook and intro would disagree. Scope: 46 is Erie County, not the city alone; "the county" states that, "around Buffalo" is loose but accepted (R4 row 3). REPLACEMENT (14 words): "But around Buffalo, the county's last reported count was forty-six people who lost their lives." On-screen source line "last reported count" already matches. |
+| 3 | H1-S2 | "Eighteen were found outside, in the snow, the biggest group of all." [verify: 18 found outside, the largest single category, Poloncarz via WIVB, secondary] | CONFIRMED (secondary), one wording note | WIVB: "18 people were found outside in the snow". Final breakdown 18 outside, 12 no power or heat, 7 delayed EMS, 4 vehicles, 4 shovelling, 1 pool = 46 (D). 18 of 46 = 39 percent: largest single category, not a majority, so "biggest" is right and "most" would be wrong. Outside also largest at 17/31, 17/37, 17/39 (D). Note: "of all" can be heard as "of all the people", which is false (the other 28 outnumber 18). For zero ambiguity, REPLACEMENT (11 words): "Eighteen were found outside, in the snow, the biggest single group." The claim holds either way. |
+| 4 | H1-S2 | "Four more were found in their cars." [verify: 4 in vehicles, same count, secondary] | CONFIRMED (secondary) | Final breakdown 4 vehicles (D, WIVB). Chip "+4 IN THEIR CARS" matches. "More" is right: vehicles are a separate category from outside. |
+| 5 | H1-S2 | Picture: DVIDS 7571852, 174th Attack Wing runway snowblower on I-90, 26 Dec 2022, public domain; chips "18 FOUND OUTSIDE", "+4 IN THEIR CARS"; source line "last reported count, via WIVB" | CONFIRMED | R3 H1-S2-c, R4 row 5. Photo is 26 Dec, narration is 23 Dec: illustration only. |
+| 6 | H1-S3 | "And that storm didn't sneak up on anybody." | CONFIRMED | Framing backed by the products: AFD 20 Dec, Watch 2:22 p.m. 20 Dec, Warning 3:54 a.m. 22 Dec (R4 row 7). |
+| 7 | H1-S3 | "Three days before it hit, the National Weather Service in Buffalo wrote that you could call it a once in a generation event." | CONFIRMED | AFD FXUS61 KBUF 200951, 4:51 a.m. EST Tue 20 Dec: "One could certainly describe this storm system as a once in a generation type of event." (N 1.9, R4 row 6). 4:51 a.m. Tue 20 Dec to the 7:24 a.m. Fri 23 Dec front = 3 days 2.5 hours, so "three days before" holds (R4 row 7). "Wrote ... you could call it" is a fair paraphrase of "one could certainly describe". Picture quote is the verbatim sentence. |
+| 8 | H1-S3 | Picture source line "NWS Buffalo Area Forecast Discussion, 4:51 a.m. Tue 20 Dec 2022 (IEM archive, FXUS61 KBUF 200951)"; chip "3 DAYS' WARNING" | CONFIRMED | Same product id and time as row 7. |
+| 9 | T1-S1 | "I wanted to know why so many of them were out in it." | CONFIRMED (framing) | "Them" = the 18 outside plus 4 in cars; not a counted fact (R4 row 9). |
+| 10 | T1-S1 | "how fast Friday morning turned, the day before Christmas Eve" | CONFIRMED | Fri 23 Dec 2022; Christmas Eve was Sat 24 Dec, so Friday is the day before Christmas Eve. Christmas Day was Sunday 25 Dec. Calendar fact. |
+| 11 | T1-S1 | "the airport's weather log shows it" [verify: fast turn, front 7:24 a.m. to quarter-mile whiteout 8:39 a.m., Buffalo airport ASOS] | CONFIRMED (primary) | ASOS BUF: 07:24 rain, 38 F, gust 21 kt; 08:06 gust 52 kt, snow, vis 0.50; 08:39 vis 0.25, +SN BLSN, gust 58 (N 2.2, 2.3; R4 row 8 re-pulled 08:39). 75 minutes from front to quarter-mile. "Fast" is a fair read. The line states no numbers, so none can be wrong. |
+| 12 | T1-S1 | Picture: ASOS rows 7:24, 8:06, 8:39; chip "FRIDAY · DEC 23"; source "Buffalo airport ASOS observations, IEM archive" | CONFIRMED | Rows as in row 11. |
+
+## TTS check (current text and the two replacements)
+No digits, no killed/died/dead, no "most" in the slice or the replacements. Sentence lengths: H1-S2 sentence 1 is 12 words (replacement 14), sentence 2 is 12 (replacement 11), sentence 3 is 7. H1-S3 sentence 2 counted at 23 words, under 24 (at the edge). T1-S1 sentence 2 counted at 23 words, at the edge, no change needed.
+
+## Counts
+CONFIRMED: 11 (rows 1, 3 with a wording note, 4 to 12)
+CORRECTED: 1 (row 2)
+UNVERIFIED: 0
+
+Not done: no primary page for any Erie County count (erie.gov unreachable in R1 to R4); the "three cases pending" status was not re-checked after 19 Jan 2023, so "last reported" stays mandatory.

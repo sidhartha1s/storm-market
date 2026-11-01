@@ -1,0 +1,206 @@
+<!--
+  g-a1-9-update-card · A1-S9 · forecast desk timeline, NWS Buffalo UPDATE card at 6:48 PM Thu, then the 3:54 AM warning's rapid-switch line, 19.4 s.
+  g-a1-6-warning-card was not on disk at build time, so frame 0 (rail, ticks, days, in-effect tick + label, dimmed watch card + dim watch bracket, warning card, 27 h red bracket) is hand-copied from g-a1-5 geometry + the g-a1-6 brief.
+  Cues: seconds from A1-S9 start (audio/a1-s9.words.json).
+  Axis (84 h = x 160..1540, 16.4286 px/h): WATCH 396.0 · WARNING 1012.6 · UPDATE 1257.4 · IN EFFECT 7 AM Fri 1457.9. Rail y 900.
+  Text card x 170..1530, y 186..632. Courier rows 28 px (advance 16.8), left 230; row tops U0 206 (26 px), U1.. 250 + 44 (n-1).
+  Highlight rects (left = 230 + 16.8 * col, top = row top + 2): hU2 col 2 w 11ch · hU3 col 13 w 12ch · hU7 col 41 w 19ch · hE3a col 9 w 32ch · hE3b col 42 w 20ch · hE4 col 2 w 12ch.
+-->
+<template>
+<style>
+  #g-a1-9-update-card-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    font-family: Arial, sans-serif; color:#f2f5f8; }
+  .uc-fill { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #uc-ground { background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .uc-hide { opacity:0; visibility:hidden; }
+  .uc-t { position:absolute; white-space:pre; }
+  .uc-chip { left:200px; top:110px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px;
+    line-height:56px; color:#e8c56a; transform-origin:left center; }
+  /* rail */
+  #uc-rail { position:absolute; left:160px; top:898px; width:1380px; height:4px; background:#4a5560; }
+  .uc-tick { position:absolute; top:892px; width:2px; height:16px; background:#4a5560; }
+  #uc-tk0 { left:159px; } #uc-tk1 { left:553.3px; } #uc-tk2 { left:947.6px; } #uc-tk3 { left:1341.9px; }
+  .uc-day { top:914px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; letter-spacing:3px; color:#93a3b2; }
+  #uc-d0 { left:172px; } #uc-d1 { left:566.3px; } #uc-d2 { left:960.6px; } #uc-d3 { left:1354.9px; }
+  #uc-eff { position:absolute; left:1455.9px; top:886px; width:4px; height:28px; background:#c0392b; }
+  #uc-efflab { left:1330px; top:866px; width:256px; text-align:center; font-family:Arial, sans-serif; font-weight:700; font-size:22px;
+    line-height:26px; letter-spacing:2px; color:#e74c3c; }
+  /* cards */
+  .uc-card { position:absolute; width:380px; height:104px; box-sizing:border-box; border-radius:20px;
+    border:1px solid rgba(255,255,255,.14); background:linear-gradient(180deg, #15202b, #0b1016); }
+  #uc-wc { left:206px; top:760px; opacity:.5; }
+  #uc-wc1 { left:24px; top:18px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:24px; line-height:30px; color:#f2f5f8; }
+  .uc-c2 { left:24px; top:62px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#d8a13a; }
+  #uc-wstem { position:absolute; left:395px; top:864px; width:2px; height:36px; background:#93a3b2; opacity:.5; }
+  #uc-wdot { position:absolute; left:389px; top:893px; width:14px; height:14px; border-radius:7px; background:#d8a13a; opacity:.5; }
+  #uc-wbr { position:absolute; left:396px; top:896px; width:616.6px; height:8px; background:#d8a13a; opacity:.3; }
+  #uc-nc { left:822.6px; top:760px; }
+  #uc-nbar { position:absolute; left:0; top:12px; width:3px; height:80px; background:#c0392b; }
+  #uc-nc1 { left:24px; top:16px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:30px; line-height:36px; color:#f2f5f8; }
+  #uc-nc2 { left:24px; top:62px; }
+  #uc-nstem { position:absolute; left:1011.6px; top:864px; width:2px; height:36px; background:#93a3b2; }
+  #uc-ndot { position:absolute; left:1005.6px; top:893px; width:14px; height:14px; border-radius:7px; background:#c0392b; }
+  #uc-nbr { position:absolute; left:1012.6px; top:896px; width:445.3px; height:8px; background:#e74c3c; overflow:hidden; }
+  #uc-dash { position:absolute; left:-800px; top:0; width:1300px; height:8px;
+    background:repeating-linear-gradient(90deg, rgba(4,7,12,.55) 0, rgba(4,7,12,.55) 10px, transparent 10px, transparent 40px); }
+  #uc-uc { left:1067.4px; top:648px; }
+  #uc-uc1 { left:24px; top:16px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:30px; line-height:36px; color:#f2f5f8; }
+  #uc-ustem { position:absolute; left:1256.4px; top:752px; width:2px; height:148px; background:#93a3b2; transform-origin:center top; }
+  #uc-udot { position:absolute; left:1250.4px; top:893px; width:14px; height:14px; border-radius:7px; background:#d8a13a; }
+  /* text card */
+  #uc-text { position:absolute; left:170px; top:186px; width:1360px; height:446px; box-sizing:border-box; border-radius:28px;
+    border:1px solid rgba(255,255,255,.14); background:linear-gradient(180deg, #15202b, #0b1016); }
+  .uc-row { left:230px; font-family:'Courier New', monospace; font-weight:700; font-size:28px; line-height:40px; letter-spacing:0; color:#dfe7ee; }
+  #uc-u0, #uc-e0 { top:206px; font-size:26px; color:#93a3b2; }
+  #uc-u1, #uc-e1 { top:250px; } #uc-u2, #uc-e2 { top:294px; } #uc-u3, #uc-e3 { top:338px; } #uc-u4, #uc-e4 { top:382px; }
+  #uc-u5, #uc-e5 { top:426px; } #uc-u6, #uc-e6 { top:470px; } #uc-u7 { top:514px; }
+  .uc-rect { position:absolute; height:36px; border-radius:4px; background:#e8c56a; transform-origin:left center; }
+  #uc-hU2 { left:263.6px; top:296px; width:184.8px; }
+  #uc-hU3 { left:448.4px; top:340px; width:201.6px; }
+  #uc-hU7 { left:918.8px; top:516px; width:319.2px; }
+  #uc-hE3a { left:381.2px; top:340px; width:537.6px; }
+  #uc-hE3b { left:935.6px; top:340px; width:336px; }
+  #uc-hE4 { left:263.6px; top:384px; width:201.6px; }
+  .uc-src { left:96px; bottom:54px; font-size:19px; line-height:24px; font-weight:400; color:#c8d3e0; }
+</style>
+<div id="g-a1-9-update-card-root" data-composition-id="g-a1-9-update-card" data-width="1920" data-height="1080">
+  <div id="uc-ground" class="uc-fill"></div>
+
+  <div id="uc-all" class="uc-fill uc-hide">
+    <!-- frame 0: g-a1-6 settled timeline -->
+    <div id="uc-rail"></div>
+    <div id="uc-tk0" class="uc-tick"></div><div id="uc-tk1" class="uc-tick"></div>
+    <div id="uc-tk2" class="uc-tick"></div><div id="uc-tk3" class="uc-tick"></div>
+    <span id="uc-d0" class="uc-t uc-day">TUE</span><span id="uc-d1" class="uc-t uc-day">WED</span>
+    <span id="uc-d2" class="uc-t uc-day">THU</span><span id="uc-d3" class="uc-t uc-day">FRI</span>
+    <div id="uc-eff"></div>
+    <span id="uc-efflab" class="uc-t">IN EFFECT 7 AM FRI</span>
+    <div id="uc-wbr"></div>
+    <div id="uc-wstem"></div><div id="uc-wdot"></div>
+    <div id="uc-wc" class="uc-card">
+      <span id="uc-wc1" class="uc-t">WINTER STORM WATCH</span>
+      <span id="uc-wc2" class="uc-t uc-c2">TUE DEC 20 · 2:22 PM</span>
+    </div>
+    <div id="uc-nbr"><div id="uc-dash"></div></div>
+    <div id="uc-nstem"></div><div id="uc-ndot"></div>
+    <div id="uc-nc" class="uc-card">
+      <div id="uc-nbar"></div>
+      <span id="uc-nc1" class="uc-t">BLIZZARD WARNING</span>
+      <span id="uc-nc2" class="uc-t uc-c2">THU DEC 22 · 3:54 AM</span>
+    </div>
+  </div>
+
+  <!-- update card -->
+  <div id="uc-ustem" class="uc-hide"></div>
+  <div id="uc-udot" class="uc-hide"></div>
+  <div id="uc-uc" class="uc-card uc-hide">
+    <span id="uc-uc1" class="uc-t">UPDATE</span>
+    <span id="uc-uc2" class="uc-t uc-c2">THU DEC 22 · 6:48 PM</span>
+  </div>
+
+  <!-- chips, one at a time -->
+  <div id="uc-ch1" class="uc-t uc-chip uc-hide">2 TO 3 FT</div>
+  <div id="uc-ch2" class="uc-t uc-chip uc-hide">GUSTS 65 TO 70 MPH</div>
+  <div id="uc-ch3" class="uc-t uc-chip uc-hide">WIND CHILL -10 TO -20°F</div>
+
+  <div id="uc-float" class="uc-fill">
+    <div id="uc-grp" class="uc-fill">
+      <div id="uc-text" class="uc-hide"></div>
+      <div id="uc-hU2" class="uc-rect uc-hide"></div>
+      <div id="uc-hU3" class="uc-rect uc-hide"></div>
+      <div id="uc-hU7" class="uc-rect uc-hide"></div>
+      <div id="uc-hE3a" class="uc-rect uc-hide"></div>
+      <div id="uc-hE3b" class="uc-rect uc-hide"></div>
+      <div id="uc-hE4" class="uc-rect uc-hide"></div>
+      <span id="uc-u0" class="uc-t uc-row uc-hide">648 PM EST Thu Dec 22 2022</span>
+      <span id="uc-u1" class="uc-t uc-row uc-hide">* WHAT...Blizzard conditions expected. Total snow accumulations of</span>
+      <span id="uc-u2" class="uc-t uc-row uc-hide">  <span id="uc-q0">2 </span><span id="uc-q1">to </span><span id="uc-q2">3 </span><span id="uc-q3">feet</span> with locally higher amounts possible. Winds gusting</span>
+      <span id="uc-u3" class="uc-t uc-row uc-hide">  as high as <span id="uc-s0">65 </span><span id="uc-s1">to </span><span id="uc-s2">70 </span><span id="uc-s3">mph</span> Friday and Friday night. A rapid switch</span>
+      <span id="uc-u4" class="uc-t uc-row uc-hide">  from rain to snow with sharply falling temperatures into the</span>
+      <span id="uc-u5" class="uc-t uc-row uc-hide">  teens and single digits will result in a flash freeze on Friday.</span>
+      <span id="uc-u6" class="uc-t uc-row uc-hide">  Blizzard conditions will develop Friday afternoon lasting into</span>
+      <span id="uc-u7" class="uc-t uc-row uc-hide">  Saturday night. Wind chills as cold as <span id="uc-z0">10 </span><span id="uc-z1">to </span><span id="uc-z2">20 </span><span id="uc-z3">below </span><span id="uc-z4">zero</span>.</span>
+      <span id="uc-e0" class="uc-t uc-row uc-hide">354 AM EST Thu Dec 22 2022</span>
+      <span id="uc-e1" class="uc-t uc-row uc-hide">* WHAT...Blizzard conditions expected. Total snow accumulations of</span>
+      <span id="uc-e2" class="uc-t uc-row uc-hide">  1 to 3 feet. Winds gusting as high as 70 mph Friday and Friday</span>
+      <span id="uc-e3" class="uc-t uc-row uc-hide">  night. <span id="uc-a0">A </span><span id="uc-a1">rapid </span><span id="uc-a2">switch </span><span id="uc-a3">from </span><span id="uc-a4">rain </span><span id="uc-a5">to </span><span id="uc-a6">snow </span><span id="uc-b0">with </span><span id="uc-b1">sharply </span><span id="uc-b2">falling</span></span>
+      <span id="uc-e4" class="uc-t uc-row uc-hide">  <span id="uc-c0">temperatures</span> into the teens and single digits will result in a</span>
+      <span id="uc-e5" class="uc-t uc-row uc-hide">  flash freeze on Friday. Blizzard conditions will develop Friday</span>
+      <span id="uc-e6" class="uc-t uc-row uc-hide">  afternoon lasting into Saturday night.</span>
+    </div>
+  </div>
+
+  <div id="uc-srcA" class="uc-t uc-src uc-hide">NWS Buffalo, WWUS41 KBUF 222348</div>
+  <div id="uc-srcB" class="uc-t uc-src uc-hide">WWUS41 KBUF 220854</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const $ = (id) => "#uc-" + id;
+  const DARK = "#04070c";
+  const dark = (id, t) => tl.to($(id), { color: DARK, duration: 0.08 }, t);
+
+  /* "By a quarter" @0.00-0.50: the whole timeline fades up from black (g-a1-8's fade-through) */
+  tl.fromTo($("all"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power2.out" }, 0);
+  /* dashes flow right at 40 px/s the whole window (27 h bracket) */
+  tl.to($("dash"), { x: 776, duration: 19.4, ease: "none" }, 0);
+
+  /* "seven Thursday evening," @0.68-1.30: update dot pops, card drops, stem draws */
+  tl.fromTo($("udot"), { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2.5)" }, 0.68);
+  tl.fromTo($("uc"), { autoAlpha: 0, y: -60 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.68);
+  tl.fromTo($("ustem"), { autoAlpha: 0, scaleY: 0 }, { autoAlpha: 1, scaleY: 1, duration: 0.5, ease: "power2.out" }, 0.9);
+
+  /* "they'd raise" @2.14: text card up, U0-U7 in (stagger 0.06), source in; group floats 4 px to the end */
+  tl.fromTo($("text"), { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.14);
+  tl.fromTo([$("u0"), $("u1"), $("u2"), $("u3"), $("u4"), $("u5"), $("u6"), $("u7")], { autoAlpha: 0, x: -16 },
+    { autoAlpha: 1, x: 0, duration: 0.3, stagger: 0.06, ease: "power3.out" }, 2.3);
+  tl.fromTo($("srcA"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 2.14);
+  tl.to($("float"), { y: -4, duration: 17.26, ease: "sine.inOut" }, 2.14);
+
+  /* "two to three feet." @3.68-4.30: chip 1 in; U2 highlight sweeps, words turn dark as it passes */
+  tl.fromTo($("ch1"), { autoAlpha: 0, scale: 1.2 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 3.68);
+  tl.fromTo($("hU2"), { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.62, ease: "none" }, 3.68);
+  dark("q0", 3.68); dark("q1", 3.79); dark("q2", 3.96); dark("q3", 4.08);
+
+  /* "65 to 70 miles an hour." @6.16-7.94: chip 2 replaces chip 1; U3 highlight 6.16-7.94 */
+  tl.to($("ch1"), { autoAlpha: 0, x: -40, duration: 0.3, ease: "power3.in" }, 5.86);
+  tl.fromTo($("ch2"), { autoAlpha: 0, scale: 1.2 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 6.16);
+  tl.fromTo($("hU3"), { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 1.78, ease: "none" }, 6.16);
+  dark("s0", 6.16); dark("s1", 6.6); dark("s2", 7.05); dark("s3", 7.5);
+
+  /* "20 below." @10.32-10.64: chip 3 replaces chip 2; U7 highlight 9.66-10.64 */
+  tl.to($("ch2"), { autoAlpha: 0, x: -40, duration: 0.3, ease: "power3.in" }, 10.02);
+  tl.fromTo($("ch3"), { autoAlpha: 0, scale: 1.2 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 10.32);
+  tl.fromTo($("hU7"), { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.98, ease: "none" }, 9.66);
+  dark("z0", 9.66); dark("z1", 9.81); dark("z2", 9.97); dark("z3", 10.12); dark("z4", 10.45);
+
+  /* "The warning had already" @11.58-12.12: update card dims, warning card glows, U rows out, E rows in, source swaps, chip dims */
+  tl.to($("uc"), { autoAlpha: 0.5, duration: 0.3 }, 11.58);
+  tl.to($("nc"), { borderColor: "#e8c56a", boxShadow: "0 0 24px rgba(232,197,106,.45)", duration: 0.3 }, 11.58);
+  tl.to([$("u0"), $("u1"), $("u2"), $("u3"), $("u4"), $("u5"), $("u6"), $("u7"), $("hU2"), $("hU3"), $("hU7")],
+    { autoAlpha: 0, y: -12, duration: 0.3, ease: "power2.in" }, 11.58);
+  tl.fromTo([$("e0"), $("e1"), $("e2"), $("e3"), $("e4"), $("e5"), $("e6")], { autoAlpha: 0, y: 12 },
+    { autoAlpha: 1, y: 0, duration: 0.3, stagger: 0.05, ease: "power3.out" }, 11.88);
+  tl.to($("srcA"), { autoAlpha: 0, duration: 0.3 }, 11.58);
+  tl.fromTo($("srcB"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 11.88);
+  tl.to($("ch3"), { autoAlpha: 0.4, duration: 0.3 }, 11.58);
+
+  /* "a rapid switch from rain to snow," @14.98-16.34: E3 highlight sweeps */
+  tl.fromTo($("hE3a"), { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 1.36, ease: "none" }, 14.98);
+  dark("a0", 14.98); dark("a1", 15.07); dark("a2", 15.32); dark("a3", 15.62); dark("a4", 15.83); dark("a5", 16.04); dark("a6", 16.17);
+
+  /* "with sharply falling temperatures." @17.06-18.44 */
+  tl.fromTo($("hE3b"), { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.9, ease: "none" }, 17.06);
+  dark("b0", 17.06); dark("b1", 17.29); dark("b2", 17.65);
+  tl.fromTo($("hE4"), { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.48, ease: "none" }, 17.96);
+  dark("c0", 17.98);
+
+  /* 18.44-19.4 tail: hold (dashes + float keep moving); 18.8-19.4 text card, source and chip exit; rail and cards stay for g-a1-10 */
+  tl.to($("grp"), { y: -30, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 18.8);
+  tl.to([$("srcB"), $("ch3")], { y: -30, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 18.8);
+
+  window.__timelines["g-a1-9-update-card"] = tl;
+})();
+</script>
+</template>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a3-5-steele-quote (A3-S3 10.80-17.50, standard): full-frame beige cite card over the channel ground, Wanda Brown Steele's
+  verbatim quote revealed line by line on the voice. Source: research/*eaths.md (the toll file) section 4 (CBS/CNN wire, 28 Dec 2022, secondary).
+  Cue times are segment seconds (audio/a3-s3.words.json); host starts at 10.80, comp-local = t - 10.80. Duration 6.70 s.
+  Ground is on from frame 0; card, quote and source exit together, ground stays.
+-->
+<template>
+<style>
+  #g-a3-5-steele-quote-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #sq-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size:120px 120px; }
+  #sq-glow { position:absolute; left:-300px; top:120px; width:1300px; height:900px; border-radius:50%;
+    background:radial-gradient(ellipse, rgba(90,118,143,0.10), rgba(90,118,143,0) 70%); }
+  #sq-stack { position:absolute; inset:0; }
+  #sq-card { position:absolute; left:260px; top:250px; width:1240px; height:440px; box-sizing:border-box; border-radius:20px;
+    background:rgba(232,222,200,0.90); box-shadow:0 30px 90px rgba(0,0,0,0.55); opacity:0; visibility:hidden; }
+  #sq-bar { position:absolute; left:260px; top:250px; width:10px; height:440px; border-radius:20px 0 0 20px; background:#8e2020; opacity:0; visibility:hidden; }
+  .sq-q { position:absolute; left:340px; width:1080px; white-space:nowrap; font-family:Georgia, 'Times New Roman', serif; font-weight:400;
+    font-size:52px; line-height:72px; color:#2a2622; opacity:0; visibility:hidden; }
+  #sq-l1 { top:320px; }
+  #sq-l2 { top:392px; }
+  #sq-l3 { top:464px; }
+  .sq-un { position:relative; display:inline-block; }
+  #sq-rule { position:absolute; left:0; right:0; bottom:4px; height:3px; background:#8e2020; opacity:0; visibility:hidden; }
+  #sq-attr { position:absolute; left:340px; top:580px; white-space:nowrap; font-family:Arial, sans-serif; font-weight:700; font-size:26px;
+    letter-spacing:3px; color:#6b6257; opacity:0; visibility:hidden; }
+  #sq-src { position:absolute; left:96px; bottom:54px; white-space:nowrap; font-family:Arial, sans-serif; font-weight:400; font-size:19px;
+    line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a3-5-steele-quote-root" data-composition-id="g-a3-5-steele-quote" data-width="1920" data-height="1080" data-duration="6.7">
+  <div id="sq-grid"></div>
+  <div id="sq-glow"></div>
+  <div id="sq-stack">
+    <div id="sq-card"></div>
+    <div id="sq-bar"></div>
+    <div class="sq-q" id="sq-l1">&ldquo;I want to get to the bottom</div>
+    <div class="sq-q" id="sq-l2">of why the city</div>
+    <div class="sq-q" id="sq-l3">was <span class="sq-un">unable to help.<span id="sq-rule"></span></span>&rdquo;</div>
+    <div id="sq-attr">WANDA BROWN STEELE &middot; HER MOTHER</div>
+    <div id="sq-src">Wanda Brown Steele, to CNN, via CBS News, Dec 2022</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 6.7;
+  tl.set(["#sq-card", "#sq-bar", "#sq-l1", "#sq-l2", "#sq-l3", "#sq-attr", "#sq-src", "#sq-rule"], { autoAlpha: 0 }, 0);
+
+  /* ambient, whole window (ground stays after the card exits) */
+  tl.fromTo("#sq-grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#sq-glow", { x: 0, y: 0 }, { x: 700, y: 60, duration: DUR, ease: "none" }, 0);
+  /* card float 0 -> -5 while on screen (finite) */
+  tl.fromTo("#sq-stack", { y: 0 }, { y: -5, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0);
+
+  /* "mother," @10.92 -> 0.12 : card in */
+  tl.fromTo("#sq-card", { y: 40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0.12);
+  tl.fromTo("#sq-bar", { y: 40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0.12);
+  /* "Wanda Brown Steele" @11.70 -> 0.90 : attribution and source line in */
+  tl.fromTo("#sq-attr", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power2.out" }, 0.9);
+  tl.fromTo("#sq-src", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power2.out" }, 0.9);
+  /* "I want" @13.78 -> 2.98 : L1 */
+  tl.fromTo("#sq-l1", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.98);
+  /* "of why the city" @14.86 -> 4.06 : L2 */
+  tl.fromTo("#sq-l2", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.06);
+  /* "was unable to help." @15.64 -> 4.84 : L3 */
+  tl.fromTo("#sq-l3", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.84);
+  /* "help" @16.28 -> 5.48 : rule draws under "unable to help" */
+  tl.set("#sq-rule", { autoAlpha: 1, transformOrigin: "left center" }, 5.48);
+  tl.fromTo("#sq-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 5.48);
+  /* after "help." ends @16.52; exit 16.90 -> 6.10, lands 6.70 */
+  tl.to(["#sq-card", "#sq-bar", "#sq-l1", "#sq-l2", "#sq-l3", "#sq-attr", "#sq-src"], { y: 30, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 6.1);
+
+  window.__timelines["g-a3-5-steele-quote"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

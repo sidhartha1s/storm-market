@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a3-12-windchill-chart · A3-S10 · deep · full-frame wind-chill line chart, 23.72 s.
+  Brief: briefs/a3/g-a3-12-windchill-chart.md. Data: Buffalo airport ASOS "feel", IEM archive (91 obs, Fri 23 Dec 06:18 to Sat 24 Dec 15:54).
+  Datum: x = 220 + 1280/34 x (hours since Fri 06:00) ; y = 200 + 600/65 x (35 - v). Point px, band edges, marker xy
+  and path lengths are computed in the script from those formulas.
+  The chart stops at 16:00 Sat: the feed dips below -10 again 16:20 to 19:54 Sat, outside this window.
+  Cues: seconds from A3-S10 start (audio/a3-s10.words.json), spoken word in each tween comment.
+  Departures from the brief: annotation pill at left 1165 (brief 1125): at 1125 the Sat 06:10 point (-23, y 735) sits 17 px
+  above the pill, under the brief's 34 px gap; from 1165 the curve above it is y 706 or higher (gap 46 px). Leader ends at 1165.
+  The exit fades the whole chart layer (grid, band, labels too), not only annotation, marker and line, so nothing hard-cuts.
+-->
+<template>
+<style>
+  #g-a3-12-windchill-chart-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family: Arial, sans-serif; color:#f2f5f8; }
+  #wc2-ground { position:absolute; inset:0; }
+  #wc2-layer { position:absolute; inset:0; }
+  #wc2-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .wc2-h { opacity:0; visibility:hidden; }
+  .wc2-lab { font-family: Arial, sans-serif; font-weight:700; font-size:22px; fill:#93a3b2; }
+  #wc2-eyebrow { position:absolute; left:96px; top:96px; font-size:22px; line-height:26px; font-weight:700;
+    letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  /* axis title 26 = mid tier, on screen with the big chip (52) and the small labels (22/19): 3 tiers */
+  #wc2-axistitle { position:absolute; left:96px; top:160px; font-size:26px; line-height:30px; font-weight:700;
+    letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
+  #wc2-source { position:absolute; left:96px; bottom:54px; font-size:19px; line-height:24px; font-weight:400;
+    color:#c8d3e0; white-space:nowrap; }
+  .wc2-glass { position:absolute; box-sizing:border-box; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  #wc2-chip1 { left:110px; bottom:110px; padding:20px 32px; border-radius:28px; display:flex; align-items:center; }
+  #wc2-swatch { display:block; width:14px; height:14px; margin-right:18px; flex:none;
+    background:rgba(127,178,229,0.45); border:2px solid #7fb2e5; box-sizing:border-box; }
+  #wc2-chip1txt { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1; color:#f2f5f8; }
+  #wc2-ann { left:1165px; top:752px; padding:8px 18px; border-radius:14px;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:30px; line-height:30px; color:#f2f5f8; }
+</style>
+<div id="g-a3-12-windchill-chart-root" data-composition-id="g-a3-12-windchill-chart" data-width="1920" data-height="1080">
+  <div id="wc2-ground"></div>
+  <div id="wc2-layer">
+    <div id="wc2-eyebrow" class="wc2-h">BUFFALO AIRPORT · FRI DEC 23 TO SAT DEC 24</div>
+    <div id="wc2-axistitle" class="wc2-h">WIND CHILL, °F</div>
+    <div id="wc2-source" class="wc2-h">Buffalo airport ASOS, IEM archive</div>
+
+    <svg id="wc2-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <!-- scale: gridlines, zero line, ticks, labels (fade in 0.0-0.6) -->
+      <g id="wc2-scale" class="wc2-h">
+        <g id="wc2-grid" stroke="rgba(255,255,255,.08)" stroke-width="1">
+          <line id="wc2-g30" x1="220" x2="1500"/><line id="wc2-g20" x1="220" x2="1500"/><line id="wc2-g10" x1="220" x2="1500"/>
+          <line id="wc2-g0" x1="220" x2="1500"/><line id="wc2-gm10" x1="220" x2="1500"/><line id="wc2-gm20" x1="220" x2="1500"/>
+          <line id="wc2-gm30" x1="220" x2="1500"/>
+        </g>
+        <line id="wc2-zero" x1="220" x2="1500" stroke="#93a3b2" stroke-width="2"/>
+        <g id="wc2-ticks" stroke="#4a5560" stroke-width="1">
+          <line id="wc2-k0" y1="800" y2="812"/><line id="wc2-k6" y1="800" y2="812"/><line id="wc2-k12" y1="800" y2="812"/>
+          <line id="wc2-k18" y1="800" y2="812"/><line id="wc2-k24" y1="800" y2="812"/><line id="wc2-k30" y1="800" y2="812"/>
+        </g>
+        <g class="wc2-lab" text-anchor="end" dominant-baseline="central">
+          <text id="wc2-v30" x="200">30</text><text id="wc2-v20" x="200">20</text><text id="wc2-v10" x="200">10</text>
+          <text id="wc2-v0" x="200">0</text><text id="wc2-vm10" x="200">-10</text><text id="wc2-vm20" x="200">-20</text>
+          <text id="wc2-vm30" x="200">-30</text>
+        </g>
+        <g class="wc2-lab" text-anchor="middle" dominant-baseline="hanging">
+          <text id="wc2-t0" x="220" y="820" text-anchor="start">FRI 6 AM</text>
+          <text id="wc2-t1" x="445.9" y="820">FRI 12 PM</text>
+          <text id="wc2-t2" x="671.8" y="820">FRI 6 PM</text>
+          <text id="wc2-t3" x="897.6" y="820">SAT 12 AM</text>
+          <text id="wc2-t4" x="1123.5" y="820">SAT 6 AM</text>
+          <text id="wc2-t5" x="1349.4" y="820">SAT 12 PM</text>
+        </g>
+      </g>
+
+      <!-- band below -10 (12:33 Fri to 14:45 Sat) -->
+      <rect id="wc2-band" class="wc2-h" fill="#7fb2e5" fill-opacity="0.18"/>
+      <!-- -10 threshold, draws left to right -->
+      <line id="wc2-m10" class="wc2-h" x1="220" x2="220" stroke="#7fb2e5" stroke-width="3" stroke-dasharray="12 8"/>
+
+      <!-- wind-chill line, glint, marker, ring, leader -->
+      <path id="wc2-line" class="wc2-h" fill="none" stroke="#f2f5f8" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+      <path id="wc2-glint" class="wc2-h" fill="none" stroke="#7fb2e5" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+      <line id="wc2-leader" class="wc2-h" stroke="#e74c3c" stroke-width="2"/>
+      <circle id="wc2-ring" class="wc2-h" r="10" fill="none" stroke="#e74c3c" stroke-width="3"/>
+      <circle id="wc2-low" class="wc2-h" r="10" fill="#e74c3c"/>
+    </svg>
+
+    <div id="wc2-chip1" class="wc2-glass wc2-h"><span id="wc2-swatch"></span><span id="wc2-chip1txt">WIND CHILL BELOW -10°F</span></div>
+    <div id="wc2-ann" class="wc2-glass wc2-h">-24°F · 5:18 AM SAT</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const $ = (id) => document.getElementById("wc2-" + id);
+  const set = (el, o) => { for (const k in o) el.setAttribute(k, o[k]); };
+  const H = (day, hm) => (day - 23) * 24 + (+hm.slice(0, 2)) + (+hm.slice(3)) / 60 - 6;   // hours since Fri 06:00
+  const X = (h) => 220 + h * 1280 / 34;
+  const Y = (v) => 200 + (35 - v) * 600 / 65;
+
+  // brief §1 table, feel in °F; unrounded where it decides a crossing (10:54 0.6, 11:43 -4.8, 12:33 -10.9, Sat 05:18 -23.9, Sat 14:45 -9.6)
+  const D = [
+    [23,"06:18",32],[23,"06:37",33],[23,"06:54",33],[23,"06:58",32],[23,"07:24",28],[23,"07:43",23],[23,"07:54",21],[23,"08:06",18],[23,"08:39",11],[23,"08:47",11],
+    [23,"08:54",11],[23,"09:20",8],[23,"09:54",2],[23,"10:01",5],[23,"10:10",2],[23,"10:20",2],[23,"10:23",1],[23,"10:28",2],[23,"10:54",0.6],[23,"11:29",1],
+    [23,"11:43",-4.8],[23,"11:54",-7],[23,"12:05",-8],[23,"12:33",-10.9],[23,"12:49",-11],[23,"12:54",-13],[23,"13:34",-14],[23,"13:54",-13],[23,"14:54",-14],[23,"15:46",-13],
+    [23,"15:54",-15],[23,"16:37",-17],[23,"16:54",-19],[23,"17:54",-16],[23,"18:44",-17],[23,"18:54",-17],[23,"19:25",-18],[23,"19:54",-18],[23,"20:25",-16],[23,"20:49",-14],
+    [23,"20:54",-15],[23,"21:11",-15],[23,"21:54",-15],[23,"22:30",-16],[23,"22:54",-16],[23,"23:49",-17],[23,"23:54",-19],[24,"00:54",-18],[24,"01:19",-16],[24,"01:54",-17],
+    [24,"02:39",-20],[24,"02:54",-20],[24,"03:05",-22],[24,"03:51",-20],[24,"03:54",-18],[24,"04:04",-20],[24,"04:54",-21],[24,"05:01",-22],[24,"05:10",-23],[24,"05:18",-23.9],
+    [24,"05:36",-21],[24,"05:54",-21],[24,"06:10",-23],[24,"06:44",-23],[24,"06:54",-21],[24,"07:17",-19],[24,"07:38",-17],[24,"07:43",-19],[24,"07:54",-19],[24,"08:22",-20],
+    [24,"08:30",-20],[24,"08:36",-19],[24,"08:49",-19],[24,"08:54",-19],[24,"09:14",-18],[24,"09:54",-19],[24,"10:13",-18],[24,"10:54",-16],[24,"11:09",-17],[24,"11:19",-17],
+    [24,"11:47",-12],[24,"11:54",-14],[24,"12:07",-14],[24,"12:25",-12],[24,"12:48",-14],[24,"12:54",-13],[24,"13:54",-13],[24,"14:06",-13],[24,"14:45",-9.6],[24,"14:54",-8],
+    [24,"15:54",-9]
+  ];
+  // brief: the chart starts at Fri 06:00 (x 220); the first ob is 06:18, so the line opens on it
+  const P = D.map((d) => [X(H(d[0], d[1])), Y(d[2])]);
+  const cum = [0];
+  for (let i = 1; i < P.length; i++) cum.push(cum[i - 1] + Math.hypot(P[i][0] - P[i - 1][0], P[i][1] - P[i - 1][1]));
+  const L = Math.ceil(cum[cum.length - 1]) + 1;
+  const i1233 = D.findIndex((d) => d[0] === 23 && d[1] === "12:33");
+  const iLow = D.findIndex((d) => d[0] === 24 && d[1] === "05:18");
+  const dLine = "M" + P.map((p) => p[0].toFixed(2) + "," + p[1].toFixed(2)).join(" L");
+
+  // scale geometry
+  [30, 20, 10, 0, -10, -20, -30].forEach((v) => {
+    const k = v < 0 ? "m" + (-v) : v;
+    set($("g" + k), { y1: Y(v), y2: Y(v) });
+    $("v" + k).setAttribute("y", Y(v));
+  });
+  set($("zero"), { y1: Y(0), y2: Y(0) });
+  [0, 6, 12, 18, 24, 30].forEach((h) => set($("k" + h), { x1: X(h), x2: X(h) }));
+  set($("m10"), { y1: Y(-10), y2: Y(-10) });
+
+  // band 12:33 Fri -> 14:45 Sat, y(-10) -> 800
+  const bx0 = X(H(23, "12:33")), bx1 = X(H(24, "14:45"));
+  set($("band"), { x: bx0, y: Y(-10), width: bx1 - bx0, height: 800 - Y(-10) });
+
+  set($("line"), { d: dLine, "stroke-dasharray": L, "stroke-dashoffset": L });
+  set($("glint"), { d: dLine, "stroke-dasharray": "60 " + (L + 60), "stroke-dashoffset": 60 });
+  const mx = P[iLow][0], my = P[iLow][1];
+  set($("low"), { cx: mx, cy: my }); set($("ring"), { cx: mx, cy: my });
+  const lx1 = mx + 7.8, ly1 = my + 4.3, lx2 = 1165, ly2 = 772;          // marker edge -> annotation pill
+  const LL = Math.ceil(Math.hypot(lx2 - lx1, ly2 - ly1)) + 1;
+  set($("leader"), { x1: lx1, y1: ly1, x2: lx2, y2: ly2, "stroke-dasharray": LL, "stroke-dashoffset": LL });
+
+  // line part 2 is paced by x, not by length (the wiggle makes length uneven): the head rides 10 px ahead of
+  // the band edge (power1.inOut, 5.44-7.80), then runs on to the last point by 8.20
+  const cumAtX = (x) => {
+    for (let i = 1; i < P.length; i++) if (P[i][0] >= x) return cum[i - 1] + (cum[i] - cum[i - 1]) * (x - P[i - 1][0]) / (P[i][0] - P[i - 1][0]);
+    return cum[cum.length - 1];
+  };
+  const pio = (p) => (p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2);   // = power1.inOut
+  const xEnd = P[P.length - 1][0];
+  const headEase = (p) => {
+    if (p >= 1) return 1;
+    const t = p * 2.76;                                                     // seconds after 5.44
+    const hx = t <= 2.36 ? bx0 + (bx1 - bx0) * pio(t / 2.36) + 10 * Math.min(1, t / 0.3)
+                         : bx1 + 10 + (xEnd - bx1 - 10) * (t - 2.36) / 0.40;
+    return (cumAtX(Math.min(hx, xEnd)) - cum[i1233]) / (L - cum[i1233]);
+  };
+
+  const tl = gsap.timeline({ paused: true });
+  tl.set($("band"), { scaleX: 0, svgOrigin: bx0 + " " + Y(-10) }, 0);
+  tl.set($("low"), { scale: 0, svgOrigin: mx + " " + my }, 0);
+
+  /* outside @0.00: scale fades in 0.0-0.6; eyebrow, axis title, source at 0.3 */
+  tl.fromTo($("scale"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0);
+  tl.fromTo([$("eyebrow"), $("axistitle"), $("source")], { autoAlpha: 0, x: -24 },
+    { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out", stagger: 0.08 }, 0.3);
+
+  /* airport's @1.18: line draws Fri 06:18 -> 12:33 (x 466.6), 1.18-3.62 */
+  tl.set($("line"), { autoAlpha: 1 }, 1.18);
+  tl.to($("line"), { strokeDashoffset: L - cum[i1233], duration: 2.44, ease: "power1.inOut" }, 1.18);
+
+  /* minus @3.62: -10 dashed line draws left to right 0.5 s; 10 @4.00: chip 1 in */
+  tl.set($("m10"), { autoAlpha: 1 }, 3.62);
+  tl.to($("m10"), { attr: { x2: 1500 }, duration: 0.5, ease: "power2.out" }, 3.62);
+  tl.fromTo($("chip1"), { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 4.00);
+
+  /* from @5.44: band grows 5.44-7.80; line draws on to Sat 15:54, 5.44-8.20, head ahead of the band edge */
+  tl.set($("band"), { autoAlpha: 1 }, 5.44);
+  tl.to($("band"), { scaleX: 1, duration: 2.36, ease: "power1.inOut" }, 5.44);
+  tl.to($("line"), { strokeDashoffset: 0, duration: 2.76, ease: headEase }, 5.44);
+
+  /* more @8.34: band brightens .18 -> .28 -> .18 */
+  tl.to($("band"), { attr: { "fill-opacity": 0.28 }, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 8.34);
+
+  /* coldest @9.84: chip 1 out, marker in, ring pulses every 1.2 s (11 pulses, ends 23.39) */
+  tl.to($("chip1"), { x: -80, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 9.84);
+  tl.set($("low"), { autoAlpha: 1 }, 9.84);
+  tl.to($("low"), { scale: 1, duration: 0.35, ease: "back.out(2)" }, 9.84);
+  tl.set($("ring"), { autoAlpha: 1 }, 10.19);
+  tl.fromTo($("ring"), { attr: { r: 10, "stroke-opacity": 0.8 } },
+    { attr: { r: 34, "stroke-opacity": 0 }, duration: 1.2, ease: "power1.out", repeat: 10 }, 10.19);
+
+  /* 5 @10.96: SAT 6 AM tick label brightens */
+  tl.to($("t4"), { fill: "#f2f5f8", duration: 0.3, ease: "power1.out" }, 10.96);
+
+  /* 24 @13.38: leader draws 0.25 s; annotation in at 13.50 */
+  tl.set($("leader"), { autoAlpha: 1 }, 13.38);
+  tl.to($("leader"), { strokeDashoffset: 0, duration: 0.25, ease: "power2.out" }, 13.38);
+  tl.fromTo($("ann"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 13.50);
+
+  /* air @15.06: a 60 px glint travels the line once, 2.5 s */
+  tl.set($("glint"), { autoAlpha: 1 }, 15.06);
+  tl.to($("glint"), { strokeDashoffset: -L, duration: 2.5, ease: "power1.inOut" }, 15.06);
+  tl.set($("glint"), { autoAlpha: 0 }, 17.56);
+
+  /* Andal @20.78: band pulses slowly twice (.18 -> .30), 1.2 s each */
+  tl.to($("band"), { attr: { "fill-opacity": 0.30 }, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, 20.78);
+
+  /* after stretch. @23.38: chart layer fades out 23.12-23.72, ground stays */
+  tl.to($("layer"), { autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 23.12);
+
+  window.__timelines["g-a3-12-windchill-chart"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

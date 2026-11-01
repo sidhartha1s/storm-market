@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-intro-5-wind-chips (I1-S2, standard): three glass chips, one at a time, GUSTS 69 MPH / HUNDREDS STRANDED / 37 STRAIGHT HOURS,
+  each with its own source pill. Overlay on the DVIDS 7572837 still (mounted by the orchestrator on a lower track). Comp duration 16.2 s.
+  Cue times are seconds from the START of I1-S2 (audio/i1-s2.words.json). Family base: g-intro-2-toll-chips (same chip, anchor, tiers).
+  Never "peak", never "record", no "1.5 days" text.
+-->
+<template>
+<style>
+  #g-intro-5-wind-chips-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; font-family:Arial, sans-serif; }
+  #wc-stack { position:absolute; inset:0; }
+  .wc-chip { position:absolute; left:110px; bottom:110px; display:table; box-sizing:border-box; padding:22px 34px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; opacity:0; visibility:hidden; }
+  .wc-row { display:flex; flex-direction:row; align-items:baseline; white-space:nowrap; }
+  .wc-num { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:84px; line-height:1; color:#f2f5f8; margin-right:16px; }
+  .wc-lab { display:block; font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:1; color:#dfe7ee; letter-spacing:1px; }
+  .wc-pre { margin-right:16px; }
+  .wc-late { opacity:0; visibility:hidden; }
+  .wc-src { position:absolute; left:110px; bottom:54px; display:table; box-sizing:border-box; padding:5px 12px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:14px;
+    font-family:Arial, sans-serif; font-weight:400; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+</style>
+<div id="g-intro-5-wind-chips-root" data-composition-id="g-intro-5-wind-chips" data-width="1920" data-height="1080">
+  <div id="wc-stack">
+    <div class="wc-chip" id="wc-c1"><div class="wc-row"><span class="wc-lab wc-pre" id="wc-l1a">GUSTS</span><span class="wc-num wc-late" id="wc-n1">69</span><span class="wc-lab wc-late" id="wc-l1b">MPH</span></div></div>
+    <div class="wc-chip" id="wc-c2"><div class="wc-row"><span class="wc-num" id="wc-n2">HUNDREDS</span><span class="wc-lab wc-late" id="wc-l2">STRANDED</span></div></div>
+    <div class="wc-chip" id="wc-c3"><div class="wc-row"><span class="wc-num" id="wc-n3">37</span><span class="wc-lab wc-late" id="wc-l3">STRAIGHT HOURS</span></div></div>
+  </div>
+  <div class="wc-src" id="wc-s1">Buffalo airport ASOS, IEM archive</div>
+  <div class="wc-src" id="wc-s2">Office of the Governor, 26 Dec 2022</div>
+  <div class="wc-src" id="wc-s3">NYS DHSES, 4 Aug 2023</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#wc-c1", "#wc-c2", "#wc-c3", "#wc-s1", "#wc-s2", "#wc-s3", "#wc-n1", "#wc-l1b", "#wc-l2", "#wc-l3"], { autoAlpha: 0 }, 0);
+
+  /* whole-window float so something always moves: 10 x 1.62 s = 16.2 s (host end) */
+  tl.fromTo("#wc-stack", { y: 0 }, { y: -4, duration: 1.62, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0);
+
+  /* C1 in with GUSTS only, ASOS source in. "gusts" @1.28 */
+  tl.fromTo("#wc-c1", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 1.28);
+  tl.fromTo("#wc-s1", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 1.28);
+  /* "69" @1.94: numeral + MPH in, count 40 -> 69 on a leaf span */
+  tl.set(["#wc-n1", "#wc-l1b"], { autoAlpha: 1 }, 1.94);
+  const c1 = { v: 40 };
+  tl.fromTo(c1, { v: 40 }, { v: 69, duration: 0.8, ease: "power4.out", onUpdate: function() {
+    const el = document.getElementById("wc-n1"); if (el) el.textContent = Math.round(c1.v);
+  } }, 1.94);
+  /* "blowing" @4.58: sideways shove, no new text */
+  tl.fromTo("#wc-c1", { x: 0 }, { x: 10, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 4.58);
+  /* C1 + ASOS source out, before "hundreds" @8.22 */
+  tl.to(["#wc-c1", "#wc-s1"], { x: -80, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, 7.85);
+
+  /* C2 in, governor source in. "hundreds" @8.22 */
+  tl.fromTo("#wc-c2", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 8.22);
+  tl.fromTo("#wc-n2", { scale: 1.25 }, { scale: 1, duration: 0.45, ease: "power4.out", transformOrigin: "left center" }, 8.22);
+  tl.fromTo("#wc-s2", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 8.22);
+  /* "stranded," @9.20 */
+  tl.fromTo("#wc-l2", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power2.out" }, 9.2);
+  /* C2 + governor source out, "and the state" @10.12 */
+  tl.to(["#wc-c2", "#wc-s2"], { x: -80, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, 10.55);
+
+  /* C3 in, DHSES source in. "37" @10.94: count 1 -> 37 */
+  tl.fromTo("#wc-c3", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 10.94);
+  tl.fromTo("#wc-s3", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 10.94);
+  const c3 = { v: 1 };
+  tl.fromTo(c3, { v: 1 }, { v: 37, duration: 1.0, ease: "power4.out", onUpdate: function() {
+    const el = document.getElementById("wc-n3"); if (el) el.textContent = Math.round(c3.v);
+  } }, 10.94);
+  /* "straight" @11.32 */
+  tl.fromTo("#wc-l3", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power2.out" }, 11.32);
+  /* "which is a day and a half" @14.6: numeral pulse, no text. 14.6 + 0.5 = 15.1 */
+  tl.fromTo("#wc-n3", { scale: 1 }, { scale: 1.08, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "left center" }, 14.6);
+  /* C3 + DHSES source out, after "half." @15.32; 15.6 + 0.6 = 16.2 = host end */
+  tl.to(["#wc-c3", "#wc-s3"], { x: -80, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 15.6);
+
+  window.__timelines["g-intro-5-wind-chips"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

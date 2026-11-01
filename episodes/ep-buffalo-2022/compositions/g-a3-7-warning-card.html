@@ -1,0 +1,132 @@
+<!--
+  g-a3-7-warning-card · A3-S6 · full-frame NWS Buffalo Blizzard Warning text card, 18.36 s.
+  Base: g-intro-7-afd-card (panel, Courier header, rule), no typewriter: lines are printed, the beat is the highlight.
+  Cues: seconds from A3-S6 start (audio/a3-s6.words.json); spoken time in each tween comment.
+  Geometry (px, root 1920x1080, absolute root coordinates):
+    panel      x200..1500 y190..790 r28 gradient #15202b -> #0b1016, 1px rgba(255,255,255,.14)
+    header     Courier New 700 26 #93a3b2 ls2, left260, tops 230/270 (line box 40)
+    divider    x260..1440 y322
+    text lines Courier New 700 32 #dfe7ee ls0, left260, tops 360/412/464 | 560 (grey) /612/664, line box 52
+    char pitch text lines 32*0.6 = 19.2 px
+    band 1     B2 chars 17..48 ("frostbite on exposed skin in as"): left 260+17*19.2 = 586.4, width 31*19.2 = 595.2, top 418 h 40
+               B3 chars 0..21 ("little as 30 minutes."): left 260, width 21*19.2 = 403.2, top 470 h 40
+    band 2     B6 chars 5..49 ("If you get stranded, stay with your vehicle."): left 260+5*19.2 = 356, width 44*19.2 = 844.8, top 670 h 40
+    chips      glass, left172 (text at 200) top820, Arial Black 900 52, one at a time
+    source     left96 bottom54 Arial 400 19 #c8d3e0 (HUD, outside the pushed card)
+  Layers: #wc-hud (chips, source) is fixed; #wc-card takes drift + push (scale); #wc-inner takes entrance and exit.
+-->
+<template>
+<style>
+  #g-a3-7-warning-card-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    font-family: Arial, sans-serif; color:#f2f5f8; }
+  .wc-fill { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #wc-ground { background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #wc-card { transform-origin:850px 490px; }
+  .wc-hide { opacity:0; visibility:hidden; }
+  .wc-t { position:absolute; white-space:pre; }
+  #wc-panel { position:absolute; left:200px; top:190px; width:1300px; height:600px; box-sizing:border-box;
+    border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(180deg, #15202b, #0b1016); }
+  .wc-h { left:260px; font-family:'Courier New', monospace; font-weight:700; font-size:26px; line-height:40px;
+    letter-spacing:2px; color:#93a3b2; }
+  #wc-h1 { top:230px; } #wc-h2 { top:270px; }
+  #wc-divider { position:absolute; left:260px; top:322px; width:1180px; height:1px; background:rgba(255,255,255,.14);
+    transform-origin:left center; }
+  .wc-b { left:260px; font-family:'Courier New', monospace; font-weight:700; font-size:32px; line-height:52px;
+    letter-spacing:0; color:#dfe7ee; }
+  #wc-b1 { top:360px; } #wc-b2 { top:412px; } #wc-b3 { top:464px; }
+  #wc-b4 { top:560px; color:#93a3b2; } #wc-b5 { top:612px; } #wc-b6 { top:664px; }
+  .wc-band { position:absolute; height:40px; transform-origin:left center; }
+  #wc-hl1a { left:586px; top:418px; width:595px; background:#d8a13a; }
+  #wc-hl1b { left:260px; top:470px; width:403px; background:#d8a13a; }
+  #wc-hl2 { left:356px; top:670px; width:845px; background:#e74c3c; }
+  #wc-id { left:260px; top:740px; font-family:'Courier New', monospace; font-weight:400; font-size:19px; line-height:24px;
+    letter-spacing:0; color:#93a3b2; }
+  .wc-chip { position:absolute; left:172px; top:820px; padding:10px 28px; border-radius:28px; box-sizing:border-box;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14); }
+  .wc-chipt { display:block; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:52px; line-height:62px; color:#f2f5f8; }
+  #wc-source { left:96px; bottom:54px; font-size:19px; line-height:24px; font-weight:400; color:#c8d3e0; }
+</style>
+<div id="g-a3-7-warning-card-root" data-composition-id="g-a3-7-warning-card" data-width="1920" data-height="1080">
+  <div id="wc-ground" class="wc-fill"></div>
+  <div id="wc-card" class="wc-fill">
+    <div id="wc-inner" class="wc-fill wc-hide">
+      <div id="wc-panel"></div>
+      <span id="wc-h1" class="wc-t wc-h wc-hide">Blizzard Warning · National Weather Service Buffalo NY</span>
+      <span id="wc-h2" class="wc-t wc-h wc-hide">209 PM EST Thu Dec 22 2022</span>
+      <div id="wc-divider" class="wc-hide"></div>
+      <div id="wc-hl1a" class="wc-band wc-hide"></div>
+      <div id="wc-hl1b" class="wc-band wc-hide"></div>
+      <div id="wc-hl2" class="wc-band wc-hide"></div>
+      <span id="wc-b1" class="wc-t wc-b wc-hide">The bitter wind chills as low as 10 to 20 below</span>
+      <span id="wc-b2" class="wc-t wc-b wc-hide">zero could cause frostbite on exposed skin in as</span>
+      <span id="wc-b3" class="wc-t wc-b wc-hide">little as 30 minutes.</span>
+      <span id="wc-b4" class="wc-t wc-b wc-hide">PRECAUTIONARY/PREPAREDNESS ACTIONS...</span>
+      <span id="wc-b5" class="wc-t wc-b wc-hide">If you must travel, have a winter survival kit with</span>
+      <span id="wc-b6" class="wc-t wc-b wc-hide">you. If you get stranded, stay with your vehicle.</span>
+      <span id="wc-id" class="wc-t wc-hide">WWUS41 KBUF 221909</span>
+    </div>
+  </div>
+  <div id="wc-hud" class="wc-fill">
+    <div id="wc-chip1" class="wc-chip wc-hide"><span class="wc-chipt" data-repeat-ok="chip names the highlighted product line">FROSTBITE IN AS LITTLE AS 30 MIN</span></div>
+    <div id="wc-chip2" class="wc-chip wc-hide"><span class="wc-chipt">STAY WITH YOUR VEHICLE</span></div>
+    <span id="wc-source" class="wc-t wc-hide">NWS Buffalo Blizzard Warning, 22 Dec 2022, IEM archive</span>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const $ = (id) => "#wc-" + id;
+
+  /* "The Weather Service" @0.00: ground is on from frame 0 (CSS); panel group in, source in */
+  tl.fromTo($("inner"), { y: 40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0.1);
+  tl.fromTo($("source"), { y: 12, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 0.1);
+  tl.fromTo($("h1"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 0.4);
+  tl.fromTo($("h2"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 0.6);
+  tl.fromTo($("divider"), { scaleX: 0, autoAlpha: 0 }, { scaleX: 1, autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 0.8);
+  tl.fromTo($("id"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 0.9);
+
+  /* card drifts the whole window: 1 -> 1.01 over 0 -> 14.42, then the slow push 1.01 -> 1.04 (linear) */
+  tl.to($("card"), { scale: 1.01, duration: 14.42, ease: "none" }, 0);
+
+  /* "told people what to do" @1.10-3.12: body lines fade up dim, 0.25 s apart */
+  ["b1", "b2", "b3", "b4", "b5", "b6"].forEach(function (id, i) {
+    tl.fromTo($(id), { autoAlpha: 0 }, { autoAlpha: 0.45, duration: 0.35, ease: "power2.out" }, 1.1 + i * 0.25);
+  });
+
+  /* "Thursday" @4.44: header line 2 brightens */
+  tl.to($("h2"), { color: "#f2f5f8", duration: 0.3, ease: "power2.out" }, 4.44);
+
+  /* "Frostbite" @5.14: B1-B3 full, highlight 1 draws B2 part (5.14-5.59) then B3 part (5.59-6.04) */
+  tl.to([$("b1"), $("b2"), $("b3")].join(","), { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 5.14);
+  tl.fromTo($("hl1a"), { scaleX: 0, autoAlpha: 0 }, { scaleX: 1, autoAlpha: 0.28, duration: 0.45, ease: "power2.out" }, 5.14);
+  tl.fromTo($("hl1b"), { scaleX: 0, autoAlpha: 0 }, { scaleX: 1, autoAlpha: 0.28, duration: 0.45, ease: "power2.out" }, 5.59);
+
+  /* "30" @7.00: chip 1 in */
+  tl.fromTo($("chip1"), { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 7.0);
+
+  /* "stranded" @9.40: chip 1 out; B4-B6 full */
+  tl.to($("chip1"), { x: -80, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 9.4);
+  tl.to([$("b4"), $("b5"), $("b6")].join(","), { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 9.4);
+
+  /* "Stay with your vehicle." @11.22: highlight 2 draws over 0.6; chip 2 in @11.58 ("with") */
+  tl.fromTo($("hl2"), { scaleX: 0, autoAlpha: 0 }, { scaleX: 1, autoAlpha: 0.3, duration: 0.6, ease: "power2.out" }, 11.22);
+  tl.fromTo($("chip2"), { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 11.58);
+
+  /* "Andal did exactly that." @12.68: highlight 2 pulses once (.30 -> .5 -> .30, 0.6 s) */
+  tl.to($("hl2"), { autoAlpha: 0.5, duration: 0.3, ease: "power2.out" }, 12.68);
+  tl.to($("hl2"), { autoAlpha: 0.3, duration: 0.3, ease: "power2.in" }, 12.98);
+
+  /* "She wrote to her sisters ... if she got out." @14.42-18.10: slow push 1.01 -> 1.04, no new text */
+  tl.to($("card"), { scale: 1.04, duration: 3.68, ease: "none" }, 14.42);
+
+  /* after "out." @18.10: chip 2, panel group and source out (ends 18.36); ground stays */
+  tl.to($("chip2"), { y: 30, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.76);
+  tl.to($("inner"), { y: 30, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.76);
+  tl.to($("source"), { y: 30, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.76);
+
+  window.__timelines["g-a3-7-warning-card"] = tl;
+})();
+</script>
+</template>

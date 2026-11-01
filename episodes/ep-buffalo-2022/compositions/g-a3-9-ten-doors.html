@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a3-9-ten-doors (A3-S8, standard): night street, 10 identical house fronts in snow; each door lights then goes dark; chip "10 DOORS".
+  Full-frame designed ground, no footage. Comp duration 19.74 s. Cue times are seconds from the START of A3-S8 (audio/a3-s8.words.json).
+  Text nodes: 3 (eyebrow 22, chip 84, source pill 19) -> flat-type fires only with 4+ nodes; tiers used: big 84, small 22/19.
+  Snow is a canvas drawn from the timeline onUpdate (seek-safe: positions are a pure function of time, no loops that outlive the host).
+-->
+<template>
+<style>
+  #g-a3-9-ten-doors-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #td-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #td-snowline { position:absolute; left:0; top:660px; width:1920px; height:420px; opacity:0.6;
+    background:linear-gradient(180deg, #2a3644, #0b1016); }
+  #td-scene { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #td-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .td-h { opacity:0; }
+  .td-lit { opacity:0; }
+  .td-dr { stroke:#e8c56a; stroke-width:3; stroke-opacity:0; }
+  #td-snow { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #td-eyebrow { position:absolute; left:96px; top:96px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:1;
+    letter-spacing:6px; color:#93a3b2; white-space:nowrap; opacity:0; visibility:hidden; }
+  #td-chip { position:absolute; left:110px; bottom:110px; display:table; box-sizing:border-box; padding:22px 34px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; opacity:0; visibility:hidden; }
+  #td-chip-t { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:84px; line-height:1; color:#f2f5f8; white-space:nowrap; }
+  #td-src { position:absolute; left:110px; bottom:54px; display:table; box-sizing:border-box; padding:5px 12px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:14px;
+    font-family:Arial, sans-serif; font-weight:400; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a3-9-ten-doors-root" data-composition-id="g-a3-9-ten-doors" data-width="1920" data-height="1080">
+  <div id="td-ground"></div>
+  <div id="td-snowline"></div>
+  <div id="td-scene">
+    <svg id="td-svg" viewBox="0 0 1920 1080" width="1920" height="1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="td-glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#e8c56a" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#e8c56a" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <g id="td-houses">
+        <g class="td-h" id="td-h0">
+          <polygon points="240,420 174,500 306,500" fill="#0b1016"/>
+          <polyline points="174,500 240,420 306,500" fill="none" stroke="#dfe7ee" stroke-width="10" stroke-opacity="0.8" stroke-linejoin="round"/>
+          <rect x="180" y="500" width="120" height="160" fill="#15202b" stroke="#ffffff" stroke-opacity="0.14" stroke-width="1"/>
+          <rect x="198" y="530" width="24" height="24" fill="#04070a"/>
+          <rect id="td-d0" class="td-dr" x="222" y="590" width="36" height="70" fill="#2a3644"/>
+          <g class="td-lit" id="td-l0"><circle cx="240" cy="625" r="60" fill="url(#td-glow)"/><rect x="222" y="590" width="36" height="70" fill="#e8c56a"/></g>
+        </g>
+        <g class="td-h" id="td-h1">
+          <polygon points="375,420 309,500 441,500" fill="#0b1016"/>
+          <polyline points="309,500 375,420 441,500" fill="none" stroke="#dfe7ee" stroke-width="10" stroke-opacity="0.8" stroke-linejoin="round"/>
+          <rect x="315" y="500" width="120" height="160" fill="#15202b" stroke="#ffffff" stroke-opacity="0.14" stroke-width="1"/>
+          <rect x="333" y="530" width="24" height="24" fill="#04070a"/>
+          <rect id="td-d1" class="td-dr" x="357" y="590" width="36" height="70" fill="#2a3644"/>
+          <g class="td-lit" id="td-l1"><circle cx="375" cy="625" r="60" fill="url(#td-glow)"/><rect x="357" y="590" width="36" height="70" fill="#e8c56a"/></g>
+        </g>
+        <g class="td-h" id="td-h2">
+          <polygon points="510,420 444,500 576,500" fill="#0b1016"/>
+          <polyline points="444,500 510,420 576,500" fill="none" stroke="#dfe7ee" stroke-width="10" stroke-opacity="0.8" stroke-linejoin="round"/>
+          <rect x="450" y="500" width="120" height="160" fill="#15202b" stroke="#ffffff" stroke-opacity="0.14" stroke-width="1"/>
+          <rect x="468" y="530" width="24" height="24" fill="#04070a"/>
+          <rect id="td-d2" class="td-dr" x="492" y="590" width="36" height="70" fill="#2a3644"/>
+          <g class="td-lit" id="td-l2"><circle cx="510" cy="625" r="60" fill="url(#td-glow)"/><rect x="492" y="590" width="36" height="70" fill="#e8c56a"/></g>
+        </g>
+        <g class="td-h" id="td-h3">
+          <polygon points="645,420 579,500 711,500" fill="#0b1016"/>
+          <polyline points="579,500 645,420 711,500" fill="none" stroke="#dfe7ee" stroke-width="10" stroke-opacity="0.8" stroke-linejoin="round"/>
+          <rect x="585" y="500" width="120" height="160" fill="#15202b" stroke="#ffffff" stroke-opacity="0.14" stroke-width="1"/>
+          <rect x="603" y="530" width="24" height="24" fill="#04070a"/>
+          <rect id="td-d3" class="td-dr" x="627" y="590" width="36" height="70" fill="#2a3644"/>
+          <g class="td-lit" id="td-l3"><circle cx="645" cy="625" r="60" fill="url(#td-glow)"/><rect x="627" y="590" width="36" height="70" fill="#e8c56a"/></g>
+        </g>
+        <g class="td-h" id="td-h4">
+          <polygon points="780,420 714,500 846,500" fill="#0b1016"/>
+          <polyline points="714,500 780,420 846,500" fill="none" stroke="#dfe7ee" stroke-width="10" stroke-opacity="0.8" stroke-linejoin="round"/>
+          <rect x="720" y="500" width="120" height="160" fill="#15202b" stroke="#ffffff" stroke-opacity="0.14" stroke-width="1"/>
+          <rect x="738" y="530" width="24" height="24" fill="#04070a"/>
+          <rect id="td-d4" class="td-dr" x="762" y="590" width="36" height="70" fill="#2a3644"/>
+          <g class="td-lit" id="td-l4"><circle cx="780" cy="625" r="60" fill="url(#td-glow)"/><rect x="762" y="590" width="36" height="70" fill="#e8c56a"/></g>
+        </g>
+        <g class="td-h" id="td-h5">
+          <polygon points="915,420 849,500 981,500" fill="#0b1016"/>
+          <polyline points="849,500 915,420 981,500" fill="none" stroke="#dfe7ee" stroke-width="10" stroke-opacity="0.8" stroke-linejoin="round"/>
+          <rect x="855" y="500" width="120" height="160" fill="#15202b" stroke="#ffffff" stroke-opacity="0.14" stroke-width="1"/>
+          <rect x="873" y="530" width="24" height="24" fill="#04070a"/>
+          <rect id="td-d5" class="td-dr" x="897" y="590" width="36" height="70" fill="#2a3644"/>
+          <g class="td-lit" id="td-l5"><circle cx="915" cy="625" r="60" fill="url(#td-glow)"/><rect x="897" y="590" width="36" height="70" fill="#e8c56a"/></g>
+        </g>
+        <g class="td-h" id="td-h6">
+          <polygon points="1050,420 984,500 1116,500" fill="#0b1016"/>
+          <polyline points="984,500 1050,420 1116,500" fill="none" stroke="#dfe7ee" stroke-width="10" stroke-opacity="0.8" stroke-linejoin="round"/>
+          <rect x="990" y="500" width="120" height="160" fill="#15202b" stroke="#ffffff" stroke-opacity="0.14" stroke-width="1"/>
+          <rect x="1008" y="530" width="24" height="24" fill="#04070a"/>
+          <rect id="td-d6" class="td-dr" x="1032" y="590" width="36" height="70" fill="#2a3644"/>
+          <g class="td-lit" id="td-l6"><circle cx="1050" cy="625" r="60" fill="url(#td-glow)"/><rect x="1032" y="590" width="36" height="70" fill="#e8c56a"/></g>
+        </g>
+        <g class="td-h" id="td-h7">
+          <polygon points="1185,420 1119,500 1251,500" fill="#0b1016"/>
+          <polyline points="1119,500 1185,420 1251,500" fill="none" stroke="#dfe7ee" stroke-width="10" stroke-opacity="0.8" stroke-linejoin="round"/>
+          <rect x="1125" y="500" width="120" height="160" fill="#15202b" stroke="#ffffff" stroke-opacity="0.14" stroke-width="1"/>
+          <rect x="1143" y="530" width="24" height="24" fill="#04070a"/>
+          <rect id="td-d7" class="td-dr" x="1167" y="590" width="36" height="70" fill="#2a3644"/>
+          <g class="td-lit" id="td-l7"><circle cx="1185" cy="625" r="60" fill="url(#td-glow)"/><rect x="1167" y="590" width="36" height="70" fill="#e8c56a"/></g>
+        </g>
+        <g class="td-h" id="td-h8">
+          <polygon points="1320,420 1254,500 1386,500" fill="#0b1016"/>
+          <polyline points="1254,500 1320,420 1386,500" fill="none" stroke="#dfe7ee" stroke-width="10" stroke-opacity="0.8" stroke-linejoin="round"/>
+          <rect x="1260" y="500" width="120" height="160" fill="#15202b" stroke="#ffffff" stroke-opacity="0.14" stroke-width="1"/>
+          <rect x="1278" y="530" width="24" height="24" fill="#04070a"/>
+          <rect id="td-d8" class="td-dr" x="1302" y="590" width="36" height="70" fill="#2a3644"/>
+          <g class="td-lit" id="td-l8"><circle cx="1320" cy="625" r="60" fill="url(#td-glow)"/><rect x="1302" y="590" width="36" height="70" fill="#e8c56a"/></g>
+        </g>
+        <g class="td-h" id="td-h9">
+          <polygon points="1455,420 1389,500 1521,500" fill="#0b1016"/>
+          <polyline points="1389,500 1455,420 1521,500" fill="none" stroke="#dfe7ee" stroke-width="10" stroke-opacity="0.8" stroke-linejoin="round"/>
+          <rect x="1395" y="500" width="120" height="160" fill="#15202b" stroke="#ffffff" stroke-opacity="0.14" stroke-width="1"/>
+          <rect x="1413" y="530" width="24" height="24" fill="#04070a"/>
+          <rect id="td-d9" class="td-dr" x="1437" y="590" width="36" height="70" fill="#2a3644"/>
+          <g class="td-lit" id="td-l9"><circle cx="1455" cy="625" r="60" fill="url(#td-glow)"/><rect x="1437" y="590" width="36" height="70" fill="#e8c56a"/></g>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <canvas id="td-snow" width="1920" height="1080"></canvas>
+  <div id="td-eyebrow">JAY WITHEY · FRIDAY EVENING</div>
+  <div id="td-chip"><span id="td-chip-t">10 DOORS</span></div>
+  <div id="td-src">Jay Withey, to NBC, via Global News</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+
+  /* ---- snow: pure function of timeline time; speed x1.6 from 18.52 ("blizzard" @18.52) ---- */
+  const cv = document.getElementById("td-snow");
+  const cx = cv.getContext("2d");
+  const flakes = [];
+  let seed = 7;
+  function rnd() { seed = (seed * 1664525 + 1013904223) % 4294967296; return seed / 4294967296; }
+  for (let k = 0; k < 120; k++) {
+    flakes.push({ x: rnd() * 1920, y: rnd() * 1100, r: 1 + rnd() * 1.5, a: 0.5 + rnd() * 0.4, v: 120 + rnd() * 100, w: 20 + rnd() * 30, p: rnd() * 6.28, d: 8 + rnd() * 20 });
+  }
+  function draw() {
+    const t = tl.time();
+    const ph = t < 18.52 ? t : 18.52 + 1.6 * (t - 18.52);
+    cx.clearRect(0, 0, 1920, 1080);
+    cx.fillStyle = "#dfe7ee";
+    for (let k = 0; k < flakes.length; k++) {
+      const f = flakes[k];
+      const y = ((f.y + f.v * ph) % 1100) - 10;
+      const x = (((f.x + f.d * ph + f.w * Math.sin(ph * 0.8 + f.p)) % 1960) + 1960) % 1960 - 20;
+      cx.globalAlpha = f.a;
+      cx.beginPath(); cx.arc(x, y, f.r, 0, 6.2832); cx.fill();
+    }
+    cx.globalAlpha = 1;
+  }
+  tl.eventCallback("onUpdate", draw);
+  draw();
+
+  /* ---- start state (hidden in CSS too) ---- */
+  tl.set(["#td-eyebrow", "#td-chip", "#td-src"], { autoAlpha: 0 }, 0);
+
+  /* whole-window float: 11 x 2 x 0.8975 = 19.745 s */
+  tl.to("#td-scene", { y: -3, duration: 0.8975, ease: "sine.inOut", yoyo: true, repeat: 21 }, 0);
+
+  /* houses rise on "limit." @0.94, stagger 0.08, done by 2.16 */
+  tl.fromTo("#td-h0", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.94);
+  tl.fromTo("#td-h1", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.02);
+  tl.fromTo("#td-h2", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.10);
+  tl.fromTo("#td-h3", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.18);
+  tl.fromTo("#td-h4", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.26);
+  tl.fromTo("#td-h5", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.34);
+  tl.fromTo("#td-h6", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.42);
+  tl.fromTo("#td-h7", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.50);
+  tl.fromTo("#td-h8", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.58);
+  tl.fromTo("#td-h9", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.66);
+
+  /* "Jay Withy" @3.52: eyebrow + source pill in */
+  tl.fromTo("#td-eyebrow", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power2.out" }, 3.52);
+  tl.fromTo("#td-src", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 3.52);
+
+  /* doors: T_i = 7.70 + 0.85 i ("knocked" @7.70, "10 nearby homes" @8.78, "turned away each time" 15.08-15.88).
+     lit 0.15 s, hold 0.30 s, dark 0.25 s -> dark by T_i + 0.70; one door at a time. */
+  tl.to("#td-l0", { opacity: 1, duration: 0.15, ease: "power2.out" }, 7.70);
+  tl.to("#td-l0", { opacity: 0, duration: 0.25, ease: "power2.in" }, 8.15);
+  tl.to("#td-l1", { opacity: 1, duration: 0.15, ease: "power2.out" }, 8.55);
+  tl.to("#td-l1", { opacity: 0, duration: 0.25, ease: "power2.in" }, 9.00);
+  tl.to("#td-l2", { opacity: 1, duration: 0.15, ease: "power2.out" }, 9.40);
+  tl.to("#td-l2", { opacity: 0, duration: 0.25, ease: "power2.in" }, 9.85);
+  tl.to("#td-l3", { opacity: 1, duration: 0.15, ease: "power2.out" }, 10.25);
+  tl.to("#td-l3", { opacity: 0, duration: 0.25, ease: "power2.in" }, 10.70);
+  tl.to("#td-l4", { opacity: 1, duration: 0.15, ease: "power2.out" }, 11.10);
+  tl.to("#td-l4", { opacity: 0, duration: 0.25, ease: "power2.in" }, 11.55);
+  tl.to("#td-l5", { opacity: 1, duration: 0.15, ease: "power2.out" }, 11.95);
+  tl.to("#td-l5", { opacity: 0, duration: 0.25, ease: "power2.in" }, 12.40);
+  tl.to("#td-l6", { opacity: 1, duration: 0.15, ease: "power2.out" }, 12.80);
+  tl.to("#td-l6", { opacity: 0, duration: 0.25, ease: "power2.in" }, 13.25);
+  tl.to("#td-l7", { opacity: 1, duration: 0.15, ease: "power2.out" }, 13.65);
+  tl.to("#td-l7", { opacity: 0, duration: 0.25, ease: "power2.in" }, 14.10);
+  tl.to("#td-l8", { opacity: 1, duration: 0.15, ease: "power2.out" }, 14.50);
+  tl.to("#td-l8", { opacity: 0, duration: 0.25, ease: "power2.in" }, 14.95);
+  tl.to("#td-l9", { opacity: 1, duration: 0.15, ease: "power2.out" }, 15.35);
+  tl.to("#td-l9", { opacity: 0, duration: 0.25, ease: "power2.in" }, 15.80);
+
+  /* "That's 10 front doors" @16.98: chip in; all door outlines flash once 17.26-17.80 (stroke only) */
+  tl.fromTo("#td-chip", { autoAlpha: 0, scale: 1.2 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power4.out", transformOrigin: "left bottom" }, 16.98);
+  tl.to(["#td-d0", "#td-d1", "#td-d2", "#td-d3", "#td-d4", "#td-d5", "#td-d6", "#td-d7", "#td-d8", "#td-d9"], { attr: { "stroke-opacity": 1 }, duration: 0.27, ease: "power2.out" }, 17.26);
+  tl.to(["#td-d0", "#td-d1", "#td-d2", "#td-d3", "#td-d4", "#td-d5", "#td-d6", "#td-d7", "#td-d8", "#td-d9"], { attr: { "stroke-opacity": 0 }, duration: 0.27, ease: "power2.in" }, 17.53);
+
+  /* after "dark." @19.42: chip, eyebrow, pill out; houses dim to 40 %; ground and snow stay */
+  tl.to(["#td-chip", "#td-eyebrow", "#td-src"], { autoAlpha: 0, x: -60, duration: 0.6, ease: "power3.in" }, 19.14);
+  tl.to("#td-houses", { opacity: 0.4, duration: 0.6, ease: "power2.inOut" }, 19.14);
+
+  window.__timelines["g-a3-9-ten-doors"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

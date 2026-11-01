@@ -1,0 +1,188 @@
+<!--
+  g-a1-1-afd-scroll · A1-S1 · full-frame NWS Buffalo AFD (FXUS61 KBUF 200951) scrolling in a masked window, 24.9 s.
+  Base: g-intro-7-afd-card (panel look) + bulletin-typewriter (leaf-span rows). Cues: seconds from A1-S1 start (audio/a1-s1.words.json).
+  Geometry (px, root 1920x1080): chip left200 top110 Arial Black 900 52 #e8c56a · panel x170..1530 y200..900 r28 ·
+    header Courier 700 26 left230 tops 226/262/298 · id right-aligned to x1470 top230 · divider x230..1470 y344 ·
+    window x230..1470 y364..872 (508 tall, 40 px feathered top/bottom) · rows Courier 700 28 (pitch 16.8), row pitch 44,
+    row n top in stack = 12 + 44n, abs top = 364 + 12 + 44n - offset · end offset 1100 -> B30 at abs 596, B29 at 552.
+  Highlight rects live inside the stack (they ride the scroll). B29 prefix = 41 chars (688.8 px), "One could certainly" = 19 chars (319.2 px);
+    B30 = 67 chars (1125.6 px). Rows B3, B10, B16, B36 are empty product lines: no node, the gap is in the row tops.
+  Rows B36..B51 sit below the window (g-a1-2-jet-section copies this stack unchanged).
+  Float/drift: #as-float (panel group) rises 4 px over 0.9..25.2; entrances sit on its children.
+-->
+<template>
+<style>
+  #g-a1-1-afd-scroll-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    font-family: Arial, sans-serif; color:#f2f5f8; }
+  .as-fill { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #as-ground { background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .as-hide { opacity:0; visibility:hidden; }
+  .as-t { position:absolute; white-space:pre; }
+  #as-chip { left:200px; top:110px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px;
+    line-height:56px; color:#e8c56a; }
+  #as-panel { position:absolute; left:170px; top:200px; width:1360px; height:700px; box-sizing:border-box;
+    border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(180deg, #15202b, #0b1016); }
+  .as-h { left:230px; font-family:'Courier New', monospace; font-weight:700; font-size:26px; line-height:36px;
+    letter-spacing:0; color:#93a3b2; }
+  #as-h1 { top:226px; } #as-h2 { top:262px; } #as-h3 { top:298px; }
+  #as-id { right:450px; top:230px; font-family:'Courier New', monospace; font-weight:400; font-size:19px; line-height:24px;
+    color:#93a3b2; text-align:right; }
+  #as-divider { position:absolute; left:230px; top:344px; width:1240px; height:1px; background:rgba(255,255,255,.14);
+    transform-origin:left center; }
+  #as-win { position:absolute; left:230px; top:364px; width:1240px; height:508px; overflow:hidden;
+    -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 40px, #000 468px, transparent 508px);
+    mask-image:linear-gradient(180deg, transparent 0, #000 40px, #000 468px, transparent 508px); }
+  #as-stack { position:absolute; left:0; top:0; width:1240px; height:2400px; }
+  .as-row { position:absolute; left:0; height:44px; white-space:pre; font-family:'Courier New', monospace; font-weight:700;
+    font-size:28px; line-height:44px; letter-spacing:0; color:#dfe7ee; }
+  .as-hd { color:#93a3b2; }
+  /* rows below the window at offset 0 wait hidden; the timeline shows each one as it enters (gates do not see #as-win's clip) */
+  #as-r11, #as-r12, #as-r13, #as-r14, #as-r15, #as-r17, #as-r18, #as-r19, #as-r20, #as-r21, #as-r22, #as-r23, #as-r24,
+  #as-r25, #as-r26, #as-r27, #as-r28, #as-r29, #as-r30, #as-r31, #as-r32, #as-r33, #as-r34, #as-r35, #as-r37, #as-r38,
+  #as-r39, #as-r40, #as-r41, #as-r42, #as-r43, #as-r44, #as-r45, #as-r46, #as-r47, #as-r48, #as-r49, #as-r50,
+  #as-r51 { visibility:hidden; }
+  .as-rect { position:absolute; height:38px; border-radius:4px; background:#e8c56a; transform-origin:left center; }
+  #as-hl1 { left:688.8px; top:1291px; width:319.2px; }
+  #as-hl2 { left:0; top:1335px; width:1125.6px; }
+  #as-source { left:96px; bottom:54px; font-size:19px; line-height:24px; font-weight:400; color:#c8d3e0; }
+</style>
+<div id="g-a1-1-afd-scroll-root" data-composition-id="g-a1-1-afd-scroll" data-width="1920" data-height="1080">
+  <div id="as-ground" class="as-fill"></div>
+  <div id="as-chip" class="as-t as-hide">TUE DEC 20 · 4:51 AM</div>
+  <div id="as-float" class="as-fill">
+    <div id="as-panel" class="as-hide"></div>
+    <span id="as-h1" class="as-t as-h as-hide">Area Forecast Discussion</span>
+    <span id="as-h2" class="as-t as-h as-hide">National Weather Service Buffalo NY</span>
+    <span id="as-h3" class="as-t as-h as-hide">451 AM EST Tue Dec 20 2022</span>
+    <span id="as-id" class="as-t as-hide">FXUS61 KBUF 200951</span>
+    <div id="as-divider" class="as-hide"></div>
+    <div id="as-win">
+      <div id="as-stack" class="as-hide">
+        <div id="as-hl1" class="as-rect as-hide"></div>
+        <div id="as-hl2" class="as-rect as-hide"></div>
+        <span id="as-r0" class="as-row as-hd" style="top:12px">.LONG TERM /THURSDAY NIGHT THROUGH MONDAY/...</span>
+        <span id="as-r1" class="as-row as-hd" style="top:56px">...Incredibly Powerful Storm To Impact our Region Heading Into and</span>
+        <span id="as-r2" class="as-row as-hd" style="top:100px">THROUGH the Christmas Weekend...</span>
+        <span id="as-r4" class="as-row" style="top:188px">An extremely amplified longwave pattern during this period will</span>
+        <span id="as-r5" class="as-row" style="top:232px">spawn one of the most intense storm systems in decades to impact the</span>
+        <span id="as-r6" class="as-row" style="top:276px">Mid West and Great Lakes region. This system will likely end up</span>
+        <span id="as-r7" class="as-row" style="top:320px">setting low pressure records once it passes north of the border and</span>
+        <span id="as-r8" class="as-row" style="top:364px">will have the potential to generate at least storm force winds over</span>
+        <span id="as-r9" class="as-row" style="top:408px">the Lower Great lakes.</span>
+        <span id="as-r11" class="as-row" style="top:496px">As if the very real threat for damage producing winds were not</span>
+        <span id="as-r12" class="as-row" style="top:540px">enough...there will also be the risk for a prolonged...paralyzing</span>
+        <span id="as-r13" class="as-row" style="top:584px">heavy lake effect snow event. All of this coming in the days leading</span>
+        <span id="as-r14" class="as-row" style="top:628px">up to...and through Christmas. Headlines (watches) will likely be</span>
+        <span id="as-r15" class="as-row" style="top:672px">issued within the next few forecast cycles.</span>
+        <span id="as-r17" class="as-row" style="top:760px">Explosive cyclogenesis will take place over the mid western states</span>
+        <span id="as-r18" class="as-row" style="top:804px">Thursday night and southern Ontario on Friday...as an anomalously</span>
+        <span id="as-r19" class="as-row" style="top:848px">strong 150kt H25 jet will pass through the base of a very deep</span>
+        <span id="as-r20" class="as-row" style="top:892px">longwave trough. This will support rapid deepening of a</span>
+        <span id="as-r21" class="as-row" style="top:936px">corresponding sfc low that will track from Indiana north-northeast</span>
+        <span id="as-r22" class="as-row" style="top:980px">to southern Ontario by late Friday. The low will deepen from roughly</span>
+        <span id="as-r23" class="as-row" style="top:1024px">1000mb Thursday evening to roughly 968mb by Friday evening...easily</span>
+        <span id="as-r24" class="as-row" style="top:1068px">meeting the definition of bombogenesis (24mb/24hrs). Such deepening</span>
+        <span id="as-r25" class="as-row" style="top:1112px">is relatively rare in the Lower Great lakes...but more common across</span>
+        <span id="as-r26" class="as-row" style="top:1156px">the Upper Great Lakes and certainly with Nor'easters along the coast.</span>
+        <span id="as-r27" class="as-row" style="top:1200px">Some of the parameters of this intense storm are forecast to be</span>
+        <span id="as-r28" class="as-row" style="top:1244px">climatologically 'off the charts'...such as MSLP and strength of</span>
+        <span id="as-r29" class="as-row as-keep" style="top:1288px"><span>both the low level and upper level jets. </span><span id="as-w0">One </span><span id="as-w1">could </span><span id="as-w2">certainly</span></span>
+        <span id="as-r30" class="as-row as-keep" style="top:1332px"><span id="as-w3">describe </span><span id="as-w4">this </span><span id="as-w5">storm </span><span id="as-w6">system </span><span id="as-w7">as </span><span id="as-w8">a </span><span id="as-w9">once </span><span id="as-w10">in </span><span id="as-w11">a </span><span id="as-w12">generation </span><span id="as-w13">type </span><span id="as-w14">of </span><span id="as-w15">event.</span></span>
+        <span id="as-r31" class="as-row" style="top:1376px">Its worth noting that the guidance continues to come into better</span>
+        <span id="as-r32" class="as-row" style="top:1420px">agreement with the strengthening and track of this system with most</span>
+        <span id="as-r33" class="as-row" style="top:1464px">of the packages coming into line with the consistent ECMWF solution</span>
+        <span id="as-r34" class="as-row" style="top:1508px">of a few days ago. This agreement is allowing for increased confidence</span>
+        <span id="as-r35" class="as-row" style="top:1552px">in the overall solution.</span>
+        <span id="as-r37" class="as-row" style="top:1660px">In any case...a coupled jet found over the Lower Great lakes ahead</span>
+        <span id="as-r38" class="as-row" style="top:1704px">of this powerful storm Thursday night will combine with divergent</span>
+        <span id="as-r39" class="as-row" style="top:1748px">flow aloft to generate a half inch of rain over our region along</span>
+        <span id="as-r40" class="as-row" style="top:1792px">with temperatures that will actually rise through the night after</span>
+        <span id="as-r41" class="as-row" style="top:1836px">early evening mins. The concern Thursday night though will be the</span>
+        <span id="as-r42" class="as-row" style="top:1880px">impacts of an extraordinary 70-75 kt low level jet within the warm</span>
+        <span id="as-r43" class="as-row" style="top:1924px">advection. Normally these winds would be aloft abv a pronounced</span>
+        <span id="as-r44" class="as-row" style="top:1968px">inversion...but in areas where the winds are perpendicular to sfc</span>
+        <span id="as-r45" class="as-row" style="top:2012px">barriers (ie. ridges/plateaus)...downsloping can transport the winds</span>
+        <span id="as-r46" class="as-row" style="top:2056px">to the sfc. This could be the case north-northeast of the Tug Hill</span>
+        <span id="as-r47" class="as-row" style="top:2100px">plateau and to a lesser degree in this case the Chautauqua ridge.</span>
+        <span id="as-r48" class="as-row" style="top:2144px">The strong southeasterly flow will also be funneled down the Black</span>
+        <span id="as-r49" class="as-row" style="top:2188px">River valley...enhancing winds in that area as well. Headlines for</span>
+        <span id="as-r50" class="as-row" style="top:2232px">these winds east of Lake Ontario will likely come as early as</span>
+        <span id="as-r51" class="as-row" style="top:2276px">midday.</span>
+      </div>
+    </div>
+  </div>
+  <div id="as-source" class="as-t as-hide">NWS Buffalo Area Forecast Discussion, FXUS61 KBUF 200951, IEM archive</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const $ = (id) => "#as-" + id;
+
+  /* "Tuesday," @0.00: ground on from frame 0 (CSS); chip enters */
+  tl.fromTo($("chip"), { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.05);
+
+  /* "December" @0.90: panel rises in, source line in; whole panel group floats up 4 px to the end (never still) */
+  tl.fromTo($("panel"), { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.9);
+  tl.fromTo($("source"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.9);
+  tl.to($("float"), { y: -4, duration: 24.0, ease: "sine.inOut" }, 0.9); /* ends 24.9 = host window (index.html) */
+
+  /* "451" @2.18: header rows one by one (2.18, 2.50, 2.82); product id @3.00 */
+  tl.fromTo($("h1"), { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 2.18);
+  tl.fromTo($("h2"), { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 2.50);
+  tl.fromTo($("h3"), { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 2.82);
+  tl.fromTo($("id"), { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 3.00);
+
+  /* "morning," @3.00-3.24: divider draws; body rows visible from 3.40 */
+  tl.fromTo($("divider"), { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.5, ease: "power2.out" }, 3.00);
+  tl.fromTo($("stack"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 3.40);
+
+  /* "Weather Service Office in Buffalo" @5.74: header row 2 brightens; "forecast discussion." @7.78: header row 1 */
+  tl.to($("h2"), { color: "#f2f5f8", duration: 0.3 }, 5.74);
+  tl.to($("h1"), { color: "#f2f5f8", duration: 0.3 }, 7.78);
+
+  /* "It was a long, semi-technical note ... It said," @9.28-18.62: stack scrolls 1100 px (y 0 -> -1100) */
+  tl.fromTo($("stack"), { y: 0 }, { y: -1100, duration: 9.34, ease: "power1.inOut", immediateRender: false }, 9.28);
+  /* a row is shown only while its glyph (row top +8..+36) sits inside the window: on as its glyph top passes window y500
+     (bottom feather), off as its glyph bottom passes window y8 (top feather). Offset o -> time inverts power1.inOut,
+     so no row is visible below the panel or up over the header while the window's clip hides it from the gates. */
+  const inv1 = (f) => (f < 0.5 ? Math.sqrt(f / 2) : 1 - Math.sqrt((1 - f) / 2));
+  document.querySelectorAll("#as-stack .as-row").forEach(function (r) {
+    const top = parseFloat(r.style.top), oIn = top - 492, oOut = top + 28;
+    if (oIn > 0) tl.set(r, { visibility: "hidden" }, 0);
+    if (oIn > 0 && oIn <= 1100) tl.set(r, { visibility: "visible" }, 9.28 + 9.34 * inv1(oIn / 1100));
+    if (oOut <= 1100) tl.set(r, { visibility: "hidden" }, 9.28 + 9.34 * inv1(oOut / 1100));
+  });
+
+  /* "One could certainly" @19.64-20.50: rect 1 tracks the voice; each word turns dark as the rect passes its middle */
+  tl.fromTo($("hl1"), { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.86, ease: "none" }, 19.64);
+  tl.to($("w0"), { color: "#04070c", duration: 0.08 }, 19.67);
+  tl.to($("w1"), { color: "#04070c", duration: 0.08 }, 19.89);
+  tl.to($("w2"), { color: "#04070c", duration: 0.08 }, 20.26);
+
+  /* "describe ... type of event." @20.50-23.62: rect 2 tracks the voice across B30 (67 chars, 0.0466 s/char) */
+  tl.fromTo($("hl2"), { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 3.12, ease: "none" }, 20.50);
+  tl.to($("w3"),  { color: "#04070c", duration: 0.08 }, 20.65); /* describe */
+  tl.to($("w4"),  { color: "#04070c", duration: 0.08 }, 20.97); /* this */
+  tl.to($("w5"),  { color: "#04070c", duration: 0.08 }, 21.23); /* storm */
+  tl.to($("w6"),  { color: "#04070c", duration: 0.08 }, 21.53); /* system */
+  tl.to($("w7"),  { color: "#04070c", duration: 0.08 }, 21.76); /* as */
+  tl.to($("w8"),  { color: "#04070c", duration: 0.08 }, 21.88); /* a */
+  tl.to($("w9"),  { color: "#04070c", duration: 0.08 }, 22.04); /* once */
+  tl.to($("w10"), { color: "#04070c", duration: 0.08 }, 22.23); /* in */
+  tl.to($("w11"), { color: "#04070c", duration: 0.08 }, 22.35); /* a */
+  tl.to($("w12"), { color: "#04070c", duration: 0.08 }, 22.65); /* generation */
+  tl.to($("w13"), { color: "#04070c", duration: 0.08 }, 23.02); /* type */
+  tl.to($("w14"), { color: "#04070c", duration: 0.08 }, 23.21); /* of */
+  tl.to($("w15"), { color: "#04070c", duration: 0.08 }, 23.44); /* event. */
+
+  /* end of speech @23.94: every other row dims to 0.35, highlight rects pulse */
+  tl.to(".as-row:not(.as-keep)", { opacity: 0.35, duration: 0.5 }, 23.94);
+  tl.to([$("hl1"), $("hl2")].join(","), { scaleY: 1.08, duration: 0.3, ease: "sine.out" }, 23.94);
+  tl.to([$("hl1"), $("hl2")].join(","), { scaleY: 1, duration: 0.3, ease: "sine.in" }, 24.24);
+  /* 24.6-24.9 tail: hold on the settled frame; the #as-float drift above runs to 24.9 */
+
+  window.__timelines["g-a1-1-afd-scroll"] = tl;
+})();
+</script>
+</template>

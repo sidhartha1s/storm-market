@@ -1,0 +1,256 @@
+<!--
+  g-a1-6-warning-card · A1-S6 · forecast desk timeline, NWS Buffalo Blizzard Warning card (3:54 AM Thu 22 Dec) to IN EFFECT 7 AM FRI, 24.6 s.
+  Copy of g-a1-5-watch-timeline (wt- -> wc-). Frame 0 = g-a1-5's last frame (all of it visible in CSS, float y -4, watch dash x 877.6).
+  Cues: seconds from A1-S6 start (audio/a1-s6.words.json). Axis as g-a1-5: Thu 3:54 AM x 1012.6 · IN EFFECT 7 AM Fri x 1457.9 (16.4286 px/h, 27.1 h = 445.3 px).
+  Courier rows 28 px, advance 16.8, left 230. Highlight rects (left = 230 + idx*16.8, width = chars*16.8):
+    R1 "7 AM FRIDAY" idx 35, 11 ch -> left 818 w 184.8 · R5 "1 to 3 feet" idx 2, 11 ch -> left 263.6 w 184.8 · R5 "as high as 70 mph" idx 29, 17 ch -> left 717.2 w 285.6
+    R8 "frequently reducing visibilities to zero." idx 0, 41 ch -> left 230 w 688.8
+  Deviations from brief (builder notes): warning card line 1 is 24 px (base card), not 30; in-effect label top 864 / line-height 20 so it clears the arrow at y 888.
+  Chips 1 TO 3 FT and GUSTS TO 70 MPH sit in a flex row, gap 40 px (layout makes the 40 px gap exact).
+-->
+<template>
+<style>
+  #g-a1-6-warning-card-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    font-family: Arial, sans-serif; color:#f2f5f8; }
+  .wc-fill { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #wc-ground { background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .wc-hide { opacity:0; visibility:hidden; }
+  .wc-t { position:absolute; white-space:pre; }
+  #wc-chip, #wc-chip2 { left:200px; top:110px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px;
+    line-height:56px; color:#e8c56a; transform-origin:left center; }
+  #wc-row { position:absolute; left:200px; top:110px; display:flex; gap:40px; }
+  .wc-ch { white-space:pre; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:56px; color:#e8c56a; }
+  /* rail */
+  #wc-rail { position:absolute; left:160px; top:898px; width:1380px; height:4px; background:#4a5560; transform-origin:left center; }
+  .wc-tick { position:absolute; top:892px; width:2px; height:16px; background:#4a5560; }
+  #wc-tk0 { left:159px; } #wc-tk1 { left:553.3px; } #wc-tk2 { left:947.6px; } #wc-tk3 { left:1341.9px; }
+  .wc-day { top:914px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; letter-spacing:3px; color:#93a3b2; }
+  #wc-d0 { left:172px; } #wc-d1 { left:566.3px; } #wc-d2 { left:960.6px; } #wc-d3 { left:1354.9px; }
+  #wc-eff { left:1455.9px; top:886px; width:4px; height:28px; background:#c0392b; position:absolute; }
+  /* watch card (from g-a1-5, glowing at its last frame) */
+  #wc-card { position:absolute; left:206px; top:760px; width:380px; height:104px; box-sizing:border-box; border-radius:20px;
+    border:1px solid #d8a13a; box-shadow:0 0 24px rgba(216,161,58,.45); background:linear-gradient(180deg, #15202b, #0b1016); }
+  #wc-c1 { left:24px; top:18px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:24px; line-height:30px; color:#f2f5f8; }
+  #wc-c2 { left:24px; top:62px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#d8a13a; }
+  #wc-stem { position:absolute; left:395px; top:864px; width:2px; height:36px; background:#93a3b2; transform-origin:center top; }
+  #wc-dot { position:absolute; left:389px; top:893px; width:14px; height:14px; border-radius:7px; background:#d8a13a; }
+  /* watch lead bracket */
+  #wc-br { position:absolute; left:396px; top:896px; width:1061.9px; height:8px; background:#d8a13a; overflow:hidden; transform-origin:left center; }
+  #wc-dash { position:absolute; left:-880px; top:0; width:1941.9px; height:8px;
+    background:repeating-linear-gradient(90deg, rgba(4,7,12,.55) 0, rgba(4,7,12,.55) 10px, transparent 10px, transparent 40px); }
+  /* warning card */
+  #wc-wcard { position:absolute; left:822.6px; top:760px; width:380px; height:104px; box-sizing:border-box; border-radius:20px;
+    border:1px solid rgba(255,255,255,.14); background:linear-gradient(180deg, #15202b, #0b1016); }
+  #wc-wc1 { left:24px; top:18px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:24px; line-height:30px; color:#f2f5f8; }
+  #wc-wc2 { left:24px; top:62px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#d8a13a; }
+  #wc-wbar { position:absolute; left:0; top:12px; width:3px; height:80px; background:#c0392b; transform-origin:center top; }
+  #wc-wstem { position:absolute; left:1011.6px; top:864px; width:2px; height:36px; background:#93a3b2; transform-origin:center top; }
+  #wc-wdot { position:absolute; left:1005.6px; top:893px; width:14px; height:14px; border-radius:7px; background:#c0392b; }
+  /* notice bracket + arrow + label */
+  #wc-nbr { position:absolute; left:1012.6px; top:896px; width:445.3px; height:8px; background:#e74c3c; overflow:hidden; transform-origin:left center; }
+  #wc-ndash { position:absolute; left:-40px; top:0; width:485.3px; height:8px;
+    background:repeating-linear-gradient(90deg, rgba(4,7,12,.55) 0, rgba(4,7,12,.55) 10px, transparent 10px, transparent 40px); }
+  #wc-arrowsvg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #wc-inlbl { left:1329.9px; top:850px; width:256px; text-align:center; font-family:Arial, sans-serif; font-weight:700; font-size:22px;
+    line-height:20px; letter-spacing:2px; color:#e74c3c; }
+  /* old (watch) text card, frame 0 */
+  #wc-otext { position:absolute; left:170px; top:186px; width:1360px; height:446px; box-sizing:border-box; border-radius:28px;
+    border:1px solid rgba(255,255,255,.14); background:linear-gradient(180deg, #15202b, #0b1016); }
+  .wc-row { left:230px; font-family:'Courier New', monospace; font-weight:700; font-size:28px; line-height:40px; letter-spacing:0; color:#dfe7ee; }
+  #wc-r0 { top:206px; font-size:26px; color:#93a3b2; }
+  #wc-r1 { top:246px; } #wc-r2 { top:286px; } #wc-r4 { top:334px; } #wc-r5 { top:374px; } #wc-r6 { top:414px; }
+  #wc-r7 { top:454px; } #wc-r9 { top:502px; } #wc-r10 { top:542px; } #wc-r11 { top:582px; }
+  .wc-rect { position:absolute; height:36px; border-radius:4px; background:#e8c56a; transform-origin:left center; }
+  #wc-h1a { left:868.4px; top:376px; width:453.6px; }
+  #wc-h1b { left:263.6px; top:416px; width:100.8px; }
+  #wc-h2a { left:1070px; top:544px; width:218.4px; }
+  #wc-h2b { left:263.6px; top:584px; width:487.2px; }
+  .wc-dk { color:#04070c; }
+  /* new (warning) text card */
+  #wc-text { position:absolute; left:170px; top:186px; width:1360px; height:366px; box-sizing:border-box; border-radius:28px;
+    border:1px solid rgba(255,255,255,.14); background:linear-gradient(180deg, #15202b, #0b1016); }
+  #wc-n0 { top:206px; font-size:26px; color:#93a3b2; }
+  #wc-n1 { top:246px; } #wc-n2 { top:286px; } #wc-n4 { top:334px; } #wc-n5 { top:374px; }
+  #wc-n7 { top:422px; } #wc-n8 { top:462px; } #wc-n9 { top:502px; }
+  #wc-hr1 { left:818px; top:248px; width:184.8px; }
+  #wc-hr2 { left:263.6px; top:376px; width:184.8px; }
+  #wc-hr3 { left:717.2px; top:376px; width:285.6px; }
+  #wc-hr4 { left:230px; top:464px; width:688.8px; }
+  #wc-source, #wc-source2 { left:96px; bottom:54px; font-size:19px; line-height:24px; font-weight:400; color:#c8d3e0; }
+</style>
+<div id="g-a1-6-warning-card-root" data-composition-id="g-a1-6-warning-card" data-width="1920" data-height="1080">
+  <div id="wc-ground" class="wc-fill"></div>
+  <div id="wc-chip" class="wc-t">2 DAYS 17 HRS AHEAD</div>
+  <div id="wc-chip2" class="wc-t wc-hide">27 HOURS' NOTICE</div>
+  <div id="wc-row"><div id="wc-chip3" class="wc-ch wc-hide">1 TO 3 FT</div><div id="wc-chip4" class="wc-ch wc-hide">GUSTS TO 70 MPH</div></div>
+
+  <!-- old watch text card: g-a1-5's last frame, exits 0.2 -->
+  <div id="wc-ofloat" class="wc-fill">
+    <div id="wc-otext"></div>
+    <div id="wc-h1a" class="wc-rect"></div>
+    <div id="wc-h1b" class="wc-rect"></div>
+    <div id="wc-h2a" class="wc-rect"></div>
+    <div id="wc-h2b" class="wc-rect"></div>
+    <span id="wc-r0" class="wc-t wc-row">222 PM EST Tue Dec 20 2022</span>
+    <span id="wc-r1" class="wc-t wc-row" style="color:#f2f5f8">...WINTER STORM WATCH IN EFFECT FROM FRIDAY MORNING THROUGH</span>
+    <span id="wc-r2" class="wc-t wc-row" style="color:#f2f5f8">MONDAY MORNING...</span>
+    <span id="wc-r4" class="wc-t wc-row">  strong winds, heavy lake effect snow and significant blowing</span>
+    <span id="wc-r5" class="wc-t wc-row">  and drifting snow will be possible. <span id="wc-a0" class="wc-dk">Winds </span><span id="wc-a1" class="wc-dk">could </span><span id="wc-a2" class="wc-dk">gust </span><span id="wc-a3" class="wc-dk">as </span><span id="wc-a4" class="wc-dk">high </span><span id="wc-a5" class="wc-dk">as</span></span>
+    <span id="wc-r6" class="wc-t wc-row">  <span id="wc-b0" class="wc-dk">65 </span><span id="wc-b1" class="wc-dk">mph</span> Friday into Friday night. Localized blizzard conditions</span>
+    <span id="wc-r7" class="wc-t wc-row">  are possible.</span>
+    <span id="wc-r9" class="wc-t wc-row">  could be very difficult to impossible at times. Areas of blowing</span>
+    <span id="wc-r10" class="wc-t wc-row">  snow could significantly reduce visibility with <span id="wc-c10" class="wc-dk">whiteouts </span><span id="wc-c11" class="wc-dk">and</span></span>
+    <span id="wc-r11" class="wc-t wc-row">  <span id="wc-d10" class="wc-dk">localized </span><span id="wc-d11" class="wc-dk">blizzard </span><span id="wc-d12" class="wc-dk">conditions</span> possible.</span>
+  </div>
+
+  <!-- new warning text card -->
+  <div id="wc-float" class="wc-fill">
+    <div id="wc-text" class="wc-hide"></div>
+    <div id="wc-hr1" class="wc-rect wc-hide"></div>
+    <div id="wc-hr2" class="wc-rect wc-hide"></div>
+    <div id="wc-hr3" class="wc-rect wc-hide"></div>
+    <div id="wc-hr4" class="wc-rect wc-hide"></div>
+    <span id="wc-n0" class="wc-t wc-row wc-hide">354 AM EST Thu Dec 22 2022</span>
+    <span id="wc-n1" class="wc-t wc-row wc-hide">...BLIZZARD WARNING IN EFFECT FROM <span id="wc-x1">7 </span><span id="wc-x2">AM </span><span id="wc-x3">FRIDAY</span> TO 7 AM EST</span>
+    <span id="wc-n2" class="wc-t wc-row wc-hide">SUNDAY...</span>
+    <span id="wc-n4" class="wc-t wc-row wc-hide">* WHAT...Blizzard conditions expected. Total snow accumulations of</span>
+    <span id="wc-n5" class="wc-t wc-row wc-hide">  <span id="wc-y1">1 </span><span id="wc-y2">to </span><span id="wc-y3">3 </span><span id="wc-y4">feet</span>. Winds gusting <span id="wc-z1">as </span><span id="wc-z2">high </span><span id="wc-z3">as </span><span id="wc-z4">70 </span><span id="wc-z5">mph</span> Friday and Friday</span>
+    <span id="wc-n7" class="wc-t wc-row wc-hide">Strong winds will cause significant blowing and drifting snow,</span>
+    <span id="wc-n8" class="wc-t wc-row wc-hide"><span id="wc-v1">frequently </span><span id="wc-v2">reducing </span><span id="wc-v3">visibilities </span><span id="wc-v4">to </span><span id="wc-v5">zero.</span> Travel is strongly</span>
+    <span id="wc-n9" class="wc-t wc-row wc-hide">discouraged.</span>
+  </div>
+
+  <div id="wc-rail"></div>
+  <div id="wc-tk0" class="wc-tick"></div><div id="wc-tk1" class="wc-tick"></div>
+  <div id="wc-tk2" class="wc-tick"></div><div id="wc-tk3" class="wc-tick"></div>
+  <span id="wc-d0" class="wc-t wc-day">TUE</span><span id="wc-d1" class="wc-t wc-day">WED</span>
+  <span id="wc-d2" class="wc-t wc-day">THU</span><span id="wc-d3" class="wc-t wc-day">FRI</span>
+  <div id="wc-eff"></div>
+  <div id="wc-br"><div id="wc-dash"></div></div>
+  <div id="wc-nbr" class="wc-hide"><div id="wc-ndash"></div></div>
+  <svg id="wc-arrowsvg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <line id="wc-warrow" class="wc-hide" x1="1012.6" y1="888" x2="1450" y2="888" stroke="#e74c3c" stroke-width="3" stroke-dasharray="439" stroke-dashoffset="439"/>
+    <polygon id="wc-whead" class="wc-hide" points="1448,880 1458,888 1448,896" fill="#e74c3c"/>
+  </svg>
+  <div id="wc-stem"></div>
+  <div id="wc-dot"></div>
+  <div id="wc-wstem" class="wc-hide"></div>
+  <div id="wc-wdot" class="wc-hide"></div>
+  <div id="wc-card">
+    <span id="wc-c1" class="wc-t">WINTER STORM WATCH</span>
+    <span id="wc-c2" class="wc-t">TUE DEC 20 · 2:22 PM</span>
+  </div>
+  <div id="wc-wcard" class="wc-hide">
+    <div id="wc-wbar" class="wc-hide"></div>
+    <span id="wc-wc1" class="wc-t">BLIZZARD WARNING</span>
+    <span id="wc-wc2" class="wc-t">THU DEC 22 · 3:54 AM</span>
+  </div>
+  <div id="wc-inlbl" class="wc-t wc-hide">IN EFFECT 7 AM FRI</div>
+  <div id="wc-source" class="wc-t">NWS Buffalo, WWUS41 KBUF 201922, IEM archive</div>
+  <div id="wc-source2" class="wc-t wc-hide">NWS Buffalo, WWUS41 KBUF 220854, IEM archive</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const $ = (id) => "#wc-" + id;
+  const DARK = "#04070c";
+
+  /* frame 0 = g-a1-5 last frame: old card group floated up 4 px, old dashes at the end of their run */
+  tl.set($("ofloat"), { y: -4 }, 0);
+  tl.set($("dash"), { x: 877.6 }, 0);
+
+  /* "Then," @0.20-0.70: 2 DAYS chip and watch text card out; watch bracket and card dim */
+  tl.to($("chip"), { x: -40, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 0.2);
+  tl.to($("ofloat"), { y: -30, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 0.2);
+  tl.to($("br"), { autoAlpha: 0.3, duration: 0.5 }, 0.2);
+  tl.to($("card"), { autoAlpha: 0.5, duration: 0.5 }, 0.2);
+
+  /* "3.54" @0.74-1.38: rail dot pops, warning card drops, stem draws */
+  tl.fromTo($("wdot"), { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2.5)" }, 0.74);
+  tl.fromTo($("wcard"), { autoAlpha: 0, y: -60 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.74);
+  tl.fromTo($("wstem"), { autoAlpha: 0, scaleY: 0 }, { autoAlpha: 1, scaleY: 1, duration: 0.3, ease: "power2.out" }, 1.1);
+
+  /* "Thursday morning," @1.74-2.50 (cue 1.40): warning text card rises, R0-R2 in, source line swaps; card floats up 4 px to the end */
+  tl.fromTo($("text"), { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.4);
+  tl.fromTo($("n0"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 1.6);
+  tl.fromTo($("n1"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 1.78);
+  tl.fromTo($("n2"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 1.96);
+  tl.to($("source"), { autoAlpha: 0, duration: 0.3 }, 1.4);
+  tl.fromTo($("source2"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 1.7);
+  tl.to($("float"), { y: -4, duration: 23.2, ease: "sine.inOut" }, 1.4);
+
+  /* "blizzard warning," @3.24: card left bar grows, R1/R2 brighten */
+  tl.fromTo($("wbar"), { autoAlpha: 0, scaleY: 0 }, { autoAlpha: 1, scaleY: 1, duration: 0.4, ease: "power2.out" }, 3.24);
+  tl.to([$("n1"), $("n2")], { color: "#f2f5f8", duration: 0.3 }, 3.24);
+
+  /* "in effect from 7 o'clock" @4.42-5.22: arrow draws 1012.6 -> 1457.9; "7 AM FRIDAY" highlight 4.84-5.22 */
+  tl.fromTo($("warrow"), { autoAlpha: 0, strokeDashoffset: 439 }, { autoAlpha: 1, strokeDashoffset: 0, duration: 1.0, ease: "power2.inOut" }, 4.42);
+  tl.fromTo($("whead"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.16 }, 5.4);
+  tl.fromTo($("hr1"), { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.38, ease: "none" }, 4.84);
+  tl.to($("x1"), { color: DARK, duration: 0.08 }, 4.84); /* 7 */
+  tl.to($("x2"), { color: DARK, duration: 0.08 }, 4.98); /* AM */
+  tl.to($("x3"), { color: DARK, duration: 0.08 }, 5.1);  /* FRIDAY */
+
+  /* "Friday morning." @5.56: IN EFFECT label */
+  tl.fromTo($("inlbl"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.56);
+
+  /* "That's 27 hours of notice." @6.60-8.04: notice bracket draws 6.60-7.48, chip in at "27" @6.88, dashes flow 40 px/s to the end */
+  tl.fromTo($("nbr"), { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.88, ease: "power2.inOut" }, 6.6);
+  tl.to($("ndash"), { x: 40, duration: 1, ease: "none", repeat: 17 }, 6.6);
+  tl.fromTo($("chip2"), { autoAlpha: 0, scale: 1.2 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 6.88);
+
+  /* "7" @9.10 and "people" @11.68: in-effect tick pulses */
+  tl.to($("eff"), { scaleY: 1.6, duration: 0.15, ease: "sine.out" }, 9.1);
+  tl.to($("eff"), { scaleY: 1, duration: 0.3, ease: "sine.in" }, 9.25);
+  tl.to($("eff"), { scaleY: 1.6, duration: 0.15, ease: "sine.out" }, 11.68);
+  tl.to($("eff"), { scaleY: 1, duration: 0.3, ease: "sine.in" }, 11.83);
+
+  /* @13.60 "work." ends: 27 chip out, R4 R5 in */
+  tl.to($("chip2"), { autoAlpha: 0, duration: 0.35 }, 13.6);
+  tl.fromTo([$("n4"), $("n5")], { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, stagger: 0.15, ease: "power3.out" }, 13.6);
+
+  /* "1 to 3 feet" @14.84-15.54: chip 1 TO 3 FT, highlight */
+  tl.fromTo($("chip3"), { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 14.84);
+  tl.fromTo($("hr2"), { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.7, ease: "none" }, 14.84);
+  tl.to($("y1"), { color: DARK, duration: 0.08 }, 14.84); /* 1 */
+  tl.to($("y2"), { color: DARK, duration: 0.08 }, 15.08); /* to */
+  tl.to($("y3"), { color: DARK, duration: 0.08 }, 15.2);  /* 3 */
+  tl.to($("y4"), { color: DARK, duration: 0.08 }, 15.34); /* feet */
+
+  /* "70" @17.28: chip GUSTS TO 70 MPH; "as high as 70 mph" highlight 17.06-18.12 */
+  tl.fromTo($("chip4"), { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 17.28);
+  tl.fromTo($("hr3"), { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 1.06, ease: "none" }, 17.06);
+  tl.to($("z1"), { color: DARK, duration: 0.08 }, 17.08); /* as */
+  tl.to($("z2"), { color: DARK, duration: 0.08 }, 17.32); /* high */
+  tl.to($("z3"), { color: DARK, duration: 0.08 }, 17.56); /* as */
+  tl.to($("z4"), { color: DARK, duration: 0.08 }, 17.72); /* 70 */
+  tl.to($("z5"), { color: DARK, duration: 0.08 }, 17.98); /* mph */
+
+  /* "and the wind would blow that snow around," @18.74: R7 R8 R9 in, stagger 0.2 */
+  tl.fromTo([$("n7"), $("n8"), $("n9")], { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, stagger: 0.2, ease: "power3.out" }, 18.74);
+
+  /* "frequently reducing visibilities to zero." @21.40-23.60: R8 highlight, rect follows the voice word by word (ease none) */
+  tl.to($("hr4"), { autoAlpha: 1, duration: 0.01 }, 21.4);
+  tl.fromTo($("hr4"), { scaleX: 0 }, { scaleX: 0.2439, duration: 0.28, ease: "none" }, 21.4);
+  tl.to($("hr4"), { scaleX: 0.4634, duration: 0.64, ease: "none" }, 21.68);
+  tl.to($("hr4"), { scaleX: 0.7805, duration: 0.72, ease: "none" }, 22.32);
+  tl.to($("hr4"), { scaleX: 0.8537, duration: 0.34, ease: "none" }, 23.04);
+  tl.to($("hr4"), { scaleX: 1, duration: 0.22, ease: "none" }, 23.38);
+  tl.to($("v1"), { color: DARK, duration: 0.08 }, 21.4);  /* frequently */
+  tl.to($("v2"), { color: DARK, duration: 0.08 }, 21.68); /* reducing */
+  tl.to($("v3"), { color: DARK, duration: 0.08 }, 22.32); /* visibilities */
+  tl.to($("v4"), { color: DARK, duration: 0.08 }, 23.04); /* to */
+  tl.to($("v5"), { color: DARK, duration: 0.08 }, 23.38); /* zero. */
+  tl.to([$("chip3"), $("chip4")], { autoAlpha: 0.5, duration: 0.3 }, 23.38);
+
+  /* title and card pinned at scale 1 from the start and again before the last frames (frame read: title drifted to ~1.2) */
+  tl.set([$("wcard"), $("wc1")], { scale: 1 }, 0);
+  tl.set([$("wcard"), $("wc1")], { scale: 1 }, 23.9);
+
+  /* 23.60-24.6 tail: no exit, last frame is g-a1-7's frame 0; notice dashes and the card float keep moving */
+
+  window.__timelines["g-a1-6-warning-card"] = tl;
+})();
+</script>
+</template>

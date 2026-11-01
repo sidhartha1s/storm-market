@@ -1,0 +1,166 @@
+<!--
+  g-intro-6-count-tally · I1-S3 · DEEP · full-frame tally on one shared bar scale, 12.0 s.
+  Claim: as the county's count climbed (31, 37, 39, last reported 46), "found outside" was the biggest group at every
+  count with a breakdown; never a majority (18 of 46). Source rows: research/*eaths.md (the toll file) section 1; factcheck/intro-r3.md rows 24, 26.
+  Base: library/inhouse/ranked-bars.html (fill-animated rails on a shared scale), retuned per the brief.
+  Scale (one for every step and both bars): 50 px per person, origin x 220, bars authored 900 px (18 people), scaleX = n * 50 / 900:
+    step        outside          next largest
+    27 DEC      17 = 850 px      7  = 350 px   (scaleX .9444 / .3889)
+    28 DEC      17 = 850 px      9  = 450 px   (.9444 / .5000)
+    30 DEC      17 = 850 px      11 = 550 px   (.9444 / .6111)
+    LAST REP.   18 = 900 px      12 = 600 px   (1.0000 / .6667, bar 2 right end x 820)
+  Geometry (px, root coordinates): rail y210 x220..1240, markers 14 px at x 220/560/900/1240, labels top 232;
+  lead figure left 220 top 300 (Arial Black 84), OF leaves left 360; sub top 400; bar 1 label top 462, bar 1 y500..560;
+  bar 2 label top 592, bar 2 y630..690; red lead dots 10 px centred y186; source left 96 bottom 54.
+  Corner x >= 1600, y >= 680 stays empty. Nothing says "most", "majority" or "final".
+  Cues: seconds from I1-S3 start (audio/i1-s3.words.json), spoken time in each tween comment.
+-->
+<template>
+<style>
+  #g-intro-6-count-tally-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family: Arial, sans-serif; color:#f2f5f8; }
+  .ct-fill { position:absolute; inset:0; }
+  .ct-hide { opacity:0; visibility:hidden; }
+  .ct-t { position:absolute; white-space:nowrap; }
+  /* step rail */
+  .ct-seg { position:absolute; top:209px; height:2px; width:340px; background:#2a3644; transform-origin:left center; }
+  .ct-mk { position:absolute; top:203px; width:14px; height:14px; border-radius:50%; background:#f2f5f8; }
+  .ct-dl { top:232px; width:300px; text-align:center; font-size:22px; line-height:26px; font-weight:700; letter-spacing:3px; color:#f2f5f8; }
+  .ct-dot { position:absolute; top:181px; width:10px; height:10px; border-radius:50%; background:#e74c3c; }
+  /* lead figure: two leaves on one baseline, one leaf per value */
+  .ct-lead { top:300px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:84px; line-height:84px; }
+  .ct-num { left:220px; color:#e74c3c; }
+  .ct-of { left:360px; color:#f2f5f8; }
+  #ct-sub { left:220px; top:400px; font-size:22px; line-height:26px; font-weight:700; letter-spacing:4px; color:#93a3b2; }
+  /* bars */
+  .ct-blab { left:220px; font-size:26px; line-height:30px; font-weight:700; letter-spacing:8px; }
+  #ct-b1-lab { top:462px; color:#f2f5f8; }
+  #ct-b2-lab { top:592px; color:#93a3b2; }
+  .ct-track { position:absolute; left:220px; width:900px; height:60px; border-radius:6px; background:rgba(255,255,255,.06); }
+  .ct-bar { position:absolute; left:220px; width:900px; height:60px; border-radius:6px; transform-origin:left center; }
+  #ct-b1 { top:500px; overflow:hidden; background:linear-gradient(90deg, #c0392b, #e74c3c); }
+  #ct-b2 { top:630px; background:#5a768f; }
+  #ct-sheen { position:absolute; left:-120px; top:0; width:120px; height:60px;
+    background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.35), rgba(255,255,255,0)); }
+  #ct-src { left:96px; bottom:54px; font-size:19px; line-height:24px; font-weight:400; color:#c8d3e0; }
+</style>
+<div id="g-intro-6-count-tally-root" data-composition-id="g-intro-6-count-tally" data-width="1920" data-height="1080">
+  <div id="ct-float" class="ct-fill">
+    <div id="ct-railgrp" class="ct-fill">
+      <div id="ct-seg1" class="ct-seg ct-hide" style="left:220px"></div>
+      <div id="ct-seg2" class="ct-seg ct-hide" style="left:560px"></div>
+      <div id="ct-seg3" class="ct-seg ct-hide" style="left:900px"></div>
+      <div id="ct-mk1" class="ct-mk ct-hide" style="left:213px"></div>
+      <div id="ct-mk2" class="ct-mk ct-hide" style="left:553px"></div>
+      <div id="ct-mk3" class="ct-mk ct-hide" style="left:893px"></div>
+      <div id="ct-mk4" class="ct-mk ct-hide" style="left:1233px"></div>
+      <div id="ct-dl1" class="ct-t ct-dl ct-hide" style="left:70px">27 DEC</div>
+      <div id="ct-dl2" class="ct-t ct-dl ct-hide" style="left:410px">28 DEC</div>
+      <div id="ct-dl3" class="ct-t ct-dl ct-hide" style="left:750px">30 DEC</div>
+      <div id="ct-dl4" class="ct-t ct-dl ct-hide" style="left:1090px">LAST REPORTED</div>
+      <div id="ct-dot1" class="ct-dot ct-hide" style="left:215px"></div>
+      <div id="ct-dot2" class="ct-dot ct-hide" style="left:555px"></div>
+      <div id="ct-dot3" class="ct-dot ct-hide" style="left:895px"></div>
+      <div id="ct-dot4" class="ct-dot ct-hide" style="left:1235px"></div>
+    </div>
+    <div id="ct-leadgrp" class="ct-fill">
+      <div id="ct-n17" class="ct-t ct-lead ct-num ct-hide">17</div>
+      <div id="ct-n18" class="ct-t ct-lead ct-num ct-hide">18</div>
+      <div id="ct-of31" class="ct-t ct-lead ct-of ct-hide">OF 31</div>
+      <div id="ct-of37" class="ct-t ct-lead ct-of ct-hide">OF 37</div>
+      <div id="ct-of39" class="ct-t ct-lead ct-of ct-hide">OF 39</div>
+      <div id="ct-of46" class="ct-t ct-lead ct-of ct-hide">OF 46</div>
+      <div id="ct-sub" class="ct-t ct-hide">FOUND OUTSIDE, OF ALL COUNTED</div>
+    </div>
+    <div id="ct-b2grp" class="ct-fill">
+      <div id="ct-b2-lab" class="ct-t ct-blab">NEXT LARGEST GROUP</div>
+      <div class="ct-track" style="top:630px"></div>
+      <div id="ct-b2" class="ct-bar ct-hide"></div>
+    </div>
+    <div id="ct-b1grp" class="ct-fill">
+      <div id="ct-b1-lab" class="ct-t ct-blab">OUTSIDE</div>
+      <div class="ct-track" style="top:500px"></div>
+      <div id="ct-b1" class="ct-bar ct-hide"><div id="ct-sheen"></div></div>
+    </div>
+    <div id="ct-src" class="ct-t ct-hide">Erie County counts via NPR/KAXE, AP, WBFO; last reported count, Poloncarz via WIVB</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#ct-";
+  const S = (people) => people * 50 / 900; /* shared scale: 50 px per person on a 900 px authored bar */
+  const PAST = "#93a3b2";
+
+  /* frame 0: ground, bar labels and empty tracks only; everything else hidden in CSS and here */
+  tl.set([P+"seg1",P+"seg2",P+"seg3",P+"b1",P+"b2"], { scaleX: 0 }, 0);
+
+  /* STEP 1 · "county's" @0.14 · 27 DEC: 17 of 31, next largest 7 */
+  tl.fromTo([P+"mk1",P+"dl1"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out" }, 0.14);
+  tl.fromTo([P+"n17",P+"of31"], { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.14);
+  tl.fromTo([P+"sub",P+"src"], { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.14);
+  tl.set([P+"b1",P+"b2"], { autoAlpha: 1 }, 0.14);
+  tl.fromTo(P+"b1", { scaleX: 0 }, { scaleX: S(17), duration: 0.6, ease: "power3.out" }, 0.14);
+  tl.fromTo(P+"b2", { scaleX: 0 }, { scaleX: S(7), duration: 0.6, ease: "power3.out" }, 0.14);
+
+  /* STEP 2 · "days" @1.60 · 28 DEC: 17 of 37, next largest 9 */
+  tl.set(P+"seg1", { autoAlpha: 1 }, 1.60);
+  tl.fromTo(P+"seg1", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, 1.60);
+  tl.fromTo([P+"mk2",P+"dl2"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out" }, 1.60);
+  tl.to(P+"dl1", { color: PAST, duration: 0.3, ease: "power2.out" }, 1.60);
+  tl.to(P+"mk1", { backgroundColor: PAST, duration: 0.3, ease: "power2.out" }, 1.60);
+  tl.to(P+"of31", { y: -20, autoAlpha: 0, duration: 0.2 }, 1.60);
+  tl.fromTo(P+"of37", { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.3, ease: "power3.out" }, 1.75); /* in after the out leaf is ~gone: no two leaves stacked */
+  tl.to(P+"b2", { scaleX: S(9), duration: 0.5, ease: "power3.out" }, 1.60);
+
+  /* STEP 3 · "Christmas," @2.28 · 30 DEC: 17 of 39, next largest 11 */
+  tl.set(P+"seg2", { autoAlpha: 1 }, 2.28);
+  tl.fromTo(P+"seg2", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, 2.28);
+  tl.fromTo([P+"mk3",P+"dl3"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out" }, 2.28);
+  tl.to(P+"dl2", { color: PAST, duration: 0.3, ease: "power2.out" }, 2.28);
+  tl.to(P+"mk2", { backgroundColor: PAST, duration: 0.3, ease: "power2.out" }, 2.28);
+  tl.to(P+"of37", { y: -20, autoAlpha: 0, duration: 0.2 }, 2.28);
+  tl.fromTo(P+"of39", { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.3, ease: "power3.out" }, 2.43);
+  tl.to(P+"b2", { scaleX: S(11), duration: 0.5, ease: "power3.out" }, 2.28);
+
+  /* STEP 4 · "every" @3.46 · LAST REPORTED: 18 of 46, next largest 12; OUTSIDE grows by exactly 50 px */
+  tl.set(P+"seg3", { autoAlpha: 1 }, 3.46);
+  tl.fromTo(P+"seg3", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, 3.46);
+  tl.fromTo([P+"mk4",P+"dl4"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out" }, 3.46);
+  tl.to(P+"dl3", { color: PAST, duration: 0.3, ease: "power2.out" }, 3.46);
+  tl.to(P+"mk3", { backgroundColor: PAST, duration: 0.3, ease: "power2.out" }, 3.46);
+  tl.to([P+"n17",P+"of39"], { y: -20, autoAlpha: 0, duration: 0.2 }, 3.46);
+  tl.fromTo([P+"n18",P+"of46"], { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.3, ease: "power3.out" }, 3.61);
+  tl.to(P+"b1", { scaleX: S(18), duration: 0.5, ease: "power3.out" }, 3.46);
+  tl.to(P+"b2", { scaleX: S(12), duration: 0.5, ease: "power3.out" }, 3.46);
+
+  /* lead-at-every-count dots: "county" @3.76, "count" @4.10, "I" @4.38, "could" @4.60 */
+  tl.fromTo(P+"dot1", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, 3.76);
+  tl.fromTo(P+"dot2", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, 4.10);
+  tl.fromTo(P+"dot3", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, 4.38);
+  tl.fromTo(P+"dot4", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, 4.60);
+
+  /* "outside" @5.98: label to white, sheen crosses bar 1 and clears its right end (left -120 + 1020 = 900) */
+  tl.to(P+"b1-lab", { color: "#ffffff", duration: 0.3, ease: "power2.out" }, 5.98);
+  tl.fromTo(P+"sheen", { x: 0 }, { x: 1020, duration: 0.7, ease: "power2.inOut" }, 5.98);
+
+  /* "biggest" @6.58: bar 1 swells 1 -> 1.12 -> 1 */
+  tl.to(P+"b1", { scaleY: 1.12, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 6.58);
+
+  /* "What none of those counts said" @7.58: everything but bar 1 and its label dims */
+  tl.to([P+"railgrp",P+"leadgrp",P+"b2grp"], { opacity: 0.4, duration: 0.6, ease: "power2.out" }, 7.58);
+
+  /* "... out there in the first place." 7.60 to 11.10: bar 1 breathes (4 halves of 0.875 s, ends at 1), group drifts */
+  tl.to(P+"b1", { scaleY: 1.05, duration: 0.875, ease: "sine.inOut", yoyo: true, repeat: 3 }, 7.60);
+  tl.to(P+"float", { y: -6, duration: 3.5, ease: "none" }, 7.60);
+
+  /* exit after "place." @11.02: fade-through to the ground, 11.20 -> 11.80 inside the 12.0 s host */
+  tl.to(P+"float", { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 11.20);
+
+  tl.set(P+"float", { autoAlpha: 0 }, 12.0); /* no-op hold: timeline ends at the 12.0 s host */
+
+  window.__timelines["g-intro-6-count-tally"] = tl;
+})();
+</script>
+</template>

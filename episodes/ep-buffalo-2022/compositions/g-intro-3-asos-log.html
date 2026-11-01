@@ -1,0 +1,133 @@
+<!--
+  g-intro-3-asos-log · T1-S1 · full-frame airport weather-log card, 7.0 s.
+  FAMILY BASE for g-intro-4-morning-map: copy the LOG CARD block (the <div id="lg-float"> subtree + the
+  .lg-* CSS) as is; change only the id prefix and the cues.
+  Card anatomy (px, root 1920x1080; every element is absolutely placed in root coordinates):
+    lg-panel   x160 y170 w1400 h590 r28, gradient #15202b -> #0b1016, 1px rgba(255,255,255,.14)
+    eyebrow    left220 top206   Arial 700 22  #93a3b2 ls6
+    chip       left220 top244   Arial Black 900 52 #f2f5f8
+    headers    top340  Arial 700 19 #93a3b2 ls4 ; columns TIME x220, WEATHER x470, VISIBILITY x1020, GUST x1300
+    divider    x220..1500 y376, 1px
+    rows       Courier New 700 34, line box 60, tops R1 400, R2 500, R3 600 (pitch 100); time cell #e8c56a, others #dfe7ee
+    scan       2px #d8a13a @.45, x180..1540, y 380 -> 700
+    source     left96 bottom54  Arial 400 19 #c8d3e0
+  Cell classes: .lg-c (cell) + column .lg-cT/.lg-cW/.lg-cV/.lg-cG + row .lg-r1/.lg-r2/.lg-r3. The 8:39 highlight
+  is left to g-intro-4 (here the R3 time cell only pulses in scale).
+  Float lives on #lg-float; entrance/exit tweens live on the children, so no property is tweened twice on one node.
+  Numbers with no research row yet: "5 MI" (07:24 visibility) and gusts in MPH (24/60/67 = kt x 1.15078).
+  Cues: seconds from T1-S1 start (audio/t1-s1.words.json), spoken time in each tween comment.
+-->
+<template>
+<style>
+  #g-intro-3-asos-log-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family: Arial, sans-serif; color:#f2f5f8; }
+  .lg-fill { position:absolute; inset:0; }
+  .lg-hide { opacity:0; visibility:hidden; }
+  #lg-panel { position:absolute; left:160px; top:170px; width:1400px; height:590px; box-sizing:border-box;
+    border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(180deg, #15202b, #0b1016); }
+  .lg-t { position:absolute; white-space:nowrap; }
+  #lg-eyebrow { left:220px; top:206px; font-size:22px; line-height:26px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  #lg-chip { left:220px; top:244px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px;
+    line-height:58px; color:#f2f5f8; transform-origin:left center; }
+  .lg-h { top:340px; font-size:19px; line-height:24px; font-weight:700; letter-spacing:4px; color:#93a3b2; }
+  #lg-divider { position:absolute; left:220px; top:376px; width:1280px; height:1px; background:rgba(255,255,255,.14);
+    transform-origin:left center; }
+  .lg-c { font-family:'Courier New', monospace; font-weight:700; font-size:34px; line-height:60px; color:#dfe7ee; }
+  .lg-cT { left:220px; color:#e8c56a; transform-origin:left center; }
+  .lg-cW { left:470px; }
+  .lg-cV { left:1020px; }
+  .lg-cG { left:1300px; }
+  .lg-r1 { top:400px; } .lg-r2 { top:500px; } .lg-r3 { top:600px; }
+  .lg-hT { left:220px; } .lg-hW { left:470px; } .lg-hV { left:1020px; } .lg-hG { left:1300px; }
+  #lg-scan { position:absolute; left:180px; top:0; width:1360px; height:2px; background:#d8a13a; opacity:0; visibility:hidden; }
+  #lg-source { left:96px; bottom:54px; font-size:19px; line-height:24px; font-weight:400; color:#c8d3e0; }
+</style>
+<div id="g-intro-3-asos-log-root" data-composition-id="g-intro-3-asos-log" data-width="1920" data-height="1080">
+  <div id="lg-float" class="lg-fill">
+    <div id="lg-panel" class="lg-hide"></div>
+    <div id="lg-eyebrow" class="lg-t lg-hide">BUFFALO AIRPORT WEATHER STATION</div>
+    <div id="lg-chip" class="lg-t lg-hide">FRIDAY · DEC 23</div>
+    <div id="lg-hT" class="lg-t lg-h lg-hT lg-hide">TIME</div>
+    <div id="lg-hW" class="lg-t lg-h lg-hW lg-hide">WEATHER</div>
+    <div id="lg-hV" class="lg-t lg-h lg-hV lg-hide">VISIBILITY</div>
+    <div id="lg-hG" class="lg-t lg-h lg-hG lg-hide">GUST</div>
+    <div id="lg-divider" class="lg-hide"></div>
+
+    <div id="lg-r1-t" class="lg-t lg-c lg-cT lg-r1 lg-hide">7:24 AM</div>
+    <div id="lg-r1-w" class="lg-t lg-c lg-cW lg-r1 lg-hide">RAIN</div>
+    <div id="lg-r1-v" class="lg-t lg-c lg-cV lg-r1 lg-hide">5 MI</div>
+    <div id="lg-r1-g" class="lg-t lg-c lg-cG lg-r1 lg-hide">24 MPH</div>
+
+    <div id="lg-r2-t" class="lg-t lg-c lg-cT lg-r2 lg-hide">8:06 AM</div>
+    <div id="lg-r2-w" class="lg-t lg-c lg-cW lg-r2 lg-hide">SNOW</div>
+    <div id="lg-r2-v" class="lg-t lg-c lg-cV lg-r2 lg-hide">1/2 MI</div>
+    <div id="lg-r2-g" class="lg-t lg-c lg-cG lg-r2 lg-hide">60 MPH</div>
+
+    <div id="lg-r3-t" class="lg-t lg-c lg-cT lg-r3 lg-hide">8:39 AM</div>
+    <div id="lg-r3-w" class="lg-t lg-c lg-cW lg-r3 lg-hide">HEAVY SNOW, BLOWING SNOW</div>
+    <div id="lg-r3-v" class="lg-t lg-c lg-cV lg-r3 lg-hide">1/4 MI</div>
+    <div id="lg-r3-g" class="lg-t lg-c lg-cG lg-r3 lg-hide">67 MPH</div>
+
+    <div id="lg-scan"></div>
+    <div id="lg-source" class="lg-t lg-hide">Buffalo airport ASOS observations, IEM archive</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const $ = (id) => "#lg-" + id;
+
+  // whole-hold float, 0.6 -> 6.4 (4 legs x 1.45 s)
+  tl.fromTo($("float"), { y: 0 }, { y: -4, duration: 1.45, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.6);
+
+  /* "Buffalo" @0.54 */
+  tl.fromTo($("panel"), { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.54);
+  tl.fromTo($("source"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.54);
+  /* "Airport's" @0.84 */
+  tl.fromTo($("eyebrow"), { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.84);
+  /* "weather" @1.42 */
+  tl.fromTo($("hT"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 1.42);
+  tl.fromTo($("hW"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 1.48);
+  tl.fromTo($("hV"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 1.54);
+  tl.fromTo($("hG"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 1.6);
+  tl.fromTo($("divider"), { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.5, ease: "power2.out" }, 1.42);
+
+  /* "log" @1.58: R1 cells, scan line starts (62 px/s, 380 -> 700) */
+  tl.fromTo($("r1-t"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 1.58);
+  tl.fromTo($("r1-w"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 1.66);
+  tl.fromTo($("r1-v"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 1.74);
+  tl.fromTo($("r1-g"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 1.82);
+  tl.fromTo($("scan"), { y: 380 }, { y: 700, duration: 5.2, ease: "none" }, 1.58);
+  tl.fromTo($("scan"), { autoAlpha: 0 }, { autoAlpha: 0.45, duration: 0.3 }, 1.58);
+
+  /* "Friday," @2.30 */
+  tl.fromTo($("chip"), { autoAlpha: 0, scale: 1.15 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 2.3);
+
+  /* "shows" @4.86: R2 cells */
+  tl.fromTo($("r2-t"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 4.86);
+  tl.fromTo($("r2-w"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 4.94);
+  tl.fromTo($("r2-v"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 5.02);
+  tl.fromTo($("r2-g"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 5.1);
+
+  /* "fast" @5.32: R3 cells */
+  tl.fromTo($("r3-t"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 5.32);
+  tl.fromTo($("r3-w"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 5.4);
+  tl.fromTo($("r3-v"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 5.48);
+  tl.fromTo($("r3-g"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 5.56);
+
+  /* "morning" @5.84: R3 time cell pulse (no colour change) */
+  tl.to($("r3-t"), { scale: 1.08, duration: 0.2, ease: "sine.out" }, 5.84);
+  tl.to($("r3-t"), { scale: 1, duration: 0.2, ease: "sine.in" }, 6.04);
+
+  /* after "turned." @6.06 (ends 6.44): fade-through exit, ground stays */
+  tl.to([$("panel"), $("eyebrow"), $("chip"), $("hT"), $("hW"), $("hV"), $("hG"), $("divider"),
+         $("r1-t"), $("r1-w"), $("r1-v"), $("r1-g"), $("r2-t"), $("r2-w"), $("r2-v"), $("r2-g"),
+         $("r3-t"), $("r3-w"), $("r3-v"), $("r3-g"), $("source")].join(","),
+        { autoAlpha: 0, y: -20, duration: 0.6, ease: "power2.in" }, 6.4);
+  tl.to($("scan"), { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 6.4);
+
+  window.__timelines["g-intro-3-asos-log"] = tl;
+})();
+</script>
+</template>

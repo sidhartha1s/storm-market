@@ -1,0 +1,242 @@
+<!--
+  g-a2-8-officials-clock · A2-S7 · full-frame two-lane timeline (FAMILY BASE for g-a2-9, g-a2-11).
+  Brief: briefs/a2/g-a2-8-officials-clock.md. Cues: seconds from A2-S7 start (audio/a2-s7.words.json),
+  spoken time in each tween comment. Comp duration 36.20 s. Lanes, markers, SoE card and dashed slot stay
+  at the end (they are g-a2-9's frame 0); only cite card N exits.
+  Time axis x(t) = 200 + 5 px per minute after 5:30 AM. Every element with data-t gets left = x(t) + data-dx
+  in the script. x(t): 6:00 350 · 7:00 650 · 7:24 770 · 8:00 950 · 8:06 980 · 8:39 1145 · 9:00 1250 · 10:00 1550.
+-->
+<template>
+<style>
+  #g-a2-8-officials-clock-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family: Arial, sans-serif; color:#f2f5f8; }
+  .oc-fill { position:absolute; inset:0; }
+  .oc-h { opacity:0; visibility:hidden; }
+  .oc-t { position:absolute; white-space:nowrap; }
+
+  /* ===== LANE FAMILY BASE (copy whole into g-a2-9 / g-a2-11; px are brief section 3) ===== */
+  .oc-lab { left:200px; font-size:22px; line-height:26px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  #oc-wlab { top:150px; }
+  #oc-olab { top:560px; }
+  .oc-axis { position:absolute; left:200px; width:1350px; height:2px; background:rgba(255,255,255,.3); }
+  #oc-waxis { top:469px; }
+  #oc-oaxis { top:699px; }
+  .oc-htk { position:absolute; width:2px; height:8px; background:rgba(255,255,255,.3); }
+  .oc-wtk { top:471px; }
+  .oc-otk { top:691px; }
+  .oc-hl { top:482px; width:100px; text-align:center; font-size:19px; line-height:22px; font-weight:700; color:#93a3b2; }
+  .oc-mtk { position:absolute; width:2px; background:#93a3b2; }
+  .oc-mlb { position:absolute; white-space:nowrap; }
+  .oc-m1 { font-family:'Courier New', monospace; font-weight:700; font-size:26px; line-height:30px; color:#e8c56a; }
+  .oc-m2 { margin-top:4px; font-weight:700; font-size:24px; line-height:28px; color:#dfe7ee; }
+  #oc-M1-tk { top:220px; height:250px; } #oc-M1-lb { top:220px; }
+  #oc-M2-tk { top:290px; height:180px; } #oc-M2-lb { top:290px; }
+  #oc-M4-tk { top:376px; height:94px; }  #oc-M4-lb { top:376px; }
+  #oc-soe { position:absolute; top:600px; height:76px; box-sizing:border-box; padding:10px 18px; border-radius:10px;
+    background:#15202b; border:1px solid rgba(255,255,255,.14); border-left:4px solid #d8a13a; white-space:nowrap; }
+  #oc-soe1 { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:26px; line-height:30px; color:#f2f5f8; }
+  #oc-soe2 { font-weight:700; font-size:19px; line-height:24px; color:#c8d3e0; }
+  #oc-soe-con { position:absolute; top:676px; width:3px; height:24px; background:#d8a13a; }
+  .oc-dash { position:absolute; }
+  #oc-sl-top { left:880px; top:600px; width:420px; height:2px; background:repeating-linear-gradient(90deg, #93a3b2 0 8px, transparent 8px 14px); }
+  #oc-sl-bot { left:880px; top:674px; width:420px; height:2px; background:repeating-linear-gradient(90deg, #93a3b2 0 8px, transparent 8px 14px); }
+  #oc-sl-lft { left:880px; top:600px; width:2px; height:76px; background:repeating-linear-gradient(180deg, #93a3b2 0 8px, transparent 8px 14px); }
+  #oc-sl-rgt { left:1298px; top:600px; width:2px; height:76px; background:repeating-linear-gradient(180deg, #93a3b2 0 8px, transparent 8px 14px); }
+  #oc-sl-txt { left:880px; top:600px; width:420px; height:76px; line-height:76px; text-align:center;
+    font-size:22px; font-weight:700; letter-spacing:2px; color:#93a3b2; }
+  /* ===== end LANE FAMILY BASE ===== */
+
+  /* under-axis chips (this comp only) */
+  .oc-hair { position:absolute; left:350px; top:700px; width:1px; background:#93a3b2; }
+  #oc-c1-hr { height:28px; }
+  #oc-c2-hr { height:62px; }
+  .oc-chip { left:360px; font-size:19px; line-height:24px; font-weight:700; color:#c8d3e0; }
+  #oc-c1 { top:716px; }
+  #oc-c2 { top:750px; }
+  #oc-ring { position:absolute; left:336px; top:686px; width:28px; height:28px; box-sizing:border-box; border-radius:14px;
+    border:2px solid #d8a13a; }
+
+  /* cite cards (one at a time) */
+  .oc-cite { position:absolute; left:410px; top:790px; width:1100px; height:170px; box-sizing:border-box; padding:26px 40px;
+    border-radius:14px; background:rgba(232,222,200,.90); box-shadow:0 20px 60px rgba(0,0,0,.5); }
+  .oc-q { font-family: Georgia, 'Times New Roman', serif; font-style:italic; font-size:30px; line-height:40px; color:#2a2622; white-space:nowrap; }
+  #oc-cn .oc-q { margin-top:20px; }
+  .oc-hw { position:relative; display:inline-block; }
+  .oc-hb { position:absolute; left:-3px; right:-3px; top:5px; bottom:3px; background:rgba(216,161,58,.35); }
+  .oc-ht { position:relative; }
+  .oc-attr { position:absolute; left:40px; bottom:26px; font-size:19px; line-height:24px; font-weight:700; letter-spacing:2px; color:#6b6257; white-space:nowrap; }
+
+  .oc-src { left:96px; bottom:54px; font-size:19px; line-height:24px; font-weight:400; color:#c8d3e0; }
+</style>
+<div id="g-a2-8-officials-clock-root" data-composition-id="g-a2-8-officials-clock" data-width="1920" data-height="1080"
+  data-type-ok="two-lane timeline: mid/small tiers by design, big tier lives on the S8 ban card">
+  <div id="oc-lanes" class="oc-fill">
+    <!-- LANE FAMILY BASE: weather lane -->
+    <div id="oc-wlab" class="oc-t oc-lab oc-h">AIRPORT WEATHER LOG</div>
+    <div id="oc-waxis" class="oc-axis oc-h"></div>
+    <div id="oc-wtk6" class="oc-htk oc-wtk oc-h" data-t="6:00" data-dx="-1"></div>
+    <div id="oc-wtk7" class="oc-htk oc-wtk oc-h" data-t="7:00" data-dx="-1"></div>
+    <div id="oc-wtk8" class="oc-htk oc-wtk oc-h" data-t="8:00" data-dx="-1"></div>
+    <div id="oc-wtk9" class="oc-htk oc-wtk oc-h" data-t="9:00" data-dx="-1"></div>
+    <div id="oc-wtk10" class="oc-htk oc-wtk oc-h" data-t="10:00" data-dx="-1"></div>
+    <div id="oc-hl6" class="oc-t oc-hl oc-h" data-t="6:00" data-dx="-50">6 AM</div>
+    <div id="oc-hl7" class="oc-t oc-hl oc-h" data-t="7:00" data-dx="-50">7 AM</div>
+    <div id="oc-hl8" class="oc-t oc-hl oc-h" data-t="8:00" data-dx="-50">8 AM</div>
+    <div id="oc-hl9" class="oc-t oc-hl oc-h" data-t="9:00" data-dx="-50">9 AM</div>
+    <div id="oc-hl10" class="oc-t oc-hl oc-h" data-t="10:00" data-dx="-50">10 AM</div>
+
+    <div id="oc-M1-tk" class="oc-mtk oc-h" data-t="7:24" data-dx="-1"></div>
+    <div id="oc-M1-lb" class="oc-mlb oc-h" data-t="7:24" data-dx="12"><div id="oc-M1-a" class="oc-m1">7:24 AM</div><div id="oc-M1-b" class="oc-m2">RAIN · 38°F</div></div>
+    <div id="oc-M2-tk" class="oc-mtk oc-h" data-t="8:06" data-dx="-1"></div>
+    <div id="oc-M2-lb" class="oc-mlb oc-h" data-t="8:06" data-dx="12"><div id="oc-M2-a" class="oc-m1">8:06 AM</div><div id="oc-M2-b" class="oc-m2">GUSTS ~60 MPH</div></div>
+    <div id="oc-M4-tk" class="oc-mtk oc-h" data-t="8:39" data-dx="-1"></div>
+    <div id="oc-M4-lb" class="oc-mlb oc-h" data-t="8:39" data-dx="12"><div id="oc-M4-a" class="oc-m1">8:39 AM</div><div id="oc-M4-b" class="oc-m2">VIS 1/4 MI</div></div>
+
+    <!-- LANE FAMILY BASE: officials lane -->
+    <div id="oc-olab" class="oc-t oc-lab oc-h">THE OFFICIALS' CLOCK</div>
+    <div id="oc-oaxis" class="oc-axis oc-h"></div>
+    <div id="oc-otk6" class="oc-htk oc-otk oc-h" data-t="6:00" data-dx="-1"></div>
+    <div id="oc-otk7" class="oc-htk oc-otk oc-h" data-t="7:00" data-dx="-1"></div>
+    <div id="oc-otk8" class="oc-htk oc-otk oc-h" data-t="8:00" data-dx="-1"></div>
+    <div id="oc-otk9" class="oc-htk oc-otk oc-h" data-t="9:00" data-dx="-1"></div>
+    <div id="oc-otk10" class="oc-htk oc-otk oc-h" data-t="10:00" data-dx="-1"></div>
+
+    <div id="oc-soe" class="oc-h" data-t="6:00" data-dx="0"><div id="oc-soe1">STATE OF EMERGENCY</div><div id="oc-soe2">DECLARED THU · IN EFFECT 6:00 AM FRI</div></div>
+    <div id="oc-soe-con" class="oc-h" data-t="6:00" data-dx="0"></div>
+
+    <div id="oc-sl-top" class="oc-dash oc-h"></div>
+    <div id="oc-sl-rgt" class="oc-dash oc-h"></div>
+    <div id="oc-sl-bot" class="oc-dash oc-h"></div>
+    <div id="oc-sl-lft" class="oc-dash oc-h"></div>
+    <div id="oc-sl-txt" class="oc-t oc-h">NO ERIE COUNTY DRIVING BAN</div>
+    <!-- end LANE FAMILY BASE -->
+
+    <div id="oc-ring" class="oc-h"></div>
+    <div id="oc-c1-hr" class="oc-hair oc-h"></div>
+    <div id="oc-c1" class="oc-t oc-chip oc-h">THRUWAY TRUCK BAN · 6 AM</div>
+    <div id="oc-c2-hr" class="oc-hair oc-h"></div>
+    <div id="oc-c2" class="oc-t oc-chip oc-h">ERIE EXPRESSWAY CLOSURES PLANNED · 6 AM</div>
+  </div>
+
+  <div id="oc-cg" class="oc-cite oc-h">
+    <div class="oc-q">On Thursday, Governor Hochul <span class="oc-hw"><span id="oc-cg-hb1" class="oc-hb oc-h"></span><span id="oc-cg-ht1" class="oc-ht">declared a statewide State of Emergency</span></span></div>
+    <div class="oc-q">ahead of the event, which went into effect at <span class="oc-hw"><span id="oc-cg-hb2" class="oc-hb oc-h"></span><span id="oc-cg-ht2" class="oc-ht">6 a.m. Friday</span></span>.</div>
+    <div id="oc-cg-attr" class="oc-attr">OFFICE OF THE GOVERNOR · RELEASE, 23 DEC 2022</div>
+  </div>
+  <div id="oc-cn" class="oc-cite oc-h">
+    <div class="oc-q">… likely led to a <span class="oc-hw"><span id="oc-cn-hb" class="oc-hb oc-h"></span><span id="oc-cn-ht" class="oc-ht">wait-and-see approach</span></span> leading up to the blizzard …</div>
+    <div id="oc-cn-attr" class="oc-attr">NYU WAGNER REVIEW FOR THE CITY OF BUFFALO · VIA AP, 2 JUN 2023</div>
+  </div>
+
+  <div id="oc-src1" class="oc-t oc-src oc-h">Buffalo airport ASOS, IEM archive</div>
+  <div id="oc-src2" class="oc-t oc-src oc-h">Office of the Governor, 22 to 24 Dec 2022</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  // LANE FAMILY BASE: one time axis, x(t) = 200 + 5 px per minute after 5:30 AM
+  const X = (hm) => { const [h, m] = hm.split(":").map(Number); return 200 + 5 * ((h * 60 + m) - 330); };
+  document.querySelectorAll('#g-a2-8-officials-clock-root [data-t]').forEach((el) => {
+    el.style.left = (X(el.dataset.t) + Number(el.dataset.dx || 0)) + "px";
+  });
+
+  const tl = gsap.timeline({ paused: true });
+  const $ = (id) => "#oc-" + id;
+  const show = (sel, t) => tl.set(sel, { autoAlpha: 1 }, t);
+
+  // whole-window float on the lane group: 12 legs x 3.0 s = 0 -> 36.0
+  tl.fromTo($("lanes"), { y: 0 }, { y: -3, duration: 3.0, ease: "sine.inOut", yoyo: true, repeat: 11 }, 0);
+
+  /* "who" @0.16: weather label, axis draws, hour labels, ASOS source */
+  tl.fromTo($("wlab"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.1);
+  show($("waxis"), 0.1);
+  tl.fromTo($("waxis"), { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.6, ease: "power2.out" }, 0.1);
+  ["6", "7", "8", "9", "10"].forEach((h, i) => {
+    tl.fromTo($("wtk" + h), { autoAlpha: 0, scaleY: 0, transformOrigin: "50% 0%" }, { autoAlpha: 1, scaleY: 1, duration: 0.2, ease: "power2.out" }, 0.2 + i * 0.1);
+    tl.fromTo($("hl" + h), { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out" }, 0.3 + i * 0.05);
+  });
+  tl.fromTo($("src1"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.1);
+
+  /* "to stay off the roads" @0.70 / 1.00 / 1.30: M1, M2, M4 */
+  [["M1", 0.7], ["M2", 1.0], ["M4", 1.3]].forEach(([m, t]) => {
+    show($(m + "-tk"), t);
+    tl.fromTo($(m + "-tk"), { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.3, ease: "power2.out" }, t);
+    tl.fromTo($(m + "-lb"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, t + 0.3);
+  });
+
+  /* "officials" @2.68: officials label, axis draws */
+  tl.fromTo($("olab"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 2.68);
+  show($("oaxis"), 2.68);
+  tl.fromTo($("oaxis"), { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.6, ease: "power2.out" }, 2.68);
+
+  /* "clock." @4.08: officials hour ticks pop up */
+  ["6", "7", "8", "9", "10"].forEach((h, i) => {
+    tl.fromTo($("otk" + h), { autoAlpha: 0, scaleY: 0, transformOrigin: "50% 100%" }, { autoAlpha: 1, scaleY: 1, duration: 0.25, ease: "back.out(2)" }, 4.08 + i * 0.06);
+  });
+
+  /* "Kathy" @5.20: source out, card G in */
+  tl.to($("src1"), { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 5.2);
+  tl.fromTo($("cg"), { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 5.2);
+
+  /* "declared" @6.12: highlight 1 */
+  show($("cg-hb1"), 6.12);
+  tl.fromTo($("cg-hb1"), { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.8, ease: "power2.out" }, 6.12);
+
+  /* "effect" @9.64: highlight 2 */
+  show($("cg-hb2"), 9.64);
+  tl.fromTo($("cg-hb2"), { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 9.64);
+
+  /* "six" @10.18: SoE card drops in at 6:00, connector draws to the axis */
+  tl.fromTo($("soe"), { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 10.18);
+  show($("soe-con"), 10.6);
+  tl.fromTo($("soe-con"), { scaleY: 0, transformOrigin: "50% 0%" }, { scaleY: 1, duration: 0.25, ease: "power2.out" }, 10.6);
+
+  /* "raining." @12.30: M1 pulse; card G out 12.4 -> 12.9; governor source in */
+  tl.to($("M1-lb"), { scale: 1.08, transformOrigin: "0% 50%", duration: 0.2, ease: "power2.out" }, 12.3);
+  tl.to($("M1-lb"), { scale: 1, duration: 0.2, ease: "power2.in" }, 12.5);
+  tl.to($("cg"), { y: 30, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 12.4);
+  tl.fromTo($("src2"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 12.9);
+
+  /* "banned" @15.28: C1 */
+  tl.fromTo($("c1-hr"), { autoAlpha: 0, scaleY: 0, transformOrigin: "50% 0%" }, { autoAlpha: 1, scaleY: 1, duration: 0.3, ease: "power2.out" }, 15.28);
+  tl.fromTo($("c1"), { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 15.28);
+
+  /* "close" @20.14: C2 */
+  tl.fromTo($("c2-hr"), { autoAlpha: 0, scaleY: 0, transformOrigin: "50% 0%" }, { autoAlpha: 1, scaleY: 1, duration: 0.3, ease: "power2.out" }, 20.14);
+  tl.fromTo($("c2"), { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 20.14);
+
+  /* "six." @22.04: amber ring pulse at (350, 700) */
+  show($("ring"), 22.04);
+  tl.fromTo($("ring"), { scale: 1 }, { scale: 2, autoAlpha: 0, duration: 0.8, ease: "power2.out" }, 22.04);
+
+  /* "But" @22.90: chips out */
+  tl.to([$("c1"), $("c1-hr"), $("c2"), $("c2-hr")].join(","), { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 22.9);
+
+  /* "no" @24.72: dashed slot border draws 0.5 s, then text */
+  show([$("sl-top"), $("sl-lft")].join(","), 24.72);
+  tl.fromTo($("sl-top"), { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.25, ease: "none" }, 24.72);
+  tl.fromTo($("sl-lft"), { scaleY: 0, transformOrigin: "50% 0%" }, { scaleY: 1, duration: 0.25, ease: "none" }, 24.72);
+  show([$("sl-rgt"), $("sl-bot")].join(","), 24.97);
+  tl.fromTo($("sl-rgt"), { scaleY: 0, transformOrigin: "50% 0%" }, { scaleY: 1, duration: 0.25, ease: "power2.out" }, 24.97);
+  tl.fromTo($("sl-bot"), { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.25, ease: "power2.out" }, 24.97);
+  tl.fromTo($("sl-txt"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2, ease: "power2.out" }, 25.14);
+
+  /* "ban" @25.34: slot text pulse */
+  tl.to($("sl-txt"), { scale: 1.05, duration: 0.2, ease: "power2.out" }, 25.34);
+  tl.to($("sl-txt"), { scale: 1, duration: 0.2, ease: "power2.in" }, 25.54);
+
+  /* "A review" @29.38: source out, card N in */
+  tl.to($("src2"), { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 29.38);
+  tl.fromTo($("cn"), { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 29.38);
+
+  /* "wait" @34.28: highlight wait-and-see approach */
+  show($("cn-hb"), 34.28);
+  tl.fromTo($("cn-hb"), { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.6, ease: "power2.out" }, 34.28);
+
+  /* after "approach." @35.14: card N out 35.60 -> 36.20; lanes stay (g-a2-9 frame 0) */
+  tl.to($("cn"), { y: 30, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 35.6);
+
+  window.__timelines["g-a2-8-officials-clock"] = tl;
+})();
+</script>
+</template>

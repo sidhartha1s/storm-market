@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a5-1-dark-chips (A5-S1, standard): lower-third glass chip that swaps three times, one at a time:
+  80,000+ HOUSEHOLDS WITHOUT POWER / 12 WITHOUT POWER OR HEAT / 4 SHOVELING, with two source pills (P1 with A, P2 with B and C).
+  Overlay on media/a5/A5-S1_c1_snowy-suburban-street-night.mp4 (Pexels stock, not Buffalo: no place label anywhere).
+  Cue times are seconds from the START of A5-S1 (audio/a5-s1.words.json). Comp duration 18.75 s (wav length).
+  0.84-8.12: a text-free house chip in the same glass chip: lit window goes dark on "lost power", the house turns cold blue on
+  "cold snap", the thermometer drains on "how fast a house turns cold", out on "At the storm's peak" (fixes the 9.2 s dead stretch).
+  Family: copied from g-intro-2-toll-chips (chip, pill, float). "12" and "WITHOUT POWER OR HEAT" repeat the intro chip as a callback, not a per-frame repeat.
+-->
+<template>
+<style>
+  #g-a5-1-dark-chips-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; font-family:Arial, sans-serif; }
+  #dk-stack { position:absolute; inset:0; }
+  .dk-chip { position:absolute; left:110px; bottom:110px; display:table; box-sizing:border-box; padding:22px 34px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; opacity:0; visibility:hidden; }
+  .dk-row { display:flex; flex-direction:row; align-items:baseline; white-space:nowrap; }
+  .dk-num { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1; color:#f2f5f8; margin-right:16px; }
+  .dk-lab { display:block; position:relative; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:30px; line-height:1; color:#dfe7ee; letter-spacing:1px; }
+  .dk-src { position:absolute; left:110px; bottom:54px; display:table; box-sizing:border-box; padding:5px 12px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:14px;
+    font-family:Arial, sans-serif; font-weight:400; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-1-dark-chips-root" data-composition-id="g-a5-1-dark-chips" data-width="1920" data-height="1080">
+  <div id="dk-stack">
+    <div class="dk-chip" id="dk-ch"><svg id="dk-house" width="94" height="60" viewBox="0 0 94 60" style="display:block">
+      <path id="dk-hs" d="M6,28 L30,6 L54,28 M12,23 V56 H48 V23" fill="none" stroke="#f2f5f8" stroke-width="3" stroke-linejoin="round"/>
+      <rect id="dk-hw" x="23" y="32" width="14" height="14" fill="#e8c56a"/>
+      <rect x="76" y="4" width="12" height="54" rx="6" fill="none" stroke="#93a3b2" stroke-width="2"/>
+      <rect id="dk-tb" x="79" y="7" width="6" height="48" rx="3" fill="#e8c56a"/>
+    </svg></div>
+    <div class="dk-chip" id="dk-ca"><div class="dk-row"><span class="dk-num" id="dk-na">80,000+</span><span class="dk-lab" id="dk-la">HOUSEHOLDS WITHOUT POWER</span></div></div>
+    <div class="dk-chip" id="dk-cb"><div class="dk-row"><span class="dk-num" id="dk-nb">12</span><span class="dk-lab" id="dk-lb">WITHOUT POWER OR HEAT</span></div></div>
+    <div class="dk-chip" id="dk-cc"><div class="dk-row"><span class="dk-num" id="dk-nc">4</span><span class="dk-lab" id="dk-lc">SHOVELING</span></div></div>
+    <div class="dk-src" id="dk-p1">NYS DHSES, 4 Aug 2023</div>
+    <div class="dk-src" id="dk-p2">Poloncarz via WIVB, last reported count</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#dk-ch", "#dk-ca", "#dk-cb", "#dk-cc", "#dk-p1", "#dk-p2"], { autoAlpha: 0 }, 0);
+  tl.set("#dk-tb", { scaleY: 1, svgOrigin: "82 55", smoothOrigin: false }, 0);
+
+  /* House chip. "home," @0.84: in, floats to 7.24 */
+  tl.fromTo("#dk-ch", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 0.84);
+  tl.fromTo("#dk-ch", { y: 0 }, { y: -4, duration: 1.5, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 1.24);
+  /* "lost power" @3.40-4.02: the window light goes out */
+  tl.to("#dk-hw", { fill: "#2a3644", duration: 0.25, ease: "power2.in" }, 3.66);
+  /* "cold snap," @4.28: the house outline goes cold blue */
+  tl.to("#dk-hs", { stroke: "#7fb2e5", duration: 0.5, ease: "power2.out" }, 4.28);
+  /* "how fast a house turns cold." @5.80-7.18: thermometer drains and cools */
+  tl.fromTo("#dk-tb", { scaleY: 1, svgOrigin: "82 55", smoothOrigin: false, fill: "#e8c56a" },
+    { scaleY: 0.15, svgOrigin: "82 55", smoothOrigin: false, fill: "#7fb2e5", duration: 1.38, ease: "power2.inOut", immediateRender: false }, 5.80);
+  /* "At the storm's peak," @7.72: house chip out, done 8.12 (chip A lands @9.26) */
+  tl.to("#dk-ch", { y: -20, autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 7.72);
+
+  /* float of the visible chip and pill: 6 x 1.58 s = 9.48 s, 9.26 to 18.74 (host 18.75) */
+  tl.fromTo("#dk-stack", { y: 0 }, { y: -4, duration: 1.58, ease: "sine.inOut", yoyo: true, repeat: 5 }, 9.26);
+
+  /* Chip A + P1 in. "80,000" @9.26 */
+  tl.fromTo("#dk-ca", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 9.26);
+  tl.fromTo("#dk-na", { scale: 1.25 }, { scale: 1, duration: 0.35, ease: "power4.out", transformOrigin: "left center" }, 9.26);
+  tl.fromTo("#dk-p1", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 9.4);
+
+  /* A + P1 out 11.55-11.80 (done before B starts at 11.88, never share pixels); B + P2 in. "12" @11.88 */
+  tl.to("#dk-ca", { y: -20, autoAlpha: 0, duration: 0.25, ease: "power2.in" }, 11.55);
+  tl.to("#dk-p1", { y: -20, autoAlpha: 0, duration: 0.25, ease: "power2.in" }, 11.55);
+  tl.fromTo("#dk-cb", { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 11.88);
+  tl.fromTo("#dk-p2", { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 11.88);
+
+  /* "power or heat" @14.54-15.56: label brightens */
+  tl.to("#dk-lb", { color: "#f2f5f8", duration: 0.3, ease: "power2.out" }, 14.54);
+
+  /* B out (done 16.15), C in. "Four" @16.08. P2 stays */
+  tl.to("#dk-cb", { y: -20, autoAlpha: 0, duration: 0.25, ease: "power2.in" }, 15.9);
+  tl.fromTo("#dk-cc", { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 16.08);
+
+  /* C + P2 out, after "snow." @18.22-18.58; done 18.75 */
+  tl.to("#dk-cc", { x: -80, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 18.15);
+  tl.to("#dk-p2", { y: 10, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 18.15);
+
+  window.__timelines["g-a5-1-dark-chips"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

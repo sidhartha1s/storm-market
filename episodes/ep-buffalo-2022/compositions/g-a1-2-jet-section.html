@@ -1,0 +1,332 @@
+<!--
+  g-a1-2-jet-section · A1-S2 · DEEP · 22.5 s. Brief: briefs/a1/g-a1-2-jet-section.md.
+  Two layers that hand over: the AFD document (family base g-a1-1-afd-scroll, ids renamed as- -> js-), then a schematic
+  cross-section of the low level jet (radar-beam pattern: ground line, a band in the air, labels on the thing), then the
+  document again. Cues: seconds from A1-S2 start (audio/a1-s2.words.json); spoken time in each tween comment.
+  Geometry (px, root 1920x1080):
+    chip      left200 top110 Arial Black 900 52 #e8c56a (line box 56)
+    doc       full-frame group, CSS top -4 = g-a1-1's settled float (y 0 -> -4)
+    panel     x170..1530 y200..900 r28 gradient #15202b -> #0b1016, 1px rgba(255,255,255,.14)
+    header    Courier New 700 26 #93a3b2, left230, tops 226/262/298; id 19 px right-aligned to x1470 top230
+    divider   x230..1470 y344
+    window    x230..1470 y364..872, mask-feathered 40 px top and bottom
+    stack     rows Courier New 700 28 (advance 16.8), pitch 44; row Bn top in window = 12 + n*44 - offset.
+              Stack CSS top = -1100 (offset 1100, D0); y tween 0 -> -528 (offset 1628, D1); set +836 (offset 264, D2).
+    rects     amber #e8c56a h38 at row top + 3: B29 chars 41..59 (688.8 + 319.2), B30 chars 0..66 (1125.6),
+              B42 chars 14..49 (235.2 + 604.8), B11 chars 10..52 (168 + 722.4); B13 underline 2 px #93a3b2 chars 0..27
+              (470.4) at row top + 36. Window x = stack x + 230.
+    xs        land x200..420 / 1280..1500 y800..860; lake x420..1280 y796..860; ribbon x200..1500 y330..410;
+              bracket x1380 y414..792 (dash 442 = ceil(440.48)+1); street arrows y772 at x480..1120; gap ribbon->ground 386.
+    source    left96 bottom54 Arial 400 19 #c8d3e0
+  Corner x >= 1600, y >= 680 stays empty.
+-->
+<template>
+<style>
+  #g-a1-2-jet-section-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    font-family:Arial, sans-serif; color:#f2f5f8; }
+  .js-fill { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #js-ground { background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .js-hide { opacity:0; visibility:hidden; }
+  .js-t { position:absolute; white-space:pre; }
+  .js-chip { left:200px; top:110px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px;
+    line-height:56px; color:#e8c56a; }
+
+  /* document layer */
+  #js-doc { top:-4px; }
+  #js-panel { position:absolute; left:170px; top:200px; width:1360px; height:700px; box-sizing:border-box;
+    border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(180deg, #15202b, #0b1016); }
+  .js-h { left:230px; font-family:'Courier New', monospace; font-weight:700; font-size:26px; line-height:36px;
+    letter-spacing:0; color:#93a3b2; }
+  #js-h1 { top:226px; color:#f2f5f8; } #js-h2 { top:262px; color:#f2f5f8; } #js-h3 { top:298px; }
+  #js-id { right:450px; top:230px; font-family:'Courier New', monospace; font-weight:400; font-size:19px; line-height:24px;
+    color:#93a3b2; text-align:right; }
+  #js-divider { position:absolute; left:230px; top:344px; width:1240px; height:1px; background:rgba(255,255,255,.14); }
+  #js-win { position:absolute; left:230px; top:364px; width:1240px; height:508px; overflow:hidden;
+    -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 40px, #000 468px, transparent 508px);
+    mask-image:linear-gradient(180deg, transparent 0, #000 40px, #000 468px, transparent 508px); }
+  #js-stack { position:absolute; left:0; top:-1100px; width:1240px; height:2400px; }
+  .js-row { position:absolute; left:0; font-family:'Courier New', monospace; font-weight:700; font-size:28px;
+    line-height:44px; letter-spacing:0; color:#dfe7ee; white-space:pre; opacity:0.35; }
+  .js-row.js-head { color:#93a3b2; }
+  #js-r29, #js-r30 { opacity:1; }
+  /* only rows inside the window at offset 1100 (B25..B35) start shown; the timeline toggles the rest (gates do not see #js-win's clip) */
+  .js-row { visibility:hidden; }
+  #js-r25, #js-r26, #js-r27, #js-r28, #js-r29, #js-r30, #js-r31, #js-r32, #js-r33, #js-r34, #js-r35 { visibility:visible; }
+  #js-t29, #js-t30 { color:#04070c; }
+  .js-rect { position:absolute; height:38px; border-radius:4px; background:#e8c56a; }
+  #js-hl29 { left:688.8px; top:1291px; width:319.2px; }
+  #js-hl30 { left:0; top:1335px; width:1125.6px; }
+  #js-hl42 { left:235.2px; top:1863px; width:604.8px; }
+  #js-hl11 { left:168px; top:499px; width:722.4px; }
+  #js-ul13 { position:absolute; left:0; top:620px; width:470.4px; height:2px; background:#93a3b2; }
+  #js-source { left:96px; bottom:54px; font-size:19px; line-height:24px; font-weight:400; color:#c8d3e0; }
+
+  /* cross-section layer */
+  .js-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; letter-spacing:3px; }
+  #js-t-jet { left:220px; top:292px; color:#f2f5f8; }
+  #js-t-lake { left:650px; top:818px; width:400px; text-align:center; color:#f2f5f8; }
+  #js-t-schem { left:220px; top:880px; font-family:Arial, sans-serif; font-weight:400; font-size:19px; line-height:24px;
+    color:#93a3b2; }
+  #js-bracket { stroke-dasharray:442; stroke-dashoffset:442; }
+</style>
+<div id="g-a1-2-jet-section-root" data-composition-id="g-a1-2-jet-section" data-width="1920" data-height="1080">
+  <div id="js-ground" class="js-fill"></div>
+
+  <!-- cross-section (under the document so the panel re-entry passes over its fading tail) -->
+  <div id="js-xs" class="js-fill">
+    <svg class="js-fill" viewBox="0 0 1920 1080" width="1920" height="1080">
+      <defs>
+        <linearGradient id="js-jetgrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#c0392b"/><stop offset="1" stop-color="#e74c3c"/>
+        </linearGradient>
+        <clipPath id="js-bandclip"><rect x="200" y="330" width="1300" height="80"/></clipPath>
+        <clipPath id="js-lakeclip"><rect x="420" y="780" width="860" height="80"/></clipPath>
+      </defs>
+      <!-- ground: land either side, the lake between; the wave top drifts 40 px (one period) per loop -->
+      <g id="js-xg" class="js-hide">
+        <rect x="200" y="800" width="220" height="60" fill="#2a3644"/>
+        <rect x="1280" y="800" width="220" height="60" fill="#2a3644"/>
+        <g clip-path="url(#js-lakeclip)">
+          <path id="js-wave" fill="#5a768f" d="M400,798 q10,-5 20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 L1320,860 L400,860 Z"/>
+        </g>
+      </g>
+      <!-- the jet: a ribbon of fast air, well above the ground (gap 386 px) -->
+      <rect id="js-ribbon" class="js-hide" x="200" y="330" width="1300" height="80" fill="url(#js-jetgrad)" fill-opacity="0.9"/>
+      <g id="js-streaks" class="js-hide" clip-path="url(#js-bandclip)" stroke="#f2f5f8" stroke-opacity="0.6" stroke-width="2">
+        <line id="js-s1" x1="80" y1="338" x2="200" y2="338"/>
+        <line id="js-s2" x1="120" y1="346" x2="200" y2="346"/>
+        <line id="js-s3" x1="60" y1="352" x2="200" y2="352"/>
+        <line id="js-s4" x1="140" y1="360" x2="200" y2="360"/>
+        <line id="js-s5" x1="100" y1="366" x2="200" y2="366"/>
+        <line id="js-s6" x1="70" y1="372" x2="200" y2="372"/>
+        <line id="js-s7" x1="130" y1="378" x2="200" y2="378"/>
+        <line id="js-s8" x1="90" y1="384" x2="200" y2="384"/>
+        <line id="js-s9" x1="110" y1="390" x2="200" y2="390"/>
+        <line id="js-s10" x1="60" y1="396" x2="200" y2="396"/>
+        <line id="js-s11" x1="140" y1="402" x2="200" y2="402"/>
+        <line id="js-s12" x1="100" y1="356" x2="200" y2="356"/>
+      </g>
+      <!-- height bracket: no number, no label -->
+      <path id="js-bracket" class="js-hide" fill="none" stroke="#93a3b2" stroke-width="2"
+        d="M1370,426 L1380,414 L1390,426 M1380,414 L1380,792 M1370,780 L1380,792 L1390,780"/>
+      <!-- street-level wind: short, slow -->
+      <g stroke="#93a3b2" stroke-width="2" fill="none">
+        <g class="js-arr-i js-hide"><g class="js-arr-d"><path class="js-arr" d="M480,772 L540,772 M530,766 L540,772 L530,778"/></g></g>
+        <g class="js-arr-i js-hide"><g class="js-arr-d"><path class="js-arr" d="M640,772 L700,772 M690,766 L700,772 L690,778"/></g></g>
+        <g class="js-arr-i js-hide"><g class="js-arr-d"><path class="js-arr" d="M800,772 L860,772 M850,766 L860,772 L850,778"/></g></g>
+        <g class="js-arr-i js-hide"><g class="js-arr-d"><path class="js-arr" d="M960,772 L1020,772 M1010,766 L1020,772 L1010,778"/></g></g>
+        <g class="js-arr-i js-hide"><g class="js-arr-d"><path class="js-arr" d="M1120,772 L1180,772 M1170,766 L1180,772 L1170,778"/></g></g>
+      </g>
+    </svg>
+    <div id="js-t-jet" class="js-t js-lab js-hide">LOW LEVEL JET</div>
+    <div id="js-t-lake" class="js-t js-lab js-hide">LAKE ERIE</div>
+    <div id="js-t-schem" class="js-t js-hide">SCHEMATIC, NOT TO SCALE</div>
+  </div>
+
+  <!-- document layer: frame 0 = g-a1-1's settled last frame (offset 1100, B29/B30 highlighted, other rows 0.35) -->
+  <div id="js-doc" class="js-fill">
+    <div id="js-panel"></div>
+    <div id="js-h1" class="js-t js-h">Area Forecast Discussion</div>
+    <div id="js-h2" class="js-t js-h">National Weather Service Buffalo NY</div>
+    <div id="js-h3" class="js-t js-h">451 AM EST Tue Dec 20 2022</div>
+    <div id="js-id" class="js-t">FXUS61 KBUF 200951</div>
+    <div id="js-divider"></div>
+    <div id="js-win">
+      <div id="js-stack">
+        <div id="js-hl11" class="js-rect js-hide"></div>
+        <div id="js-ul13" class="js-hide"></div>
+        <div id="js-hl29" class="js-rect"></div>
+        <div id="js-hl30" class="js-rect"></div>
+        <div id="js-hl42" class="js-rect js-hide"></div>
+        <div id="js-r0" class="js-row js-head" style="top:12px">.LONG TERM /THURSDAY NIGHT THROUGH MONDAY/...</div>
+        <div id="js-r1" class="js-row js-head" style="top:56px">...Incredibly Powerful Storm To Impact our Region Heading Into and</div>
+        <div id="js-r2" class="js-row js-head" style="top:100px">THROUGH the Christmas Weekend...</div>
+        <div id="js-r4" class="js-row" style="top:188px">An extremely amplified longwave pattern during this period will</div>
+        <div id="js-r5" class="js-row" style="top:232px">spawn one of the most intense storm systems in decades to impact the</div>
+        <div id="js-r6" class="js-row" style="top:276px">Mid West and Great Lakes region. This system will likely end up</div>
+        <div id="js-r7" class="js-row" style="top:320px">setting low pressure records once it passes north of the border and</div>
+        <div id="js-r8" class="js-row" style="top:364px">will have the potential to generate at least storm force winds over</div>
+        <div id="js-r9" class="js-row" style="top:408px">the Lower Great lakes.</div>
+        <div id="js-r11" class="js-row" style="top:496px">As if the <span class="js-w11">very</span> <span class="js-w11">real</span> <span class="js-w11">threat</span> <span class="js-w11">for</span> <span class="js-w11">damage</span> <span class="js-w11">producing</span> <span class="js-w11">winds</span> were not</div>
+        <div id="js-r12" class="js-row" style="top:540px">enough...there will also be the risk for a prolonged...paralyzing</div>
+        <div id="js-r13" class="js-row" style="top:584px">heavy lake effect snow event. All of this coming in the days leading</div>
+        <div id="js-r14" class="js-row" style="top:628px">up to...and through Christmas. Headlines (watches) will likely be</div>
+        <div id="js-r15" class="js-row" style="top:672px">issued within the next few forecast cycles.</div>
+        <div id="js-r17" class="js-row" style="top:760px">Explosive cyclogenesis will take place over the mid western states</div>
+        <div id="js-r18" class="js-row" style="top:804px">Thursday night and southern Ontario on Friday...as an anomalously</div>
+        <div id="js-r19" class="js-row" style="top:848px">strong 150kt H25 jet will pass through the base of a very deep</div>
+        <div id="js-r20" class="js-row" style="top:892px">longwave trough. This will support rapid deepening of a</div>
+        <div id="js-r21" class="js-row" style="top:936px">corresponding sfc low that will track from Indiana north-northeast</div>
+        <div id="js-r22" class="js-row" style="top:980px">to southern Ontario by late Friday. The low will deepen from roughly</div>
+        <div id="js-r23" class="js-row" style="top:1024px">1000mb Thursday evening to roughly 968mb by Friday evening...easily</div>
+        <div id="js-r24" class="js-row" style="top:1068px">meeting the definition of bombogenesis (24mb/24hrs). Such deepening</div>
+        <div id="js-r25" class="js-row" style="top:1112px">is relatively rare in the Lower Great lakes...but more common across</div>
+        <div id="js-r26" class="js-row" style="top:1156px">the Upper Great Lakes and certainly with Nor'easters along the coast.</div>
+        <div id="js-r27" class="js-row" style="top:1200px">Some of the parameters of this intense storm are forecast to be</div>
+        <div id="js-r28" class="js-row" style="top:1244px">climatologically 'off the charts'...such as MSLP and strength of</div>
+        <div id="js-r29" class="js-row" style="top:1288px">both the low level and upper level jets. <span id="js-t29">One could certainly</span></div>
+        <div id="js-r30" class="js-row" style="top:1332px"><span id="js-t30">describe this storm system as a once in a generation type of event.</span></div>
+        <div id="js-r31" class="js-row" style="top:1376px">Its worth noting that the guidance continues to come into better</div>
+        <div id="js-r32" class="js-row" style="top:1420px">agreement with the strengthening and track of this system with most</div>
+        <div id="js-r33" class="js-row" style="top:1464px">of the packages coming into line with the consistent ECMWF solution</div>
+        <div id="js-r34" class="js-row" style="top:1508px">of a few days ago. This agreement is allowing for increased confidence</div>
+        <div id="js-r35" class="js-row" style="top:1552px">in the overall solution.</div>
+        <div id="js-r37" class="js-row" style="top:1640px">In any case...a coupled jet found over the Lower Great lakes ahead</div>
+        <div id="js-r38" class="js-row" style="top:1684px">of this powerful storm Thursday night will combine with divergent</div>
+        <div id="js-r39" class="js-row" style="top:1728px">flow aloft to generate a half inch of rain over our region along</div>
+        <div id="js-r40" class="js-row" style="top:1772px">with temperatures that will actually rise through the night after</div>
+        <div id="js-r41" class="js-row" style="top:1816px">early evening mins. The concern Thursday night though will be the</div>
+        <div id="js-r42" class="js-row" style="top:1860px">impacts of an <span class="js-w42">extraordinary</span> <span class="js-w42">70-75</span> <span class="js-w42">kt</span> <span class="js-w42">low</span> <span class="js-w42">level</span> <span class="js-w42">jet</span> within the warm</div>
+        <div id="js-r43" class="js-row" style="top:1904px">advection. Normally these winds would be aloft abv a pronounced</div>
+        <div id="js-r44" class="js-row" style="top:1948px">inversion...but in areas where the winds are perpendicular to sfc</div>
+        <div id="js-r45" class="js-row" style="top:1992px">barriers (ie. ridges/plateaus)...downsloping can transport the winds</div>
+        <div id="js-r46" class="js-row" style="top:2036px">to the sfc. This could be the case north-northeast of the Tug Hill</div>
+        <div id="js-r47" class="js-row" style="top:2080px">plateau and to a lesser degree in this case the Chautauqua ridge.</div>
+        <div id="js-r48" class="js-row" style="top:2124px">The strong southeasterly flow will also be funneled down the Black</div>
+        <div id="js-r49" class="js-row" style="top:2168px">River valley...enhancing winds in that area as well. Headlines for</div>
+        <div id="js-r50" class="js-row" style="top:2212px">these winds east of Lake Ontario will likely come as early as</div>
+        <div id="js-r51" class="js-row" style="top:2256px">midday.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="js-chip-date" class="js-t js-chip">TUE DEC 20 · 4:51 AM</div>
+  <div id="js-chip-kt" class="js-t js-chip js-hide">70 TO 75 KNOTS</div>
+  <div id="js-chip-mph" class="js-t js-chip js-hide">~81 TO 86 MPH</div>
+  <div id="js-source" class="js-t">NWS Buffalo Area Forecast Discussion, FXUS61 KBUF 200951, IEM archive</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a1-2-jet-section";
+  const XS_END = 16.3;  /* cross-section gone; ambient loops only need to run to here */
+  const tl = gsap.timeline({ paused: true });
+  const rows = Array.from(document.querySelectorAll(".js-row"));
+  const rowsExcept = function () {
+    const keep = Array.from(arguments);
+    return rows.filter(function (r) { return keep.indexOf(r.id) < 0; });
+  };
+  const w42 = Array.from(document.querySelectorAll(".js-w42"));
+  const w11 = Array.from(document.querySelectorAll(".js-w11"));
+
+  /* "The same note" @0.00: frame 0 = D0, all from CSS (offset 1100, B29/B30 lit, other rows 0.35, date chip on) */
+
+  /* 0.30: date chip slides out left before the knots chip */
+  tl.to("#js-chip-date", { x: -40, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 0.30);
+
+  /* "note started with the wind" @0.34-1.44: B29/B30 highlight off, every row to full */
+  tl.to(["#js-hl29", "#js-hl30"], { autoAlpha: 0, duration: 0.5, ease: "power2.out" }, 0.40);
+  tl.to(["#js-t29", "#js-t30"], { color: "#dfe7ee", duration: 0.5, ease: "power2.out" }, 0.40);
+  tl.to(rows, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0.40);
+
+  /* "It forecast an" @2.02-2.68: scroll offset 1100 -> 1628 (B42 to the window middle) */
+  tl.to("#js-stack", { y: -528, duration: 0.8, ease: "power2.inOut" }, 1.90);
+  /* a row is shown only while its glyph (row top +8..+36) sits inside the window: on as its glyph top passes window y500,
+     off as its glyph bottom passes window y8. Offset o -> time inverts power2.inOut over 1100 -> 1628; at 16.00 (doc
+     hidden) every row is reset for offset 264. Same rule as g-a1-1-afd-scroll. */
+  const inWin = function (top, o) { return top + 8 - o < 500 && top + 36 - o > 8; };
+  const inv2 = function (f) { return f < 0.5 ? Math.cbrt(f / 4) : 1 - Math.cbrt(2 * (1 - f)) / 2; };
+  rows.forEach(function (r) {
+    const top = parseFloat(r.style.top), oIn = top - 492, oOut = top + 28;
+    tl.set(r, { visibility: inWin(top, 1100) ? "visible" : "hidden" }, 0);
+    if (oIn > 1100 && oIn <= 1628) tl.set(r, { visibility: "visible" }, 1.90 + 0.8 * inv2((oIn - 1100) / 528));
+    if (oOut > 1100 && oOut <= 1628) tl.set(r, { visibility: "hidden" }, 1.90 + 0.8 * inv2((oOut - 1100) / 528));
+    tl.set(r, { visibility: inWin(top, 264) ? "visible" : "hidden" }, 16.00);
+  });
+
+  /* "extraordinary low-level jet" @2.68-4.04: B42 marker runs, each word goes dark as the rect reaches it */
+  tl.set("#js-hl42", { autoAlpha: 1 }, 2.68);
+  tl.fromTo("#js-hl42", { scaleX: 0, transformOrigin: "left center" },
+    { scaleX: 1, transformOrigin: "left center", duration: 1.36, ease: "none", immediateRender: false }, 2.68);
+  [2.68, 3.209, 3.436, 3.549, 3.700, 3.927].forEach(function (t, i) {  /* chars 14, 28, 34, 37, 41, 47 */
+    tl.to(w42[i], { color: "#04070c", duration: 0.06, ease: "none" }, t);
+  });
+  /* "jet" @4.04: other rows dim, knots chip lands */
+  tl.to(rowsExcept("js-r42"), { opacity: 0.35, duration: 0.4, ease: "power2.out" }, 4.04);
+  tl.fromTo("#js-chip-kt", { autoAlpha: 0, scale: 1.2, transformOrigin: "left center" },
+    { autoAlpha: 1, scale: 1, transformOrigin: "left center", duration: 0.4, ease: "power4.out" }, 4.04);
+
+  /* "night." @5.00-5.32: panel slides out left, D1 kept inside it. Opacity is gone by 5.60 (0.3 s) while the
+     slide still runs to 5.90, so no row sits past the frame edge while visible. */
+  tl.to("#js-doc", { x: -1500, duration: 0.6, ease: "power3.in" }, 5.30);
+  tl.to("#js-doc", { autoAlpha: 0, duration: 0.3, ease: "power1.in" }, 5.30);
+
+  /* "That is a" @5.74: land and lake rise in, the wave starts drifting (40 px = one wave period per 1.6 s) */
+  tl.fromTo("#js-xg", { y: 40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 5.74);
+  tl.fromTo("#js-wave", { x: 0 }, { x: -40, duration: 1.6, ease: "none", repeat: Math.ceil((XS_END - 5.74) / 1.6) - 1 }, 5.74);
+
+  /* "ribbon" @6.24: the jet band draws from the left; streaks run inside it at 480 px/s */
+  tl.set("#js-ribbon", { autoAlpha: 1 }, 6.24);
+  tl.fromTo("#js-ribbon", { scaleX: 0, svgOrigin: "200 370" },
+    { scaleX: 1, svgOrigin: "200 370", duration: 0.8, ease: "power3.out", immediateRender: false }, 6.24);
+  tl.fromTo("#js-streaks", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 6.70);
+  /* each streak starts just left of the band and travels 1440 px (band 1300 + longest streak 140) in 3.0 s; phases stagger them */
+  [0.0, 1.6, 0.7, 2.3, 1.1, 2.7, 0.4, 1.9, 0.9, 2.5, 1.4, 2.0].forEach(function (ph, i) {
+    const st = 6.24 - ph;
+    tl.fromTo("#js-s" + (i + 1), { x: 0 },
+      { x: 1440, duration: 3.0, ease: "none", repeat: Math.ceil((XS_END - st) / 3.0) - 1 }, st);
+  });
+
+  /* "air" @6.90: the band is named */
+  tl.fromTo("#js-t-jet", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.90);
+
+  /* "up above the ground" @7.16-7.78: height bracket draws, no number */
+  tl.set("#js-bracket", { autoAlpha: 1 }, 7.16);
+  tl.to("#js-bracket", { strokeDashoffset: 0, duration: 0.62, ease: "power2.out" }, 7.16);
+
+  /* gap after "ground," @7.78-8.62: lake name and the schematic note */
+  tl.fromTo(["#js-t-lake", "#js-t-schem"], { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.20);
+
+  /* 8.60: knots chip out; "81" @8.98: mph chip in */
+  tl.to("#js-chip-kt", { x: -40, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, 8.60);
+  tl.fromTo("#js-chip-mph", { autoAlpha: 0, scale: 1.2, transformOrigin: "left center" },
+    { autoAlpha: 1, scale: 1, transformOrigin: "left center", duration: 0.4, ease: "power4.out" }, 8.98);
+
+  /* "Down at street level" @11.68-12.62: five short arrows in, then a slow drift (90 px over the window) */
+  tl.fromTo(".js-arr-i", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out", stagger: 0.12 }, 11.68);
+  tl.fromTo(".js-arr-d", { x: 0 }, { x: 90, duration: XS_END - 11.68, ease: "none" }, 11.68); /* 90 not 277: arrow 5 tip stops at x 1270 over the lake, clear of the bracket at x 1380 (frame read r4) */
+
+  /* "65" @14.82, "70." @15.66: street arrows pulse */
+  document.querySelectorAll(".js-arr").forEach(function (a, i) {
+    const o = (480 + i * 160) + " 772";
+    tl.to(a, { scaleX: 1.15, svgOrigin: o, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 14.82);
+    tl.to(a, { scaleX: 1.15, svgOrigin: o, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 15.66);
+  });
+
+  /* "70." @15.66-16.02: cross-section and mph chip drop out */
+  tl.to(["#js-xs", "#js-chip-mph"], { autoAlpha: 0, y: 30, duration: 0.6, ease: "power3.in" }, 15.70);
+
+  /* 16.00, hidden: stack jumps to offset 264 (B11 mid-window), B42 marker off, rows full */
+  tl.set("#js-stack", { y: 836 }, 16.00);
+  tl.set("#js-hl42", { autoAlpha: 0 }, 16.00);
+  tl.set(w42, { color: "#dfe7ee" }, 16.00);
+  tl.set(rows, { opacity: 1 }, 16.00);
+
+  /* "The note" @16.38: panel back from the left; opacity waits until the rows are inside the frame (16.27) */
+  tl.fromTo("#js-doc", { x: -1500 }, { x: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, 16.00);
+  tl.fromTo("#js-doc", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.33, ease: "power1.out", immediateRender: false }, 16.27);
+
+  /* "damage-producing winds a very real threat," @17.10-19.80: B11 marker runs, words go dark as it reaches them */
+  tl.set("#js-hl11", { autoAlpha: 1 }, 17.10);
+  tl.fromTo("#js-hl11", { scaleX: 0, transformOrigin: "left center" },
+    { scaleX: 1, transformOrigin: "left center", duration: 2.70, ease: "none", immediateRender: false }, 17.10);
+  [17.10, 17.414, 17.728, 18.167, 18.419, 18.858, 19.486].forEach(function (t, i) {  /* chars 10, 15, 20, 27, 31, 38, 48 */
+    tl.to(w11[i], { color: "#04070c", duration: 0.06, ease: "none" }, t);
+  });
+  /* "threat," @19.44: other rows dim except B11 and B13 */
+  tl.to(rowsExcept("js-r11", "js-r13"), { opacity: 0.35, duration: 0.4, ease: "power2.out" }, 19.44);
+
+  /* "snow came second." @20.56-21.32: grey underline under "heavy lake effect snow event", B13 to 0.7 */
+  tl.set("#js-ul13", { autoAlpha: 1 }, 20.56);
+  tl.fromTo("#js-ul13", { scaleX: 0, transformOrigin: "left center" },
+    { scaleX: 1, transformOrigin: "left center", duration: 0.5, ease: "power2.out", immediateRender: false }, 20.56);
+  tl.to("#js-r13", { opacity: 0.7, duration: 0.5, ease: "power2.out" }, 20.56);
+
+  /* tail @21.32: panel floats, then exits up with the source line, ending on the comp's last frame (22.5) */
+  tl.to("#js-doc", { y: -4, duration: 0.58, ease: "sine.inOut" }, 21.32);
+  tl.to(["#js-doc", "#js-source"], { y: -30, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 21.90);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>

@@ -1,0 +1,231 @@
+<!--
+  g-a5-4-tally-final · A5-S3 · DEEP · full-frame 46-block tally, 21.70 s (wav 21.07 s + exit tail; trim to the real gap at mount).
+  Claim: last reported count 46 in Erie County (47 with the Lockport man, Niagara County); outside 18 + in their cars 4 = 22 of 46,
+  close to half, not half (22 < 23); the 12 without power or heat cost fewer lives than the street.
+  Source: research/*eaths.md (the toll file) s1 row "final", s2, s3; factcheck/a5-r1.md rows 11, 12, 32; WIVB (ME confirmed the last 3).
+  Family: compositions/g-a3-6-tally-27dec.html (same ground, block style, colours, label style, halfway line, readout), rescaled.
+  Geometry (px, root coordinates, printed by script): block i = 0..45 at x = 150 + 30 i, w 24, y 470, h 120, r 5; bar span 150-1524.
+    OUTSIDE i 0-17 x 150-684 (centre 417) #f2f5f8; IN THEIR CARS i 18-21 x 690-804 (centre 747) #d8a13a;
+    NO POWER OR HEAT i 22-33 x 810-1164 (centre 987) #7fb2e5 -> #5a768f; OTHER CAUSES i 34-45 x 1170-1524 (centre 1347) #2a3644.
+  Halfway line x 837 (bar midpoint, gap between block 22 (810-834) and block 23 (840-864)), y 430-610; tag HALF top 396 (ink ~799-875).
+  Niagara block x 1584-1608, y 470-590 (60 %, dims to 25 % at "22."); tag +1 NIAGARA top 410 (ink ~1499-1693).
+  Labels (Arial 700 26, tracking 4, measured with arialbd.ttf): row 1 top 620: OUTSIDE · 18 ink ~312-522; NO POWER OR HEAT · 12 ~788-1186.
+    Row 2 top 668: IN THEIR CARS · 4 ~600-894 (tick x 747, y 590-662); OTHER CAUSES ~1222-1472. Closest pair: 522 -> 788.
+  Readout centred x 837, top 270: 46 / 47 ink ~781-893; 22 OF 46 ink ~634-1040. Headline ink ~96-939.
+  Corner x >= 1600, y >= 680 stays empty. Cues: seconds from A5-S3 start (audio/a5-s3.words.json).
+  Prefix tf- (g-a3-6 uses ty-; both comps share the page).
+-->
+<template>
+<style>
+  #g-a5-4-tally-final-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    font-family: Arial, sans-serif; color:#f2f5f8; }
+  #tf-ground { position:absolute; inset:0; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .tf-fill { position:absolute; inset:0; }
+  .tf-hide { opacity:0; visibility:hidden; }
+  .tf-t { position:absolute; white-space:nowrap; }
+  /* blocks: outline wrapper placed by tl.set x from the formula, fill child grows from the bottom */
+  .tf-b { position:absolute; left:150px; top:470px; width:24px; height:120px; border-radius:5px; box-sizing:border-box;
+    border:1px solid rgba(255,255,255,.14); background:transparent; }
+  .tf-f { position:absolute; inset:-1px; border-radius:5px; background:#2a3644; }
+  #tf-sheenclip { position:absolute; left:150px; top:470px; width:654px; height:120px; overflow:hidden; }
+  #tf-sheen { position:absolute; left:-120px; top:0; width:120px; height:120px;
+    background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.45), rgba(255,255,255,0)); }
+  /* Niagara block, apart after a 60 px gap */
+  #tf-nb { position:absolute; left:1584px; top:470px; width:24px; height:120px; border-radius:5px; background:#93a3b2; }
+  #tf-ntag { left:1481px; top:410px; width:230px; text-align:center; padding-left:4px; box-sizing:border-box;
+    font-size:26px; line-height:30px; font-weight:700; letter-spacing:4px; color:#93a3b2; }
+  /* car tick */
+  #tf-tick { position:absolute; left:746px; top:590px; width:2px; height:72px; background:#d8a13a; }
+  /* halfway datum */
+  #tf-half { position:absolute; left:835.5px; top:430px; width:3px; height:180px;
+    background:repeating-linear-gradient(180deg, #e74c3c 0 10px, transparent 10px 18px); }
+  #tf-halftag { left:787px; top:396px; width:100px; text-align:center; padding-left:6px; box-sizing:border-box;
+    font-size:22px; line-height:26px; font-weight:700; letter-spacing:6px; color:#e74c3c; }
+  /* run labels: section header tier, centred on their runs (padding-left = tracking cancels the trailing letter-space) */
+  .tf-lab { text-align:center; font-size:26px; line-height:30px; font-weight:700; letter-spacing:4px; padding-left:4px; box-sizing:border-box; }
+  #tf-lab-out { left:287px; top:620px; width:260px; color:#f2f5f8; }
+  #tf-lab-nph { left:767px; top:620px; width:440px; color:#7fb2e5; }
+  #tf-lab-car { left:577px; top:668px; width:340px; color:#d8a13a; }
+  #tf-lab-oth { left:1197px; top:668px; width:300px; color:#93a3b2; }
+  /* readout zone: three pre-authored states, one visible at a time */
+  .tf-read { left:237px; top:270px; width:1200px; text-align:center; font-family:'Arial Black', Arial, sans-serif;
+    font-weight:900; font-size:84px; line-height:84px; color:#f2f5f8; }
+  #tf-r22a { color:#f2f5f8; }
+  #tf-r22b { color:#93a3b2; }
+  /* top-left eyebrow + headline */
+  #tf-eyebrow { left:96px; top:96px; font-size:22px; line-height:26px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  #tf-head { left:96px; top:132px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; }
+  #tf-src { left:96px; bottom:54px; font-size:19px; line-height:24px; font-weight:400; color:#c8d3e0; }
+</style>
+<div id="g-a5-4-tally-final-root" data-composition-id="g-a5-4-tally-final" data-width="1920" data-height="1080">
+  <div id="tf-ground"></div>
+  <div id="tf-layer" class="tf-fill">
+    <div id="tf-toplft" class="tf-fill">
+      <div id="tf-eyebrow" class="tf-t tf-hide">ERIE COUNTY</div>
+      <div id="tf-head" class="tf-t tf-hide">THE LAST REPORTED COUNT</div>
+    </div>
+    <div id="tf-bar" class="tf-fill">
+      <div id="tf-b0" class="tf-b tf-hide"><div id="tf-f0" class="tf-f tf-hide"></div></div>
+      <div id="tf-b1" class="tf-b tf-hide"><div id="tf-f1" class="tf-f tf-hide"></div></div>
+      <div id="tf-b2" class="tf-b tf-hide"><div id="tf-f2" class="tf-f tf-hide"></div></div>
+      <div id="tf-b3" class="tf-b tf-hide"><div id="tf-f3" class="tf-f tf-hide"></div></div>
+      <div id="tf-b4" class="tf-b tf-hide"><div id="tf-f4" class="tf-f tf-hide"></div></div>
+      <div id="tf-b5" class="tf-b tf-hide"><div id="tf-f5" class="tf-f tf-hide"></div></div>
+      <div id="tf-b6" class="tf-b tf-hide"><div id="tf-f6" class="tf-f tf-hide"></div></div>
+      <div id="tf-b7" class="tf-b tf-hide"><div id="tf-f7" class="tf-f tf-hide"></div></div>
+      <div id="tf-b8" class="tf-b tf-hide"><div id="tf-f8" class="tf-f tf-hide"></div></div>
+      <div id="tf-b9" class="tf-b tf-hide"><div id="tf-f9" class="tf-f tf-hide"></div></div>
+      <div id="tf-b10" class="tf-b tf-hide"><div id="tf-f10" class="tf-f tf-hide"></div></div>
+      <div id="tf-b11" class="tf-b tf-hide"><div id="tf-f11" class="tf-f tf-hide"></div></div>
+      <div id="tf-b12" class="tf-b tf-hide"><div id="tf-f12" class="tf-f tf-hide"></div></div>
+      <div id="tf-b13" class="tf-b tf-hide"><div id="tf-f13" class="tf-f tf-hide"></div></div>
+      <div id="tf-b14" class="tf-b tf-hide"><div id="tf-f14" class="tf-f tf-hide"></div></div>
+      <div id="tf-b15" class="tf-b tf-hide"><div id="tf-f15" class="tf-f tf-hide"></div></div>
+      <div id="tf-b16" class="tf-b tf-hide"><div id="tf-f16" class="tf-f tf-hide"></div></div>
+      <div id="tf-b17" class="tf-b tf-hide"><div id="tf-f17" class="tf-f tf-hide"></div></div>
+      <div id="tf-b18" class="tf-b tf-hide"><div id="tf-f18" class="tf-f tf-hide"></div></div>
+      <div id="tf-b19" class="tf-b tf-hide"><div id="tf-f19" class="tf-f tf-hide"></div></div>
+      <div id="tf-b20" class="tf-b tf-hide"><div id="tf-f20" class="tf-f tf-hide"></div></div>
+      <div id="tf-b21" class="tf-b tf-hide"><div id="tf-f21" class="tf-f tf-hide"></div></div>
+      <div id="tf-b22" class="tf-b tf-hide"><div id="tf-f22" class="tf-f tf-hide"></div></div>
+      <div id="tf-b23" class="tf-b tf-hide"><div id="tf-f23" class="tf-f tf-hide"></div></div>
+      <div id="tf-b24" class="tf-b tf-hide"><div id="tf-f24" class="tf-f tf-hide"></div></div>
+      <div id="tf-b25" class="tf-b tf-hide"><div id="tf-f25" class="tf-f tf-hide"></div></div>
+      <div id="tf-b26" class="tf-b tf-hide"><div id="tf-f26" class="tf-f tf-hide"></div></div>
+      <div id="tf-b27" class="tf-b tf-hide"><div id="tf-f27" class="tf-f tf-hide"></div></div>
+      <div id="tf-b28" class="tf-b tf-hide"><div id="tf-f28" class="tf-f tf-hide"></div></div>
+      <div id="tf-b29" class="tf-b tf-hide"><div id="tf-f29" class="tf-f tf-hide"></div></div>
+      <div id="tf-b30" class="tf-b tf-hide"><div id="tf-f30" class="tf-f tf-hide"></div></div>
+      <div id="tf-b31" class="tf-b tf-hide"><div id="tf-f31" class="tf-f tf-hide"></div></div>
+      <div id="tf-b32" class="tf-b tf-hide"><div id="tf-f32" class="tf-f tf-hide"></div></div>
+      <div id="tf-b33" class="tf-b tf-hide"><div id="tf-f33" class="tf-f tf-hide"></div></div>
+      <div id="tf-b34" class="tf-b tf-hide"><div id="tf-f34" class="tf-f tf-hide"></div></div>
+      <div id="tf-b35" class="tf-b tf-hide"><div id="tf-f35" class="tf-f tf-hide"></div></div>
+      <div id="tf-b36" class="tf-b tf-hide"><div id="tf-f36" class="tf-f tf-hide"></div></div>
+      <div id="tf-b37" class="tf-b tf-hide"><div id="tf-f37" class="tf-f tf-hide"></div></div>
+      <div id="tf-b38" class="tf-b tf-hide"><div id="tf-f38" class="tf-f tf-hide"></div></div>
+      <div id="tf-b39" class="tf-b tf-hide"><div id="tf-f39" class="tf-f tf-hide"></div></div>
+      <div id="tf-b40" class="tf-b tf-hide"><div id="tf-f40" class="tf-f tf-hide"></div></div>
+      <div id="tf-b41" class="tf-b tf-hide"><div id="tf-f41" class="tf-f tf-hide"></div></div>
+      <div id="tf-b42" class="tf-b tf-hide"><div id="tf-f42" class="tf-f tf-hide"></div></div>
+      <div id="tf-b43" class="tf-b tf-hide"><div id="tf-f43" class="tf-f tf-hide"></div></div>
+      <div id="tf-b44" class="tf-b tf-hide"><div id="tf-f44" class="tf-f tf-hide"></div></div>
+      <div id="tf-b45" class="tf-b tf-hide"><div id="tf-f45" class="tf-f tf-hide"></div></div>
+      <div id="tf-sheenclip"><div id="tf-sheen"></div></div>
+    </div>
+    <div id="tf-niag" class="tf-fill">
+      <div id="tf-nb" class="tf-hide"></div>
+      <div id="tf-ntag" class="tf-t tf-hide">+1 NIAGARA</div>
+    </div>
+    <div id="tf-tick" class="tf-hide"></div>
+    <div id="tf-half" class="tf-hide"></div>
+    <div id="tf-halftag" class="tf-t tf-hide">HALF</div>
+    <div id="tf-lab-out" class="tf-t tf-lab tf-hide">OUTSIDE · 18</div>
+    <div id="tf-lab-car" class="tf-t tf-lab tf-hide">IN THEIR CARS · 4</div>
+    <div id="tf-lab-nph" class="tf-t tf-lab tf-hide">NO POWER OR HEAT · 12</div>
+    <div id="tf-lab-oth" class="tf-t tf-lab tf-hide">OTHER CAUSES</div>
+    <div id="tf-r46" class="tf-t tf-read tf-hide">46</div>
+    <div id="tf-r47" class="tf-t tf-read tf-hide">47</div>
+    <div id="tf-r22" class="tf-t tf-read tf-hide"><span id="tf-r22a">22</span><span id="tf-r22b"> OF 46</span></div>
+    <div id="tf-src" class="tf-t tf-hide">Poloncarz via WIVB, last reported count (3 cases pending)</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#tf-";
+  const N = 46, PITCH = 30;
+  const B = [], F = [];
+  for (let i = 0; i < N; i++) { B.push(P + "b" + i); F.push(P + "f" + i); }
+  const OUT_F = F.slice(0, 18), CAR_F = F.slice(18, 22), NPH_F = F.slice(22, 34);
+  const OUT_B = B.slice(0, 18), CAR_B = B.slice(18, 22), LIT_B = B.slice(0, 22), NPH_B = B.slice(22, 34);
+  /* newest group floats y 0 -> -3 and back (finite) */
+  const float = (t, at, d) => tl.to(t, { y: -3, duration: d, ease: "sine.inOut", yoyo: true, repeat: 1 }, at);
+
+  /* frame 0: ground only; blocks placed by the formula x = 150 + 30 i (CSS left 150 + x offset) */
+  for (let i = 0; i < N; i++) tl.set(B[i], { x: PITCH * i, transformOrigin: "50% 100%" }, 0);
+  tl.set(F, { scaleY: 0, transformOrigin: "50% 100%" }, 0);
+  tl.set(P + "nb", { x: 40, transformOrigin: "50% 100%" }, 0);
+  tl.set(P + "tick", { scaleY: 0, transformOrigin: "50% 0%" }, 0);
+  tl.set(P + "half", { scaleY: 0, transformOrigin: "50% 0%" }, 0);
+  tl.set([P + "r46", P + "r22"], { scale: 1.2, transformOrigin: "50% 50%" }, 0);
+  tl.set(P + "r47", { y: 12 }, 0);
+  tl.set(P + "layer", { transformOrigin: "50% 50%" }, 0);
+
+  /* "the last count" @0.00: 46 empty outlines in, left to right (45 x 0.012 = 0.54 s) */
+  tl.fromTo(B, { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power2.out", stagger: 0.012 }, 0);
+  /* "last" @0.22: eyebrow; "count" @0.50: headline */
+  tl.fromTo(P + "eyebrow", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.22);
+  tl.fromTo(P + "head", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.50);
+  /* whole-window drift so nothing sits still between cues: layer y 0 -> -8 until the exit */
+  tl.to(P + "layer", { y: -8, duration: 20.5, ease: "none" }, 0.6);
+
+  /* "46" @0.96: every block fills dim from the bottom (45 x 0.02 = 0.9 s); readout 46 */
+  tl.set(F, { autoAlpha: 1 }, 0.96);
+  tl.to(F, { scaleY: 1, duration: 0.3, ease: "power3.out", stagger: 0.02 }, 0.96);
+  tl.fromTo(P + "r46", { autoAlpha: 0, scale: 1.2 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power4.out" }, 0.96);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.20);
+  /* newest groups float through the 0.6-3.6 hold */
+  float(P + "toplft", 1.0, 1.0);
+  float(P + "bar", 2.2, 0.7);
+  float(P + "r46", 2.4, 0.6);
+
+  /* "Lockport," @3.62: Niagara block in, apart; +1 NIAGARA @3.80 */
+  tl.fromTo(P + "nb", { autoAlpha: 0, x: 40 }, { autoAlpha: 0.6, x: 0, duration: 0.45, ease: "back.out(1.7)" }, 3.62);
+  tl.fromTo(P + "ntag", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.80);
+
+  /* "47." @4.70: readout swap; 46 clears in 0.15 s so the two never overlap visibly on a 0.5 s gate step (4.90) */
+  tl.to(P + "r46", { autoAlpha: 0, y: -12, duration: 0.15, ease: "power2.in" }, 4.70);
+  tl.fromTo(P + "r47", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 4.72);
+  float(P + "niag", 5.1, 0.7);
+  /* "outside" @5.86: 47 out at 6.20 */
+  tl.to(P + "r47", { autoAlpha: 0, y: -12, duration: 0.4, ease: "power2.in" }, 6.20);
+  /* 6.6-8.3 hold: the bar floats */
+  float(P + "bar", 6.7, 0.75);
+
+  /* "18" @8.30: blocks 0-17 turn white, each 1 -> 1.08 -> 1 (17 x 0.03 = 0.51 s); label @8.64 */
+  tl.to(OUT_F, { backgroundColor: "#f2f5f8", duration: 0.2, ease: "power2.out", stagger: 0.03 }, 8.30);
+  tl.to(OUT_B, { scale: 1.08, duration: 0.12, ease: "power2.out", yoyo: true, repeat: 1, stagger: 0.03 }, 8.30);
+  tl.fromTo(P + "lab-out", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.64);
+
+  /* "4" @9.86: blocks 18-21 turn amber; tick @10.40; "cars," @10.70 label */
+  tl.to(CAR_F, { backgroundColor: "#d8a13a", duration: 0.25, ease: "power2.out", stagger: 0.08 }, 9.86);
+  tl.to(CAR_B, { scale: 1.08, duration: 0.12, ease: "power2.out", yoyo: true, repeat: 1, stagger: 0.08 }, 9.86);
+  tl.set(P + "tick", { autoAlpha: 1 }, 10.40);
+  tl.to(P + "tick", { scaleY: 1, duration: 0.3, ease: "power2.out" }, 10.40);
+  tl.fromTo(P + "lab-car", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 10.70);
+  float(P + "lab-car", 11.2, 0.5);
+
+  /* "22." @12.20: white + amber run pulses together; Niagara block dims to 25 % (outside the 46); readout 22 OF 46 */
+  tl.to(LIT_B, { scale: 1.1, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 12.20);
+  tl.to(P + "nb", { autoAlpha: 0.25, duration: 0.4, ease: "power2.out" }, 12.20);
+  tl.fromTo(P + "r22", { autoAlpha: 0, scale: 1.2 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power4.out" }, 12.20);
+
+  /* "46," @13.52: OTHER CAUSES at 70 % */
+  tl.fromTo(P + "lab-oth", { autoAlpha: 0, y: 10 }, { autoAlpha: 0.7, y: 0, duration: 0.4, ease: "power3.out" }, 13.52);
+
+  /* "close to half." @14.52: halfway line draws top to bottom at the true midpoint x 837; HALF @14.92 */
+  tl.set(P + "half", { autoAlpha: 1 }, 14.52);
+  tl.to(P + "half", { scaleY: 1, duration: 0.5, ease: "power2.out" }, 14.52);
+  tl.fromTo(P + "halftag", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 14.92);
+  float(P + "r22", 15.4, 0.55);
+
+  /* "dark," @16.54: blocks 22-33 turn cold blue; "cold" @17.06: label */
+  tl.to(NPH_F, { backgroundColor: "#7fb2e5", duration: 0.25, ease: "power2.out", stagger: 0.04 }, 16.54);
+  tl.to(NPH_B, { scale: 1.08, duration: 0.12, ease: "power2.out", yoyo: true, repeat: 1, stagger: 0.04 }, 16.54);
+  tl.fromTo(P + "lab-nph", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 17.06);
+
+  /* "streets" @18.36: blue run settles; OUTSIDE label to #fff; sheen crosses white + amber x 150 -> 804 @18.66 (-120 + 774 = 654 clears it) */
+  tl.to(NPH_F, { backgroundColor: "#5a768f", duration: 0.6, ease: "power2.inOut" }, 18.36);
+  tl.to(P + "lab-out", { color: "#ffffff", duration: 0.3, ease: "power2.out" }, 18.36);
+  tl.fromTo(P + "sheen", { x: 0 }, { x: 774, duration: 0.7, ease: "power2.inOut" }, 18.66);
+  float(P + "bar", 19.4, 0.6);
+
+  /* exit after "else." ends @20.82: whole layer pulls back and fades, ground stays; 21.10 -> 21.70 */
+  tl.to(P + "layer", { scale: 0.96, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 21.10);
+
+  window.__timelines["g-a5-4-tally-final"] = tl;
+})();
+</script>
+</template>

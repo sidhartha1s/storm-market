@@ -1,0 +1,144 @@
+<!--
+  g-a2-3-log-806 · A2-S2 (comp 0.00 to 15.16) · full-frame airport log card, R1 7:24 on, R2 8:06 ticks in, gust gauge 24 -> 60 mph.
+  Copy of g-a2-1-log-724 card block, ids/classes a21- -> a23-, every px kept. Frame 0 = g-a2-1 end state (R1 on) + gauge at 24.
+  Columns: TIME x220, WEATHER x470 (R1 "38°F · " x470 + "RAIN" x612.8), VISIBILITY x1020, GUST x1300. R1 top 400, R2 top 500.
+  Gauge: pivot (1360,960), radius 150, 0..80 mph over 180 deg, 2.25 deg/mph. Needle drawn pointing left, rotated by svgOrigin "1360 960".
+  Needle tips: 54 deg (24 mph) = (1283.6, 854.8); 135 deg (60 mph) = (1451.9, 868.1).
+  Cues: seconds from A2-S2 start (audio/a2-s2.words.json), spoken time in each tween comment.
+  "5 MI" has no research row yet (open item 1 in briefs/a2/_list.md).
+-->
+<template>
+<style>
+  #g-a2-3-log-806-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family: Arial, sans-serif; color:#f2f5f8; }
+  .a23-fill { position:absolute; inset:0; }
+  .a23-hide { opacity:0; visibility:hidden; }
+  #a23-panel { position:absolute; left:160px; top:170px; width:1400px; height:590px; box-sizing:border-box;
+    border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(180deg, #15202b, #0b1016); }
+  .a23-t { position:absolute; white-space:nowrap; }
+  #a23-eyebrow { left:220px; top:206px; font-size:22px; line-height:26px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  #a23-chip { left:220px; top:244px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px;
+    line-height:58px; color:#f2f5f8; transform-origin:left center; }
+  .a23-h { top:340px; font-size:19px; line-height:24px; font-weight:700; letter-spacing:4px; color:#93a3b2; }
+  #a23-divider { position:absolute; left:220px; top:376px; width:1280px; height:1px; background:rgba(255,255,255,.14);
+    transform-origin:left center; }
+  .a23-c { font-family:'Courier New', monospace; font-weight:700; font-size:34px; line-height:60px; color:#dfe7ee; }
+  .a23-cT { left:220px; color:#e8c56a; transform-origin:left center; }
+  .a23-cW { left:470px; }
+  .a23-cW2 { left:612.8px; }
+  .a23-cV { left:1020px; }
+  .a23-cG { left:1300px; transform-origin:left center; }
+  .a23-r1 { top:400px; }
+  .a23-r2 { top:500px; }
+  .a23-hT { left:220px; } .a23-hW { left:470px; } .a23-hV { left:1020px; } .a23-hG { left:1300px; }
+  #a23-scan { position:absolute; left:180px; top:0; width:1360px; height:2px; background:#d8a13a; opacity:0.45; }
+  #a23-ul { position:absolute; left:220px; top:566px; width:1280px; height:2px; background:#d8a13a; transform-origin:left center; }
+  #a23-source { left:96px; bottom:54px; font-size:19px; line-height:24px; font-weight:400; color:#c8d3e0; }
+  #a23-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .a23-lab { font-family:Arial, sans-serif; font-weight:700; font-size:19px; fill:#93a3b2; text-anchor:middle; }
+</style>
+<div id="g-a2-3-log-806-root" data-composition-id="g-a2-3-log-806" data-width="1920" data-height="1080">
+  <div id="a23-float" class="a23-fill">
+    <div id="a23-panel"></div>
+    <div id="a23-eyebrow" class="a23-t">BUFFALO AIRPORT WEATHER STATION</div>
+    <div id="a23-chip" class="a23-t">FRIDAY · DEC 23</div>
+    <div id="a23-hT" class="a23-t a23-h a23-hT">TIME</div>
+    <div id="a23-hW" class="a23-t a23-h a23-hW">WEATHER</div>
+    <div id="a23-hV" class="a23-t a23-h a23-hV">VISIBILITY</div>
+    <div id="a23-hG" class="a23-t a23-h a23-hG">GUST</div>
+    <div id="a23-divider"></div>
+
+    <div id="a23-r1-t" class="a23-t a23-c a23-cT a23-r1">7:24 AM</div>
+    <div id="a23-r1-w1" class="a23-t a23-c a23-cW a23-r1">38°F · </div>
+    <div id="a23-r1-w2" class="a23-t a23-c a23-cW2 a23-r1">RAIN</div>
+    <div id="a23-r1-v" class="a23-t a23-c a23-cV a23-r1">5 MI</div>
+    <div id="a23-r1-g" class="a23-t a23-c a23-cG a23-r1">24 MPH</div>
+
+    <div id="a23-r2-t" class="a23-t a23-c a23-cT a23-r2 a23-hide">8:06 AM</div>
+    <div id="a23-r2-w" class="a23-t a23-c a23-cW a23-r2 a23-hide">SNOW</div>
+    <div id="a23-r2-v" class="a23-t a23-c a23-cV a23-r2 a23-hide">1/2 MI</div>
+    <div id="a23-r2-g" class="a23-t a23-c a23-cG a23-r2 a23-hide">60 MPH</div>
+    <div id="a23-ul" class="a23-hide"></div>
+
+    <div id="a23-scan"></div>
+    <div id="a23-source" class="a23-t">Buffalo airport ASOS, IEM archive</div>
+
+    <svg id="a23-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="a23-gauge">
+        <path id="a23-arc" d="M1210 960 A150 150 0 0 1 1510 960" fill="none" stroke="#ffffff" stroke-opacity="0.25" stroke-width="4"/>
+        <g stroke="#93a3b2" stroke-width="2">
+          <line x1="1228" y1="960" x2="1210" y2="960"/>
+          <line x1="1238.04" y1="909.48" x2="1221.42" y2="902.6"/>
+          <line x1="1266.66" y1="866.66" x2="1253.93" y2="853.93"/>
+          <line x1="1309.48" y1="838.04" x2="1302.6" y2="821.42"/>
+          <line x1="1360" y1="828" x2="1360" y2="810"/>
+          <line x1="1410.52" y1="838.04" x2="1417.4" y2="821.42"/>
+          <line x1="1453.34" y1="866.66" x2="1466.07" y2="853.93"/>
+          <line x1="1481.96" y1="909.48" x2="1498.58" y2="902.6"/>
+          <line x1="1492" y1="960" x2="1510" y2="960"/>
+        </g>
+        <line id="a23-ghost" x1="1277.12" y1="845.93" x2="1266.54" y2="831.37" stroke="#d8a13a" stroke-width="3" style="opacity:0;visibility:hidden"/>
+        <rect id="a23-needle" x="1230" y="957" width="130" height="6" rx="3" fill="#f2f5f8"/>
+        <circle id="a23-cap" cx="1360" cy="960" r="10" fill="#d8a13a"/>
+        <text id="a23-l0" class="a23-lab" x="1210" y="991">0</text>
+        <text id="a23-l80" class="a23-lab" x="1510" y="991">80</text>
+        <text id="a23-cap-t" class="a23-lab" x="1360" y="1012" letter-spacing="4">GUST, MPH</text>
+      </g>
+    </svg>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const $ = (id) => "#a23-" + id;
+
+  tl.set($("needle"), { rotation: 54, svgOrigin: "1360 960" }, 0); // rests at 24 mph
+
+  // whole-hold float 0 -> 14.5 (one leg 7.25 s there, 7.25 s back), wrapper only
+  tl.fromTo($("float"), { y: 0 }, { y: -4, duration: 7.25, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+  // scan line already running at frame 0
+  tl.fromTo($("scan"), { y: 380 }, { y: 700, duration: 13.5, ease: "none" }, 0);
+
+  /* "minutes" @0.42 */
+  tl.fromTo($("r2-t"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 0.42);
+
+  /* "gusts" @2.48: arc brightens, needle shivers 54 -> 58 -> 54 */
+  tl.to($("arc"), { strokeOpacity: 0.5, duration: 0.3 }, 2.48);
+  tl.to($("needle"), { rotation: 58, duration: 0.2, ease: "sine.inOut" }, 2.48);
+  tl.to($("needle"), { rotation: 54, duration: 0.2, ease: "sine.inOut" }, 2.68);
+
+  /* "60" @3.58: needle to 135, ghost mark at 24, 60 MPH cell */
+  tl.to($("needle"), { rotation: 135, duration: 0.6, ease: "back.out(1.4)" }, 3.58);
+  tl.fromTo($("ghost"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 3.58);
+  tl.fromTo($("r2-g"), { autoAlpha: 0, scale: 1.2 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 3.58);
+
+  /* "snow," @6.02 */
+  tl.fromTo($("r2-w"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 6.02);
+
+  /* "half" @7.26 */
+  tl.fromTo($("r2-v"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 7.26);
+
+  /* "front" @8.52: R2 underline */
+  tl.fromTo($("ul"), { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.5, ease: "power2.out" }, 8.52);
+
+  /* "On a windshield" @9.90 onward: needle flutter 131/138, 7 legs x 0.6 s to 14.1 */
+  tl.to($("needle"), { rotation: 131, duration: 0.6, ease: "sine.inOut" }, 9.9);
+  tl.to($("needle"), { rotation: 138, duration: 0.6, ease: "sine.inOut" }, 10.5);
+  tl.to($("needle"), { rotation: 131, duration: 0.6, ease: "sine.inOut" }, 11.1);
+  tl.to($("needle"), { rotation: 138, duration: 0.6, ease: "sine.inOut" }, 11.7);
+  tl.to($("needle"), { rotation: 131, duration: 0.6, ease: "sine.inOut" }, 12.3);
+  tl.to($("needle"), { rotation: 138, duration: 0.6, ease: "sine.inOut" }, 12.9);
+  tl.to($("needle"), { rotation: 131, duration: 0.6, ease: "sine.inOut" }, 13.5);
+
+  /* exit 14.56 -> 15.16, after "disappear." @14.18; ground stays on the root */
+  tl.to([$("panel"), $("eyebrow"), $("chip"), $("hT"), $("hW"), $("hV"), $("hG"), $("divider"),
+         $("r1-t"), $("r1-w1"), $("r1-w2"), $("r1-v"), $("r1-g"),
+         $("r2-t"), $("r2-w"), $("r2-v"), $("r2-g"), $("ul"), $("source"), $("gauge")].join(","),
+        { autoAlpha: 0, y: -20, duration: 0.6, ease: "power2.in" }, 14.56);
+  tl.to($("scan"), { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 14.56);
+
+  window.__timelines["g-a2-3-log-806"] = tl;
+})();
+</script>
+</template>

@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a1-3-pressure-dial (A1-S3, standard): full-frame designed scene, the pressure dial. Comp 18.8 s.
+  Cue times are comp-local seconds from the A1-S3 start (audio/a1-s3.words.json); spoken word in each comment.
+  Dial centre C = (960, 580), face r 300. angle(p) = -135 + (1008 - p) x 5.625 deg, clockwise from 12 o'clock;
+  point = (960 + r sin a, 580 - r cos a). Tick/label/arc/bar/wind coordinates below were computed from that formula
+  (1000 = -90, 976 = +45, 968 = +90). Needle and 24 mb bar are drawn pointing at 12 o'clock and turned with
+  rotation + svgOrigin "960 580". FORECAST values only (AFD KBUF 20 Dec 2022); the storm's nickname is never on screen.
+  Nothing in x >= 1600, y >= 680. No footage under it: the ground is on the root.
+-->
+<template>
+<style>
+  #g-a1-3-pressure-dial-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    background: radial-gradient(ellipse at 50% 50%, #0b1016, #030507 78%); font-family: Arial, sans-serif; color:#f2f5f8; }
+  #pd-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #pd-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .pd-tick { stroke:#93a3b2; stroke-width:3; stroke-dasharray:39; stroke-dashoffset:39; opacity:0; visibility:hidden; }
+  .pd-tickbig { stroke:#f2f5f8; stroke-width:5; }
+  #pd-face { opacity:0; visibility:hidden; }
+  #pd-shim { opacity:0; visibility:hidden; }
+  .pd-arc { fill:none; stroke-width:14; opacity:0; visibility:hidden; }
+  #pd-arc1 { stroke:#d8a13a; stroke-dasharray:708; stroke-dashoffset:708; }
+  #pd-arc2 { stroke:#e74c3c; stroke-dasharray:237; stroke-dashoffset:237; }
+  #pd-needle { opacity:0; visibility:hidden; }
+  #pd-hub { opacity:0; visibility:hidden; }
+  #pd-bar { opacity:0; visibility:hidden; }
+  #pd-wind { opacity:0; visibility:hidden; }
+  .pd-lab { position:absolute; width:120px; height:32px; line-height:32px; text-align:center; font-size:26px; font-weight:700;
+    color:#dfe7ee; opacity:0; visibility:hidden; white-space:nowrap; }
+  .pd-tag { position:absolute; top:568px; font-size:22px; font-weight:700; letter-spacing:3px; color:#93a3b2;
+    opacity:0; visibility:hidden; white-space:nowrap; }
+  #pd-unit { position:absolute; left:760px; top:689px; width:400px; text-align:center; font-size:22px; font-weight:700;
+    letter-spacing:3px; color:#93a3b2; opacity:0; visibility:hidden; white-space:nowrap; }
+  /* outside the wind ring (r 420: x 540 and 1380 at y 580) */
+  #pd-thu { left:120px; width:400px; text-align:right; }
+  #pd-fri { left:1400px; }
+  #pd-chip { position:absolute; left:200px; top:110px; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px;
+    color:#e8c56a; white-space:nowrap; opacity:0; visibility:hidden; }
+  #pd-barlab { position:absolute; left:1400px; top:290px; font-size:26px; font-weight:700; color:#e74c3c; white-space:nowrap;
+    opacity:0; visibility:hidden; }
+  #pd-src { position:absolute; left:96px; bottom:54px; font-size:19px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a1-3-pressure-dial-root" data-composition-id="g-a1-3-pressure-dial" data-width="1920" data-height="1080">
+  <div id="pd-stage">
+    <svg id="pd-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <!-- face -->
+      <circle id="pd-face" cx="960" cy="580" r="300" fill="#0b1016" stroke="rgba(255,255,255,0.14)" stroke-width="2"/>
+      <!-- bezel shimmer: 30 deg arc, -15 to +15 at the top -->
+      <path id="pd-shim" d="M 882.4 290.2 A 300 300 0 0 1 1037.6 290.2" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="4"/>
+      <!-- ticks every 4 mb, 1008 to 960, r 262 to 300 -->
+      <line class="pd-tick" id="pd-t1008" x1="774.7" y1="765.3" x2="747.9" y2="792.1"/>
+      <line class="pd-tick" id="pd-t1004" x1="717.9" y1="680.3" x2="682.8" y2="694.8"/>
+      <line class="pd-tick pd-tickbig" id="pd-t1000" x1="698.0" y1="580.0" x2="660.0" y2="580.0"/>
+      <line class="pd-tick" id="pd-t996" x1="717.9" y1="479.7" x2="682.8" y2="465.2"/>
+      <line class="pd-tick" id="pd-t992" x1="774.7" y1="394.7" x2="747.9" y2="367.9"/>
+      <line class="pd-tick" id="pd-t988" x1="859.7" y1="337.9" x2="845.2" y2="302.8"/>
+      <line class="pd-tick" id="pd-t984" x1="960.0" y1="318.0" x2="960.0" y2="280.0"/>
+      <line class="pd-tick" id="pd-t980" x1="1060.3" y1="337.9" x2="1074.8" y2="302.8"/>
+      <line class="pd-tick pd-tickbig" id="pd-t976" x1="1145.3" y1="394.7" x2="1172.1" y2="367.9"/>
+      <line class="pd-tick" id="pd-t972" x1="1202.1" y1="479.7" x2="1237.2" y2="465.2"/>
+      <line class="pd-tick pd-tickbig" id="pd-t968" x1="1222.0" y1="580.0" x2="1260.0" y2="580.0"/>
+      <line class="pd-tick" id="pd-t964" x1="1202.1" y1="680.3" x2="1237.2" y2="694.8"/>
+      <line class="pd-tick" id="pd-t960" x1="1145.3" y1="765.3" x2="1172.1" y2="792.1"/>
+      <!-- fall arc: amber 1000 -> 976 (-90 to 45), red 976 -> 968 (45 to 90) -->
+      <path class="pd-arc" id="pd-arc1" d="M 660 580 A 300 300 0 0 1 1172.1 367.9"/>
+      <path class="pd-arc" id="pd-arc2" d="M 1172.1 367.9 A 300 300 0 0 1 1260 580"/>
+      <!-- 24 mb line: drawn vertical r 250 to 330 (y 330 to 250), turned to 976 mb (+45) -->
+      <g id="pd-bar"><line id="pd-barline" x1="960" y1="330" x2="960" y2="250" stroke="#c0392b" stroke-width="10"/></g>
+      <!-- needle: points at 12 o'clock, set to -90 (1000 mb) -->
+      <line id="pd-needle" x1="960" y1="580" x2="960" y2="310" stroke="#f2f5f8" stroke-width="6" stroke-linecap="round"/>
+      <circle id="pd-hub" cx="960" cy="580" r="16" fill="#f2f5f8"/>
+      <!-- wind ring: 3 arcs r 420, 80 deg each, 120 deg apart; heads at the counterclockwise end -->
+      <g id="pd-wind" fill="none" stroke="#7fb2e5" stroke-width="4" stroke-linecap="round">
+        <path d="M 960 160 A 420 420 0 0 1 1373.6 507.1"/>
+        <path d="M 1323.7 790 A 420 420 0 0 1 816.4 974.7"/>
+        <path d="M 596.3 790 A 420 420 0 0 1 690 258.3"/>
+        <polygon points="938,160 960,148 960,172" fill="#7fb2e5" stroke="none"/>
+        <polygon points="1334.7,770.9 1334.1,796 1313.3,784" fill="#7fb2e5" stroke="none"/>
+        <polygon points="607.3,809.1 585.9,796 606.7,784" fill="#7fb2e5" stroke="none"/>
+      </g>
+    </svg>
+    <!-- tick labels every 8 mb, centred at r 228 -->
+    <div class="pd-lab" id="pd-l1008" style="left:738.8px;top:725.2px">1008</div>
+    <div class="pd-lab" id="pd-l1000" style="left:672px;top:524px">1000</div>
+    <div class="pd-lab" id="pd-l992" style="left:738.8px;top:402.8px">992</div>
+    <div class="pd-lab" id="pd-l984" style="left:900px;top:336px">984</div>
+    <div class="pd-lab" id="pd-l976" style="left:1061.2px;top:402.8px">976</div>
+    <div class="pd-lab" id="pd-l968" style="left:1128px;top:524px">968</div>
+    <div class="pd-lab" id="pd-l960" style="left:1061.2px;top:725.2px">960</div>
+    <div id="pd-unit">PRESSURE &middot; MB</div>
+    <div class="pd-tag" id="pd-thu">THU EVENING</div>
+    <div class="pd-tag" id="pd-fri">FRI EVENING</div>
+    <div id="pd-barlab">24 MB IN 24 HRS</div>
+    <div id="pd-chip">32 MB IN ~24 HRS</div>
+    <div id="pd-src">NWS Buffalo forecast discussion, 20 Dec 2022 (forecast)</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const O = "960 580";
+  const RAD = Math.PI / 180;
+  const ticks = ["1008","1004","1000","996","992","988","984","980","976","972","968","964","960"].map(function(p) { return "#pd-t" + p; });
+  const labs = ["1008","1000","992","984","976","968","960"].map(function(p) { return "#pd-l" + p; });
+
+  /* rest states at 0 (transforms only here) */
+  /* every pivoting element gets svgOrigin O before any scale/rotation, with smoothOrigin off: a from-state on the
+     default 0,0 origin followed by svgOrigin let GSAP compensate x/y and threw needle, hub and face off centre (QC 28 Oct) */
+  tl.set(["#pd-face", "#pd-needle", "#pd-hub", "#pd-wind", "#pd-shim", "#pd-bar"], { svgOrigin: O, smoothOrigin: false, x: 0, y: 0 }, 0);
+  tl.set("#pd-needle", { rotation: -90, svgOrigin: O, smoothOrigin: false }, 0);
+  tl.set("#pd-bar", { rotation: 45, svgOrigin: O, smoothOrigin: false }, 0);
+  tl.set("#pd-arc1", { opacity: 0.75 }, 0);
+  tl.set("#pd-arc2", { opacity: 1 }, 0); /* was never set: CSS opacity 0 kept the red 976 -> 968 arc invisible */
+
+  /* needle sweep drives the arcs: amber up to +45, red past it; seek-safe, read from the needle's own rotation */
+  function syncArcs() {
+    const a = Math.max(-90, Math.min(90, gsap.getProperty("#pd-needle", "rotation")));
+    const amber = 300 * (Math.min(a, 45) + 90) * RAD;
+    const red = 300 * Math.max(a - 45, 0) * RAD;
+    document.getElementById("pd-arc1").style.strokeDashoffset = (708 - amber).toFixed(2);
+    document.getElementById("pd-arc2").style.strokeDashoffset = (237 - red).toFixed(2);
+  }
+
+  /* continuous motion the whole window: bezel shimmer 20 deg/s */
+  tl.fromTo("#pd-shim", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 0.05);
+  tl.to("#pd-shim", { rotation: 375, svgOrigin: O, duration: 18.446, ease: "none" }, 0.05);
+
+  /* "Behind" @0.00: ground is on; face in */
+  tl.fromTo("#pd-face", { autoAlpha: 0, scale: 0.9, svgOrigin: O, smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: O, smoothOrigin: false, duration: 0.6, ease: "power3.out" }, 0.05);
+
+  /* "that wind" @0.30-0.54 -> ticks draw clockwise from 0.6, labels fade up with them */
+  tl.set(ticks, { autoAlpha: 1 }, 0.6);
+  tl.to(ticks, { strokeDashoffset: 0, duration: 0.3, ease: "power2.out", stagger: 0.04 }, 0.6);
+  tl.fromTo(labs, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.07 }, 0.6);
+
+  /* "low" @1.26: unit label */
+  tl.fromTo("#pd-unit", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.26);
+
+  /* "pressure" @2.68: needle and hub land on 1000; THU EVENING in */
+  tl.fromTo("#pd-needle", { autoAlpha: 0, scale: 0.6, svgOrigin: O, smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: O, smoothOrigin: false, duration: 0.4, ease: "back.out" }, 2.68);
+  tl.fromTo("#pd-hub", { autoAlpha: 0, scale: 0.6, svgOrigin: O, smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: O, smoothOrigin: false, duration: 0.4, ease: "back.out" }, 2.68);
+  tl.fromTo("#pd-thu", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 2.68);
+  tl.set(["#pd-arc1", "#pd-arc2"], { visibility: "visible" }, 3.9);
+
+  /* "fall 32 millibars in roughly a day." @3.96-6.04: needle -90 -> +90, arcs follow */
+  tl.to("#pd-needle", { rotation: 90, svgOrigin: O, duration: 2.08, ease: "power2.inOut", onUpdate: syncArcs }, 3.96);
+
+  /* "32" @4.14: chip */
+  tl.fromTo("#pd-chip", { autoAlpha: 0, scale: 1.2 }, { autoAlpha: 1, scale: 1, transformOrigin: "left center", duration: 0.4, ease: "power4.out" }, 4.14);
+
+  /* "day." @6.04: FRI EVENING in, hub pulse */
+  tl.fromTo("#pd-fri", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 6.04);
+  tl.to("#pd-hub", { scale: 1.3, svgOrigin: O, duration: 0.2, ease: "power2.out" }, 6.04);
+  tl.to("#pd-hub", { scale: 1, svgOrigin: O, duration: 0.3, ease: "power2.in" }, 6.24);
+
+  /* "textbook bar" @6.86-7.26: 24 mb line grows outward from r 250 */
+  tl.fromTo("#pd-bar", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.15, ease: "power1.out" }, 6.86);
+  tl.fromTo("#pd-barline", { scaleY: 0 }, { scaleY: 1, svgOrigin: "960 330", duration: 0.5, ease: "power3.out" }, 6.86);
+
+  /* "24" @9.62: bar label */
+  tl.fromTo("#pd-barlab", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 9.62);
+
+  /* "hours." @11.40: amber arc brightens and settles */
+  tl.to("#pd-arc1", { opacity: 1, duration: 0.3, ease: "power2.out" }, 11.4);
+  tl.to("#pd-arc1", { opacity: 0.9, duration: 0.4, ease: "power2.inOut" }, 11.7);
+
+  /* "clear it easily." @13.46-13.82: red arc glow 14 -> 22 -> 14, 968 label red */
+  tl.to("#pd-arc2", { strokeWidth: 22, duration: 0.3, ease: "power2.out" }, 13.46);
+  tl.to("#pd-arc2", { strokeWidth: 14, duration: 0.3, ease: "power2.in" }, 13.76);
+  tl.to("#pd-l968", { color: "#e74c3c", duration: 0.3, ease: "power2.out" }, 13.46);
+
+  /* "deeper" @14.76: wind ring in, counterclockwise */
+  tl.fromTo("#pd-wind", { autoAlpha: 0, rotation: 0, svgOrigin: O, smoothOrigin: false }, { autoAlpha: 1, rotation: -40, svgOrigin: O, smoothOrigin: false, duration: 0.6, ease: "power2.out" }, 14.76);
+
+  /* "harder the wind blows around it." @16.20-17.40: ring accelerates counterclockwise */
+  tl.to("#pd-wind", { rotation: -400, svgOrigin: O, duration: 2.0, ease: "power2.in" }, 16.2);
+
+  /* tail 18.20-18.80: fade-through, ground stays; ends at comp end */
+  tl.to("#pd-stage", { scale: 1.04, autoAlpha: 0, transformOrigin: "960px 540px", duration: 0.6, ease: "power2.in" }, 17.89);
+
+  window.__timelines["g-a1-3-pressure-dial"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

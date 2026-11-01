@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a3-1-ban-namecard (A3-S1 0.00-11.60, standard): the crimson DRIVING BAN chip from A2 shrinks to the top-left corner,
+  glass name card "ANNDEL TAYLOR · 22" lands, source pill swaps. Overlay on cc-laurel-street (soft focus, orchestrator mounts).
+  Cue times are seconds from the START of A3-S1 (audio/a3-s1.words.json). Comp duration 11.60 s. No photo of her.
+  Presenter circle may be on: nothing at x >= 1600, y >= 680; nothing right of x = 1100.
+-->
+<template>
+<style>
+  #g-a3-1-ban-namecard-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; font-family:Arial, sans-serif; }
+  #bn-ban { position:absolute; left:110px; top:110px; width:670px; height:80px; border-radius:10px; background:#8e2020; }
+  #bn-clock { position:absolute; left:20px; top:12px; width:56px; height:56px; overflow:visible; }
+  #bn-ban-t { position:absolute; left:96px; top:18px; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:38px; line-height:44px; color:#f4f0e8; }
+  #bn-stack { position:absolute; inset:0; }
+  #bn-name { position:absolute; left:110px; bottom:110px; display:table; box-sizing:border-box; padding:22px 34px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; opacity:0; visibility:hidden;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1.15; color:#f2f5f8; }
+  #bn-age { display:inline-block; color:#e8c56a; opacity:0; visibility:hidden; }
+  .bn-src { position:absolute; left:110px; bottom:54px; display:table; box-sizing:border-box; padding:5px 12px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:14px;
+    font-family:Arial, sans-serif; font-weight:400; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+  #bn-srca { opacity:1; visibility:visible; }
+</style>
+<div id="g-a3-1-ban-namecard-root" data-composition-id="g-a3-1-ban-namecard" data-width="1920" data-height="1080">
+  <div id="bn-ban">
+    <svg id="bn-clock" viewBox="0 0 56 56">
+      <circle cx="28" cy="28" r="25" fill="none" stroke="#f4f0e8" stroke-width="3"/>
+      <line x1="28" y1="28" x2="28" y2="14" stroke="#f4f0e8" stroke-width="4" stroke-linecap="round"/>
+      <line x1="28" y1="28" x2="28" y2="8" stroke="#f4f0e8" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="28" cy="28" r="3" fill="#f4f0e8"/>
+    </svg>
+    <div id="bn-ban-t">DRIVING BAN · 9:30 AM</div>
+  </div>
+  <div id="bn-stack">
+    <div id="bn-name">ANNDEL TAYLOR<span id="bn-age">&nbsp;· 22</span></div>
+    <div class="bn-src" id="bn-srca">Erie County driving ban, WKBW</div>
+    <div class="bn-src" id="bn-srcb" data-overlap-ok="source pill swap: srca fades out as srcb fades in, 0.3 s crossfade in the same slot">CNN via CBS News, 28 Dec 2022</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  /* hidden in CSS too; ban chip and S-A visible from frame 0 */
+  tl.set(["#bn-name", "#bn-age", "#bn-srcb"], { autoAlpha: 0 }, 0);
+  tl.set("#bn-ban", { transformOrigin: "left top" }, 0);
+  tl.set("#bn-srca", { autoAlpha: 1 }, 0);
+
+  /* whole-window float: 8 legs x 1.45 s = 11.6 s */
+  tl.fromTo("#bn-stack", { y: 0 }, { y: -4, duration: 1.45, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0);
+
+  /* "follow" @0.90: chip shrinks to the corner (left 96, top 54: x -14, y -56) */
+  tl.to("#bn-ban", { scale: 0.55, x: -14, y: -56, duration: 0.8, ease: "power3.inOut" }, 0.9);
+
+  /* "Andal Taylor." @2.12: name card in, source swap */
+  tl.fromTo("#bn-name", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 2.12);
+  tl.to("#bn-srca", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 2.12);
+  tl.fromTo("#bn-srcb", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 2.12);
+
+  /* "22" @3.68 */
+  tl.fromTo("#bn-age", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "back.out(1.6)" }, 3.68);
+
+  /* "driving" @9.16: chip pulses once, 0.55 -> 0.58 -> 0.55 */
+  tl.to("#bn-ban", { scale: 0.58, duration: 0.25, ease: "sine.out" }, 9.16);
+  tl.to("#bn-ban", { scale: 0.55, duration: 0.25, ease: "sine.in" }, 9.41);
+
+  /* exit before "The snow" @11.72 */
+  tl.to(["#bn-ban", "#bn-name", "#bn-srcb"], { x: -80, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 11.0);
+
+  window.__timelines["g-a3-1-ban-namecard"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

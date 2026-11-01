@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a3-4-map-evening (A3-S3 host 0.00-10.80, standard): the g-a3-2 map returns (settled from frame 0, no STRANDED DRIVERS chip),
+  date chip "SAT · DEC 24 · EVENING", car pin turns grey. Full-frame designed ground, schematic, no street names.
+  Cue times are comp-local = segment seconds (audio/a3-s3.words.json), host starts at 0.00. Comp duration 10.80 s.
+  Geometry copied from g-a3-2-six-min-map (prefix sm- -> me-); pins/labels/route positions unchanged.
+  Layers: me-ground (fixed), me-map (svg, drifts 1 -> 1.03 from 9.66), HUD (schematic label, chip, source pill) fixed outside me-map.
+-->
+<template>
+<style>
+  #g-a3-4-map-evening-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; font-family:Arial, sans-serif; }
+  #me-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #me-map { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #me-loc { opacity:0; visibility:hidden; }
+  #me-car-ring { opacity:0; }
+  #me-chip { position:absolute; left:110px; bottom:110px; display:table; box-sizing:border-box; padding:22px 34px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; opacity:0; visibility:hidden; }
+  #me-chip-t { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1; color:#f2f5f8; }
+  #me-schem { position:absolute; left:96px; top:54px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:1.3; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  #me-src { position:absolute; left:110px; bottom:54px; display:table; box-sizing:border-box; padding:5px 12px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:14px;
+    font-family:Arial, sans-serif; font-weight:400; font-size:19px; line-height:1.3; color:#c8d3e0; }
+</style>
+<div id="g-a3-4-map-evening-root" data-composition-id="g-a3-4-map-evening" data-width="1920" data-height="1080">
+  <div id="me-ground"></div>
+  <svg id="me-map" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <g id="me-grid">
+      <g stroke="#2a3644" stroke-width="14" fill="none">
+        <line x1="300" y1="300" x2="1560" y2="300"/>
+        <line x1="300" y1="470" x2="1560" y2="470"/>
+        <line x1="300" y1="600" x2="1560" y2="600"/>
+        <line x1="300" y1="780" x2="1560" y2="780"/>
+        <line x1="380" y1="240" x2="380" y2="840"/>
+        <line x1="620" y1="240" x2="620" y2="840"/>
+        <line x1="940" y1="240" x2="940" y2="840"/>
+        <line x1="1240" y1="240" x2="1240" y2="840"/>
+        <line x1="1480" y1="240" x2="1480" y2="840"/>
+      </g>
+      <g stroke="#4a5560" stroke-width="2" fill="none">
+        <line x1="300" y1="300" x2="1560" y2="300"/>
+        <line x1="300" y1="470" x2="1560" y2="470"/>
+        <line x1="300" y1="600" x2="1560" y2="600"/>
+        <line x1="300" y1="780" x2="1560" y2="780"/>
+        <line x1="380" y1="240" x2="380" y2="840"/>
+        <line x1="620" y1="240" x2="620" y2="840"/>
+        <line x1="940" y1="240" x2="940" y2="840"/>
+        <line x1="1240" y1="240" x2="1240" y2="840"/>
+        <line x1="1480" y1="240" x2="1480" y2="840"/>
+      </g>
+    </g>
+    <path id="me-route" d="M620,600 L940,600 L940,470 L1240,470" fill="none" stroke="#f2f5f8" stroke-width="5" stroke-dasharray="4 14"/>
+    <circle id="me-car-ring" cx="620" cy="578" r="22" fill="none" stroke="#e8c56a" stroke-width="3"/>
+    <circle id="me-loc" cx="620" cy="578" r="120" fill="none" stroke="#7fb2e5" stroke-width="3"/>
+    <g id="me-car">
+      <path id="me-car-body" d="M0,0 C-6,-12 -22,-22 -22,-38 A22,22 0 1 1 22,-38 C22,-22 6,-12 0,0 Z" fill="#e8c56a"/>
+      <path d="M-9,-38 L-6,-45 L6,-45 L9,-38 Z" fill="#04070c"/>
+      <rect x="-12" y="-38" width="24" height="8" rx="2" fill="#04070c"/>
+      <circle id="me-car-w1" cx="-7" cy="-30" r="3.2" fill="#e8c56a" stroke="#04070c" stroke-width="2"/>
+      <circle id="me-car-w2" cx="7" cy="-30" r="3.2" fill="#e8c56a" stroke="#04070c" stroke-width="2"/>
+    </g>
+    <g id="me-home">
+      <path d="M0,0 C-6,-12 -22,-22 -22,-38 A22,22 0 1 1 22,-38 C22,-22 6,-12 0,0 Z" fill="#f2f5f8"/>
+      <polygon points="-13,-38 0,-50 13,-38" fill="#04070c"/>
+      <rect x="-8" y="-38" width="16" height="12" fill="#04070c"/>
+    </g>
+    <text id="me-lab-car" x="584" y="578" text-anchor="end" font-family="Arial, sans-serif" font-weight="700" font-size="22" letter-spacing="3" fill="#e8c56a">HER CAR</text>
+    <text id="me-lab-home" x="1240" y="394" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="22" letter-spacing="3" fill="#f2f5f8">HOME</text>
+    <text id="me-lab-route" x="780" y="655" text-anchor="middle" font-family="'Arial Black', Arial, sans-serif" font-weight="900" font-size="30" letter-spacing="1" fill="#f2f5f8">ABOUT 6 MINUTES</text>
+  </svg>
+  <div id="me-chip"><span id="me-chip-t">SAT · DEC 24 · EVENING</span></div>
+  <div id="me-schem">SCHEMATIC · NOT TO SCALE</div>
+  <div id="me-src">CNN via CBS News, 28 Dec 2022</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+
+  /* settled state from frame 0: pins on the route ends (tips), map pivot for the late drift */
+  tl.set("#me-car", { x: 620, y: 600 }, 0);
+  tl.set("#me-home", { x: 1240, y: 470 }, 0);
+  tl.set("#me-map", { transformOrigin: "50% 50%" }, 0);
+
+  /* "Her last video" @0.00: ring pulses every 1.2 s, 8 finite pulses, last ends 9.10 */
+  tl.fromTo("#me-car-ring", { attr: { r: 22 }, opacity: 0.8 }, { attr: { r: 46 }, opacity: 0, duration: 0.7, ease: "power2.out", repeat: 7, repeatDelay: 0.5 }, 0);
+  /* route dash crawl 0 -> 9.66, 16 dash periods of 18 px, then it stops with the grey */
+  tl.fromTo("#me-route", { strokeDashoffset: 0 }, { strokeDashoffset: -288, duration: 9.66, ease: "none" }, 0);
+
+  /* "Christmas Eve." @2.68: car pin single flash */
+  tl.to("#me-car", { scale: 1.12, svgOrigin: "620 600", duration: 0.2, ease: "power2.out" }, 2.68);
+  tl.to("#me-car", { scale: 1, svgOrigin: "620 600", duration: 0.2, ease: "power2.in" }, 2.88);
+
+  /* "relatives tracked her phone" @4.98: locator ring closes on the car, r 120 -> 26 over 1.0 s */
+  tl.fromTo("#me-loc", { attr: { r: 120 }, autoAlpha: 0 }, { attr: { r: 26 }, autoAlpha: 1, duration: 1.0, ease: "power2.in" }, 4.98);
+  /* "found the car." @6.36: ring holds r 26 for 0.6 s, out 0.3 s */
+  tl.to("#me-loc", { autoAlpha: 0, duration: 0.3, ease: "power2.out" }, 6.96);
+
+  /* "That evening," @7.42: date chip in */
+  tl.fromTo("#me-chip", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 7.42);
+
+  /* "had lost her life" @9.66: pin, label and route go grey over 1.2 s; pulses and crawl already ended; map drift starts */
+  tl.to(["#me-car-body", "#me-car-w1", "#me-car-w2"], { fill: "#4a5560", duration: 1.2, ease: "sine.inOut" }, 9.66);
+  tl.to("#me-lab-car", { fill: "#93a3b2", duration: 1.2, ease: "sine.inOut" }, 9.66);
+  tl.to("#me-route", { stroke: "#93a3b2", duration: 1.2, ease: "sine.inOut" }, 9.66);
+  tl.to("#me-map", { scale: 1.03, duration: 1.14, ease: "none" }, 9.66);
+
+  /* before "Her mother" @10.82: chip and pill slide out, map fades to ground over 0.6 s (cut to g-a3-5) */
+  tl.to(["#me-chip", "#me-src"], { x: -80, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 10.20);
+  tl.to("#me-map", { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 10.20);
+
+  window.__timelines["g-a3-4-map-evening"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

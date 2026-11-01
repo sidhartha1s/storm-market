@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a5-2-hotel-card (A5-S2, 0 to 7.90 s, standard): plain type on a designed dark ground.
+  A FAMILY WENT TO A HOTEL / AFTER LOSING POWER, then AGE 3. No photo, no name, no pool image.
+  Host starts at A5-S2 start; comp-local = segment time. Comp duration 7.90 s (g-a5-3's map ground cuts in at 7.90).
+  Cue times from audio/a5-s2.words.json (see cue comments). Ground on at frame 0; ends on ground and glow with no text.
+-->
+<template>
+<style>
+  @font-face { font-family:'AbrilFig'; src:url('fonts/AbrilFatface-Regular.ttf'); }
+  #g-a5-2-hotel-card-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; font-family:Arial, sans-serif; }
+  #hc-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #hc-glow { position:absolute; inset:auto; left:510px; top:290px; width:900px; height:500px;
+    background:radial-gradient(ellipse at 50% 50%, rgba(127,178,229,0.06), rgba(127,178,229,0) 70%); }
+  .hc-line { position:absolute; inset:auto; left:0; width:1920px; text-align:center; white-space:nowrap; opacity:0; visibility:hidden; }
+  #hc-l1 { top:380px; height:68px; line-height:68px; display:flex; justify-content:center; align-items:center; }
+  .hc-w { display:block; margin:0 8px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; line-height:68px; letter-spacing:2px; color:#f2f5f8; opacity:0; visibility:hidden; }
+  #hc-l2 { top:470px; height:40px; line-height:40px; font-family:Arial, sans-serif; font-weight:700; font-size:34px; letter-spacing:8px; padding-left:8px; box-sizing:border-box; color:#93a3b2; }
+  #hc-rule { position:absolute; inset:auto; left:760px; top:540px; width:400px; height:2px; background:rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
+  #hc-age { position:absolute; inset:auto; left:0; width:1920px; top:560px; height:26px; line-height:26px; text-align:center; font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:6px; padding-left:6px; box-sizing:border-box; color:#93a3b2; opacity:0; visibility:hidden; }
+  #hc-3 { position:absolute; inset:auto; left:0; width:1920px; top:620px; height:170px; line-height:170px; text-align:center; font-family:'AbrilFig', Georgia, serif; font-size:150px; color:#f2f5f8; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-2-hotel-card-root" data-composition-id="g-a5-2-hotel-card" data-width="1920" data-height="1080">
+  <div id="hc-ground"></div>
+  <div id="hc-glow"></div>
+  <div class="hc-line" id="hc-l1"><span class="hc-w" id="hc-w1">A</span><span class="hc-w" id="hc-w2">FAMILY</span><span class="hc-w" id="hc-w3">WENT</span><span class="hc-w" id="hc-w4">TO</span><span class="hc-w" id="hc-w5">A</span><span class="hc-w" id="hc-w6">HOTEL</span></div>
+  <div class="hc-line" id="hc-l2">AFTER LOSING POWER</div>
+  <div id="hc-rule"></div>
+  <div id="hc-age">AGE</div>
+  <div id="hc-3">3</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#hc-l1", "#hc-l2", "#hc-rule", "#hc-age", "#hc-3", ".hc-w"], { autoAlpha: 0 }, 0);
+  tl.set("#hc-l1", { autoAlpha: 1 }, 0);
+  tl.set("#hc-rule", { scaleX: 0, transformOrigin: "50% 50%" }, 0);
+
+  /* glow drift, whole window, linear: x -40 -> +40 over 7.90 s (keeps something moving) */
+  tl.fromTo("#hc-glow", { x: -40 }, { x: 40, duration: 7.9, ease: "none" }, 0);
+
+  /* L1 "family" @1.88, "hotel" @2.70: per-word rise, six words, last lands ~2.70 */
+  tl.fromTo(".hc-w", { autoAlpha: 0, y: 24, filter: "blur(8px)" }, { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.4, ease: "power3.out", stagger: 0.085 }, 1.88);
+
+  /* L2 "after losing power," @3.10-4.22: lands 3.46 after line 1 settled; rule draws 3.80 */
+  tl.set("#hc-l2", { autoAlpha: 1 }, 3.46);
+  tl.fromTo("#hc-l2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 3.46);
+  tl.fromTo("#hc-rule", { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.5, ease: "power2.out" }, 3.8);
+
+  /* "three-year-old girl" @4.94-5.70: AGE 4.94, 3 at 5.00 */
+  tl.fromTo("#hc-age", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 4.94);
+  tl.fromTo("#hc-3", { autoAlpha: 0, scale: 1.2 }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power4.out" }, 5.0);
+
+  /* "lost her life in the hotel's pool." @5.70-7.58: lines settle to 85 %, 3 floats */
+  tl.to(["#hc-l1", "#hc-l2"], { autoAlpha: 0.85, duration: 0.8, ease: "power1.inOut" }, 5.7);
+  tl.to("#hc-3", { y: -4, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1 }, 5.7);
+
+  /* after "pool." @7.58: all text out, ground and glow stay; last exit ends 7.90 */
+  tl.to("#hc-l1", { autoAlpha: 0, y: -12, duration: 0.5, ease: "power2.in" }, 7.3);
+  tl.to("#hc-l2", { autoAlpha: 0, y: -12, duration: 0.5, ease: "power2.in" }, 7.325);
+  tl.to("#hc-rule", { autoAlpha: 0, y: -12, duration: 0.5, ease: "power2.in" }, 7.35);
+  tl.to("#hc-age", { autoAlpha: 0, y: -12, duration: 0.5, ease: "power2.in" }, 7.375);
+  tl.to("#hc-3", { autoAlpha: 0, y: -12, duration: 0.5, ease: "power2.in" }, 7.4);
+
+  window.__timelines["g-a5-2-hotel-card"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a4-2-sinking-fleet (A4-S2, deep): full-frame drift diagram. 12 plows, 8 sink (two in every group of three);
+  10 fire engines frost, 7 sink (a majority, no number printed); name card SARAH KAUFMAN · NYU WAGNER;
+  chip MOST FIRE VEHICLES STUCK; then the street: an ambulance stops behind a half-buried plow.
+  Cue times are seconds from the START of A4-S2 (audio/a4-s2.words.json). Comp duration 17.9 s (wav end), hard cut out.
+  No footage under it: full-frame designed ground on from frame 0.
+  Icon x from the brief's formulas: plows 250 + 118 i (i 0..11), engines 250 + 134 i (i 0..9).
+-->
+<template>
+<style>
+  #g-a4-2-sinking-fleet-root { position:absolute; inset:0; overflow:hidden; pointer-events:none;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; color:#dfe7ee; }
+  #sf-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .sf-ic, .sf-hid { opacity:0; visibility:hidden; }
+  .sf-plow { color:#dfe7ee; }
+  .sf-eng { color:#c0392b; }
+  .sf-stplow { color:#93a3b2; --sf-blade:#5a768f; }
+  .sf-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+  .sf-card { position:absolute; left:110px; bottom:110px; display:table; box-sizing:border-box; padding:22px 34px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; opacity:0; visibility:hidden; }
+  .sf-row { display:flex; flex-direction:row; align-items:baseline; white-space:nowrap; }
+  .sf-big { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1; color:#f2f5f8; }
+  .sf-red { color:#e74c3c; }
+  .sf-sub { display:block; margin-left:14px; font-family:Arial, sans-serif; font-weight:700; font-size:32px; line-height:1; color:#e8c56a; }
+  .sf-chiplab { display:block; margin-left:16px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:38px; line-height:1; color:#dfe7ee; }
+  .sf-src { position:absolute; left:110px; bottom:54px; display:table; box-sizing:border-box; padding:5px 12px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:14px;
+    font-family:Arial, sans-serif; font-weight:400; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-2-sinking-fleet-root" data-composition-id="g-a4-2-sinking-fleet" data-width="1920" data-height="1080">
+  <svg id="sf-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- plow, facing right: dump box, cab, blade at the front. Body = currentColor, blade #93a3b2. -->
+      <symbol id="sf-plow-shape" viewBox="0 0 96 64">
+        <rect x="2" y="18" width="50" height="30" rx="3" fill="currentColor"/>
+        <path d="M52 10 H72 L78 26 V50 H52 Z" fill="currentColor"/>
+        <path d="M58 15 H70 L74 26 H58 Z" fill="#0b1016"/>
+        <rect x="2" y="44" width="80" height="8" fill="currentColor"/>
+        <path d="M80 34 L86 34 L86 40 L80 40 Z" fill="#93a3b2"/>
+        <path d="M85 24 L95 20 L95 62 L85 58 Z" style="fill:var(--sf-blade,#93a3b2)"/>
+        <circle cx="18" cy="54" r="10" fill="currentColor"/>
+        <circle cx="64" cy="54" r="10" fill="currentColor"/>
+        <circle cx="18" cy="54" r="4" fill="#0b1016"/>
+        <circle cx="64" cy="54" r="4" fill="#0b1016"/>
+      </symbol>
+      <!-- fire engine, facing right: box body, cab, ladder line on the roof. Body = currentColor, ladder #dfe7ee. -->
+      <symbol id="sf-eng-shape" viewBox="0 0 110 64">
+        <rect x="2" y="22" width="80" height="30" rx="3" fill="currentColor"/>
+        <path d="M82 14 H100 L108 30 V52 H82 Z" fill="currentColor"/>
+        <path d="M86 19 H98 L103 30 H86 Z" fill="#0b1016"/>
+        <rect x="8" y="10" width="70" height="2" fill="#dfe7ee"/>
+        <rect x="8" y="17" width="70" height="2" fill="#dfe7ee"/>
+        <rect x="12" y="10" width="2" height="9" fill="#dfe7ee"/>
+        <rect x="26" y="10" width="2" height="9" fill="#dfe7ee"/>
+        <rect x="40" y="10" width="2" height="9" fill="#dfe7ee"/>
+        <rect x="54" y="10" width="2" height="9" fill="#dfe7ee"/>
+        <rect x="68" y="10" width="2" height="9" fill="#dfe7ee"/>
+        <rect x="20" y="19" width="3" height="3" fill="#dfe7ee"/>
+        <rect x="64" y="19" width="3" height="3" fill="#dfe7ee"/>
+        <circle cx="22" cy="54" r="10" fill="currentColor"/>
+        <circle cx="90" cy="54" r="10" fill="currentColor"/>
+        <circle cx="22" cy="54" r="4" fill="#0b1016"/>
+        <circle cx="90" cy="54" r="4" fill="#0b1016"/>
+      </symbol>
+      <!-- frost: two 14 px wheel rings + a 0.35 sheen over the lower half -->
+      <symbol id="sf-frost-shape" viewBox="0 0 110 64">
+        <rect x="2" y="38" width="106" height="14" rx="3" fill="#7fb2e5" fill-opacity="0.35"/>
+        <circle cx="22" cy="54" r="7" fill="none" stroke="#7fb2e5" stroke-width="3"/>
+        <circle cx="90" cy="54" r="7" fill="none" stroke="#7fb2e5" stroke-width="3"/>
+      </symbol>
+      <!-- ambulance, facing right: box body, cab, one red stripe. No cross, no star. -->
+      <symbol id="sf-amb-shape" viewBox="0 0 110 64">
+        <rect x="2" y="8" width="72" height="44" rx="3" fill="#f2f5f8"/>
+        <path d="M74 20 H96 L108 34 V52 H74 Z" fill="#f2f5f8"/>
+        <path d="M80 24 H94 L102 34 H80 Z" fill="#0b1016"/>
+        <rect x="2" y="36" width="106" height="6" fill="#e74c3c"/>
+        <circle cx="22" cy="54" r="10" fill="#f2f5f8"/>
+        <circle cx="88" cy="54" r="10" fill="#f2f5f8"/>
+        <circle cx="22" cy="54" r="4" fill="#0b1016"/>
+        <circle cx="88" cy="54" r="4" fill="#0b1016"/>
+      </symbol>
+    </defs>
+
+    <!-- ROW 1: plows, standing on y 372 (icon y 308..372). Outer g = entrance, inner g = sink / bob / dim. -->
+    <g id="sf-row1">
+      <g id="sf-p0" class="sf-ic"><g id="sf-p0i" class="sf-plow"><use href="#sf-plow-shape" x="250" y="308" width="96" height="64"/></g></g>
+      <g id="sf-p1" class="sf-ic"><g id="sf-p1i" class="sf-plow"><use href="#sf-plow-shape" x="368" y="308" width="96" height="64"/></g></g>
+      <g id="sf-p2" class="sf-ic"><g id="sf-p2i" class="sf-plow"><use href="#sf-plow-shape" x="486" y="308" width="96" height="64"/></g></g>
+      <g id="sf-p3" class="sf-ic"><g id="sf-p3i" class="sf-plow"><use href="#sf-plow-shape" x="604" y="308" width="96" height="64"/></g></g>
+      <g id="sf-p4" class="sf-ic"><g id="sf-p4i" class="sf-plow"><use href="#sf-plow-shape" x="722" y="308" width="96" height="64"/></g></g>
+      <g id="sf-p5" class="sf-ic"><g id="sf-p5i" class="sf-plow"><use href="#sf-plow-shape" x="840" y="308" width="96" height="64"/></g></g>
+      <g id="sf-p6" class="sf-ic"><g id="sf-p6i" class="sf-plow"><use href="#sf-plow-shape" x="958" y="308" width="96" height="64"/></g></g>
+      <g id="sf-p7" class="sf-ic"><g id="sf-p7i" class="sf-plow"><use href="#sf-plow-shape" x="1076" y="308" width="96" height="64"/></g></g>
+      <g id="sf-p8" class="sf-ic"><g id="sf-p8i" class="sf-plow"><use href="#sf-plow-shape" x="1194" y="308" width="96" height="64"/></g></g>
+      <g id="sf-p9" class="sf-ic"><g id="sf-p9i" class="sf-plow"><use href="#sf-plow-shape" x="1312" y="308" width="96" height="64"/></g></g>
+      <g id="sf-p10" class="sf-ic"><g id="sf-p10i" class="sf-plow"><use href="#sf-plow-shape" x="1430" y="308" width="96" height="64"/></g></g>
+      <g id="sf-p11" class="sf-ic"><g id="sf-p11i" class="sf-plow"><use href="#sf-plow-shape" x="1548" y="308" width="96" height="64"/></g></g>
+      <!-- drift 1: in FRONT of row 1, x 200..1700, y 372..430, wavy top (amplitude 6) -->
+      <path id="sf-drift1" fill="#dfe7ee"
+        d="M200 430 L200 372 Q237.5 360 275 372 T350 372 T425 372 T500 372 T575 372 T650 372 T725 372 T800 372 T875 372 T950 372 T1025 372 T1100 372 T1175 372 T1250 372 T1325 372 T1400 372 T1475 372 T1550 372 T1625 372 T1700 372 L1700 430 Z"/>
+      <!-- snow puffs (two alternating sets), burst from the drift top at the sinking icon's centre -->
+      <g id="sf-pa1" class="sf-hid"><circle cx="0" cy="372" r="4" fill="#dfe7ee"/><circle cx="0" cy="372" r="3" fill="#dfe7ee"/><circle cx="0" cy="372" r="4" fill="#dfe7ee"/><circle cx="0" cy="372" r="3" fill="#dfe7ee"/><circle cx="0" cy="372" r="4" fill="#dfe7ee"/><circle cx="0" cy="372" r="3" fill="#dfe7ee"/></g>
+      <g id="sf-pb1" class="sf-hid"><circle cx="0" cy="372" r="4" fill="#dfe7ee"/><circle cx="0" cy="372" r="3" fill="#dfe7ee"/><circle cx="0" cy="372" r="4" fill="#dfe7ee"/><circle cx="0" cy="372" r="3" fill="#dfe7ee"/><circle cx="0" cy="372" r="4" fill="#dfe7ee"/><circle cx="0" cy="372" r="3" fill="#dfe7ee"/></g>
+    </g>
+
+    <!-- ROW 2: fire engines, standing on y 656 (icon y 592..656). Frost layer rides inside the inner g. -->
+    <g id="sf-row2">
+      <g id="sf-e0" class="sf-ic"><g id="sf-e0i" class="sf-eng"><use href="#sf-eng-shape" x="250" y="592" width="110" height="64"/><g id="sf-f0" class="sf-hid"><use href="#sf-frost-shape" x="250" y="592" width="110" height="64"/></g></g></g>
+      <g id="sf-e1" class="sf-ic"><g id="sf-e1i" class="sf-eng"><use href="#sf-eng-shape" x="384" y="592" width="110" height="64"/><g id="sf-f1" class="sf-hid"><use href="#sf-frost-shape" x="384" y="592" width="110" height="64"/></g></g></g>
+      <g id="sf-e2" class="sf-ic"><g id="sf-e2i" class="sf-eng"><use href="#sf-eng-shape" x="518" y="592" width="110" height="64"/><g id="sf-f2" class="sf-hid"><use href="#sf-frost-shape" x="518" y="592" width="110" height="64"/></g></g></g>
+      <g id="sf-e3" class="sf-ic"><g id="sf-e3i" class="sf-eng"><use href="#sf-eng-shape" x="652" y="592" width="110" height="64"/><g id="sf-f3" class="sf-hid"><use href="#sf-frost-shape" x="652" y="592" width="110" height="64"/></g></g></g>
+      <g id="sf-e4" class="sf-ic"><g id="sf-e4i" class="sf-eng"><use href="#sf-eng-shape" x="786" y="592" width="110" height="64"/><g id="sf-f4" class="sf-hid"><use href="#sf-frost-shape" x="786" y="592" width="110" height="64"/></g></g></g>
+      <g id="sf-e5" class="sf-ic"><g id="sf-e5i" class="sf-eng"><use href="#sf-eng-shape" x="920" y="592" width="110" height="64"/><g id="sf-f5" class="sf-hid"><use href="#sf-frost-shape" x="920" y="592" width="110" height="64"/></g></g></g>
+      <g id="sf-e6" class="sf-ic"><g id="sf-e6i" class="sf-eng"><use href="#sf-eng-shape" x="1054" y="592" width="110" height="64"/><g id="sf-f6" class="sf-hid"><use href="#sf-frost-shape" x="1054" y="592" width="110" height="64"/></g></g></g>
+      <g id="sf-e7" class="sf-ic"><g id="sf-e7i" class="sf-eng"><use href="#sf-eng-shape" x="1188" y="592" width="110" height="64"/><g id="sf-f7" class="sf-hid"><use href="#sf-frost-shape" x="1188" y="592" width="110" height="64"/></g></g></g>
+      <g id="sf-e8" class="sf-ic"><g id="sf-e8i" class="sf-eng"><use href="#sf-eng-shape" x="1322" y="592" width="110" height="64"/><g id="sf-f8" class="sf-hid"><use href="#sf-frost-shape" x="1322" y="592" width="110" height="64"/></g></g></g>
+      <g id="sf-e9" class="sf-ic"><g id="sf-e9i" class="sf-eng"><use href="#sf-eng-shape" x="1456" y="592" width="110" height="64"/><g id="sf-f9" class="sf-hid"><use href="#sf-frost-shape" x="1456" y="592" width="110" height="64"/></g></g></g>
+      <!-- drift 2: x 200..1590 (stops short of the presenter corner), y 656..706 -->
+      <path id="sf-drift2" class="sf-hid" fill="#dfe7ee"
+        d="M200 706 L200 656 Q234.75 644 269.5 656 T339 656 T408.5 656 T478 656 T547.5 656 T617 656 T686.5 656 T756 656 T825.5 656 T895 656 T964.5 656 T1034 656 T1103.5 656 T1173 656 T1242.5 656 T1312 656 T1381.5 656 T1451 656 T1520.5 656 T1590 656 L1590 706 Z"/>
+      <g id="sf-pa2" class="sf-hid"><circle cx="0" cy="656" r="4" fill="#dfe7ee"/><circle cx="0" cy="656" r="3" fill="#dfe7ee"/><circle cx="0" cy="656" r="4" fill="#dfe7ee"/><circle cx="0" cy="656" r="3" fill="#dfe7ee"/><circle cx="0" cy="656" r="4" fill="#dfe7ee"/><circle cx="0" cy="656" r="3" fill="#dfe7ee"/></g>
+      <g id="sf-pb2" class="sf-hid"><circle cx="0" cy="656" r="4" fill="#dfe7ee"/><circle cx="0" cy="656" r="3" fill="#dfe7ee"/><circle cx="0" cy="656" r="4" fill="#dfe7ee"/><circle cx="0" cy="656" r="3" fill="#dfe7ee"/><circle cx="0" cy="656" r="4" fill="#dfe7ee"/><circle cx="0" cy="656" r="3" fill="#dfe7ee"/></g>
+    </g>
+
+    <!-- row labels (HUD, never on an icon or drift) -->
+    <text id="sf-lab1" class="sf-lab sf-hid" x="250" y="270">PLOWS SENT OUT</text>
+    <text id="sf-lab2" class="sf-lab sf-hid" x="250" y="552">BUFFALO FIRE DEPT.</text>
+
+    <!-- STREET beat: road strip, half-buried plow (scale 1.5, front at x 1080), mound in front of it -->
+    <g id="sf-street" class="sf-hid">
+      <rect x="360" y="560" width="1080" height="40" fill="#2a3644"/>
+      <use href="#sf-plow-shape" x="936" y="452" width="144" height="96" class="sf-stplow"/>
+      <path fill="#dfe7ee" d="M860 600 C880 520 910 505 940 503 L1030 497 C1060 470 1085 465 1092 490 L1100 600 Z"/>
+    </g>
+    <!-- ambulance (scale 1.5, 165 x 96): rests on y 600, final front edge x 840 (left 675) -->
+    <g id="sf-amb" class="sf-hid"><use href="#sf-amb-shape" x="675" y="504" width="165" height="96"/></g>
+
+    <!-- falling snow: 40 dots, 2..4 px, two depth layers, 20 px/s average with a sideways drift -->
+    <g id="sf-snow-far" fill="#dfe7ee">
+      <circle cx="64" cy="-310" r="1" opacity="0.5"/><circle cx="188" cy="420" r="1.5" opacity="0.6"/>
+      <circle cx="301" cy="-40" r="1" opacity="0.55"/><circle cx="415" cy="760" r="1.5" opacity="0.5"/>
+      <circle cx="522" cy="190" r="1" opacity="0.6"/><circle cx="640" cy="-220" r="1.5" opacity="0.55"/>
+      <circle cx="733" cy="560" r="1" opacity="0.5"/><circle cx="851" cy="980" r="1.5" opacity="0.6"/>
+      <circle cx="947" cy="80" r="1" opacity="0.55"/><circle cx="1066" cy="-360" r="1.5" opacity="0.5"/>
+      <circle cx="1170" cy="690" r="1" opacity="0.6"/><circle cx="1288" cy="300" r="1.5" opacity="0.55"/>
+      <circle cx="1392" cy="-130" r="1" opacity="0.5"/><circle cx="1504" cy="880" r="1.5" opacity="0.6"/>
+      <circle cx="1611" cy="470" r="1" opacity="0.55"/><circle cx="1720" cy="20" r="1.5" opacity="0.5"/>
+      <circle cx="1838" cy="-270" r="1" opacity="0.6"/><circle cx="1890" cy="630" r="1.5" opacity="0.55"/>
+      <circle cx="122" cy="840" r="1" opacity="0.5"/><circle cx="1004" cy="1040" r="1.5" opacity="0.6"/>
+    </g>
+    <g id="sf-snow-near" fill="#dfe7ee">
+      <circle cx="30" cy="140" r="2" opacity="0.8"/><circle cx="152" cy="-180" r="1.5" opacity="0.7"/>
+      <circle cx="262" cy="610" r="2" opacity="0.75"/><circle cx="371" cy="230" r="1.5" opacity="0.8"/>
+      <circle cx="468" cy="-330" r="2" opacity="0.7"/><circle cx="586" cy="900" r="1.5" opacity="0.75"/>
+      <circle cx="694" cy="40" r="2" opacity="0.8"/><circle cx="805" cy="480" r="1.5" opacity="0.7"/>
+      <circle cx="912" cy="-90" r="2" opacity="0.75"/><circle cx="1021" cy="740" r="1.5" opacity="0.8"/>
+      <circle cx="1133" cy="-250" r="2" opacity="0.7"/><circle cx="1240" cy="1010" r="1.5" opacity="0.75"/>
+      <circle cx="1348" cy="400" r="2" opacity="0.8"/><circle cx="1455" cy="110" r="1.5" opacity="0.7"/>
+      <circle cx="1566" cy="-370" r="2" opacity="0.75"/><circle cx="1671" cy="820" r="1.5" opacity="0.8"/>
+      <circle cx="1779" cy="260" r="2" opacity="0.7"/><circle cx="1874" cy="-60" r="1.5" opacity="0.75"/>
+      <circle cx="560" cy="1060" r="2" opacity="0.8"/><circle cx="1702" cy="580" r="1.5" opacity="0.7"/>
+    </g>
+  </svg>
+
+  <!-- lower-third slot: one element at a time -->
+  <div class="sf-card" id="sf-name"><div class="sf-row"><span class="sf-big" id="sf-name-a">SARAH KAUFMAN</span><span class="sf-sub" id="sf-name-b">· NYU WAGNER</span></div></div>
+  <div class="sf-card" id="sf-chip"><div class="sf-row"><span class="sf-big sf-red" id="sf-chip-a">MOST</span><span class="sf-chiplab" id="sf-chip-b">FIRE VEHICLES STUCK</span></div></div>
+  <div class="sf-src" id="sf-src">NYU Wagner review for the City of Buffalo, via AP and Firehouse, Jun 2023</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const $ = (id) => document.getElementById(id);
+  const P_X = [250, 368, 486, 604, 722, 840, 958, 1076, 1194, 1312, 1430, 1548];   /* 250 + 118 i */
+  const E_X = [250, 384, 518, 652, 786, 920, 1054, 1188, 1322, 1456];              /* 250 + 134 i */
+  const P_SINK = [1, 2, 4, 5, 7, 8, 10, 11];  /* two in every group of three */
+  const E_SINK = [0, 1, 2, 4, 5, 7, 8];       /* 7 of 10 */
+  const P_T = [4.24, 4.54, 4.84, 5.14, 5.44, 5.74, 6.04, 6.34];
+  const E_T = [11.20, 11.53, 11.86, 12.19, 12.52, 12.85, 13.18];
+  const PUFF_DX = [-26, -15, -5, 6, 16, 27], PUFF_DY = [-16, -27, -34, -31, -24, -13];
+  const pOut = P_X.map((x, i) => $("sf-p" + i)), pIn = P_X.map((x, i) => $("sf-p" + i + "i"));
+  const eOut = E_X.map((x, i) => $("sf-e" + i)), eIn = E_X.map((x, i) => $("sf-e" + i + "i"));
+  const frost = E_X.map((x, i) => $("sf-f" + i));
+
+  /* start states at 0 (also hidden in CSS) */
+  tl.set(pOut.concat(eOut), { y: 0 }, 0);
+  pIn.forEach((el, i) => tl.set(el, { y: 0, rotation: 0, svgOrigin: (P_X[i] + 48) + " 372" }, 0));
+  eIn.forEach((el, i) => tl.set(el, { y: 0, rotation: 0, svgOrigin: (E_X[i] + 55) + " 656" }, 0));
+  tl.set(["#sf-snow-far", "#sf-snow-near"], { x: 0, y: 0 }, 0);
+
+  /* whole window: falling snow, far 16 px/s, near 24 px/s (avg 20), slight sideways drift */
+  tl.fromTo("#sf-snow-far", { x: 0, y: 0 }, { x: -30, y: 286, duration: 17.9, ease: "none" }, 0);
+  tl.fromTo("#sf-snow-near", { x: 0, y: 0 }, { x: -46, y: 430, duration: 17.9, ease: "none" }, 0);
+
+  /* "Months" @0.00: row 1 in, stagger 0.05 from 0.05 */
+  tl.fromTo(pOut, { y: -20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.35, ease: "power3.out", stagger: 0.05 }, 0.05);
+  /* label in @0.30 */
+  tl.fromTo("#sf-lab1", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.30);
+
+  /* "Sarah" @1.88: name card + source pill */
+  tl.fromTo("#sf-name", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 1.88);
+  tl.fromTo("#sf-src", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 1.88);
+
+  /* one sink: drop + tilt, settle, puff at contact, then dim */
+  function sink(inner, cx, baseY, at, k, puffs, dimTo) {
+    const rot = k % 2 === 0 ? 7 : -7;
+    const o = cx + " " + baseY;
+    tl.to(inner, { y: 40, rotation: rot, svgOrigin: o, duration: 0.55, ease: "power2.in" }, at);
+    tl.to(inner, { y: 42, svgOrigin: o, duration: 0.08, ease: "power1.out" }, at + 0.55);
+    tl.to(inner, { y: 40, svgOrigin: o, duration: 0.12, ease: "power2.out" }, at + 0.63);
+    const g = puffs[k % 2], dots = g.querySelectorAll("circle");
+    tl.set(g, { x: cx, autoAlpha: 1 }, at + 0.55);
+    tl.fromTo(dots, { x: 0, y: 0 }, { x: (i) => PUFF_DX[i], y: (i) => PUFF_DY[i], duration: 0.5, ease: "power2.out", immediateRender: false }, at + 0.55);
+    tl.to(g, { autoAlpha: 0, duration: 0.3, ease: "power1.in" }, at + 0.75);
+    tl.to(inner, { color: dimTo, duration: 0.3, ease: "power1.out" }, at + 0.75);
+  }
+
+  /* "same thing on the emergency side" @4.24 to 5.34: 8 plows sink in index order */
+  const puff1 = [$("sf-pa1"), $("sf-pb1")];
+  P_SINK.forEach((i, k) => sink(pIn[i], P_X[i] + 48, 372, P_T[k], k, puff1, "#5a768f"));  /* @4.24 + 0.3 k */
+
+  /* after "side." @5.34: name card out */
+  tl.to("#sf-name", { x: -80, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, 5.60);
+
+  /* standing plows (0, 3, 6, 9) bob, sine, finite repeats */
+  [0, 3, 6, 9].forEach((i, n) => tl.to(pIn[i], { y: -2, duration: 1, ease: "sine.inOut", yoyo: true, repeat: 15, svgOrigin: (P_X[i] + 48) + " 372" }, 0.7 + 0.25 * n));
+
+  /* "Rescue vehicles" @6.54: row 2 + drift 2 in */
+  tl.fromTo("#sf-drift2", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.54);
+  tl.fromTo(eOut, { y: -20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.35, ease: "power3.out", stagger: 0.05 }, 6.54);
+
+  /* standing engines (3, 6, 9) bob */
+  [3, 6, 9].forEach((i, n) => tl.to(eIn[i], { y: -2, duration: 1, ease: "sine.inOut", yoyo: true, repeat: 9, svgOrigin: (E_X[i] + 55) + " 656" }, 7.3 + 0.25 * n));
+
+  /* "froze" @8.36: frost rings + sheen on all 10 engines */
+  frost.forEach((el, i) => tl.fromTo(el, { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, transformBox: "fill-box", transformOrigin: "50% 50%", duration: 0.4, ease: "back.out(1.4)" }, 8.36 + 0.03 * i));
+
+  /* "most" @11.06: chip in, MOST punches */
+  tl.fromTo("#sf-chip", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 11.06);
+  tl.fromTo("#sf-chip-a", { scale: 1.3 }, { scale: 1, transformOrigin: "left center", duration: 0.4, ease: "power4.out" }, 11.06);
+
+  /* "most of the Buffalo Fire Department's own trucks were stuck too" @11.20 to 13.18: 7 engines sink */
+  const puff2 = [$("sf-pa2"), $("sf-pb2")];
+  E_SINK.forEach((i, k) => sink(eIn[i], E_X[i] + 55, 656, E_T[k], k, puff2, "#8e2020"));  /* @11.20 + 0.33 k */
+
+  /* "Buffalo" @11.46: row 2 label */
+  tl.fromTo("#sf-lab2", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 11.46);
+
+  /* after "too." @13.48: chip + source out */
+  tl.to(["#sf-chip", "#sf-src"], { x: -80, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, 13.90);
+
+  /* "If" @14.22: rows and drifts dim, labels out */
+  tl.to("#sf-row1", { opacity: 0.18, duration: 0.5, ease: "power2.inOut" }, 14.22);
+  tl.to("#sf-row2", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 14.22);  /* row 2 off so engine tops never touch the lane */
+  tl.to(["#sf-lab1", "#sf-lab2"], { autoAlpha: 0, duration: 0.5, ease: "power2.inOut" }, 14.22);
+
+  /* "plow" @14.48: lane, mound and half-buried plow */
+  tl.fromTo("#sf-street", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 14.48);
+
+  /* "ambulance" @16.38: drives in, front edge 120 -> 840 */
+  tl.fromTo("#sf-amb", { x: -720, autoAlpha: 0, rotation: 0 }, { x: 0, autoAlpha: 1, rotation: 0, svgOrigin: "757.5 600", duration: 0.56, ease: "power3.out" }, 16.38);
+  /* "no way" @16.94: a small rock as it stops */
+  tl.to("#sf-amb", { rotation: -1.5, svgOrigin: "757.5 600", duration: 0.15, ease: "power2.out" }, 16.94);
+  tl.to("#sf-amb", { rotation: 0, svgOrigin: "757.5 600", duration: 0.15, ease: "power2.in" }, 17.09);
+
+  /* wav end 17.90: hard cut into the S3 footage (the snow tweens set the 17.9 s length) */
+
+  window.__timelines["g-a4-2-sinking-fleet"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
