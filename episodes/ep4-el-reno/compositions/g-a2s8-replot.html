@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a2s8-replot: other sub-vortices came and went; a second tornado nearby spun clockwise.
+     Brief: mg_specs/replot.md. Opens at 300 px per mile and widens to 240; the bar shortens with it. North up.
+     The second tornado sits east-southeast of the main one (survey paper); its distance and size are schematic. -->
+<template>
+<style>
+  #rp28-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 54% 50%, #0b1016 0%, #030507 78%); }
+  .rp28-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .rp28-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; fill:#f2f5f8; }
+  .rp28-mid { font-family:Arial, sans-serif; font-weight:700; font-size:30px; fill:#dfe7ee; }
+  .rp28-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+  .rp28-sm { font-family:Arial, sans-serif; font-weight:700; font-size:20px; letter-spacing:1px; fill:#93a3b2; }
+</style>
+<div id="rp28-root" data-composition-id="g-a2s8-replot" data-width="1920" data-height="1080">
+  <svg class="rp28-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="rp28-grid" width="150" height="150" patternUnits="userSpaceOnUse" x="140" y="98"><path d="M150,0 L0,0 L0,150" fill="none" stroke="#2a3644" stroke-width="1.5" stroke-opacity="0.55"/></pattern>
+      <radialGradient id="rp28-echo"><stop offset="0" stop-color="#7fb2e5" stop-opacity="0.34"/><stop offset="1" stop-color="#7fb2e5" stop-opacity="0"/></radialGradient>
+      <radialGradient id="rp28-glow"><stop offset="0" stop-color="#e8c56a" stop-opacity="0.75"/><stop offset="1" stop-color="#e8c56a" stop-opacity="0"/></radialGradient>
+    </defs>
+    <g id="rp28-scene">
+      <rect x="-310" y="-202" width="2700" height="1650" fill="url(#rp28-grid)"/>
+      <!-- the wide circulation: r 390 px = 1.3 miles -->
+      <ellipse id="rp28-e1" cx="900" cy="400" rx="150" ry="110" fill="url(#rp28-echo)"/>
+      <ellipse id="rp28-e2" cx="1240" cy="700" rx="120" ry="90" fill="url(#rp28-echo)"/>
+      <ellipse id="rp28-e3" cx="930" cy="760" rx="170" ry="100" fill="url(#rp28-echo)"/>
+      <circle cx="1040" cy="548" r="390" fill="none" stroke="#5a768f" stroke-width="30" stroke-opacity="0.22"/>
+      <circle cx="1040" cy="548" r="390" fill="none" stroke="#7fb2e5" stroke-width="2.5"/>
+      <circle id="rp28-ticks" cx="1040" cy="548" r="390" fill="none" stroke="#7fb2e5" stroke-width="14" stroke-opacity="0.7" stroke-dasharray="5 44"/>
+      <!-- other sub-vortices: thin pale dashed circles, a different mark from the tracked one -->
+      <circle id="rp28-o1" cx="900" cy="470" r="17" fill="none" stroke="#7fb2e5" stroke-width="3" stroke-dasharray="5 4"/>
+      <circle id="rp28-o2" cx="1210" cy="420" r="13" fill="none" stroke="#7fb2e5" stroke-width="3" stroke-dasharray="5 4"/>
+      <circle id="rp28-o3" cx="1170" cy="720" r="19" fill="none" stroke="#7fb2e5" stroke-width="3" stroke-dasharray="5 4"/>
+      <circle id="rp28-o4" cx="860" cy="700" r="14" fill="none" stroke="#7fb2e5" stroke-width="3" stroke-dasharray="5 4"/>
+      <circle id="rp28-o5" cx="1020" cy="330" r="16" fill="none" stroke="#7fb2e5" stroke-width="3" stroke-dasharray="5 4"/>
+      <!-- the tracked sub-vortex: r 15 px = 160 m across -->
+      <g id="rp28-sv"><g id="rp28-svin">
+        <circle cx="0" cy="0" r="34" fill="url(#rp28-glow)"/>
+        <circle cx="0" cy="0" r="15" fill="#e8c56a" fill-opacity="0.35" stroke="#f5d98b" stroke-width="3"/>
+        <path id="rp28-spin" d="M0,-9 A9,9 0 0 0 -9,0" fill="none" stroke="#f2f5f8" stroke-width="3"/>
+      </g></g>
+      <!-- the second tornado: outside the ring, east-southeast, turning clockwise -->
+      <g id="rp28-anti">
+        <circle cx="1502" cy="739" r="30" fill="#e74c3c" fill-opacity="0.2" stroke="#e74c3c" stroke-width="4"/>
+        <g id="rp28-cw"><path d="M1458.8,723.3 A46,46 0 0 1 1545.2,723.3 M1547.9,707.4 L1545.2,723.3 L1532.9,712.8" fill="none" stroke="#e74c3c" stroke-width="4"/></g>
+      </g>
+    </g>
+    <!-- the usual direction, counter-clockwise, on the main ring (drawn for the widened view) -->
+    <path id="rp28-ccw" d="M867.5,249.2 A345,345 0 0 0 741.2,375.5 M757,366 L741.2,375.5 L741.4,357" fill="none" stroke="#dfe7ee" stroke-width="4"/>
+    <text id="rp28-t-usual" class="rp28-lab" x="716" y="300" text-anchor="end">Usual direction</text>
+    <text id="rp28-t-src" class="rp28-sm" x="96" y="150">Marshall et al., damage survey and radar analysis</text>
+    <text id="rp28-big" class="rp28-big" x="96" y="250">Other sub-vortices</text>
+    <text id="rp28-t-went" class="rp28-mid" x="96" y="298" fill="#7fb2e5">came and went</text>
+    <text id="rp28-t-anti" class="rp28-mid" x="1376" y="604" fill="#e74c3c">Second tornado</text>
+    <text id="rp28-t-cw" class="rp28-lab" x="1376" y="638">spinning clockwise</text>
+    <text id="rp28-t-sch" class="rp28-sm" x="96" y="908">Second tornado: distance and size schematic</text>
+    <!-- scale bar: 300 px = 1 mile, shortens to 240 px as the view widens -->
+    <path id="rp28-bar" d="M96,986 L396,986 M96,976 L96,996 M396,976 L396,996" fill="none" stroke="#dfe7ee" stroke-width="3"/>
+    <text id="rp28-t-bar" class="rp28-sm" x="96" y="964" fill="#dfe7ee">1 mile</text>
+    <text id="rp28-t-own" class="rp28-sm" x="96" y="1022">Our redraw of mobile-radar measurements · ring 2.6 miles at its widest</text>
+    <path id="rp28-north" d="M1760,150 L1760,96 M1748,112 L1760,92 L1772,112" fill="none" stroke="#93a3b2" stroke-width="3"/>
+    <text id="rp28-t-n" class="rp28-lab" x="1751" y="182">N</text>
+  </svg>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a2s8-replot", P = "#rp28-";
+  /* cues: audio/a2-s8.words.json (comp-local = segment seconds) */
+  const CUES = {
+    alone: 1.62,     /* not alone @1.62 */
+    survey: 2.94,    /* damage survey's @2.94 */
+    other: 4.94,     /* other sub-vortices @4.94 */
+    came: 6.32,      /* came and went @6.32 */
+    second: 7.70,    /* second tornado @7.70 */
+    clockwise: 9.12, /* clockwise @9.12 */
+    usual: 10.48     /* usual direction @10.48 */
+  };
+  const DUR = 12.05;
+  const tl = gsap.timeline({ paused: true });
+  /* hidden from the first frame: set now (a paused timeline has not rendered its time-0 sets yet) and again at 0 */
+  const HIDE = [P + "o1", P + "o2", P + "o3", P + "o4", P + "o5", P + "anti", P + "ccw", P + "t-usual", P + "t-src", P + "big", P + "t-went", P + "t-anti", P + "t-cw", P + "t-sch"];
+  gsap.set(HIDE, { autoAlpha: 0 });
+  gsap.set(P + "sv", { x: 1080, y: 520 });
+  tl.set(HIDE, { autoAlpha: 0 }, 0);
+  tl.set(P + "sv", { x: 1080, y: 520 }, 0);
+
+  /* whole window: the wide circulation turns counter-clockwise, echoes drift, the tracked sub-vortex spins and drifts */
+  tl.fromTo(P + "ticks", { rotation: 0, svgOrigin: "1040 548" }, { rotation: -96, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e1", { x: -30, y: 10 }, { x: 40, y: -30, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e2", { x: 30, y: -20 }, { x: -50, y: 30, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e3", { x: -40, y: 0 }, { x: 50, y: -20, duration: DUR, ease: "none" }, 0);
+  tl.to(P + "sv", { x: 1010, y: 600, duration: DUR, ease: "sine.inOut" }, 0);
+  tl.fromTo(P + "spin", { rotation: 0, svgOrigin: "0 0" }, { rotation: -360, duration: 1.1, ease: "none", repeat: 10 }, 0);
+  tl.fromTo([P + "t-bar", P + "t-own"], { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out", stagger: 0.08 }, 0.2);
+
+  /* not alone @1.62: the replot widens from 300 to 240 px per mile, and the mile bar shortens with it */
+  tl.fromTo(P + "scene", { scale: 1, svgOrigin: "1040 548" }, { scale: 0.8, duration: 1.6, ease: "power2.inOut" }, CUES.alone - 0.8);
+  tl.fromTo(P + "bar", { scaleX: 1, svgOrigin: "96 986" }, { scaleX: 0.8, duration: 1.6, ease: "power2.inOut" }, CUES.alone - 0.8);
+
+  /* damage survey's @2.94: the source. other sub-vortices @4.94 that came and went @6.32 */
+  tl.fromTo(P + "t-src", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.survey);
+  tl.fromTo(P + "big", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.other);
+  tl.fromTo(P + "t-went", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.came);
+  tl.fromTo(P + "o1", { autoAlpha: 0, scale: 0.3, svgOrigin: "900 470" }, { autoAlpha: 1, scale: 1, duration: 0.8, ease: "power2.out", yoyo: true, repeat: 3 }, CUES.other);
+  tl.fromTo(P + "o2", { autoAlpha: 0, scale: 0.3, svgOrigin: "1210 420" }, { autoAlpha: 1, scale: 1, duration: 0.7, ease: "power2.out", yoyo: true, repeat: 3 }, CUES.other + 0.5);
+  tl.fromTo(P + "o3", { autoAlpha: 0, scale: 0.3, svgOrigin: "1170 720" }, { autoAlpha: 1, scale: 1, duration: 0.9, ease: "power2.out", yoyo: true, repeat: 3 }, CUES.other + 1.1);
+  tl.fromTo(P + "o4", { autoAlpha: 0, scale: 0.3, svgOrigin: "860 700" }, { autoAlpha: 1, scale: 1, duration: 0.8, ease: "power2.out", yoyo: true, repeat: 3 }, CUES.came + 0.4);
+  tl.fromTo(P + "o5", { autoAlpha: 0, scale: 0.3, svgOrigin: "1020 330" }, { autoAlpha: 1, scale: 1, duration: 0.7, ease: "power2.out", yoyo: true, repeat: 3 }, CUES.came + 1.2);
+
+  /* second tornado @7.70, clockwise @9.12, usual direction @10.48 */
+  tl.fromTo(P + "anti", { autoAlpha: 0, scale: 0.3, svgOrigin: "1502 739" }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "back.out(2)" }, CUES.second);
+  tl.fromTo(P + "cw", { rotation: 0, svgOrigin: "1502 739" }, { rotation: 1080, duration: 4.3, ease: "none" }, CUES.second);
+  tl.fromTo(P + "t-anti", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.second + 0.24);
+  tl.fromTo(P + "t-sch", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.second + 0.5);
+  tl.fromTo(P + "t-cw", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.clockwise);
+  tl.fromTo(P + "ccw", { autoAlpha: 0, rotation: 24, svgOrigin: "1040 548" }, { autoAlpha: 1, rotation: 0, duration: 0.6, ease: "power3.out" }, CUES.usual - 0.2);
+  tl.fromTo(P + "t-usual", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.usual);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a3s4-quotes (A3-S4) · window 10.24 s · brief: mg_specs/cards.md
+     Overlay: root transparent for the whole window, the sequence continues beneath. Two attributed text cards, one at a time,
+     exact words, source line "weather.com" (research/facts.md, not re-pulled). Text only, never a voice or a photograph.
+     Cues are audio/a3-s4.words.json seconds. Every timeline position is a literal number (sweep check 7); each card
+     drifts left at about 6.6 px/s while it is up. -->
+<template>
+<style>
+  #qt4-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  .qt4-card { position:absolute; left:160px; top:610px; width:1400px; height:330px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .qt4-h { opacity:0; visibility:hidden; }
+  .qt4-name { position:absolute; left:44px; top:30px; font:900 52px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .qt4-src { position:absolute; right:44px; top:50px; font:italic 24px Georgia, 'Times New Roman', serif; color:#d8a13a; white-space:nowrap; line-height:1; }
+  .qt4-q { position:absolute; left:44px; font:42px Georgia, 'Times New Roman', serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+</style>
+<div id="qt4-root" data-composition-id="g-a3s4-quotes" data-width="1920" data-height="1080" data-duration="10.24">
+  <div class="qt4-card qt4-h" id="qt4-cb">
+    <div class="qt4-name" id="qt4-nb">Mike Bettes</div>
+    <div class="qt4-src qt4-h" id="qt4-sb">weather.com</div>
+    <div class="qt4-q qt4-h" id="qt4-b1" style="top:118px">&ldquo;It was like we were floating.</div>
+    <div class="qt4-q qt4-h" id="qt4-b2" style="top:178px">We were tumbling.</div>
+    <div class="qt4-q qt4-h" id="qt4-b3" style="top:238px">We were airborne at least one point and we were floating.&rdquo;</div>
+  </div>
+  <div class="qt4-card qt4-h" id="qt4-ca">
+    <div class="qt4-name" id="qt4-na">Austin Anderson</div>
+    <div class="qt4-src qt4-h" id="qt4-sa">weather.com</div>
+    <div class="qt4-q qt4-h" id="qt4-a1" style="top:118px">&ldquo;Next thing I know, we&rsquo;re flying into the tornado</div>
+    <div class="qt4-q qt4-h" id="qt4-a2" style="top:178px">through the air.</div>
+    <div class="qt4-q qt4-h" id="qt4-a3" style="top:238px">The glass in the truck blew out and we were upside down.&rdquo;</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var D = 10.24, P = "#qt4-";
+  var tl = gsap.timeline({ paused: true });
+  function hid(dx, dy) { return { autoAlpha: 0, x: dx, y: dy }; }
+  function vis() { return { autoAlpha: 1, x: 0, y: 0, duration: 0.4, ease: "power3.out" }; }
+
+  /* BETTES @0.00: his card and name; SAID @0.76: the first sentence and the source */
+  tl.fromTo(P + "cb", hid(60, 0), vis(), 0.0);
+  tl.fromTo(P + "sb", hid(0, 16), vis(), 0.76);
+  tl.fromTo(P + "b1", hid(0, 16), vis(), 0.76);
+  /* FLOATING @2.52 · AT ONE POINT @3.82 */
+  tl.fromTo(P + "b2", hid(0, 16), vis(), 2.52);
+  tl.fromTo(P + "b3", hid(0, 16), vis(), 3.82);
+  tl.to(P + "cb", { x: -35, duration: 5.3, ease: "none" }, 0.42);   /* slow drift left, 6.6 px/s */
+  tl.to(P + "cb", { x: -1600, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 5.72);
+  /* ANDERSON @6.28 · REMEMBERED @6.58 · GLASS @7.14 */
+  tl.fromTo(P + "ca", hid(60, 0), vis(), 6.28);
+  tl.fromTo(P + "sa", hid(0, 16), vis(), 6.58);
+  tl.fromTo(P + "a1", hid(0, 16), vis(), 6.58);
+  tl.fromTo(P + "a2", hid(0, 16), vis(), 6.70);
+  tl.fromTo(P + "a3", hid(0, 16), vis(), 7.14);
+  tl.to(P + "ca", { x: -20, duration: 2.9, ease: "none" }, 6.72);
+  tl.to(P + "ca", { x: -1600, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 9.64);
+  window.__timelines["g-a3s4-quotes"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

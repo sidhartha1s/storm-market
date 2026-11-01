@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a3s11-replot: 30 seconds of possible warning from a vortex that kept changing direction; the paper's sentence.
+     Brief: mg_specs/replot.md. Scale 300 px per mile, north up. The looping track is schematic. Our own redraw.
+     Roads from OpenStreetMap (10 Oct 26), same layout as g-a2s11-replot: US-81 x 1000; Reuter Road y 330;
+     Reno Road y 630; Radio Road x 1612; research car x 1513 (1.71 miles east of US-81).
+     Quote, exact words: "it is likely that no clear direction to safety was apparent" (Wurman et al. 2014). -->
+<template>
+<style>
+  #rp311-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 54% 50%, #0b1016 0%, #030507 78%); }
+  .rp311-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .rp311-fig { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:84px; fill:#f2f5f8; }
+  .rp311-mid { font-family:Arial, sans-serif; font-weight:700; font-size:30px; fill:#dfe7ee; }
+  .rp311-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+  .rp311-sm { font-family:Arial, sans-serif; font-weight:700; font-size:20px; letter-spacing:1px; fill:#93a3b2; }
+  .rp311-q { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:32px; fill:#2a2622; }
+  .rp311-att { font-family:Arial, sans-serif; font-weight:700; font-size:19px; fill:#6b6257; }
+</style>
+<div id="rp311-root" data-composition-id="g-a3s11-replot" data-width="1920" data-height="1080">
+  <svg class="rp311-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="rp311-grid" width="150" height="150" patternUnits="userSpaceOnUse" x="100" y="30"><path d="M150,0 L0,0 L0,150" fill="none" stroke="#2a3644" stroke-width="1.5" stroke-opacity="0.55"/></pattern>
+      <radialGradient id="rp311-echo"><stop offset="0" stop-color="#7fb2e5" stop-opacity="0.34"/><stop offset="1" stop-color="#7fb2e5" stop-opacity="0"/></radialGradient>
+      <radialGradient id="rp311-glow"><stop offset="0" stop-color="#e8c56a" stop-opacity="0.75"/><stop offset="1" stop-color="#e8c56a" stop-opacity="0"/></radialGradient>
+      <mask id="rp311-trackmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path id="rp311-trackrev" d="M1000,630 C1150,570 1330,560 1400,620 C1460,675 1380,720 1350,660 C1320,600 1500,560 1549,416 L1513,330" fill="none" stroke="#fff" stroke-width="12"/></mask>
+    </defs>
+    <rect x="0" y="0" width="1920" height="1080" fill="url(#rp311-grid)"/>
+    <path id="rp311-us81" d="M1000,54 L1000,1026" stroke="#93a3b2" stroke-width="3" stroke-opacity="0.75"/>
+    <path id="rp311-reuter" d="M700,330 L1824,330" stroke="#93a3b2" stroke-width="3" stroke-opacity="0.75"/>
+    <path id="rp311-radio" d="M1612,54 L1612,1026" stroke="#93a3b2" stroke-width="2" stroke-opacity="0.5"/>
+    <path id="rp311-reno" d="M700,630 L1824,630" stroke="#93a3b2" stroke-width="2" stroke-opacity="0.5"/>
+    <!-- the wide circulation: r 390 px = 1.3 miles; it starts centred on the highway crossing and moves with the circle -->
+    <g id="rp311-ring">
+      <ellipse id="rp311-e1" cx="860" cy="500" rx="150" ry="110" fill="url(#rp311-echo)"/>
+      <ellipse id="rp311-e2" cx="1150" cy="470" rx="120" ry="90" fill="url(#rp311-echo)"/>
+      <ellipse id="rp311-e3" cx="920" cy="830" rx="170" ry="100" fill="url(#rp311-echo)"/>
+      <circle cx="1000" cy="630" r="390" fill="none" stroke="#5a768f" stroke-width="30" stroke-opacity="0.22"/>
+      <circle cx="1000" cy="630" r="390" fill="none" stroke="#7fb2e5" stroke-width="2.5"/>
+      <circle id="rp311-ticks" cx="1000" cy="630" r="390" fill="none" stroke="#7fb2e5" stroke-width="14" stroke-opacity="0.7" stroke-dasharray="5 44"/>
+    </g>
+    <!-- the looping track as one line: not measured here, so dashed -->
+    <path id="rp311-track" d="M1000,630 C1150,570 1330,560 1400,620 C1460,675 1380,720 1350,660 C1320,600 1500,560 1549,416 L1513,330" fill="none" stroke="#e8c56a" stroke-width="3" stroke-dasharray="10 9" stroke-opacity="0.85" mask="url(#rp311-trackmask)"/>
+    <rect id="rp311-suv" x="991" y="621" width="18" height="18" fill="#f2f5f8" stroke="#04070c" stroke-width="2"/>
+    <path id="rp311-car" d="M1513,317 L1526,330 L1513,343 L1500,330 Z" fill="#f2f5f8" stroke="#04070c" stroke-width="2"/>
+    <circle id="rp311-ghost" cx="1000" cy="630" r="15" fill="none" stroke="#e8c56a" stroke-width="2.5" stroke-dasharray="4 4"/>
+    <!-- the one sub-vortex: r 15 px = 160 m across -->
+    <g id="rp311-sv"><g id="rp311-svin">
+      <circle cx="0" cy="0" r="34" fill="url(#rp311-glow)"/>
+      <circle cx="0" cy="0" r="15" fill="#e8c56a" fill-opacity="0.35" stroke="#f5d98b" stroke-width="3"/>
+      <path id="rp311-spin" d="M0,-9 A9,9 0 0 0 -9,0" fill="none" stroke="#f2f5f8" stroke-width="3"/>
+    </g></g>
+    <text id="rp311-t-us81" class="rp311-lab" x="1018" y="120">US-81</text>
+    <text id="rp311-t-reuter" class="rp311-lab" x="720" y="316">Reuter Road</text>
+    <text id="rp311-t-radio" class="rp311-sm" x="1630" y="232">Radio Road</text>
+    <text id="rp311-t-car" class="rp311-mid" x="1490" y="306" text-anchor="end">Research car</text>
+    <!-- readout -->
+    <text id="rp311-v1" class="rp311-fig" x="92" y="210">30 seconds</text>
+    <text id="rp311-l1" class="rp311-lab" x="96" y="252">of possible warning</text>
+    <text id="rp311-s1" class="rp311-sm" x="96" y="286">Wurman et al. 2014</text>
+    <!-- the paper's sentence, exact words, on the beige cite card -->
+    <g id="rp311-card">
+      <rect x="96" y="470" width="500" height="270" rx="14" fill="#e8dec8" fill-opacity="0.92"/>
+      <rect x="96" y="470" width="8" height="270" fill="#d8a13a"/>
+      <text class="rp311-q" x="128" y="532">“it is likely that no clear</text>
+      <text class="rp311-q" x="128" y="578">direction to safety was</text>
+      <text class="rp311-q" x="128" y="624">apparent”</text>
+      <text class="rp311-att" x="128" y="676">Wurman et al., Bulletin of the American</text>
+      <text class="rp311-att" x="128" y="702">Meteorological Society, 2014</text>
+    </g>
+    <text id="rp311-t-osm" class="rp311-sm" x="96" y="852">Roads: OpenStreetMap</text>
+    <text id="rp311-t-sch1" class="rp311-sm" x="96" y="880">Looping track and ring position:</text>
+    <text id="rp311-t-sch2" class="rp311-sm" x="96" y="908">schematic, not a measured path</text>
+    <!-- scale bar: 300 px = 1 mile -->
+    <path id="rp311-bar" d="M96,986 L396,986 M96,976 L96,996 M396,976 L396,996" fill="none" stroke="#dfe7ee" stroke-width="3"/>
+    <text id="rp311-t-bar" class="rp311-sm" x="96" y="964" fill="#dfe7ee">1 mile</text>
+    <text id="rp311-t-ring" class="rp311-sm" x="412" y="993">Ring: 2.6 miles at its widest</text>
+    <text id="rp311-t-own" class="rp311-sm" x="96" y="1022">Our redraw of mobile-radar measurements</text>
+    <path id="rp311-north" d="M1760,150 L1760,96 M1748,112 L1760,92 L1772,112" fill="none" stroke="#93a3b2" stroke-width="3"/>
+    <text id="rp311-t-n" class="rp311-lab" x="1751" y="182">N</text>
+  </svg>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a3s11-replot", P = "#rp311-";
+  /* cues: audio/a3-s11.words.json (comp-local = segment seconds) */
+  const CUES = {
+    n30: 1.64,      /* 30 seconds @1.64 */
+    possible: 2.58, /* possible warning @2.58 */
+    perhaps: 3.64,  /* perhaps in poor visibility @3.64 */
+    vortex: 5.74,   /* a vortex that kept changing direction @5.74 */
+    concludes: 8.46,/* concludes @8.46 */
+    noclear: 10.08  /* no clear direction to safety @10.08 */
+  };
+  const DUR = 12.3;
+  const tl = gsap.timeline({ paused: true });
+  /* hidden from the first frame: set now (a paused timeline has not rendered its time-0 sets yet) and again at 0 */
+  const HIDE = [P + "v1", P + "l1", P + "s1", P + "card", P + "t-sch1", P + "t-sch2", P + "t-reuter"];
+  gsap.set(HIDE, { autoAlpha: 0 });
+  gsap.set(P + "sv", { x: 1000, y: 630 });
+  tl.set(HIDE, { autoAlpha: 0 }, 0);
+  tl.set(P + "sv", { x: 1000, y: 630 }, 0);
+
+  /* whole window: the wide circulation turns counter-clockwise, echoes drift, the sub-vortex spins */
+  tl.fromTo(P + "ticks", { rotation: 0, svgOrigin: "1000 630" }, { rotation: -98, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e1", { x: -30, y: 10 }, { x: 40, y: -30, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e2", { x: 30, y: -20 }, { x: -50, y: 30, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e3", { x: -40, y: 0 }, { x: 50, y: -20, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "spin", { rotation: 0, svgOrigin: "0 0" }, { rotation: -360, duration: 1.1, ease: "none", repeat: 11 }, 0);
+  tl.fromTo([P + "bar", P + "t-bar", P + "t-ring", P + "t-own", P + "t-osm"], { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out", stagger: 0.08 }, 0.2);
+
+  /* 30 seconds @1.64 of possible warning @2.58 */
+  tl.fromTo(P + "v1", { autoAlpha: 0, scale: 1.4, svgOrigin: "96 210" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.in" }, CUES.n30 - 0.35);
+  tl.fromTo(P + "l1", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.possible);
+  tl.fromTo(P + "s1", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.possible + 0.5);
+
+  /* perhaps @3.64 ... a vortex that kept changing direction @5.74: the same circle rides its looping track, one line;
+     the wide ring moves with it (its place after 6:19 PM is schematic) */
+  const rev = document.querySelector(P + "trackrev"), sv = document.querySelector(P + "sv");
+  if (rev && sv) {
+    const len = Math.ceil(rev.getTotalLength()) + 1, N = 60, legs = [], TRAVEL = 3.9;
+    for (let i = 1; i <= N; i++) { const pt = rev.getPointAtLength((len - 1) * i / N); legs.push({ x: pt.x, y: pt.y, duration: TRAVEL / N, ease: "none" }); }
+    gsap.set(rev, { strokeDasharray: len, strokeDashoffset: len });
+    tl.set(rev, { strokeDasharray: len, strokeDashoffset: len }, 0);
+    tl.to(rev, { strokeDashoffset: 0, duration: TRAVEL, ease: "none" }, CUES.perhaps);
+    tl.to(sv, { keyframes: legs }, CUES.perhaps);
+  }
+  tl.fromTo(P + "ring", { x: 0, y: 0 }, { x: 300, y: -160, duration: 3.9, ease: "power1.inOut" }, CUES.perhaps);
+  tl.fromTo([P + "t-sch1", P + "t-sch2"], { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.vortex);
+  tl.fromTo(P + "t-reuter", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.perhaps + 3.95);
+
+  /* concludes @8.46: the paper's sentence. no clear direction @10.08: one beat on the circle */
+  tl.fromTo(P + "card", { autoAlpha: 0, x: -120 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, CUES.concludes - 0.3);
+  tl.to(P + "svin", { scale: 1.6, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, CUES.noclear);
+  tl.to(P + "card", { y: -6, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1 }, CUES.noclear + 0.3);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

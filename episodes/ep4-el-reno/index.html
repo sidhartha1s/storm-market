@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<!-- ep4-el-reno (v4b) · The Warning Hour · assembly v1 (10 Oct 26). Script: edit_script.md; angle: angle.md (owner-locked).
+     Times: timeline.json (cumulative wav durations + 0.30 s seams, 0.15 s after Paul's hook line, 0.8 s blackout + 0.2 s at
+     act seams, 1.0 s dips around the book ad, 4.0 s outro tail). Paul speaks six times on camera (ins-paul-1..6, his own
+     sound, no narration under them); the narrator wavs of those six slots are not mounted.
+     The NARRATION block and the GRAPHIC HOSTS block were filled once by a content-blind transform from timeline.json and a
+     hand-written mount list (segment, comp name); every other line is written by hand. Clip credits: media/provenance*.csv.
+     SOUND: not placed yet (beds, sirens, hits come after the picture is locked). -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>El Reno 2013: The Safest Place Was Home · The Warning Hour</title>
+  <script src="gsap.min.js"></script>
+  <script src="grain.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    .hold { position: absolute; inset: 0; pointer-events: none; }
+    /* presenter circle (references/mg-quickref.md): geometry is !important so the renderer's video{inset:0} cannot win; the ring is its own timed section */
+    .pip { position: absolute !important; inset: auto !important; left: 1640px !important; top: 708px !important;
+      width: 240px !important; height: 240px !important; border-radius: 50% !important; object-fit: cover !important; z-index: 8 !important; }
+    .pipring { position: absolute; left: 1632px; top: 700px; width: 256px; height: 256px; border-radius: 50%; border: 4px solid #d0121f;
+      box-sizing: border-box; z-index: 9; box-shadow: 0 10px 30px rgba(0,0,0,0.55); }
+    /* one subtle grade on all broadcast and news clips (CLAUDE.md "Grading"); stock and public domain are exempt */
+    video.graded { filter: saturate(0.88) contrast(1.06) brightness(0.94); }
+    /* ---- Abril figure popup (channel device: red, text-shadow, 3 words or fewer, mid-screen, never over a map comp) ---- */
+    @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+    .popfig { position: absolute; left: 200px; right: 300px; top: 36%; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; isolation: isolate; }
+    .popfig .pf-big { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 150px; color: #d0121f; letter-spacing: 0.04em;
+      text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+    .popfig .pf-sub { display: block; margin-top: 12px; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 38px; color: #f4f0e8;
+      letter-spacing: 0.3em; -webkit-text-stroke: 1px rgba(0,0,0,0.85); paint-order: stroke fill;
+      text-shadow: 0 0 18px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.9), 0 3px 10px #000; }
+    .popfig::before { content: ''; position: absolute; left: 14%; right: 14%; top: -90px; bottom: -70px; z-index: -1;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.32) 40%, rgba(0,0,0,0) 72%); }
+    /* ---- source credit (small, bottom-left) ---- */
+    .credit { position: absolute; left: 96px; bottom: 60px; font: 700 22px Arial, sans-serif; color: rgba(244,240,232,0.88); letter-spacing: 0.04em;
+      text-shadow: 0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+    /* ---- film layer ---- */
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
+    #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.10; mix-blend-mode: overlay; }
+    .dust { position: absolute; z-index: 92; pointer-events: none; border-radius: 50%; background: rgba(255,255,255,0.32); filter: blur(1.2px); }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="ep4-el-reno" data-start="0" data-width="1920" data-height="1080" data-duration="1333.38" data-fps="30">
+
+  <!-- ============ NARRATION (74 segments; Paul's six lines are in PAUL ON CAMERA) ============ -->
+  <audio id="nx-t1-s1" src="audio/t1-s1.wav" data-start="7.11" data-duration="12.402" data-volume="1"></audio>
+  <audio id="nx-i1-s1" src="audio/i1-s1.wav" data-start="19.81" data-duration="19.253" data-volume="1"></audio>
+  <audio id="nx-i1-s2" src="audio/i1-s2.wav" data-start="39.37" data-duration="17.678" data-volume="1"></audio>
+  <audio id="nx-i1-s3" src="audio/i1-s3.wav" data-start="57.34" data-duration="15.976" data-volume="1"></audio>
+  <audio id="nx-i1-s4" src="audio/i1-s4.wav" data-start="73.62" data-duration="12.062" data-volume="1"></audio>
+  <audio id="nx-i1-s5" src="audio/i1-s5.wav" data-start="85.98" data-duration="24.274" data-volume="1"></audio>
+  <audio id="nx-i1-s6" src="audio/i1-s6.wav" data-start="110.55" data-duration="16.487" data-volume="1"></audio>
+  <audio id="nx-i1-s7" src="audio/i1-s7.wav" data-start="127.34" data-duration="9.764" data-volume="1"></audio>
+  <audio id="nx-i1-s8" src="audio/i1-s8.wav" data-start="137.41" data-duration="11.679" data-volume="1"></audio>
+  <audio id="nx-a1-s1" src="audio/a1-s1.wav" data-start="150.08" data-duration="17.891" data-volume="1"></audio>
+  <audio id="nx-a1-s2" src="audio/a1-s2.wav" data-start="168.28" data-duration="11.679" data-volume="1"></audio>
+  <audio id="nx-a1-s3" src="audio/a1-s3.wav" data-start="180.25" data-duration="18.359" data-volume="1"></audio>
+  <audio id="nx-a1-s4" src="audio/a1-s4.wav" data-start="198.91" data-duration="20.53" data-volume="1"></audio>
+  <audio id="nx-a1-s5" src="audio/a1-s5.wav" data-start="219.74" data-duration="17.508" data-volume="1"></audio>
+  <audio id="nx-a1-s6" src="audio/a1-s6.wav" data-start="237.55" data-duration="22.997" data-volume="1"></audio>
+  <audio id="nx-a1-s7" src="audio/a1-s7.wav" data-start="260.85" data-duration="16.231" data-volume="1"></audio>
+  <audio id="nx-a1-s8" src="audio/a1-s8.wav" data-start="277.38" data-duration="10.019" data-volume="1"></audio>
+  <audio id="nx-a1-s9" src="audio/a1-s9.wav" data-start="287.7" data-duration="15.338" data-volume="1"></audio>
+  <audio id="nx-a1-s10" src="audio/a1-s10.wav" data-start="303.34" data-duration="12.317" data-volume="1"></audio>
+  <audio id="nx-a1-s11" src="audio/a1-s11.wav" data-start="315.95" data-duration="10.487" data-volume="1"></audio>
+  <audio id="nx-a2-s1" src="audio/a2-s1.wav" data-start="337.45" data-duration="25.338" data-volume="1"></audio>
+  <audio id="nx-a2-s2" src="audio/a2-s2.wav" data-start="363.09" data-duration="20.615" data-volume="1"></audio>
+  <audio id="nx-a2-s3" src="audio/a2-s3.wav" data-start="384.0" data-duration="21.126" data-volume="1"></audio>
+  <audio id="nx-a2-s4" src="audio/a2-s4.wav" data-start="405.43" data-duration="6.147" data-volume="1"></audio>
+  <audio id="nx-a2-s6" src="audio/a2-s6.wav" data-start="422.19" data-duration="14.403" data-volume="1"></audio>
+  <audio id="nx-a2-s7" src="audio/a2-s7.wav" data-start="436.89" data-duration="20.53" data-volume="1"></audio>
+  <audio id="nx-a2-s8" src="audio/a2-s8.wav" data-start="457.72" data-duration="11.721" data-volume="1"></audio>
+  <audio id="nx-a2-s9" src="audio/a2-s9.wav" data-start="469.74" data-duration="11.04" data-volume="1"></audio>
+  <audio id="nx-a2-s10" src="audio/a2-s10.wav" data-start="481.08" data-duration="16.785" data-volume="1"></audio>
+  <audio id="nx-a2-s11" src="audio/a2-s11.wav" data-start="498.17" data-duration="21.892" data-volume="1"></audio>
+  <audio id="nx-a3-s1" src="audio/a3-s1.wav" data-start="521.06" data-duration="19.296" data-volume="1"></audio>
+  <audio id="nx-a3-s2" src="audio/a3-s2.wav" data-start="540.65" data-duration="7.721" data-volume="1"></audio>
+  <audio id="nx-a3-s3" src="audio/a3-s3.wav" data-start="548.67" data-duration="13.807" data-volume="1"></audio>
+  <audio id="ins-crew-sound" src="media/news/twc-crew-own-sound-1.wav" data-start="562.48" data-duration="6.0" data-volume="1" data-srt-label="[sound from the crew's own camera]"></audio>
+  <audio id="nx-a3-s4" src="audio/a3-s4.wav" data-start="568.78" data-duration="9.934" data-volume="1"></audio>
+  <audio id="nx-a3-s5" src="audio/a3-s5.wav" data-start="579.02" data-duration="14.19" data-volume="1"></audio>
+  <audio id="nx-a3-s6" src="audio/a3-s6.wav" data-start="593.51" data-duration="20.573" data-volume="1"></audio>
+  <audio id="nx-a3-s7" src="audio/a3-s7.wav" data-start="614.38" data-duration="17.125" data-volume="1"></audio>
+  <audio id="nx-a3-s8" src="audio/a3-s8.wav" data-start="631.8" data-duration="20.487" data-volume="1"></audio>
+  <audio id="nx-a3-s9" src="audio/a3-s9.wav" data-start="652.59" data-duration="18.445" data-volume="1"></audio>
+  <audio id="nx-a3-s10" src="audio/a3-s10.wav" data-start="671.34" data-duration="20.487" data-volume="1"></audio>
+  <audio id="nx-a3-s11" src="audio/a3-s11.wav" data-start="692.12" data-duration="11.977" data-volume="1"></audio>
+  <audio id="nx-a3-s13" src="audio/a3-s13.wav" data-start="713.7" data-duration="23.934" data-volume="1"></audio>
+  <audio id="nx-a3-s14" src="audio/a3-s14.wav" data-start="737.93" data-duration="10.742" data-volume="1"></audio>
+  <audio id="nx-a4-s1" src="audio/a4-s1.wav" data-start="784.07" data-duration="15.806" data-volume="1"></audio>
+  <audio id="nx-a4-s2" src="audio/a4-s2.wav" data-start="800.18" data-duration="12.147" data-volume="1"></audio>
+  <audio id="nx-a4-s3" src="audio/a4-s3.wav" data-start="812.63" data-duration="20.487" data-volume="1"></audio>
+  <audio id="nx-a4-s4" src="audio/a4-s4.wav" data-start="833.41" data-duration="17.551" data-volume="1"></audio>
+  <audio id="nx-a4-s5" src="audio/a4-s5.wav" data-start="851.26" data-duration="14.403" data-volume="1"></audio>
+  <audio id="nx-a4-s6" src="audio/a4-s6.wav" data-start="865.97" data-duration="20.7" data-volume="1"></audio>
+  <audio id="nx-a4-s7" src="audio/a4-s7.wav" data-start="886.97" data-duration="23.423" data-volume="1"></audio>
+  <audio id="nx-a4-s8" src="audio/a4-s8.wav" data-start="910.69" data-duration="17.21" data-volume="1"></audio>
+  <audio id="nx-a4-s9" src="audio/a4-s9.wav" data-start="928.2" data-duration="15.21" data-volume="1"></audio>
+  <audio id="nx-a4-s10" src="audio/a4-s10.wav" data-start="943.71" data-duration="10.445" data-volume="1"></audio>
+  <audio id="nx-a4-s11" src="audio/a4-s11.wav" data-start="954.46" data-duration="25.253" data-volume="1"></audio>
+  <audio id="nx-a4-s12" src="audio/a4-s12.wav" data-start="980.01" data-duration="25.636" data-volume="1"></audio>
+  <audio id="nx-a4-s13" src="audio/a4-s13.wav" data-start="1005.94" data-duration="18.062" data-volume="1"></audio>
+  <audio id="nx-a4-s14" src="audio/a4-s14.wav" data-start="1024.31" data-duration="14.488" data-volume="1"></audio>
+  <audio id="nx-a4-s15" src="audio/a4-s15.wav" data-start="1039.09" data-duration="13.509" data-volume="1"></audio>
+  <audio id="nx-a4-s16" src="audio/a4-s16.wav" data-start="1052.9" data-duration="17.678" data-volume="1"></audio>
+  <audio id="nx-a5-s1" src="audio/a5-s1.wav" data-start="1071.58" data-duration="15.423" data-volume="1"></audio>
+  <audio id="nx-a5-s2" src="audio/a5-s2.wav" data-start="1087.3" data-duration="11.636" data-volume="1"></audio>
+  <audio id="nx-a5-s3" src="audio/a5-s3.wav" data-start="1099.24" data-duration="22.997" data-volume="1"></audio>
+  <audio id="nx-a5-s4" src="audio/a5-s4.wav" data-start="1122.54" data-duration="21.424" data-volume="1"></audio>
+  <audio id="nx-a5-s5" src="audio/a5-s5.wav" data-start="1144.26" data-duration="26.913" data-volume="1"></audio>
+  <audio id="nx-a5-s6" src="audio/a5-s6.wav" data-start="1171.47" data-duration="9.849" data-volume="1"></audio>
+  <audio id="nx-a5-s7" src="audio/a5-s7.wav" data-start="1181.62" data-duration="23.806" data-volume="1"></audio>
+  <audio id="nx-a5-s8" src="audio/a5-s8.wav" data-start="1205.73" data-duration="13.041" data-volume="1"></audio>
+  <audio id="nx-a5-s9" src="audio/a5-s9.wav" data-start="1219.07" data-duration="17.678" data-volume="1"></audio>
+  <audio id="nx-a5-s10" src="audio/a5-s10.wav" data-start="1237.05" data-duration="13.849" data-volume="1"></audio>
+  <audio id="nx-a5-s11" src="audio/a5-s11.wav" data-start="1251.2" data-duration="10.7" data-volume="1"></audio>
+  <audio id="nx-a5-s12" src="audio/a5-s12.wav" data-start="1262.2" data-duration="13.211" data-volume="1"></audio>
+  <audio id="nx-z1-s1" src="audio/z1-s1.wav" data-start="1286.21" data-duration="23.891" data-volume="1"></audio>
+  <audio id="nx-z1-s2" src="audio/z1-s2.wav" data-start="1310.4" data-duration="4.445" data-volume="1"></audio>
+  <audio id="nx-z1-s3" src="audio/z1-s3.wav" data-start="1315.14" data-duration="14.232" data-volume="1"></audio>
+
+  <!-- ============ PAUL ON CAMERA (his own sound; clip 1 is frame one of the video) ============ -->
+  <video id="ins-paul-1" src="media/paul/ins-paul-1/ins-paul-1.mp4" data-start="0" data-duration="6.96" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Twenty-one people lost their lives that night, and not one of them was inside a building."></video>
+  <video id="ins-paul-2" src="media/paul/ins-paul-2/ins-paul-2.mp4" data-start="326.74" data-duration="9.71" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Stick with me. What radar found inside that tornado is part of why twenty one lives were lost that night, and none inside a building."></video>
+  <video id="ins-paul-3" src="media/paul/ins-paul-3/ins-paul-3h.mp4" data-start="411.88" data-duration="10.31" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Their radar showed two things turning. I call the second one the tornado inside the tornado: a much smaller one, spinning hard inside the wide one."></video>
+  <video id="ins-paul-4" src="media/paul/ins-paul-4/ins-paul-4.mp4" data-start="704.4" data-duration="9.3" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="One crew met it moving at about fifty six miles an hour. The other met the same vortex nearly still, for about twenty seconds."></video>
+  <video id="ins-paul-5" src="media/paul/ins-paul-5/ins-paul-5.mp4" data-start="748.98" data-duration="8.68" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="That night, home was the safe place. Twelve people went to hide somewhere else. How far did they go?"></video>
+  <video id="ins-paul-6" src="media/paul/ins-paul-6/ins-paul-6.mp4" data-start="1275.71" data-duration="9.5" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="That is my reading of the table. No one on it was inside a sturdy building. By that count, the safest place was home."></video>
+
+  <!-- ============ BOOK AD (config.yaml channel.cta: between the tease, Paul's "How far did they go?", and its payoff, A4-S1) ============ -->
+  <section class="clip blackout" id="bo-cta-in" data-start="757.66" data-duration="1.0" data-track-index="1"></section>
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v7-oct10.mp4" data-start="758.66" data-duration="24.417" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+  <section class="clip blackout" id="bo-cta-out" data-start="783.08" data-duration="0.99" data-track-index="1"></section>
+
+  <!-- ============ CHAPTER BLACKOUTS (act seams; none before 1:00) ============ -->
+  <section class="clip blackout" id="bo-i1" data-start="149.08" data-duration="0.8" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a1" data-start="336.45" data-duration="1.0" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a2" data-start="520.06" data-duration="1.0" data-track-index="1"></section>
+  <section class="clip hold" id="hold-crew" data-start="562.48" data-duration="6.0" data-track-index="8"></section>  <!-- the voice stops on "kept recording"; the crew clip's own sound plays alone -->
+
+  <section class="clip blackout" id="bo-a4" data-start="1070.58" data-duration="1.0" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a5" data-start="1285.21" data-duration="1.0" data-track-index="1"></section>
+
+  <!-- ============ PRESENTER CIRCLE (owner 10 Oct 26: whole episode, "except CTA part and omni areas"; face track 7, ring track 9) ============ -->
+  <!-- Paul's face speaking the narration (FlashHead, made on the ZBook), on wherever nothing sits under the corner circle. Off in the
+       hook until the markers card, in his six full-frame clips, the book ad and its dips, the chapter blackouts and the channel card.
+       Also off where a graphic or a broadcaster's mark is under it: the house maps (i1s4, a2s9, a4s2, a4s16, a5s9, a5s10, a5s12), the
+       road ring with its road label (a2s3), the crew's cabin footage (The Weather Channel's mark; a3s3, a3s4), the ditch drawings
+       (a4s1, a4s3, a5s11 until the highway returns), the river label (a4s6), the television radar picture (a4s10) and the state outline (z1s2). -->
+  <video id="pip-w01" class="pip" src="media/pip/paul-w01.mp4" data-start="13.60" data-duration="60.02" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w01" data-start="13.60" data-duration="60.02" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w02" class="pip" src="media/pip/paul-w02.mp4" data-start="85.98" data-duration="63.10" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w02" data-start="85.98" data-duration="63.10" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w03" class="pip" src="media/pip/paul-w03.mp4" data-start="149.88" data-duration="176.86" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w03" data-start="149.88" data-duration="176.86" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w04" class="pip" src="media/pip/paul-w04.mp4" data-start="337.45" data-duration="46.55" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w04" data-start="337.45" data-duration="46.55" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w05" class="pip" src="media/pip/paul-w05.mp4" data-start="405.43" data-duration="6.45" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w05" data-start="405.43" data-duration="6.45" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w06" class="pip" src="media/pip/paul-w06.mp4" data-start="422.19" data-duration="47.55" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w06" data-start="422.19" data-duration="47.55" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w07" class="pip" src="media/pip/paul-w07.mp4" data-start="481.08" data-duration="38.98" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w07" data-start="481.08" data-duration="38.98" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w08" class="pip" src="media/pip/paul-w08.mp4" data-start="521.06" data-duration="27.61" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w08" data-start="521.06" data-duration="27.61" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w09" class="pip" src="media/pip/paul-w09.mp4" data-start="579.02" data-duration="125.38" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w09" data-start="579.02" data-duration="125.38" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w10" class="pip" src="media/pip/paul-w10.mp4" data-start="713.70" data-duration="35.28" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w10" data-start="713.70" data-duration="35.28" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w11" class="pip" src="media/pip/paul-w11.mp4" data-start="833.41" data-duration="32.56" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w11" data-start="833.41" data-duration="32.56" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w12" class="pip" src="media/pip/paul-w12.mp4" data-start="886.97" data-duration="56.74" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w12" data-start="886.97" data-duration="56.74" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w13" class="pip" src="media/pip/paul-w13.mp4" data-start="954.46" data-duration="98.44" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w13" data-start="954.46" data-duration="98.44" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w14" class="pip" src="media/pip/paul-w14.mp4" data-start="1071.58" data-duration="147.49" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w14" data-start="1071.58" data-duration="147.49" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w15" class="pip" src="media/pip/paul-w15.mp4" data-start="1256.70" data-duration="5.50" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w15" data-start="1256.70" data-duration="5.50" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w16" class="pip" src="media/pip/paul-w16.mp4" data-start="1286.21" data-duration="24.19" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w16" data-start="1286.21" data-duration="24.19" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w17" class="pip" src="media/pip/paul-w17.mp4" data-start="1315.14" data-duration="12.00" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w17" data-start="1315.14" data-duration="12.00" data-track-index="9"><div class="pipring"></div></section>
+
+  <!-- ============ FOOTAGE (track 1 and 2; placed by hand once the sourced clips are frame-checked) ============ -->
+  <!-- T1-S1: the evening sky over the city, then the line of headlights (ABC World News, 1 June 2013; only the shots with no lower-third banner) -->
+  <video id="v-t1s1-sky" class="clip graded" src="media/news/abc-highway-jam-chyron-aerial-2.mp4" data-start="6.96" data-duration="3.94" data-media-start="0.05" data-track-index="1" muted></video>
+  <video id="v-t1s1-jam" class="clip graded" src="media/news/abc-highway-jam-night-aerial-1.mp4" data-start="10.9" data-duration="8.91" data-media-start="3" data-track-index="1" muted></video>
+  <!-- I1-S1: the map goes transparent 28.51 to 32.01 on "a tornado touched down on open farmland"; a storm sky over open fields sits under it -->
+  <video id="v-i1s1-plains" class="clip" src="media/stock/pexels-storm-clouds-plains-3.mp4" data-start="28.41" data-duration="3.7" data-media-start="0.5" data-track-index="1" data-callback="the same plains sky, an earlier part of the clip, for the touchdown on open farmland" muted></video>
+  <!-- I1-S3: flooded intersection under the transparent span of the pins graphic (KFOR, 31 May 2013; wide shots only) -->
+  <video id="v-i1s3-flood" class="clip graded" src="media/news/kfor-flash-flood-street-1.mp4" data-start="59.14" data-duration="5.3" data-media-start="3.6" data-track-index="1" muted></video>
+  <!-- A1-S11: grey wall of rain through a windshield (stock; the radar sweep over it is still to build) -->
+  <video id="v-a1s11-rain" class="clip" src="media/stock/pixabay-windshield-rain-3.mp4" data-start="315.95" data-duration="10.79" data-media-start="2.0" data-track-index="1" muted></video>
+  <!-- A3-S3 and A3-S4: the TV crew's own cabin footage (The Weather Channel, upload 4 June 2013). INSERT: needs the owner's yes before any render. -->
+  <!-- one continuous take of the crew's own camera, A3-S3 to the end of A3-S4 (owner's permission, 9 Oct 26). Muted here: its own sound is the
+       six-second mount ins-crew-sound, alone between the two voice segments (562.48 to 568.48 = file 14.01 to 20.01: the power flash, the roll, black). -->
+  <video id="v-a3s3-crew" class="clip graded" src="media/news/twc-crew-vehicle-cabin-tornado-2.mp4" data-start="548.67" data-duration="30.35" data-media-start="0.2" data-track-index="1" muted></video>
+  <!-- A4-S4: swollen creek beside a road (KFOR, upload 2 June 2013), then brown water into a drain (stock) -->
+  <video id="v-a4s4-creek" class="clip graded" src="media/news/kfor-creek-flood-roadside-1.mp4" data-start="833.41" data-duration="9.0" data-media-start="3.7" data-track-index="1" muted></video>
+  <video id="v-a4s4-drain" class="clip" src="media/stock/pexels-storm-drain-3.mp4" data-start="842.41" data-duration="8.85" data-media-start="0.5" data-track-index="1" muted></video>
+  <!-- I1-S5: a full highway at night, then tail lights through rain (stock), under the study card -->
+  <video id="v-i1s5-road" class="clip" src="media/stock/pexels-highway-traffic-dusk-4.mp4" data-start="85.98" data-duration="12.3" data-media-start="0.5" data-track-index="1" muted></video>
+  <video id="v-i1s5-tail" class="clip" src="media/stock/pixabay-windshield-rain-2.mp4" data-start="98.28" data-duration="12.27" data-media-start="1.0" data-track-index="1" muted></video>
+  <!-- A1-S1: storm cloud over flat country, then the deck thickening (stock), under the assessment's sentence; the siren is sound -->
+  <video id="v-a1s1-sky" class="clip" src="media/stock/pexels-storm-clouds-plains-4.mp4" data-start="149.88" data-duration="9.2" data-media-start="0.1" data-track-index="1" muted></video>
+  <video id="v-a1s1-deck" class="clip" src="media/stock/pexels-storm-clouds-plains-3.mp4" data-start="159.08" data-duration="9.2" data-media-start="6.0" data-track-index="1" muted></video>
+  <!-- A1-S4: the 2013 line of headlights, then a full highway; from "Hurricane" the 2005 Rita photograph (FEMA) fills the card's left box -->
+  <!-- the card over this segment names the picture "Oklahoma City 2013" for its whole window, so every clip under it is that evening's own footage -->
+  <video id="v-a1s4-city" class="clip graded" src="media/news/abc-highway-jam-chyron-aerial-2.mp4" data-start="198.91" data-duration="3.8" data-media-start="0.1" data-track-index="1" data-callback="the green sky over the city from the opening, as the label names the place and the year" muted></video>
+  <video id="v-a1s4-wet" class="clip graded" src="media/news/abc-highway-jam-wet-night-1.mp4" data-start="202.71" data-duration="7.5" data-media-start="1.3" data-track-index="1" muted></video>
+  <video id="v-a1s4-jam" class="clip graded" src="media/news/abc-highway-jam-night-aerial-1.mp4" data-start="210.21" data-duration="9.53" data-media-start="3" data-track-index="1" data-callback="the headlights from the opening, now named as the choice the assessment ties to the traffic" muted></video>
+  <div id="s-a1s4-rita" class="clip still-wrap" style="inset:0 auto 0 0; width:956px" data-start="213.75" data-duration="5.99" data-track-index="2" data-overlap-ok="the 2005 photograph fills the left box of the split card over the 2013 road"><img src="media/pd/fema-rita-houston-evacuees-1.jpg" alt=""></div>
+  <!-- A1-S5: open country west of the city, then dusk over dark fields (stock); no tornado footage is used -->
+  <video id="v-a1s5-road" class="clip" src="media/stock/pexels-rural-road-plains-1.mp4" data-start="219.74" data-duration="9.0" data-media-start="0.3" data-track-index="1" muted></video>
+  <!-- the name card over this clip says "near El Reno": the stand-in is a close shot with no landscape, so it reads as no particular place -->
+  <video id="v-a1s5-grass" class="clip" src="media/stock/pixabay-storm-clouds-plains-2.mp4" data-start="228.74" data-duration="8.81" data-media-start="0.5" data-track-index="1" muted></video>
+  <!-- A2-S10: rain from inside a car (stock) stands in for the rain-wrapped view; no cleared footage of it exists -->
+  <video id="v-a2s10-dash" class="clip" src="media/stock/pexels-steering-wheel-rain-3.mp4" data-start="481.08" data-duration="8.6" data-media-start="3.0" data-track-index="1" muted></video>
+  <video id="v-a2s10-glass" class="clip" src="media/stock/pixabay-windshield-rain-1.mp4" data-start="489.68" data-duration="8.49" data-media-start="1.0" data-track-index="1" muted></video>
+  <!-- A3-S5: flat farmland in low sun (stock); the wrecked vehicle is not shown, no cleared picture of it exists -->
+  <video id="v-a3s5-field" class="clip" src="media/stock/pixabay-rural-road-plains-3.mp4" data-start="579.02" data-duration="14.49" data-media-start="0.4" data-track-index="1" muted></video>
+  <!-- A4-S10: that evening's television radar picture (The Weather Channel on air), silent, under Finding 6 -->
+  <video id="v-a4s10-radar" class="clip graded" src="media/news/twc-onair-radar-bettes-phone-1.mp4" data-start="943.71" data-duration="10.75" data-media-start="1.0" data-track-index="1" muted></video>
+  <!-- A4-S12: the full highway returns under the two name cards -->
+  <video id="v-a4s12-road" class="clip" src="media/stock/pexels-highway-traffic-dusk-4.mp4" data-start="980.01" data-duration="13.0" data-media-start="3.0" data-track-index="1" data-callback="the traffic returns as the film names who is said to have sent it out" muted></video>
+  <video id="v-a4s12-tail" class="clip" src="media/stock/pixabay-windshield-rain-2.mp4" data-start="993.01" data-duration="12.93" data-media-start="2.5" data-track-index="1" data-callback="tail lights through rain, as under the study card" muted></video>
+  <!-- A4-S14: one second each under the two phrases that lift out of the message: traffic, then water into a drain -->
+  <video id="v-a4s14-jam" class="clip" src="media/stock/pixabay-windshield-rain-3.mp4" data-start="1036.4" data-duration="1.51" data-media-start="9.0" data-track-index="1" data-callback="the wall of rain from Act 1 under the words traffic jams" muted></video>
+  <video id="v-a4s14-drain" class="clip" src="media/stock/pexels-storm-drain-1.mp4" data-start="1037.91" data-duration="1.18" data-media-start="2.0" data-track-index="1" muted></video>
+  <!-- A5-S3: the weather office's own survey photographs from the El Reno path (public domain), under the marker list -->
+  <div id="s-a5s3-house" class="clip still-wrap" data-start="1099.24" data-duration="5.9" data-track-index="1"><img src="media/pd/nws-oun-el-reno-damage-survey-photo-03.jpg" alt=""></div>
+  <div id="s-a5s3-steel" class="clip still-wrap" data-start="1105.14" data-duration="5.8" data-track-index="1"><img src="media/pd/nws-oun-el-reno-damage-survey-photo-06.jpg" alt=""></div>
+  <div id="s-a5s3-pole" class="clip still-wrap" data-start="1110.94" data-duration="5.8" data-track-index="1"><img src="media/pd/nws-oun-el-reno-damage-survey-photo-07.jpg" alt=""></div>
+  <div id="s-a5s3-brick" class="clip still-wrap" data-start="1116.74" data-duration="5.8" data-track-index="1"><img src="media/pd/nws-oun-el-reno-damage-survey-photo-01.jpg" alt=""></div>
+  <!-- A5-S7: Moore after 20 May 2013 (FEMA, US Air Force; public domain), under the assessment's sentence -->
+  <div id="s-a5s7-moore1" class="clip still-wrap" data-start="1181.62" data-duration="5.88" data-track-index="1"><img src="media/pd/fema-moore-aerial-damage-1.jpg" alt=""></div>
+  <div id="s-a5s7-moore2" class="clip still-wrap" data-start="1187.5" data-duration="4.05" data-track-index="1"><img src="media/pd/nws-oun-moore-damage-survey-photo-9286.jpg" alt=""></div>
+  <div id="s-a5s7-moore3" class="clip still-wrap" data-start="1191.55" data-duration="4.75" data-track-index="1"><img src="media/pd/usaf-moore-aerial-damage-1.jpg" alt=""></div>
+  <div id="s-a5s7-moore4" class="clip still-wrap" data-start="1196.3" data-duration="3.45" data-track-index="1"><img src="media/pd/nws-oun-moore-damage-survey-photo-9355.jpg" alt=""></div>
+  <div id="s-a5s7-moore5" class="clip still-wrap" data-start="1199.75" data-duration="5.98" data-track-index="1"><img src="media/pd/natlguard-moore-aerial-damage-1.jpg" alt=""></div>
+  <!-- Z1-S3: a car on a country road (stock) under the closing lines, until the channel card cuts in on "This was" -->
+  <video id="v-z1s3-road" class="clip" src="media/stock/pexels-rural-road-plains-3.mp4" data-start="1315.14" data-duration="12.2" data-media-start="4.0" data-track-index="1" muted></video>
+  <!-- A5-S11: the highway from the opening returns under the transparent span of the returns graphic -->
+  <video id="v-a5s11-jam" class="clip graded" src="media/news/abc-highway-jam-night-aerial-1.mp4" data-start="1256.7" data-duration="5.7" data-media-start="5.0" data-track-index="1" data-callback="the line of headlights from the opening returns as the film names what people drove into" muted></video>
+
+  <!-- ============ GRAPHIC HOSTS (track 4; one comp per appearance, window = its narration segment) ============ -->
+  <!-- map21 -->
+  <div id="host-i1s3-pins" data-composition-id="g-i1s3-pins" data-composition-src="compositions/g-i1s3-pins.html" data-start="57.34" data-duration="16.28" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-i1s4-map21" data-composition-id="g-i1s4-map21" data-composition-src="compositions/g-i1s4-map21.html" data-start="73.62" data-duration="12.36" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1s7-map21" data-composition-id="g-a1s7-map21" data-composition-src="compositions/g-a1s7-map21.html" data-start="260.85" data-duration="16.53" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1s8-map21" data-composition-id="g-a1s8-map21" data-composition-src="compositions/g-a1s8-map21.html" data-start="277.38" data-duration="10.32" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a2s9-map21" data-composition-id="g-a2s9-map21" data-composition-src="compositions/g-a2s9-map21.html" data-start="469.74" data-duration="11.34" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a3s14-map21" data-composition-id="g-a3s14-map21" data-composition-src="compositions/g-a3s14-map21.html" data-start="737.93" data-duration="11.05" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s2-names" data-composition-id="g-a4s2-names" data-composition-src="compositions/g-a4s2-names.html" data-start="800.18" data-duration="12.45" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s16-map21" data-composition-id="g-a4s16-map21" data-composition-src="compositions/g-a4s16-map21.html" data-start="1052.9" data-duration="17.68" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s9-layers" data-composition-id="g-a5s9-layers" data-composition-src="compositions/g-a5s9-layers.html" data-start="1219.07" data-duration="17.98" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s10-map21" data-composition-id="g-a5s10-map21" data-composition-src="compositions/g-a5s10-map21.html" data-start="1237.05" data-duration="14.15" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s12-map21" data-composition-id="g-a5s12-map21" data-composition-src="compositions/g-a5s12-map21.html" data-start="1262.2" data-duration="13.51" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-z1s2-map21" data-composition-id="g-z1s2-map21" data-composition-src="compositions/g-z1s2-map21.html" data-start="1310.4" data-duration="4.74" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- maps -->
+  <div id="host-i1s1-map" data-composition-id="g-i1s1-map" data-composition-src="compositions/g-i1s1-map.html" data-start="19.81" data-duration="19.56" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1s3-south" data-composition-id="g-a1s3-south" data-composition-src="compositions/g-a1s3-south.html" data-start="180.25" data-duration="18.66" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1s9-landuse" data-composition-id="g-a1s9-landuse" data-composition-src="compositions/g-a1s9-landuse.html" data-start="287.7" data-duration="15.64" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1s10-track" data-composition-id="g-a1s10-track" data-composition-src="compositions/g-a1s10-track.html" data-start="303.34" data-duration="12.61" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a2s1-width" data-composition-id="g-a2s1-width" data-composition-src="compositions/g-a2s1-width.html" data-start="337.45" data-duration="25.64" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s9-citymap" data-composition-id="g-a4s9-citymap" data-composition-src="compositions/g-a4s9-citymap.html" data-start="928.2" data-duration="15.51" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s4-strip" data-composition-id="g-a5s4-strip" data-composition-src="compositions/g-a5s4-strip.html" data-start="1122.54" data-duration="21.72" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s5-homes" data-composition-id="g-a5s5-homes" data-composition-src="compositions/g-a5s5-homes.html" data-start="1144.26" data-duration="27.21" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s6-citymap" data-composition-id="g-a5s6-citymap" data-composition-src="compositions/g-a5s6-citymap.html" data-start="1171.47" data-duration="10.15" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- roads -->
+  <div id="host-i1s6-roads" data-composition-id="g-i1s6-roads" data-composition-src="compositions/g-i1s6-roads.html" data-start="110.55" data-duration="16.79" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a2s2-fields" data-composition-id="g-a2s2-fields" data-composition-src="compositions/g-a2s2-fields.html" data-start="363.09" data-duration="20.91" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a2s3-ring" data-composition-id="g-a2s3-ring" data-composition-src="compositions/g-a2s3-ring.html" data-start="384.0" data-duration="21.43" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a3s1-roads" data-composition-id="g-a3s1-roads" data-composition-src="compositions/g-a3s1-roads.html" data-start="521.06" data-duration="19.59" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a3s6-reuter" data-composition-id="g-a3s6-reuter" data-composition-src="compositions/g-a3s6-reuter.html" data-start="593.51" data-duration="20.87" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a3s7-cars" data-composition-id="g-a3s7-cars" data-composition-src="compositions/g-a3s7-cars.html" data-start="614.38" data-duration="17.42" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- replot -->
+  <div id="host-i1s8-replot" data-composition-id="g-i1s8-replot" data-composition-src="compositions/g-i1s8-replot.html" data-start="137.41" data-duration="11.67" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a2s6-replot" data-composition-id="g-a2s6-replot" data-composition-src="compositions/g-a2s6-replot.html" data-start="422.19" data-duration="14.7" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a2s7-replot" data-composition-id="g-a2s7-replot" data-composition-src="compositions/g-a2s7-replot.html" data-start="436.89" data-duration="20.83" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a2s8-replot" data-composition-id="g-a2s8-replot" data-composition-src="compositions/g-a2s8-replot.html" data-start="457.72" data-duration="12.02" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a2s11-replot" data-composition-id="g-a2s11-replot" data-composition-src="compositions/g-a2s11-replot.html" data-start="498.17" data-duration="21.89" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a3s2-replot" data-composition-id="g-a3s2-replot" data-composition-src="compositions/g-a3s2-replot.html" data-start="540.65" data-duration="8.02" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a3s8-replot" data-composition-id="g-a3s8-replot" data-composition-src="compositions/g-a3s8-replot.html" data-start="631.8" data-duration="20.79" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a3s9-replot" data-composition-id="g-a3s9-replot" data-composition-src="compositions/g-a3s9-replot.html" data-start="652.59" data-duration="18.75" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a3s11-replot" data-composition-id="g-a3s11-replot" data-composition-src="compositions/g-a3s11-replot.html" data-start="692.12" data-duration="12.28" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a3s13-split" data-composition-id="g-a3s13-split" data-composition-src="compositions/g-a3s13-split.html" data-start="713.7" data-duration="24.23" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s2-rating" data-composition-id="g-a5s2-rating" data-composition-src="compositions/g-a5s2-rating.html" data-start="1087.3" data-duration="11.94" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- docs -->
+  <div id="host-i1s2-table" data-composition-id="g-i1s2-table" data-composition-src="compositions/g-i1s2-table.html" data-start="39.37" data-duration="17.97" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s7-table" data-composition-id="g-a4s7-table" data-composition-src="compositions/g-a4s7-table.html" data-start="886.97" data-duration="23.72" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-z1s1-table" data-composition-id="g-z1s1-table" data-composition-src="compositions/g-z1s1-table.html" data-start="1286.21" data-duration="24.19" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s10-finding6" data-composition-id="g-a4s10-finding6" data-composition-src="compositions/g-a4s10-finding6.html" data-start="943.71" data-duration="10.75" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s11-page" data-composition-id="g-a4s11-page" data-composition-src="compositions/g-a4s11-page.html" data-start="954.46" data-duration="25.55" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s13-clock" data-composition-id="g-a4s13-clock" data-composition-src="compositions/g-a4s13-clock.html" data-start="1005.94" data-duration="18.37" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s14-message" data-composition-id="g-a4s14-message" data-composition-src="compositions/g-a4s14-message.html" data-start="1024.31" data-duration="14.78" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s15-rec6" data-composition-id="g-a4s15-rec6" data-composition-src="compositions/g-a4s15-rec6.html" data-start="1039.09" data-duration="13.81" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s1-statement" data-composition-id="g-a5s1-statement" data-composition-src="compositions/g-a5s1-statement.html" data-start="1071.58" data-duration="15.72" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s7-quote" data-composition-id="g-a5s7-quote" data-composition-src="compositions/g-a5s7-quote.html" data-start="1181.62" data-duration="24.11" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- drawings -->
+  <div id="host-a1s2-house" data-composition-id="g-a1s2-house" data-composition-src="compositions/g-a1s2-house.html" data-start="168.28" data-duration="11.97" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s1-ditch" data-composition-id="g-a4s1-ditch" data-composition-src="compositions/g-a4s1-ditch.html" data-start="784.07" data-duration="16.11" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s3-ditch" data-composition-id="g-a4s3-ditch" data-composition-src="compositions/g-a4s3-ditch.html" data-start="812.63" data-duration="20.78" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s5-drain" data-composition-id="g-a4s5-drain" data-composition-src="compositions/g-a4s5-drain.html" data-start="851.26" data-duration="14.71" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s6-drain" data-composition-id="g-a4s6-drain" data-composition-src="compositions/g-a4s6-drain.html" data-start="865.97" data-duration="21.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s8-closet" data-composition-id="g-a5s8-closet" data-composition-src="compositions/g-a5s8-closet.html" data-start="1205.73" data-duration="13.34" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s11-returns" data-composition-id="g-a5s11-returns" data-composition-src="compositions/g-a5s11-returns.html" data-start="1251.2" data-duration="11.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- cards -->
+  <div id="host-i1s5-study" data-composition-id="g-i1s5-study" data-composition-src="compositions/g-i1s5-study.html" data-start="85.98" data-duration="24.57" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-i1s7-names" data-composition-id="g-i1s7-names" data-composition-src="compositions/g-i1s7-names.html" data-start="127.34" data-duration="10.07" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1s1-sentence" data-composition-id="g-a1s1-sentence" data-composition-src="compositions/g-a1s1-sentence.html" data-start="150.08" data-duration="18.2" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a1s4-rita" data-composition-id="g-a1s4-rita" data-composition-src="compositions/g-a1s4-rita.html" data-start="198.91" data-duration="20.83" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a1s5-henderson" data-composition-id="g-a1s5-henderson" data-composition-src="compositions/g-a1s5-henderson.html" data-start="219.74" data-duration="17.81" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a1s6-clock" data-composition-id="g-a1s6-clock" data-composition-src="compositions/g-a1s6-clock.html" data-start="237.55" data-duration="23.3" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a2s4-beam" data-composition-id="g-a2s4-beam" data-composition-src="compositions/g-a2s4-beam.html" data-start="405.43" data-duration="6.45" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a3s4-quotes" data-composition-id="g-a3s4-quotes" data-composition-src="compositions/g-a3s4-quotes.html" data-start="568.78" data-duration="10.24" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a3s10-names" data-composition-id="g-a3s10-names" data-composition-src="compositions/g-a3s10-names.html" data-start="671.34" data-duration="20.78" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s8-timeline" data-composition-id="g-a4s8-timeline" data-composition-src="compositions/g-a4s8-timeline.html" data-start="910.69" data-duration="17.51" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s12-names" data-composition-id="g-a4s12-names" data-composition-src="compositions/g-a4s12-names.html" data-start="980.01" data-duration="25.93" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-t1s1-markers" data-composition-id="g-t1s1-markers" data-composition-src="compositions/g-t1s1-markers.html" data-start="13.61" data-duration="6.2" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s3-markers"data-composition-id="g-a5s3-markers" data-composition-src="compositions/g-a5s3-markers.html" data-start="1099.24" data-duration="23.3" data-track-index="4" data-width="1920" data-height="1080"></div>
+
+  <!-- ============ OVERLAYS (popfigs, credits; each wrapped in a timed section) ============ -->
+  <section id="ov-pf-date" data-start="0.4" data-duration="3.2" data-track-index="6">
+    <div class="popfig" id="pf-date"><span class="pf-big">May 31, 2013</span><span class="pf-sub">El Reno · Oklahoma</span></div>
+  </section>
+  <section id="ov-pf-19" data-start="11.0" data-duration="2.7" data-track-index="6">
+    <div class="popfig" id="pf-19"><span class="pf-big">19 tornadoes</span><span class="pf-sub">in Oklahoma · National Weather Service</span></div>
+  </section>
+  <section id="ov-pf-185" data-start="552.1" data-duration="3.3" data-track-index="6">
+    <div class="popfig" id="pf-185"><span class="pf-big">185 mph</span><span class="pf-sub">more than · a few hundred feet up</span></div>
+  </section>
+
+  <!-- closing channel card: cuts in on "This was", 12.00 s into Z1-S3 -->
+  <div id="host-outro" data-composition-id="g-outro" data-composition-src="compositions/g-outro.html" data-start="1327.14" data-duration="6.24" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- ============ SOUND ============
+       Two baked ambience stems carry the score, the rain and the two sirens; every drop-out and return is set in
+       bake_beds.py against the script's Picture notes. No bed under the ad (752.66 to 777.08).
+       Swells end on the last word of a line. Hits sit on a named cue. -->
+  <audio id="sx-mus-bed-a" src="media/beds/elreno-bed-a.mp3" data-bed="" data-start="0" data-duration="757.66" data-volume="0.13"></audio>
+  <audio id="sx-mus-bed-b" src="media/beds/elreno-bed-b.mp3" data-bed="" data-start="784.07" data-duration="549.31" data-volume="0.13"></audio>
+  <audio id="sx-swell-01" src="media/sfx/sfx-swell.wav" data-bed="" data-start="13.91" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-02" src="media/sfx/sfx-swell.wav" data-bed="" data-start="80.18" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-03" src="media/sfx/sfx-swell.wav" data-bed="" data-start="143.63" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-04" src="media/sfx/sfx-swell.wav" data-bed="" data-start="193.19" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-05" src="media/sfx/sfx-swell.wav" data-bed="" data-start="271.57" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-06" src="media/sfx/sfx-swell.wav" data-bed="" data-start="310.12" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-07" src="media/sfx/sfx-swell.wav" data-bed="" data-start="357.15" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-08" src="media/sfx/sfx-swell.wav" data-bed="" data-start="406.07" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-09" src="media/sfx/sfx-swell.wav" data-bed="" data-start="475.18" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-10" src="media/sfx/sfx-swell.wav" data-bed="" data-start="514.61" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-11" src="media/sfx/sfx-swell.wav" data-bed="" data-start="542.85" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-12" src="media/sfx/sfx-swell.wav" data-bed="" data-start="626.04" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-13" src="media/sfx/sfx-swell.wav" data-bed="" data-start="698.54" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-14" src="media/sfx/sfx-swell.wav" data-bed="" data-start="743.25" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-15" src="media/sfx/sfx-swell.wav" data-bed="" data-start="827.59" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-16" src="media/sfx/sfx-swell.wav" data-bed="" data-start="974.18" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-17" src="media/sfx/sfx-swell.wav" data-bed="" data-start="1033.31" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-18" src="media/sfx/sfx-swell.wav" data-bed="" data-start="1065" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-19" src="media/sfx/sfx-swell.wav" data-bed="" data-start="1093.46" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-20" src="media/sfx/sfx-swell.wav" data-bed="" data-start="1165.66" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-21" src="media/sfx/sfx-swell.wav" data-bed="" data-start="1231.33" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-22" src="media/sfx/sfx-swell.wav" data-bed="" data-start="1309.32" data-duration="5" data-volume="0.4"></audio>
+  <!-- hits: I1-S2 one per group ("Eight", then "13"); A1-S2 the floor line; A2-S7 the two readouts; A4-S13 the clock stops -->
+  <audio id="sx-hit-eight" src="media/sfx/sfx-boom.wav" data-bed="" data-start="47.17" data-duration="3" data-volume="0.3"></audio>
+  <audio id="sx-hit-thirteen" src="media/sfx/sfx-boom.wav" data-bed="" data-start="57.92" data-duration="3" data-volume="0.3"></audio>
+  <audio id="sx-hit-floor" src="media/sfx/sfx-boom.wav" data-bed="" data-start="171.92" data-duration="3" data-volume="0.4"></audio>
+  <audio id="sx-hit-175" src="media/sfx/sfx-boom.wav" data-bed="" data-start="445.17" data-duration="3" data-volume="0.4"></audio>
+  <audio id="sx-hit-295" src="media/sfx/sfx-boom.wav" data-bed="" data-start="455.15" data-duration="3" data-volume="0.4"></audio>
+  <audio id="sx-hit-clock" src="media/sfx/sfx-boom.wav" data-bed="" data-start="1011.24" data-duration="3" data-volume="0.4"></audio>
+
+  <!-- ============ FILM LAYER ============ -->
+  <div id="vignette"></div>
+  <canvas id="grain" width="480" height="270"></canvas>
+</div>
+
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 1333.38;
+  function kb(sel, at, dur, s0, s1, x0, x1, y0, y1) {
+    tl.fromTo(sel, { scale: s0, x: x0, y: y0, transformOrigin: "center" }, { scale: s1, x: x1, y: y1, duration: dur, ease: "none" }, at);
+  }
+  function pop(sel, at, hold) {
+    tl.fromTo(sel, { scale: 2.2, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.35, ease: "power4.in" }, at);
+    tl.to(sel, { autoAlpha: 0, y: -26, duration: 0.28, ease: "power2.in" }, at + hold - 0.28);
+  }
+
+  /* ---- popfigs: the figure lands as the voice says it ---- */
+  pop("#pf-date", 0.5, 3.0);   // date and place inside the first second, over Paul's hook clip (the one text allowed on him)
+  pop("#pf-19", 11.09, 2.5);   // T1-S1 "nineteen" (words.json 3.98 s into the segment); gone before "Twelve" at 13.81
+  pop("#pf-185", 552.2, 3.0);  // A3-S3 "more than 185" (words.json 3.52 s into the segment), then the crew footage runs clean
+
+  /* ---- footage: one slow move per cut, so no shot sits still ---- */
+  kb("#v-t1s1-sky", 6.96, 3.94, 1.02, 1.08, 0, 0, 0, -10);
+  kb("#v-t1s1-jam", 10.9, 8.91, 1.08, 1.02, -14, 14, 0, 0);
+  kb("#v-i1s1-plains", 28.41, 3.7, 1.04, 1.1, 0, 0, 0, -8);
+  kb("#v-i1s3-flood", 59.14, 5.3, 1.03, 1.08, 0, -12, 0, 0);
+  kb("#v-a1s11-rain", 315.95, 10.79, 1.0, 1.06, 0, 0, 0, 0);
+  kb("#v-a4s4-creek", 833.41, 9.0, 1.03, 1.08, 10, -10, 0, 0);
+  kb("#v-a4s4-drain", 842.41, 8.85, 1.06, 1.0, 0, 0, 0, 0);
+  kb("#v-a5s11-jam", 1256.7, 5.7, 1.04, 1.09, 12, -6, 0, 0);
+  kb("#v-i1s5-road", 85.98, 12.3, 1.02, 1.08, 0, 0, 0, 0);
+  kb("#v-i1s5-tail", 98.28, 12.27, 1.07, 1.01, 0, 0, 0, 0);
+  kb("#v-a1s1-sky", 149.88, 9.2, 1.0, 1.06, 0, 0, 0, -8);
+  kb("#v-a1s1-deck", 159.08, 9.2, 1.06, 1.0, 0, 0, 0, 0);
+  kb("#v-a1s4-city", 198.91, 3.8, 1.02, 1.06, 0, 0, 0, 0);
+  kb("#v-a1s4-wet", 202.71, 7.5, 1.02, 1.05, 0, 0, 0, 0);
+  kb("#v-a1s4-jam", 210.21, 9.53, 1.02, 1.08, 10, -10, 0, 0);
+  kb("#s-a1s4-rita img", 213.75, 5.99, 1.04, 1.1, 0, 0, 0, 0);
+  kb("#v-a1s5-road", 219.74, 9.0, 1.0, 1.06, 0, 0, 0, 0);
+  kb("#v-a1s5-grass", 228.74, 8.81, 1.06, 1.01, 0, 0, 0, 0);
+  kb("#v-a2s10-dash", 481.08, 8.6, 1.0, 1.05, 0, 0, 0, 0);
+  kb("#v-a2s10-glass", 489.68, 8.49, 1.05, 1.0, 0, 0, 0, 0);
+  kb("#v-a3s5-field", 579.02, 14.49, 1.0, 1.07, 0, 0, 0, 0);
+  kb("#v-a4s12-road", 980.01, 13.0, 1.06, 1.01, 0, 0, 0, 0);
+  kb("#v-a4s12-tail", 993.01, 12.93, 1.01, 1.07, 0, 0, 0, 0);
+  kb("#s-a5s3-house img", 1099.24, 5.9, 1.03, 1.1, 0, -14, 0, 0);
+  kb("#s-a5s3-steel img", 1105.14, 5.8, 1.1, 1.03, 12, 0, 0, 0);
+  kb("#s-a5s3-pole img", 1110.94, 5.8, 1.04, 1.1, 0, 0, 20, -20);
+  kb("#s-a5s3-brick img", 1116.74, 5.8, 1.1, 1.04, 0, 0, 0, 0);
+  kb("#s-a5s7-moore1 img", 1181.62, 5.88, 1.03, 1.09, 0, -14, 0, 8);
+  kb("#s-a5s7-moore2 img", 1187.5, 4.05, 1.03, 1.08, 0, -8, 0, 0);
+  kb("#s-a5s7-moore3 img", 1191.55, 4.75, 1.1, 1.04, 12, 0, 0, 0);
+  kb("#s-a5s7-moore4 img", 1196.3, 3.45, 1.1, 1.15, 0, 6, 0, 0);
+  kb("#s-a5s7-moore5 img", 1199.75, 5.98, 1.1, 1.03, 0, 10, 0, 0);
+  kb("#v-z1s3-road", 1315.14, 12.2, 1.0, 1.05, 0, 0, 0, 0);
+
+  filmLayer(tl, DUR);
+  window.__timelines["ep4-el-reno"] = tl;
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,628 @@
+{
+ "total": 1333.38,
+ "rows": [
+  {
+   "id": "ins-paul-1",
+   "kind": "paul:h1-s1",
+   "start": 0.0,
+   "dur": 6.96,
+   "end": 6.96
+  },
+  {
+   "id": "nx-t1-s1",
+   "kind": "narration",
+   "start": 7.11,
+   "dur": 12.402,
+   "end": 19.51
+  },
+  {
+   "id": "nx-i1-s1",
+   "kind": "narration",
+   "start": 19.81,
+   "dur": 19.253,
+   "end": 39.06
+  },
+  {
+   "id": "nx-i1-s2",
+   "kind": "narration",
+   "start": 39.37,
+   "dur": 17.678,
+   "end": 57.04
+  },
+  {
+   "id": "nx-i1-s3",
+   "kind": "narration",
+   "start": 57.34,
+   "dur": 15.976,
+   "end": 73.32
+  },
+  {
+   "id": "nx-i1-s4",
+   "kind": "narration",
+   "start": 73.62,
+   "dur": 12.062,
+   "end": 85.68
+  },
+  {
+   "id": "nx-i1-s5",
+   "kind": "narration",
+   "start": 85.98,
+   "dur": 24.274,
+   "end": 110.25
+  },
+  {
+   "id": "nx-i1-s6",
+   "kind": "narration",
+   "start": 110.55,
+   "dur": 16.487,
+   "end": 127.04
+  },
+  {
+   "id": "nx-i1-s7",
+   "kind": "narration",
+   "start": 127.34,
+   "dur": 9.764,
+   "end": 137.11
+  },
+  {
+   "id": "nx-i1-s8",
+   "kind": "narration",
+   "start": 137.41,
+   "dur": 11.679,
+   "end": 149.08
+  },
+  {
+   "id": "bo-i1",
+   "kind": "blackout",
+   "start": 149.08,
+   "dur": 0.8,
+   "end": 149.88
+  },
+  {
+   "id": "nx-a1-s1",
+   "kind": "narration",
+   "start": 150.08,
+   "dur": 17.891,
+   "end": 167.98
+  },
+  {
+   "id": "nx-a1-s2",
+   "kind": "narration",
+   "start": 168.28,
+   "dur": 11.679,
+   "end": 179.95
+  },
+  {
+   "id": "nx-a1-s3",
+   "kind": "narration",
+   "start": 180.25,
+   "dur": 18.359,
+   "end": 198.61
+  },
+  {
+   "id": "nx-a1-s4",
+   "kind": "narration",
+   "start": 198.91,
+   "dur": 20.53,
+   "end": 219.44
+  },
+  {
+   "id": "nx-a1-s5",
+   "kind": "narration",
+   "start": 219.74,
+   "dur": 17.508,
+   "end": 237.25
+  },
+  {
+   "id": "nx-a1-s6",
+   "kind": "narration",
+   "start": 237.55,
+   "dur": 22.997,
+   "end": 260.55
+  },
+  {
+   "id": "nx-a1-s7",
+   "kind": "narration",
+   "start": 260.85,
+   "dur": 16.231,
+   "end": 277.08
+  },
+  {
+   "id": "nx-a1-s8",
+   "kind": "narration",
+   "start": 277.38,
+   "dur": 10.019,
+   "end": 287.4
+  },
+  {
+   "id": "nx-a1-s9",
+   "kind": "narration",
+   "start": 287.7,
+   "dur": 15.338,
+   "end": 303.04
+  },
+  {
+   "id": "nx-a1-s10",
+   "kind": "narration",
+   "start": 303.34,
+   "dur": 12.317,
+   "end": 315.65
+  },
+  {
+   "id": "nx-a1-s11",
+   "kind": "narration",
+   "start": 315.95,
+   "dur": 10.487,
+   "end": 326.44
+  },
+  {
+   "id": "ins-paul-2",
+   "kind": "paul:a1-s12",
+   "start": 326.74,
+   "dur": 9.71,
+   "end": 336.45
+  },
+  {
+   "id": "bo-a1",
+   "kind": "blackout",
+   "start": 336.45,
+   "dur": 0.8,
+   "end": 337.25
+  },
+  {
+   "id": "nx-a2-s1",
+   "kind": "narration",
+   "start": 337.45,
+   "dur": 25.338,
+   "end": 362.79
+  },
+  {
+   "id": "nx-a2-s2",
+   "kind": "narration",
+   "start": 363.09,
+   "dur": 20.615,
+   "end": 383.7
+  },
+  {
+   "id": "nx-a2-s3",
+   "kind": "narration",
+   "start": 384.0,
+   "dur": 21.126,
+   "end": 405.13
+  },
+  {
+   "id": "nx-a2-s4",
+   "kind": "narration",
+   "start": 405.43,
+   "dur": 6.147,
+   "end": 411.58
+  },
+  {
+   "id": "ins-paul-3",
+   "kind": "paul:a2-s5",
+   "start": 411.88,
+   "dur": 10.01,
+   "end": 421.89
+  },
+  {
+   "id": "nx-a2-s6",
+   "kind": "narration",
+   "start": 422.19,
+   "dur": 14.403,
+   "end": 436.59
+  },
+  {
+   "id": "nx-a2-s7",
+   "kind": "narration",
+   "start": 436.89,
+   "dur": 20.53,
+   "end": 457.42
+  },
+  {
+   "id": "nx-a2-s8",
+   "kind": "narration",
+   "start": 457.72,
+   "dur": 11.721,
+   "end": 469.44
+  },
+  {
+   "id": "nx-a2-s9",
+   "kind": "narration",
+   "start": 469.74,
+   "dur": 11.04,
+   "end": 480.78
+  },
+  {
+   "id": "nx-a2-s10",
+   "kind": "narration",
+   "start": 481.08,
+   "dur": 16.785,
+   "end": 497.87
+  },
+  {
+   "id": "nx-a2-s11",
+   "kind": "narration",
+   "start": 498.17,
+   "dur": 21.892,
+   "end": 520.06
+  },
+  {
+   "id": "bo-a2",
+   "kind": "blackout",
+   "start": 520.06,
+   "dur": 0.8,
+   "end": 520.86
+  },
+  {
+   "id": "nx-a3-s1",
+   "kind": "narration",
+   "start": 521.06,
+   "dur": 19.296,
+   "end": 540.35
+  },
+  {
+   "id": "nx-a3-s2",
+   "kind": "narration",
+   "start": 540.65,
+   "dur": 7.721,
+   "end": 548.37
+  },
+  {
+   "id": "nx-a3-s3",
+   "kind": "narration",
+   "start": 548.67,
+   "dur": 13.807,
+   "end": 562.48
+  },
+  {
+   "id": "ins-crew-sound",
+   "kind": "hold",
+   "start": 562.48,
+   "dur": 6.0,
+   "end": 568.48
+  },
+  {
+   "id": "nx-a3-s4",
+   "kind": "narration",
+   "start": 568.78,
+   "dur": 9.934,
+   "end": 578.72
+  },
+  {
+   "id": "nx-a3-s5",
+   "kind": "narration",
+   "start": 579.02,
+   "dur": 14.19,
+   "end": 593.21
+  },
+  {
+   "id": "nx-a3-s6",
+   "kind": "narration",
+   "start": 593.51,
+   "dur": 20.573,
+   "end": 614.08
+  },
+  {
+   "id": "nx-a3-s7",
+   "kind": "narration",
+   "start": 614.38,
+   "dur": 17.125,
+   "end": 631.5
+  },
+  {
+   "id": "nx-a3-s8",
+   "kind": "narration",
+   "start": 631.8,
+   "dur": 20.487,
+   "end": 652.29
+  },
+  {
+   "id": "nx-a3-s9",
+   "kind": "narration",
+   "start": 652.59,
+   "dur": 18.445,
+   "end": 671.04
+  },
+  {
+   "id": "nx-a3-s10",
+   "kind": "narration",
+   "start": 671.34,
+   "dur": 20.487,
+   "end": 691.82
+  },
+  {
+   "id": "nx-a3-s11",
+   "kind": "narration",
+   "start": 692.12,
+   "dur": 11.977,
+   "end": 704.1
+  },
+  {
+   "id": "ins-paul-4",
+   "kind": "paul:a3-s12",
+   "start": 704.4,
+   "dur": 9.0,
+   "end": 713.4
+  },
+  {
+   "id": "nx-a3-s13",
+   "kind": "narration",
+   "start": 713.7,
+   "dur": 23.934,
+   "end": 737.63
+  },
+  {
+   "id": "nx-a3-s14",
+   "kind": "narration",
+   "start": 737.93,
+   "dur": 10.742,
+   "end": 748.68
+  },
+  {
+   "id": "ins-paul-5",
+   "kind": "paul:a3-s15",
+   "start": 748.98,
+   "dur": 8.68,
+   "end": 757.66
+  },
+  {
+   "id": "bo-cta-in",
+   "kind": "blackout",
+   "start": 757.66,
+   "dur": 1.0,
+   "end": 758.66
+  },
+  {
+   "id": "ins-cta-paul",
+   "kind": "cta",
+   "start": 758.66,
+   "dur": 24.417,
+   "end": 783.07
+  },
+  {
+   "id": "bo-cta-out",
+   "kind": "blackout",
+   "start": 783.07,
+   "dur": 1.0,
+   "end": 784.07
+  },
+  {
+   "id": "nx-a4-s1",
+   "kind": "narration",
+   "start": 784.07,
+   "dur": 15.806,
+   "end": 799.88
+  },
+  {
+   "id": "nx-a4-s2",
+   "kind": "narration",
+   "start": 800.18,
+   "dur": 12.147,
+   "end": 812.33
+  },
+  {
+   "id": "nx-a4-s3",
+   "kind": "narration",
+   "start": 812.63,
+   "dur": 20.487,
+   "end": 833.11
+  },
+  {
+   "id": "nx-a4-s4",
+   "kind": "narration",
+   "start": 833.41,
+   "dur": 17.551,
+   "end": 850.96
+  },
+  {
+   "id": "nx-a4-s5",
+   "kind": "narration",
+   "start": 851.26,
+   "dur": 14.403,
+   "end": 865.67
+  },
+  {
+   "id": "nx-a4-s6",
+   "kind": "narration",
+   "start": 865.97,
+   "dur": 20.7,
+   "end": 886.67
+  },
+  {
+   "id": "nx-a4-s7",
+   "kind": "narration",
+   "start": 886.97,
+   "dur": 23.423,
+   "end": 910.39
+  },
+  {
+   "id": "nx-a4-s8",
+   "kind": "narration",
+   "start": 910.69,
+   "dur": 17.21,
+   "end": 927.9
+  },
+  {
+   "id": "nx-a4-s9",
+   "kind": "narration",
+   "start": 928.2,
+   "dur": 15.21,
+   "end": 943.41
+  },
+  {
+   "id": "nx-a4-s10",
+   "kind": "narration",
+   "start": 943.71,
+   "dur": 10.445,
+   "end": 954.16
+  },
+  {
+   "id": "nx-a4-s11",
+   "kind": "narration",
+   "start": 954.46,
+   "dur": 25.253,
+   "end": 979.71
+  },
+  {
+   "id": "nx-a4-s12",
+   "kind": "narration",
+   "start": 980.01,
+   "dur": 25.636,
+   "end": 1005.64
+  },
+  {
+   "id": "nx-a4-s13",
+   "kind": "narration",
+   "start": 1005.94,
+   "dur": 18.062,
+   "end": 1024.01
+  },
+  {
+   "id": "nx-a4-s14",
+   "kind": "narration",
+   "start": 1024.31,
+   "dur": 14.488,
+   "end": 1038.79
+  },
+  {
+   "id": "nx-a4-s15",
+   "kind": "narration",
+   "start": 1039.09,
+   "dur": 13.509,
+   "end": 1052.6
+  },
+  {
+   "id": "nx-a4-s16",
+   "kind": "narration",
+   "start": 1052.9,
+   "dur": 17.678,
+   "end": 1070.58
+  },
+  {
+   "id": "bo-a4",
+   "kind": "blackout",
+   "start": 1070.58,
+   "dur": 0.8,
+   "end": 1071.38
+  },
+  {
+   "id": "nx-a5-s1",
+   "kind": "narration",
+   "start": 1071.58,
+   "dur": 15.423,
+   "end": 1087.0
+  },
+  {
+   "id": "nx-a5-s2",
+   "kind": "narration",
+   "start": 1087.3,
+   "dur": 11.636,
+   "end": 1098.94
+  },
+  {
+   "id": "nx-a5-s3",
+   "kind": "narration",
+   "start": 1099.24,
+   "dur": 22.997,
+   "end": 1122.24
+  },
+  {
+   "id": "nx-a5-s4",
+   "kind": "narration",
+   "start": 1122.54,
+   "dur": 21.424,
+   "end": 1143.96
+  },
+  {
+   "id": "nx-a5-s5",
+   "kind": "narration",
+   "start": 1144.26,
+   "dur": 26.913,
+   "end": 1171.17
+  },
+  {
+   "id": "nx-a5-s6",
+   "kind": "narration",
+   "start": 1171.47,
+   "dur": 9.849,
+   "end": 1181.32
+  },
+  {
+   "id": "nx-a5-s7",
+   "kind": "narration",
+   "start": 1181.62,
+   "dur": 23.806,
+   "end": 1205.43
+  },
+  {
+   "id": "nx-a5-s8",
+   "kind": "narration",
+   "start": 1205.73,
+   "dur": 13.041,
+   "end": 1218.77
+  },
+  {
+   "id": "nx-a5-s9",
+   "kind": "narration",
+   "start": 1219.07,
+   "dur": 17.678,
+   "end": 1236.75
+  },
+  {
+   "id": "nx-a5-s10",
+   "kind": "narration",
+   "start": 1237.05,
+   "dur": 13.849,
+   "end": 1250.9
+  },
+  {
+   "id": "nx-a5-s11",
+   "kind": "narration",
+   "start": 1251.2,
+   "dur": 10.7,
+   "end": 1261.9
+  },
+  {
+   "id": "nx-a5-s12",
+   "kind": "narration",
+   "start": 1262.2,
+   "dur": 13.211,
+   "end": 1275.41
+  },
+  {
+   "id": "ins-paul-6",
+   "kind": "paul:a5-s13",
+   "start": 1275.71,
+   "dur": 9.5,
+   "end": 1285.21
+  },
+  {
+   "id": "bo-a5",
+   "kind": "blackout",
+   "start": 1285.21,
+   "dur": 0.8,
+   "end": 1286.01
+  },
+  {
+   "id": "nx-z1-s1",
+   "kind": "narration",
+   "start": 1286.21,
+   "dur": 23.891,
+   "end": 1310.1
+  },
+  {
+   "id": "nx-z1-s2",
+   "kind": "narration",
+   "start": 1310.4,
+   "dur": 4.445,
+   "end": 1314.84
+  },
+  {
+   "id": "nx-z1-s3",
+   "kind": "narration",
+   "start": 1315.14,
+   "dur": 14.232,
+   "end": 1329.38
+  }
+ ]
+}
