@@ -19,6 +19,7 @@
  "g-a2-5-two-offices": 24.09,
  "g-a2-6-two-cards": 17.67,
  "g-a2-7-wire-cut": 17.98,
+ "g-a2-8-belen-line": 20.52,
  "g-a2-9-sept4-map": 17.9,
  "g-a3-1-steering": 24.4,
  "g-a3-10-1875": 16.02,
@@ -72,6 +73,7 @@
  "g-a6-1-board": 9.08,
  "g-a6-10-today": 3.44,
  "g-a6-11-season": 8.5,
+ "g-a6-12-close": 12,
  "g-a6-2-build": 10,
  "g-a6-3-wall": 6.71,
  "g-a6-4-grade": 21.46,
@@ -89,7 +91,5 @@
  "g-intro-6-island": 11.82,
  "g-intro-7-clines": 8.14,
  "g-intro-8-track": 26.89,
- "g-intro-9-warnings": 11.2,
- "g-a6-12-close": 12,
- "g-a2-8-belen-line": 20.52
+ "g-intro-9-warnings": 11.2
 }
