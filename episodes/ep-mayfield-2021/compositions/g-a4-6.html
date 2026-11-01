@@ -1,0 +1,40 @@
+<template>
+<style>
+  /* g-a4-6 · A4-S6 · chip "TORNADO EMERGENCY · 9:26 PM" over Paul's P4 slot (placeholder card host-g-paul-p4 until his clip lands),
+     landing on "the strongest words" (his clip ins-paul-5, rephrased line: the chip names the words he does not say). Overlay, no ground. Chip box left 110, bottom 150 (lower-third datum, family g-i1-6): clear of his face
+     (centre frame) and of the Flow logo patch (x >= 1600, y >= 820). Nothing past x 1560. */
+  #g-a4-6-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  #g-a4-6-float { position:absolute; inset:0; width:1920px; height:1080px; }
+  .g-a4-6-glass { background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-sizing:border-box; white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a4-6-chip { position:absolute; left:110px; bottom:150px; max-width:1000px; padding:18px 30px; border-radius:28px;
+    font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:64px; letter-spacing:1px; color:#dfe7ee; }
+  #g-a4-6-chip b { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; letter-spacing:0; color:#f2f5f8; }
+</style>
+<div id="g-a4-6-root" data-composition-id="g-a4-6" data-width="1920" data-height="1080">
+  <div id="g-a4-6-float">
+    <div class="g-a4-6-glass" id="g-a4-6-chip">TORNADO EMERGENCY · <b>9:26 PM</b></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 4.64;       /* host 748.247 ("the strongest words" @4.74 in ins-paul-5, clip start 743.507) -> 752.887, inside his window (ends 752.967) */
+  const CUE_CHIP = 0;     /* THE STRONGEST WORDS @4.74 (ep 748.247), Paul's own transcript raw-01.words.json */
+  const CUE_OUT = 4.04;   /* host end - 0.6 */
+
+  tl.set("#g-a4-6-chip", { autoAlpha: 0, x: 0, y: 24 }, 0);
+  tl.set("#g-a4-6-float", { scale: 1, y: 0, transformOrigin: "110px 1016px" }, 0);
+  /* ambient float over the whole window */
+  tl.to("#g-a4-6-float", { scale: 1.006, y: -6, duration: DUR, ease: "none" }, 0);
+
+  tl.fromTo("#g-a4-6-chip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUE_CHIP);
+
+  /* out: slides left and finishes inside the host */
+  tl.to("#g-a4-6-chip", { x: -1000, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, CUE_OUT);
+
+  window.__timelines["g-a4-6"] = tl;
+})();
+</script>
+</template>

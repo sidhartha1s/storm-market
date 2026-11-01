@@ -1,0 +1,70 @@
+<template>
+<style>
+  /* g-a4-3 · A4-S3 · name card "Mark Saxton · 37 · forklift operator" (lower third, left 110 bottom 110) and his words on a glass quote card
+     (left 260, right edge 1600, centred on y 390, i.e. the brief's y 300-480 band). Overlay, no ground: Mayfield stills and the USACE debris-truck
+     pull run beneath for the whole window (index.html A4). No face beneath is his: none of the footage under this card shows a person close up.
+     Never with the A4-S10 allegation. Nothing at x >= 1600, y >= 680. */
+  #g-a4-3-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  .g-a4-3-glass { background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-sizing:border-box; opacity:0; visibility:hidden; }
+  #g-a4-3-lt { position:absolute; left:110px; bottom:110px; max-width:1100px; padding:22px 34px 20px; border-radius:28px; }
+  .g-a4-3-line { display:table; white-space:nowrap; }
+  #g-a4-3-name { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; }
+  #g-a4-3-sub { margin-top:6px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:26px; line-height:34px; color:#e8c56a; }
+  #g-a4-3-cred { margin-top:10px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:24px; color:#c8d3e0; }
+  #g-a4-3-qwrap { position:absolute; left:260px; top:290px; width:1340px; display:flex; justify-content:center; }
+  #g-a4-3-q { padding:40px 64px 34px; border-radius:28px; }
+  #g-a4-3-qt { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:52px; line-height:64px; color:#f2f5f8; white-space:nowrap; }
+  #g-a4-3-qa { margin-top:18px; font-family:Arial, sans-serif; font-weight:700; font-size:26px; line-height:30px; letter-spacing:3px; color:#d8a13a; white-space:nowrap; }
+</style>
+<div id="g-a4-3-root" data-composition-id="g-a4-3" data-width="1920" data-height="1080">
+  <div class="g-a4-3-glass" id="g-a4-3-lt">
+    <div class="g-a4-3-line" id="g-a4-3-name">Mark Saxton</div>
+    <div class="g-a4-3-line" id="g-a4-3-sub">37 · forklift operator</div>
+    <div class="g-a4-3-line" id="g-a4-3-cred">NBC News, 12 Dec 2021</div>
+  </div>
+  <div id="g-a4-3-qwrap">
+    <div class="g-a4-3-glass" id="g-a4-3-q">
+      <div id="g-a4-3-qt">&ldquo;I can&rsquo;t believe I&rsquo;m even here.&rdquo;</div>
+      <div id="g-a4-3-qa">Mark Saxton, NBC News</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 14.598;  /* host 688.402 ("Mark" @3.44 in a4-s3, seg start 684.962) -> 703.000 (the review search graphic) */
+  const C = {
+    name: 0,           /* MARK SAXTON @3.44 (ep 688.402) */
+    sub: 1.38,         /* A FORKLIFT OPERATOR @4.82 (ep 689.782) */
+    quote: 11.34,      /* I CAN'T BELIEVE @14.78 (ep 699.742) */
+    out: 13.998        /* host end - 0.6 */
+  };
+
+  tl.set(["#g-a4-3-lt", "#g-a4-3-q"], { autoAlpha: 0, x: 0, y: 30 }, 0);
+  tl.set(["#g-a4-3-name", "#g-a4-3-sub", "#g-a4-3-cred"], { autoAlpha: 0, y: 14 }, 0);
+  tl.set(["#g-a4-3-qt", "#g-a4-3-qa"], { autoAlpha: 0, y: 14 }, 0);
+
+  /* NAME @0: card up, name, then the sub and the credit line */
+  tl.fromTo("#g-a4-3-lt", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.name);
+  tl.fromTo("#g-a4-3-name", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.name + 0.1);
+  tl.fromTo("#g-a4-3-sub", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.sub);
+  tl.fromTo("#g-a4-3-cred", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.sub + 0.5);
+  /* slight float of the lower third while it holds (the footage beneath cuts three times) */
+  tl.to("#g-a4-3-lt", { y: -10, duration: C.out - 0.6, ease: "sine.inOut" }, 0.6);
+
+  /* QUOTE @11.34: card in, his words, then the attribution */
+  tl.fromTo("#g-a4-3-q", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.quote);
+  tl.fromTo("#g-a4-3-qt", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.quote + 0.1);
+  tl.fromTo("#g-a4-3-qa", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.quote + 0.5);
+  tl.to("#g-a4-3-q", { scale: 1.02, duration: C.out - C.quote - 0.5, ease: "none" }, C.quote + 0.5);
+
+  /* out: the name card slides left, the quote card right, both inside the host */
+  tl.to("#g-a4-3-lt", { x: -1000, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, C.out);
+  tl.to("#g-a4-3-q", { x: 1100, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, C.out);
+
+  window.__timelines["g-a4-3"] = tl;
+})();
+</script>
+</template>

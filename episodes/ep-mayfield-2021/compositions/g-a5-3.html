@@ -1,0 +1,90 @@
+<!-- g-a5-3 · A5-S3 · the General Duty Clause words as a beige cite card ("known", the release's word) over our own blank page
+     titled "Tornado plan standard"; the page body stays empty. Full frame, own ground.
+     Host 893.456 (a5-s3 start) -> 912.056 (a5-s4 start; retimed 23 Oct 26). Host-local times = a5-s3.words.json seconds. Nothing at x >= 1560. -->
+<template>
+<style>
+  #g-a5-3-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .g-a5-3-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size:120px 120px; }
+  #g-a5-3-page { position:absolute; left:580px; top:110px; width:760px; height:860px; border-radius:6px; overflow:hidden; opacity:0; visibility:hidden;
+    background:rgba(244,240,230,0.92); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  #g-a5-3-title { position:absolute; left:64px; top:62px; width:632px; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:40px; line-height:48px; color:#2a2622; opacity:0; visibility:hidden; }
+  #g-a5-3-tline { position:absolute; left:64px; top:132px; width:632px; height:3px; background:#2a2622; opacity:0.6; }
+  .g-a5-3-rule { position:absolute; left:64px; width:632px; height:2px; background:rgba(147,163,178,0.30); }
+  #g-a5-3-float { position:absolute; left:260px; top:0; width:1300px; height:1080px; display:flex; align-items:center; }
+  #g-a5-3-card { width:1300px; box-sizing:border-box; padding:56px 80px; border-radius:28px; opacity:0; visibility:hidden;
+    background:rgba(232,222,200,0.94); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.6); }
+  #g-a5-3-eye { display:block; margin-bottom:22px; font-weight:700; font-size:26px; line-height:30px; letter-spacing:3px; color:#6b6257; opacity:0; visibility:hidden; }
+  .g-a5-3-q { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:52px; line-height:1.25; color:#2a2622; }
+  .g-a5-3-ph { opacity:0; visibility:hidden; }
+  #g-a5-3-known { position:relative; display:inline-block; }
+  #g-a5-3-uline { position:absolute; left:0; right:0; bottom:2px; height:5px; background:#d8a13a; border-radius:3px; }
+  #g-a5-3-src { display:block; margin-top:34px; font-weight:700; font-size:19px; line-height:24px; letter-spacing:3px; color:#6b6257; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-3-root" data-composition-id="g-a5-3" data-width="1920" data-height="1080">
+  <div class="g-a5-3-grid" id="g-a5-3-grid"></div>
+  <div id="g-a5-3-page">
+    <div id="g-a5-3-title">Tornado plan standard</div>
+    <div id="g-a5-3-tline"></div>
+    <div class="g-a5-3-rule" style="top:220px"></div>
+    <div class="g-a5-3-rule" style="top:300px"></div>
+    <div class="g-a5-3-rule" style="top:380px"></div>
+    <div class="g-a5-3-rule" style="top:460px"></div>
+    <div class="g-a5-3-rule" style="top:540px"></div>
+    <div class="g-a5-3-rule" style="top:620px"></div>
+    <div class="g-a5-3-rule" style="top:700px"></div>
+    <div class="g-a5-3-rule" style="top:780px"></div>
+  </div>
+  <div id="g-a5-3-float">
+    <div id="g-a5-3-card">
+      <span id="g-a5-3-eye">General Duty Clause</span>
+      <div class="g-a5-3-q"><span class="g-a5-3-ph" id="g-a5-3-p1">&ldquo;a place of employment </span><span class="g-a5-3-ph" id="g-a5-3-p2">free from <span id="g-a5-3-known">known<span id="g-a5-3-uline"></span></span> hazards&rdquo;</span></div>
+      <span id="g-a5-3-src">OSHA news release, 26 Apr 2022</span>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a5-3-";
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 18.6;
+  tl.set(P + "page", { autoAlpha: 0, scale: 0.96, transformOrigin: "50% 50%" }, 0);
+  tl.set(P + "title", { autoAlpha: 0, y: 12 }, 0);
+  tl.set(P + "card", { autoAlpha: 0, x: 0, y: 30 }, 0);
+  tl.set([P + "eye", P + "src"], { autoAlpha: 0, y: 12 }, 0);
+  tl.set([P + "p1", P + "p2"], { autoAlpha: 0 }, 0);
+  tl.set(P + "uline", { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(P + "float", { y: 0 }, 0);
+
+  /* ambient: grid drift; the page breathes 0.96 -> 1.0 across the window */
+  tl.fromTo(P + "grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  /* WHAT THE RELEASE DOES CITE @0.00: the blank page is the ground of the beat */
+  tl.to(P + "page", { autoAlpha: 0.55, duration: 0.6, ease: "power2.out" }, 0);
+  tl.to(P + "page", { scale: 1, duration: DUR - 0.6, ease: "none" }, 0);
+  /* GENERAL DUTY CLAUSE @2.944: the page alone holds (it breathes); the card waits for its own words, since unspoken
+     phrases wait at opacity 0 and an early card would show an empty quote box.
+     A PLACE OF EMPLOYMENT @7.544: card, first phrase, its name and source; FREE FROM @8.844 */
+  tl.to(P + "card", { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 7.544);
+  tl.to(P + "p1", { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 7.544);
+  tl.to(P + "eye", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.744);
+  tl.to(P + "src", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.044);
+  tl.to(P + "p2", { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 8.844);
+  /* RECOGNIZED HAZARDS @12.484: the release's own word is marked */
+  tl.to(P + "uline", { scaleX: 1, duration: 0.45, ease: "power2.out" }, 12.484);
+  /* NEITHER WORDING @14.344: the card drops low, the page comes up with its title and nothing under it */
+  tl.to(P + "float", { y: 250, duration: 0.7, ease: "power3.inOut" }, 14.344);
+  tl.to(P + "page", { autoAlpha: 1, duration: 0.5, ease: "power2.out" }, 14.344);
+  tl.to(P + "title", { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 14.644);
+
+  /* exit after "storm." (17.80): card and page slide out, done at the host end */
+  tl.to(P + "card", { x: -1200, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 18.0);
+  tl.to(P + "page", { y: -900, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 18.0);
+
+  window.__timelines["g-a5-3"] = tl;
+})();
+</script>
+</template>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a1-5 · A1-S5 + A1-S6 · multi-layer explainer, three phases on one ground:
+    P1 the building outline fills with football fields (1.1 million sq ft), then shrinks to a 0.4 thumbnail top-left;
+    P2 tilt-up: a panel is cast flat on the ground, a crane tilts it upright (schematic);
+    P3 two bars on one mph axis: 90 mph city code vs 150 mph EF3 estimate, the gap between them lit on "90 against 150".
+  Brief: briefs/mg/g-a1-5.md. Building family (base g-i1-5: 360 x 160 ft fields at 0.62 px/ft = 223.2 x 99.2 px; outline 1,080 x
+  1,019 ft = 669.6 x 631.78 px), here top-left (625.2, 204.11), centre (960, 520).
+  P2 geometry: ground y 820 x 300-1560 (kept left of the presenter corner); slab 520 x 40 at x 700-1220, y 780-820, rotates 0 -> -90 deg
+  about its bottom-left corner (700, 820) and stands at x 660-700, y 300-820. Crane mast x 1294-1306, jib y 150 x 620-1360; the cable
+  hangs from a trolley straight down to the lift point L = hinge + R(theta)(520, -20): (1220, 800) flat -> (680, 300) upright.
+  P3 axis: 0-200 mph over 1000 px (5 px/mph) from x 420; bar 90 = 450 px (x 420-870), bar 150 = 750 px (x 420-1170); rows top 394 / 554, 72 px.
+  Host data-start 171.267 = a1-s5 start: comp = a1-s5 time; a1-s6 starts 184.023: comp = a1-s6 time + 12.756.
+-->
+<template>
+<style>
+  #g-a1-5-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  #g-a1-5-glow { position:absolute; left:200px; top:100px; width:1500px; height:900px; border-radius:50%;
+    background:radial-gradient(ellipse, rgba(127,178,229,0.06), rgba(127,178,229,0) 70%); }
+  .g-a1-5-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-a1-5-tile { opacity:0; visibility:hidden; }
+  .g-a1-5-hid { opacity:0; visibility:hidden; }
+  #g-a1-5-big { position:absolute; left:0; top:108px; width:1920px; text-align:center; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif;
+    font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; }
+  #g-a1-5-cap { position:absolute; left:0; top:858px; width:1920px; text-align:center; white-space:nowrap; font-weight:700; font-size:26px; line-height:30px;
+    letter-spacing:2px; color:#c8d3e0; }
+  #g-a1-5-tiltlab { position:absolute; left:660px; top:842px; width:600px; text-align:center; white-space:nowrap; font-weight:700; font-size:26px;
+    line-height:30px; letter-spacing:1px; color:#f2f5f8; }
+  .g-a1-5-src { position:absolute; left:96px; top:984px; padding:8px 14px; border-radius:10px; white-space:nowrap; font-size:19px; font-weight:700;
+    line-height:19px; letter-spacing:1px; color:#c8d3e0; background:rgba(10,16,24,0.55); border:1px solid rgba(255,255,255,0.14); }
+  #g-a1-5-tag { position:absolute; right:360px; top:1004px; white-space:nowrap; font-weight:700; font-size:19px; line-height:22px; letter-spacing:2px; color:#93a3b2; }
+  /* P3 */
+  .g-a1-5-barlab { position:absolute; left:420px; white-space:nowrap; font-weight:700; font-size:30px; line-height:36px; color:#dfe7ee; }
+  .g-a1-5-barlab b { font-weight:700; color:#f2f5f8; }
+  #g-a1-5-l90 { top:348px; }
+  #g-a1-5-l150 { top:508px; }
+  .g-a1-5-tick { position:absolute; top:664px; width:80px; margin-left:-40px; text-align:center; white-space:nowrap; font-weight:700; font-size:19px;
+    line-height:22px; color:#93a3b2; }
+</style>
+<div id="g-a1-5-root" data-composition-id="g-a1-5" data-width="1920" data-height="1080" data-duration="25.957">
+  <div id="g-a1-5-glow"></div>
+  <svg class="g-a1-5-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="g-a1-5-hatch" patternUnits="userSpaceOnUse" width="12" height="12" patternTransform="rotate(45)">
+        <rect x="0" y="0" width="12" height="12" fill="#5a768f" fill-opacity="0.18"/>
+        <line x1="0" y1="0" x2="0" y2="12" stroke="#5a768f" stroke-opacity="0.85" stroke-width="5"/>
+      </pattern>
+    </defs>
+    <!-- P1: outline + 19 fields -->
+    <g id="g-a1-5-p1">
+      <g id="g-a1-5-p1float">
+        <g id="g-a1-5-tiles">
+          <rect class="g-a1-5-tile" x="625.2" y="204.11" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-a1-5-tile" x="848.4" y="204.11" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-a1-5-tile" x="1071.6" y="204.11" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-a1-5-tile" x="625.2" y="303.31" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-a1-5-tile" x="848.4" y="303.31" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-a1-5-tile" x="1071.6" y="303.31" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-a1-5-tile" x="625.2" y="402.51" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-a1-5-tile" x="848.4" y="402.51" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-a1-5-tile" x="1071.6" y="402.51" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-a1-5-tile" x="625.2" y="501.71" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-a1-5-tile" x="848.4" y="501.71" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-a1-5-tile" x="1071.6" y="501.71" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-a1-5-tile" x="625.2" y="600.91" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-a1-5-tile" x="848.4" y="600.91" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-a1-5-tile" x="1071.6" y="600.91" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-a1-5-tile" x="625.2" y="700.11" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-a1-5-tile" x="848.4" y="700.11" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-a1-5-tile" x="1071.6" y="700.11" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <!-- 19th: the last 59 ft strip, hatched (as g-i1-5) -->
+          <rect class="g-a1-5-tile" x="625.2" y="799.31" width="669.6" height="36.58" fill="url(#g-a1-5-hatch)" stroke="#04070c" stroke-width="2"/>
+        </g>
+        <rect id="g-a1-5-outline" x="625.2" y="204.11" width="669.6" height="631.78" fill="none" stroke="#dfe7ee" stroke-width="4"/>
+      </g>
+    </g>
+    <!-- P2: tilt-up, schematic -->
+    <g id="g-a1-5-p2" class="g-a1-5-hid">
+      <path id="g-a1-5-ground" fill="none" stroke="#93a3b2" stroke-width="3" stroke-linecap="round" d="M300,820 L1560,820"/>
+      <g id="g-a1-5-panel">
+        <rect id="g-a1-5-pour" x="700" y="780" width="520" height="40" fill="#5a768f" fill-opacity="0.85"/>
+        <rect id="g-a1-5-form" x="700" y="780" width="520" height="40" fill="none" stroke="#dfe7ee" stroke-width="3" stroke-dasharray="10 8"/>
+      </g>
+      <g id="g-a1-5-crane" class="g-a1-5-hid">
+        <rect id="g-a1-5-mast" x="1294" y="150" width="12" height="670" fill="#93a3b2"/>
+        <g id="g-a1-5-jib">
+          <path fill="none" stroke="#93a3b2" stroke-width="6" stroke-linecap="round" d="M620,150 L1420,150"/>
+          <path fill="none" stroke="#93a3b2" stroke-width="2" d="M1300,104 L620,150 M1300,104 L1420,150 M1300,104 L1300,150"/>
+          <rect x="1386" y="152" width="40" height="30" fill="#5a768f"/>
+        </g>
+        <line id="g-a1-5-cable" x1="1220" y1="156" x2="1220" y2="156" stroke="#dfe7ee" stroke-width="2"/>
+        <rect id="g-a1-5-trolley" x="1206" y="146" width="28" height="14" rx="3" fill="#e8c56a"/>
+      </g>
+    </g>
+    <!-- P3: one mph axis, two rails, two bars, the gap -->
+    <g id="g-a1-5-p3" class="g-a1-5-hid">
+      <rect x="420" y="394" width="1000" height="72" rx="6" fill="#93a3b2" fill-opacity="0.10"/>
+      <rect id="g-a1-5-rail2" x="420" y="554" width="1000" height="72" rx="6" fill="#93a3b2" fill-opacity="0.10"/>
+      <rect id="g-a1-5-bar90" x="420" y="394" width="450" height="72" rx="6" fill="#5a768f"/>
+      <rect id="g-a1-5-bar150" x="420" y="554" width="750" height="72" rx="6" fill="#e74c3c"/>
+      <rect id="g-a1-5-gap" x="870" y="386" width="300" height="248" rx="8" fill="#e8c56a" fill-opacity="0.12" stroke="#e8c56a" stroke-width="2" stroke-dasharray="8 6"/>
+      <path id="g-a1-5-axis" fill="none" stroke="#93a3b2" stroke-width="2" d="M420,650 L1420,650 M420,650 L420,658 M670,650 L670,658 M920,650 L920,658 M1170,650 L1170,658 M1420,650 L1420,658"/>
+    </g>
+  </svg>
+  <div id="g-a1-5-big" class="g-a1-5-hid">1.1 million sq ft</div>
+  <div id="g-a1-5-cap" class="g-a1-5-hid">Illustrative outline</div>
+  <div id="g-a1-5-tiltlab" class="g-a1-5-hid">tilt-up concrete panel</div>
+  <div id="g-a1-5-tag" class="g-a1-5-hid">SCHEMATIC, NOT TO SCALE</div>
+  <div class="g-a1-5-src g-a1-5-hid" id="g-a1-5-src1">St. Louis Public Radio, 26 Aug 2022; Tilt-Up Concrete Association</div>
+  <div class="g-a1-5-src g-a1-5-hid" id="g-a1-5-src2">St. Louis Public Radio, 17 Apr 2022 &middot; NWS Service Assessment, p4, p59</div>
+  <div class="g-a1-5-barlab g-a1-5-hid" id="g-a1-5-l90"><b>90 mph</b> &middot; city code</div>
+  <div class="g-a1-5-barlab g-a1-5-hid" id="g-a1-5-l150"><b>150 mph</b> &middot; EF3, estimated</div>
+  <div id="g-a1-5-ticks" class="g-a1-5-hid">
+    <div class="g-a1-5-tick" style="left:420px;">0</div>
+    <div class="g-a1-5-tick" style="left:670px;">50</div>
+    <div class="g-a1-5-tick" style="left:920px;">100</div>
+    <div class="g-a1-5-tick" style="left:1170px;">150</div>
+    <div class="g-a1-5-tick" style="left:1420px;">200</div>
+    <div class="g-a1-5-tick" style="left:1480px;">mph</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a1-5-";
+  const DUR = 25.957;
+  const C = {
+    million: 1.20,   /* a1-s5 1 .1 @1.20 */
+    shrink: 3.66,    /* I LOOKED UP @3.66 */
+    tilt: 6.66,      /* TILT @6.66 */
+    cast: 8.90,      /* CAST @8.90 */
+    crane: 10.80,    /* THEN LIFTED @10.80 */
+    lift: 11.25,     /* the panel rises 11.25-12.55 (crane. @11.96) */
+    p3: 12.896,      /* a1-s6 CITY'S @0.14 */
+    b90: 14.776,     /* 90 @2.02 */
+    ef3: 17.716,     /* EF3 @4.96 */
+    b150: 20.416,    /* 150 @7.66 */
+    gap: 22.376,     /* 90 AGAINST 150 @9.62 */
+    walls: 24.776,   /* WALLS @12.02 */
+    out: 25.357      /* exit, done at the host end 25.957 */
+  };
+  const tl = gsap.timeline({ paused: true });
+  const len = (el) => Math.ceil(el.getTotalLength()) + 1;
+
+  tl.set([P + "p2", P + "p3", P + "crane", P + "big", P + "cap", P + "tiltlab", P + "tag", P + "src1", P + "src2", P + "l90", P + "l150", P + "ticks", ".g-a1-5-tile"], { autoAlpha: 0 }, 0);
+  tl.set(P + "p1", { x: 0, y: 0, scale: 1, svgOrigin: "960 520" }, 0);
+
+  /* ambient glow drift, whole window */
+  tl.fromTo(P + "glow", { x: -80 }, { x: 80, duration: DUR, ease: "none" }, 0);
+
+  /* P1: outline draws, 19 fields drop in on "1.1 million", caption */
+  const outl = document.querySelector(P + "outline"), LO = len(outl);
+  tl.set(outl, { strokeDasharray: LO, strokeDashoffset: LO }, 0);
+  tl.to(outl, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, 0);
+  tl.fromTo(P + "cap", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.5);
+  tl.fromTo(P + "p1float", { y: 0 }, { y: -8, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 4 }, 0.6);
+  tl.fromTo(".g-a1-5-tile", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power2.out", stagger: 0.06 }, C.million);
+  tl.fromTo(P + "big", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, C.million);
+  tl.fromTo(P + "src1", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, C.million + 0.5);
+  /* I LOOKED UP: the building shrinks to a thumbnail top-left (centre 300, 300) */
+  tl.to(P + "p1", { x: -660, y: -220, scale: 0.4, svgOrigin: "960 520", duration: 0.8, ease: "power3.inOut" }, C.shrink);
+  tl.to(P + "big", { y: -80, autoAlpha: 0, duration: 0.45, ease: "power3.in" }, C.shrink);
+  tl.to(P + "cap", { y: 60, autoAlpha: 0, duration: 0.45, ease: "power3.in" }, C.shrink);
+
+  /* P2 TILT: ground line, formwork on the ground, label */
+  tl.set(P + "p2", { autoAlpha: 1 }, C.tilt);
+  const ground = document.querySelector(P + "ground"), LG = len(ground);
+  tl.set(ground, { strokeDasharray: LG, strokeDashoffset: LG }, 0);
+  tl.to(ground, { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, C.tilt);
+  tl.fromTo(P + "form", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.tilt + 0.3);
+  tl.fromTo(P + "tiltlab", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.tilt + 0.4);
+  tl.fromTo(P + "tag", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, C.tilt + 0.6);
+  /* CAST: the concrete pours left to right inside the form */
+  tl.set(P + "pour", { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.to(P + "pour", { scaleX: 1, duration: 0.9, ease: "power1.inOut" }, C.cast);
+  /* THEN LIFTED: crane rises, jib swings out, cable drops, the panel tilts up about its bottom-left corner */
+  tl.set(P + "crane", { autoAlpha: 1 }, C.crane);
+  tl.fromTo(P + "mast", { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.35, ease: "power3.out" }, C.crane);
+  tl.fromTo(P + "jib", { scaleX: 0, svgOrigin: "1300 150" }, { scaleX: 1, svgOrigin: "1300 150", duration: 0.3, ease: "power3.out" }, C.crane + 0.2);
+  const cable = document.querySelector(P + "cable"), trolley = document.querySelector(P + "trolley");
+  const lift = { d: 0, a: 0 };
+  function rig() {
+    const t = lift.a * Math.PI / 180;
+    const ex = 700 + 520 * Math.cos(t) + 20 * Math.sin(t), ey = 820 + 520 * Math.sin(t) - 20 * Math.cos(t);
+    cable.setAttribute("x1", ex); cable.setAttribute("x2", ex);
+    cable.setAttribute("y2", 156 + (ey - 156) * lift.d);
+    trolley.setAttribute("x", ex - 14);
+  }
+  tl.fromTo(lift, { d: 0 }, { d: 1, duration: 0.25, ease: "power2.in", onUpdate: rig }, C.crane + 0.45);
+  tl.fromTo(P + "panel", { rotation: 0, svgOrigin: "700 820" }, { rotation: -90, svgOrigin: "700 820", duration: 1.3, ease: "power1.inOut" }, C.lift);
+  tl.fromTo(lift, { a: 0 }, { a: -90, duration: 1.3, ease: "power1.inOut", onUpdate: rig }, C.lift);
+
+  /* P2 out, P3 in (a1-s6) */
+  tl.to([P + "p2", P + "p1"], { autoAlpha: 0, duration: 0.45, ease: "power2.in" }, C.p3 - 0.3);
+  tl.to([P + "tiltlab", P + "tag"], { y: 50, autoAlpha: 0, duration: 0.45, ease: "power3.in" }, C.p3 - 0.3);
+  tl.to(P + "src1", { x: -700, autoAlpha: 0, duration: 0.45, ease: "power3.in" }, C.p3 - 0.3);
+  tl.set(P + "p3", { autoAlpha: 1 }, C.p3);
+  tl.fromTo(P + "axis", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, C.p3);
+  tl.fromTo(P + "ticks", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, C.p3 + 0.1);
+  tl.fromTo(P + "src2", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, C.p3 + 0.3);
+  tl.set([P + "bar90", P + "bar150", P + "gap"], { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(P + "gap", { autoAlpha: 0 }, 0);
+  /* 90 */
+  tl.to(P + "bar90", { scaleX: 1, duration: 0.5, ease: "power3.out" }, C.b90);
+  tl.fromTo(P + "l90", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.b90 + 0.1);
+  /* EF3: the second rail lights, waiting for its number */
+  tl.fromTo(P + "rail2", { attr: { "fill-opacity": 0.10 } }, { attr: { "fill-opacity": 0.28 }, duration: 0.4, ease: "power2.out", yoyo: true, repeat: 3, immediateRender: false }, C.ef3);
+  /* 150 */
+  tl.to(P + "bar150", { scaleX: 1, duration: 0.5, ease: "power3.out" }, C.b150);
+  tl.fromTo(P + "l150", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.b150 + 0.1);
+  /* 90 AGAINST 150: the gap between the bar ends is lit */
+  tl.set(P + "gap", { autoAlpha: 1 }, C.gap);
+  tl.to(P + "gap", { scaleX: 1, duration: 0.5, ease: "power2.out" }, C.gap);
+  /* WALLS FACED: the gap pulses */
+  tl.to(P + "gap", { attr: { "fill-opacity": 0.3 }, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, C.walls);
+
+  /* exit, done at the host end */
+  tl.to([P + "l90", P + "l150", P + "ticks"], { x: -600, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, C.out);
+  tl.to(P + "p3", { x: 900, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, C.out);
+  tl.to(P + "src2", { y: 40, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, C.out);
+
+  window.__timelines["g-a1-5"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

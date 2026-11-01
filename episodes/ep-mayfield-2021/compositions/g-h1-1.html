@@ -1,0 +1,55 @@
+<template>
+<style>
+  /* g-h1-1 · H1-S1 · red Abril date popfig + place sub-line over Paul's frame-one clip (ins-paul-1). No card, no colour block.
+     Layout: big line centred (960, 470); sub-line centred (960, 600) on a local radial scrim; nothing at x >= 1600 (Flow logo patch at 1740,900). */
+  @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+  #g-h1-1-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  #g-h1-1-float { position:absolute; inset:0; width:1920px; height:1080px; }
+  /* big line box 1920 x 150, top 395: centre y 470 */
+  #g-h1-1-big { position:absolute; left:0; top:395px; width:1920px; height:150px; line-height:150px; text-align:center; white-space:nowrap;
+    font-family:'AbrilFig', Georgia, serif; font-size:150px; color:#d0121f; text-shadow:0 6px 24px rgba(0,0,0,.6);
+    opacity:0; visibility:hidden; }
+  /* sub-line group 1200 x 200 at left 360, top 500: centre (960, 600) */
+  #g-h1-1-sublab { position:absolute; left:360px; top:500px; width:1200px; height:200px; opacity:0; visibility:hidden; }
+  #g-h1-1-scrim { position:absolute; left:0; top:25px; width:1200px; height:150px;
+    background:radial-gradient(ellipse at 50% 50%, rgba(0,0,0,.52) 0%, rgba(0,0,0,.3) 42%, rgba(0,0,0,0) 72%); }
+  #g-h1-1-sub { position:absolute; left:0; top:72px; width:1200px; height:56px; line-height:56px; text-align:center; white-space:nowrap;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:38px; color:#f2f5f8;
+    text-shadow:0 2px 14px rgba(0,0,0,.85); }
+</style>
+<div id="g-h1-1-root" data-composition-id="g-h1-1" data-width="1920" data-height="1080">
+  <div id="g-h1-1-float">
+    <div id="g-h1-1-big">Dec. 10, 2021</div>
+    <div id="g-h1-1-sublab">
+      <div id="g-h1-1-scrim"></div>
+      <div id="g-h1-1-sub">Edwardsville, Ill. &middot; Mayfield, Ky.</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 3.0;             /* host window: clip start + 0.2 -> "What do you do?" (retake 25 Oct: "what" 2.60) + 0.6 */
+  const CUE_DATE = 0;          /* host start = clip start + 0.2 s; Paul's frame one: "A tornado warning goes off at work" (h1-s1 0.00) */
+  const CUE_PLACE = 0.3;       /* 0.3 s after the big line */
+  const CUE_OUT = 2.0;         /* 0.4 s before "What do you do?" (retake "what" 2.60 = host 2.40): out by 2.40 */
+
+  tl.set(["#g-h1-1-big", "#g-h1-1-sublab"], { autoAlpha: 0, scale: 0.82 }, 0);
+  tl.set("#g-h1-1-float", { scale: 1, y: 0 }, 0);
+
+  /* ambient 1 % float over the whole window */
+  tl.to("#g-h1-1-float", { scale: 1.01, y: -5, duration: DUR, ease: "none" }, 0);
+
+  /* DATE @0.00 */
+  tl.fromTo("#g-h1-1-big", { autoAlpha: 0, scale: 0.82 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, CUE_DATE);
+  /* PLACE @0.30 */
+  tl.fromTo("#g-h1-1-sublab", { autoAlpha: 0, scale: 0.82 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, CUE_PLACE);
+
+  /* OUT before "What do you do?": fade-scale, both together */
+  tl.to(["#g-h1-1-big", "#g-h1-1-sublab"], { autoAlpha: 0, scale: 0.92, duration: 0.4, ease: "power2.in" }, CUE_OUT);
+
+  window.__timelines["g-h1-1"] = tl;
+})();
+</script>
+</template>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a1-6 · A1-S7 · our own KLSX Level II replot over Edwardsville: reflectivity scans advance, then the correlation-coefficient (CC)
+  layer shows the debris signature (the CC drop) ringed; chip 8:29 PM (the time NWS St. Louis saw debris, SA p28); attributed
+  WGN Radio / FOX 2 report line. Radar family (base g-h1-3: plate, HUD, legend, credit). Brief: briefs/mg/g-a1-6.md.
+  Frames: media/radar/g-a1-6/ (replot.py; sidecar extent.json). There is no 8:29 scan: the lowest-tilt scans are 8:21:26, 8:27:14 and
+  8:33:02 PM CST, and only the 8:33 scan shows the CC drop. Fix round 2 (verifier, 23 Oct 26): the per-scan time line is gone so one
+  time is on screen, the 8:29 PM chip (the Service Assessment's time, not a scan label).
+  Projection (extent.json): x = (lon+90.40623)/0.91246*1920, y = (39.0-lat)/0.4*1080, north up.
+    CC minimum near Edwardsville on the 8:33 scan (extent.json cc_min_within_20km...: 0.375 at -89.9997, 38.7857) -> 855.4, 578.6
+    (the dark-blue CC hole in cc/KLSX_20211211_023302Z.png, checked by eye at about 865, 578). Edwardsville town point
+    (-89.988605, 38.790835) -> 878.8, 564.7, inside the ring, so its label sits beside the ring, not on a dot.
+  CC legend stops: matplotlib NWS_CC (cmweather) sampled 0.5-1.05, the replot's own colour range.
+  Host data-start 197.224 = a1-s7 start: comp-local = a1-s7 time (audio/a1-s7.words.json).
+-->
+<template>
+<style>
+  #g-a1-6-root { position:absolute; inset:0; overflow:hidden; background:#04070c; font-family:Arial, sans-serif; color:#f2f5f8; }
+  .g-a1-6-plate { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-a1-6-frame { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-a1-6-frame img { position:absolute; left:0; top:0; width:1920px; height:1080px; object-fit:cover; }
+  .g-a1-6-hid { opacity:0; visibility:hidden; }
+  .g-a1-6-vig { position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(ellipse at 50% 50%, rgba(3,5,7,0) 55%, rgba(3,5,7,0.55) 100%); }
+  .g-a1-6-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); white-space:nowrap; }
+  #g-a1-6-ring { position:absolute; left:795.4px; top:518.6px; width:120px; height:120px; box-sizing:border-box; border-radius:50%;
+    border:3px solid #f2f5f8; box-shadow:0 0 0 2px rgba(4,7,12,0.6); }
+  .g-a1-6-lab { position:absolute; padding:10px 14px; border-radius:12px; font-size:26px; font-weight:700; line-height:26px; color:#f2f5f8; }
+  #g-a1-6-dlab { left:512px; top:556px; }
+  #g-a1-6-elab { left:934px; top:556px; }
+  .g-a1-6-hud { position:absolute; left:94px; top:56px; width:430px; height:52px; box-sizing:border-box; border-radius:16px; }
+  #g-a1-6-station { position:absolute; left:110px; top:70px; font-size:22px; font-weight:700; line-height:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  #g-a1-6-chip { position:absolute; left:1504px; top:56px; width:320px; box-sizing:border-box; padding:14px 0; border-radius:16px; text-align:center;
+    font-family:'Courier New', monospace; font-size:52px; font-weight:700; line-height:56px; color:#e8c56a; }
+  .g-a1-6-legend { position:absolute; left:1170px; top:982px; width:400px; height:52px; box-sizing:border-box; border-radius:12px; }
+  .g-a1-6-bar { position:absolute; left:1240px; top:992px; width:320px; height:10px; border-radius:2px; }
+  #g-a1-6-zbar { background:linear-gradient(90deg, #019ff4 0%, #019ff4 7.7%, #0300f4 7.7%, #0300f4 15.4%, #02fd02 15.4%, #02fd02 23.1%, #01c501 23.1%, #01c501 30.8%,
+      #008e00 30.8%, #008e00 38.5%, #fdf802 38.5%, #fdf802 46.2%, #e5bc00 46.2%, #e5bc00 53.8%, #fd9500 53.8%, #fd9500 61.5%, #fd0000 61.5%, #fd0000 69.2%,
+      #d40000 69.2%, #d40000 76.9%, #bc0000 76.9%, #bc0000 84.6%, #f800fd 84.6%, #f800fd 92.3%, #9854c6 92.3%, #9854c6 100%); }
+  #g-a1-6-cbar { background:linear-gradient(90deg, #0f0f8c 0%, #0f0f8c 36.4%, #0a0ab4 54.5%, #3b3bdb 63.6%, #709fcd 72.7%, #a0df07 81.8%,
+      #f9fd00 85.5%, #f76600 90.9%, #a43695 100%); }
+  .g-a1-6-ll { position:absolute; font-size:19px; font-weight:700; line-height:19px; color:#c8d3e0; white-space:nowrap; }
+  /* source line box x 96-959 (Arial Bold 19 measured with PIL, + 1 px tracking + 28 px padding): 211 px clear of the legend box (x 1170) */
+  #g-a1-6-src { position:absolute; left:96px; top:984px; padding:8px 14px; border-radius:10px; font-size:19px; font-weight:700; line-height:19px;
+    letter-spacing:1px; color:#c8d3e0; }
+  #g-a1-6-card { position:absolute; left:110px; bottom:150px; padding:18px 30px; border-radius:28px; box-sizing:border-box; }
+  #g-a1-6-who { display:block; font-size:20px; font-weight:700; line-height:24px; letter-spacing:6px; color:#c8d3e0; }
+  #g-a1-6-said { display:block; margin-top:8px; font-size:30px; font-weight:700; line-height:36px; letter-spacing:1px; color:#dfe7ee; }
+</style>
+<div id="g-a1-6-root" data-composition-id="g-a1-6" data-width="1920" data-height="1080" data-duration="12.387">
+  <div class="g-a1-6-plate" id="g-a1-6-plate">
+    <div class="g-a1-6-frame" id="g-a1-6-f1"><img src="media/radar/g-a1-6/KLSX_20211211_022126Z.png" alt=""></div>
+    <div class="g-a1-6-frame g-a1-6-hid" id="g-a1-6-f2"><img src="media/radar/g-a1-6/KLSX_20211211_022714Z.png" alt=""></div>
+    <div class="g-a1-6-frame g-a1-6-hid" id="g-a1-6-f3"><img src="media/radar/g-a1-6/KLSX_20211211_023302Z.png" alt=""></div>
+    <div class="g-a1-6-frame g-a1-6-hid" id="g-a1-6-cc"><img src="media/radar/g-a1-6/cc/KLSX_20211211_023302Z.png" alt=""></div>
+    <div class="g-a1-6-hid" id="g-a1-6-ring"></div>
+    <div class="g-a1-6-lab g-a1-6-glass g-a1-6-hid" id="g-a1-6-dlab">debris signature</div>
+    <div class="g-a1-6-lab g-a1-6-glass g-a1-6-hid" id="g-a1-6-elab">Edwardsville</div>
+  </div>
+  <div class="g-a1-6-vig"></div>
+
+  <div class="g-a1-6-hud g-a1-6-glass g-a1-6-hid" id="g-a1-6-hud"></div>
+  <div class="g-a1-6-hid" id="g-a1-6-station">KLSX &middot; St. Louis radar</div>
+  <div class="g-a1-6-glass g-a1-6-hid" id="g-a1-6-chip">8:29 PM</div>
+
+  <div class="g-a1-6-legend g-a1-6-glass g-a1-6-hid" id="g-a1-6-legend"></div>
+  <div id="g-a1-6-zleg" class="g-a1-6-hid">
+    <div class="g-a1-6-bar" id="g-a1-6-zbar"></div>
+    <div class="g-a1-6-ll" style="left:1184px; top:997px;">dBZ</div>
+    <div class="g-a1-6-ll" style="left:1230px; top:1007px;">10</div>
+    <div class="g-a1-6-ll" style="left:1328px; top:1007px;">30</div>
+    <div class="g-a1-6-ll" style="left:1427px; top:1007px;">50</div>
+    <div class="g-a1-6-ll" style="left:1525px; top:1007px;">70</div>
+  </div>
+  <div id="g-a1-6-cleg" class="g-a1-6-hid">
+    <div class="g-a1-6-bar" id="g-a1-6-cbar"></div>
+    <div class="g-a1-6-ll" style="left:1190px; top:997px;">CC</div>
+    <div class="g-a1-6-ll" style="left:1230px; top:1007px;">0.5</div>
+    <div class="g-a1-6-ll" style="left:1402px; top:1007px;">0.8</div>
+    <div class="g-a1-6-ll" style="left:1518px; top:1007px;">1.0</div>
+  </div>
+
+  <div class="g-a1-6-glass g-a1-6-hid" id="g-a1-6-src">Radar: NOAA NEXRAD Level II, KLSX &middot; our replot &middot; Time: NWS Service Assessment</div>
+
+  <div class="g-a1-6-glass g-a1-6-hid" id="g-a1-6-card">
+    <span id="g-a1-6-who">WGN Radio / FOX 2 report</span>
+    <span id="g-a1-6-said">an emergency responder called in a mass casualty incident</span>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 12.387;
+  const P = "#g-a1-6-";
+  const C = {
+    t829: 0.32,     /* 829 @0.32 */
+    f2: 1.00,       /* 8:27 scan from 1.0 (crossfade 0.4) */
+    f3: 2.50,       /* 8:33 scan from 2.5 */
+    signs: 3.20,    /* SIGNS @3.20: the CC layer */
+    debris: 3.66,   /* DEBRIS @3.66: ring + label */
+    edw: 4.94,      /* EDWARDSVILLE @4.94 */
+    wgn: 6.10,      /* WGN @6.10 */
+    out: 11.787     /* overlays slide out; the replot runs to the cut (host end 12.387) */
+  };
+  tl.set([P+"f2", P+"f3", P+"cc", P+"ring", P+"dlab", P+"elab", P+"hud", P+"station", P+"chip", P+"legend", P+"zleg", P+"cleg", P+"src", P+"card"], { autoAlpha: 0 }, 0);
+  tl.set(P+"plate", { scale: 1, transformOrigin: "50% 50%" }, 0);
+  tl.set(P+"ring", { scale: 0.6, transformOrigin: "50% 50%" }, 0);
+
+  /* replot push, whole window (linear, under 1.5x) */
+  tl.to(P+"plate", { scale: 1.06, duration: DUR, ease: "none" }, 0);
+
+  /* HUD, legend, credit from the cut */
+  tl.fromTo(P+"hud", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
+  tl.fromTo(P+"station", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
+  tl.fromTo(P+"legend", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.25);
+  tl.fromTo(P+"zleg", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.3);
+  tl.fromTo(P+"src", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.35);
+
+  /* 829: the time the St. Louis office saw debris */
+  tl.fromTo(P+"chip", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, C.t829);
+
+  /* the storm's own scans advance; the scan label flips with each (never two at once) */
+  tl.fromTo(P+"f2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "none" }, C.f2);
+  tl.fromTo(P+"f3", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "none" }, C.f3);
+
+  /* SIGNS: the CC layer over the same 8:33 scan; the legend changes with it */
+  tl.fromTo(P+"cc", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power1.inOut" }, C.signs);
+  tl.to(P+"zleg", { autoAlpha: 0, y: -8, duration: 0.2, ease: "power2.in" }, C.signs);
+  tl.fromTo(P+"cleg", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, C.signs + 0.25);
+
+  /* DEBRIS: ring on the CC hole, label beside it; the ring blips every 1.2 s */
+  tl.to(P+"ring", { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, C.debris);
+  tl.fromTo(P+"dlab", { autoAlpha: 0, x: 16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, C.debris + 0.15);
+  tl.to(P+"ring", { scale: 1.12, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 11 }, C.debris + 0.4);
+  /* OVER EDWARDSVILLE */
+  tl.fromTo(P+"elab", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, C.edw);
+
+  /* WGN RADIO AND FOX 2: the reported line, attributed */
+  tl.fromTo(P+"card", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.wgn);
+
+  /* exit: overlays slide out inside the host; the replot and HUD run to the cut */
+  tl.to(P+"card", { x: -1200, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, C.out);
+  tl.to([P+"dlab", P+"elab", P+"ring"], { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, C.out);
+  tl.to(P+"chip", { x: 400, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, C.out);
+
+  window.__timelines["g-a1-6"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

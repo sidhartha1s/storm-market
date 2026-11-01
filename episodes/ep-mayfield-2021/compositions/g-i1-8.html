@@ -1,0 +1,50 @@
+<template>
+<style>
+  /* g-i1-8 · I1-S6 second beat · the claim on a glass card (quotecard.glasscard family: left 260, centred on y 540) over the Mayfield street still.
+     Overlay, no ground. The card's right edge is 1600 (width 1340, as g-i1-7), not 1660: the brief's 1400 px would put the card's right edge past
+     x 1600, and its lower edge (y about 690) would enter the presenter-circle corner (x >= 1600, y >= 680). Not a quote: no quote marks, no attribution. */
+  #g-i1-8-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  #g-i1-8-float { position:absolute; left:260px; top:0; width:1340px; height:1080px; display:flex; align-items:center; }
+  #g-i1-8-card { width:1340px; box-sizing:border-box; padding:56px 72px; border-radius:28px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); }
+  .g-i1-8-line { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:64px; letter-spacing:0; }
+  #g-i1-8-l1 { color:#f2f5f8; }
+  #g-i1-8-l2 { max-width:1000px; margin-top:12px; color:#d8a13a; opacity:0.12; } /* ghost until 'nobody': the card shows its structure from entry */
+</style>
+<div id="g-i1-8-root" data-composition-id="g-i1-8" data-width="1920" data-height="1080">
+  <div id="g-i1-8-float">
+    <div id="g-i1-8-card">
+      <span class="g-i1-8-line" id="g-i1-8-l1">The forecast was right days ahead.</span>
+      <span class="g-i1-8-line" id="g-i1-8-l2">Nobody had told big workplaces what to do.</span>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 4.62;            /* host window: "right days ahead" (i1-s6 0.72 = ep 105.786) -> "Almost five years on" (4.74 = 109.806) + 0.6 s exit */
+  const CUE_L1 = 0;            /* right @0.72 in i1-s6.words.json (host-local 0) */
+  const CUE_L2 = 1.42;         /* nobody @2.14 (host-local 1.42) */
+  const CUE_OUT = 4.02;        /* Almost @4.74 (host-local 4.02); slides out right, lands inside the host (4.02 + 0.56 = 4.58 of 4.62) */
+
+  tl.set("#g-i1-8-card", { autoAlpha: 0, x: 0, y: 24 }, 0);
+  tl.set("#g-i1-8-l2", { autoAlpha: 0.12, y: 14 }, 0);
+  tl.set("#g-i1-8-float", { y: 0 }, 0);
+
+  /* ambient: slow whole-card float over the window (own wrapper, so it never fights the card's entry or exit) */
+  tl.to("#g-i1-8-float", { y: -8, duration: DUR, ease: "none" }, 0);
+
+  /* LINE 1 @0.00 ("right days ahead" 0.72): card in from y 24 */
+  tl.fromTo("#g-i1-8-card", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUE_L1);
+  /* LINE 2 @1.42 ("nobody" 2.14) */
+  tl.to("#g-i1-8-l2", { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUE_L2);
+
+  /* OUT @4.02 ("Almost five years on"): card slides out and finishes inside the host */
+  tl.to("#g-i1-8-card", { x: 980, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, CUE_OUT);
+
+  window.__timelines["g-i1-8"] = tl;
+})();
+</script>
+</template>

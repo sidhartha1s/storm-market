@@ -1,0 +1,99 @@
+<!-- g-z1-9 · Z1-S11 · the close card: the channel logo, Paul's signature line building under it phrase by phrase on his voice, then the
+     match-cut: the last line leaves and the wordmark "The Warning Hour" lands in its place, word by word, on "The Warning Hour" (DESIGN.md
+     "Signature closing footnote" and "Outro": the card does not sit). Ends on its own fade to black at the end of the root (1145.006).
+     Base: library/inhouse/outro-brand.html and the shipped ep-nepal g-outro (wordmark words, amber rule, grid and glow drift).
+     Logo: assets/brand/warning-hour-logo.png staged unchanged as media/brand/warning-hour-logo.png (512 x 512), shown at 220 px centred
+     on (960, 420). Circle off under the close card; nothing enters x >= 1600, y >= 680 anyway.
+     Signature line verbatim from edit_script.md Z1-S11. Host 1131.644 (end-ask clip b ends) + 13.362; z1-s11 starts 1131.944, so
+     host-local cue = z1-s11.words.json second + 0.300. -->
+<template>
+<style>
+  #g-z1-9-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .g-z1-9-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.04) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .g-z1-9-glow { position:absolute; left:360px; top:180px; width:1200px; height:600px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(216,161,58,0.12), rgba(216,161,58,0) 70%); }
+  #g-z1-9-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #g-z1-9-ring { position:absolute; left:830px; top:290px; width:256px; height:256px; border-radius:50%; border:2px solid rgba(216,161,58,0.8);
+    box-sizing:border-box; opacity:0; visibility:hidden; }
+  #g-z1-9-logo { position:absolute; left:850px; top:310px; width:220px; height:220px; opacity:0; visibility:hidden; }
+  .g-z1-9-ph { position:absolute; left:160px; width:1600px; text-align:center; white-space:nowrap; font-family:Georgia, 'Times New Roman', serif; font-style:italic;
+    font-size:46px; line-height:58px; color:#f2f5f8; opacity:0; visibility:hidden; }
+  .g-z1-9-top { top:580px; }
+  .g-z1-9-bot { top:646px; }
+  #g-z1-9-p5 { top:612px; }
+  #g-z1-9-mark { position:absolute; left:0; width:1920px; top:600px; text-align:center; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:60px; line-height:72px; letter-spacing:4px; color:#f2f5f8; }
+  #g-z1-9-mark span { display:inline-block; opacity:0; visibility:hidden; }
+  #g-z1-9-w2, #g-z1-9-w3 { margin-left:0.33em; }
+  .g-z1-9-amber { color:#d8a13a; }
+  #g-z1-9-rule { position:absolute; left:760px; width:400px; top:690px; height:4px; border-radius:2px; background:#d8a13a; }
+</style>
+<div id="g-z1-9-root" data-composition-id="g-z1-9" data-width="1920" data-height="1080"
+     data-type-ok="close card: the spoken signature line (one serif tier) and the wordmark, two tiers by design">
+  <div class="g-z1-9-grid" id="g-z1-9-grid"></div>
+  <div class="g-z1-9-glow" id="g-z1-9-glow"></div>
+  <div id="g-z1-9-stage">
+    <div id="g-z1-9-ring"></div>
+    <img id="g-z1-9-logo" src="media/brand/warning-hour-logo.png" alt="">
+    <div class="g-z1-9-ph g-z1-9-top" id="g-z1-9-p1">Tornadoes don&rsquo;t ask permission.</div>
+    <div class="g-z1-9-ph g-z1-9-bot" id="g-z1-9-p2">But they do send warnings.</div>
+    <div class="g-z1-9-ph g-z1-9-top" id="g-z1-9-p3">Learn where you&rsquo;d go when yours sounds,</div>
+    <div class="g-z1-9-ph g-z1-9-bot" id="g-z1-9-p4">at home and at work,</div>
+    <div class="g-z1-9-ph" id="g-z1-9-p5">so when it comes, you already know what to do.</div>
+    <div id="g-z1-9-mark"><span id="g-z1-9-w1">The</span><span class="g-z1-9-amber" id="g-z1-9-w2">Warning</span><span id="g-z1-9-w3">Hour</span></div>
+    <div id="g-z1-9-rule"></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-z1-9-";
+  const DUR = 13.362;
+  /* cues: audio/z1-s11.words.json + 0.300 (host-local) */
+  const C = { p1: 0.30, p2: 2.20, p3: 4.20, p4: 6.06, p5: 7.36, out5: 10.10, w1: 10.90, w2: 11.12, w3: 11.40, fade: 12.362 };
+  const inPh = (id, at) => tl.fromTo(P + id, { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, at);
+  const outPh = (ids, at) => tl.to(ids.map(i => P + i), { autoAlpha: 0, y: -16, duration: 0.3, ease: "power2.in" }, at);
+
+  tl.set(P + "rule", { scaleX: 0, transformOrigin: "50% 50%" }, 0);
+  tl.set(P + "logo", { autoAlpha: 0, scale: 0.9 }, 0);
+  tl.set(P + "ring", { autoAlpha: 0, scale: 1 }, 0);
+
+  /* ambient, whole window: slow push on the stage, glow and grid drift */
+  tl.fromTo(P + "stage", { scale: 1 }, { scale: 1.04, transformOrigin: "50% 50%", duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "glow", { x: -80 }, { x: 80, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "grid", { x: 0 }, { x: 90, duration: DUR, ease: "none" }, 0);
+
+  /* TORNADOES @0.30 (z1-s11 0.00 = ep 1131.944): the logo lands with the first phrase */
+  tl.to(P + "logo", { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power3.out" }, C.p1);
+  /* the logo's ring pulses every 1.5 s (8 pulses, 0.8-12.3) */
+  tl.fromTo(P + "ring", { autoAlpha: 0.8, scale: 1 }, { autoAlpha: 0, scale: 1.6, duration: 1.3, ease: "power2.out", repeat: 7, repeatDelay: 0.2, immediateRender: false }, 0.8);
+  inPh("p1", C.p1);
+  /* BUT THEY DO SEND WARNINGS @2.20 (1.90) */
+  inPh("p2", C.p2);
+  /* LEARN WHERE YOU'D GO @4.20 (3.90): the first pair leaves, the second builds in its place */
+  outPh(["p1", "p2"], C.p3 - 0.3);
+  inPh("p3", C.p3);
+  /* AT HOME AND AT WORK @6.06 (5.76) */
+  inPh("p4", C.p4);
+  /* SO WHEN IT COMES @7.36 (7.06) */
+  outPh(["p3", "p4"], C.p5 - 0.3);
+  inPh("p5", C.p5);
+  /* THIS WAS @10.42 (10.12): the line leaves; THE @10.90, WARNING @11.12, HOUR @11.40 land in its place (match-cut) */
+  outPh(["p5"], C.out5);
+  tl.fromTo(P + "w1", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, C.w1);
+  tl.fromTo(P + "w2", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, C.w2);
+  tl.fromTo(P + "w3", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, C.w3);
+  tl.to(P + "rule", { scaleX: 1, duration: 0.8, ease: "power3.out" }, C.w3 + 0.2);
+
+  /* the card's own fade to black over the last second (no frozen tail) */
+  tl.to(P + "stage", { autoAlpha: 0, duration: 1.0, ease: "power1.in" }, C.fade);
+  tl.to([P + "glow", P + "grid"], { autoAlpha: 0, duration: 1.0, ease: "power1.in" }, C.fade);
+
+  window.__timelines["g-z1-9"] = tl;
+})();
+</script>
+</template>

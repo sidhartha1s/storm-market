@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a1-11 · A1-S12 · OSHA's two asks as attributed text, one at a time, on a beige cite card beside the drawn megaphone in its shut cage;
+  the cage door swings open on "keep it where people can reach it". Brief: briefs/mg/g-a1-11.md.
+  Quote-card family (base g-i1-7) + megaphone family (base g-a1-1). Megaphone and cage at 300 px (0.5769 of g-a1-1's 520 px cage),
+  centred (480, 560): cage on screen x 330-630, y 410-710. The door is g-a1-1's HTML door at the same scale (rotationY about its
+  left edge, x 330). Card x 700-1590 (right edge clear of the presenter corner), top 220.
+  Line 1 is the OSHA release's wording; line 2 is the Hazard Alert Letter's recommendation 1, verbatim (checked against the PDF by the
+  coordinator, 22 Oct 26; candidates/a1 a1-s11_c1).
+  Host data-start 257.264 = a1-s12 start: comp-local = a1-s12 time (audio/a1-s12.words.json).
+-->
+<template>
+<style>
+  #g-a1-11-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .g-a1-11-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size:120px 120px; }
+  .g-a1-11-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-a1-11-meg { fill:none; stroke:#dfe7ee; stroke-width:6px; stroke-linecap:round; stroke-linejoin:round; }
+  #g-a1-11-door { position:absolute; left:330px; top:410px; width:300px; height:300px; }
+  #g-a1-11-door svg { position:absolute; left:0; top:0; width:300px; height:300px; overflow:visible; }
+  #g-a1-11-card { position:absolute; left:700px; top:220px; width:890px; box-sizing:border-box; padding:48px 56px; border-radius:28px;
+    background:rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); opacity:0; visibility:hidden; }
+  .g-a1-11-q { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:40px; line-height:50px; color:#2a2622; opacity:0; visibility:hidden; }
+  .g-a1-11-who { margin-top:12px; white-space:nowrap; font-weight:700; font-size:22px; line-height:26px; letter-spacing:3px; color:#6b6257; opacity:0; visibility:hidden; }
+  #g-a1-11-q2 { margin-top:30px; }
+</style>
+<div id="g-a1-11-root" data-composition-id="g-a1-11" data-width="1920" data-height="1080" data-duration="10.441"
+     data-type-ok="cite card: the two quoted asks are one reading tier, their attributions the second">
+  <div class="g-a1-11-grid" id="g-a1-11-grid"></div>
+  <div id="g-a1-11-cagewrap">
+    <svg class="g-a1-11-svg" viewBox="0 0 1920 1080">
+      <g transform="translate(480,560) scale(0.5769) translate(-960,-560)">
+        <rect x="700" y="300" width="520" height="520" fill="none" stroke="#93a3b2" stroke-width="3.5"/>
+        <path fill="none" stroke="#93a3b2" stroke-width="7" stroke-linecap="round" d="M690,300 L1230,300 M690,820 L1230,820"/>
+        <g transform="translate(-3,20)">
+          <g id="g-a1-11-megg">
+            <path class="g-a1-11-meg" d="M754,460 A14,30 0 1,0 754,520 A14,30 0 1,0 754,460 Z"/>
+            <path class="g-a1-11-meg" d="M754,460 L844,460 M754,520 L844,520"/>
+            <path class="g-a1-11-meg" d="M844,456 L844,524 M844,456 L1156,360 M844,524 L1156,620"/>
+            <path class="g-a1-11-meg" d="M1156,360 A30,130 0 1,0 1156,620 A30,130 0 1,0 1156,360 Z"/>
+            <path class="g-a1-11-meg" style="stroke:#93a3b2; stroke-width:3.5px;" d="M1156,386 A18,104 0 1,0 1156,594 A18,104 0 1,0 1156,386 Z"/>
+            <path class="g-a1-11-meg" d="M870,532 L840,710 Q838,720 848,720 L874,720 Q884,720 886,712 L910,544"/>
+            <path class="g-a1-11-meg" d="M922,548 C946,580 932,612 900,612"/>
+            <path class="g-a1-11-meg" d="M907.5,562 Q920,576 903,594"/>
+            <path class="g-a1-11-meg" style="stroke-width:5px;" d="M853,640 L893,640 M849,664 L890,664 M845,688 L887,688"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+    <div id="g-a1-11-door">
+      <svg viewBox="0 0 520 520">
+        <rect x="1" y="1" width="518" height="518" fill="none" stroke="#93a3b2" stroke-width="5"/>
+        <path fill="none" stroke="#93a3b2" stroke-width="3.5" d="M40,0 L40,520 M80,0 L80,520 M120,0 L120,520 M160,0 L160,520 M200,0 L200,520 M240,0 L240,520 M280,0 L280,520 M320,0 L320,520 M360,0 L360,520 M400,0 L400,520 M440,0 L440,520 M480,0 L480,520"/>
+        <path fill="none" stroke="#93a3b2" stroke-width="5" d="M0,260 L520,260"/>
+        <g transform="translate(486,236)"><g id="g-a1-11-lock">
+          <path fill="none" stroke="#e8c56a" stroke-width="6" stroke-linecap="round" d="M13,24 L13,14 A11,11 0 0,1 35,14 L35,24"/>
+          <rect x="5" y="24" width="38" height="28" rx="4" fill="#0b1016" stroke="#e8c56a" stroke-width="6"/>
+        </g></g>
+      </svg>
+    </div>
+  </div>
+  <div id="g-a1-11-card">
+    <div class="g-a1-11-q" id="g-a1-11-q1">&ldquo;Include site-specific information in severe weather emergency plans.&rdquo;</div>
+    <div class="g-a1-11-who" id="g-a1-11-w1">OSHA Chicago release, 26 Apr 2022</div>
+    <div class="g-a1-11-q" id="g-a1-11-q2">&ldquo;All audible warning devices, as well as the location of the device(s), should be clearly identified within the severe weather emergency plan and readily accessible.&rdquo;</div>
+    <div class="g-a1-11-who" id="g-a1-11-w2">OSHA hazard alert letter to Amazon, Apr 2022</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a1-11-";
+  const DUR = 10.441;
+  const C = { say: 1.64 /* SAY WHERE @1.64 */, name: 5.40 /* NAME EVERY @5.40 */, keep: 8.72 /* KEEP IT @8.72 */, out: 9.841 };
+  const tl = gsap.timeline({ paused: true });
+
+  tl.set([P + "card", P + "q1", P + "w1", P + "q2", P + "w2"], { autoAlpha: 0 }, 0);
+  tl.set(P + "door", { rotationY: 0, transformOrigin: "0% 50%", transformPerspective: 1000 }, 0);
+  tl.set(P + "cagewrap", { y: 0 }, 0);
+
+  /* ambient: grid drift, megaphone breath, cage float */
+  tl.fromTo(P + "grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "megg", { scale: 1, svgOrigin: "963 540" }, { scale: 1.01, svgOrigin: "963 540", duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0);
+  tl.fromTo(P + "cagewrap", { x: -30 }, { x: 0, duration: 0.8, ease: "power3.out" }, 0);
+  tl.to(P + "cagewrap", { y: -8, duration: DUR - 0.8, ease: "none" }, 0.8);
+
+  /* SAY WHERE THE SHELTER IS: line 1 + release attribution */
+  tl.fromTo(P + "card", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.say - 0.1);
+  tl.fromTo(P + "q1", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.say);
+  tl.fromTo(P + "w1", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.say + 0.3);
+  /* NAME EVERY WARNING DEVICE: line 2 + letter attribution */
+  tl.fromTo(P + "q2", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.name);
+  tl.fromTo(P + "w2", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.name + 0.3);
+  /* KEEP IT WHERE PEOPLE CAN REACH IT: the padlock drops, the door swings open */
+  tl.to(P + "lock", { y: 60, autoAlpha: 0, duration: 0.35, ease: "power2.in" }, C.keep - 0.2);
+  tl.to(P + "door", { rotationY: -88, duration: 0.6, ease: "power3.out" }, C.keep);
+
+  /* exit: the card slides out, done at the host end; the open cage holds to the cut to Paul */
+  tl.to(P + "card", { x: 1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, C.out);
+
+  window.__timelines["g-a1-11"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

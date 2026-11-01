@@ -1,0 +1,77 @@
+<template>
+<style>
+  /* g-a3-8 · A3-S10 · the Paducah office loses power: SA p30 verbatim on a beige cite card (fc-slice-c row 14, fc-A3 row 45, facts-nws F28),
+     clock chips "about 9:25 PM · power out" and "9:52 PM · Springfield, Mo." (fc-A3 row 47). Brief: briefs/mg/g-a3-8.md.
+     Order changed by the orchestrator (DESIGN.md "CTA contract": the payoff after the out-dip is REAL footage): the NWS KPAH 9:27 PM radar still
+     (v-a3-kpah, track 1, 625.356-628.356) is the first shot; this comp opens TRANSPARENT over it with the 9:25 chip only, then lays its own
+     ground (opaque by 628.31, before the still ends) and the card. No place-named label sits over the radar still.
+     The 9:26 Tornado Emergency is not on screen (A4 owns it).
+     Host 627.260 ("nine twenty-five" a3-s10 1.70) -> 644.688 (a3-s11 voice), 17.428 s; times host-local (episode - 627.26). */
+  #g-a3-8-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; background:transparent; }
+  #g-a3-8-ground { position:absolute; inset:0; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); opacity:0; visibility:hidden; }
+  .g-a3-8-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px); background-size:120px 120px; }
+  #g-a3-8-float { position:absolute; left:260px; top:300px; width:1400px; height:420px; }
+  #g-a3-8-card { position:absolute; left:0; top:0; width:1400px; box-sizing:border-box; padding:64px 80px; border-radius:28px; opacity:0; visibility:hidden;
+    background: rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  .g-a3-8-q { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:52px; line-height:65px; color:#2a2622; white-space:nowrap; }
+  .g-a3-8-q span { display:inline-block; opacity:0; visibility:hidden; }
+  #g-a3-8-who { margin-top:40px; white-space:nowrap; font-weight:700; font-size:26px; line-height:30px; letter-spacing:3px; color:#6b6257; opacity:0; visibility:hidden; }
+  #g-a3-8-det { margin-top:8px; white-space:nowrap; font-weight:700; font-size:19px; line-height:22px; letter-spacing:1px; color:#6b6257; opacity:0; visibility:hidden; }
+  .g-a3-8-chip { position:absolute; bottom:150px; padding:14px 30px; border-radius:28px; box-sizing:border-box; white-space:nowrap;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14);
+    font-weight:700; font-size:30px; line-height:64px; letter-spacing:1px; color:#dfe7ee; opacity:0; visibility:hidden; }
+  .g-a3-8-chip b { font-family:'Courier New', monospace; font-weight:700; font-size:52px; letter-spacing:0; color:#e8c56a; }
+  #g-a3-8-link { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+</style>
+<div id="g-a3-8-root" data-composition-id="g-a3-8" data-width="1920" data-height="1080">
+  <div id="g-a3-8-ground"><div class="g-a3-8-grid" id="g-a3-8-grid"></div></div>
+  <div id="g-a3-8-float">
+    <div id="g-a3-8-card">
+      <div class="g-a3-8-q"><span id="g-a3-8-p1">&ldquo;At approximately 9:25 P.M. CST,</span></div>
+      <div class="g-a3-8-q"><span id="g-a3-8-p2">commercial power was lost at WFO Paducah</span></div>
+      <div class="g-a3-8-q"><span id="g-a3-8-p3">and the backup generator failed.&rdquo;</span></div>
+      <div id="g-a3-8-who">NWS Service Assessment, p30</div>
+      <div id="g-a3-8-det">NWS Joint Regional Service Assessment, December 10-11, 2021 tornado outbreak</div>
+    </div>
+  </div>
+  <!-- the 27 minutes between the two clocks: a dashed line runs from the 9:25 chip to the 9:52 chip while the voice tells the handover -->
+  <svg id="g-a3-8-link" viewBox="0 0 1920 1080">
+    <line id="g-a3-8-ln" x1="700" y1="884" x2="960" y2="884" stroke="#93a3b2" stroke-width="4" stroke-linecap="round" stroke-dasharray="12 10" opacity="0" visibility="hidden"/>
+  </svg>
+  <div class="g-a3-8-chip" id="g-a3-8-c1" style="left:110px;">about <b>9:25 PM</b> · power out</div>
+  <div class="g-a3-8-chip" id="g-a3-8-c2" style="left:990px;"><b>9:52 PM</b> · Springfield, Mo.</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a3-8-", DUR = 17.428;
+  tl.set(P + "float", { y: 0 }, 0);
+  tl.set(P + "ln", { scaleX: 0, svgOrigin: "700 884" }, 0);
+  /* NINE TWENTY-FIVE @0.00 (ep 627.26): the power-out clock lands over the KPAH still beneath */
+  tl.fromTo(P + "c1", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0);
+  /* our ground covers the still before it ends (still out at 1.096) */
+  tl.fromTo(P + "ground", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power1.inOut" }, 0.75);
+  tl.fromTo(P + "grid", { x: 0 }, { x: 330, duration: DUR, ease: "none" }, 0);
+  /* the card (ep 628.26, under "the Paducah office"); phrases on the voice: p1 at once, LOST @2.02 (ep 629.28), BACKUP @3.90 (ep 631.16) */
+  tl.fromTo(P + "card", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.0);
+  tl.fromTo(P + "who", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.2);
+  tl.fromTo(P + "det", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.5);
+  [["p1", 1.1], ["p2", 2.02], ["p3", 3.9]].forEach(function (q) {
+    tl.fromTo(P + q[0], { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, q[1]);
+  });
+  tl.to(P + "float", { y: -8, duration: DUR - 1.0, ease: "none" }, 1.0);
+  /* ITS WARNINGS STILL WENT OUT @5.70 (ep 632.96): the handover line starts running toward the next clock */
+  tl.set(P + "ln", { autoAlpha: 1 }, 5.7);
+  tl.to(P + "ln", { scaleX: 1, duration: 6.88, ease: "none" }, 5.7);
+  /* NINE FIFTY-TWO @12.58 (ep 639.84): Springfield's clock */
+  tl.fromTo(P + "c2", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 12.58);
+  tl.to(P + "c2", { scale: 1.04, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, 13.2);
+  /* exit (ep 644.09-644.69): card right, chips and line left, ground stays for the cut to g-a3-9 */
+  tl.to(P + "card", { x: 1100, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 16.828);   /* DUR - 0.6 */
+  tl.to([P + "c1", P + "c2", P + "ln"], { x: -1100, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 16.828);   /* DUR - 0.6 */
+  window.__timelines["g-a3-8"] = tl;
+})();
+</script>
+</template>

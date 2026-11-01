@@ -1,0 +1,71 @@
+<!-- g-i1-2 · I1-S2 first beat · the SPC Day 4-8 discussion page (issued 0320 AM CST Fri Dec 03 2021) with the Day 8/Friday sentence lit (two printed lines, second one only to "convection.").
+     Full-frame, own ground. Document-page family base: sheet box x 340-1580, y 150-930; page text is the archived page's own <pre>,
+     rendered by one-shot render_page.mjs into media/stills/i1-s2-spc-day4-8-page-v2.png (1240 x 780, transparent, text col centred).
+     Band numbers come from that render's page_geo.json (pad x 10): line 1 box 305.69-934.31 x 587.99-607.40 -> left 295.69, top 587.0, w 648.62, h 20.4;
+     line 2 (to "convection.") 305.69-675.46 x 607.40-626.80 -> top 607.4, w 389.77, h 20.4. Lit lines are 19.4 px tall (< 26), so the words are re-set as live text on a glass strip at y 800-928.
+     Times are host-local = i1-s2.words.json seconds (host starts with the wav at 52.667). -->
+<template>
+<style>
+  #g-i1-2-root { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-i1-2-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #g-i1-2-eyebrow { position:absolute; left:96px; top:70px; white-space:nowrap; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px;
+    letter-spacing:6px; color:#93a3b2; opacity:0; visibility:hidden; }
+  #g-i1-2-sheet { position:absolute; left:340px; top:150px; width:1240px; height:780px; background:#dfe3e8; overflow:hidden; }
+  .g-i1-2-page { position:absolute; left:0; top:0; width:1240px; height:780px; object-fit:contain; }
+  .g-i1-2-band { position:absolute; left:295.69px; border-radius:3px; background:rgba(216,161,58,.35); opacity:0; visibility:hidden; }
+  #g-i1-2-band1 { top:587px; width:648.62px; height:20.4px; }
+  #g-i1-2-band2 { top:607.4px; width:389.77px; height:20.4px; }
+  #g-i1-2-strip { position:absolute; left:360px; top:800px; width:1200px; height:128px; box-sizing:border-box; padding:8px 0; text-align:center;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); border-radius:28px; opacity:0; visibility:hidden; }
+  #g-i1-2-quote { display:block; white-space:nowrap; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:38px; line-height:44px; color:#f2f5f8; }
+  #g-i1-2-attr { display:block; margin-top:2px; white-space:nowrap; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; letter-spacing:3px; color:#d8a13a; }
+  #g-i1-2-source { position:absolute; left:96px; bottom:58px; white-space:nowrap; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:22px; color:#c8d3e0; }
+</style>
+<div id="g-i1-2-root" data-composition-id="g-i1-2" data-width="1920" data-height="1080" data-type-ok="document page with one quote strip: two type tiers by design">
+  <div id="g-i1-2-stage">
+    <div id="g-i1-2-eyebrow">Storm Prediction Center &middot; Day 4-8 Outlook &middot; 3:20 AM CST Fri Dec 3, 2021</div>
+    <div id="g-i1-2-sheet">
+      <div id="g-i1-2-band1" class="g-i1-2-band"></div>
+      <div id="g-i1-2-band2" class="g-i1-2-band"></div>
+      <img class="g-i1-2-page" src="media/stills/i1-s2-spc-day4-8-page-v2.png" alt="">
+    </div>
+    <div id="g-i1-2-strip">
+      <span id="g-i1-2-quote">&hellip;Day 8/Friday. This moisture return may be accompanied<br>by some potential for severe convection.</span>
+      <span id="g-i1-2-attr">SPC forecast discussion</span>
+    </div>
+    <div id="g-i1-2-source">spc.noaa.gov archive</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-i1-2-";
+  tl.set(P + "stage", { x: 0, autoAlpha: 1 }, 0);
+  tl.set(P + "sheet", { scale: 1, transformOrigin: "50% 50%" }, 0);
+  tl.set(P + "eyebrow", { autoAlpha: 0, x: -36 }, 0);
+  tl.set([P + "band1", P + "band2"], { autoAlpha: 0, scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(P + "strip", { autoAlpha: 0, y: 40 }, 0);
+
+  // the page drifts in scale for the whole window (5.18 s, to the cut before "That night" @5.18)
+  tl.to(P + "sheet", { scale: 1.03, duration: 5.18, ease: "none" }, 0);
+  /* STORM @1.18 */
+  tl.to(P + "eyebrow", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1.18);
+  /* NAMED @2.56 */
+  tl.set(P + "band1", { autoAlpha: 1 }, 2.56);
+  tl.to(P + "band1", { scaleX: 1, duration: 0.5, ease: "power2.out" }, 2.56);
+  /* FRIDAY @3.12 */
+  tl.to(P + "strip", { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 3.12);
+  /* SEVERE @3.8 */
+  tl.set(P + "band2", { autoAlpha: 1 }, 3.8);
+  tl.to(P + "band2", { scaleX: 1, duration: 0.5, ease: "power2.out" }, 3.8);
+  // exit lands before the cut (host 5.18): page, labels and strip slide out together
+  tl.to(P + "stage", { x: -1200, duration: 0.55, ease: "power3.in" }, 4.5);
+  tl.to(P + "stage", { autoAlpha: 0, duration: 0.4, ease: "power1.out" }, 4.5);
+
+  window.__timelines["g-i1-2"] = tl;
+})();
+</script>
+</template>

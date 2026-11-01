@@ -1,0 +1,197 @@
+<template>
+<style>
+  /* g-a4-5 · A4-S5 · DEEP · Mayfield warning-lead timeline over a Graves County map (map family, base g-t1-1).
+     MAP: g-t1-1's projection (X = 3841*(lon+97.576), Y = -5585*(lat-46.6213); g-t1-1 screen = X*0.058 - 866.03, Y*0.058 - 2231.59), re-framed
+     here by screen = (g-t1-1 px - (1153.7, 957.7)) * 2.6 + (800, 560). Counties: compositions/data/g-a3-9-counties-raw.geojson (US Census,
+     12 counties KY/TN, Douglas-Peucker 1.6 px); warning: research/geo/warnings.geojson PAH TO.W.0036 issued 03:05Z (9:05 PM CST, 10 vertices);
+     Mayfield (-88.644491, 36.737459) -> (722.0, 592.2). Paths projected by a python one-off from those files (numbers only, see the receipt).
+     TIMELINE: 9:05 -> 9:26 PM = 21 min over 840 px (40 px a minute), bar x 540-1380, y 875-885. The 9:26 end is "the tornado in town"
+     (NWS Paducah: reaching Mayfield at 9:26 p.m.), never a lead from the 9:26 Emergency. The stopwatch counts elapsed minutes (0:00 -> 21:00),
+     not clock times, so no time on screen repeats an endpoint label.
+     RAIL: glass, right 96, top 120, width 620 (x 1204-1824), content ends above y 620. QUOTE: beige cite strip y 140-260, x 140-1160 (dark map).
+     Nothing at x >= 1600, y >= 680 (rail bottom < 680; bar band ends x 1420). */
+  #g-a4-5-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 40% 50%, #0b1016, #030507 80%); }
+  #g-a4-5-world { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #g-a4-5-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-a4-5-cty { fill:#0b1016; stroke:#4a5a6c; stroke-width:1.5px; stroke-linejoin:round; }
+  #g-a4-5-graves { fill:#141c25; stroke:#93a3b2; stroke-width:2px; stroke-linejoin:round; }
+  #g-a4-5-poly { fill:#e74c3c; fill-opacity:0; stroke:#e74c3c; stroke-width:3px; stroke-linejoin:round; visibility:hidden; }
+  #g-a4-5-lead { stroke:#dfe7ee; stroke-opacity:0.85; stroke-width:1.5px; stroke-linecap:round; visibility:hidden; }
+  .g-a4-5-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px; pointer-events:none;
+    background-image: linear-gradient(rgba(147,163,178,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.04) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  #g-a4-5-scan { position:absolute; left:0; top:20px; width:1920px; height:2px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
+  #g-a4-5-vig { position:absolute; left:0; top:0; width:1920px; height:1080px; pointer-events:none;
+    background:radial-gradient(ellipse at 45% 50%, rgba(3,5,7,0) 55%, rgba(3,5,7,0.6) 100%); }
+  .g-a4-5-dot { position:absolute; left:715px; top:585.2px; width:14px; height:14px; box-sizing:border-box; border-radius:50%;
+    background:#f2f5f8; border:2px solid #04070c; opacity:0; visibility:hidden; }
+  .g-a4-5-ring { position:absolute; left:715px; top:585.2px; width:14px; height:14px; box-sizing:border-box; border-radius:50%;
+    border:2px solid #f2f5f8; opacity:0; visibility:hidden; }
+  .g-a4-5-glass { background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-sizing:border-box; }
+  #g-a4-5-lab { position:absolute; left:846px; top:628px; padding:10px 14px; border-radius:12px; white-space:nowrap;
+    font-size:26px; font-weight:700; line-height:26px; color:#f2f5f8; opacity:0; visibility:hidden; }
+  /* quote strip */
+  #g-a4-5-quote { position:absolute; left:140px; top:140px; width:1020px; height:120px; box-sizing:border-box; padding:20px 36px; border-radius:20px;
+    background:rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 20px 60px rgba(0,0,0,0.55); opacity:0; visibility:hidden; }
+  #g-a4-5-qt { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:34px; line-height:44px; color:#2a2622; white-space:nowrap; }
+  #g-a4-5-qa { margin-top:8px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:22px; letter-spacing:3px; color:#6b6257; white-space:nowrap; }
+  /* rail */
+  #g-a4-5-rail { position:absolute; left:1204px; top:120px; width:620px; padding:30px 36px 34px; border-radius:28px; opacity:0; visibility:hidden; }
+  #g-a4-5-clock { font-family:'Courier New', Courier, monospace; font-weight:700; font-size:84px; line-height:92px; color:#e8c56a; }
+  #g-a4-5-r21 { margin-top:10px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; line-height:66px; color:#f2f5f8;
+    opacity:0; visibility:hidden; transform-origin:left center; }
+  #g-a4-5-div { margin:22px 0 18px; height:2px; background:rgba(147,163,178,0.35); }
+  .g-a4-5-row { font-family:Arial, sans-serif; font-weight:700; font-size:28px; line-height:36px; color:#dfe7ee; opacity:0; visibility:hidden; }
+  #g-a4-5-rpad { margin-top:16px; }
+  /* timeline band */
+  #g-a4-5-band { position:absolute; left:500px; top:820px; width:920px; height:140px; border-radius:24px; opacity:0; visibility:hidden; }
+  #g-a4-5-track { position:absolute; left:540px; top:875px; width:840px; height:10px; border-radius:5px; background:rgba(147,163,178,0.25); opacity:0; visibility:hidden; }
+  #g-a4-5-fill { position:absolute; left:540px; top:875px; width:840px; height:10px; border-radius:5px; background:#e74c3c; visibility:hidden; }
+  #g-a4-5-ticks { position:absolute; left:0; top:0; width:1920px; height:1080px; opacity:0; visibility:hidden; }
+  .g-a4-5-end { position:absolute; top:900px; font-size:26px; font-weight:700; line-height:30px; color:#f2f5f8; white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a4-5-e905 { left:540px; }
+  #g-a4-5-e926 { left:1180px; width:200px; text-align:right; }
+  #g-a4-5-src { position:absolute; left:96px; top:984px; padding:8px 14px; border-radius:10px; font-size:19px; font-weight:700; line-height:19px;
+    letter-spacing:1px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-5-root" data-composition-id="g-a4-5" data-width="1920" data-height="1080">
+  <div class="g-a4-5-grid" id="g-a4-5-grid"></div>
+  <div id="g-a4-5-world">
+    <svg id="g-a4-5-svg" viewBox="0 0 1920 1080">
+      <g id="g-a4-5-counties">
+        <path class="g-a4-5-cty" id="g-a4-5-c21007" d="M410,338 L412,351 L418,365 L437,385 L447,386 L455,395 L459,403 L458,418 L463,417 L465,422 L469,442 L471,438 L475,442 L475,437 L479,436 L480,431 L475,428 L480,425 L485,428 L486,423 L487,428 L489,428 L488,434 L495,432 L501,435 L504,431 L508,433 L508,430 L510,436 L512,432 L517,438 L522,439 L523,436 L528,433 L532,434 L538,429 L544,431 L543,429 L546,427 L551,429 L558,421 L560,424 L567,420 L571,424 L580,417 L583,419 L590,415 L592,417 L595,413 L602,411 L608,415 L623,410 L555,182 L536,181 L532,179 L536,177 L524,179 L516,182 L492,200 L466,232 L453,267 L443,280 L430,289 L429,292 L432,294 L426,297 L415,315 L410,338 Z"/>
+        <path class="g-a4-5-cty" id="g-a4-5-c47045" d="M397,1203 L399,1199 L402,1197 L403,1199 L407,1195 L409,1196 L421,1191 L427,1041 L237,1034 L233,1055 L152,1057 L165,1069 L172,1082 L172,1105 L167,1113 L154,1122 L130,1133 L123,1142 L115,1196 L107,1212 L92,1213 L97,1223 L98,1241 L103,1247 L138,1273 L143,1280 L145,1292 L145,1282 L148,1278 L160,1281 L168,1279 L176,1273 L181,1277 L183,1272 L186,1276 L193,1266 L204,1272 L210,1273 L214,1269 L217,1274 L222,1269 L221,1276 L223,1277 L226,1270 L232,1270 L231,1264 L234,1261 L229,1259 L232,1257 L280,1258 L283,1266 L285,1263 L288,1265 L288,1270 L292,1276 L295,1276 L294,1280 L301,1285 L300,1288 L307,1291 L308,1294 L309,1292 L311,1294 L311,1302 L314,1299 L312,1304 L318,1314 L354,1309 L361,1286 L371,1283 L378,1275 L378,1272 L381,1272 L387,1264 L400,1237 L401,1238 L407,1213 L403,1207 L397,1203 Z"/>
+        <path class="g-a4-5-cty" id="g-a4-5-c21035" d="M1063,680 L1057,661 L1053,633 L1047,613 L1031,584 L1017,583 L814,581 L813,658 L812,791 L1064,795 L1073,783 L1076,760 L1069,705 L1063,680 Z"/>
+        <path class="g-a4-5-cty" id="g-a4-5-c47131" d="M537,790 L342,786 L316,789 L319,812 L308,829 L302,848 L308,869 L296,896 L281,917 L284,941 L268,995 L254,1021 L235,1027 L236,1034 L539,1043 L545,869 L547,866 L549,870 L551,867 L554,869 L556,867 L560,871 L566,871 L573,881 L582,882 L594,874 L595,870 L603,869 L605,865 L622,867 L624,817 L616,790 L537,790 Z"/>
+        <path class="g-a4-5-cty" id="g-a4-5-c21145" d="M550,178 L555,181 L624,416 L684,416 L690,419 L815,420 L816,352 L804,352 L794,346 L777,323 L768,314 L767,308 L754,287 L742,277 L697,253 L687,251 L679,253 L673,251 L654,237 L630,213 L565,182 L550,178 Z"/>
+        <path class="g-a4-5-cty" id="g-a4-5-c21039" d="M522,438 L517,438 L512,432 L510,436 L508,430 L508,433 L504,431 L501,435 L495,432 L488,434 L489,428 L487,428 L486,423 L485,428 L480,425 L475,428 L480,431 L479,436 L475,437 L475,442 L471,438 L470,442 L465,422 L463,417 L458,418 L448,466 L436,500 L428,500 L424,504 L417,504 L413,511 L413,532 L418,543 L424,548 L445,552 L456,542 L480,550 L477,562 L624,562 L624,493 L624,416 L623,410 L608,415 L602,411 L599,414 L597,412 L592,417 L590,415 L583,419 L580,417 L571,424 L567,420 L560,424 L558,421 L551,429 L546,427 L543,429 L544,431 L538,429 L536,433 L528,433 L522,438 Z"/>
+        <path class="g-a4-5-cty" id="g-a4-5-c21075" d="M447,789 L612,790 L572,727 L558,726 L550,715 L501,715 L500,712 L492,709 L491,710 L490,707 L431,667 L415,665 L402,684 L399,707 L392,725 L383,734 L366,737 L355,728 L327,681 L314,682 L301,691 L294,722 L287,742 L285,757 L274,793 L342,786 L447,789 Z M185,748 L192,772 L204,794 L235,794 L243,778 L247,763 L238,734 L210,723 L201,725 L193,730 L187,740 L185,748 Z"/>
+        <path class="g-a4-5-cty" id="g-a4-5-c47079" d="M791,994 L788,1085 L973,1090 L972,1112 L975,1109 L977,1110 L979,1104 L982,1104 L987,1090 L990,1091 L993,1089 L995,1084 L993,1081 L998,1076 L995,1072 L997,1066 L1001,1066 L1008,1050 L1012,1048 L1013,1044 L1014,1046 L1016,1044 L1017,1029 L1022,1028 L1024,1025 L1030,1025 L1031,1021 L1036,1018 L1035,1013 L1039,1007 L1036,1001 L1037,999 L1042,1001 L1042,999 L1045,1000 L1047,994 L1042,982 L1041,971 L1044,971 L1041,967 L1043,965 L1036,952 L1039,945 L1036,938 L1040,935 L1038,933 L1042,926 L1039,920 L1041,919 L1038,917 L1040,911 L1101,910 L1095,903 L1086,881 L1076,868 L1074,859 L1060,839 L1065,818 L1062,802 L1064,795 L796,791 L791,994 Z"/>
+        <path class="g-a4-5-cty" id="g-a4-5-c21157" d="M814,370 L814,581 L966,582 L1030,585 L1029,572 L1023,553 L1020,534 L1007,490 L991,455 L986,425 L964,399 L916,329 L899,320 L884,317 L872,323 L848,329 L842,332 L832,345 L816,352 L814,370 Z"/>
+        <path class="g-a4-5-cty" id="g-a4-5-c21105" d="M399,602 L401,612 L418,633 L419,641 L417,647 L424,652 L415,665 L431,667 L490,707 L491,710 L500,712 L501,715 L550,715 L558,726 L572,727 L612,790 L622,790 L622,763 L621,577 L624,562 L477,562 L480,550 L456,542 L445,552 L449,564 L443,580 L416,574 L409,579 L403,587 L399,602 Z"/>
+        <path class="g-a4-5-cty" id="g-a4-5-c47183" d="M718,1115 L787,1116 L796,791 L616,790 L624,817 L622,867 L605,865 L603,869 L595,870 L594,874 L582,882 L573,881 L566,871 L560,871 L556,867 L554,869 L550,867 L549,870 L547,866 L545,868 L539,1026 L556,1050 L562,1052 L567,1056 L572,1063 L577,1064 L578,1068 L583,1073 L595,1097 L597,1099 L598,1097 L599,1100 L604,1099 L608,1110 L609,1108 L612,1111 L617,1111 L624,1115 L630,1114 L632,1117 L637,1119 L643,1118 L643,1120 L651,1119 L655,1122 L656,1121 L664,1134 L661,1134 L662,1136 L669,1141 L672,1146 L675,1144 L679,1147 L687,1157 L692,1160 L693,1157 L694,1160 L702,1157 L704,1161 L706,1158 L708,1160 L713,1158 L712,1161 L717,1159 L716,1114 L718,1115 Z"/>
+      </g>
+      <path id="g-a4-5-graves" d="M624,506 L624,562 L621,577 L622,790 L812,791 L812,773 L815,420 L690,419 L684,416 L624,416 L624,506 Z"/>
+      <path id="g-a4-5-poly" d="M626,548 L765,422 L812,422 L812,380 L869,329 L979,523 L893,582 L817,582 L812,632 L626,758 L626,548 Z"/>
+      <line id="g-a4-5-lead" x1="734" y1="597.5" x2="846" y2="651"/>
+    </svg>
+  </div>
+  <div id="g-a4-5-scan"></div>
+  <div id="g-a4-5-vig"></div>
+  <div class="g-a4-5-ring" id="g-a4-5-ring"></div>
+  <div class="g-a4-5-dot" id="g-a4-5-dot"></div>
+  <div class="g-a4-5-glass" id="g-a4-5-lab">Mayfield</div>
+
+  <div id="g-a4-5-quote">
+    <div id="g-a4-5-qt">&ldquo;In the twenty-one minutes between these tornado warnings&rdquo;</div>
+    <div id="g-a4-5-qa">Service Assessment, p47</div>
+  </div>
+
+  <div class="g-a4-5-glass" id="g-a4-5-rail">
+    <div id="g-a4-5-clock"><span id="g-a4-5-clk">0:00</span></div>
+    <div id="g-a4-5-r21">21 minutes</div>
+    <div id="g-a4-5-div"></div>
+    <div class="g-a4-5-row" id="g-a4-5-r19">outbreak average lead: 19 min</div>
+    <div class="g-a4-5-row" id="g-a4-5-rpad">Paducah: 25 warnings, 20 min average</div>
+  </div>
+
+  <div class="g-a4-5-glass" id="g-a4-5-band"></div>
+  <div id="g-a4-5-track"></div>
+  <svg id="g-a4-5-ticks" viewBox="0 0 1920 1080">
+    <g stroke="#93a3b2" stroke-opacity="0.6" stroke-width="2">
+      <line x1="540" y1="861" x2="540" y2="871"/><line x1="740" y1="863" x2="740" y2="871"/><line x1="940" y1="863" x2="940" y2="871"/>
+      <line x1="1140" y1="863" x2="1140" y2="871"/><line x1="1340" y1="863" x2="1340" y2="871"/><line x1="1380" y1="861" x2="1380" y2="871"/>
+    </g>
+  </svg>
+  <div id="g-a4-5-fill"></div>
+  <div class="g-a4-5-end" id="g-a4-5-e905">9:05 PM warning</div>
+  <div class="g-a4-5-end" id="g-a4-5-e926">9:26 PM</div>
+  <div class="g-a4-5-glass" id="g-a4-5-src">NWS Service Assessment, p32, p47</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a4-5-";
+  const DUR = 21.147;  /* host 716.932 (a4-s5 start) -> 738.079 (Paul P4 card); host-local = a4-s5 words.json time */
+  const C = {
+    quote: 0.10,       /* THE REVIEW DOES KEEP THE CLOCK @0.00 */
+    warn: 1.98,        /* THE WARNING HAD SAID 9 .30 @1.98 (ep 718.912) */
+    fill: 2.30,        /* bar fills 2.30 -> 5.00, the stopwatch with it */
+    t926: 5.00,        /* ABOUT 9 .26 @4.82 / "9" @5.00 (ep 721.932) */
+    m21: 6.50,         /* ABOUT 21 MINUTES @6.50 (ep 723.432) */
+    m19: 13.76,        /* ABOUT 19 MINUTES @13.76 (ep 730.692) */
+    pad: 15.50,        /* PADUCAH'S 25 WARNINGS @15.50 (ep 732.432) */
+    may21: 18.52,      /* MAYFIELD'S 21 MINUTES @18.52 (ep 735.452) */
+    out: 20.55         /* fade-through, cut to the Paul card at the host end */
+  };
+  const len = (sel) => Math.ceil(document.querySelector(sel).getTotalLength()) + 1;
+
+  /* ambient: 3 % camera push centred on the Mayfield pin (HUD stays put), scan line 48 px/s, grid drift */
+  tl.set(P + "world", { scale: 1, transformOrigin: "722px 592px" }, 0);
+  tl.to(P + "world", { scale: 1.03, duration: DUR, ease: "none" }, 0);
+  tl.set(P + "scan", { y: 0 }, 0);
+  tl.to(P + "scan", { y: 1020, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+
+  /* QUOTE @0.10: the review's own words, attributed */
+  tl.set(P + "quote", { autoAlpha: 0, y: 24 }, 0);
+  tl.fromTo(P + "quote", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.quote);
+
+  /* WARNING @1.98: the 9:05 polygon draws, Mayfield pin pops, rail slides in, timeline band and 9:05 end label */
+  const LP = len(P + "poly");
+  tl.set(P + "poly", { strokeDasharray: LP, strokeDashoffset: LP, visibility: "hidden" }, 0);
+  tl.set(P + "poly", { visibility: "visible" }, C.warn);
+  tl.fromTo(P + "poly", { strokeDashoffset: LP }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, C.warn);
+  tl.fromTo(P + "poly", { attr: { "fill-opacity": 0 } }, { attr: { "fill-opacity": 0.28 }, duration: 0.3, ease: "power1.out", immediateRender: false }, C.warn + 0.55);
+  tl.fromTo(P + "dot", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.5)" }, C.warn);
+  const LL = len(P + "lead");
+  tl.set(P + "lead", { strokeDasharray: LL, strokeDashoffset: LL, visibility: "hidden" }, 0);
+  tl.set(P + "lead", { visibility: "visible" }, C.warn + 0.1);
+  tl.fromTo(P + "lead", { strokeDashoffset: LL }, { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, C.warn + 0.1);
+  tl.fromTo(P + "lab", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, C.warn + 0.2);
+  tl.set(P + "ring", { autoAlpha: 0, scale: 1 }, 0);
+  tl.fromTo(P + "ring", { autoAlpha: 0.9, scale: 1 }, { autoAlpha: 0, scale: 3, duration: 1.0, ease: "power2.out", repeat: 14, repeatDelay: 0.2, immediateRender: false }, C.warn + 0.2);
+
+  tl.set(P + "rail", { autoAlpha: 0, x: 660 }, 0);
+  tl.fromTo(P + "rail", { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, C.warn);
+  tl.fromTo([P + "band", P + "track", P + "ticks"], { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, C.warn);
+  tl.fromTo(P + "e905", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.warn + 0.2);
+
+  /* FILL 2.30 -> 5.00: 21 minutes = 840 px; the stopwatch counts 0:00 -> 21:00 with it (leaf onUpdate, whole minutes) */
+  tl.set(P + "fill", { scaleX: 0, transformOrigin: "left center", visibility: "hidden" }, 0);
+  tl.set(P + "fill", { visibility: "visible" }, C.fill);
+  tl.to(P + "fill", { scaleX: 1, duration: C.t926 - C.fill, ease: "none" }, C.fill);
+  const clk = document.querySelector(P + "clk");
+  const sw = { m: 0 };
+  tl.to(sw, { m: 21, duration: C.t926 - C.fill, ease: "none",
+    onUpdate: () => { clk.textContent = Math.floor(sw.m + 1e-6) + ":00"; } }, C.fill);
+  tl.fromTo(P + "e926", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.t926);
+  tl.fromTo(P + "fill", { scaleY: 1 }, { scaleY: 1.8, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, C.t926);
+
+  /* 21 MINUTES @6.50 */
+  tl.set(P + "r21", { autoAlpha: 0, x: 40 }, 0);
+  tl.fromTo(P + "r21", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, C.m21);
+  tl.fromTo(P + "src", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, C.m21 + 0.4);
+
+  /* the two averages, rows 0.4 s in, on their words; never set against 21 with a sign */
+  tl.set([P + "r19", P + "rpad"], { autoAlpha: 0, y: 24 }, 0);
+  tl.fromTo(P + "r19", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.m19);
+  tl.fromTo(P + "rpad", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.pad);
+
+  /* MAYFIELD'S 21 MINUTES @18.52: the figure and the bar beat once */
+  tl.to(P + "r21", { scale: 1.08, duration: 0.2, ease: "power2.out" }, C.may21);
+  tl.to(P + "r21", { scale: 1, duration: 0.45, ease: "power2.inOut" }, C.may21 + 0.2);
+  tl.to(P + "fill", { scaleY: 1.8, duration: 0.2, ease: "power2.out" }, C.may21);
+  tl.to(P + "fill", { scaleY: 1, duration: 0.45, ease: "power2.inOut" }, C.may21 + 0.2);
+
+  /* out: fade-through */
+  tl.to(P + "root", { autoAlpha: 0, duration: 0.55, ease: "power2.in" }, C.out);
+
+  window.__timelines["g-a4-5"] = tl;
+})();
+</script>
+</template>

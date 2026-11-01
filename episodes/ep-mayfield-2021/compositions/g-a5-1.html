@@ -1,0 +1,100 @@
+<!-- g-a5-1 · A5-S1 · a plain clipboard drawn over a blank federal rulebook page; chip "The inspectors". The page carries no words.
+     Full frame, own ground. Host 858.763 (end of the A4-A5 blackout) -> 873.305 (a5-s2 starts). Times below are host-local
+     (episode = 858.763 + t); spoken times from audio/a5-s1.words.json (segment start 858.963, retimed 23 Oct 26). -->
+<template>
+<style>
+  #g-a5-1-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .g-a5-1-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size:120px 120px; }
+  #g-a5-1-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #g-a5-1-page { position:absolute; left:640px; top:130px; width:640px; height:820px; border-radius:6px; opacity:0; visibility:hidden;
+    background:rgba(244,240,230,0.92); box-shadow:0 30px 90px rgba(0,0,0,0.55); overflow:hidden; }
+  .g-a5-1-rule { position:absolute; left:64px; width:512px; height:2px; background:rgba(147,163,178,0.30); }
+  #g-a5-1-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-a5-1-ln { fill:none; stroke:#dfe7ee; stroke-width:6; stroke-linecap:round; stroke-linejoin:round; visibility:hidden; }
+  #g-a5-1-chip { position:absolute; left:110px; bottom:150px; padding:18px 30px; border-radius:28px; white-space:nowrap;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); font-weight:700; font-size:30px; line-height:40px; letter-spacing:1px; color:#dfe7ee;
+    opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-1-root" data-composition-id="g-a5-1" data-width="1920" data-height="1080">
+  <div class="g-a5-1-grid" id="g-a5-1-grid"></div>
+  <div id="g-a5-1-stage">
+    <div id="g-a5-1-page">
+      <div class="g-a5-1-rule" id="g-a5-1-r1" style="top:120px"></div>
+      <div class="g-a5-1-rule" id="g-a5-1-r2" style="top:190px"></div>
+      <div class="g-a5-1-rule" id="g-a5-1-r3" style="top:260px"></div>
+      <div class="g-a5-1-rule" id="g-a5-1-r4" style="top:330px"></div>
+      <div class="g-a5-1-rule" id="g-a5-1-r5" style="top:400px"></div>
+      <div class="g-a5-1-rule" id="g-a5-1-r6" style="top:470px"></div>
+      <div class="g-a5-1-rule" id="g-a5-1-r7" style="top:540px"></div>
+      <div class="g-a5-1-rule" id="g-a5-1-r8" style="top:610px"></div>
+      <div class="g-a5-1-rule" id="g-a5-1-r9" style="top:680px"></div>
+    </div>
+    <svg id="g-a5-1-svg" viewBox="0 0 1920 1080">
+      <!-- clipboard 300 x 380 over the page's lower right: board x 1060-1360, y 540-920; clip on top; three empty checkbox rows -->
+      <g id="g-a5-1-clip">
+        <rect id="g-a5-1-boardfill" x="1060" y="540" width="300" height="380" rx="22" fill="#1a2430" fill-opacity="0.92" visibility="hidden"/>
+        <path id="g-a5-1-board" class="g-a5-1-ln" d="M1082,540 L1338,540 Q1360,540 1360,562 L1360,898 Q1360,920 1338,920 L1082,920 Q1060,920 1060,898 L1060,562 Q1060,540 1082,540 Z"/>
+        <path id="g-a5-1-hold" class="g-a5-1-ln" d="M1160,556 L1160,524 Q1160,514 1170,514 L1250,514 Q1260,514 1260,524 L1260,556 Z"/>
+        <path id="g-a5-1-b1" class="g-a5-1-ln" d="M1100,620 L1136,620 L1136,656 L1100,656 Z"/>
+        <path id="g-a5-1-l1" class="g-a5-1-ln" d="M1160,638 L1320,638"/>
+        <path id="g-a5-1-b2" class="g-a5-1-ln" d="M1100,720 L1136,720 L1136,756 L1100,756 Z"/>
+        <path id="g-a5-1-l2" class="g-a5-1-ln" d="M1160,738 L1320,738"/>
+        <path id="g-a5-1-b3" class="g-a5-1-ln" d="M1100,820 L1136,820 L1136,856 L1100,856 Z"/>
+        <path id="g-a5-1-l3" class="g-a5-1-ln" d="M1160,838 L1320,838"/>
+      </g>
+    </svg>
+    <div id="g-a5-1-chip">The inspectors</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a5-1-";
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 14.542;
+  const lines = ["board", "hold", "b1", "l1", "b2", "l2", "b3", "l3"].map(function (n) { return document.querySelector(P + n); });
+  lines.forEach(function (el) {
+    const L = Math.ceil(el.getTotalLength()) + 1;
+    tl.set(el, { strokeDasharray: L, strokeDashoffset: L, visibility: "visible" }, 0);
+  });
+  const rules = gsap.utils.toArray(".g-a5-1-rule");
+  tl.set(P + "page", { autoAlpha: 0, y: 30 }, 0);
+  tl.set(rules, { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(P + "chip", { autoAlpha: 0, y: 24 }, 0);
+  tl.set(P + "boardfill", { autoAlpha: 0 }, 0);
+  tl.set(P + "clip", { y: 0 }, 0);
+  tl.set(P + "stage", { x: 0, scale: 1, transformOrigin: "960px 540px" }, 0);
+
+  /* ambient over the whole window: grid drift 16 px/s, slow stage float */
+  tl.fromTo(P + "grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.to(P + "clip", { y: -10, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0.6);
+
+  /* the page is up from the first frame after the blackout (voice starts 0.2 s later) */
+  tl.to(P + "page", { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0);
+  /* INSPECTORS @0.457 (859.22): chip; the clipboard draws line by line */
+  tl.to(P + "chip", { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.457);
+  tl.to(lines[0], { strokeDashoffset: 0, duration: 0.7, ease: "power2.inOut" }, 0.457);
+  tl.to(P + "boardfill", { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, 0.857);
+  tl.to(lines[1], { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 1.157);
+  /* RULE BOOK @2.757 (861.52): the page's ruled lines draw, still no words on them */
+  rules.forEach(function (r, i) { tl.to(r, { scaleX: 1, duration: 0.4, ease: "power2.out" }, 2.757 + i * 0.12); });
+  /* TORNADO PLAN @7.017 (865.78): the checklist's empty rows draw */
+  [[2, 3], [4, 5], [6, 7]].forEach(function (pr, i) {
+    tl.to(lines[pr[0]], { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, 7.017 + i * 0.45);
+    tl.to(lines[pr[1]], { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 7.217 + i * 0.45);
+  });
+  /* UNTIL I READ @11.137 (869.90): slow push into the blank page */
+  tl.to(P + "stage", { scale: 1.05, duration: 2.8, ease: "power1.inOut" }, 11.137);
+
+  /* exit: slides out left, done at the host end (13.942 + 0.6 = 14.542) */
+  tl.to(P + "chip", { x: -700, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, 13.942);
+  tl.to(P + "stage", { x: -1200, duration: 0.6, ease: "power3.in" }, 13.942);
+
+  window.__timelines["g-a5-1"] = tl;
+})();
+</script>
+</template>

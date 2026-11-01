@@ -1,0 +1,105 @@
+<template>
+<style>
+  /* g-a4-4 · A4-S4 · a search of the Service Assessment's text: query "candle" types in, "0 results"; chips "75 pages", "Mayfield: 17 mentions".
+     Full frame, own ground (canvas radial gradient) with three SA interior pages (p4, p29, p47; never the cover, which carries a FOX 2 aerial)
+     fanned at 25 % opacity and drifting. Search bar 900 x 96 centred on (960, 380); result line y 470-570; chips at y 680 and 784, centred.
+     Courier New 52 px: 31.2 px per character, so the cursor steps 31.2 px per typed letter. Nothing at x >= 1600, y >= 680. */
+  #g-a4-4-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a4-4-pages { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-a4-4-page { position:absolute; width:520px; height:673px; opacity:0.25; box-shadow:0 20px 60px rgba(0,0,0,0.6); }
+  #g-a4-4-pg1 { left:170px; top:170px; }
+  #g-a4-4-pg2 { left:700px; top:110px; }
+  #g-a4-4-pg3 { left:1230px; top:180px; }
+  .g-a4-4-glass { background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-sizing:border-box; white-space:nowrap; }
+  #g-a4-4-bar { position:absolute; left:510px; top:332px; width:900px; height:96px; border-radius:48px; opacity:0; visibility:hidden; }
+  #g-a4-4-icon { position:absolute; left:30px; top:26px; width:44px; height:44px; }
+  #g-a4-4-q { position:absolute; left:96px; top:16px; height:64px; font-family:'Courier New', Courier, monospace; font-weight:700; font-size:52px;
+    line-height:64px; color:#f2f5f8; white-space:pre; }
+  .g-a4-4-ch { opacity:0; visibility:hidden; }
+  #g-a4-4-cur { position:absolute; left:98px; top:22px; width:4px; height:52px; background:#e8c56a; opacity:0; visibility:hidden; }
+  #g-a4-4-res { position:absolute; left:0; top:470px; width:1920px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:84px; line-height:100px; color:#e74c3c; opacity:0; visibility:hidden; }
+  .g-a4-4-cwrap { position:absolute; left:0; width:1920px; display:flex; justify-content:center; }
+  .g-a4-4-chip { padding:16px 30px; border-radius:28px; font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:40px;
+    letter-spacing:1px; color:#dfe7ee; opacity:0; visibility:hidden; }
+  #g-a4-4-src { position:absolute; left:96px; top:984px; padding:8px 14px; border-radius:10px; font-size:19px; font-weight:700; line-height:19px;
+    letter-spacing:1px; color:#c8d3e0; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-4-root" data-composition-id="g-a4-4" data-width="1920" data-height="1080">
+  <div id="g-a4-4-pages">
+    <img class="g-a4-4-page" id="g-a4-4-pg1" src="media/stills/a4-s4-p29.png" alt="">
+    <img class="g-a4-4-page" id="g-a4-4-pg2" src="media/stills/a4-s4-p4.png" alt="">
+    <img class="g-a4-4-page" id="g-a4-4-pg3" src="media/stills/a4-s4-p47.png" alt="">
+  </div>
+  <div class="g-a4-4-glass" id="g-a4-4-bar">
+    <svg id="g-a4-4-icon" viewBox="0 0 44 44"><circle cx="18" cy="18" r="13" fill="none" stroke="#93a3b2" stroke-width="4"/><line x1="28" y1="28" x2="40" y2="40" stroke="#93a3b2" stroke-width="5" stroke-linecap="round"/></svg>
+    <div id="g-a4-4-q"><span class="g-a4-4-ch" id="g-a4-4-c1">c</span><span class="g-a4-4-ch" id="g-a4-4-c2">a</span><span class="g-a4-4-ch" id="g-a4-4-c3">n</span><span class="g-a4-4-ch" id="g-a4-4-c4">d</span><span class="g-a4-4-ch" id="g-a4-4-c5">l</span><span class="g-a4-4-ch" id="g-a4-4-c6">e</span></div>
+    <div id="g-a4-4-cur"></div>
+  </div>
+  <div id="g-a4-4-res">0 results</div>
+  <div class="g-a4-4-cwrap" style="top:680px;"><div class="g-a4-4-glass g-a4-4-chip" id="g-a4-4-chip75">75 pages</div></div>
+  <div class="g-a4-4-cwrap" style="top:784px;"><div class="g-a4-4-glass g-a4-4-chip" id="g-a4-4-chip17">Mayfield: 17 mentions</div></div>
+  <div class="g-a4-4-glass" id="g-a4-4-src">NWS Service Assessment, Dec 10-11 2021 (text of all 75 pages)</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a4-4-";
+  const DUR = 13.932;  /* host 703.000 -> 716.932 (a4-s5 start, the clock map); host-local = a4-s4 time - 1.422 */
+  const C = {
+    bar: 1.938,        /* SO I SEARCHED @3.36 (ep 704.938) */
+    type: 2.338,       /* "searched" @3.76: the query types, 0.08 s a letter */
+    p75: 5.598,        /* 75 PAGES @7.02 (ep 708.598) */
+    res: 7.298,        /* IT NEVER MENTIONS @8.72 (ep 710.298) */
+    once: 9.818,       /* NOT ONCE @11.24 (ep 712.818) */
+    m17: 12.358,       /* 17 TIMES @13.78 (ep 715.358) */
+    out: 13.38         /* fade-through to the cut at the host end */
+  };
+
+  /* ambient: the page stack drifts the whole window */
+  tl.set(P + "pg1", { rotation: -7, x: 0, y: 0 }, 0);
+  tl.set(P + "pg2", { rotation: 0, x: 0, y: 0 }, 0);
+  tl.set(P + "pg3", { rotation: 6, x: 0, y: 0 }, 0);
+  tl.to(P + "pg1", { x: -40, y: -30, rotation: -8, duration: DUR, ease: "none" }, 0);
+  tl.to(P + "pg2", { y: -50, duration: DUR, ease: "none" }, 0);
+  tl.to(P + "pg3", { x: 40, y: -30, rotation: 7, duration: DUR, ease: "none" }, 0);
+  tl.set(P + "src", { autoAlpha: 0, x: -12 }, 0);
+  tl.fromTo(P + "src", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.3);
+
+  /* SO I SEARCHED: the bar rises in, the cursor blinks, the query types letter by letter */
+  tl.set(P + "bar", { autoAlpha: 0, y: 30, scale: 0.96 }, 0);
+  tl.fromTo(P + "bar", { autoAlpha: 0, y: 30, scale: 0.96 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out" }, C.bar);
+  tl.set(P + "cur", { autoAlpha: 0, x: 0 }, 0);
+  tl.set(P + "cur", { autoAlpha: 1 }, C.bar + 0.3);
+  for (let i = 1; i <= 6; i++) {
+    const at = C.type + (i - 1) * 0.08;
+    tl.set(P + "c" + i, { autoAlpha: 1 }, at);
+    tl.set(P + "cur", { x: i * 31.2 }, at);
+  }
+  /* cursor blink after typing, 0.5 s on / 0.5 s off, until the result lands */
+  tl.fromTo(P + "cur", { opacity: 1 }, { opacity: 0, duration: 0.5, ease: "steps(1)", repeat: 8, yoyo: true, immediateRender: false }, C.type + 0.6);
+
+  /* 75 PAGES */
+  tl.set([P + "chip75", P + "chip17"], { autoAlpha: 0, y: 24 }, 0);
+  tl.fromTo(P + "chip75", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.p75);
+
+  /* IT NEVER MENTIONS THE CANDLE FACTORY: 0 results slams in */
+  tl.set(P + "res", { autoAlpha: 0, scale: 1.3 }, 0);
+  tl.fromTo(P + "res", { autoAlpha: 0, scale: 1.3 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, C.res);
+  /* NOT ONCE: a second hit on the same line */
+  tl.to(P + "res", { scale: 1.08, duration: 0.18, ease: "power2.out" }, C.once);
+  tl.to(P + "res", { scale: 1, duration: 0.4, ease: "power2.inOut" }, C.once + 0.18);
+
+  /* MAYFIELD ... 17 TIMES */
+  tl.fromTo(P + "chip17", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.m17);
+
+  /* out: fade-through, the clock map cuts in at the host end */
+  tl.to(P + "root", { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, C.out);
+
+  window.__timelines["g-a4-4"] = tl;
+})();
+</script>
+</template>

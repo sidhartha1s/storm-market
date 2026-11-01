@@ -1,0 +1,63 @@
+<!-- g-a5-5 · A5-S5 · glass map chip over the USACE Mayfield debris video (DVIDS 827619, Mayfield, PD): Kentucky outlined, "Kentucky",
+     "State-run OSHA program". Overlay, no ground. Kentucky = subpath 4 of g-t1-1's basemap (mastermap-us, Natural Earth), verbatim,
+     basemap units; viewBox = its bbox (31211,41845 28750 x 14684), drawn 260 x 133 px. Chip box left 110, bottom 150; nothing past
+     x 1560; the USACE/Army bug (bottom right) stays clear. Host 923.898 ("Kentucky" @2.74 in a5-s5, segment start 921.157) -> 931.4,
+     past "cited the plant for seven violations" (@10.04 = 931.20). Host-local t = episode - 923.898. -->
+<template>
+<style>
+  #g-a5-5-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  #g-a5-5-float { position:absolute; inset:0; width:1920px; height:1080px; }
+  #g-a5-5-chip { position:absolute; left:110px; bottom:150px; display:flex; align-items:center; padding:18px 30px; border-radius:28px;
+    box-sizing:border-box; white-space:nowrap; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); }
+  #g-a5-5-map { width:260px; height:133px; display:block; overflow:visible; }
+  #g-a5-5-ky { fill:#5a768f; fill-opacity:0; stroke:#dfe7ee; stroke-width:332; stroke-linejoin:round; }  /* 3 px at 260/28750 px per unit */
+  #g-a5-5-txt { margin-left:30px; }
+  #g-a5-5-name { display:block; font-weight:700; font-size:30px; line-height:40px; letter-spacing:1px; color:#dfe7ee; opacity:0; visibility:hidden; }
+  #g-a5-5-lab { display:block; margin-top:6px; font-weight:700; font-size:20px; line-height:26px; letter-spacing:6px; color:#c8d3e0; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-5-root" data-composition-id="g-a5-5" data-width="1920" data-height="1080" data-type-ok="two-tier chip over footage">
+  <div id="g-a5-5-float">
+    <div id="g-a5-5-chip">
+      <svg id="g-a5-5-map" viewBox="31211 41845 28750 14684">
+        <path id="g-a5-5-ky" d="M32306,53503 L32423,53163 L32763,52713 L33430,52699 L34424,53120 L34970,53241 L35067,53062 L34836,51928 L34881,51700 L35286,51438 L36050,51140 L36368,50751 L36242,50269 L36286,49828 L36500,49429 L36698,49265 L36879,49334 L37019,49301 L37118,49168 L37196,48636 L37666,48791 L37878,48711 L38013,48785 L38152,49082 L38259,48994 L38366,48397 L38466,48546 L38631,48588 L38866,48496 L39192,48577 L39818,48961 L40081,49238 L40263,49148 L40452,48784 L40740,48496 L41125,48283 L41505,48375 L41878,48770 L42162,48849 L42356,48613 L42543,47885 L42687,47805 L42741,47670 L42707,47479 L42813,47370 L43061,47342 L43075,47150 L43255,47235 L43435,47689 L43666,47946 L44066,48195 L44381,48237 L44613,48072 L44826,47642 L45021,46949 L45276,46557 L45592,46467 L45822,46210 L45966,45787 L46206,45447 L46543,45189 L46673,44818 L46596,44335 L46747,44073 L47126,44033 L47357,44089 L47652,44294 L48684,43852 L49070,43574 L49112,43300 L49044,43126 L48865,43051 L48827,42938 L48932,42785 L48936,42587 L48840,42343 L48929,42103 L49204,41867 L49430,41845 L49608,42037 L49862,42086 L50191,41991 L50494,42057 L50770,42286 L51030,42706 L51272,43318 L51710,43691 L52344,43826 L52806,44066 L53097,44412 L53337,44522 L53918,44241 L54217,44355 L54615,44646 L55205,44582 L55986,44162 L56446,44183 L56583,44644 L56915,45128 L57563,45802 L57606,46630 L57448,47133 L57455,47313 L57975,48242 L58015,48494 L58315,49109 L58751,49897 L59430,50548 L59961,50721 L58509,52077 L57209,52964 L57016,53466 L56632,53851 L56392,54258 L55818,54598 L55409,55062 L54385,55517 L53812,55675 L53181,56043 L42514,55607 L37399,55723 L37286,55550 L36412,55450 L36564,56023 L36554,56529 L31211,56527 L31414,56037 L31671,55880 L31957,56000 L32161,55826 L32443,54790 L32470,54229 L32306,53503 Z"/>
+      </svg>
+      <div id="g-a5-5-txt">
+        <span id="g-a5-5-name">Kentucky</span>
+        <span id="g-a5-5-lab">State-run OSHA program</span>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a5-5-";
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 7.502;   /* 923.898 -> 931.4 */
+  const ky = document.querySelector(P + "ky");
+  const L = Math.ceil(ky.getTotalLength()) + 1;
+  tl.set(ky, { strokeDasharray: L, strokeDashoffset: L }, 0);
+  tl.set(P + "chip", { autoAlpha: 0, x: 0, y: 24 }, 0);
+  tl.set([P + "name", P + "lab"], { autoAlpha: 0, y: 14 }, 0);
+  tl.set(P + "float", { y: 0 }, 0);
+
+  /* ambient: the chip floats up 8 px over the window */
+  tl.to(P + "float", { y: -8, duration: DUR, ease: "none" }, 0);
+  /* KENTUCKY RUNS ITS OWN OSHA PROGRAM @0.00 (923.898): chip, the state outline draws, its name and label */
+  tl.to(P + "chip", { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0);
+  tl.to(ky, { strokeDashoffset: 0, duration: 1.0, ease: "power2.inOut" }, 0.15);
+  tl.to(ky, { fillOpacity: 0.35, duration: 0.5, ease: "power1.out" }, 1.0);
+  tl.to(P + "name", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.2);
+  tl.to(P + "lab", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.5);
+  /* THE STATE PROGRAM @5.36 (929.26): the outline brightens on "state program" */
+  tl.to(ky, { fillOpacity: 0.6, duration: 0.4, ease: "power2.out" }, 5.36);
+
+  /* exit after "seven violations" (931.20): slides out left, done at the host end (6.902 + 0.6 = 7.502) */
+  tl.to(P + "chip", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 6.902);
+
+  window.__timelines["g-a5-5"] = tl;
+})();
+</script>
+</template>

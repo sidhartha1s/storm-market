@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<!-- ep-mayfield-2021 · The Warning Hour · assembly v1, section 1 of the cut (22 Oct 26): H1, T1, I1 through the chapter blackout into A1.
+     Script: edit_script.md (H1, T1, I1 owner-locked 22 Oct 26). Narration starts = cumulative wav durations (audio/manifest.json) + 0.30 s seams;
+     Paul's hook clip stands in for H1-S1 (no narrator wav under it). I1 -> A1: 0.8 s chapter blackout from the end of i1-s7; A1's voice
+     starts 0.2 s after it (128.208). Every host window is resolved from audio/<seg>.words.json (cue in a comment, episode seconds).
+     SOUND (reasoned in edit_script.md "Hook sound"): the civil-defence siren that ran under Paul from 0:00 was removed on 24 Oct 26 (owner, Moore draft: "can't even hear the narration ... no purpose"); the hook is dry
+     (0.10: the source sits about 10 dB, 5.7 dB above the narrator, so 0.10 puts it about 14 dB under), swells to 0.18 under H1-S2, drops back
+     under H1-S3 and hands over to the drone at T1. One bed from T1: the industrial pulse drone (owner Pixabay pack), its fade-out tail cut and
+     the 1-25 s body self-crossfaded to 134 s (media/sfx/drone-loop.mp3, mean -14.6 dB, 1 s windows -16.4 to -13.2 dB, no lull) at 0.13.
+     Swells (0.4) END on the peak lines: "And the forecast was right." / "had seen it." / "what to do."
+     Stills are public-domain government work (DVIDS/FEMA, Kentucky Guard, NWS, NWS Service Assessment): no grade (CLAUDE.md "Grading").
+     No grain, no film layer (DESIGN.md "Look: no grain"). -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Mayfield 2021 · The Warning Hour</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    .hold { position: absolute; inset: 0; pointer-events: none; }
+    .pip { position: absolute !important; inset: auto !important; left: 1640px !important; top: 708px !important;
+      width: 240px !important; height: 240px !important; border-radius: 50% !important; object-fit: cover !important; z-index: 8 !important; }
+    .pipring { position: absolute; left: 1632px; top: 700px; width: 256px; height: 256px; border-radius: 50%; border: 4px solid #d0121f;
+      box-sizing: border-box; z-index: 9; box-shadow: 0 10px 30px rgba(0,0,0,0.55); }
+      video.graded { filter: saturate(0.88) contrast(1.06) brightness(0.94); }   /* broadcast clips only (one subtle grade, repo CLAUDE.md) */
+  </style>
+</head>
+<body>
+<!-- 24 Oct 26: every ins-paul-N mounts its -vc file: the same take with its audio converted to the narrator's cloned voice by scripts/paul_voice.py (OpenVoice tone colour, timing kept, lips in sync); the -v5eq EQ pass before it is superseded (owner, Moore draft: "the pitch is different, the overall thing is different"); 1-4 kHz and 4-8 kHz energy within about 0.5 dB of the narration median, loudness unchanged. -->
+<div id="root" data-composition-id="ep-mayfield-2021" data-start="0" data-width="1920" data-height="1080" data-duration="1154.559" data-fps="30">
+
+  <!-- ============ NARRATION (H1-S1 is Paul's own line on ins-paul-1, so no nx-h1-s1) ============ -->
+  <audio id="nx-h1-s2" src="audio/h1-s2.wav" data-start="6.961" data-duration="4.455" data-volume="1"></audio>
+  <audio id="nx-h1-s3" src="audio/h1-s3.wav" data-start="11.716" data-duration="7.187" data-volume="1"></audio>
+  <audio id="nx-t1-s1" src="audio/t1-s1.wav" data-start="19.203" data-duration="13.263" data-volume="1"></audio>
+  <audio id="nx-i1-s1" src="audio/i1-s1.wav" data-start="32.766" data-duration="20.401" data-volume="1"></audio>
+  <audio id="nx-i1-s2" src="audio/i1-s2.wav" data-start="53.467" data-duration="14.258" data-volume="1"></audio>
+  <audio id="nx-i1-s3" src="audio/i1-s3.wav" data-start="68.025" data-duration="11.887" data-volume="1"></audio>
+  <audio id="nx-i1-s4" src="audio/i1-s4.wav" data-start="80.212" data-duration="13.9" data-volume="1"></audio>
+  <audio id="nx-i1-s5" src="audio/i1-s5.wav" data-start="94.412" data-duration="11.154" data-volume="1"></audio>
+  <audio id="nx-i1-s6" src="audio/i1-s6.wav" data-start="105.866" data-duration="9.305" data-volume="1"></audio>
+  <audio id="nx-i1-s7" src="audio/i1-s7.wav" data-start="115.471" data-duration="11.737" data-volume="1"></audio>
+
+  <!-- ============ SOUND (narration above every bed: score 0.13, ambience <= 0.20) ============ -->
+  <audio id="sx-bed-drone" src="media/sfx/drone-loop.mp3" data-bed="" data-start="19.203" data-duration="108.805" data-volume="0.13"></audio>
+  <audio id="sx-swell-01" src="media/sfx/sfx-swell.wav" data-bed="" data-start="13.756" data-duration="5" data-volume="0.4"></audio>   <!-- ends 18.756 on "right." (h1-s3 7.04) -->
+  <audio id="sx-swell-02" src="media/sfx/sfx-swell.wav" data-bed="" data-start="48.086" data-duration="5" data-volume="0.4" data-callback="second swell, on the next peak line"></audio>   <!-- ends 53.086 on "seen it." (i1-s1 20.32) -->
+  <audio id="sx-swell-03" src="media/sfx/sfx-swell.wav" data-bed="" data-start="105.246" data-duration="5" data-volume="0.4" data-callback="third swell, on the claim"></audio>   <!-- ends 110.246 on "what to do." (i1-s6 4.38) -->
+  <!-- ACTS: the same drone, one bed on (media/sfx/drone-bed-acts.mp3 = drone-loop.mp3 chained with 4 s crossfades to 1030 s), out under
+       the book ad (DESIGN.md "CTA contract": ducked or out), back on the payoff and under the end ask and the close card. -->
+  <audio id="sx-bed-acts-1" src="media/sfx/drone-bed-acts.mp3" data-bed="" data-start="128.008" data-duration="476.734" data-volume="0.13"></audio>
+  <audio id="sx-bed-acts-2" src="media/sfx/drone-bed-acts.mp3" data-bed="" data-start="630.784" data-media-start="497.348" data-duration="523.775" data-volume="0.13"></audio>
+  <!-- swells (0.4), each a 5 s riser ending on its peak word (segment start in briefs/compose/timeline.md + the word's end in words.json), ~45-65 s apart -->
+  <audio id="sx-swell-a1-1" src="media/sfx/sfx-swell.wav" data-bed="" data-start="131.988" data-duration="5" data-volume="0.4"></audio>   <!-- "twice." 136.988 -->
+  <audio id="sx-swell-a1-2" src="media/sfx/sfx-swell.wav" data-bed="" data-start="191.663" data-duration="5" data-volume="0.4"></audio>   <!-- "faced." 196.663 -->
+  <audio id="sx-swell-a1-3" src="media/sfx/sfx-swell.wav" data-bed="" data-start="237.530" data-duration="5" data-volume="0.4"></audio>   <!-- "no penalty." 242.530 -->
+  <audio id="sx-swell-a2-1" src="media/sfx/sfx-swell.wav" data-bed="" data-start="306.826" data-duration="5" data-volume="0.4"></audio>   <!-- "warm air." 311.826 -->
+  <audio id="sx-swell-a2-2" src="media/sfx/sfx-swell.wav" data-bed="" data-start="361.116" data-duration="5" data-volume="0.4"></audio>   <!-- "through Friday." 366.116 -->
+  <audio id="sx-swell-a2-3" src="media/sfx/sfx-swell.wav" data-bed="" data-start="393.167" data-duration="5" data-volume="0.4"></audio>   <!-- "the safe side." 398.167 -->
+  <audio id="sx-swell-a2-4" src="media/sfx/sfx-swell.wav" data-bed="" data-start="427.628" data-duration="5" data-volume="0.4"></audio>   <!-- "which offices waited." 432.628 -->
+  <audio id="sx-swell-a2-5" src="media/sfx/sfx-swell.wav" data-bed="" data-start="460.680" data-duration="5" data-volume="0.4"></audio>   <!-- "that warm air." 465.680 -->
+  <audio id="sx-swell-a3-1" src="media/sfx/sfx-swell.wav" data-bed="" data-start="512.060" data-duration="5" data-volume="0.4"></audio>   <!-- "nighttime severe weather event." 517.060 -->
+  <audio id="sx-swell-a3-2" src="media/sfx/sfx-swell.wav" data-bed="" data-start="576.290" data-duration="5" data-volume="0.4"></audio>   <!-- "people working inside." 581.290 -->
+  <audio id="sx-swell-a3-3" src="media/sfx/sfx-swell.wav" data-bed="" data-start="644.664" data-duration="5" data-volume="0.4"></audio>   <!-- "took over Paducah's work." 649.664 -->
+  <audio id="sx-swell-a4-1" src="media/sfx/sfx-swell.wav" data-bed="" data-start="713.846" data-duration="5" data-volume="0.4"></audio>   <!-- "Not once." 718.846 -->
+  <audio id="sx-swell-a4-2" src="media/sfx/sfx-swell.wav" data-bed="" data-start="774.480" data-duration="5" data-volume="0.4"></audio>   <!-- "stand at eight." 779.480 -->
+  <audio id="sx-swell-a4-3" src="media/sfx/sfx-swell.wav" data-bed="" data-start="860.566" data-duration="5" data-volume="0.4"></audio>   <!-- "measure a shelter plan against?" 865.566 -->
+  <audio id="sx-swell-a5-1" src="media/sfx/sfx-swell.wav" data-bed="" data-start="955.054" data-duration="5" data-volume="0.4"></audio>   <!-- "required a tornado shelter." 960.054 -->
+  <audio id="sx-swell-a5-2" src="media/sfx/sfx-swell.wav" data-bed="" data-start="991.705" data-duration="5" data-volume="0.4"></audio>   <!-- "on the night itself." 996.705 -->
+  <audio id="sx-swell-z1-1" src="media/sfx/sfx-swell.wav" data-bed="" data-start="1020.421" data-duration="5" data-volume="0.4"></audio>   <!-- "such as warehouses." 1025.421 -->
+  <audio id="sx-swell-z1-2" src="media/sfx/sfx-swell.wav" data-bed="" data-start="1057.311" data-duration="5" data-volume="0.4"></audio>   <!-- "the building code already covers." 1062.311 -->
+
+  <!-- ============ STRUCTURE: chapter blackout I1 -> A1 (hand-placed, 0.8 s = chapter break) ============ -->
+  <section class="clip blackout" id="bo-1" data-start="127.208" data-duration="0.8" data-track-index="1"></section>
+
+  <!-- ============ H1 · HOOK (0-19.203) ============ -->
+  <!-- Paul, frame one, his own voice (Omni clip, 10.005 s file). He stops speaking at 6.315 s (ffmpeg silencedetect -40 dB, 23 Oct 26):
+       cut at 6.661 (0.35 s look), never filled to 10 s. File: ins-paul-1-v3.mp4 = the Flow download with the logo pass, +3.3 dB and a 0.95 limiter (audio_levels: -3.3 dB vs narration on 23 Oct 26); the original stays beside it. Everything after him moved +0.800 s from the 5.861 s stand-in on 23 Oct 26. -->
+  <!-- 25 Oct 26 retake: the 22 Oct clip was a character-sheet take in a study (owner: "it's not even my face"); this one is the desk start frame like clips 2 to 6, last word ends 6.18 s, same 6.661 s slot -->
+  <video id="ins-paul-1" src="media/paul/ins-paul-1-retake/ins-paul-1-vc.mp4" data-start="0" data-duration="6.661" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="A tornado warning goes off at work. What do you do? You go where they tell you. Somebody planned for it."></video>
+  <!-- popfig "Dec. 10, 2021": clip start + 0.2; out on "What do you do?" (retake 25 Oct: 2.60) + 0.6 exit = 3.20 -->
+  <div id="host-g-h1-1" data-composition-id="g-h1-1" data-composition-src="compositions/g-h1-1.html" data-start="0.2" data-duration="3.0" data-track-index="4" data-width="1920" data-height="1080"></div>
+
+  <!-- H1-S2: hard cut (was on the siren swell; siren removed 24 Oct 26) to the cleared factory lot (DVIDS 7018049, Liz Roll/FEMA, image only), slow push -->
+  <section class="clip still-wrap" id="v-h1-factory" data-start="6.661" data-duration="5.055" data-track-index="1"><img id="v-h1-factory-img" src="media/stills/h1-s2-factory-site.jpg" alt=""></section>
+  <!-- chip "14 lives" on "14" (h1-s2 1.74 = 8.701); source line +0.6; runs to the cut at 11.716 -->
+  <div id="host-g-h1-2" data-composition-id="g-h1-2" data-composition-src="compositions/g-h1-2.html" data-start="8.701" data-duration="3.015" data-track-index="4" data-width="1920" data-height="1080"></div>
+
+  <!-- H1-S3: own NEXRAD replot is the picture from the cut (11.716); quote from "gap" (13.916); RIGHT on "right." (h1-s3 6.76 = 18.476)
+       + 1.6 = 20.076, so the replot runs 0.87 s into T1 before the map takes over -->
+  <div id="host-g-h1-3" data-composition-id="g-h1-3" data-composition-src="compositions/g-h1-3.html" data-start="11.716" data-duration="8.36" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- ============ T1 · HOOK TAIL (19.203-32.466) ============ -->
+  <!-- warning-polygon map: Edwardsville @22.143, Mayfield @25.203, "tornado warning" @27.243, second chip @27.843; + 1.6 = 29.443 -->
+  <div id="host-g-t1-1" data-composition-id="g-t1-1" data-composition-src="compositions/g-t1-1.html" data-start="20.076" data-duration="9.367" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- Kentucky Guard at the Mayfield fairgrounds (DVIDS 6986587), under "What happened inside in those minutes" (@29.623) -->
+  <section class="clip still-wrap" id="v-t1-guard" data-start="29.443" data-duration="3.323" data-track-index="1"><img id="v-t1-guard-img" src="media/stills/t1-s1-guard-fairgrounds.jpg" alt=""></section>
+
+  <!-- ============ I1 · INTRO: THE WHOLE PICTURE (32.766-127.208) ============ -->
+  <!-- I1-S1: NWS Paducah track timeline under "From Friday evening into Saturday", then our outbreak map from "the Weather Service" (@34.806);
+       71 @35.826, 89 @37.526, "Since 1950" @40.086, 38 @45.426, 1953 @48.866; held to the SPC page at 53.467 -->
+  <section class="clip still-wrap" id="v-i1-track" data-start="32.766" data-duration="2.04" data-track-index="1"><img id="v-i1-track-img" src="media/stills/i1-s1-nws-track-timeline.png" alt=""></section>
+  <div id="host-g-i1-1" data-composition-id="g-i1-1" data-composition-src="compositions/g-i1-1.html" data-start="34.806" data-duration="18.661" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- I1-S2: SPC Day 4-8 page from the cut (header @54.647, lit band @56.027), one beat, out on "That night" (@58.647).
+       The strip quotes "some potential for severe convection" (SA p7: Friday's severe potential first mentioned on Day 8). -->
+  <div id="host-g-i1-2" data-composition-id="g-i1-2" data-composition-src="compositions/g-i1-2.html" data-start="53.467" data-duration="5.18" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- "That night ... inside the candle factory in Mayfield": our own locator map (map family, g-t1-1 projection), factory pin,
+       chip "about 110 inside" on "110" (59.707). Replaces a second use of the only factory-site still (DVIDS has no other, 22 Oct 26). -->
+  <div id="host-g-i1-3" data-composition-id="g-i1-3" data-composition-src="compositions/g-i1-3.html" data-start="58.647" data-duration="5.32" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- the review itself (Service Assessment p33, Figure 20: the night's tornado warning polygons) under "The review says ... and it says why" -->
+  <section class="clip still-wrap" id="v-i1-sa-p33" data-start="63.967" data-duration="4.058" data-track-index="1"><img id="v-i1-sa-p33-img" src="media/stills/i1-s2-sa-p33-fig20.png" alt=""></section>
+
+  <!-- I1-S3: VIIRS before/after from the cut ("after sunset" @69.445), until the outline grows on "the building in Edwardsville" (@77.065) -->
+  <div id="host-g-i1-4" data-composition-id="g-i1-4" data-composition-src="compositions/g-i1-4.html" data-start="68.025" data-duration="9.04" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- I1-S3 last beat + I1-S4 first beat: outline @77.065, "a million square feet" @78.925, 19 @80.632, "Six people" @83.372,
+       out on "At the candle factory" (@85.892) + 0.6 = 86.492 -->
+  <div id="host-g-i1-5" data-composition-id="g-i1-5" data-composition-src="compositions/g-i1-5.html" data-start="77.065" data-duration="9.427" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- I1-S4: Mayfield downtown aerial (NWS Paducah survey) from "At the candle factory"; chip "8 lives" on "eight did" (@87.232),
+       source line +0.4; cut on "in St. Louis" (@89.652) -->
+  <!-- still -> footage (24 Oct 26 recut): USACE Mayfield debris video (DVIDS 827619, PD) @57.40 s: wrecked metal building, crews beyond -->
+  <video id="clip-i1-graves1" src="media/clips/cut-i1-graves1-v4.mp4" data-start="85.892" data-duration="3.76" data-media-start="0" data-track-index="1" muted></video>
+  <div id="host-g-i1-6" data-composition-id="g-i1-6" data-composition-src="compositions/g-i1-6.html" data-start="87.232" data-duration="2.42" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- the St. Louis office's own radar of Edwardsville (NWS LSX event page, KLSX 4-panel) under "the weather office in Saint Louis ... wrote down what had been missing" -->
+  <section class="clip still-wrap" id="v-i1-klsx" data-start="89.652" data-duration="4.76" data-track-index="1"><img id="v-i1-klsx-img" src="media/stills/i1-s4-klsx-edwardsville-radar.png" alt=""></section>
+
+  <!-- I1-S5: the St. Louis after-action words, attribution on "That office wrote" (@94.412); phrases @99.332, @101.592, @104.092; + 1.6, held to I1-S6 -->
+  <div id="host-g-i1-7" data-composition-id="g-i1-7" data-composition-src="compositions/g-i1-7.html" data-start="94.412" data-duration="11.454" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- I1-S6: downtown Mayfield street (NWS Paducah survey, Graves 3), slow push; claim card "right days ahead" @106.586,
+       "nobody" @108.006, out on "Almost five years on" (@110.606) + 0.6 -->
+  <section class="clip still-wrap" id="v-i1-graves3" data-start="105.866" data-duration="5.34" data-track-index="1"><img id="v-i1-graves3-img" src="media/stills/i1-s6-graves3-street.jpg" alt=""></section>
+  <div id="host-g-i1-8" data-composition-id="g-i1-8" data-composition-src="compositions/g-i1-8.html" data-start="106.586" data-duration="4.62" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- the Service Assessment's Recommendation 6 (p34: materials with basic tornado safety guidelines for large facilities) under
+       "I went to find out if anyone has written that advice since" -->
+  <section class="clip still-wrap" id="v-i1-sa-p34" data-start="111.206" data-duration="4.265" data-track-index="1"><img id="v-i1-sa-p34-img" src="media/stills/i1-s6-sa-p34-rec6.png" alt=""></section>
+
+  <!-- I1-S7: Edwardsville map from "Edwardsville came first" (@115.471); 8:27 @117.451, "warning had been out" @121.071,
+       megaphone @125.251 (+ 1.6 = 126.05); held to the end of the line (127.208), then the blackout -->
+  <div id="host-g-i1-9" data-composition-id="g-i1-9" data-composition-src="compositions/g-i1-9.html" data-start="115.471" data-duration="11.737" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- ============ ACTS (22 Oct 26, compose round 2). Narration layout: briefs/compose/timeline.md (wav durations + 0.30 s seams;
+       act blackout 0.8 s from the act's last line, next act's voice 0.2 s after it). Each act's builder edits only between its own markers. ============ -->
+
+  <!-- ==== A1 (builder) ==== -->
+  <!-- ============ A1 · EDWARDSVILLE (128.208-286.326). Narration starts from briefs/compose/timeline.md; data-duration = the wav length in
+       audio/manifest.json (timeline.md's dur column, corrected 23 Oct 26). ============ -->
+  <audio id="nx-a1-s1" src="audio/a1-s1.wav" data-start="128.208" data-duration="9.129" data-volume="1"></audio>
+  <audio id="nx-a1-s2" src="audio/a1-s2.wav" data-start="137.637" data-duration="13.036" data-volume="1"></audio>
+  <audio id="nx-a1-s3" src="audio/a1-s3.wav" data-start="150.973" data-duration="4.766" data-volume="1"></audio>
+  <audio id="nx-a1-s4" src="audio/a1-s4.wav" data-start="156.039" data-duration="14.928" data-volume="1"></audio>
+  <audio id="nx-a1-s5" src="audio/a1-s5.wav" data-start="171.267" data-duration="12.456" data-volume="1"></audio>
+  <audio id="nx-a1-s6" src="audio/a1-s6.wav" data-start="184.023" data-duration="12.901" data-volume="1"></audio>
+  <audio id="nx-a1-s7" src="audio/a1-s7.wav" data-start="197.224" data-duration="12.087" data-volume="1"></audio>
+  <audio id="nx-a1-s8" src="audio/a1-s8.wav" data-start="209.611" data-duration="11.099" data-volume="1"></audio>
+  <audio id="nx-a1-s9" src="audio/a1-s9.wav" data-start="221.010" data-duration="11.54" data-volume="1"></audio>
+  <audio id="nx-a1-s10" src="audio/a1-s10.wav" data-start="232.850" data-duration="9.94" data-volume="1"></audio>
+  <audio id="nx-a1-s11" src="audio/a1-s11.wav" data-start="243.090" data-duration="13.874" data-volume="1"></audio>
+  <audio id="nx-a1-s12" src="audio/a1-s12.wav" data-start="257.264" data-duration="10.141" data-volume="1"></audio>
+  <!-- a1-s13 = Paul clip ins-paul-2 (267.705-273.351, mounted with the Paul clips below) -->
+  <audio id="nx-a1-s14" src="audio/a1-s14.wav" data-start="273.651" data-duration="12.675" data-volume="1"></audio>
+
+  <!-- A1-S1: out of blackout bo-1 (ends 128.008) the drawn megaphone alone; the cage door shuts on "locked" (a1-s1 5.08 = 133.288);
+       cut to the OSHA letter on "not accessible" (a1-s1 6.20 = 134.408), item 1 lit, chip under "I had to read that line twice" (@135.608) -->
+  <div id="host-g-a1-1" data-composition-id="g-a1-1" data-composition-src="compositions/g-a1-1.html" data-start="128.008" data-duration="6.4" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a1-2" data-composition-id="g-a1-2" data-composition-src="compositions/g-a1-2.html" data-start="134.408" data-duration="3.229" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- A1-S2: NWS St. Louis track map (E01, weather.gov/lsx 12_10_2021, US gov work; 961 x 653, no upscaler on this box) from the segment start,
+       then our warning map from "hours ahead" (a1-s2 3.10 = 140.737): 8:06 @142.057, Madison @147.157, Edwardsville @148.917;
+       A1-S3: outline + clock from "reached" (a1-s3 0.42 = 151.393), 8:27 @153.313, "more than 20 minutes" @154.433; to A1-S4's start -->
+  <section class="clip still-wrap" id="v-a1-s2-track" data-start="137.637" data-duration="3.1" data-track-index="1"><img id="v-a1-s2-track-img" src="media/stills/upscaled/a1-s2-nws-track-map.png" alt=""></section>
+  <div id="host-g-a1-3" data-composition-id="g-a1-3" data-composition-src="compositions/g-a1-3.html" data-start="140.737" data-duration="15.302" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- A1-S4: cite card 7:45 @157.419, 7:53 @163.199; safe room on "had a safe room" @165.839; outline @167.339; "no storm shelter" @168.419; to A1-S5 -->
+  <div id="host-g-a1-4" data-composition-id="g-a1-4" data-composition-src="compositions/g-a1-4.html" data-start="156.039" data-duration="15.228" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- A1-S5 + A1-S6: 1.1 million @172.467, tilt-up @177.927, cast @180.167, crane @182.067; 90 mph @186.043, 150 mph @191.683,
+       "90 against 150" @193.643; to A1-S7's start -->
+  <div id="host-g-a1-5" data-composition-id="g-a1-5" data-composition-src="compositions/g-a1-5.html" data-start="171.267" data-duration="25.957" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- A1-S7: our KLSX replot from the segment start; 8:29 chip @197.544, CC layer on "signs" @200.424, ring on "debris" @200.884,
+       WGN Radio / FOX 2 line @203.324; to A1-S8's start -->
+  <div id="host-g-a1-6" data-composition-id="g-a1-6" data-composition-src="compositions/g-a1-6.html" data-start="197.224" data-duration="12.387" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- A1-S8: six marks from "Six people" (209.611); "Five were delivery contractors" @212.491; "The sixth" @217.931; to A1-S9's start -->
+  <div id="host-g-a1-7" data-composition-id="g-a1-7" data-composition-src="compositions/g-a1-7.html" data-start="209.611" data-duration="11.399" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- A1-S9: outline; south room on "one, on the south side" @225.850; north room on "the restroom on the north side" @231.190; to A1-S10 -->
+  <div id="host-g-a1-8" data-composition-id="g-a1-8" data-composition-src="compositions/g-a1-8.html" data-start="221.010" data-duration="11.84" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- A1-S10: GMA / ABC News pull of the damaged building (E12, provenance row: NEWS-CLAIM-LIKELY, narrate over; the sourcer's in 69.1 s,
+       2.102 s clean, already trimmed, video only), muted, under "The next April, OSHA sent Amazon"; then the letter itself:
+       letterhead (April 26, 2022) under "hazard alert letter" @235.950, the "I recommend that you voluntarily" paragraph from 238.000
+       ("asking" @237.930, "voluntary" @239.310). Chips: "Hazard Alert Letter" @235.950, "No citation" @240.930, "no penalty" @242.130;
+       the chip host runs to "The AP reported" (a1-s11 0.60 = 243.690) so the last chip is read before it slides out. -->
+  <video id="clip-a1-s10-gma" class="graded" src="media/clips/a1-s10-gma-building.mp4" data-start="232.850" data-duration="2.102" data-media-start="0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="v-a1-s10-lh" data-start="234.952" data-duration="3.048" data-track-index="1"><img id="v-a1-s10-lh-img" src="media/stills/a1-s10-hal-lh-v3.png" alt=""></section>
+  <section class="clip still-wrap" id="v-a1-s10-para" data-start="238.000" data-duration="5.69" data-track-index="1"><img id="v-a1-s10-para-img" src="media/stills/a1-s10-hal-para-v2.png" alt=""></section>
+  <div id="host-g-a1-9" data-composition-id="g-a1-9" data-composition-src="compositions/g-a1-9.html" data-start="235.950" data-duration="7.74" data-track-index="4" data-width="1920" data-height="1080"></div>
+
+  <!-- A1-S11: AP card on "did not" @244.930, item 3 page on "evacuation" @249.290, second AP card @254.390, megaphone in its cage @255.260 -->
+  <div id="host-g-a1-10" data-composition-id="g-a1-10" data-composition-src="compositions/g-a1-10.html" data-start="243.690" data-duration="13.574" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- A1-S12: "Say where" @258.904, "Name every" @262.664, cage opens on "keep it" @265.984; cut to Paul's slot at 267.705 -->
+  <div id="host-g-a1-11" data-composition-id="g-a1-11" data-composition-src="compositions/g-a1-11.html" data-start="257.264" data-duration="10.441" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- A1-S13 (Paul P1 slot): source line on "OSHA said" (267.705) over the orchestrator's card -->
+
+  <!-- A1-S14: hard cut from the slot (273.351) to the SPC Day 4-8 page; SA p15 slides in on "The Weather Service's" @277.011,
+       blurred finding lit on "Some waited" @280.411; fade to black into bo-a1-a2 (286.326) -->
+  <div id="host-g-a1-13" data-composition-id="g-a1-13" data-composition-src="compositions/g-a1-13.html" data-start="273.351" data-duration="12.975" data-track-index="2" data-width="1920" data-height="1080" data-callback="A1 exit returns to the Day 8 page"></div>
+  <!-- ==== /A1 ==== -->
+  <section class="clip blackout" id="bo-a1-a2" data-start="286.326" data-duration="0.8" data-track-index="1"></section>
+
+  <!-- ==== A2 (builder) ==== -->
+  <!-- ============ A2 · THE WEEK THE FORECAST HELD (287.126-465.848). Narration starts from briefs/compose/timeline.md (round 3);
+       data-duration = timeline.md's dur column. Picture from the end of bo-a1-a2 (287.126; voice 287.326) to bo-a2-a3 (465.848). ============ -->
+  <audio id="nx-a2-s1" src="audio/a2-s1.wav" data-start="287.326" data-duration="24.666" data-volume="1"></audio>
+  <audio id="nx-a2-s2" src="audio/a2-s2.wav" data-start="312.292" data-duration="19.509" data-volume="1"></audio>
+  <audio id="nx-a2-s3" src="audio/a2-s3.wav" data-start="332.101" data-duration="16.995" data-volume="1"></audio>
+  <audio id="nx-a2-s4" src="audio/a2-s4.wav" data-start="349.396" data-duration="16.937" data-volume="1"></audio>
+  <audio id="nx-a2-s5" src="audio/a2-s5.wav" data-start="366.633" data-duration="15.014" data-volume="1"></audio>
+  <audio id="nx-a2-s6" src="audio/a2-s6.wav" data-start="381.947" data-duration="16.340" data-volume="1"></audio>
+  <audio id="nx-a2-s7" src="audio/a2-s7.wav" data-start="398.587" data-duration="20.721" data-volume="1"></audio>
+  <audio id="nx-a2-s8" src="audio/a2-s8.wav" data-start="419.608" data-duration="13.226" data-volume="1"></audio>
+  <audio id="nx-a2-s9" src="audio/a2-s9.wav" data-start="433.134" data-duration="8.616" data-volume="1"></audio>
+  <!-- a2-s10 = Paul clip ins-paul-3 (442.050-448.180, mounted with the Paul clips below) -->
+  <audio id="nx-a2-s11" src="audio/a2-s11.wav" data-start="448.480" data-duration="17.368" data-volume="1"></audio>
+
+  <!-- Countdown chip, top right, track 4, in three windows (hidden under the full-screen cards g-a2-6, g-a2-8 and under Paul):
+       "7 days out" @287.330, "4 days out" @312.290, "Wednesday" @349.400, "about 60 hours" @357.780, "Thursday" @366.630 | "Friday morning" @382.390 |
+       "Friday afternoon" @399.070, "Friday night" @413.070 -->
+
+  <!-- A2-S1: SPC Day 4-8 page from the blackout's end; lit "chance of severe storms" @292.110, "predictability" @295.650;
+       SA Figure 22 on "The next day" @300.870, valid time on "European" @302.050, Day 7 @303.330, "storm fuel" @308.810; to A2-S2's start -->
+  <div id="host-g-a2-2" data-composition-id="g-a2-2" data-composition-src="compositions/g-a2-2.html" data-start="287.126" data-duration="25.166" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A2-S2: Memphis AFD from "By Monday afternoon" (312.290); locator on "That office covers" @316.650; threat sentence lit @329.090; to A2-S3 -->
+  <div id="host-g-a2-3" data-composition-id="g-a2-3" data-composition-src="compositions/g-a2-3.html" data-start="312.292" data-duration="19.809" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A2-S3: the sentence and its four issuances: 3:36 on "kept it" @333.880, 5:46 on "still there" @336.080, 9:24 on "three later issuances"
+       @336.720, 11:35 +0.5; out on "That same Monday" (338.980) -->
+  <div id="host-g-a2-4" data-composition-id="g-a2-4" data-composition-src="compositions/g-a2-4.html" data-start="332.101" data-duration="6.879" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A2-S3 last beat + S4 + S5 first beat: countdown map; Paducah @340.600, conference call @341.380, Mayfield @348.460, Day 3 Slight on
+       "first color" @351.360, Day 2 Enhanced on "raise it" @367.390, hatching on "hatched" @373.290; to "That afternoon" (375.310) -->
+  <div id="host-g-a2-5" data-composition-id="g-a2-5" data-composition-src="compositions/g-a2-5.html" data-start="338.980" data-duration="36.330" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A2-S5 last beat: Paducah outlook card, attribution on "Outlook" @376.690, quote on "A couple of long-track" @378.430; to A2-S6 -->
+  <div id="host-g-a2-6" data-composition-id="g-a2-6" data-composition-src="compositions/g-a2-6.html" data-start="375.310" data-duration="6.637" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- A2-S6: Friday-morning local TV pull (NewsChannel 5 Nashville, Friday 10 Dec 2021, provenance a2-s6_c4: NEWS-CLAIM-LIKELY, narrate over;
+       already trimmed, muted) under "Then, on Friday morning, the Storm Prediction Center goes to a" to "moderate" (385.050) -->
+  <video id="clip-a2-s6-tv" class="graded" src="media/clips/a2-s6-tv-friday-am.mp4" data-start="381.947" data-duration="3.103" data-media-start="0" data-track-index="1" muted></video>
+  <!-- the Day 1 Moderate graphic and chips: "moderate" @385.050, "level four of five" @386.190, "12 minutes" @388.590; to "A minute later" (393.010) -->
+  <div id="host-g-a2-7" data-composition-id="g-a2-7" data-composition-src="compositions/g-a2-7.html" data-start="385.050" data-duration="7.960" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- the Paducah post, full screen: "Think about" @394.950, "Better to err" @396.670; to A2-S7 -->
+  <div id="host-g-a2-8" data-composition-id="g-a2-8" data-composition-src="compositions/g-a2-8.html" data-start="393.010" data-duration="5.577" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- A2-S7: watch map; 552 on "first tornado watch" @400.190, 6 h 25 min @409.330, 553 on "At 5:20" @413.070, 3 h @417.110; to A2-S8 -->
+  <div id="host-g-a2-9" data-composition-id="g-a2-9" data-composition-src="compositions/g-a2-9.html" data-start="398.587" data-duration="21.021" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A2-S8 + S9: the map holds; Finding 3a on "some moved early" @424.030, Recommendation 3 on "say what you know" @435.010,
+       Memphis and Paducah pins on "Memphis" @436.690 / "Paducah held" @438.970, "Mon 6 Dec" on "on Monday" @437.730; to Paul's P2 (442.050) -->
+  <div id="host-g-a2-10" data-composition-id="g-a2-10" data-composition-src="compositions/g-a2-10.html" data-start="419.608" data-duration="22.442" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- A2-S11: from the end of Paul's card (448.180) the Memphis discussion again, Friday sentence lit on "Friday" @453.517 / "well" @454.397;
+       then NASA Worldview VIIRS true colour of the mid-South, 10 Dec 2021 daytime, before any storm (research/geo/README.md "NASA Worldview
+       snapshots", public domain; the seamless VIIRS frame, the MODIS one has a swath seam), slow push from "tornado" (459.977) to bo-a2-a3 -->
+  <div id="host-g-a2-11" data-composition-id="g-a2-11" data-composition-src="compositions/g-a2-11.html" data-start="448.180" data-duration="11.797" data-track-index="2" data-width="1920" data-height="1080" data-callback="return to the Monday discussion"></div>
+  <section class="clip still-wrap" id="v-a2-s11-viirs" data-start="459.977" data-duration="5.871" data-track-index="1"><img id="v-a2-s11-viirs-img" src="media/stills/a2-s11-viirs_snpp-dec10.jpg" alt=""></section>
+  <!-- paint order follows file order, not data-track-index (verifier, 23 Oct 26): an overlay host sits AFTER every lower-track element it covers -->
+  <div id="host-g-a2-1" data-composition-id="g-a2-1" data-composition-src="compositions/g-a2-1.html" data-start="287.126" data-duration="88.184" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-1b" data-composition-id="g-a2-1b" data-composition-src="compositions/g-a2-1b.html" data-start="381.947" data-duration="11.063" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-1c" data-composition-id="g-a2-1c" data-composition-src="compositions/g-a2-1c.html" data-start="398.587" data-duration="21.021" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- ==== /A2 ==== -->
+  <section class="clip blackout" id="bo-a2-a3" data-start="465.848" data-duration="0.8" data-track-index="1"></section>
+
+  <!-- ==== A3 (builder) ==== -->
+  <!-- A3 narration (timeline.md starts; data-duration = end - start = the wav length, floored to 1 ms: timeline.md's dur column carries an extra 0.8 s).
+       a3-s9 is Paul clip ins-paul-4 (597.892-604.742, mounted with the Paul clips below). -->
+  <audio id="nx-a3-s1" src="audio/a3-s1.wav" data-start="466.848" data-duration="12.481" data-volume="1"></audio>
+  <audio id="nx-a3-s2" src="audio/a3-s2.wav" data-start="479.630" data-duration="17.529" data-volume="1"></audio>
+  <audio id="nx-a3-s3" src="audio/a3-s3.wav" data-start="497.460" data-duration="19.794" data-volume="1"></audio>
+  <audio id="nx-a3-s4" src="audio/a3-s4.wav" data-start="517.555" data-duration="16.715" data-volume="1"></audio>
+  <audio id="nx-a3-s5" src="audio/a3-s5.wav" data-start="534.571" data-duration="15.438" data-volume="1"></audio>
+  <audio id="nx-a3-s6" src="audio/a3-s6.wav" data-start="550.309" data-duration="15.640" data-volume="1"></audio>
+  <audio id="nx-a3-s7" src="audio/a3-s7.wav" data-start="566.250" data-duration="15.309" data-volume="1"></audio>
+  <audio id="nx-a3-s8" src="audio/a3-s8.wav" data-start="581.859" data-duration="15.732" data-volume="1"></audio>
+  <audio id="nx-a3-s10" src="audio/a3-s10.wav" data-start="630.784" data-duration="18.831" data-volume="1"></audio>
+  <audio id="nx-a3-s11" src="audio/a3-s11.wav" data-start="650.116" data-duration="17.215" data-volume="1"></audio>
+
+  <!-- A3-S1..S3: fuel and twist explainer from the end of bo-a2-a3 (466.648; voice 466.848). "two" @470.027, "warm" @472.267, "The other is wind"
+       @475.387, "as you go up" @477.587, "twist" @480.467, "jet" @484.847, "fuel" @498.237, "heat" @501.577, "after sunset" @508.577; out on
+       "By Thursday morning" (@511.997) -->
+  <div id="host-g-a3-1" data-composition-id="g-a3-1" data-composition-src="compositions/g-a3-1.html" data-start="466.648" data-duration="45.352" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A3-S2: lower third over the explainer, "Victor" @487.127, "Northern" @489.407, "told the Associated Press" @491.127; out before "Winter usually" (@493.767) -->
+  <div id="host-g-a3-2" data-composition-id="g-a3-2" data-composition-src="compositions/g-a3-2.html" data-start="487.127" data-duration="7.22" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- A3-S3 last beat: Louisville AFD caps card, chip on "By Thursday morning" @511.997, quote on "significant" @514.897; held to 519.247 -->
+  <div id="host-g-a3-3" data-composition-id="g-a3-3" data-composition-src="compositions/g-a3-3.html" data-start="512.000" data-duration="7.247" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A3-S4: VIIRS 3 Dec night plate + SA p6 card ("The review says" @519.917, "many" @520.457, "even" @521.697, "don't" @523.577), our dark map from
+       "A December storm after dark" @525.957, pins "Edwardsville" @532.617 and "Mayfield" @533.737 -->
+  <div id="host-g-a3-4" data-composition-id="g-a3-4" data-composition-src="compositions/g-a3-4.html" data-start="519.247" data-duration="15.85" data-track-index="2" data-width="1920" data-height="1080" data-callback="VIIRS before frame, A3 stake"></div>
+  <!-- A3-S5: Paducah outlook callback, card on "Paducah's outlook" (@534.887-535.427), chip "Thursday afternoon" @535.927, lit line "long-track" @544.227 -->
+  <div id="host-g-a3-5" data-composition-id="g-a3-5" data-composition-src="compositions/g-a3-5.html" data-start="535.097" data-duration="11.99" data-track-index="2" data-width="1920" data-height="1080" data-callback="Paducah long-track line, A3 callback"></div>
+  <!-- A3-S5 last line + S6 + S7: KNQA replot from "That was more than a day before the first one touched down" (@547.087); EF4 @554.147, Bay @558.207,
+       Samburg @559.707, "849" @561.527; base map on "It stayed down" @566.247, "165" @567.087, Falls of Rough @570.087, MODIS inset @570.687,
+       factory pin "Mayfield" @575.727 -->
+  <div id="host-g-a3-6" data-composition-id="g-a3-6" data-composition-src="compositions/g-a3-6.html" data-start="547.087" data-duration="34.772" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A3-S8: SA p12 paragraph (the SPC archive page was not found), "Storm Prediction Center" @583.157, "28" @587.057, "old record" @591.117,
+       "20" @591.817; out at Paul's P3 card (597.892) -->
+  <div id="host-g-a3-7" data-composition-id="g-a3-7" data-composition-src="compositions/g-a3-7.html" data-start="581.859" data-duration="16.033" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- A3-S10, the payoff after the CTA out-dip: a hard cut to REAL picture, NWS Paducah's own KPAH reflectivity of Mayfield (about 9:27 PM,
+       event page, SAFE-PD) under "The power went out." (@630.988); g-a3-8 lays its 9:25 chip over it on "nine twenty-five" (@632.688) and covers
+       it with its own ground by 633.738 -->
+  <section class="clip still-wrap" id="v-a3-kpah" data-start="630.784" data-duration="3.0" data-track-index="1" data-callback="KPAH 9:27 PM scan: the A3-S10 payoff; A4-S7 returns to the same NWS image"><img id="v-a3-kpah-img" src="media/stills/a3-s10-kpah-927pm.png" alt=""></section>
+  <!-- SA p30 card: "lost" @634.708, "backup" @636.588; handover line from "Its warnings still went out" @638.388; Springfield clock "9 .52" @645.268 -->
+  <div id="host-g-a3-8" data-composition-id="g-a3-8" data-composition-src="compositions/g-a3-8.html" data-start="632.688" data-duration="17.428" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A3-S11: rewind to 9:05 on "905" @650.118; Graves polygon "Graves" @653.858; marker "already on the ground" @654.898; "Fulton" @659.138;
+       "about 110" @662.718; factory pin "candle" @664.578; fade to black for bo-a3-a4 (667.332) -->
+  <div id="host-g-a3-9" data-composition-id="g-a3-9" data-composition-src="compositions/g-a3-9.html" data-start="650.116" data-duration="17.216" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- ==== /A3 ==== -->
+  <!-- CTA hinge: A3-S9 tease (Paul, ins-paul-4) ends 604.742 -> 1.0 s dip -> the book ad (own VO) -> 1.0 s dip -> A3-S10 payoff "The power went out." at 630.984 -->
+  <section class="clip blackout" id="bo-cta-in" data-start="604.742" data-duration="1.0" data-track-index="1"></section>
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v10-oct23.mp4" data-start="605.742" data-duration="24.042" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+  <section class="clip blackout" id="bo-cta-out" data-start="629.784" data-duration="1.0" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a3-a4" data-start="667.332" data-duration="0.8" data-track-index="1"></section>
+
+  <!-- ==== A4 (builder) ==== -->
+  <!-- A4 · The candle factory (668.332-865.811). Narration durations = timeline.md end - start (the wav length); the dur column there reads
+       +0.8 s on every row but a4-s1 and would overlap the next line. a4-s6 is Paul clip ins-paul-5. Picture runs 668.332 -> 743.507
+       and 752.967 (ins-paul-5 end) -> 865.811 with no gap. Reused stills carry data-callback; place-named text sits only over Mayfield files. -->
+  <audio id="nx-a4-s1" src="audio/a4-s1.wav" data-start="668.332" data-duration="3.674" data-volume="1"></audio>
+  <audio id="nx-a4-s2" src="audio/a4-s2.wav" data-start="672.306" data-duration="17.784" data-volume="1"></audio>
+  <audio id="nx-a4-s3" src="audio/a4-s3.wav" data-start="690.390" data-duration="16.316" data-volume="1"></audio>
+  <audio id="nx-a4-s4" src="audio/a4-s4.wav" data-start="707.006" data-duration="15.054" data-volume="1"></audio>
+  <audio id="nx-a4-s5" src="audio/a4-s5.wav" data-start="722.360" data-duration="20.847" data-volume="1"></audio>
+  <audio id="nx-a4-s7" src="audio/a4-s7.wav" data-start="753.267" data-duration="14.713" data-volume="1"></audio>
+  <audio id="nx-a4-s8" src="audio/a4-s8.wav" data-start="768.280" data-duration="11.376" data-volume="1"></audio>
+  <audio id="nx-a4-s9" src="audio/a4-s9.wav" data-start="779.956" data-duration="14.605" data-volume="1"></audio>
+  <audio id="nx-a4-s10" src="audio/a4-s10.wav" data-start="794.861" data-duration="17.066" data-volume="1"></audio>
+  <audio id="nx-a4-s11" src="audio/a4-s11.wav" data-start="812.227" data-duration="12.849" data-volume="1"></audio>
+  <audio id="nx-a4-s12" src="audio/a4-s12.wav" data-start="825.376" data-duration="18.038" data-volume="1"></audio>
+  <audio id="nx-a4-s13" src="audio/a4-s13.wav" data-start="843.714" data-duration="10.192" data-volume="1"></audio>
+  <audio id="nx-a4-s14" src="audio/a4-s14.wav" data-start="854.206" data-duration="11.605" data-volume="1"></audio>
+
+  <!-- A4-S1: NWS Paducah warning timeline from the blackout's end (668.132, as A1 and A3 do), its own Graves box lit; chip 9:05 PM on "905" (668.572) -->
+  <div id="host-g-a4-1" data-composition-id="g-a4-1" data-composition-src="compositions/g-a4-1.html" data-start="668.132" data-duration="4.174" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A4-S2: SPC Watch #552, Mayfield pin on "Mayfield" (673.306), chip on "since three" (675.086); cut to SA p14 just after "Paducah" (684.426) -->
+  <div id="host-g-a4-2" data-composition-id="g-a4-2" data-composition-src="compositions/g-a4-2.html" data-start="672.306" data-duration="12.09" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="v-a4-p14" data-start="684.396" data-duration="5.994" data-track-index="1"><img id="v-a4-p14-img" src="media/stills/a4-s2-sa-p14-call.png" alt=""></section>
+
+  <!-- A4-S3: Mayfield pictures under Saxton's lines (no factory-by-day video exists; no face beneath his name). Name card on "Mark" (693.830),
+       quote on "I can't believe" (705.170), card out at 703.0 -->
+  <!-- still -> footage (24 Oct 26 recut): USACE Mayfield (DVIDS 827619, PD) @51.62 s: debris truck, then a grapple loading a branch pile -->
+  <video id="clip-a4-downtown" src="media/clips/cut-a4-downtown-v4.mp4" data-start="690.390" data-duration="5.438" data-media-start="0" data-track-index="1" muted></video>
+  <video id="v-a4-trucks" src="media/clips/a4-s3-usace-trucks.mp4" data-start="695.828" data-duration="3.667" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="v-a4-house" data-start="699.495" data-duration="5.533" data-track-index="1"><img id="v-a4-house-img" src="media/stills/a4-s11-house.jpg" alt=""></section>
+  <!-- still -> footage (24 Oct 26 recut): CBS pull (M06, narrated over, muted) @64.42 s: downtown Mayfield brick building in a debris field -->
+  <video id="clip-a4-graves3" class="graded" src="media/clips/cut-a4-graves3-v1.mp4" data-start="705.028" data-duration="3.4" data-media-start="0" data-track-index="1" muted></video>
+  <div id="host-g-a4-3" data-composition-id="g-a4-3" data-composition-src="compositions/g-a4-3.html" data-start="693.830" data-duration="14.598" data-track-index="4" data-width="1920" data-height="1080"></div>
+
+  <!-- A4-S4: the search of the review, from 703.0; "So I searched" 710.366, 75 @714.026, 0 results @715.726, 17 @720.786 -->
+  <div id="host-g-a4-4" data-composition-id="g-a4-4" data-composition-src="compositions/g-a4-4.html" data-start="708.428" data-duration="13.932" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A4-S5: warning-lead timeline over Graves County; quote @722.360, 9:05 @724.340, 9:26 @727.360, 21 @728.860, 19 @736.120, Paducah @737.860 -->
+  <div id="host-g-a4-5" data-composition-id="g-a4-5" data-composition-src="compositions/g-a4-5.html" data-start="722.360" data-duration="21.147" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A4-S6 (Paul, ins-paul-5): chip on "the strongest words" (748.247), out inside his window -->
+
+  <!-- A4-S7: the review's p4 from the P4 card end, KPAH 4-panel with the chip on "eight" (758.847), KPAH 9:27 PM under the quote ("called" 763.387) -->
+  <section class="clip still-wrap" id="v-a4-sap4" data-start="752.967" data-duration="4.781" data-track-index="1"><img id="v-a4-sap4-img" src="media/stills/a4-s7-sa-p4-v2.png" alt=""></section>
+  <section class="clip still-wrap" id="v-a4-kpah4" data-start="757.748" data-duration="5.4" data-track-index="1"><img id="v-a4-kpah4-img" src="media/stills/a4-s7-kpah-4panel.png" alt=""></section>
+  <section class="clip still-wrap" id="v-a4-kpah" data-start="763.148" data-duration="5.132" data-track-index="1"><img id="v-a4-kpah-img" src="media/stills/a4-s7-kpah-927pm.png" alt=""></section>
+  <div id="host-g-a4-7" data-composition-id="g-a4-7" data-composition-src="compositions/g-a4-7.html" data-start="758.847" data-duration="9.433" data-track-index="4" data-width="1920" data-height="1080"></div>
+
+  <!-- A4-S8: no CBS pull (aerial/drone only). Factory site under "the wreckage of the factory", Mayfield brick ruin under "8 lives" (774.440) -->
+  <section class="clip still-wrap" id="v-a4-factory" data-start="768.280" data-duration="5.868" data-track-index="1" data-callback="the factory site again, under the rescue"><img id="v-a4-factory-img" src="media/stills/h1-s2-factory-site.jpg" alt=""></section>
+  <section class="clip still-wrap" id="v-a4-brick" data-start="774.148" data-duration="5.808" data-track-index="1"><img id="v-a4-brick-img" src="media/stills/a4-s8-brick.jpg" alt=""></section>
+  <div id="host-g-a4-8" data-composition-id="g-a4-8" data-composition-src="compositions/g-a4-8.html" data-start="774.440" data-duration="5.516" data-track-index="4" data-width="1920" data-height="1080"></div>
+
+  <!-- A4-S9: RHS panel from "24" (781.536) over Mayfield only: survey aerial, USACE crew on a cleared Mayfield lot, downtown Mayfield -->
+  <!-- still -> footage (24 Oct 26 recut): USACE Mayfield (DVIDS 827619, PD) @34.51 s: grapple loads a truck, then the crew on a cleared lot; runs on into v-a4-crew (same shot, 40 s) -->
+  <video id="clip-a4-graves1" src="media/clips/cut-a4-graves1-v4.mp4" data-start="779.956" data-duration="5.492" data-media-start="0" data-track-index="1" muted></video>
+  <video id="v-a4-crew" src="media/clips/a4-s9-usace-crew.mp4" data-start="785.448" data-duration="4.5" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="v-a4-downtown2" data-start="789.948" data-duration="4.913" data-track-index="1" data-callback="downtown Mayfield again, tighter, under the record toll"><img id="v-a4-downtown2-img" src="media/stills/a4-s3-downtown-debris.jpg" alt=""></section>
+  <div id="host-g-a4-9" data-composition-id="g-a4-9" data-composition-src="compositions/g-a4-9.html" data-start="781.536" data-duration="13.325" data-track-index="4" data-width="1920" data-height="1080"></div>
+
+  <!-- A4-S10: allegation and denial, two cards, one cut, own ground -->
+  <div id="host-g-a4-10" data-composition-id="g-a4-10" data-composition-src="compositions/g-a4-10.html" data-start="794.861" data-duration="17.366" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- A4-S11: DVIDS image 10 is a house, not the factory (sourcer); neutral Mayfield stills, chip on "never" (818.107), the AAR page on
+       "what one weather office wrote down afterward" -->
+  <section class="clip still-wrap" id="v-a4-house2" data-start="812.227" data-duration="5.621" data-track-index="1" data-callback="the marked house again, under the lawsuits line"><img id="v-a4-house2-img" src="media/stills/a4-s11-house.jpg" alt=""></section>
+  <!-- still -> footage (24 Oct 26 recut): CBS pull (M06, narrated over, muted) @59.70 s: US 45/58 sign over Mayfield ruins, then an excavator in the wreckage -->
+  <video id="clip-a4-fair" class="graded" src="media/clips/cut-a4-fair-v2.mp4" data-start="817.848" data-duration="4.0" data-media-start="0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="v-a4-sap33" data-start="821.848" data-duration="3.528" data-track-index="1"><img id="v-a4-sap33-img" src="media/stills/a4-s11-sa-p33-aar.png" alt=""></section>
+  <div id="host-g-a4-11" data-composition-id="g-a4-11" data-composition-src="compositions/g-a4-11.html" data-start="818.107" data-duration="3.741" data-track-index="4" data-width="1920" data-height="1080"></div>
+
+  <!-- A4-S12: the St. Louis words over the survey photo (inside the comp); then the St. Louis office's own Edwardsville radar under
+       "That office covers Edwardsville, not Mayfield" (838.516) -->
+  <div id="host-g-a4-12" data-composition-id="g-a4-12" data-composition-src="compositions/g-a4-12.html" data-start="825.376" data-duration="13.672" data-track-index="2" data-width="1920" data-height="1080" data-callback="AAR words, the answer to L4"></div>
+  <section class="clip still-wrap" id="v-a4-klsx" data-start="839.048" data-duration="4.666" data-track-index="1" data-callback="the St. Louis office's radar again: the office that wrote it covers Edwardsville"><img id="v-a4-klsx-img" src="media/stills/i1-s4-klsx-edwardsville-radar.png" alt=""></section>
+
+  <!-- A4-S13: three stamps on one Mayfield timeline; quote @845.054, stamps @849.474, @850.634, @852.234 -->
+  <div id="host-g-a4-13" data-composition-id="g-a4-13" data-composition-src="compositions/g-a4-13.html" data-start="843.714" data-duration="10.492" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- A4-S14: factory site (third and last use), chip on "Kentucky's" (856.026); Mayfield from the air to the blackout (865.811) -->
+  <section class="clip still-wrap" id="v-a4-factory2" data-start="854.206" data-duration="5.842" data-track-index="1" data-callback="the factory site a last time, as the inspectors are named"><img id="v-a4-factory2-img" src="media/stills/h1-s2-factory-site.jpg" alt=""></section>
+  <section class="clip still-wrap" id="v-a4-graves1b" data-start="860.048" data-duration="5.763" data-track-index="1" data-callback="Mayfield from the air, closing the chapter"><img id="v-a4-graves1b-img" src="media/stills/i1-s4-graves1-aerial.jpg" alt=""></section>
+  <div id="host-g-a4-14" data-composition-id="g-a4-14" data-composition-src="compositions/g-a4-14.html" data-start="856.026" data-duration="5.4" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- ==== /A4 ==== -->
+  <section class="clip blackout" id="bo-a4-a5" data-start="865.811" data-duration="0.8" data-track-index="1"></section>
+
+  <!-- ==== A5 (builder) ==== -->
+  <!-- A5 · The rulebook (866.811-1004.597). Narration starts and wav lengths from briefs/compose/timeline.md (23 Oct 26). Picture runs
+       866.611 (end of bo-a4-a5) -> 1004.597 (bo-a5-z1) with no gap. Place-named text sits only over that place's files; the Guard video
+       (Dawson Springs) carries no place name. -->
+  <audio id="nx-a5-s1" src="audio/a5-s1.wav" data-start="866.811" data-duration="14.042" data-volume="1"></audio>
+  <audio id="nx-a5-s2" src="audio/a5-s2.wav" data-start="881.153" data-duration="19.851" data-volume="1"></audio>
+  <audio id="nx-a5-s3" src="audio/a5-s3.wav" data-start="901.304" data-duration="18.3" data-volume="1"></audio>
+  <audio id="nx-a5-s4" src="audio/a5-s4.wav" data-start="919.904" data-duration="8.801" data-volume="1"></audio>
+  <audio id="nx-a5-s5" src="audio/a5-s5.wav" data-start="929.005" data-duration="16.429" data-volume="1"></audio>
+  <audio id="nx-a5-s6" src="audio/a5-s6.wav" data-start="945.734" data-duration="14.569" data-volume="1"></audio>
+  <audio id="nx-a5-s7" src="audio/a5-s7.wav" data-start="960.603" data-duration="18.322" data-volume="1"></audio>
+  <audio id="nx-a5-s8" src="audio/a5-s8.wav" data-start="979.225" data-duration="17.691" data-volume="1"></audio>
+  <audio id="nx-a5-s9" src="audio/a5-s9.wav" data-start="997.216" data-duration="7.381" data-volume="1"></audio>
+
+  <!-- A5-S1: the blank rulebook page from the blackout's end (866.611, as A1 and A4 do); chip + clipboard on "inspectors" (867.068),
+       ruled lines on "rule book" (869.368), checklist rows on "tornado plan" (873.628), push on "until I read" (877.748) -->
+  <div id="host-g-a5-1" data-composition-id="g-a5-1" data-composition-src="compositions/g-a5-1.html" data-start="866.611" data-duration="14.542" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A5-S2: OSHA card on "OSHA does not" (882.968), "recommends" lit on "Recommends, not requires" (888.408); the St. Louis card on
+       "very little" (895.548), kept separate -->
+  <div id="host-g-a5-2" data-composition-id="g-a5-2" data-composition-src="compositions/g-a5-2.html" data-start="881.153" data-duration="20.151" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A5-S3: the blank page from the segment start; quote card on "a place of employment" (908.848), "known" marked on "recognized"
+       (913.788), page title on "Neither wording" (915.648) -->
+  <div id="host-g-a5-3" data-composition-id="g-a5-3" data-composition-src="compositions/g-a5-3.html" data-start="901.304" data-duration="18.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A5-S4: NWS St. Louis survey photo, Edwardsville (S4_c2, US gov work; trees, not the building, no label) under "At Edwardsville"
+       (stands in for the DAT recording, not made); the outline + quote chip on "met" (923.084) -->
+  <!-- still -> footage (24 Oct 26 recut): CBS pull (M06, narrated over, muted) @135.55 s: the collapsed Amazon delivery station, Edwardsville, from the ground -->
+  <video id="clip-a5-s4-trees" class="graded" src="media/clips/cut-a5-s4-trees-v1.mp4" data-start="919.904" data-duration="3.18" data-media-start="0" data-track-index="1" muted></video>
+  <div id="host-g-a5-4" data-composition-id="g-a5-4" data-composition-src="compositions/g-a5-4.html" data-start="923.084" data-duration="5.921" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- A5-S5: USACE debris work in Mayfield (DVIDS 827619, PD, picks in 17.6 s, already trimmed, video only), muted, narrated over;
+       Kentucky chip on "Kentucky runs its own OSHA program" (931.746), out after "seven violations" (939.048) -->
+  <video id="clip-a5-s5-usace" src="media/clips/a5-s5-usace-debris.mp4" data-start="929.005" data-duration="16.729" data-media-start="0" data-track-index="1" muted data-callback="the USACE Mayfield item again (A4 took another span of it), its own span"></video>
+  <div id="host-g-a5-5" data-composition-id="g-a5-5" data-composition-src="compositions/g-a5-5.html" data-start="931.746" data-duration="7.502" data-track-index="4" data-width="1920" data-height="1080"></div>
+
+  <!-- A5-S6 + A5-S7: the ledger from the segment start; headers on "exit routes" (946.898), "Two" (948.358), "Four" (950.858);
+       "Storm shelter · 0" on "Not one" (952.938); CONTESTED x7 from "contested" (960.963), 0.35 s apart; out at "At the time" (967.383) -->
+  <div id="host-g-a5-6" data-composition-id="g-a5-6" data-composition-src="compositions/g-a5-6.html" data-start="945.734" data-duration="21.649" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- the Graves County Courthouse, Mayfield (FEMA 7018062, PD), wide, no label, under "the case was open"; then the rubble at the
+       foot of the brick building (FEMA 7018056, lower crop) under "I looked for how it ended" (973.363) -->
+  <section class="clip still-wrap" id="v-a5-s7-court" data-start="967.383" data-duration="5.98" data-track-index="1"><img id="v-a5-s7-court-img" src="media/stills/a5-s7-courthouse.jpg" alt=""></section>
+  <!-- still -> footage (24 Oct 26 recut): Kentucky Guard video (DVIDS 825642, PD, Dawson Springs: no place name on screen) @11.30 s: Guard trucks roll out; A5-S8 picks up the same item -->
+  <video id="clip-a5-s7-rubble" src="media/clips/cut-a5-s7-rubble-v3.mp4" data-start="973.363" data-duration="5.862" data-media-start="0" data-track-index="1" muted></video>
+
+  <!-- A5-S8: Kentucky Guard debris clearing (DVIDS 825642, PD, Dawson Springs: no place name on screen; picks in 36 s, already trimmed,
+       video only), muted; date chips on "in March" (986.225) and "in June" (988.305) -->
+  <video id="clip-a5-s8-guard" src="media/clips/a5-s8-guard-debris.mp4" data-start="979.225" data-duration="17.991" data-media-start="0" data-track-index="1" muted></video>
+  <div id="host-g-a5-7" data-composition-id="g-a5-7" data-composition-src="compositions/g-a5-7.html" data-start="986.225" data-duration="10.991" data-track-index="4" data-width="1920" data-height="1080"></div>
+
+  <!-- A5-S9: the Service Assessment's title as our own card (never the cover image) on "The Weather Service wrote" (997.396),
+       offices + date on "in its own review" (999.716); slow push into the blackout (1004.597) -->
+  <div id="host-g-a5-8" data-composition-id="g-a5-8" data-composition-src="compositions/g-a5-8.html" data-start="997.216" data-duration="7.381" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- ==== /A5 ==== -->
+  <section class="clip blackout" id="bo-a5-z1" data-start="1004.597" data-duration="0.8" data-track-index="1"></section>
+
+  <!-- ==== Z1 (builder) ==== -->
+  <!-- ============ Z1 · HAS ANYONE WRITTEN IT SINCE (1005.397-1154.559). Narration starts from briefs/compose/timeline.md; data-duration =
+       timeline.md's dur column. z1-s7 = Paul clip ins-paul-6; z1-s8 = picture-only hold; z1-s10 = the
+       end ask (ins-endask-a/b, orchestrator); nx-z1-s11 and host-g-z1-9 are mounted with the close (orchestrator). ============ -->
+  <audio id="nx-z1-s1" src="audio/z1-s1.wav" data-start="1005.597" data-duration="7.164" data-volume="1"></audio>
+  <audio id="nx-z1-s2" src="audio/z1-s2.wav" data-start="1013.061" data-duration="12.778" data-volume="1"></audio>
+  <audio id="nx-z1-s3" src="audio/z1-s3.wav" data-start="1026.139" data-duration="12.932" data-volume="1"></audio>
+  <audio id="nx-z1-s4" src="audio/z1-s4.wav" data-start="1039.371" data-duration="23.203" data-volume="1"></audio>
+  <audio id="nx-z1-s5" src="audio/z1-s5.wav" data-start="1062.874" data-duration="13.324" data-volume="1"></audio>
+  <audio id="nx-z1-s6" src="audio/z1-s6.wav" data-start="1076.498" data-duration="22.686" data-volume="1"></audio>
+  <audio id="nx-z1-s9" src="audio/z1-s9.wav" data-start="1111.975" data-duration="13.222" data-volume="1"></audio>
+
+  <!-- Z1-S1: hard cut out of the blackout (ends 1005.397) to SA p33, eyebrow on "review" (@1006.877), the first sentence lit on
+       "a common theme" (@1011.637); out before "34" (@1013.521) so p33 never sits under "page thirty-four" -->
+  <div id="host-g-z1-1" data-composition-id="g-z1-1" data-composition-src="compositions/g-z1-1.html" data-start="1005.397" data-duration="7.951" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- Z1-S2: SA p34 (S2_c1 cropped to the text column, Finding 6 at 25 % height) under "page thirty-four, it becomes Finding six" (@1013.521),
+       push toward Finding 6; then the Finding card on "word for word" (@1017.121) -->
+  <section class="clip still-wrap" id="v-z1-p34" data-start="1013.348" data-duration="3.773" data-track-index="1" data-callback="SA page 34 again (I1 showed its Recommendation 6), now on Finding 6 as the narrator names the page"><img id="v-z1-p34-img" src="media/stills/z1-s2-sa-p34-finding6.png" alt=""></section>
+  <!-- Z1-S2 + Z1-S3: Finding 6 card from "word for word" (@1017.121): "a gap" @1019.761; Recommendation 6 slides up on "Right under it" (@1026.139),
+       last phrase @1032.339, "facilities." ends 1035.439; out by the USACE cut (1036.039) -->
+  <div id="host-g-z1-2" data-composition-id="g-z1-2" data-composition-src="compositions/g-z1-2.html" data-start="1017.121" data-duration="18.918" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- Z1-S3: USACE Louisville District debris removal in Mayfield (DVIDS 827619, public domain, 30 Dec 2021; picks span 48.2-60.8 s, trimmed,
+       video only), muted, under "That's the advice the Saint Louis office said was missing" (@1036.219); no place label on it -->
+  <video id="clip-z1-s3-usace" src="media/clips/z1-s3-usace-debris.mp4" data-start="1036.039" data-duration="3.332" data-media-start="0" data-track-index="1" muted data-callback="the USACE Mayfield debris video a third time (A4, A5), a different span, narrated over"></video>
+
+  <!-- Z1-S4: the US map pushes to Illinois; Illinois lights @1042.011, "Workplace tornado law" @1042.971, AUG 2025 @1044.311,
+       the Act's name @1047.091, rows @1049.331 and @1053.491, sub @1058.131; fades through by Z1-S5 (1062.874) -->
+  <div id="host-g-z1-3" data-composition-id="g-z1-3" data-composition-src="compositions/g-z1-3.html" data-start="1039.371" data-duration="23.503" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- Z1-S5: NWS St. Louis Edwardsville track map (E01, US gov work; 961 x 653, no upscaler on this box) under "That bill followed the Edwardsville
+       tornado and the six people ... at the delivery station" (to 1067.634 + 1 s); then a stock warehouse interior (Pixabay 208160, the sourcer's
+       S9_c2, trimmed, video only) under "The plan rule took effect ... Existing warehouses had 120 days", chips on "took effect" (@1069.254) and "120" (@1072.734) -->
+  <section class="clip still-wrap" id="v-z1-track" data-start="1062.874" data-duration="5.76" data-track-index="1" data-callback="the NWS Edwardsville track map again (A1-S2), as the law that followed that tornado is named"><img id="v-z1-track-img" src="media/stills/upscaled/a1-s2-nws-track-map.png" alt=""></section>
+  <video id="clip-z1-s5-racks" src="media/clips/z1-s5-warehouse-racks.mp4" data-start="1068.634" data-duration="7.864" data-media-start="0" data-track-index="1" muted></video>
+  <div id="host-g-z1-4" data-composition-id="g-z1-4" data-composition-src="compositions/g-z1-4.html" data-start="1069.254" data-duration="7.244" data-track-index="4" data-width="1920" data-height="1080"></div>
+
+  <!-- Z1-S6: the map pans south to Kentucky from "In Kentucky" (@1076.638): source line @1077.598, Mayfield pin @1079.238, "No workplace
+       tornado law found" @1080.058, OSHA row @1083.558, national row @1085.958, Recommendation 6 @1089.738; then the weather.gov safety page
+       from "The Weather Service's general safety page" (@1093.138), the sentence lit on "large open rooms" (@1096.278), to the P5 slot (1099.484) -->
+  <div id="host-g-z1-5" data-composition-id="g-z1-5" data-composition-src="compositions/g-z1-5.html" data-start="1076.498" data-duration="16.64" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-z1-6" data-composition-id="g-z1-6" data-composition-src="compositions/g-z1-6.html" data-start="1093.138" data-duration="6.346" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- Z1-S7 (P5, orchestrator's card beneath): chips "Illinois: workplace tornado law" on "one of the two states" (@1101.104),
+       "Recommendation 6 materials: not found" on "From the Weather Service" (@1104.344); out by the slot's end (1109.375) -->
+
+  <!-- Z1-S8: picture-only hold under the bed: back to the I1-S6 downtown Mayfield street (NWS Paducah survey, Graves 3), a pull-out this time;
+       chip "1 of 2 states: a workplace tornado law" on the cut -->
+  <section class="clip still-wrap" id="v-z1-graves3" data-start="1109.375" data-duration="2.6" data-track-index="1" data-callback="the I1-S6 Mayfield street, now answered: 1 of 2 states"><img id="v-z1-graves3-img" src="media/stills/i1-s6-graves3-street.jpg" alt=""></section>
+  <section class="clip hold" id="hold-z1-s8" data-start="1109.675" data-duration="2.0" data-track-index="8"></section>
+  <div id="host-g-z1-8" data-composition-id="g-z1-8" data-composition-src="compositions/g-z1-8.html" data-start="1109.375" data-duration="2.6" data-track-index="4" data-width="1920" data-height="1080"></div>
+
+  <!-- Z1-S9: one continuous stock walk down a warehouse aisle toward an open roller door (Pixabay 197209, the sourcer's S9_c3, trimmed past the
+       branded cartons, video only) under the whole ask, 13.7 s: it IS "walk there once ... so your feet know the way"; to the end ask (1125.697).
+       No shelter-sign or floor-map clip was found (sourcer flag 2). -->
+  <video id="clip-z1-s9-aisle" src="media/clips/z1-s9-warehouse-aisle.mp4" data-start="1111.975" data-duration="13.722" data-media-start="0" data-track-index="1" muted></video>
+  <!-- ==== /Z1 ==== -->
+
+  <!-- ============ PAUL ON CAMERA, clips 2-6 (23 Oct 26): his full-frame clip carries the line, so no nx- narration under it and the
+       circle stays off. Window = his speech end (ffmpeg silencedetect -40/-35 dB, or 0.1 s RMS where the room tone sits above -40) + 0.35 s look,
+       never filled to 10 s; everything after each clip moved by (window - the narrator wav it replaced). ins-paul-2 starts at media 0.9
+       (1.31 s of silence before "OSHA"; 0.4 s lead like clip 1). Clip 5's words are the spoken ones (rephrased, owner 17:10). Files: ins-paul-<n>-v2.mp4 =
+       the logo'd clip with a gain pass to the narration level (volume +12.5/+13.0/+8.2/+9.8/+7.5 dB, alimiter 0.95, aac 192k; audio_levels on 23 Oct 26:
+       -12.5/-13.0/-8.2/-9.8/-7.5 dB vs narration before); the originals stay beside them. -->
+  <video id="ins-paul-2" src="media/paul/ins-paul-2/ins-paul-2-vc.mp4" data-start="267.705" data-duration="5.646" data-media-start="0.9" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="OSHA said the procedures met minimal federal safety guidelines for storm sheltering."></video>
+  <video id="ins-paul-3" src="media/paul/ins-paul-3/ins-paul-3-vc.mp4" data-start="442.050" data-duration="6.130" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="From Wednesday on, the forecast kept getting stronger, and it was right."></video>
+  <video id="ins-paul-4" src="media/paul/ins-paul-4/ins-paul-4-vc.mp4" data-start="597.892" data-duration="6.850" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Right as the storm reached Mayfield, the weather office watching it ran into a problem of its own."></video>
+  <video id="ins-paul-5" src="media/paul/ins-paul-5/ins-paul-5-vc.mp4" data-start="743.507" data-duration="9.460" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="At nine twenty-six that night, the forecasters in Paducah reached for the strongest words they have, and they said Mayfield by name."></video>
+  <video id="ins-paul-6" src="media/paul/ins-paul-6/ins-paul-6-vc.mp4" data-start="1099.484" data-duration="9.891" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Almost five years on, one of the two states makes warehouses plan for tornadoes. From the Weather Service, the advice is still the general kind."></video>
+  <!-- paint order follows file order, not data-track-index (verifier, 23 Oct 26): an overlay host sits AFTER every lower-track element it covers -->
+  <div id="host-g-a1-12" data-composition-id="g-a1-12" data-composition-src="compositions/g-a1-12.html" data-start="267.705" data-duration="5.646" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- g-a4-6 lands on "the strongest words" (clip 5 at 4.74 = 748.247): the chip names the words he does not say; out inside his window -->
+  <div id="host-g-a4-6" data-composition-id="g-a4-6" data-composition-src="compositions/g-a4-6.html" data-start="748.247" data-duration="4.640" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- g-z1-7: chip 1 on "one of the two states" (clip 6 at 2.08 = 1101.564), chip 2 on "From the Weather Service" (6.24 = 1105.724) -->
+  <div id="host-g-z1-7" data-composition-id="g-z1-7" data-composition-src="compositions/g-z1-7.html" data-start="1101.564" data-duration="7.811" data-track-index="4" data-width="1920" data-height="1080"></div>
+
+  <!-- ============ CLOSE: Z1-S9 ends 1125.197 -> end ask (two config clips, own voice, circle and narration off) -> Z1-S11 signature over the close card ============ -->
+  <video id="ins-endask-a" src="media/end-ask/paul-end-ask-v1-oct19-a.mp4" data-start="1125.697" data-duration="9.083" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I genuinely appreciate you watching the video till the end. Please like and subscribe and share your suggestions via comments." data-caption-ok="Paul's own end ask, the narrator's voice on camera, clear studio sound (DESIGN.md End ask); his words are in the SRT label"></video>
+  <video id="ins-endask-b" src="media/end-ask/paul-end-ask-v1-oct19-b.mp4" data-start="1134.780" data-duration="6.417" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I read them all. And if you want the checklist, it's the first link in the description." data-caption-ok="Paul's own end ask, the narrator's voice on camera, clear studio sound (DESIGN.md End ask); his words are in the SRT label"></video>
+  <!-- the end ask is a declared hold carried by Paul's own sound (DESIGN.md "Editing grammar": an unmuted clip carries a hold); narration is off under it -->
+  <section class="clip hold" id="hold-endask" data-start="1125.697" data-duration="15.5" data-track-index="8"></section>
+  <audio id="nx-z1-s11" src="audio/z1-s11.wav" data-start="1141.497" data-duration="11.562" data-volume="1"></audio>
+  <div id="host-g-z1-9" data-composition-id="g-z1-9" data-composition-src="compositions/g-z1-9.html" data-start="1141.197" data-duration="13.362" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- PRESENTER CIRCLE (mg-quickref.md "Corner circle"): Paul's face speaking the narration wherever the corner (1632-1888 x 700-956
+       with the ring) is free. Off in the hook to 20.076, Paul's clips, the CTA, blackouts, the end ask and close card; off over
+       broadcaster/agency marks (gma, a2-s6 tv, USACE trucks/crew/debris), the KLSX/KPAH radar stills, stills with text, labels or
+       a page number in the corner (v-i1-track, v-i1-sa-p34, v-a1-s2-track, v-a4-sap4, v-a4-sap33, v-z1-p34, v-z1-track) and comps
+       that fill it (g-a4-1 labels, g-a4-2 Florence label, g-a4-4 SA page, g-z1-3 Illinois highlight to 1039.5). w6, w10, w20, w22
+       end one sample before a card's exit tween slides into the corner (g-a1-4 roomlab, g-a2-6, g-a4-12, g-a5-2 card2).
+       Each window spans its narration only. Faces: scripts/circle_cut.py from the passes of media/pip/circle-pass-1-v2.wav (@6.961)
+       and circle-pass-2-v2.wav (@630.784); every window sits inside one pass. Window table: side-session note ep-mayfield-2021-pip-23oct.md. -->
+  <video id="pip-w1" class="pip" src="media/pip/face-w1.mp4" data-start="20.076" data-duration="12.39" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w1" data-start="20.076" data-duration="12.39" data-track-index="9"></section>
+  <video id="pip-w2" class="pip" src="media/pip/face-w2.mp4" data-start="34.806" data-duration="54.846" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w2" data-start="34.806" data-duration="54.846" data-track-index="9"></section>
+  <video id="pip-w3" class="pip" src="media/pip/face-w3.mp4" data-start="94.412" data-duration="16.794" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w3" data-start="94.412" data-duration="16.794" data-track-index="9"></section>
+  <video id="pip-w4" class="pip" src="media/pip/face-w4.mp4" data-start="115.471" data-duration="11.737" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w4" data-start="115.471" data-duration="11.737" data-track-index="9"></section>
+  <video id="pip-w5" class="pip" src="media/pip/face-w5.mp4" data-start="128.208" data-duration="9.129" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w5" data-start="128.208" data-duration="9.129" data-track-index="9"></section>
+  <video id="pip-w6" class="pip" src="media/pip/face-w6.mp4" data-start="140.737" data-duration="30.213" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w6" data-start="140.737" data-duration="30.213" data-track-index="9"></section>
+  <video id="pip-w7" class="pip" src="media/pip/face-w7.mp4" data-start="171.267" data-duration="61.283" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w7" data-start="171.267" data-duration="61.283" data-track-index="9"></section>
+  <video id="pip-w8" class="pip" src="media/pip/face-w8.mp4" data-start="234.952" data-duration="32.453" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w8" data-start="234.952" data-duration="32.453" data-track-index="9"></section>
+  <video id="pip-w9" class="pip" src="media/pip/face-w9.mp4" data-start="273.651" data-duration="12.675" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w9" data-start="273.651" data-duration="12.675" data-track-index="9"></section>
+  <video id="pip-w10" class="pip" src="media/pip/face-w10.mp4" data-start="287.326" data-duration="94.224" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w10" data-start="287.326" data-duration="94.224" data-track-index="9"></section>
+  <video id="pip-w11" class="pip" src="media/pip/face-w11.mp4" data-start="385.05" data-duration="56.7" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w11" data-start="385.05" data-duration="56.7" data-track-index="9"></section>
+  <video id="pip-w12" class="pip" src="media/pip/face-w12.mp4" data-start="448.48" data-duration="17.368" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w12" data-start="448.48" data-duration="17.368" data-track-index="9"></section>
+  <video id="pip-w13" class="pip" src="media/pip/face-w13.mp4" data-start="466.848" data-duration="130.743" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w13" data-start="466.848" data-duration="130.743" data-track-index="9"></section>
+  <video id="pip-w14" class="pip" src="media/pip/face-w14.mp4" data-start="633.784" data-duration="33.547" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w14" data-start="633.784" data-duration="33.547" data-track-index="9"></section>
+  <video id="pip-w15" class="pip" src="media/pip/face-w15.mp4" data-start="684.396" data-duration="11.432" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w15" data-start="684.396" data-duration="11.432" data-track-index="9"></section>
+  <video id="pip-w16" class="pip" src="media/pip/face-w16.mp4" data-start="699.495" data-duration="8.933" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w16" data-start="699.495" data-duration="8.933" data-track-index="9"></section>
+  <video id="pip-w17" class="pip" src="media/pip/face-w17.mp4" data-start="722.36" data-duration="20.847" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w17" data-start="722.36" data-duration="20.847" data-track-index="9"></section>
+  <video id="pip-w18" class="pip" src="media/pip/face-w18.mp4" data-start="768.28" data-duration="17.168" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w18" data-start="768.28" data-duration="17.168" data-track-index="9"></section>
+  <video id="pip-w19" class="pip" src="media/pip/face-w19.mp4" data-start="789.948" data-duration="31.9" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w19" data-start="789.948" data-duration="31.9" data-track-index="9"></section>
+  <video id="pip-w20" class="pip" src="media/pip/face-w20.mp4" data-start="825.376" data-duration="13.274" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w20" data-start="825.376" data-duration="13.274" data-track-index="9"></section>
+  <video id="pip-w21" class="pip" src="media/pip/face-w21.mp4" data-start="843.714" data-duration="22.097" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w21" data-start="843.714" data-duration="22.097" data-track-index="9"></section>
+  <video id="pip-w22" class="pip" src="media/pip/face-w22.mp4" data-start="866.811" data-duration="34.139" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w22" data-start="866.811" data-duration="34.139" data-track-index="9"></section>
+  <video id="pip-w23" class="pip" src="media/pip/face-w23.mp4" data-start="901.304" data-duration="27.401" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w23" data-start="901.304" data-duration="27.401" data-track-index="9"></section>
+  <video id="pip-w24" class="pip" src="media/pip/face-w24.mp4" data-start="945.734" data-duration="58.863" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w24" data-start="945.734" data-duration="58.863" data-track-index="9"></section>
+  <video id="pip-w25" class="pip" src="media/pip/face-w25.mp4" data-start="1005.597" data-duration="7.751" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w25" data-start="1005.597" data-duration="7.751" data-track-index="9"></section>
+  <video id="pip-w26" class="pip" src="media/pip/face-w26.mp4" data-start="1017.121" data-duration="18.918" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w26" data-start="1017.121" data-duration="18.918" data-track-index="9"></section>
+  <video id="pip-w27" class="pip" src="media/pip/face-w27.mp4" data-start="1039.5" data-duration="23.074" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w27" data-start="1039.5" data-duration="23.074" data-track-index="9"></section>
+  <video id="pip-w28" class="pip" src="media/pip/face-w28.mp4" data-start="1068.634" data-duration="30.55" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w28" data-start="1068.634" data-duration="30.55" data-track-index="9"></section>
+  <video id="pip-w29" class="pip" src="media/pip/face-w29.mp4" data-start="1111.975" data-duration="13.222" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w29" data-start="1111.975" data-duration="13.222" data-track-index="9"></section>
+
+</div>
+
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  // a still lands on a quick punch (1.12 -> 1), then keeps a small push so it never sits (DESIGN.md "Footage motion")
+  function punch(sel, at, dur, origin) {
+    tl.fromTo(sel, { scale: 1.12, transformOrigin: origin }, { scale: 1, duration: 0.45, ease: "power3.out" }, at);
+    tl.to(sel, { scale: 1.04, duration: dur - 0.45, ease: "none" }, at + 0.45);
+  }
+  // the two pushes the locked Picture lines ask for (H1-S2, I1-S6)
+  function push(sel, at, dur, s0, s1, origin) {
+    tl.fromTo(sel, { scale: s0, transformOrigin: origin }, { scale: s1, duration: dur, ease: "power1.inOut" }, at);
+  }
+
+  push("#v-h1-factory-img", 6.661, 5.055, 1.0, 1.1, "62% 48%");
+  punch("#v-t1-guard-img", 29.443, 3.323, "50% 50%");
+  punch("#v-i1-track-img", 32.766, 2.04, "50% 50%");
+  punch("#v-i1-sa-p33-img", 63.967, 4.058, "50% 40%");
+  punch("#v-i1-klsx-img", 89.652, 4.76, "50% 50%");
+  push("#v-i1-graves3-img", 105.866, 5.34, 1.0, 1.1, "55% 50%");
+  push("#v-i1-sa-p34-img", 111.206, 4.265, 1.0, 1.08, "50% 43%");   // toward Recommendation 6; every line stays whole at 1.08
+
+  // ==== A1 (builder) ====
+  punch("#v-a1-s2-track-img", 137.637, 3.1, "45% 58%");       // toward the EF3 track line on the NWS map
+  punch("#v-a1-s10-lh-img", 234.952, 3.048, "50% 30%");       // letterhead lines stay whole at 1.12 (white box x 8-1912)
+  push("#v-a1-s10-para-img", 238.0, 5.69, 1.0, 1.06, "50% 30%");   // paragraph lines stay whole at 1.06 (text x 98-1819)
+  // ==== /A1 ====
+  // ==== A2 (builder) ====
+  push("#v-a2-s11-viirs-img", 459.977, 5.871, 1.0, 1.08, "45% 55%");   // the warm-sector cloud over the mid-South, into the blackout
+  // ==== /A2 ====
+  // ==== A3 (builder) ====
+  punch("#v-a3-kpah-img", 630.784, 3.0, "47% 57%");   // toward Mayfield on the NWS scan
+  // ==== /A3 ====
+  // ==== A4 (builder) ====
+  push("#v-a4-p14-img", 684.396, 5.994, 1.0, 1.06, "30% 40%");          // SA p14: lines stay whole at 1.06
+  push("#v-a4-house-img", 699.495, 5.533, 1.0, 1.08, "60% 55%");
+  push("#v-a4-sap4-img", 752.967, 4.781, 1.0, 1.05, "50% 30%");         // SA p4: lines stay whole at 1.05
+  punch("#v-a4-kpah4-img", 757.748, 5.4, "50% 50%");
+  push("#v-a4-kpah-img", 763.148, 5.132, 1.0, 1.08, "45% 60%");
+  push("#v-a4-factory-img", 768.280, 5.868, 1.0, 1.1, "62% 48%");
+  punch("#v-a4-brick-img", 774.148, 5.808, "50% 50%");
+  push("#v-a4-downtown2-img", 789.948, 4.913, 1.04, 1.12, "30% 60%");
+  push("#v-a4-house2-img", 812.227, 5.621, 1.1, 1.0, "50% 50%");        // pull-out: a different move on the second use
+  push("#v-a4-sap33-img", 821.848, 3.528, 1.0, 1.05, "75% 60%");          // toward the St. Louis AAR column; lines stay whole
+  punch("#v-a4-klsx-img", 839.048, 4.666, "50% 50%");
+  push("#v-a4-factory2-img", 854.206, 5.842, 1.0, 1.1, "35% 50%");
+  push("#v-a4-graves1b-img", 860.048, 5.763, 1.0, 1.1, "60% 45%");
+  // ==== /A4 ====
+  // ==== A5 (builder) ====
+  push("#v-a5-s7-court-img", 967.383, 5.98, 1.0, 1.08, "58% 45%");      // toward the broken tower
+  // ==== /A5 ====
+  // ==== Z1 (builder) ====
+  push("#v-z1-p34-img", 1013.348, 3.773, 1.0, 1.06, "50% 28%");          // toward Finding 6; the crop is the text column, lines stay whole at 1.06
+  push("#v-z1-track-img", 1062.874, 5.76, 1.0, 1.08, "40% 55%");       // a push this time (A1 punched the same map), toward the EF3 line
+  push("#v-z1-graves3-img", 1109.375, 2.6, 1.06, 1.0, "50% 50%");      // pull-out: a different move on the third use
+  // ==== /Z1 ====
+
+  window.__timelines["ep-mayfield-2021"] = tl;
+})();
+</script>
+</body>
+</html>

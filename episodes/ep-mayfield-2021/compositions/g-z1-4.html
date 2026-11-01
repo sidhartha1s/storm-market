@@ -1,0 +1,57 @@
+<template>
+<style>
+  /* g-z1-4 · Z1-S5 · glass chips "In effect since Aug 15, 2025" (box left 110, bottom 150), then "Existing warehouses: 120 days to file a plan"
+     stacked 104 px above it (bottom 254) once the first is read, plus the source line (left 110, bottom 64). Overlay, no ground: it sits
+     over the stock warehouse interior clip-z1-s5-racks (Pixabay 208160), not over a place-named picture. Facts: research/fc-Z1.tsv data rows
+     16, 18, 24-25 (effective 8/15/2025; existing warehouses had 120 days; never "enforced from Jan 1, 2027").
+     Family base: g-i1-6 / g-h1-2 (chip + source line). Nothing past x 1560, nothing at x >= 1600 (presenter-circle corner stays free). */
+  #g-z1-4-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  #g-z1-4-float { position:absolute; inset:0; width:1920px; height:1080px; }
+  .g-z1-4-glass { background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-sizing:border-box; white-space:nowrap; opacity:0; visibility:hidden; }
+  .g-z1-4-chip { position:absolute; left:110px; padding:18px 30px; border-radius:28px;
+    font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:34px; letter-spacing:1px; color:#dfe7ee; }
+  #g-z1-4-chip1 { bottom:150px; }
+  #g-z1-4-chip2 { bottom:254px; line-height:64px; padding:10px 30px; }
+  #g-z1-4-chip2 b { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; letter-spacing:0; color:#f2f5f8; }
+  #g-z1-4-src { position:absolute; left:110px; bottom:64px; max-width:1300px; padding:10px 20px; border-radius:18px;
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:24px; letter-spacing:0; color:#c8d3e0; }
+</style>
+<div id="g-z1-4-root" data-composition-id="g-z1-4" data-width="1920" data-height="1080">
+  <div id="g-z1-4-float">
+    <div class="g-z1-4-glass g-z1-4-chip" id="g-z1-4-chip1">In effect since Aug 15, 2025</div>
+    <div class="g-z1-4-glass g-z1-4-chip" id="g-z1-4-chip2">Existing warehouses: <b>120</b> days to file a plan</div>
+    <div class="g-z1-4-glass" id="g-z1-4-src">Illinois Public Act 104-0262; St. Louis Public Radio, 22 Aug 2025</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 7.244;           /* host window: "took effect" (z1-s5 6.38 = ep 1061.406) -> Z1-S6 and the map (ep 1068.650) */
+  const CUE_CHIP1 = 0;         /* TOOK EFFECT THE DAY IT BECAME LAW @6.38 (host-local 0) */
+  const CUE_SRC = 0.4;         /* with the chip */
+  const CUE_CHIP2 = 3.48;      /* 120 @9.86 (ep 1064.886) */
+  const CUE_OUT = 6.644;       /* host end - 0.6 s ("department." ends 1067.806 + ~0.8 s land) */
+
+  tl.set(["#g-z1-4-chip1", "#g-z1-4-chip2", "#g-z1-4-src"], { autoAlpha: 0, x: 0, y: 24 }, 0);
+  tl.set("#g-z1-4-float", { scale: 1, y: 0, transformOrigin: "110px 1016px" }, 0);
+
+  /* ambient 1 % float over the whole window */
+  tl.to("#g-z1-4-float", { scale: 1.01, y: -6, duration: DUR, ease: "none" }, 0);
+
+  /* CHIP 1 @0.00 */
+  tl.fromTo("#g-z1-4-chip1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUE_CHIP1);
+  /* SOURCE LINE @0.40 */
+  tl.fromTo("#g-z1-4-src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUE_SRC);
+  /* CHIP 2 @3.48 ("120"): stacks above the first */
+  tl.fromTo("#g-z1-4-chip2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUE_CHIP2);
+
+  /* OUT: all slide left and finish inside the host */
+  tl.to(["#g-z1-4-chip2", "#g-z1-4-chip1"], { x: -1200, autoAlpha: 0, duration: 0.56, ease: "power3.in", stagger: 0.04 }, CUE_OUT - 0.04);
+  tl.to("#g-z1-4-src", { x: -1400, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, CUE_OUT);
+
+  window.__timelines["g-z1-4"] = tl;
+})();
+</script>
+</template>

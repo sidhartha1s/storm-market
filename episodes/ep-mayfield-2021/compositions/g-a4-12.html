@@ -1,0 +1,62 @@
+<template>
+<style>
+  /* g-a4-12 · A4-S12 · callback to I1-S5: the WFO St. Louis after-action words as attributed text on a glass quote card (left 260, right edge 1600,
+     centred on y 540) over an NWS Paducah Graves County survey photo (media/stills/a4-s12-graves2.jpg, T01 "Refresh Graves 2": a tossed SUV in a
+     debris field; the NWS caption names Mayfield, the file itself is labelled Graves County, so nothing on screen names the place).
+     The photo sits inside the comp with a slow push so one reading card can hold 13.7 s without a still past the 6 s cadence line.
+     Ellipsis kept; attribution in the card; never "Finding 6"; the card never claims the office covered Mayfield. Nothing at x >= 1600, y >= 680. */
+  #g-a4-12-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:#04070a; font-family:Arial, sans-serif; }
+  #g-a4-12-photo { position:absolute; left:-1px; top:0; width:1922px; height:1080px; }
+  /* card left 140, right edge 1600, inner width 1348: the two quotes measure 3 + 2 = 5 rows (PIL Georgia italic 52; at the old 1196 px they were
+     4 + 3 = 7); 492 px tall, centred on y 540 (294-786), text 196 px from the left edge, nothing at x >= 1600 */
+  #g-a4-12-card { position:absolute; left:140px; top:294px; width:1460px; box-sizing:border-box; padding:52px 56px 46px; border-radius:28px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); opacity:0; visibility:hidden; }
+  .g-a4-12-q { display:block; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:52px; line-height:64px; color:#f2f5f8; opacity:0.12; }
+  #g-a4-12-q2 { margin-top:16px; }
+  #g-a4-12-attr { margin-top:28px; white-space:nowrap; }
+  #g-a4-12-who { font-family:Arial, sans-serif; font-weight:700; font-size:26px; letter-spacing:3px; color:#d8a13a; opacity:0; visibility:hidden; }
+  #g-a4-12-src { font-family:Arial, sans-serif; font-weight:700; font-size:19px; letter-spacing:3px; color:#c8d3e0; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-12-root" data-composition-id="g-a4-12" data-width="1920" data-height="1080">
+  <img id="g-a4-12-photo" src="media/stills/a4-s12-graves2.jpg" alt="">
+  <div id="g-a4-12-card">
+    <span class="g-a4-12-q" id="g-a4-12-q1">&ldquo;(no official NWS/Occupational Safety &amp; Health Administration (OSHA) recommendations for severe weather sheltering guidelines in the workplace ...&rdquo;</span>
+    <span class="g-a4-12-q" id="g-a4-12-q2">&ldquo;The NWS has very little outreach material to aid private companies in developing their severe weather plans&rdquo;</span>
+    <div id="g-a4-12-attr"><span id="g-a4-12-who">WFO St. Louis after-action review</span><span id="g-a4-12-src">, quoted in the Service Assessment, p33-34</span></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a4-12-";
+  const DUR = 13.672;  /* host 817.528 (a4-s12 start) -> 831.200 (KLSX callback still); host-local = a4-s12 words.json time */
+  const C = {
+    card: 1.60,        /* "there were" @1.78: the card is up before the words */
+    q1: 2.04,          /* NO OFFICIAL WEATHER SERVICE OR OSHA RECOMMENDATIONS @2.04 (ep 819.568) */
+    q2: 7.92,          /* VERY LITTLE OUTREACH MATERIAL @7.92 (ep 825.448) */
+    out: 13.072        /* host end - 0.6; "plans." ends @12.6 (ep 830.1) */
+  };
+
+  /* photo: slow push the whole window */
+  tl.set(P + "photo", { scale: 1, transformOrigin: "50% 50%" }, 0);
+  tl.to(P + "photo", { scale: 1.08, duration: DUR, ease: "power1.inOut" }, 0);
+
+  tl.set(P + "card", { autoAlpha: 0, x: 0, y: 24 }, 0);
+  tl.set([P + "q1", P + "q2"], { autoAlpha: 0.12, y: 10 }, 0);
+  tl.set([P + "who", P + "src"], { autoAlpha: 0, y: 14 }, 0);
+  tl.fromTo(P + "card", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.card);
+  tl.to(P + "q1", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.q1);
+  tl.fromTo(P + "who", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.q1 + 0.4);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.q1 + 0.65);
+  tl.to(P + "q2", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.q2);
+  tl.to(P + "card", { y: -8, duration: C.out - C.card - 0.5, ease: "none" }, C.card + 0.5);
+
+  /* out: the card slides right; the KLSX still cuts in at the host end */
+  tl.to(P + "card", { x: 980, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, C.out);
+
+  window.__timelines["g-a4-12"] = tl;
+})();
+</script>
+</template>

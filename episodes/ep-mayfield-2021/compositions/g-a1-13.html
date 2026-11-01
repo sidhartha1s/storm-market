@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a1-13 · A1-S14 · hard cut from Paul to the SPC Day 4-8 page (3:20 AM CST Fri 3 Dec 2021), held one beat; then the Service
+  Assessment's p15 slides in over it, Finding 3a blurred until A2; the root fades to black for the hand-placed blackout bo-a1-a2.
+  Brief: briefs/mg/g-a1-13.md. Document-page family (base g-i1-2): sheet box x 340-1580, y 150-930.
+  Page 1: media/stills/i1-s2-spc-day4-8-page-v2.png, the same render g-i1-2 shows (a callback, declared on the mount).
+  Page 2: media/stills/a1-s14-sa-p15-finding3a.png (1342 x 844, pdftoppm of SA p15) at 1240/1342 = 0.92399 -> 1240 x 779.9; its last,
+  partial line (PNG rows 835-843 -> box 771.5+) is clipped at 765, the line above ends at 758.6. Finding 3a rows 34-63 and 78-107 ->
+  box 31.4-58.2 and 72.1-98.9: the blur window covers y 20-112, a blurred copy of the same page (blur 14 px, static filter).
+  Host data-start 272.071 = the end of the P1 slot; a1-s14 starts 272.371, so comp-local = a1-s14 time + 0.30.
+-->
+<template>
+<style>
+  #g-a1-13-root { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .g-a1-13-eyebrow { position:absolute; left:96px; top:70px; white-space:nowrap; font-weight:700; font-size:22px; line-height:26px;
+    letter-spacing:6px; color:#93a3b2; opacity:0; visibility:hidden; }
+  #g-a1-13-sheet { position:absolute; left:340px; top:150px; width:1240px; height:780px; background:#dfe3e8; overflow:hidden; }
+  .g-a1-13-p1 { position:absolute; left:0; top:0; width:1240px; height:780px; object-fit:contain; }
+  #g-a1-13-page2 { position:absolute; left:0; top:0; width:1240px; height:780px; background:#ffffff; opacity:0; visibility:hidden; }
+  #g-a1-13-clip { position:absolute; left:0; top:0; width:1240px; height:765px; overflow:hidden; }
+  .g-a1-13-sa { position:absolute; left:0; top:0; width:1240px; height:779.9px; }
+  #g-a1-13-blur { position:absolute; left:0; top:20px; width:1240px; height:92px; overflow:hidden; background:#ffffff; }
+  #g-a1-13-blur img { top:-20px; filter:blur(14px); }
+  #g-a1-13-band { position:absolute; left:20px; top:24px; width:1200px; height:82px; border-radius:4px; background:rgba(216,161,58,.35); opacity:0; visibility:hidden; }
+  #g-a1-13-source { position:absolute; left:96px; bottom:58px; white-space:nowrap; font-weight:700; font-size:19px; line-height:22px; color:#c8d3e0;
+    opacity:0; visibility:hidden; }
+</style>
+<div id="g-a1-13-root" data-composition-id="g-a1-13" data-width="1920" data-height="1080" data-duration="12.975">
+  <div class="g-a1-13-eyebrow" id="g-a1-13-eb1">Storm Prediction Center &middot; Day 4-8 Outlook &middot; Fri Dec 3, 2021</div>
+  <div class="g-a1-13-eyebrow" id="g-a1-13-eb2">Service Assessment, p15</div>
+  <div id="g-a1-13-sheet">
+    <img class="g-a1-13-p1" src="media/stills/i1-s2-spc-day4-8-page-v2.png" alt="">
+    <div id="g-a1-13-page2">
+      <div id="g-a1-13-clip">
+        <img class="g-a1-13-sa" src="media/stills/a1-s14-sa-p15-finding3a.png" alt="">
+        <div id="g-a1-13-blur"><img class="g-a1-13-sa" src="media/stills/a1-s14-sa-p15-finding3a.png" alt="" data-crop-ok="blurred copy of the same page, cut to the Finding 3a window; the whole page shows beneath it"></div>
+        <div id="g-a1-13-band"></div>
+      </div>
+    </div>
+  </div>
+  <div id="g-a1-13-source">spc.noaa.gov archive &middot; NWS Service Assessment, Dec 10-11, 2021</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a1-13-";
+  const DUR = 12.975;
+  const C = { review: 3.66 /* WEATHER SERVICE'S @3.36 */, some: 7.06 /* SOME WAITED @6.76 */, out: 12.375 };
+  tl.set([P + "eb1", P + "eb2", P + "page2", P + "band", P + "source"], { autoAlpha: 0 }, 0);
+  tl.set(P + "sheet", { scale: 1, transformOrigin: "50% 50%" }, 0);
+  tl.set(P + "page2", { x: 1240 }, 0);
+  tl.set(P + "band", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* the sheet drifts the whole window */
+  tl.to(P + "sheet", { scale: 1.03, duration: DUR, ease: "none" }, 0);
+  /* hard cut in on the page, its label and the source line */
+  tl.fromTo(P + "eb1", { autoAlpha: 0, x: -36 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.1);
+  tl.fromTo(P + "source", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.3);
+
+  /* THE WEATHER SERVICE'S OWN REVIEW: p15 slides in over the SPC page; the label changes */
+  tl.set(P + "page2", { autoAlpha: 1 }, C.review);
+  tl.to(P + "page2", { x: 0, duration: 0.7, ease: "power3.out" }, C.review);
+  tl.to(P + "eb1", { x: -400, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, C.review);
+  tl.fromTo(P + "eb2", { autoAlpha: 0, x: -36 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, C.review + 0.4);
+
+  /* SOME WAITED: the blurred finding is lit, its words still held back */
+  tl.set(P + "band", { autoAlpha: 1 }, C.some);
+  tl.to(P + "band", { scaleX: 1, duration: 0.6, ease: "power2.out" }, C.some);
+
+  /* fade to black at the host end; blackout bo-a1-a2 follows */
+  tl.to(P + "root", { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, C.out);
+
+  window.__timelines["g-a1-13"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

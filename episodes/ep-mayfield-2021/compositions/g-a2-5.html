@@ -1,0 +1,138 @@
+<!-- g-a2-5 · A2-S3 last beat + A2-S4 + A2-S5 first beat · COUNTDOWN MAP FAMILY BASE (g-a2-9, g-a2-10 copy its camera, pins and rail).
+  Basemap: media/stills/a2-countdown-basemap-v2.svg (fix round 2: the v1 copy of mastermap-us stops at lat 35, the library file's own clip
+  edge; v2 = Natural Earth 50m admin-1 with lakes, research/geo/ne50m/, US states, same units and transform, so every shape below is unchanged)
+  under the camera
+  X = 3841*(lon+97.576), Y = -5585*(lat-46.6213); screen = X*0.019936 + 89.26, Y*0.019936 - 592.47 (lon -89.6, lat 41.3 lands on 700, 0).
+  Every number below was projected by .qc-tmp/a2/project_a2.py (scratch) from research/geo:
+    places.geojson   Paducah 773.2,470.9 · Mayfield 773.2,508.0 · Edwardsville 670.2,279.4
+    spc_outlooks.geojson  Day 3 SLGT (product 2021-12-08T08:15Z = 2:15 AM CST Wed), Day 2 ENH and Day 2 tornado SIGN (2021-12-09T06:58Z =
+    12:58 AM CST Thu), Douglas-Peucker 1 px. Point-in-polygon: Mayfield and Paducah inside all three; Edwardsville OUTSIDE the Day 3 Slight
+    (the real polygon stops south of it), so its pin stays lit as a reference, never claimed inside.
+  The Paducah county area is not drawn (PAH county list not in research/); the office pin and Mayfield pin carry "the office that covers Mayfield".
+  Host 337.70 ("That same Monday") -> 374.03 ("That afternoon"), 36.33 s; times host-local (episode - 337.70; round 3 timeline: the
+  episode seconds in the cue comment below are round 2's, add 0.8). -->
+<template>
+<style>
+  #g-a2-5-root { position:absolute; inset:0; overflow:hidden; background:#04070a; font-family:Arial, sans-serif; color:#f2f5f8; }
+  .g-a2-5-world { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-a2-5-base { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-a2-5-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-a2-5-vig { position:absolute; left:0; top:0; width:1920px; height:1080px; pointer-events:none;
+    background:radial-gradient(ellipse at 40% 50%, rgba(3,5,7,0) 50%, rgba(3,5,7,0.65) 100%); }
+  .g-a2-5-scan { position:absolute; left:0; top:20px; width:1920px; height:2px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
+  .g-a2-5-state { font-family:Arial, sans-serif; font-size:22px; font-weight:700; letter-spacing:6px; fill:#93a3b2; fill-opacity:0.55; }
+  .g-a2-5-area { stroke-width:2px; stroke-linejoin:round; visibility:hidden; }
+  .g-a2-5-dot { position:absolute; width:14px; height:14px; border-radius:50%; background:#f2f5f8; border:2px solid #04070c; opacity:0; visibility:hidden; }
+  .g-a2-5-ring { position:absolute; width:14px; height:14px; border-radius:50%; border:2px solid #f2f5f8; box-sizing:content-box; opacity:0; visibility:hidden; }
+  .g-a2-5-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); white-space:nowrap; }
+  .g-a2-5-pinlab { position:absolute; padding:8px 12px; border-radius:12px; font-size:26px; font-weight:700; line-height:26px; color:#f2f5f8; opacity:0; visibility:hidden; }
+  #g-a2-5-rail { position:absolute; left:1250px; top:190px; width:570px; box-sizing:border-box; padding:22px 28px 10px; border-radius:28px; opacity:0; visibility:hidden; }
+  .g-a2-5-row { margin-bottom:18px; opacity:0; visibility:hidden; }
+  .g-a2-5-rl { font-size:19px; font-weight:700; line-height:22px; letter-spacing:3px; color:#93a3b2; }
+  .g-a2-5-rv { font-size:28px; font-weight:700; line-height:34px; color:#dfe7ee; }
+  .g-a2-5-rv b { color:#e8c56a; }
+  .g-a2-5-src { position:absolute; left:96px; top:984px; padding:8px 14px; border-radius:10px; font-size:19px; font-weight:700; line-height:19px; letter-spacing:1px; color:#c8d3e0; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a2-5-root" data-composition-id="g-a2-5" data-width="1920" data-height="1080" data-duration="36.33"
+     data-type-ok="map labels: pin names and rail rows are one reading tier by design, the source line and rail labels the second; no headline on this map">
+  <div class="g-a2-5-world" id="g-a2-5-world">
+    <img class="g-a2-5-base" src="media/stills/a2-countdown-basemap-v2.svg" alt="">
+    <svg class="g-a2-5-svg" viewBox="0 0 1920 1080">
+      <defs>
+        <pattern id="g-a2-5-hpat" patternUnits="userSpaceOnUse" width="14" height="14" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="14" stroke="#e74c3c" stroke-width="2"/>
+        </pattern>
+        <clipPath id="g-a2-5-hclip"><path d="M622.7,558.9 L755.1,370.8 L820.2,363.0 L867.7,368.5 L912.9,379.7 L945.8,394.1 L977.2,419.8 L995.6,464.3 L932.0,576.7 L815.6,712.6 L684.7,874.0 L613.5,923.0 L510.9,919.7 L477.2,874.0 Z"/></clipPath>
+        <mask id="g-a2-5-hmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><rect id="g-a2-5-hsweep" x="470" y="350" width="0" height="590" fill="#fff"/></mask>
+      </defs>
+      <g class="g-a2-5-state" text-anchor="middle">
+        <text x="478" y="323">MISSOURI</text>
+        <text x="731" y="145">ILLINOIS</text>
+        <text x="953" y="167">INDIANA</text>
+        <text x="1029" y="434">KENTUCKY</text>
+        <text x="945" y="612">TENNESSEE</text>
+        <text x="486" y="724">ARKANSAS</text>
+        <text x="692" y="946">MISSISSIPPI</text>
+      </g>
+      <path id="g-a2-5-slgt" class="g-a2-5-area" fill="#e8c56a" fill-opacity="0" stroke="#e8c56a" d="M1055.3,354.1 L1026.2,458.7 L958.8,600.1 L885.3,712.6 L799.5,826.1 L688.5,958.6 L589.0,1048.8 L501.7,1093.4 L418.2,1096.7 L340.9,1025.4 L350.8,921.9 L440.4,725.9 L536.1,561.2 L668.6,378.6 L745.9,304.0 L844.0,252.7 L933.5,246.1 L1010.1,255.0 L1041.5,298.4 Z"/>
+      <path id="g-a2-5-enh" class="g-a2-5-area" fill="#d8a13a" fill-opacity="0" stroke="#d8a13a" d="M997.9,463.2 L932.0,581.2 L817.2,714.8 L685.5,876.2 L614.2,924.1 L511.6,920.8 L476.4,872.9 L622.7,554.5 L756.7,367.4 L865.4,322.9 L944.3,325.1 L989.4,369.6 Z"/>
+      <g clip-path="url(#g-a2-5-hclip)" mask="url(#g-a2-5-hmask)"><rect id="g-a2-5-hatch" x="470" y="350" width="540" height="590" fill="url(#g-a2-5-hpat)" opacity="0.85"/></g>
+    </svg>
+    <div class="g-a2-5-scan" id="g-a2-5-scan"></div>
+    <div class="g-a2-5-ring" id="g-a2-5-pad-ring" style="left:764.2px; top:461.9px;"></div>
+    <div class="g-a2-5-dot" id="g-a2-5-pad-dot" style="left:764.2px; top:461.9px;"></div>
+    <div class="g-a2-5-ring" id="g-a2-5-may-ring" style="left:764.2px; top:499.0px;"></div>
+    <div class="g-a2-5-dot" id="g-a2-5-may-dot" style="left:764.2px; top:499.0px;"></div>
+    <div class="g-a2-5-ring" id="g-a2-5-edw-ring" style="left:661.2px; top:270.4px;"></div>
+    <div class="g-a2-5-dot" id="g-a2-5-edw-dot" style="left:661.2px; top:270.4px;"></div>
+    <div class="g-a2-5-glass g-a2-5-pinlab" id="g-a2-5-pad-lab" style="left:612px; top:440px;">Paducah</div>
+    <div class="g-a2-5-glass g-a2-5-pinlab" id="g-a2-5-may-lab" style="left:795px; top:490px;">Mayfield</div>
+    <div class="g-a2-5-glass g-a2-5-pinlab" id="g-a2-5-edw-lab" style="left:692px; top:258px;">Edwardsville</div>
+  </div>
+  <div class="g-a2-5-vig"></div>
+  <div class="g-a2-5-glass" id="g-a2-5-rail">
+    <div class="g-a2-5-row" id="g-a2-5-r1"><div class="g-a2-5-rl">NWS PADUCAH</div><div class="g-a2-5-rv">first conference call &middot; Mon 6 Dec</div></div>
+    <div class="g-a2-5-row" id="g-a2-5-r2"><div class="g-a2-5-rl">FIRST RISK AREA</div><div class="g-a2-5-rv"><b>Day 3</b> &middot; Slight &middot; Wed 2:15 AM</div></div>
+    <div class="g-a2-5-row" id="g-a2-5-r3"><div class="g-a2-5-rl">ONE LEVEL UP</div><div class="g-a2-5-rv"><b>Day 2</b> &middot; Enhanced &middot; Thu 12:58 AM</div></div>
+    <div class="g-a2-5-row" id="g-a2-5-r4"><div class="g-a2-5-rl">STRONG TORNADOES</div><div class="g-a2-5-rv">10 % tornado &middot; hatched</div></div>
+  </div>
+  <div class="g-a2-5-glass g-a2-5-src" id="g-a2-5-src">Storm Prediction Center outlooks via the NWS Service Assessment, p7, p14</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a2-5-", DUR = 36.33;
+  /* cues (episode s - 336.90): PADUCAH @1.62 (338.52), FIRST CONFERENCE CALL @2.40 (339.30), MAYFIELD @9.48 (346.38),
+     FIRST COLOR @12.38 (349.28), WESTERN KENTUCKY @22.72 (359.62), RAISE IT A LEVEL @28.41 (365.31), HATCHED AREA @34.31 (371.21) */
+  const tl = gsap.timeline({ paused: true });
+  const len = (sel) => Math.ceil(document.querySelector(sel).getTotalLength()) + 1;
+
+  /* ambient: 3 % camera drift and a scan line, whole window */
+  tl.set(P + "world", { scale: 1, transformOrigin: "760px 500px" }, 0);
+  tl.to(P + "world", { scale: 1.03, duration: DUR, ease: "none" }, 0);
+  tl.set(P + "scan", { y: 0 }, 0);
+  tl.to(P + "scan", { y: 1020, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "rail", { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 1.62);
+
+  function pin(k, at, pulses) {
+    tl.fromTo(P + k + "-dot", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.5)" }, at);
+    tl.fromTo(P + k + "-lab", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, at + 0.2);
+    tl.set(P + k + "-ring", { autoAlpha: 0.9 }, at + 0.2);
+    tl.fromTo(P + k + "-ring", { scale: 1, opacity: 0.9 }, { scale: 3, opacity: 0, duration: 1.0, ease: "power2.out", repeat: pulses, repeatDelay: 0.2 }, at + 0.2);
+  }
+  function row(k, at) { tl.fromTo(P + k, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, at); }
+  function area(k, at, op) {
+    const L = len(P + k);
+    tl.set(P + k, { strokeDasharray: L, strokeDashoffset: L, visibility: "hidden" }, 0);
+    tl.set(P + k, { visibility: "visible" }, at);
+    tl.fromTo(P + k, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: 1.0, ease: "power2.inOut" }, at);
+    tl.fromTo(P + k, { attr: { "fill-opacity": 0 } }, { attr: { "fill-opacity": op }, duration: 0.6, ease: "power1.out" }, at + 0.6);
+  }
+
+  pin("pad", 1.62, 28);   /* pulses to ~36 s */
+  row("r1", 2.40);
+  pin("may", 9.48, 21);
+  area("slgt", 12.38, 0.30);
+  row("r2", 12.38);
+  tl.fromTo(P + "src", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 12.8);
+  pin("edw", 12.9, 18);
+  /* WESTERN KENTUCKY @22.72: the Slight area breathes once around Mayfield */
+  tl.to(P + "slgt", { attr: { "fill-opacity": 0.42 }, duration: 0.5, ease: "power2.out" }, 22.72);
+  tl.to(P + "slgt", { attr: { "fill-opacity": 0.30 }, duration: 0.8, ease: "power2.inOut" }, 23.3);
+  area("enh", 28.41, 0.40);
+  row("r3", 28.41);
+  /* HATCHED AREA @34.31: hatching sweeps in west to east */
+  tl.fromTo(P + "hsweep", { attr: { width: 0 } }, { attr: { width: 540 }, duration: 1.0, ease: "power2.inOut" }, 34.31);
+  row("r4", 34.31);
+
+  /* exit: rail slides out, map fades through into the Paducah card */
+  tl.to(P + "rail", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  tl.to(P + "world", { autoAlpha: 0, duration: 0.55, ease: "power2.in" }, DUR - 0.6);
+  tl.to(P + "src", { autoAlpha: 0, duration: 0.4, ease: "power1.in" }, DUR - 0.6);
+
+  window.__timelines["g-a2-5"] = tl;
+})();
+</script>
+</template>

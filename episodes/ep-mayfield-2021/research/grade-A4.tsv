@@ -1,0 +1,21 @@
+section	axis_or_item	score_or_issue	quote	fix
+A4	new_info	3	S1 restates A3-S11 (9:05, "near Mayfield around nine thirty"); S3 restates "about a hundred ten" (I1-S2, A3-S11); S6-S7 restate A3-S10 (Emergency 9:26, same minute)	see fixes 1-3
+A4	curiosity	4	"It never mentions the candle factory. Not once." (S4)	keep; strongest beat in the act
+A4	stakes	4	S8-S10 toll then allegation; personal layer rests on one unverified name (S3)	fix 4
+A4	visual_change	4	search-box MG, clock bar, P4, CBS pull, Guard video, stamps	keep
+A4	payoff	3	L4 asks what reached the people inside; act pays what was SENT (watch, warning, Emergency) and what was never written; nothing on what was received on the floor beyond the S10 allegation	S4 already admits the record is silent; acceptable at 3
+A4	exit_hook	4	"Then the inspectors came, and they needed a rule to measure a shelter plan against." (S14)	keep; plants L5 cleanly into A5-S1
+A4	register	8/10	plain, first person in S4/S11/S12; one writerly cleft in S5	S5 "What the review does keep is the clock, and the clock is good." -> "The review does keep the clock. And the clock was good."
+A4	humanise	3 minor hits	(a) S1 filler "even" ("The text of that warning even gave a time"); (b) S5 cleft opener "What the review does keep is"; (c) "lost their lives" stacked in S8, S9, S14	cut "even"; rephrase S5; S14 -> "would look into what happened at the factory"
+A4	loop_L4	PAYS (partial)	S13 + closing note: watch, warning on time, Emergency as it hit, no shelter guidance	ok
+A4	loop_L5	PLANTS	S14	ok
+A4	tone_dread	PASS	no dread or narrator adjectives; no hard flag words	none
+A4	tone_legal	RISK	S7 "For Mayfield, the time to act came with the warning at nine oh five, and that warning was on time." Normative; beside S10 it implies the factory should have moved people at 9:05 (blame by juxtaposition)	fix 2
+A4	tone_respect	FLAG	the eight are counts only (S8, S14); if the Saxton marker fails the act has no person at all	fix 4
+A4-S10	voice_vs_card	mismatch	voice "fired for leaving early"; card "fired for leaving"	fix 5
+A4	fix_1	rank 1	S1 "Nine oh five, Friday night. The Paducah office sent a tornado warning ... near Mayfield around nine thirty." (repeats A3-S11 seconds earlier, across the blackout)	cut S1 to one bridge line, e.g. "That nine oh five warning came for a tornado already on the ground." then S2
+A4	fix_2	rank 2	S7 "For Mayfield, the time to act came with the warning at nine oh five, and that warning was on time."	"For Mayfield, the warning with time in it was the one at nine oh five, and it was on time."
+A4	fix_3	rank 3	S7 "The tornado reached Mayfield at about that same minute" (A3-S10 already said the Emergency went out the same minute)	drop the clause; open S7 on the emergency manager call and the eight Emergencies
+A4	fix_4	rank 4	S3 "One of them was Mark Saxton. He drove a forklift [verify ...]"	if the marker fails, replace with one sourced line about one of the eight (public obituary or family on record) instead of cutting to zero people
+A4	fix_5	rank 5	S10 "could be fired for leaving early"	"could be fired for leaving" (matches the card)
+A4	verdict	PASS	no axis under 3 (3,4,4,4,3,4); fixes 1-2 before lock recommended	-

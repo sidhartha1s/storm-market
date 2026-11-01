@@ -1,0 +1,72 @@
+<template>
+<style>
+  /* g-a4-2 · A4-S2 · SPC Tornado Watch #552 graphic (F08), MAP AREA ONLY (fix round 2: the graphic's own text panel was cut at the frame edge):
+     media/stills/a4-s2-tor-watch-552-map.jpg = the JPG cropped to x 330-1010, y 203-586 (inside the map frame; no label cut at an edge) and
+     scaled to 1920x1080 (x2.8235 / x2.8198). Mayfield pinned by the JPG's own county lines: Graves County on the JPG at x 796-824, y 374-412
+     (south of McCracken/Paducah, west of Marshall and Calloway, on the KY/TN line); Mayfield at 53 % down the county -> JPG (810, 394)
+     -> frame (1355.3, 538.6). A slow push (1 -> 1.06) has its origin on that point, so the HUD pin and label stay on the town; the edges
+     at 1.06 show JPG x 357-999, y 214-575, still inside the map (frames read by PIL at both ends of the push).
+     Chip top-left (left 110, top 90) and source line under it (top 220): both sit on unlabelled map ground at both ends of the push
+     (the lower-left datum would cover "Little Rock"). Nothing at x >= 1600, y >= 680. */
+  #g-a4-2-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:#fdfbe8; font-family:Arial, sans-serif; }
+  #g-a4-2-world { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #g-a4-2-img { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-a4-2-dot { position:absolute; left:1348.3px; top:531.6px; width:14px; height:14px; box-sizing:border-box; border-radius:50%;
+    background:#f2f5f8; border:2px solid #04070c; opacity:0; visibility:hidden; }
+  .g-a4-2-ring { position:absolute; left:1348.3px; top:531.6px; width:14px; height:14px; box-sizing:border-box; border-radius:50%;
+    border:2px solid #04070c; opacity:0; visibility:hidden; }
+  .g-a4-2-glass { background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-sizing:border-box; white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a4-2-lab { position:absolute; left:1384px; top:524px; padding:10px 14px; border-radius:12px;
+    font-family:Arial, sans-serif; font-weight:700; font-size:26px; line-height:26px; color:#f2f5f8; }
+  #g-a4-2-chip { position:absolute; left:110px; top:90px; padding:18px 30px; border-radius:28px;
+    font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:64px; letter-spacing:1px; color:#dfe7ee; }
+  #g-a4-2-chip b { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; letter-spacing:0; color:#f2f5f8; }
+  #g-a4-2-src { position:absolute; left:110px; top:220px; max-width:1300px; padding:10px 20px; border-radius:18px;
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:24px; color:#c8d3e0; }
+</style>
+<div id="g-a4-2-root" data-composition-id="g-a4-2" data-width="1920" data-height="1080">
+  <div id="g-a4-2-world">
+    <img id="g-a4-2-img" src="media/stills/a4-s2-tor-watch-552-map.jpg" alt="">
+  </div>
+  <div class="g-a4-2-ring" id="g-a4-2-ring"></div>
+  <div class="g-a4-2-dot" id="g-a4-2-dot"></div>
+  <div class="g-a4-2-glass" id="g-a4-2-lab">Mayfield</div>
+  <div class="g-a4-2-glass" id="g-a4-2-chip">Watch since <b>3:00 PM</b></div>
+  <div class="g-a4-2-glass" id="g-a4-2-src">Service Assessment, p9; p14 (first Paducah conference call, Mon 6 Dec)</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 12.09;   /* host 666.878 (a4-s2 start) -> 678.968, the cut to SA p14 just after "Paducah" (@12.12 = ep 678.998) */
+  const C = {
+    may: 1.00,         /* MAYFIELD @1.00 in a4-s2.words.json (ep 667.878) */
+    since: 2.78,       /* SINCE 3 THAT AFTERNOON @2.78 (ep 669.658) */
+    out: 11.49         /* host end - 0.6 */
+  };
+
+  /* camera: one slow push onto Mayfield for the whole window (edges stay inside the map) */
+  tl.set("#g-a4-2-world", { scale: 1, transformOrigin: "1355.3px 538.6px" }, 0);
+  tl.to("#g-a4-2-world", { scale: 1.06, duration: DUR, ease: "none" }, 0);
+
+  /* pin pops on "Mayfield", label slides in, a pulse ring every 1.2 s to the end */
+  tl.fromTo("#g-a4-2-dot", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.5)" }, C.may);
+  tl.fromTo("#g-a4-2-lab", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, C.may + 0.2);
+  tl.set("#g-a4-2-ring", { autoAlpha: 0, scale: 1 }, 0);
+  tl.fromTo("#g-a4-2-ring", { autoAlpha: 0.9, scale: 1 }, { autoAlpha: 0, scale: 3, duration: 1.0, ease: "power2.out", repeat: 8, repeatDelay: 0.2, immediateRender: false }, C.may + 0.2);
+
+  /* chip on "since three", source line 0.4 s after */
+  tl.set(["#g-a4-2-chip", "#g-a4-2-src"], { autoAlpha: 0, x: 0, y: 24 }, 0);
+  tl.fromTo("#g-a4-2-chip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.since);
+  tl.fromTo("#g-a4-2-src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.since + 0.4);
+
+  /* out: HUD slides away, the picture cuts to the review's p14 at the host end */
+  tl.to("#g-a4-2-chip", { x: -1000, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, C.out);
+  tl.to("#g-a4-2-src", { x: -1400, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, C.out);
+  tl.to(["#g-a4-2-lab", "#g-a4-2-dot"], { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, C.out);
+
+  window.__timelines["g-a4-2"] = tl;
+})();
+</script>
+</template>

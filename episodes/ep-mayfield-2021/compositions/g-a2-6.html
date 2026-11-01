@@ -1,0 +1,48 @@
+<template>
+<style>
+  /* g-a2-6 · A2-S5 last beat · NWS Paducah Hazardous Weather Outlook phrase (FLUS43 KPAH 092042, 242 PM CST Thu Dec 9 2021, fc-A2 row 19), quote-card family (g-i1-7).
+     Host 374.03 ("That afternoon") -> 380.667, 6.637 s; times host-local (episode - 374.03; round 3 timeline, episode seconds in the cue
+     comments below are round 2's, add 0.8). */
+  #g-a2-6-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .g-a2-6-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px); background-size:120px 120px; }
+  .g-a2-6-glow { position:absolute; left:-200px; top:80px; width:1300px; height:900px; border-radius:50%; background: radial-gradient(ellipse, rgba(232,197,106,0.08), rgba(232,197,106,0) 70%); }
+  .g-a2-6-float { position:absolute; left:260px; top:0; width:1340px; height:1080px; display:flex; align-items:center; }
+  .g-a2-6-card { width:1340px; box-sizing:border-box; padding:64px 80px; border-radius:28px; opacity:0; visibility:hidden;
+    background: rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  .g-a2-6-eb { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:6px; color:#8e2020; margin-bottom:24px; opacity:0; visibility:hidden; }
+  .g-a2-6-q { font-family: Georgia, 'Times New Roman', serif; font-style:italic; font-size:58px; line-height:1.25; color:#2a2622; opacity:0; visibility:hidden; }
+  .g-a2-6-who { margin-top:40px; white-space:nowrap; font-family:Arial, sans-serif; font-weight:700; font-size:26px; letter-spacing:3px; color:#6b6257; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a2-6-root" data-composition-id="g-a2-6" data-width="1920" data-height="1080">
+  <div class="g-a2-6-grid" id="g-a2-6-grid"></div>
+  <div class="g-a2-6-glow" id="g-a2-6-glow"></div>
+  <div class="g-a2-6-float" id="g-a2-6-float">
+    <div class="g-a2-6-card" id="g-a2-6-card">
+      <div class="g-a2-6-eb" id="g-a2-6-eb">HAZARDOUS WEATHER OUTLOOK</div>
+      <div class="g-a2-6-q" id="g-a2-6-q">&ldquo;a couple of long-track supercell tornadoes are also possible&rdquo;</div>
+      <div class="g-a2-6-who" id="g-a2-6-who">NWS Paducah Hazardous Weather Outlook, 9 Dec 2021, 2:42 PM CST</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a2-6-", DUR = 6.637;
+  tl.fromTo(P + "grid", { x: 0 }, { x: 160, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "glow", { x: 0, y: 0 }, { x: 500, y: 60, duration: DUR, ease: "none" }, 0);
+  /* THAT AFTERNOON, PADUCAH'S OUTLOOK @0.00 (ep 373.23; "Outlook" 374.61 = 1.38) */
+  tl.fromTo(P + "card", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.1);
+  tl.fromTo(P + "eb", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.4);
+  tl.fromTo(P + "who", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.38);
+  tl.fromTo(P + "float", { y: 0 }, { y: -8, duration: DUR, ease: "none", immediateRender: false }, 0);
+  /* A COUPLE OF LONG-TRACK SUPERCELL TORNADOES @3.12 (ep 376.35) */
+  tl.fromTo(P + "q", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.12);
+  /* exit: "possible." ends 6.06 (ep 379.29) */
+  tl.to(P + "card", { x: 1100, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  window.__timelines["g-a2-6"] = tl;
+})();
+</script>
+</template>

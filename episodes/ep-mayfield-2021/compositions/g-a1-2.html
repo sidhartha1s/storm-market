@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a1-2 · A1-S1 second beat · the OSHA Hazard Alert Letter to Amazon (26 Apr 2022, page 1), item 1 lit, chip "locked in a cage".
+  Document-page family (base g-i1-2): sheet box x 340-1580, y 150-930. Page: media/stills/a1-s1-hal-p1-item1.png (1256 x 790, the
+  sourcer's crop of a1-s1_c2_osha-hal-p1.png from "On or about" down, addressee lines cut away), scaled 0.98726 to 1240 x 780; the text
+  column x 28-1227 sits whole inside the box at both ends of the 1.03 drift (the sheet itself scales).
+  Item 1 rows measured on the PNG (PIL dark-pixel rows): line 1 y 247-274 x 81-1226, line 2 y 283-310 x 129-1224 -> box px
+  line 1 y 243.9-270.5 x 80.0-1210.4, line 2 y 279.4-306.1 x 127.4-1208.4; bands padded 6 px x, 4 px y. Lines are 26.6 px tall at 1080 (>= 26).
+  Host data-start 134.408 = a1-s1 6.20 ("not accessible"), so comp-local = a1-s1 time - 6.20; "I had to read that line twice" @7.40 -> 1.20.
+-->
+<template>
+<style>
+  #g-a1-2-root { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a1-2-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #g-a1-2-eyebrow { position:absolute; left:96px; top:70px; white-space:nowrap; font-weight:700; font-size:22px; line-height:26px;
+    letter-spacing:6px; color:#93a3b2; opacity:0; visibility:hidden; }
+  #g-a1-2-sheet { position:absolute; left:340px; top:150px; width:1240px; height:780px; background:#ffffff; overflow:hidden; }
+  .g-a1-2-page { position:absolute; left:0; top:0; width:1240px; height:780px; object-fit:contain; }
+  .g-a1-2-band { position:absolute; border-radius:3px; background:rgba(216,161,58,.35); opacity:0; visibility:hidden; }
+  #g-a1-2-band1 { left:74px; top:240px; width:1142.4px; height:34.6px; }
+  #g-a1-2-band2 { left:121.4px; top:275.4px; width:1093px; height:34.7px; }
+  #g-a1-2-strip { position:absolute; left:610px; top:820px; width:700px; height:80px; box-sizing:border-box; text-align:center;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); border-radius:28px; opacity:0; visibility:hidden; }
+  #g-a1-2-quote { display:block; white-space:nowrap; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:44px; line-height:78px; color:#f2f5f8; }
+  #g-a1-2-source { position:absolute; left:96px; bottom:58px; white-space:nowrap; font-weight:700; font-size:19px; line-height:22px; color:#c8d3e0;
+    opacity:0; visibility:hidden; }
+</style>
+<div id="g-a1-2-root" data-composition-id="g-a1-2" data-width="1920" data-height="1080" data-duration="3.229">
+  <div id="g-a1-2-stage">
+    <div id="g-a1-2-eyebrow">OSHA Hazard Alert Letter to Amazon &middot; Item 1</div>
+    <div id="g-a1-2-sheet">
+      <img class="g-a1-2-page" src="media/stills/a1-s1-hal-p1-item1.png" alt="">
+      <div id="g-a1-2-band1" class="g-a1-2-band"></div>
+      <div id="g-a1-2-band2" class="g-a1-2-band"></div>
+    </div>
+    <div id="g-a1-2-strip"><span id="g-a1-2-quote">locked in a cage</span></div>
+    <div id="g-a1-2-source">OSHA Hazard Alert Letter, 26 Apr 2022; AP via Claims Journal, 28 Apr 2022</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a1-2-";
+  const DUR = 3.229;
+  tl.set(P + "stage", { x: 0, autoAlpha: 1 }, 0);
+  tl.set(P + "sheet", { scale: 1, transformOrigin: "50% 50%" }, 0);
+  tl.set([P + "eyebrow", P + "source"], { autoAlpha: 0 }, 0);
+  tl.set([P + "band1", P + "band2"], { autoAlpha: 0, scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(P + "strip", { autoAlpha: 0, y: 40 }, 0);
+
+  /* the page drifts for the whole window */
+  tl.to(P + "sheet", { scale: 1.03, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "eyebrow", { autoAlpha: 0, x: -36 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.1);
+  tl.fromTo(P + "source", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.2);
+  /* item 1 lit, line by line (the voice is on "not accessible", a1-s1 6.20-6.78) */
+  tl.set(P + "band1", { autoAlpha: 1 }, 0.15);
+  tl.to(P + "band1", { scaleX: 1, duration: 0.5, ease: "power2.out" }, 0.15);
+  tl.set(P + "band2", { autoAlpha: 1 }, 0.5);
+  tl.to(P + "band2", { scaleX: 1, duration: 0.5, ease: "power2.out" }, 0.5);
+  /* the lit words as the chip, before "I had to read that line twice" (@1.20) */
+  tl.to(P + "strip", { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.8);
+  /* exit: everything slides out left, done at the host end; the NWS track map cuts in */
+  tl.to(P + "stage", { x: -1200, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  tl.to(P + "stage", { autoAlpha: 0, duration: 0.45, ease: "power1.out" }, DUR - 0.6);
+
+  window.__timelines["g-a1-2"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

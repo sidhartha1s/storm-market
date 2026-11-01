@@ -1,0 +1,38 @@
+<template>
+<style>
+  /* g-z1-8 · Z1-S8 (picture-only hold) · glass chip "1 of 2 states: a workplace tornado law" (box left 110, bottom 150) over the I1-S6
+     downtown Mayfield survey photo (NWS Paducah, Graves 3; mounted beneath as v-z1-graves3 with data-callback). No other text (brief 4.1).
+     Fact: research/fc-Z1.tsv data row 38 (Illinois made warehouse operators write a tornado plan; chip wording as given there).
+     The figure leads the chip, so it is set Arial Black 900 58 px (family base g-i1-6 "8 lives"). Nothing past x 1560. */
+  #g-z1-8-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  #g-z1-8-float { position:absolute; inset:0; width:1920px; height:1080px; }
+  #g-z1-8-chip { position:absolute; left:110px; bottom:150px; padding:10px 30px; border-radius:28px; box-sizing:border-box; white-space:nowrap;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); opacity:0; visibility:hidden;
+    font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:64px; letter-spacing:1px; color:#dfe7ee; }
+  #g-z1-8-chip b { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; letter-spacing:0; color:#f2f5f8; }
+</style>
+<div id="g-z1-8-root" data-composition-id="g-z1-8" data-width="1920" data-height="1080">
+  <div id="g-z1-8-float">
+    <div id="g-z1-8-chip"><b>1 of 2</b> states: a workplace tornado law</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 2.6;             /* host window: the cut out of P5 (ep 1099.822) -> Z1-S9 (ep 1102.422); no narration (declared hold hold-z1-s8) */
+  const CUE_CHIP = 0.1;        /* on the cut */
+  const CUE_OUT = 2.0;         /* host end - 0.6 s */
+
+  tl.set("#g-z1-8-chip", { autoAlpha: 0, x: 0, y: 24 }, 0);
+  tl.set("#g-z1-8-float", { scale: 1, y: 0, transformOrigin: "110px 1016px" }, 0);
+  /* ambient float over the whole window */
+  tl.to("#g-z1-8-float", { scale: 1.01, y: -6, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#g-z1-8-chip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUE_CHIP);
+  tl.to("#g-z1-8-chip", { x: -1100, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, CUE_OUT);
+
+  window.__timelines["g-z1-8"] = tl;
+})();
+</script>
+</template>

@@ -1,0 +1,85 @@
+<!-- g-z1-1 · Z1-S1 · Service Assessment page 33, the first sentence of the "common theme" passage lit; the second sentence
+     (it carries a flag word) is never on screen. Full frame, own ground. Document-page family base g-i1-2.
+     Page: media/stills/z1-s1-sa-p33-passage.png = media/candidates/z1/S1_c1 (PDF p33 at 150 dpi, printed p33) cropped by ffmpeg to
+     x 120-1160, y 945-1204 (1040 x 259; ink x 151-1117 so every line is whole), and the tail "This was" of line 2 (page x >= 941,
+     y 1168-1204) painted white: nothing of the second sentence is in the file. Line 3 (page y 1209-1230) is outside the crop.
+     Sheet (fix round 2: bigger and centred): crop scaled 1440/1040 = 1.3846 into the box x 240-1680, y 242-601 (358.6 px tall);
+     sheet + 40 px gap + strip (198) = 597 px, centred on y 540 (top 241.5); the sheet's bottom stays above y 680 (circle corner).
+     Lit bands, sheet px = crop px x 1.3846 (word boxes measured on the page by a one-shot PIL scan, pad 4-5 px):
+       line 1 (page y 1142-1163, crop x 257-967, y 195-221), "a common theme ... gap in" -> left 355.8, top 270.0, w 983.1, h 36
+       line 2 (page y 1176-1197, crop x 28-821, y 229-255),  "NWS ... footprints."       -> left 38.8,  top 317.1, w 1098.0, h 36
+     The scanned lines are 29 px tall on screen; the lit words are also re-set as live text on a glass strip (y 640-838) for reading.
+     Cue (fix round 2): the voice says the sentence's sense first, "the same worry came up from more than one office" (= "a common
+     theme was identified by WFOs"), so line 1 and the strip land on "same" and line 2 on "more than one office".
+     Times are host-local: host data-start 997.549 (blackout bo-a5-z1 ends) = z1-s1 0.00 - 0.200. -->
+<template>
+<style>
+  #g-z1-1-root { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-z1-1-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #g-z1-1-eyebrow { position:absolute; left:96px; top:70px; white-space:nowrap; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px;
+    letter-spacing:6px; text-transform:uppercase; color:#93a3b2; opacity:0; visibility:hidden; }
+  #g-z1-1-sheet { position:absolute; left:240px; top:242px; width:1440px; height:359px; background:#ffffff; overflow:hidden;
+    box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  .g-z1-1-page { position:absolute; left:0; top:0; width:1440px; height:359px; }
+  .g-z1-1-band { position:absolute; height:31px; border-radius:3px; background:rgba(216,161,58,.45); mix-blend-mode:multiply; opacity:0; visibility:hidden; }
+  #g-z1-1-band1 { left:355.8px; top:270px; width:983.1px; height:36px; }
+  #g-z1-1-band2 { left:38.8px; top:317.1px; width:1098px; height:36px; }
+  #g-z1-1-strip { position:absolute; left:360px; top:640px; width:1200px; height:198px; box-sizing:border-box; padding:24px 0; text-align:center;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); border-radius:28px; opacity:0; visibility:hidden; }
+  #g-z1-1-quote { display:block; white-space:nowrap; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:40px; line-height:50px; color:#f2f5f8; }
+  #g-z1-1-source { position:absolute; left:96px; bottom:58px; white-space:nowrap; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:22px; color:#c8d3e0;
+    opacity:0; visibility:hidden; }
+</style>
+<div id="g-z1-1-root" data-composition-id="g-z1-1" data-width="1920" data-height="1080" data-type-ok="document page with one quote strip: two type tiers by design">
+  <div id="g-z1-1-stage">
+    <div id="g-z1-1-eyebrow">NWS Service Assessment &middot; December 10-11, 2021 outbreak</div>
+    <div id="g-z1-1-sheet">
+      <img class="g-z1-1-page" src="media/stills/z1-s1-sa-p33-passage.png" alt="">
+      <div id="g-z1-1-band1" class="g-z1-1-band"></div>
+      <div id="g-z1-1-band2" class="g-z1-1-band"></div>
+    </div>
+    <div id="g-z1-1-strip">
+      <span id="g-z1-1-quote">&hellip;a common theme was identified by WFOs in the post event<br>of a gap in NWS safety outreach materials or resources<br>for buildings with large footprints.</span>
+    </div>
+    <div id="g-z1-1-source">NWS Service Assessment, p33</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-z1-1-";
+  const DUR = 7.951;   /* 997.549 -> 1005.500: out before "34" (ep 1005.673), so p33 never sits under "page thirty-four" */
+  tl.set(P + "stage", { x: 0, autoAlpha: 1 }, 0);
+  tl.set(P + "sheet", { scale: 1, transformOrigin: "50% 60%" }, 0);
+  tl.set(P + "eyebrow", { autoAlpha: 0, x: -36 }, 0);
+  tl.set([P + "band1", P + "band2"], { autoAlpha: 0, scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(P + "strip", { autoAlpha: 0, y: 40 }, 0);
+  tl.set(P + "source", { autoAlpha: 0, x: -12 }, 0);
+
+  // the page drifts in scale for the whole window (a 3 % push; the box clips, so no line below the crop ever shows)
+  tl.to(P + "sheet", { scale: 1.03, duration: DUR, ease: "none" }, 0);
+  /* source line with the page @0.20 */
+  tl.to(P + "source", { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.2);
+  /* REVIEW @1.48 (z1-s1 1.28 = ep 999.029) */
+  tl.to(P + "eyebrow", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1.48);
+  /* THE SAME WORRY @2.86 (z1-s1 "same" 2.66 = ep 1000.409): line 1 lights, the strip rises */
+  tl.set(P + "band1", { autoAlpha: 1 }, 2.86);
+  tl.to(P + "band1", { scaleX: 1, duration: 0.5, ease: "power2.out" }, 2.86);
+  tl.to(P + "strip", { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.86);
+  /* MORE THAN ONE OFFICE @3.94 ("more" 3.74 = ep 1001.489): line 2 */
+  tl.set(P + "band2", { autoAlpha: 1 }, 3.94);
+  tl.to(P + "band2", { scaleX: 1, duration: 0.5, ease: "power2.out" }, 3.94);
+  /* A COMMON THEME @6.24 ("a" 6.04 = ep 1003.789): the strip pops once (1.03) as the review's own words are named */
+  tl.to(P + "strip", { scale: 1.03, duration: 0.25, ease: "power2.out" }, 6.24);
+  tl.to(P + "strip", { scale: 1, duration: 0.35, ease: "power2.inOut" }, 6.49);
+  // exit lands before the host end: page, labels and strip slide out together
+  tl.to(P + "stage", { x: -1200, duration: 0.55, ease: "power3.in" }, 7.351);
+  tl.to(P + "stage", { autoAlpha: 0, duration: 0.4, ease: "power1.out" }, 7.351);
+
+  window.__timelines["g-z1-1"] = tl;
+})();
+</script>
+</template>

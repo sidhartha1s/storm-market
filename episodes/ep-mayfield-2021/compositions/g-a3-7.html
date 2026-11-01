@@ -1,0 +1,83 @@
+<template>
+<style>
+  /* g-a3-7 · A3-S8 · SPC's record night: 28 mesoscale discussions in one 8-hour evening shift, old record 20 (SA p12, facts-nws F29,
+     fc-A3 rows 40-42). Brief: briefs/mg/g-a3-7.md. Full frame, own ground. The SPC MD archive page for that shift was never found
+     (picks.tsv, provenance.csv), so the page is the SA p12 paragraph itself: media/stills/a3-s8-sa-p12-para.png (crop 995 x 340 at 140,740 of the
+     150 dpi page), shown at 1.3065 = 1300 x 444 px at (110, 110); whole lines, text x 123-1375; at the 1.03 drift about the box centre the
+     left text edge sits at x 104 (inside 96). Lit lines measured on the still (dark-pixel rows of the crop): line 5 rows 143-164, x 11-879; line 7 rows 209-230, x 11-965; bands are children of
+     the scaled page at page-local top 181 / 267, height 39 (rows x 1.3065, 5 px pad), so they drift with the text: "...issued an unprecedented 28 MCDs"
+     and "...the previous record ... within a single shift of 20".
+     Bars: 24 px per discussion: 28 -> 672 px red, ghost 20 -> 480 px dashed (ratio 1.400).
+     Host 578.512 (a3-s8 voice) -> 594.545 (Paul P3 card), 16.033 s; times host-local (episode - 578.512). */
+  #g-a3-7-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .g-a3-7-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px); background-size:120px 120px; }
+  #g-a3-7-eb { position:absolute; left:110px; top:60px; font-size:22px; font-weight:700; line-height:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a3-7-page { position:absolute; left:110px; top:110px; width:1300px; height:444px; border-radius:10px; overflow:hidden; box-shadow:0 24px 70px rgba(0,0,0,0.6);
+    background:#ffffff; opacity:0; visibility:hidden; }
+  #g-a3-7-page img { position:absolute; left:0; top:0; width:1300px; height:444px; }
+  .g-a3-7-band { position:absolute; left:8px; height:39px; border-radius:4px; background:rgba(216,161,58,.35); mix-blend-mode:multiply; }
+  #g-a3-7-num { position:absolute; left:110px; top:608px; font-family:'Courier New', monospace; font-weight:700; font-size:120px; line-height:120px; color:#e74c3c;
+    white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a3-7-what { position:absolute; left:290px; top:652px; font-size:30px; font-weight:700; line-height:36px; color:#dfe7ee; white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a3-7-bar { position:absolute; left:110px; top:780px; width:672px; height:48px; border-radius:4px; background:#e74c3c; opacity:0; visibility:hidden; }
+  #g-a3-7-ghost { position:absolute; left:110px; top:770px; width:486px; height:68px; overflow:visible; opacity:0; visibility:hidden; }
+  #g-a3-7-old { position:absolute; left:110px; top:852px; font-size:26px; font-weight:700; line-height:30px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a3-7-src { position:absolute; left:96px; top:984px; padding:8px 14px; border-radius:10px; font-size:19px; font-weight:700; line-height:19px; letter-spacing:1px; color:#c8d3e0;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14);
+    white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a3-7-root" data-composition-id="g-a3-7" data-width="1920" data-height="1080">
+  <div class="g-a3-7-grid" id="g-a3-7-grid"></div>
+  <div id="g-a3-7-eb">NWS SERVICE ASSESSMENT · PAGE 12</div>
+  <div id="g-a3-7-page">
+    <img src="media/stills/a3-s8-sa-p12-para.png" alt="">
+    <div class="g-a3-7-band" id="g-a3-7-b1" style="top:181px; width:1148px;"></div>
+    <div class="g-a3-7-band" id="g-a3-7-b2" style="top:267px; width:1262px;"></div>
+  </div>
+  <div id="g-a3-7-num">1</div>
+  <div id="g-a3-7-what">mesoscale discussions · one evening shift</div>
+  <div id="g-a3-7-bar"></div>
+  <svg id="g-a3-7-ghost" viewBox="0 0 486 68">
+    <rect x="1.5" y="11.5" width="480" height="45" rx="4" fill="none" stroke="#93a3b2" stroke-width="3" stroke-dasharray="10 7"/>
+    <line x1="481.5" y1="0" x2="481.5" y2="68" stroke="#f2f5f8" stroke-width="3"/>
+  </svg>
+  <div id="g-a3-7-old">old record · 20</div>
+  <div id="g-a3-7-src">NWS Service Assessment, p12</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a3-7-", DUR = 16.033;
+  const num = document.querySelector(P + "num");
+  tl.set([P + "b1", P + "b2", P + "bar", P + "ghost"], { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(P + "page", { scale: 1, transformOrigin: "50% 50%" }, 0);
+  tl.fromTo(P + "grid", { x: 0 }, { x: 300, duration: DUR, ease: "none" }, 0);
+  /* the page from the cut, drifting 1.00 -> 1.03 for the whole window */
+  tl.fromTo(P + "page", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.1);
+  tl.to(P + "page", { scale: 1.03, duration: DUR - 0.7, ease: "none" }, 0.1);
+  tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.3);
+  /* STORM PREDICTION CENTER @1.30 (ep 579.81): source line */
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.3);
+  /* TWENTY-EIGHT MESOSCALE DISCUSSIONS @5.20 (ep 583.71): line lights, counter 1 -> 28 (passes 20 at about +1.0 s), bar grows with it */
+  tl.to(P + "b1", { scaleX: 1, duration: 0.5, ease: "power3.out" }, 5.2);
+  tl.fromTo(P + "num", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 5.2);
+  const c = { v: 1 };
+  tl.fromTo(c, { v: 1 }, { v: 28, duration: 2.2, ease: "power2.out", onUpdate: function () { num.textContent = String(Math.round(c.v)); } }, 5.2);
+  tl.fromTo(P + "bar", { autoAlpha: 1, scaleX: 1 / 28 }, { autoAlpha: 1, scaleX: 1, duration: 2.2, ease: "power2.out", immediateRender: false }, 5.2);
+  tl.fromTo(P + "what", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 5.6);
+  /* THE OLD RECORD @9.26 (ep 587.77): the record line lights, the ghost bar draws; "20" @9.96 (ep 588.47) names it */
+  tl.to(P + "b2", { scaleX: 1, duration: 0.5, ease: "power3.out" }, 9.26);
+  tl.to(P + "ghost", { autoAlpha: 1, scaleX: 1, duration: 0.5, ease: "power3.out" }, 9.26);
+  tl.fromTo(P + "old", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.96);
+  /* EACH ONE IS A SHORT NOTE @10.78 (ep 589.29): the record bar breathes until the exit */
+  tl.to(P + "bar", { opacity: 0.75, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, 10.78);
+  /* exit (ep 593.94-594.55): everything slides out left before Paul's card */
+  tl.to([P + "num", P + "what", P + "bar", P + "ghost", P + "old"], { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 15.433);   /* DUR - 0.6 */
+  tl.to([P + "page", P + "eb", P + "src"], { y: -40, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 15.433);   /* DUR - 0.6 */
+  window.__timelines["g-a3-7"] = tl;
+})();
+</script>
+</template>

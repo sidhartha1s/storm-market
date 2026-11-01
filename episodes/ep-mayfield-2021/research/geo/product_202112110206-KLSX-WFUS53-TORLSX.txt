@@ -1,0 +1,81 @@
+514 
+WFUS53 KLSX 110206
+TORLSX
+ILC083-117-119-MOC183-189-510-110245-
+/O.NEW.KLSX.TO.W.0051.211211T0206Z-211211T0245Z/
+
+BULLETIN - EAS ACTIVATION REQUESTED
+Tornado Warning
+National Weather Service St Louis MO
+806 PM CST Fri Dec 10 2021
+
+The National Weather Service in St Louis has issued a
+
+* Tornado Warning for...
+  Madison County in southwestern Illinois...
+  Southern Macoupin County in southwestern Illinois...
+  Southeastern Jersey County in southwestern Illinois...
+  St. Louis City in east central Missouri...
+  Northeastern St. Charles County in east central Missouri...
+  Northeastern St. Louis County in east central Missouri...
+
+* Until 845 PM CST.
+    
+* At 805 PM CST, a tornado producing storm was located over
+  Bridgeton, moving northeast at 60 mph.
+
+  HAZARD...Damaging tornado and quarter size hail.
+
+  SOURCE...Radar confirmed tornado.
+
+  IMPACT...Flying debris will be dangerous to those caught without 
+           shelter. Mobile homes will be damaged or destroyed. 
+           Damage to roofs, windows, and vehicles will occur.  Tree 
+           damage is likely.
+
+* This tornadic storm will be near...
+  Florissant, Ferguson, Jennings, Dellwood, Northwoods, Pine Lawn, 
+  Calverton Park, Country Club Hills, Norwood Court and Pasadena 
+  Hills around 810 PM CST.
+  St. Louis, Bellefontaine Neighbors, Black Jack, Riverview, Spanish 
+  Lake, Moline Acres, West Alton, Castle Point and Glasgow Village 
+  around 815 PM CST.
+  Alton, Madison and East Alton around 820 PM CST.
+  Godfrey, Wood River, Bethalto, South Roxana, Roxana, Hartford and 
+  Rosewood Heights around 825 PM CST.
+
+Other locations in the path of this tornadic thunderstorm include
+Edwardsville, Dorsey, Bunker Hill, Prairietown, Carpenter, Worden,
+Wilsonville, Staunton, Benld, Livingston, Sawyerville, Mount Clare
+and Eagarville.
+
+This also includes Scott Joplin Historic Site, Confluence State Park,
+First Missouri State Capitol Historic Site, Beaver Dam State Park,
+and Horseshoe Lake State Park.
+ 
+This includes the following highways...
+ Interstate 70 in Illinois between exits 21 and 24.
+ Interstate 55 in Illinois between exits 23 and 37.
+ Interstate 70 in Missouri between exits 228 and 231.
+
+PRECAUTIONARY/PREPAREDNESS ACTIONS...
+
+To repeat, a tornado is on the ground. TAKE COVER NOW! Move to a
+basement or an interior room on the lowest floor of a sturdy
+building. Avoid windows. If you are outdoors, in a mobile home, or in
+a vehicle, move to the closest substantial shelter and protect
+yourself from flying debris.
+
+&&
+
+LAT...LON 3866 9005 3866 9018 3863 9018 3853 9056
+      3892 9050 3897 9045 3897 9049 3908 9047
+      3930 8985 3875 8968
+TIME...MOT...LOC 0205Z 242DEG 52KT 3877 9041 
+
+TORNADO...OBSERVED
+MAX HAIL SIZE...1.00 IN
+
+$$
+
+19

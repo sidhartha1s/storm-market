@@ -1,0 +1,69 @@
+<template>
+<style>
+  /* g-a3-5 · A3-S5 · CALLBACK to A2's Paducah outlook card (g-a2-6 look): NWS Paducah Hazardous Weather Outlook, 242 PM CST Thu 9 Dec 2021
+     (fc-A3 rows 17-21; HWO text media/candidates/a3/a3-s5_c1_paducah-hwo-242pm-dec9.html). Brief: briefs/mg/g-a3-5.md.
+     Callback, not a new reveal: the card arrives whole in 0.4 s; new are the chip and the amber band on the long-track line.
+     Host 531.750 (after g-a3-4's fade-through, on "Paducah's outlook") -> 543.740 (11.99 s), cut on "That was more than a day before"
+     where g-a3-6 opens the radar at 7:04 PM. Times host-local (episode - 531.75). */
+  #g-a3-5-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .g-a3-5-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px); background-size:120px 120px; }
+  .g-a3-5-glow { position:absolute; left:-200px; top:80px; width:1300px; height:900px; border-radius:50%; background: radial-gradient(ellipse, rgba(232,197,106,0.08), rgba(232,197,106,0) 70%); }
+  #g-a3-5-float { position:absolute; left:260px; top:0; width:1340px; height:1000px; display:flex; align-items:center; }
+  #g-a3-5-card { position:relative; width:1340px; box-sizing:border-box; padding:64px 80px; border-radius:28px; overflow:hidden; opacity:0; visibility:hidden;
+    background: rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  #g-a3-5-beam { position:absolute; top:0; bottom:0; left:0; width:260px; background:linear-gradient(90deg, transparent, rgba(138,90,16,0.14), transparent); }
+  #g-a3-5-eb { position:relative; font-weight:700; font-size:22px; line-height:22px; letter-spacing:6px; color:#8e2020; margin-bottom:24px; }
+  .g-a3-5-q { position:relative; display:table; font-family: Georgia, 'Times New Roman', serif; font-style:italic; font-size:58px; line-height:72px; color:#2a2622; white-space:nowrap; }
+  .g-a3-5-band { position:absolute; left:-10px; right:-10px; top:12px; bottom:6px; border-radius:6px; background:rgba(216,161,58,.35); }
+  .g-a3-5-txt { position:relative; }
+  #g-a3-5-who { position:relative; margin-top:40px; white-space:nowrap; font-weight:700; font-size:26px; line-height:30px; letter-spacing:3px; color:#6b6257; }
+  #g-a3-5-chip { position:absolute; left:110px; bottom:150px; padding:14px 30px; border-radius:28px; box-sizing:border-box; white-space:nowrap;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14);
+    font-weight:700; font-size:30px; line-height:64px; letter-spacing:1px; color:#dfe7ee; opacity:0; visibility:hidden; }
+  #g-a3-5-chip b { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; letter-spacing:0; color:#f2f5f8; }
+</style>
+<div id="g-a3-5-root" data-composition-id="g-a3-5" data-width="1920" data-height="1080">
+  <div class="g-a3-5-grid" id="g-a3-5-grid"></div>
+  <div class="g-a3-5-glow" id="g-a3-5-glow"></div>
+  <div id="g-a3-5-float">
+    <div id="g-a3-5-card">
+      <div id="g-a3-5-beam"></div>
+      <div id="g-a3-5-eb">HAZARDOUS WEATHER OUTLOOK</div>
+      <div class="g-a3-5-q"><div class="g-a3-5-band" id="g-a3-5-b1"></div><span class="g-a3-5-txt" id="g-a3-5-q1">&ldquo;but a couple of long-track supercell</span></div>
+      <div class="g-a3-5-q"><div class="g-a3-5-band" id="g-a3-5-b2"></div><span class="g-a3-5-txt" id="g-a3-5-q2">tornadoes are also possible.&rdquo;</span></div>
+      <div id="g-a3-5-who">NWS Paducah Hazardous Weather Outlook, 2:42 PM CST Thu 9 Dec 2021</div>
+    </div>
+  </div>
+  <div id="g-a3-5-chip"><b>Thursday</b> · 2:42 PM</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a3-5-", DUR = 11.99;
+  tl.set([P + "b1", P + "b2"], { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(P + "beam", { x: -300 }, 0);
+  tl.set(P + "float", { y: 0 }, 0);
+  tl.fromTo(P + "grid", { x: 0 }, { x: 280, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "glow", { x: 0, y: 0 }, { x: 600, y: 60, duration: DUR, ease: "none" }, 0);
+  tl.to(P + "float", { y: -8, duration: DUR, ease: "none" }, 0);
+  /* PADUCAH'S OUTLOOK @0.05-0.45 (ep 531.80; "outlook" 532.08): the A2 card arrives whole */
+  tl.fromTo(P + "card", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.05);
+  /* FROM THURSDAY AFTERNOON @0.83 (ep 532.58) */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.83);
+  /* the reader's beam crosses the card on "damaging winds" @3.21 (ep 534.96) and "strong ones" @6.91 (ep 538.66) */
+  tl.to(P + "beam", { x: 1400, duration: 1.6, ease: "power2.inOut" }, 3.21);
+  tl.set(P + "beam", { x: -300 }, 5.0);
+  tl.to(P + "beam", { x: 1400, duration: 1.6, ease: "power2.inOut" }, 6.91);
+  /* LONG-TRACK SUPERCELL TORNADOES @9.13 (ep 540.88): the quote lights, line by line */
+  tl.to(P + "b1", { scaleX: 1, duration: 0.5, ease: "power3.out" }, 9.13);
+  tl.to(P + "b2", { scaleX: 1, duration: 0.5, ease: "power3.out" }, 9.85);
+  /* exit: card slides right, chip left (ep 543.14-543.74) */
+  tl.to(P + "card", { x: 1100, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 11.39);   /* DUR - 0.6 */
+  tl.to(P + "chip", { x: -700, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 11.39);   /* DUR - 0.6 */
+  window.__timelines["g-a3-5"] = tl;
+})();
+</script>
+</template>

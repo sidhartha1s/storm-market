@@ -1,0 +1,48 @@
+<template>
+<style>
+  /* g-h1-2 · H1-S2 · glass chip "14 lives · 2 workplaces" (box left 110, bottom 150) + source line (left 110, bottom 64) over the DVIDS candle-factory still.
+     Overlay, no ground. Nothing past x 1560, nothing at x >= 1600 (presenter-circle corner stays free). */
+  #g-h1-2-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  #g-h1-2-float { position:absolute; inset:0; width:1920px; height:1080px; }
+  .g-h1-2-glass { background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-sizing:border-box; white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-h1-2-chip { position:absolute; left:110px; bottom:150px; padding:18px 30px; border-radius:28px;
+    font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:64px; letter-spacing:1px; color:#dfe7ee; }
+  #g-h1-2-chip b { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; letter-spacing:0; color:#f2f5f8; }
+  #g-h1-2-src { position:absolute; left:110px; bottom:64px; max-width:1300px; padding:10px 20px; border-radius:18px;
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:24px; letter-spacing:0; color:#c8d3e0; }
+</style>
+<div id="g-h1-2-root" data-composition-id="g-h1-2" data-width="1920" data-height="1080">
+  <div id="g-h1-2-float">
+    <div class="g-h1-2-glass" id="g-h1-2-chip"><b>14</b> lives &middot; 2 workplaces</div>
+    <div class="g-h1-2-glass" id="g-h1-2-src">6 at Edwardsville (House Oversight; OSHA) &middot; 8 at the factory: Mayfield Consumer Products and AP, 14 Dec 2021</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 3.015;           /* host window: "14" (h1-s2 1.74 = ep 7.901) -> segment cut at ep 10.916 */
+  const CUE_CHIP = 0;          /* "14" @1.74 in h1-s2.words.json (ep 7.901) */
+  const CUE_SRC = 0.6;         /* 0.6 s after the chip lands */
+  const CUE_OUT = 2.415;       /* slides out left 0.6 s before the cut (host end) */
+
+  tl.set(["#g-h1-2-chip", "#g-h1-2-src"], { autoAlpha: 0, x: 0, y: 24 }, 0);
+  tl.set("#g-h1-2-float", { scale: 1, y: 0, transformOrigin: "110px 1016px" }, 0);
+
+  /* ambient 0.5 % float over the whole window */
+  tl.to("#g-h1-2-float", { scale: 1.005, y: -4, duration: DUR, ease: "none" }, 0);
+
+  /* CHIP @0.00 ("14" 1.74): slides up 24 px and settles */
+  tl.fromTo("#g-h1-2-chip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUE_CHIP);
+  /* SOURCE LINE @0.60 */
+  tl.fromTo("#g-h1-2-src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUE_SRC);
+
+  /* OUT: both slide left and finish inside the host */
+  tl.to("#g-h1-2-chip", { x: -800, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, CUE_OUT);
+  tl.to("#g-h1-2-src", { x: -1300, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, CUE_OUT);
+
+  window.__timelines["g-h1-2"] = tl;
+})();
+</script>
+</template>

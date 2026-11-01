@@ -1,0 +1,60 @@
+<!-- g-a2-4 · A2-S3 first beat · the Memphis threat sentence on the left, its four issuances stamping down a column (3:36, 5:46, 9:24, 11:35 PM CST,
+     facts-nws F07; 9:24 and 11:35 carry it under ".PREV DISCUSSION... /issued 546 PM CST/", fc-A2 row 9). Host 330.821 -> 337.70 ("That same Monday"),
+     6.879 s; times host-local (episode - 330.821; round 3 timeline, +0.8 s on the round 2 comments' episode times). -->
+<template>
+<style>
+  #g-a2-4-root { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 40% 45%, #0e141c, #030507 78%); }
+  #g-a2-4-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-a2-4-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px); background-size:120px 120px; }
+  #g-a2-4-eyebrow { position:absolute; left:110px; top:300px; white-space:nowrap; font-weight:700; font-size:22px; line-height:26px; letter-spacing:6px; color:#93a3b2; opacity:0; visibility:hidden; }
+  #g-a2-4-quote { position:absolute; left:110px; top:350px; width:970px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:44px; line-height:60px; color:#f2f5f8; opacity:0; visibility:hidden; }
+  #g-a2-4-rule { position:absolute; left:110px; top:500px; width:860px; height:4px; background:#d8a13a; opacity:0; visibility:hidden; }
+  .g-a2-4-stamp { position:absolute; left:1180px; width:380px; box-sizing:border-box; padding:14px 22px; border-radius:6px; background:#8e2020; color:#f4f0e8;
+    box-shadow:0 14px 40px rgba(0,0,0,.5); opacity:0; visibility:hidden; }
+  .g-a2-4-time { white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:58px; }
+  .g-a2-4-time span { font-family:Arial, sans-serif; font-weight:700; font-size:30px; color:#f5d98b; }
+  .g-a2-4-sub { white-space:nowrap; font-weight:700; font-size:22px; line-height:26px; letter-spacing:2px; color:#f5d98b; }
+  #g-a2-4-src { position:absolute; left:96px; bottom:58px; white-space:nowrap; font-weight:700; font-size:19px; line-height:22px; color:#c8d3e0; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a2-4-root" data-composition-id="g-a2-4" data-width="1920" data-height="1080">
+  <div class="g-a2-4-grid" id="g-a2-4-grid"></div>
+  <div id="g-a2-4-stage">
+    <div id="g-a2-4-eyebrow">NWS Memphis &middot; Mon Dec 6, 2021</div>
+    <div id="g-a2-4-quote">&ldquo;This looks like it could be another severe weather threat.&rdquo;</div>
+    <div id="g-a2-4-rule"></div>
+    <div class="g-a2-4-stamp" id="g-a2-4-s1" style="top:190px;"><div class="g-a2-4-time">3:36 <span>PM CST</span></div></div>
+    <div class="g-a2-4-stamp" id="g-a2-4-s2" style="top:360px;"><div class="g-a2-4-time">5:46 <span>PM CST</span></div></div>
+    <div class="g-a2-4-stamp" id="g-a2-4-s3" style="top:530px;"><div class="g-a2-4-time">9:24 <span>PM CST</span></div><div class="g-a2-4-sub">carried forward</div></div>
+    <div class="g-a2-4-stamp" id="g-a2-4-s4" style="top:730px;"><div class="g-a2-4-time">11:35 <span>PM CST</span></div><div class="g-a2-4-sub">carried forward</div></div>
+    <div id="g-a2-4-src">NWS Memphis Area Forecast Discussions, IEM archive</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a2-4-", DUR = 6.879;
+  tl.set([P + "s1", P + "s2", P + "s3", P + "s4"], { rotation: -3, autoAlpha: 0, scale: 1.25 }, 0);
+  tl.set(P + "rule", { autoAlpha: 0, scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.fromTo(P + "grid", { x: 0 }, { x: 120, duration: DUR, ease: "none" }, 0);
+  /* A CAREFUL SENTENCE @0.24 (ep 330.26) */
+  tl.fromTo(P + "eyebrow", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.1);
+  tl.fromTo(P + "quote", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.24);
+  tl.set(P + "rule", { autoAlpha: 1 }, 0.6);
+  tl.to(P + "rule", { scaleX: 1, duration: 0.5, ease: "power2.out" }, 0.6);
+  tl.fromTo(P + "src", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.8);
+  tl.fromTo(P + "quote", { x: 0 }, { x: 14, duration: DUR - 0.8, ease: "none", immediateRender: false }, 0.8);
+  /* KEPT IT ON THE PAGE @1.78; STILL THERE @3.98; THREE LATER ISSUANCES @4.62; +0.5 */
+  tl.to(P + "s1", { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 1.78);
+  tl.to(P + "s2", { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 3.98);
+  tl.to(P + "s3", { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 4.62);
+  tl.to(P + "s4", { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 5.12);
+  /* exit before "That same Monday" (ep 337.70); DUR - 0.6, literal for sweep check 7 */
+  tl.to(P + "stage", { x: -1200, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 6.279);
+
+  window.__timelines["g-a2-4"] = tl;
+})();
+</script>
+</template>

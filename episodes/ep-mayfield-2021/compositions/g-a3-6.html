@@ -1,0 +1,231 @@
+<template>
+<!--
+  g-a3-6 · A3-S5 last line + A3-S6 + A3-S7 · DEEP · our KNQA NEXRAD Level II replot (media/radar/g-a3-6/, 20 scans 7:04-8:54 PM CST), then the
+  same projection's state-line base (media/maps/a3-knqa-base.png) with the Mayfield long track. Brief: briefs/mg/g-a3-6.md. Radar family base g-h1-3.
+  Projection (media/radar/g-a3-6/extent.json, shared by every frame and the base): x = (lon+91.16983)/5.53966*1920, y = (37.9-lat)/2.5*1080, north up.
+  Every point below is from .qc-tmp/a3-calc/calc.py (research/geo: tornado_tracks_named.geojson = NWS DAT survey lines, places.geojson):
+    Bay (214.1, 930.5) · Samburg (629.9, 655.9) · Woodland Mills (713.8, 614.9) · Falls of Rough (1601.6, 133.9) · candle factory (868.6, 508.1)
+    factory to the drawn track: nearest vertex (868.2, 505.7), 2.4 px; DAT Mayfield track 165.37 mi by great-circle sum (SA: 165.6).
+    Three weak tornadoes in the gap (NWS Memphis DAT, EF1 8:39, EF0 8:41, EF0 8:43 PM CST), grey ticks, unlabelled.
+  Burned time: none in the replot frames; the HUD clock is each frame's extent.json label_cst (UTC - 6 h), flipped at each dissolve.
+  Host 543.740 ("That was more than a day before the first one touched down", a3-s5 12.52) -> 578.512 (a3-s8 voice), 34.772 s; times host-local.
+-->
+<style>
+  #g-a3-6-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:#04070c; font-family:Arial, sans-serif; color:#f2f5f8; }
+  .g-a3-6-fr { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-a3-6-late { opacity:0; visibility:hidden; }
+  .g-a3-6-vig { position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse at 50% 50%, rgba(3,5,7,0) 55%, rgba(3,5,7,0.55) 100%); }
+  .g-a3-6-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .g-a3-6-hid { opacity:0; visibility:hidden; }
+  .g-a3-6-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); white-space:nowrap; box-sizing:border-box; }
+  .g-a3-6-dot { position:absolute; width:14px; height:14px; margin:-9px 0 0 -9px; border-radius:50%; background:#f2f5f8; border:2px solid #04070c; opacity:0; visibility:hidden; }
+  .g-a3-6-ring { position:absolute; width:14px; height:14px; margin:-9px 0 0 -9px; border-radius:50%; border:2px solid #f2f5f8; opacity:0; visibility:hidden; }
+  .g-a3-6-lab { position:absolute; padding:10px 14px; border-radius:12px; font-size:26px; font-weight:700; line-height:26px; color:#f2f5f8; opacity:0; visibility:hidden; }
+  #g-a3-6-hud { position:absolute; left:94px; top:56px; width:536px; height:126px; border-radius:16px; opacity:0; visibility:hidden; }
+  #g-a3-6-station { position:absolute; left:110px; top:70px; font-size:22px; font-weight:700; line-height:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; opacity:0; visibility:hidden; }
+  .g-a3-6-clock { position:absolute; left:110px; top:106px; font-family:'Courier New', monospace; font-size:52px; font-weight:700; line-height:56px; color:#e8c56a; white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a3-6-legend { position:absolute; left:1170px; top:982px; width:400px; height:52px; border-radius:12px; opacity:0; visibility:hidden; }
+  #g-a3-6-bar { position:absolute; left:1240px; top:992px; width:320px; height:10px; border-radius:2px; opacity:0; visibility:hidden;
+    background:linear-gradient(90deg, #019ff4 0%, #019ff4 7.7%, #0300f4 7.7%, #0300f4 15.4%, #02fd02 15.4%, #02fd02 23.1%, #01c501 23.1%, #01c501 30.8%,
+      #008e00 30.8%, #008e00 38.5%, #fdf802 38.5%, #fdf802 46.2%, #e5bc00 46.2%, #e5bc00 53.8%, #fd9500 53.8%, #fd9500 61.5%, #fd0000 61.5%, #fd0000 69.2%,
+      #d40000 69.2%, #d40000 76.9%, #bc0000 76.9%, #bc0000 84.6%, #f800fd 84.6%, #f800fd 92.3%, #9854c6 92.3%, #9854c6 100%); }
+  .g-a3-6-ll { position:absolute; font-size:19px; font-weight:700; line-height:19px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a3-6-src { position:absolute; left:96px; top:992px; padding:8px 14px; border-radius:10px; font-size:19px; font-weight:700; line-height:19px; letter-spacing:1px; color:#c8d3e0; opacity:0; visibility:hidden; }
+  .g-a3-6-chip { position:absolute; left:1180px; padding:14px 30px; border-radius:28px; font-weight:700; font-size:30px; line-height:64px; letter-spacing:1px; color:#dfe7ee; opacity:0; visibility:hidden; }
+  .g-a3-6-chip b { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; letter-spacing:0; color:#f2f5f8; }
+  #g-a3-6-inset { position:absolute; left:110px; top:110px; width:520px; height:364px; border-radius:18px; overflow:hidden; border:2px solid rgba(255,255,255,0.22);
+    box-shadow:0 20px 60px rgba(0,0,0,0.6); opacity:0; visibility:hidden; }
+  #g-a3-6-inset img { position:absolute; left:0; top:0; width:520px; height:364px; object-fit:cover; }
+  #g-a3-6-icap { position:absolute; left:110px; top:486px; padding:8px 14px; border-radius:10px; font-size:19px; font-weight:700; line-height:19px; letter-spacing:1px; color:#c8d3e0; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a3-6-root" data-composition-id="g-a3-6" data-width="1920" data-height="1080" data-duration="34.772">
+  <div id="g-a3-6-stage" style="position:absolute; left:0; top:0; width:1920px; height:1080px;">
+    <!-- the replot, scan by scan (extent.json label_cst) -->
+    <img class="g-a3-6-fr" id="g-a3-6-f0" src="media/radar/g-a3-6/KNQA_20211211_010440Z.png" alt="">
+    <img class="g-a3-6-fr g-a3-6-late" id="g-a3-6-f1" src="media/radar/g-a3-6/KNQA_20211211_011018Z.png" alt="">
+    <img class="g-a3-6-fr g-a3-6-late" id="g-a3-6-f2" src="media/radar/g-a3-6/KNQA_20211211_011548Z.png" alt="">
+    <img class="g-a3-6-fr g-a3-6-late" id="g-a3-6-f3" src="media/radar/g-a3-6/KNQA_20211211_012119Z.png" alt="">
+    <img class="g-a3-6-fr g-a3-6-late" id="g-a3-6-f4" src="media/radar/g-a3-6/KNQA_20211211_012648Z.png" alt="">
+    <img class="g-a3-6-fr g-a3-6-late" id="g-a3-6-f5" src="media/radar/g-a3-6/KNQA_20211211_013236Z.png" alt="">
+    <img class="g-a3-6-fr g-a3-6-late" id="g-a3-6-f6" src="media/radar/g-a3-6/KNQA_20211211_013824Z.png" alt="">
+    <img class="g-a3-6-fr g-a3-6-late" id="g-a3-6-f7" src="media/radar/g-a3-6/KNQA_20211211_014425Z.png" alt="">
+    <img class="g-a3-6-fr g-a3-6-late" id="g-a3-6-f8" src="media/radar/g-a3-6/KNQA_20211211_015018Z.png" alt="">
+    <img class="g-a3-6-fr g-a3-6-late" id="g-a3-6-f9" src="media/radar/g-a3-6/KNQA_20211211_015611Z.png" alt="">
+    <img class="g-a3-6-fr g-a3-6-late" id="g-a3-6-f10" src="media/radar/g-a3-6/KNQA_20211211_020148Z.png" alt="">
+    <img class="g-a3-6-fr g-a3-6-late" id="g-a3-6-f11" src="media/radar/g-a3-6/KNQA_20211211_020724Z.png" alt="">
+    <img class="g-a3-6-fr g-a3-6-late" id="g-a3-6-f12" src="media/radar/g-a3-6/KNQA_20211211_021301Z.png" alt="">
+    <img class="g-a3-6-fr g-a3-6-late" id="g-a3-6-f13" src="media/radar/g-a3-6/KNQA_20211211_021914Z.png" alt="">
+    <img class="g-a3-6-fr g-a3-6-late" id="g-a3-6-f14" src="media/radar/g-a3-6/KNQA_20211211_022459Z.png" alt="">
+    <img class="g-a3-6-fr g-a3-6-late" id="g-a3-6-f15" src="media/radar/g-a3-6/KNQA_20211211_023037Z.png" alt="">
+    <img class="g-a3-6-fr g-a3-6-late" id="g-a3-6-f16" src="media/radar/g-a3-6/KNQA_20211211_023629Z.png" alt="">
+    <img class="g-a3-6-fr g-a3-6-late" id="g-a3-6-f17" src="media/radar/g-a3-6/KNQA_20211211_024232Z.png" alt="">
+    <img class="g-a3-6-fr g-a3-6-late" id="g-a3-6-f18" src="media/radar/g-a3-6/KNQA_20211211_024846Z.png" alt="">
+    <img class="g-a3-6-fr g-a3-6-late" id="g-a3-6-f19" src="media/radar/g-a3-6/KNQA_20211211_025459Z.png" alt="">
+    <!-- phase 2 ground: the same projection, state lines only -->
+    <img class="g-a3-6-fr g-a3-6-late" id="g-a3-6-base" src="media/maps/a3-knqa-base.png" alt="">
+    <div class="g-a3-6-vig"></div>
+
+    <svg class="g-a3-6-svg" viewBox="0 0 1920 1080">
+      <!-- Bay AR to Samburg TN, EF4 (DAT survey line) -->
+      <path id="g-a3-6-bay" class="g-a3-6-hid" fill="none" stroke="#e74c3c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"
+        d="M213.3,913.9 L249.0,888.7 L265.2,876.8 L270.8,873.5 L277.7,868.9 L281.9,865.9 L284.6,864.3 L286.2,863.7 L290.1,861.7 L295.1,859.0 L301.1,854.6 L310.1,849.0 L315.6,845.6 L321.1,842.8 L333.8,836.3 L348.4,828.2 L356.3,823.0 L360.5,819.9 L364.0,817.0 L369.3,813.1 L374.5,810.2 L390.9,804.0 L393.3,803.0 L396.3,801.1 L400.4,799.1 L405.6,795.4 L410.0,792.3 L413.0,789.8 L417.4,786.2 L420.0,784.0 L422.6,782.2 L430.5,777.1 L446.8,766.7 L460.6,757.5 L467.4,752.9 L475.0,747.4 L476.4,745.8 L477.6,744.8 L478.7,743.9 L488.0,739.0 L495.7,734.2 L513.9,722.1 L535.6,709.3 L557.3,696.4 L561.7,693.5 L564.8,690.9 L571.1,685.4 L576.0,681.4 L579.5,679.4 L583.0,677.6 L586.3,676.1 L590.7,674.1 L596.5,672.0 L603.7,669.2 L612.7,665.3 L627.6,658.1 L636.5,653.9 L640.0,652.0 L643.1,649.0"/>
+      <!-- the three brief weak tornadoes in the 13-minute gap (NWS Memphis): unlabelled ticks -->
+      <path id="g-a3-6-w1" class="g-a3-6-hid" fill="none" stroke="#93a3b2" stroke-width="6" stroke-linecap="round" d="M657.3,639.7 L661.1,637.8"/>
+      <path id="g-a3-6-w2" class="g-a3-6-hid" fill="none" stroke="#93a3b2" stroke-width="6" stroke-linecap="round" d="M677.9,629.4 L680.0,628.2"/>
+      <path id="g-a3-6-w3" class="g-a3-6-hid" fill="none" stroke="#93a3b2" stroke-width="6" stroke-linecap="round" d="M674.4,645.1 L681.8,636.5 L686.1,629.9"/>
+      <!-- Woodland Mills TN to Falls of Rough KY, EF4, 165.6 mi (DAT survey line): glow, core, flow -->
+      <path id="g-a3-6-mayg" class="g-a3-6-hid" fill="none" stroke="#e74c3c" stroke-opacity="0.3" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"
+        d="M705.3,612.0 L719.5,600.0 L726.8,593.5 L734.1,586.2 L740.0,581.3 L743.7,578.5 L751.2,573.1 L761.2,568.3 L781.1,555.4 L805.1,539.2 L825.6,528.1 L849.5,517.6 L868.2,505.7 L879.6,499.3 L889.0,492.6 L899.0,485.9 L916.0,475.1 L952.2,457.1 L959.3,450.9 L971.0,443.0 L982.2,437.4 L992.2,429.9 L1004.2,424.3 L1020.5,416.3 L1039.2,406.3 L1062.0,392.7 L1073.2,385.2 L1083.9,377.4 L1094.4,371.5 L1099.9,370.2 L1118.3,361.2 L1131.3,354.9 L1148.4,345.6 L1166.6,335.1 L1180.4,326.8 L1186.7,321.1 L1200.5,317.4 L1210.9,311.8 L1226.0,304.3 L1238.7,296.4 L1250.8,290.2 L1277.2,277.0 L1294.4,264.1 L1317.6,253.3 L1335.0,245.4 L1350.8,237.8 L1373.7,227.2 L1389.9,219.3 L1400.7,215.5 L1411.1,213.1 L1418.9,210.4 L1421.5,209.5 L1424.0,208.8 L1429.0,207.2 L1436.8,204.4 L1444.3,201.6 L1450.9,199.7 L1464.3,192.4 L1473.1,187.6 L1477.6,185.3 L1481.3,183.5 L1485.3,181.8 L1493.1,178.2 L1498.6,175.7 L1504.3,173.4 L1510.1,170.9 L1517.6,167.7 L1527.5,162.3 L1533.4,159.1 L1537.0,157.7 L1538.7,157.1 L1540.3,156.3 L1557.0,149.0 L1563.9,146.8 L1567.9,145.6 L1577.1,140.1 L1586.2,134.9 L1588.8,134.1 L1599.3,130.8 L1602.3,130.1 L1609.2,128.3 L1616.3,126.3"/>
+      <path id="g-a3-6-may" class="g-a3-6-hid" fill="none" stroke="#e74c3c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"
+        d="M705.3,612.0 L719.5,600.0 L726.8,593.5 L734.1,586.2 L740.0,581.3 L743.7,578.5 L751.2,573.1 L761.2,568.3 L781.1,555.4 L805.1,539.2 L825.6,528.1 L849.5,517.6 L868.2,505.7 L879.6,499.3 L889.0,492.6 L899.0,485.9 L916.0,475.1 L952.2,457.1 L959.3,450.9 L971.0,443.0 L982.2,437.4 L992.2,429.9 L1004.2,424.3 L1020.5,416.3 L1039.2,406.3 L1062.0,392.7 L1073.2,385.2 L1083.9,377.4 L1094.4,371.5 L1099.9,370.2 L1118.3,361.2 L1131.3,354.9 L1148.4,345.6 L1166.6,335.1 L1180.4,326.8 L1186.7,321.1 L1200.5,317.4 L1210.9,311.8 L1226.0,304.3 L1238.7,296.4 L1250.8,290.2 L1277.2,277.0 L1294.4,264.1 L1317.6,253.3 L1335.0,245.4 L1350.8,237.8 L1373.7,227.2 L1389.9,219.3 L1400.7,215.5 L1411.1,213.1 L1418.9,210.4 L1421.5,209.5 L1424.0,208.8 L1429.0,207.2 L1436.8,204.4 L1444.3,201.6 L1450.9,199.7 L1464.3,192.4 L1473.1,187.6 L1477.6,185.3 L1481.3,183.5 L1485.3,181.8 L1493.1,178.2 L1498.6,175.7 L1504.3,173.4 L1510.1,170.9 L1517.6,167.7 L1527.5,162.3 L1533.4,159.1 L1537.0,157.7 L1538.7,157.1 L1540.3,156.3 L1557.0,149.0 L1563.9,146.8 L1567.9,145.6 L1577.1,140.1 L1586.2,134.9 L1588.8,134.1 L1599.3,130.8 L1602.3,130.1 L1609.2,128.3 L1616.3,126.3"/>
+      <path id="g-a3-6-mayf" class="g-a3-6-hid" fill="none" stroke="#f2f5f8" stroke-opacity="0.8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="10 26"
+        d="M705.3,612.0 L719.5,600.0 L726.8,593.5 L734.1,586.2 L740.0,581.3 L743.7,578.5 L751.2,573.1 L761.2,568.3 L781.1,555.4 L805.1,539.2 L825.6,528.1 L849.5,517.6 L868.2,505.7 L879.6,499.3 L889.0,492.6 L899.0,485.9 L916.0,475.1 L952.2,457.1 L959.3,450.9 L971.0,443.0 L982.2,437.4 L992.2,429.9 L1004.2,424.3 L1020.5,416.3 L1039.2,406.3 L1062.0,392.7 L1073.2,385.2 L1083.9,377.4 L1094.4,371.5 L1099.9,370.2 L1118.3,361.2 L1131.3,354.9 L1148.4,345.6 L1166.6,335.1 L1180.4,326.8 L1186.7,321.1 L1200.5,317.4 L1210.9,311.8 L1226.0,304.3 L1238.7,296.4 L1250.8,290.2 L1277.2,277.0 L1294.4,264.1 L1317.6,253.3 L1335.0,245.4 L1350.8,237.8 L1373.7,227.2 L1389.9,219.3 L1400.7,215.5 L1411.1,213.1 L1418.9,210.4 L1421.5,209.5 L1424.0,208.8 L1429.0,207.2 L1436.8,204.4 L1444.3,201.6 L1450.9,199.7 L1464.3,192.4 L1473.1,187.6 L1477.6,185.3 L1481.3,183.5 L1485.3,181.8 L1493.1,178.2 L1498.6,175.7 L1504.3,173.4 L1510.1,170.9 L1517.6,167.7 L1527.5,162.3 L1533.4,159.1 L1537.0,157.7 L1538.7,157.1 L1540.3,156.3 L1557.0,149.0 L1563.9,146.8 L1567.9,145.6 L1577.1,140.1 L1586.2,134.9 L1588.8,134.1 L1599.3,130.8 L1602.3,130.1 L1609.2,128.3 L1616.3,126.3"/>
+    </svg>
+
+    <!-- pins: dot centres from calc.py; labels clear of every drawn line (layout in the header) -->
+    <div class="g-a3-6-dot" id="g-a3-6-d-bay" style="left:214.1px; top:930.5px;"></div>
+    <div class="g-a3-6-lab g-a3-6-glass" id="g-a3-6-l-bay" style="left:236px; top:936px;">Bay, Ark.</div>
+    <div class="g-a3-6-dot" id="g-a3-6-d-sam" style="left:629.9px; top:655.9px;"></div>
+    <div class="g-a3-6-lab g-a3-6-glass" id="g-a3-6-l-sam" style="left:650px; top:668px;">Samburg, Tenn.</div>
+    <div class="g-a3-6-ring" id="g-a3-6-r-wm" style="left:713.8px; top:614.9px;"></div>
+    <div class="g-a3-6-dot" id="g-a3-6-d-wm" style="left:713.8px; top:614.9px;"></div>
+    <div class="g-a3-6-lab g-a3-6-glass" id="g-a3-6-l-wm" style="left:279px; top:549px;">Woodland Mills, Tenn. · 8:49 PM</div>
+    <div class="g-a3-6-dot" id="g-a3-6-d-fr" style="left:1601.6px; top:133.9px;"></div>
+    <div class="g-a3-6-lab g-a3-6-glass" id="g-a3-6-l-fr" style="left:1127px; top:62px;">Falls of Rough, Ky. · 11:47 PM</div>
+    <div class="g-a3-6-ring" id="g-a3-6-r-fac" style="left:868.6px; top:508.1px;"></div>
+    <div class="g-a3-6-dot" id="g-a3-6-d-fac" style="left:868.6px; top:508.1px;"></div>
+    <div class="g-a3-6-lab g-a3-6-glass" id="g-a3-6-l-fac" style="left:890px; top:520px;">candle factory · Mayfield</div>
+  </div>
+
+  <!-- HUD: station + scan clock (phase 1 only) -->
+  <div class="g-a3-6-glass" id="g-a3-6-hud"></div>
+  <div id="g-a3-6-station">KNQA MEMPHIS · DEC 10, 2021</div>
+  <div class="g-a3-6-clock" id="g-a3-6-c0">7:04 PM CST</div>
+  <div class="g-a3-6-clock" id="g-a3-6-c1">7:10 PM CST</div>
+  <div class="g-a3-6-clock" id="g-a3-6-c2">7:15 PM CST</div>
+  <div class="g-a3-6-clock" id="g-a3-6-c3">7:21 PM CST</div>
+  <div class="g-a3-6-clock" id="g-a3-6-c4">7:26 PM CST</div>
+  <div class="g-a3-6-clock" id="g-a3-6-c5">7:32 PM CST</div>
+  <div class="g-a3-6-clock" id="g-a3-6-c6">7:38 PM CST</div>
+  <div class="g-a3-6-clock" id="g-a3-6-c7">7:44 PM CST</div>
+  <div class="g-a3-6-clock" id="g-a3-6-c8">7:50 PM CST</div>
+  <div class="g-a3-6-clock" id="g-a3-6-c9">7:56 PM CST</div>
+  <div class="g-a3-6-clock" id="g-a3-6-c10">8:01 PM CST</div>
+  <div class="g-a3-6-clock" id="g-a3-6-c11">8:07 PM CST</div>
+  <div class="g-a3-6-clock" id="g-a3-6-c12">8:13 PM CST</div>
+  <div class="g-a3-6-clock" id="g-a3-6-c13">8:19 PM CST</div>
+  <div class="g-a3-6-clock" id="g-a3-6-c14">8:24 PM CST</div>
+  <div class="g-a3-6-clock" id="g-a3-6-c15">8:30 PM CST</div>
+  <div class="g-a3-6-clock" id="g-a3-6-c16">8:36 PM CST</div>
+  <div class="g-a3-6-clock" id="g-a3-6-c17">8:42 PM CST</div>
+  <div class="g-a3-6-clock" id="g-a3-6-c18">8:48 PM CST</div>
+  <div class="g-a3-6-clock" id="g-a3-6-c19">8:54 PM CST</div>
+
+  <!-- dBZ legend, bottom-right outside the presenter corner (phase 1 only) -->
+  <div class="g-a3-6-glass" id="g-a3-6-legend"></div>
+  <div id="g-a3-6-bar"></div>
+  <div class="g-a3-6-ll" id="g-a3-6-l-unit" style="left:1184px; top:997px;">dBZ</div>
+  <div class="g-a3-6-ll" id="g-a3-6-l10" style="left:1230px; top:1007px;">10</div>
+  <div class="g-a3-6-ll" id="g-a3-6-l30" style="left:1328px; top:1007px;">30</div>
+  <div class="g-a3-6-ll" id="g-a3-6-l50" style="left:1427px; top:1007px;">50</div>
+  <div class="g-a3-6-ll" id="g-a3-6-l70" style="left:1525px; top:1007px;">70</div>
+
+  <!-- MODIS Aqua, 12 Dec 2021: western Kentucky only (phase 2) -->
+  <div id="g-a3-6-inset"><img id="g-a3-6-inset-img" src="media/stills/a3-s7-modis-aqua-dec12.jpg" alt=""></div>
+  <div class="g-a3-6-glass" id="g-a3-6-icap">NASA Earth Observatory · MODIS Aqua, 12 Dec 2021 · western Kentucky</div>
+
+  <!-- rail chips: only EF4 and 165.6 mi (brief section 4.4) -->
+  <div class="g-a3-6-chip g-a3-6-glass" id="g-a3-6-ef4" style="top:760px;"><b>EF4</b></div>
+  <div class="g-a3-6-chip g-a3-6-glass" id="g-a3-6-mi" style="top:860px;"><b>165.6</b> mi</div>
+
+  <div class="g-a3-6-glass" id="g-a3-6-src">NEXRAD Level II, KNQA (our replot) · NWS Memphis, Paducah damage surveys; SA p3, p4, p12, p59</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a3-6-";
+  const DUR = 34.772;
+  const tl = gsap.timeline({ paused: true });
+  const len = (sel) => Math.ceil(document.querySelector(sel).getTotalLength()) + 1;
+
+  /* scan times: 7:04-8:36 spread evenly to Samburg (12.70), then 8:42, 8:48 on "eight forty-nine" (14.44), 8:54 */
+  const T = [0];
+  for (let k = 1; k <= 16; k++) T.push(+(k * 12.7 / 16).toFixed(3));
+  T.push(13.6, 14.44, 16.2);
+  tl.fromTo(P + "c0", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.12);
+  for (let k = 1; k < T.length; k++) {
+    tl.fromTo(P + "f" + k, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "none" }, T[k] - 0.15);
+    /* the old time is gone before the new one shows (never two clocks at once) */
+    tl.to(P + "c" + (k - 1), { autoAlpha: 0, y: -10, duration: 0.12, ease: "power2.in" }, T[k] - 0.12);
+    tl.fromTo(P + "c" + k, { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.22, ease: "power3.out" }, T[k]);
+  }
+
+  /* HUD, legend, source from the cut (the radar is the ground from frame 0) */
+  tl.fromTo(P + "hud", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
+  tl.fromTo(P + "station", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
+  tl.fromTo(P + "legend", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.3);
+  tl.fromTo(P + "bar", { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, transformOrigin: "left center", duration: 0.5, ease: "power3.out" }, 0.35);
+  tl.fromTo([P + "l-unit", P + "l10", P + "l30", P + "l50", P + "l70"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", stagger: 0.05 }, 0.4);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.45);
+
+  /* VIOLENT EF4 TORNADOES @7.06 (ep 550.80 "EF") */
+  tl.fromTo(P + "ef4", { autoAlpha: 0, x: 80 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 7.06);
+
+  /* BAY, ARKANSAS @11.12 (ep 554.86): Bay pin, the Bay-Samburg line draws to Samburg @12.62 ("Sandburg" ep 556.36) */
+  const LB = len(P + "bay");
+  tl.set(P + "bay", { strokeDasharray: LB, strokeDashoffset: LB }, 0);
+  tl.fromTo(P + "d-bay", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2.5)" }, 11.12);
+  tl.fromTo(P + "l-bay", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 11.25);
+  tl.set(P + "bay", { autoAlpha: 1 }, 11.12);
+  tl.to(P + "bay", { strokeDashoffset: 0, duration: 1.58, ease: "power1.inOut" }, 11.12);
+  tl.fromTo(P + "d-sam", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2.5)" }, 12.62);
+  tl.fromTo(P + "l-sam", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 12.75);
+
+  /* AT EIGHT FORTY-NINE @14.44 (ep 558.18 "849"): Woodland Mills pin drops; the gap's three weak tornadoes tick in */
+  tl.fromTo(P + "d-wm", { autoAlpha: 0, scale: 0, y: -40 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.45, ease: "back.out(2.2)" }, 14.44);
+  tl.fromTo(P + "l-wm", { autoAlpha: 0, x: 16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 14.6);
+  tl.set([P + "w1", P + "w2", P + "w3"], { transformOrigin: "50% 50%" }, 0);
+  tl.fromTo([P + "w1", P + "w2", P + "w3"], { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.12 }, 14.8);
+  tl.set(P + "r-wm", { autoAlpha: 0.9, scale: 1 }, 14.6);   /* ring on at its pulse; a set reverts on a backward seek */
+  tl.to(P + "r-wm", { autoAlpha: 0, scale: 3.2, duration: 1.1, ease: "power2.out", repeat: 2, repeatDelay: 0.3 }, 14.6);
+
+  /* IT STAYED DOWN @19.16 (ep 562.90): the replot hands over to the state-line base on the same projection */
+  tl.fromTo(P + "base", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.8, ease: "power1.inOut" }, 19.16);
+  tl.to([P + "hud", P + "station", P + "c19", P + "legend", P + "bar", P + "l-unit", P + "l10", P + "l30", P + "l50", P + "l70"],
+    { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 19.16);
+  tl.to([P + "l-bay", P + "l-sam"], { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 19.16);
+  tl.to([P + "bay", P + "d-bay", P + "d-sam"], { autoAlpha: 0.45, duration: 0.5, ease: "power1.out" }, 19.3);
+
+  /* A HUNDRED SIXTY-FIVE POINT SIX MILES @20.00 (ep 563.74 "165"): the long track draws end to end in 3 s; chip in the rail */
+  const LM = len(P + "may");
+  tl.set([P + "may", P + "mayg"], { strokeDasharray: LM, strokeDashoffset: LM }, 0);
+  tl.set([P + "may", P + "mayg"], { autoAlpha: 1 }, 20.0);
+  tl.to([P + "may", P + "mayg"], { strokeDashoffset: 0, duration: 3.0, ease: "power1.inOut" }, 20.0);
+  tl.fromTo(P + "mi", { autoAlpha: 0, x: 80 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 20.0);
+  /* the line reaches Falls of Rough @23.00 (ep 566.74) */
+  tl.fromTo(P + "d-fr", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2.5)" }, 23.0);
+  tl.fromTo(P + "l-fr", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 23.1);
+  /* flow along the track to the exit (36 px per 0.6 s) */
+  tl.fromTo(P + "mayf", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "none" }, 23.2);
+  tl.fromTo(P + "mayf", { strokeDashoffset: 0 }, { strokeDashoffset: -36 * 19, duration: DUR - 23.2, ease: "none" }, 23.2);
+
+  /* LONGEST TRACKED DECEMBER TORNADO @23.60 (ep 567.34): MODIS Aqua inset, western Kentucky only, slow push */
+  tl.fromTo(P + "inset", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 23.6);
+  tl.fromTo(P + "icap", { autoAlpha: 0, y: -12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 23.8);
+  tl.fromTo(P + "inset-img", { scale: 1 }, { scale: 1.08, transformOrigin: "50% 50%", duration: DUR - 23.6, ease: "none", immediateRender: false }, 23.6);
+
+  /* MAYFIELD SAT RIGHT ON THAT LINE @28.64 (ep 572.38): the candle factory pin lands on the track (2.4 px off the nearest vertex) */
+  tl.fromTo(P + "d-fac", { autoAlpha: 0, scale: 0, y: -40 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.45, ease: "back.out(2.2)" }, 28.64);
+  tl.fromTo(P + "l-fac", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 28.8);
+  tl.set(P + "r-fac", { autoAlpha: 0.9, scale: 1 }, 28.8);   /* ring on at its pulse; a set reverts on a backward seek */
+  tl.to(P + "r-fac", { autoAlpha: 0, scale: 3.2, duration: 1.1, ease: "power2.out", repeat: 3, repeatDelay: 0.2 }, 28.8);
+
+  /* exit: everything fades through to the ground while the base pushes in (ep 577.91-578.51) */
+  tl.to(P + "stage", { scale: 1.04, autoAlpha: 0, transformOrigin: "868px 508px", duration: 0.6, ease: "power2.in" }, 34.172);   /* DUR - 0.6 */
+  tl.to([P + "inset", P + "icap", P + "ef4", P + "mi", P + "src"], { autoAlpha: 0, x: -40, duration: 0.5, ease: "power2.in" }, 34.172);   /* DUR - 0.6 */
+
+  window.__timelines["g-a3-6"] = tl;
+})();
+</script>
+</template>

@@ -1,0 +1,45 @@
+<template>
+<style>
+  /* g-a4-14 · A4-S14 · chip "Kentucky workplace safety agency" + source line "AP, 14 Dec 2021" (family g-i1-6). No claim that a rule existed or not.
+     Overlay, no ground: the factory-site still (DVIDS 7018049) then the Mayfield survey aerial run beneath, both Mayfield; the chip names an
+     agency, not a place. Chip box left 110, bottom 150; source line left 110, bottom 64. Nothing past x 1560, nothing at x >= 1600, y >= 680. */
+  #g-a4-14-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  #g-a4-14-float { position:absolute; inset:0; width:1920px; height:1080px; }
+  .g-a4-14-glass { background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-sizing:border-box; white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a4-14-chip { position:absolute; left:110px; bottom:150px; max-width:1000px; padding:18px 30px; border-radius:28px;
+    font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:64px; letter-spacing:1px; color:#dfe7ee; }
+  #g-a4-14-src { position:absolute; left:110px; bottom:64px; max-width:1300px; padding:10px 20px; border-radius:18px;
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:24px; letter-spacing:0; color:#c8d3e0; }
+</style>
+<div id="g-a4-14-root" data-composition-id="g-a4-14" data-width="1920" data-height="1080">
+  <div id="g-a4-14-float">
+    <div class="g-a4-14-glass" id="g-a4-14-chip">Kentucky workplace safety agency</div>
+    <div class="g-a4-14-glass" id="g-a4-14-src">AP, 14 Dec 2021</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 5.4;        /* host 848.178 ("Kentucky's" @1.82 in a4-s14, seg start 846.358) -> 853.578, past "what happened at the factory" (@6.92 = 853.278) */
+  const CUE_CHIP = 0;     /* KENTUCKY'S WORKPLACE SAFETY AGENCY @1.82 (ep 848.178) */
+  const CUE_OUT = 4.8;    /* host end - 0.6 */
+
+  tl.set(["#g-a4-14-chip", "#g-a4-14-src"], { autoAlpha: 0, x: 0, y: 24 }, 0);
+  tl.set("#g-a4-14-float", { scale: 1, y: 0, transformOrigin: "110px 1016px" }, 0);
+  /* ambient float over the whole window */
+  tl.to("#g-a4-14-float", { scale: 1.006, y: -6, duration: DUR, ease: "none" }, 0);
+
+  tl.fromTo("#g-a4-14-chip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUE_CHIP);
+  /* SOURCE LINE 0.4 s after the chip */
+  tl.fromTo("#g-a4-14-src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUE_CHIP + 0.4);
+
+  /* out: slides left and finishes inside the host */
+  tl.to("#g-a4-14-chip", { x: -1000, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, CUE_OUT);
+  tl.to("#g-a4-14-src", { x: -1400, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, CUE_OUT);
+
+  window.__timelines["g-a4-14"] = tl;
+})();
+</script>
+</template>

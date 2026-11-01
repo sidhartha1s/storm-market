@@ -1,0 +1,52 @@
+<template>
+<style>
+  /* g-a3-2 · A3-S2 · lower third "Victor Gensini · Northern Illinois University" over the g-a3-1 explainer (fuel half, x 990-1590).
+     Brief: briefs/mg/g-a3-2.md. Overlay, no ground. Box left 990, bottom 110 (y about 806-970): clear of g-a3-1's fuel label
+     (y 684-714) and its source line (y 984+); nothing at x >= 1600 (presenter corner free).
+     Host 483.78 ("Victor" a3-s2 7.50) -> 491.00 (7.22 s); times host-local (episode - 483.78).
+     The optional AP quote is NOT shown: the voice says something else at that second (two reading targets) and the card would
+     reach y 690 and sit on g-a3-1's fuel label. Whisper spells the name "Gincini"; the screen uses the research spelling (fc-A3 row 9). */
+  #g-a3-2-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  #g-a3-2-float { position:absolute; inset:0; width:1920px; height:1080px; }
+  #g-a3-2-card { position:absolute; left:990px; bottom:110px; padding:22px 32px 22px 40px; border-radius:22px; box-sizing:border-box; white-space:nowrap;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); opacity:0; visibility:hidden; }
+  #g-a3-2-bar { position:absolute; left:0; top:22px; bottom:22px; width:6px; border-radius:3px; background:#e8c56a; }
+  .g-a3-2-ln { display:table; opacity:0; visibility:hidden; }
+  #g-a3-2-name { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; }
+  #g-a3-2-sub { margin-top:6px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:30px; line-height:36px; color:#e8c56a; }
+  #g-a3-2-small { margin-top:10px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:22px; letter-spacing:1px; color:#c8d3e0; }
+</style>
+<div id="g-a3-2-root" data-composition-id="g-a3-2" data-width="1920" data-height="1080">
+  <div id="g-a3-2-float">
+    <div id="g-a3-2-card">
+      <div id="g-a3-2-bar"></div>
+      <div class="g-a3-2-ln" id="g-a3-2-name">Victor Gensini</div>
+      <div class="g-a3-2-ln" id="g-a3-2-sub">Northern Illinois University</div>
+      <div class="g-a3-2-ln" id="g-a3-2-small">Meteorologist · to the Associated Press, 12 Dec 2021</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a3-2-", DUR = 7.22;
+  tl.set(P + "float", { y: 0 }, 0);
+  tl.set(P + "bar", { scaleY: 0, transformOrigin: "50% 100%" }, 0);
+  /* ambient: the card floats up 6 px over the whole window */
+  tl.to(P + "float", { y: -6, duration: DUR, ease: "none" }, 0);
+  /* VICTOR GENSINI @0.00 (ep 483.78) */
+  tl.fromTo(P + "card", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0);
+  tl.to(P + "bar", { scaleY: 1, duration: 0.45, ease: "power3.out" }, 0.15);
+  tl.fromTo(P + "name", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.1);
+  /* NORTHERN ILLINOIS UNIVERSITY @2.28 (ep 486.06 "Northern") */
+  tl.fromTo(P + "sub", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.28);
+  /* TOLD THE ASSOCIATED PRESS @4.00 (ep 487.78) */
+  tl.fromTo(P + "small", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.0);
+  /* exit before "Winter usually" (ep 490.42): slides out left, done inside the host */
+  tl.to(P + "card", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 6.6);   /* DUR - 0.62 */
+  window.__timelines["g-a3-2"] = tl;
+})();
+</script>
+</template>

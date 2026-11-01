@@ -1,0 +1,63 @@
+<template>
+<style>
+  /* g-a4-1 · A4-S1 · NWS Paducah "Tornado Warning Issuance Timeline" (F09, media/stills/a4-s1-warning-timeline.png, 1280x720 -> x1.5 = 1920x1080)
+     with its own "Graves County: 9:05 PM" box lit (outline measured on the PNG: box 456-628 x 339.5-400.75 px -> frame 684-942 x 509-601, 6 px out),
+     chip "9:05 PM" and the source line. Full frame: the PNG sits inside the comp so the outline rides the same push as the picture.
+     The chip sits at left 110, bottom 254 and the source line right-aligned at x 1560, bottom 110: the lower-left datum (bottom 150) would cover
+     the PNG's own "Fulton County 8:29 PM" box and the bottom 64 line its NWS footer text. Nothing at x >= 1600, y >= 680. */
+  #g-a4-1-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:#04070a; font-family:Arial, sans-serif; }
+  #g-a4-1-world { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #g-a4-1-img { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #g-a4-1-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #g-a4-1-box { fill:none; stroke:#f2f5f8; stroke-width:3px; visibility:hidden; }
+  #g-a4-1-halo { fill:none; stroke:#f2f5f8; stroke-width:10px; stroke-opacity:0.35; visibility:hidden; }
+  .g-a4-1-glass { background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-sizing:border-box; white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a4-1-chip { position:absolute; left:110px; bottom:254px; padding:18px 30px; border-radius:28px;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; line-height:64px; color:#f2f5f8; }
+  #g-a4-1-src { position:absolute; right:360px; bottom:110px; max-width:1300px; padding:10px 20px; border-radius:18px;
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:24px; color:#c8d3e0; }
+</style>
+<div id="g-a4-1-root" data-composition-id="g-a4-1" data-width="1920" data-height="1080">
+  <div id="g-a4-1-world">
+    <img id="g-a4-1-img" src="media/stills/a4-s1-warning-timeline.png" alt="">
+    <svg id="g-a4-1-svg" viewBox="0 0 1920 1080">
+      <rect id="g-a4-1-halo" x="678" y="503" width="270" height="104" rx="4"/>
+      <rect id="g-a4-1-box" x="678" y="503" width="270" height="104" rx="4"/>
+    </svg>
+  </div>
+  <div class="g-a4-1-glass" id="g-a4-1-chip">9:05 PM</div>
+  <div class="g-a4-1-glass" id="g-a4-1-src">NWS Service Assessment, p29 and p47</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 4.174;   /* host 662.704 (bo-a3-a4 end; a4-s1 voice at 662.904) -> 666.878 (a4-s2 start, the watch graphic) */
+  const CUE = 0.44;    /* "905" @0.24 in a4-s1.words.json (ep 663.144) */
+  const OUT = 3.574;   /* host end - 0.6 */
+  const L = Math.ceil(document.querySelector("#g-a4-1-box").getTotalLength()) + 1;
+
+  tl.set("#g-a4-1-world", { scale: 1, transformOrigin: "813px 555px" }, 0);
+  tl.to("#g-a4-1-world", { scale: 1.07, duration: DUR, ease: "none" }, 0);   /* slow push toward the Graves box */
+
+  /* 9:05 @0.24: the box outline draws, then pulses (1.2 s) */
+  tl.set("#g-a4-1-box", { strokeDasharray: L, strokeDashoffset: L, visibility: "hidden" }, 0);
+  tl.set("#g-a4-1-box", { visibility: "visible" }, CUE);
+  tl.fromTo("#g-a4-1-box", { strokeDashoffset: L }, { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut" }, CUE);
+  tl.set("#g-a4-1-halo", { visibility: "hidden", opacity: 0 }, 0);
+  tl.set("#g-a4-1-halo", { visibility: "visible" }, CUE + 0.6);
+  tl.fromTo("#g-a4-1-halo", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, CUE + 0.6);
+
+  tl.set(["#g-a4-1-chip", "#g-a4-1-src"], { autoAlpha: 0, x: 0, y: 24 }, 0);
+  tl.fromTo("#g-a4-1-chip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUE);
+  tl.fromTo("#g-a4-1-src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUE + 0.4);
+
+  /* out: chip slides left, source line right; the picture cuts to the watch at the host end */
+  tl.to("#g-a4-1-chip", { x: -1000, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, OUT);
+  tl.to("#g-a4-1-src", { x: 1000, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, OUT);
+
+  window.__timelines["g-a4-1"] = tl;
+})();
+</script>
+</template>
