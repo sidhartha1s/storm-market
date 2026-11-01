@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a2-2-thermo: Columbus, Thanksgiving night 1950, 39F at 8 pm to 20F by midnight to 8F at 7 am Friday (A2-S2).
+  Brief: briefs/a2/g-a2-2-thermo.md. Full-frame designed card on track 2. Host: data-start = A2-S2 start, data-duration = 12.54.
+  Cues: audio/a2-s2.words.json (pipeline re-transcription, 28 Oct 26; replaces the brief's scratch cues, 1.16->1.24 and 5.14->5.26 moved > 0.1 s).
+  Scale 0F..50F, 10.4 px per degree, 0F at y 880. Liquid tops: 39F y 474.4, 20F y 672, 8F y 796.8 (scaleY 0.78 / 0.40 / 0.16 of the 520 px rect).
+  Hour hand is drawn pointing at 8 (no initial transform); +120 deg = 12, +330 deg = 7. Nothing in x >= 1600, y >= 680.
+-->
+<template>
+<style>
+  #t2-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #t2-card { position:absolute; inset:0; }
+  #t2-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .t2-h { opacity:0; visibility:hidden; }
+  .t2-eb { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:6px; fill:#93a3b2; }
+  .t2-hd { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; fill:#f2f5f8; }
+  .t2-tk { font-family:Arial, sans-serif; font-weight:700; font-size:22px; fill:#93a3b2; }
+  .t2-lab { font-family:Arial, sans-serif; font-weight:700; font-size:26px; letter-spacing:4px; fill:#93a3b2; }
+  .t2-val { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:84px; fill:#f2f5f8; }
+  .t2-src { font-family:Arial, sans-serif; font-weight:700; font-size:19px; letter-spacing:2px; fill:#c8d3e0; }
+  .t2-tube { fill:#0b1016; stroke:#5a768f; stroke-width:3; }
+  .t2-liq { fill:#d8a13a; }
+  .t2-glint { fill:#dfe7ee; opacity:.7; }
+</style>
+<div id="t2-wrap" data-composition-id="g-a2-2-thermo" data-width="1920" data-height="1080" data-duration="12.54">
+  <div id="t2-card">
+    <svg id="t2-svg" viewBox="0 0 1920 1080">
+      <!-- background frost, drifts up-left the whole window -->
+      <circle class="t2-glint" id="t2-bg1" cx="220" cy="300" r="2"/>
+      <circle class="t2-glint" id="t2-bg2" cx="820" cy="220" r="2.5"/>
+      <circle class="t2-glint" id="t2-bg3" cx="1420" cy="260" r="1.5"/>
+      <circle class="t2-glint" id="t2-bg4" cx="300" cy="700" r="2"/>
+      <circle class="t2-glint" id="t2-bg5" cx="1480" cy="560" r="2"/>
+      <circle class="t2-glint" id="t2-bg6" cx="860" cy="900" r="1.5"/>
+
+      <!-- title -->
+      <text class="t2-eb t2-h" id="t2-eb" x="110" y="86">COLUMBUS, OHIO · 1950</text>
+      <text class="t2-hd t2-h" id="t2-hd" x="110" y="160">THANKSGIVING NIGHT</text>
+
+      <!-- thermometer: tube, bulb, ticks every 10F -->
+      <g id="t2-thermo">
+        <rect class="t2-tube" x="560" y="340" width="60" height="560" rx="30"/>
+        <circle class="t2-tube" cx="590" cy="920" r="48"/>
+        <rect x="562" y="860" width="56" height="40" fill="#0b1016"/>
+        <g stroke="#5a768f" stroke-width="2">
+          <line x1="520" y1="880" x2="552" y2="880"/>
+          <line x1="520" y1="776" x2="552" y2="776"/>
+          <line x1="520" y1="672" x2="552" y2="672"/>
+          <line x1="520" y1="568" x2="552" y2="568"/>
+          <line x1="520" y1="464" x2="552" y2="464"/>
+          <line x1="520" y1="360" x2="552" y2="360"/>
+        </g>
+        <text class="t2-tk" x="510" y="888" text-anchor="end">0°</text>
+        <text class="t2-tk" x="510" y="784" text-anchor="end">10°</text>
+        <text class="t2-tk" x="510" y="680" text-anchor="end">20°</text>
+        <text class="t2-tk" x="510" y="576" text-anchor="end">30°</text>
+        <text class="t2-tk" x="510" y="472" text-anchor="end">40°</text>
+        <text class="t2-tk" x="510" y="368" text-anchor="end">50°</text>
+        <!-- liquid: fixed full-height rect (0F..50F), moved by scaleY from the 0F line -->
+        <g class="t2-h" id="t2-liqg">
+          <circle class="t2-liq" id="t2-lb" cx="590" cy="920" r="38"/>
+          <rect class="t2-liq" id="t2-lq" x="572" y="360" width="36" height="520"/>
+        </g>
+        <!-- frost glints on the tube (hold) -->
+        <circle class="t2-glint t2-h" id="t2-fg1" cx="566" cy="760" r="3"/>
+        <circle class="t2-glint t2-h" id="t2-fg2" cx="614" cy="840" r="2.5"/>
+        <circle class="t2-glint t2-h" id="t2-fg3" cx="568" cy="900" r="2"/>
+      </g>
+
+      <!-- clock: 12 ticks, no numerals -->
+      <g id="t2-clock">
+        <circle cx="1060" cy="600" r="180" fill="#0b1016" stroke="#93a3b2" stroke-width="4"/>
+        <g stroke="#93a3b2" stroke-width="4" stroke-linecap="round">
+          <line x1="1060" y1="436" x2="1060" y2="456"/>
+          <line x1="1142" y1="458" x2="1132" y2="475.3"/>
+          <line x1="1202" y1="518" x2="1184.7" y2="528"/>
+          <line x1="1224" y1="600" x2="1204" y2="600"/>
+          <line x1="1202" y1="682" x2="1184.7" y2="672"/>
+          <line x1="1142" y1="742" x2="1132" y2="724.7"/>
+          <line x1="1060" y1="764" x2="1060" y2="744"/>
+          <line x1="978" y1="742" x2="988" y2="724.7"/>
+          <line x1="918" y1="682" x2="935.3" y2="672"/>
+          <line x1="896" y1="600" x2="916" y2="600"/>
+          <line x1="918" y1="518" x2="935.3" y2="528"/>
+          <line x1="978" y1="458" x2="988" y2="475.3"/>
+        </g>
+        <!-- minute hand stays on 12 (whole hours only) -->
+        <line x1="1060" y1="600" x2="1060" y2="450" stroke="#f2f5f8" stroke-width="4" stroke-linecap="round"/>
+        <!-- hour hand drawn at 8 o'clock: 240 deg clockwise from 12, length 100 -->
+        <line id="t2-hr" x1="1060" y1="600" x2="973.4" y2="650" stroke="#f2f5f8" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="1060" cy="600" r="8" fill="#f2f5f8"/>
+      </g>
+
+      <!-- readout: label above value, one of each visible at a time -->
+      <text class="t2-lab t2-h" id="t2-l1" x="1300" y="520">THU 8 PM</text>
+      <text class="t2-lab t2-h" id="t2-l2" x="1300" y="520">MIDNIGHT</text>
+      <text class="t2-lab t2-h" id="t2-l3" x="1300" y="520">FRI 7 AM</text>
+      <text class="t2-val t2-h" id="t2-v1" x="1296" y="626">39°F</text>
+      <text class="t2-val t2-h" id="t2-v2" x="1296" y="626">20°F</text>
+      <text class="t2-val t2-h" id="t2-v3" x="1296" y="626">8°F</text>
+
+      <text class="t2-src" x="110" y="1020">Source: NWS Wilmington OH</text>
+    </svg>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 12.54;
+  const LQ = { svgOrigin: "590 880", smoothOrigin: false };
+  const HR = { svgOrigin: "1060 600", smoothOrigin: false };
+
+  tl.set(["#t2-eb", "#t2-hd", "#t2-liqg", "#t2-fg1", "#t2-fg2", "#t2-fg3",
+          "#t2-l1", "#t2-l2", "#t2-l3", "#t2-v1", "#t2-v2", "#t2-v3"], { autoAlpha: 0 }, 0);
+  tl.set("#t2-lq", { scaleY: 0, ...LQ }, 0);
+
+  /* ambient, whole window: background frost drifts and twinkles */
+  tl.to(["#t2-bg1", "#t2-bg2", "#t2-bg3", "#t2-bg4", "#t2-bg5", "#t2-bg6"], { x: -60, y: -36, duration: DUR, ease: "none" }, 0);
+  tl.to(["#t2-bg1", "#t2-bg3", "#t2-bg5"], { opacity: 0.15, duration: 1.5, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0);
+  tl.to(["#t2-bg2", "#t2-bg4", "#t2-bg6"], { opacity: 0.15, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0.4);
+
+  /* AND @0.00: ground, empty thermometer, clock at 8 o'clock, source line on */
+  tl.fromTo("#t2-thermo", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0);
+  tl.fromTo("#t2-clock", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.1);
+
+  /* FAST @1.24: eyebrow + headline in */
+  tl.fromTo("#t2-eb", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.24);
+  tl.fromTo("#t2-hd", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.34);
+
+  /* EIGHT @2.26: "THU 8 PM" in; the hour hand already points at 8 */
+  tl.fromTo("#t2-l1", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 2.26);
+
+  /* 39 @5.26: liquid fills from empty to 39F (the only rise), "39°F" in */
+  tl.set("#t2-liqg", { autoAlpha: 1 }, 5.26);
+  tl.fromTo("#t2-lq", { scaleY: 0, ...LQ }, { scaleY: 0.78, ...LQ, duration: 0.8, ease: "power3.out", immediateRender: false }, 5.26);
+  tl.fromTo("#t2-v1", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 5.26);
+
+  /* MIDNIGHT @7.12: hour hand 8 -> 12, label swap (old out fully before new in) */
+  tl.fromTo("#t2-hr", { rotation: 0, ...HR }, { rotation: 120, ...HR, duration: 0.6, ease: "power2.inOut", immediateRender: false }, 7.12);
+  tl.to("#t2-l1", { autoAlpha: 0, y: -20, duration: 0.2, ease: "power2.in" }, 7.12);
+  tl.fromTo("#t2-l2", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 7.32);
+
+  /* 20 @7.70: liquid drains to 20F, amber to blue, value swap */
+  tl.fromTo("#t2-lq", { scaleY: 0.78, ...LQ }, { scaleY: 0.40, ...LQ, duration: 0.7, ease: "power2.inOut", immediateRender: false }, 7.7);
+  tl.to(["#t2-lq", "#t2-lb"], { fill: "#7fb2e5", duration: 0.7, ease: "power2.inOut" }, 7.7);
+  tl.to("#t2-v1", { autoAlpha: 0, y: -20, duration: 0.2, ease: "power2.in" }, 7.7);
+  tl.fromTo("#t2-v2", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 7.9);
+
+  /* SEVEN @8.56: hour hand 12 -> 7, label swap */
+  tl.fromTo("#t2-hr", { rotation: 120, ...HR }, { rotation: 330, ...HR, duration: 0.6, ease: "power2.inOut", immediateRender: false }, 8.56);
+  tl.to("#t2-l2", { autoAlpha: 0, y: -20, duration: 0.2, ease: "power2.in" }, 8.56);
+  tl.fromTo("#t2-l3", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 8.76);
+
+  /* EIGHT @9.74: liquid drains to 8F, colour to slate, value swap */
+  tl.fromTo("#t2-lq", { scaleY: 0.40, ...LQ }, { scaleY: 0.16, ...LQ, duration: 0.7, ease: "power2.inOut", immediateRender: false }, 9.74);
+  tl.to(["#t2-lq", "#t2-lb"], { fill: "#5a768f", duration: 0.7, ease: "power2.inOut" }, 9.74);
+  tl.to("#t2-v2", { autoAlpha: 0, y: -20, duration: 0.2, ease: "power2.in" }, 9.74);
+  tl.fromTo("#t2-v3", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 9.94);
+
+  /* 10.44 to exit: frost glints on the tube float +-6 px */
+  tl.to(["#t2-fg1", "#t2-fg2", "#t2-fg3"], { autoAlpha: 0.8, duration: 0.3, ease: "power2.out", stagger: 0.1 }, 10.44);
+  tl.fromTo(["#t2-fg1", "#t2-fg2", "#t2-fg3"], { y: 6 }, { y: -6, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 2, stagger: 0.1 }, 10.44);
+
+  /* exit: last 0.6 s, the card slides off left */
+  tl.to("#t2-card", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 11.94);
+
+  window.__timelines["g-a2-2-thermo"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-intro-1-date (H1-S1, standard): red Abril popfig "NOV 25, 1950" + sub "SATURDAY · NEWARK, NEW JERSEY" over Paul's first full-frame clip (ins-paul-1).
+  Host: data-start = 0.75 (Paul says "Newark"), data-duration 4.74. Cue times below are LOCAL (clip time - 0.75); clip times in the comments.
+  TIMING: retimed 29 Oct 26 to Paul's real clip ins-paul-1 (faster-whisper small.en on ins-paul-1-v2.mp4, file time - data-media-start 0.11): Newark 0.75-1.07, New Jersey 1.33-1.73, "1950" 4.49-4.89, "and" 5.77.
+  PROVISIONAL hook: a different hook shape redoes this graphic.
+  Placement: big top y=640, sub top y=802 (12 px under the big line), block centred x=960. Re-check one frame at clip time 2.0 s: if Paul's chin/mouth is under the big line, move the block down in 20 px steps (never above 600, sub bottom never below 1010).
+  Font: fonts/AbrilFatface-Regular.ttf under the episode root (on disk).
+-->
+<template>
+<style>
+  @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+  #g-intro-1-date-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; }
+  /* timed wrapper (exit) > float layer > two lines. Text-safe box x 96..1824; nothing right of x 1680 below y 840 */
+  #d1-block { position:absolute; left:96px; top:640px; width:1728px; height:212px; text-align:center; white-space:nowrap; transform-origin:50% 50%; }
+  #d1-float { position:absolute; inset:0; }
+  .d1-big { position:absolute; left:0; right:0; top:0; font-family:'AbrilFig', Georgia, serif; font-size:150px; line-height:150px; color:#d0121f; letter-spacing:0.04em;
+    opacity:0; visibility:hidden; transform-origin:50% 50%;
+    text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+  /* local scrim: soft radial behind both lines, never a box */
+  #d1-scrim { position:absolute; left:214px; top:-90px; width:1300px; height:420px; opacity:0; visibility:hidden;
+    background:radial-gradient(ellipse at 50% 50%, rgba(3,5,8,0.5) 0%, rgba(3,5,8,0) 70%); }
+  .d1-sub { position:absolute; left:0; right:0; top:162px; font-family:Arial, sans-serif; font-weight:700; font-size:34px; line-height:40px; color:#e8e3d8; letter-spacing:0.2em;
+    opacity:0; visibility:hidden;
+    text-shadow:0 0 14px rgba(0,0,0,0.95), 0 3px 10px #000; }
+</style>
+<div id="g-intro-1-date-root" data-composition-id="g-intro-1-date" data-width="1920" data-height="1080" data-type-ok="date/place popfig: two lines by design">
+  <div id="d1-block" data-start="0" data-duration="4.74" data-track-index="1">
+    <div id="d1-float">
+      <div id="d1-scrim"></div>
+      <span class="d1-big" id="d1-big">NOV 25, 1950</span>
+      <span class="d1-sub" id="d1-sub">SATURDAY · NEWARK, NEW JERSEY</span>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const B = "#d1-";
+  tl.set([B+"big", B+"sub", B+"scrim"], {autoAlpha:0}, 0);
+  tl.fromTo(B+"scrim", {autoAlpha:0, scale:0.9}, {autoAlpha:1, scale:1, duration:0.6, ease:"power3.out"}, 0);
+  tl.set(B+"float", {y:0}, 0);
+  /* NEWARK @0.75 clip (local 0.00): big line punches in */
+  tl.fromTo(B+"big", {autoAlpha:0, scale:1.25}, {autoAlpha:1, scale:1, duration:0.45, ease:"back.out(1.6)"}, 0);
+  /* JERSEY @1.33 clip (local 0.58): sub line in, fully on by 0.98 local (1.73 clip), as "Jersey." ends */
+  tl.fromTo(B+"sub", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.58);
+  /* hold local 0.45..4.14: both lines float up/down; 3 legs of 1.22 s = 3.66 s */
+  tl.to(B+"float", {y:-10, duration:1.22, ease:"sine.inOut", repeat:2, yoyo:true}, 0.45);
+  /* EXIT starts as "1950" ends (4.89 clip, local 4.14), done 5.49 clip (local 4.74), before "and" @5.77 */
+  tl.to(B+"block", {autoAlpha:0, y:-40, scale:0.96, duration:0.6, ease:"power3.in"}, 4.14);
+  window.__timelines["g-intro-1-date"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

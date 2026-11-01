@@ -1,0 +1,274 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a3-6-squeeze · A3-S6 · ep-appalachian-1950 · STANDARD (Sonnet) · brief: briefs/a3/g-a3-6-squeeze.md
+  Claim: the low bottomed near 980 mb while pressure near 1050 mb sat northeast; that squeeze drove east/south-east wind
+  ashore (Newark 108 mph) and piled the tide up (record tide at Philadelphia, no figure). Full frame, track 2, sits over nothing.
+  Host: data-start = A3-S6 start, data-duration 17.98 (17.58 wav + 0.40 gap). Cues = audio/a3-s6.words.json seconds.
+
+  CARD (0 to 7.28): two 300 px dials, centres (620,470) and (1180,470), R 143 + 14 px stroke, 270 deg from 135 deg clockwise to 45 deg.
+    One scale 950 to 1060: left fraction 30/110 = 0.2727 (dashoffset 0.7273), right 100/110 = 0.9091 (dashoffset 0.0909): ratio 3.33x.
+  MAP (6.78 on): frame N, s 0.06, top-left (71559.9, 25871.1): one group translate(-4293.594,-1552.266) scale(0.06).
+    Newark (1100,420), Philadelphia (871,682). Natural Earth subpaths verbatim: PA, MD, DE, NJ from compositions/g-a1-6-delaware.html;
+    NY (mainland cut at the frame, Long Island, Staten Island) from g-a1-7-newlondon.html; CT from g-a1-5-ct.html.
+    shortcut: NY mainland is closed off-frame by one chord (68420,25805)->(92448,25363), screen y -4 to -30; MD closes by the same
+    off-frame chord as g-a1-6 (a 14 px stub at screen x 444, y 1066 to 1080). Take the full subpaths if the frame ever moves.
+    Delaware course (no river path in the basemap): converted from g-a1-6's lat/lon-derived points (map = tl13 + p/0.13):
+    mouth (903,1047) · bay centre (852,935) · Greenwich (824,871) · Del. Mem. Bridge (789,770) · Chester (826,717) · Philadelphia (871,682).
+    Wind arrows (schematic, no source for direction at Newark): sea S1 (1560,562)->(1182,562), S2 (1500,580)->(1172,600),
+    S3 (1450,600)->(1158,654), all below the "108 MPH" chip (box 1140..~1455 x 450..528) so no arrow crosses it;
+    Delaware D1 (914,1072)->(858,708) and D2 (896,1078)->(790,744). Heads 30 long, 30 wide, one polygon each.
+    Philadelphia label right edge 844 (left edge about 585); RECORD TIDE chip right edge 555 (24+ px gap); water band 195..555 x 716..736.
+  CUES (comp time = segment time):
+    0.00 The         dials + tracks on, source line on
+    0.14 low         LOW · MB
+    1.20 980         left arc fills + counter 950 to 980 (1.0 s)
+    2.06 millibars,  gloss line
+    3.74 higher      HIGH · MB, right arc + counter 950 to 1050 (1.2 s)
+    5.02 northeast.  gap bar glows, pulses
+    6.28 squeeze     dials squeeze x +-60 (0.5 s), bar scaleX .6; 6.78 card scales .9 and fades while the map fades in (to 7.28)
+    8.22 ocean       three sea arrows draw (0.8 s), conveyors follow each draw
+    9.38 southeast,  two Delaware arrows draw
+    10.24 hard.      conveyors 2x
+    12.06 Newark,    pin + label + 108 MPH chip
+    13.38 coast      Philadelphia pin + label; 108 MPH dims .35
+    14.26 tide       water band rises; RECORD TIDE chip
+    15.42 snow       both chips dim .35; arrows and Newark pulse run on
+    17.38            chips exit x 980; map and card cover fade to #04070c (ends 17.98)
+-->
+<template>
+<style>
+  #a3s-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .a3s-full { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .a3s-hide { opacity:0; visibility:hidden; }
+  .a3s-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-sizing:border-box; }
+  /* card */
+  .a3s-dial { position:absolute; top:270px; width:360px; height:400px; }
+  #a3s-dl { left:440px; }
+  #a3s-dr { left:1000px; }
+  .a3s-dial svg { position:absolute; left:0; top:0; width:360px; height:400px; overflow:visible; }
+  .a3s-num { position:absolute; left:0; top:160px; width:360px; text-align:center; font-family:'Arial Black', Arial, sans-serif;
+    font-weight:900; font-size:64px; line-height:64px; color:#f2f5f8; white-space:nowrap; }
+  .a3s-lab { position:absolute; left:0; top:232px; width:360px; text-align:center; font-family:Arial, sans-serif; font-weight:700;
+    font-size:22px; line-height:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  #a3s-bar { position:absolute; left:800px; top:465px; width:200px; height:10px; border-radius:5px; background:#d8a13a;
+    box-shadow:0 0 24px 6px rgba(216,161,58,0.75); }
+  #a3s-gloss { position:absolute; left:400px; top:700px; width:1000px; text-align:center; font-family:Georgia, serif; font-style:italic;
+    font-size:26px; line-height:34px; color:#d8a13a; white-space:nowrap; }
+  /* credits */
+  .a3s-credit { position:absolute; left:110px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:22px;
+    letter-spacing:2px; white-space:nowrap; }
+  #a3s-src { bottom:90px; color:#c8d3e0; }
+  #a3s-base { bottom:60px; color:#93a3b2; }
+  /* map */
+  .a3s-land { fill:#0b1016; stroke:rgba(255,255,255,0.14); stroke-width:1.5px; stroke-linejoin:round; }
+  .a3s-lab2 { font-family:Arial, sans-serif; font-weight:700; font-size:26px; letter-spacing:3px; fill:#dfe7ee;
+    paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .a3s-pulse { opacity:0; }
+  /* chips */
+  .a3s-chip { position:absolute; inset:auto; padding:10px 18px; border-radius:14px; font-family:'Arial Black', Arial, sans-serif;
+    font-weight:900; color:#f2f5f8; white-space:nowrap; }
+  #a3s-chip1 { left:1140px; top:450px; font-size:58px; line-height:58px; }
+  #a3s-chip2 { right:1365px; top:652px; font-size:40px; line-height:40px; }
+  #a3s-band { position:absolute; left:195px; top:716px; width:360px; height:20px; border-radius:4px; background:#7fb2e5; }
+  #a3s-cover { position:absolute; left:0; top:0; width:1920px; height:1080px; background:#04070c; }
+</style>
+<div id="a3s-root" data-composition-id="g-a3-6-squeeze" data-width="1920" data-height="1080" data-duration="17.98">
+
+  <!-- ================= MAP (frame N), under the card from frame 0, revealed at 6.78 ================= -->
+  <div id="a3s-map" class="a3s-full a3s-hide">
+    <svg class="a3s-full" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="a3s-cam" transform="translate(-4293.594,-1552.266) scale(0.06)">
+        <!--BASEMAP:a3s-->
+        <path class="a3s-land" vector-effect="non-scaling-stroke" d="M68420,24301 L68420,25805 L85365,25819 L85662,26108 L85797,26412 L86246,26629 L86347,26750 L86350,26930 L86508,27122 L86457,27412 L86517,27997 L86786,28559 L86963,28746 L87649,29027 L87870,29399 L87435,29711 L87051,30528 L86593,31106 L86242,31401 L86424,32198 L86285,32500 L86043,32649 L85976,33127 L85988,33652 L86340,33947 L86584,34632 L86805,34713 L87733,36117 L86624,36883 L86050,37568 L85482,37736 L85097,38011 L84754,37854 L84277,37876 L83991,38081 L83700,38531 L65514,38530 L65511,25868 L66225,25582 Z"/>
+        <path class="a3s-land" vector-effect="non-scaling-stroke" d="M78957,43646 L79297,43189 L78871,42499 L78564,42880 L78301,42738 L77876,42267 L77185,41934 L77087,41768 L77193,41331 L76981,41082 L76463,40836 L76194,40586 L76104,40168 L75991,40098 L76038,39838 L75682,39349 L75747,39216 L75640,39154 L75362,39165 L75087,39040 L74816,38779 L74496,38735 L73942,38995 L73629,39058 L73288,39586 L72588,39496 L72343,39337 L72324,39137 L72204,39065 L72062,39381 L71460,40031 L71061,39907 L70223,40825 L69476,41387 L69516,38528 L83700,38531 L83999,45608 L86570,45605 L86518,46011 L86429,46107 L86432,45860 L86370,45774 L86266,45881 L86100,46725 L85849,46797 L85270,48010 L84333,48154 L84182,48407 L83891,48297 L83446,48309 L83659,47666 L83428,47366 L83150,47205 L83396,46691 L83347,46370 L83416,46128 L83300,46164 L82999,46523 L82928,46296 L82677,46589 L82060,46132 L81741,45387 L81859,44799 L82111,44695 L82440,44790 L82870,44789 L82808,44659 L82655,44680 L82201,44203 L82055,43915 L81804,43836 L81690,44113 L81563,44187 L81720,43580 L81925,43555 L82228,43387 L82140,43037 L81948,42883 L81603,43075 L81607,42829 L81672,42513 L81932,42514 L82160,42617 L82354,42106 L82363,41878 L82041,42210 L81968,41495 L82285,40805 L82588,40505 L83350,40465 L82861,40270 L83361,39712 L82987,39747 L83031,39297 L82631,39431 L82547,39622 L82500,40146 L82330,40313 L82044,40443 L82017,40217 L81922,40115 L81887,40598 L81812,40762 L81603,40309 L81495,40752 L81315,40868 L81326,41153 L81257,41308 L80682,41061 L80669,41145 L80994,41679 L81231,41861 L81260,42152 L81056,42394 L80728,42201 L80977,42871 L80878,43133 L80811,44002 L80948,45178 L81360,46089 L81188,46131 L80675,45716 L80389,45142 L80272,44732 L80306,45148 L80408,45612 L81303,46652 L81595,47364 L81563,47664 L81128,47181 L80593,46875 L79919,46681 L79539,45970 L79540,46267 L79456,46519 L79077,45950 L79028,45663 Z"/>
+        <path class="a3s-land" vector-effect="non-scaling-stroke" d="M86570,45605 L83999,45608 L83700,38531 L83991,38081 L84277,37876 L84754,37854 L85097,38011 L84457,38986 L84536,39477 L84510,39901 L85129,40993 L85208,42047 L85522,42752 L86004,43574 L86374,43807 L86392,44113 L86221,44618 L85996,44849 L86289,44802 L86434,44918 L86577,45339 L86570,45605 Z"/>
+        <path class="a3s-land" vector-effect="non-scaling-stroke" d="M86430,37072 L87733,36117 L86805,34713 L86584,34632 L86340,33947 L85988,33652 L86001,32826 L86043,32649 L86285,32500 L86424,32198 L86242,31401 L86593,31106 L87051,30528 L87435,29711 L87870,29399 L90901,31438 L90835,31874 L90457,32756 L89837,33361 L89685,33584 L89541,34028 L89628,34432 L90364,34579 L90561,34455 L90718,35146 L90447,36572 L90248,38163 L90307,37018 L90187,37114 L90104,37326 L89879,38507 L89570,39137 L89286,39572 L88992,39500 L89058,39846 L88908,40403 L88733,40652 L88569,40628 L88333,40800 L88239,40931 L88232,41183 L87504,42554 L87008,42894 L86890,42844 L87110,41753 L86522,41387 L86192,41404 L85827,40977 L85357,40667 L84701,39827 L84703,39204 L85094,38154 L85358,37931 L86124,37703 L86430,37072 Z M89593,39608 L89583,39446 L90145,38396 L90044,38763 L89593,39608 Z"/>
+        <path class="a3s-land" vector-effect="non-scaling-stroke" d="M92448,25363 L92551,25500 L92304,29742 L92537,30172 L91619,30811 L91975,31440 L91404,32074 L91127,32337 L90899,32422 L90605,32783 L90914,31884 L91047,31087 L91008,30442 L90842,30177 L90671,30000 L90872,30637 L90901,31438 L87870,29399 L87649,29027 L86963,28746 L86627,28307 L86517,27997 L86457,27412 L86508,27122 L86350,26930 L86347,26750 L86246,26629 L85797,26412 L85662,26108 L85365,25819 L68420,25805 Z M96006,31834 L96253,31871 L97133,31260 L97531,31134 L97656,31107 L97846,31311 L98609,31056 L96935,31986 L96593,32091 L96104,32368 L93650,33326 L93377,33274 L92012,33630 L91451,33670 L90941,33794 L91319,33507 L91327,33400 L91237,33316 L91035,33341 L90828,33636 L90498,33734 L90432,33413 L90691,32929 L91019,32558 L91488,32324 L91726,32121 L91891,32300 L91927,32058 L92192,31844 L92524,31842 L92965,31709 L93328,31818 L93683,31787 L93969,31636 L94267,31585 L95836,31441 L96806,30694 L97184,30540 Z M89649,34083 L89833,33547 L90169,33303 L90291,33354 L90249,33705 L90023,33954 Z"/>
+        <path class="a3s-land" vector-effect="non-scaling-stroke" d="M98999,25683 L99022,28491 L98988,29067 L98891,29202 L98843,29521 L98506,29490 L97219,29766 L96812,29652 L96396,29855 L94984,29910 L94686,29802 L94305,30186 L93696,30413 L92157,31273 L91975,31440 L91619,30811 L92537,30172 L92304,29742 L92551,25500 L95135,25620 L95140,25765 L95305,25747 L95327,25620 Z"/>
+        <!--/BASEMAP-->
+      </g>
+      <!-- Delaware course, bay mouth to Philadelphia (screen px, see header) -->
+      <path d="M903,1047 L852,935 L824,871 L789,770 L826,717 L871,682" fill="none" stroke="#5a768f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+
+      <!-- sea arrows: shaft (draw-on), conveyor overlay, head -->
+      <g fill="none" stroke="#7fb2e5" stroke-width="8" stroke-linejoin="round">
+        <path id="a3s-s1" class="a3s-hide" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M1560,562 L1213,562"/>
+        <path id="a3s-s2" class="a3s-hide" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M1500,580 L1203,598.2"/>
+        <path id="a3s-s3" class="a3s-hide" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M1450,600 L1188.5,648.7"/>
+        <path id="a3s-d1" class="a3s-hide" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M914,1072 L863,935 L835,871 L801,774 L839,730.1"/>
+        <path id="a3s-d2" class="a3s-hide" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M896,1078 L841,935 L813,871 L772,788 L779,770.9"/>
+      </g>
+      <g fill="none" stroke="#eaf4ff" stroke-width="4" stroke-opacity="0.85" stroke-dasharray="22 18" stroke-dashoffset="0">
+        <path id="a3s-c1" class="a3s-hide" d="M1560,562 L1213,562"/>
+        <path id="a3s-c2" class="a3s-hide" d="M1500,580 L1203,598.2"/>
+        <path id="a3s-c3" class="a3s-hide" d="M1450,600 L1188.5,648.7"/>
+        <path id="a3s-c4" class="a3s-hide" d="M914,1072 L863,935 L835,871 L801,774 L839,730.1"/>
+        <path id="a3s-c5" class="a3s-hide" d="M896,1078 L841,935 L813,871 L772,788 L779,770.9"/>
+      </g>
+      <g fill="#7fb2e5">
+        <polygon id="a3s-hs1" class="a3s-hide" points="1182,562 1212,547 1212,577"/>
+        <polygon id="a3s-hs2" class="a3s-hide" points="1172,600 1202.85,613.14 1201.03,583.2"/>
+        <polygon id="a3s-hs3" class="a3s-hide" points="1158,654 1190.23,663.29 1184.77,633.79"/>
+        <polygon id="a3s-hd1" class="a3s-hide" points="858,708 849.75,740.5 827.05,720.9"/>
+        <polygon id="a3s-hd2" class="a3s-hide" points="790,744 792.5,777.5 764.7,766.1"/>
+      </g>
+
+      <!-- Newark pin (wind blue), label left of the pin -->
+      <circle id="a3s-nwpulse" class="a3s-pulse" cx="1100" cy="420" r="17" fill="none" stroke="#7fb2e5" stroke-width="3"/>
+      <circle id="a3s-nwring" cx="1100" cy="420" r="0" fill="none" stroke="#7fb2e5" stroke-width="3"/>
+      <circle id="a3s-nwdot" cx="1100" cy="420" r="0" fill="#7fb2e5"/>
+      <text id="a3s-nwlab" class="a3s-lab2 a3s-hide" x="1073" y="429" text-anchor="end">NEWARK</text>
+      <!-- Philadelphia pin (white core) -->
+      <circle id="a3s-phring" cx="871" cy="682" r="0" fill="none" stroke="#f2f5f8" stroke-width="3"/>
+      <circle id="a3s-phdot" cx="871" cy="682" r="0" fill="#f2f5f8"/>
+      <text id="a3s-phlab" class="a3s-lab2 a3s-hide" x="844" y="691" text-anchor="end">PHILADELPHIA</text>
+    </svg>
+    <div id="a3s-base" class="a3s-credit">Basemap: Natural Earth</div>
+  </div>
+
+  <!-- ================= CARD: two gauges on one scale 950 to 1060 mb ================= -->
+  <div id="a3s-card" class="a3s-full">
+    <div id="a3s-dl" class="a3s-dial a3s-hide">
+      <svg viewBox="0 0 360 400" xmlns="http://www.w3.org/2000/svg">
+        <path d="M78.88,301.12 A143,143 0 1 1 281.12,301.12" fill="none" stroke="#2a3644" stroke-width="14"/>
+        <path id="a3s-la" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M78.88,301.12 A143,143 0 1 1 281.12,301.12" fill="none" stroke="#d0121f" stroke-width="14"/>
+      </svg>
+      <div id="a3s-ln" class="a3s-num a3s-hide">≈ <span id="a3s-lv">980</span></div>
+      <div id="a3s-ll" class="a3s-lab a3s-hide">LOW · MB</div>
+    </div>
+    <div id="a3s-dr" class="a3s-dial a3s-hide">
+      <svg viewBox="0 0 360 400" xmlns="http://www.w3.org/2000/svg">
+        <path d="M78.88,301.12 A143,143 0 1 1 281.12,301.12" fill="none" stroke="#2a3644" stroke-width="14"/>
+        <path id="a3s-ra" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M78.88,301.12 A143,143 0 1 1 281.12,301.12" fill="none" stroke="#7fb2e5" stroke-width="14"/>
+      </svg>
+      <div id="a3s-rn" class="a3s-num a3s-hide">≈ <span id="a3s-rv">1050</span></div>
+      <div id="a3s-rl" class="a3s-lab a3s-hide">HIGH · MB</div>
+    </div>
+    <div id="a3s-bar" class="a3s-hide"></div>
+    <div id="a3s-gloss" class="a3s-hide">MB = millibars, a measure of air pressure</div>
+  </div>
+
+  <div id="a3s-src" class="a3s-credit a3s-hide">Source: NBC Connecticut (secondary) · arrows schematic</div>
+
+  <!-- water band under RECORD TIDE, chips (HUD layer above the map) -->
+  <div id="a3s-band" class="a3s-hide"></div>
+  <div id="a3s-chip1" class="a3s-chip a3s-glass a3s-hide">108 MPH</div>
+  <div id="a3s-chip2" class="a3s-chip a3s-glass a3s-hide">RECORD TIDE</div>
+
+  <div id="a3s-cover" class="a3s-hide"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#a3s-";
+  const cl = { v: 950 };
+  const cr = { v: 950 };
+  function a3sCountL() { const e = document.getElementById("a3s-lv"); if (e) e.textContent = Math.round(cl.v); }
+  function a3sCountR() { const e = document.getElementById("a3s-rv"); if (e) e.textContent = Math.round(cr.v); }
+
+  tl.set(P + "band", { scaleY: 0, transformOrigin: "50% 100%" }, 0);
+
+  // ---- card ----
+  /* THE @0.00 */
+  tl.fromTo([P + "dl", P + "dr"], { autoAlpha: 0, scale: 0.92 }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 0);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0);
+  /* LOW @0.14 */
+  tl.fromTo(P + "ll", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power2.out" }, 0.14);
+  /* 980 @1.20 */
+  tl.set(P + "ln", { autoAlpha: 1 }, 1.20);
+  tl.fromTo(P + "la", { strokeDashoffset: 1 }, { strokeDashoffset: 0.727273, duration: 1.0, ease: "power3.out", immediateRender: false }, 1.20);
+  tl.fromTo(cl, { v: 950 }, { v: 980, duration: 1.0, ease: "power3.out", onUpdate: a3sCountL, immediateRender: false }, 1.20);
+  /* MILLIBARS @2.06 */
+  tl.fromTo(P + "gloss", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 2.06);
+  /* HIGHER @3.74 */
+  tl.fromTo(P + "rl", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power2.out" }, 3.74);
+  tl.set(P + "rn", { autoAlpha: 1 }, 3.74);
+  tl.fromTo(P + "ra", { strokeDashoffset: 1 }, { strokeDashoffset: 0.090909, duration: 1.2, ease: "power3.out", immediateRender: false }, 3.74);
+  tl.fromTo(cr, { v: 950 }, { v: 1050, duration: 1.2, ease: "power3.out", onUpdate: a3sCountR, immediateRender: false }, 3.74);
+  /* NORTHEAST @5.02 */
+  tl.set(P + "bar", { autoAlpha: 0.4 }, 5.02);
+  tl.fromTo(P + "bar", { opacity: 0.4 }, { opacity: 1, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 5.02);
+  /* SQUEEZE @6.28 */
+  tl.to(P + "dl", { x: 60, duration: 0.5, ease: "power2.in" }, 6.28);
+  tl.to(P + "dr", { x: -60, duration: 0.5, ease: "power2.in" }, 6.28);
+  tl.to(P + "bar", { scaleX: 0.6, duration: 0.5, ease: "power2.in" }, 6.28);
+  // card to map (6.78 to 7.28)
+  tl.to(P + "card", { scale: 0.9, autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 6.78);
+  tl.fromTo([P + "map"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, 6.78);
+
+  // ---- map ----
+  // sea arrows: draw 0.8 s from 8.22 (0.1 stagger), heads at +0.7, conveyor overlay at +0.8, 80 px/s then 160 px/s from 10.24
+  /* OCEAN @8.22 */
+  tl.set(P + "s1", { autoAlpha: 1 }, 8.22);
+  tl.fromTo(P + "s1", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.out", immediateRender: false }, 8.22);
+  tl.fromTo(P + "hs1", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.12 }, 8.92);
+  tl.set(P + "c1", { autoAlpha: 1 }, 9.02);
+  tl.fromTo(P + "c1", { strokeDashoffset: 0 }, { strokeDashoffset: -97.6, duration: 1.22, ease: "none", immediateRender: false }, 9.02);
+  tl.fromTo(P + "c1", { strokeDashoffset: -97.6 }, { strokeDashoffset: -1336, duration: 7.74, ease: "none", immediateRender: false }, 10.24);
+
+  tl.set(P + "s2", { autoAlpha: 1 }, 8.32);
+  tl.fromTo(P + "s2", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.out", immediateRender: false }, 8.32);
+  tl.fromTo(P + "hs2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.12 }, 9.02);
+  tl.set(P + "c2", { autoAlpha: 1 }, 9.12);
+  tl.fromTo(P + "c2", { strokeDashoffset: 0 }, { strokeDashoffset: -89.6, duration: 1.12, ease: "none", immediateRender: false }, 9.12);
+  tl.fromTo(P + "c2", { strokeDashoffset: -89.6 }, { strokeDashoffset: -1328, duration: 7.74, ease: "none", immediateRender: false }, 10.24);
+
+  tl.set(P + "s3", { autoAlpha: 1 }, 8.42);
+  tl.fromTo(P + "s3", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.out", immediateRender: false }, 8.42);
+  tl.fromTo(P + "hs3", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.12 }, 9.12);
+  tl.set(P + "c3", { autoAlpha: 1 }, 9.22);
+  tl.fromTo(P + "c3", { strokeDashoffset: 0 }, { strokeDashoffset: -81.6, duration: 1.02, ease: "none", immediateRender: false }, 9.22);
+  tl.fromTo(P + "c3", { strokeDashoffset: -81.6 }, { strokeDashoffset: -1320, duration: 7.74, ease: "none", immediateRender: false }, 10.24);
+
+  /* SOUTHEAST @9.38 */
+  tl.set(P + "d1", { autoAlpha: 1 }, 9.38);
+  tl.fromTo(P + "d1", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.out", immediateRender: false }, 9.38);
+  tl.fromTo(P + "hd1", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.12 }, 10.08);
+  tl.set(P + "c4", { autoAlpha: 1 }, 10.18);
+  tl.fromTo(P + "c4", { strokeDashoffset: 0 }, { strokeDashoffset: -1238.4, duration: 7.74, ease: "none", immediateRender: false }, 10.24);
+
+  tl.set(P + "d2", { autoAlpha: 1 }, 9.48);
+  tl.fromTo(P + "d2", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.out", immediateRender: false }, 9.48);
+  tl.fromTo(P + "hd2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.12 }, 10.18);
+  tl.set(P + "c5", { autoAlpha: 1 }, 10.28);
+  tl.fromTo(P + "c5", { strokeDashoffset: 0 }, { strokeDashoffset: -1232, duration: 7.70, ease: "none", immediateRender: false }, 10.28);
+  /* HARD @10.24: the second conveyor tweens above run at 160 px/s */
+
+  /* NEWARK @12.06 */
+  tl.fromTo(P + "nwring", { attr: { r: 0 } }, { attr: { r: 17 }, duration: 0.35, ease: "back.out(2)" }, 12.06);
+  tl.fromTo(P + "nwdot", { attr: { r: 0 } }, { attr: { r: 9 }, duration: 0.3, ease: "back.out(2)" }, 12.06);
+  tl.fromTo(P + "nwlab", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 12.06);
+  tl.fromTo(P + "chip1", { autoAlpha: 0, scale: 0.9 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(1.4)" }, 12.06);
+  tl.fromTo(P + "nwpulse", { attr: { r: 17 }, opacity: 0.9 }, { attr: { r: 35 }, opacity: 0, duration: 1.4, ease: "power1.out", repeat: 3, immediateRender: false }, 12.3);
+
+  /* COAST @13.38 */
+  tl.fromTo(P + "phring", { attr: { r: 0 } }, { attr: { r: 17 }, duration: 0.35, ease: "back.out(2)" }, 13.38);
+  tl.fromTo(P + "phdot", { attr: { r: 0 } }, { attr: { r: 9 }, duration: 0.3, ease: "back.out(2)" }, 13.38);
+  tl.fromTo(P + "phlab", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 13.38);
+  tl.to(P + "chip1", { autoAlpha: 0.35, duration: 0.4, ease: "power1.out" }, 13.38);
+
+  /* TIDE @14.26 */
+  tl.fromTo(P + "band", { autoAlpha: 0, scaleY: 0 }, { autoAlpha: 0.5, scaleY: 1, duration: 0.8, ease: "power2.out", immediateRender: false }, 14.26);
+  tl.fromTo(P + "chip2", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 14.26);
+
+  /* SNOW @15.42 */
+  tl.to([P + "chip1", P + "chip2"], { autoAlpha: 0.35, duration: 0.4, ease: "power1.out" }, 15.42);
+
+  // exit: chips slide out, everything fades to #04070c (cut to g-a3-7's chart)
+  // RECORD TIDE exits left (right-going slide crossed the PHILADELPHIA label); 108 MPH exits right
+  tl.to(P + "chip1", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.38);
+  tl.to(P + "chip2", { x: -700, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.38);
+  tl.fromTo(P + "cover", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6, ease: "power1.in" }, 17.38);
+
+  window.__timelines["g-a3-6-squeeze"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

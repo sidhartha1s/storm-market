@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a5-8b-holiday · A5-S8 sentence 4, over Paul's clip ins-paul-6 · ep-appalachian-1950 · brief: briefs/a5/g-a5-8-splitmap.md (chip 2)
+  Split out of g-a5-8-splitmap (29 Oct 26): that map is cut at 15.62 by ins-paul-6, so its closing chip never played.
+  Claim: "EVERY HOLIDAY DRIVE" lands on Paul's own words "a holiday drive" and leaves on "that miss." Sits over the clip, which is
+  mounted beneath it on track 1. Top-left zone (left 110, top 90), same glass chip as g-a5-8 chip 2. No presenter circle in a full-frame clip.
+  Cues (faster-whisper CPU on media/paul/ins-paul-6/ins-paul-6-v2.mp4, file time -> episode time = 915.374 + (t - 0.31)):
+    "holiday" 2.88 -> 917.944 = host start (comp 0.00); "drive," ends 3.74 -> 918.804; "miss." 7.60 -> 922.664 (comp 4.72).
+-->
+<template>
+<style>
+  #g-a5-8b-holiday-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8; }
+  .a58b-chip { position:absolute; box-sizing:border-box; padding:10px 18px; border-radius:14px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; line-height:1; color:#f2f5f8; }
+  #a58b-chip { left:110px; top:90px; font-size:40px; }
+  #a58b-bar { position:absolute; left:110px; top:152px; width:120px; height:4px; border-radius:2px; background:#d8a13a; }
+  /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
+  .a58b-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-8b-holiday-root" data-composition-id="g-a5-8b-holiday" data-width="1920" data-height="1080" data-duration="5.12">
+  <div class="a58b-chip a58b-hide" id="a58b-chip">EVERY HOLIDAY DRIVE</div>
+  <div class="a58b-hide" id="a58b-bar"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#a58b-";
+  const tl = gsap.timeline({ paused: true });
+
+  /* transforms start in set() at 0 (file contract) */
+  tl.set(P + "chip", { x: 0, y: 0 }, 0);
+  tl.set(P + "bar", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* HOLIDAY @0.00 (clip 2.88): chip in */
+  tl.fromTo(P + "chip", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0);
+  tl.fromTo(P + "bar", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.1, ease: "none" }, 0.1);
+  tl.to(P + "bar", { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.1);
+
+  /* hold: slight float so the 4.3 s hold is never still (mg-quickref "Motion and exits") */
+  tl.to(P + "chip", { y: -5, duration: 2.15, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.4);
+  tl.to(P + "bar", { y: -5, duration: 2.15, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.4);
+
+  /* MISS @4.72 (clip 7.60): out, done at the host end 5.12 */
+  tl.to(P + "chip", { y: -20, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 4.72);
+  tl.to(P + "bar", { y: -20, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 4.72);
+
+  window.__timelines["g-a5-8b-holiday"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

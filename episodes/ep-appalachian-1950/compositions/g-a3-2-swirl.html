@@ -1,0 +1,237 @@
+<template>
+<style>
+  #a3w-root { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8; }
+  /* chart camera C1 (briefs/a3/_list.md), copied from g-a3-1-track: screen = (chart px - (196,110)) x 2.0; static */
+  .a3w-chart { position:absolute; left:-392px; top:-220px; width:2312px; height:1518px; }
+  .a3w-dim { position:absolute; inset:0; background:rgba(4,7,12,.38); }
+  .a3w-scan { position:absolute; left:370px; top:0; width:1180px; height:2px; background:rgba(127,178,229,.30); }
+  .a3w-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  /* g-a3-1 end state: track complete, ghost / ghost head / usual chip at .3, pin in, OHIO in */
+  .a3w-track { fill:none; stroke:#d0121f; stroke-width:6; stroke-linecap:round; stroke-linejoin:round;
+    filter:drop-shadow(0 0 6px rgba(208,18,31,.6)); }
+  .a3w-head { fill:#d0121f; filter:drop-shadow(0 0 6px rgba(208,18,31,.6)); }
+  .a3w-ghost { fill:none; stroke:#93a3b2; stroke-width:5; stroke-dasharray:14 10; stroke-linecap:butt; opacity:.3; }
+  .a3w-ghosthead { fill:#93a3b2; opacity:.3; }
+  .a3w-hl { fill:none; stroke:#ff9aa1; stroke-width:7; stroke-linecap:round; stroke-dasharray:140 3000; stroke-dashoffset:140;
+    filter:drop-shadow(0 0 8px rgba(255,120,130,.8)); opacity:0; visibility:hidden; }
+  .a3w-halo { opacity:0; visibility:hidden; }
+  .a3w-ring { opacity:0; visibility:hidden; }
+  .a3w-ringpath { fill:none; stroke:#dfe7ee; stroke-width:3; stroke-opacity:.35; stroke-dasharray:3000 3000; stroke-dashoffset:3000; }
+  .a3w-ringheads { fill:#dfe7ee; fill-opacity:.5; opacity:0; visibility:hidden; }
+  /* air arrows: dashed conveyor shaft, revealed by a mask path with the same d; the head tip sits 24 px past the shaft end (g-a3-3 rule) */
+  .a3w-air { fill:none; stroke-width:10; stroke-dasharray:40 30; stroke-dashoffset:0; stroke-linecap:butt; stroke-linejoin:round;
+    opacity:0; visibility:hidden; }
+  .a3w-warm { stroke:#d8a13a; filter:drop-shadow(0 0 8px rgba(216,161,58,.5)); }
+  .a3w-cold { stroke:#7fb2e5; filter:drop-shadow(0 0 8px rgba(127,178,229,.5)); }
+  .a3w-ahead { opacity:0; visibility:hidden; }
+  .a3w-whead { fill:#d8a13a; filter:drop-shadow(0 0 8px rgba(216,161,58,.5)); }
+  .a3w-chead { fill:#7fb2e5; filter:drop-shadow(0 0 8px rgba(127,178,229,.5)); }
+  .a3w-maskpath { fill:none; stroke:#fff; stroke-width:36; stroke-linecap:butt; stroke-dasharray:3000 3000; stroke-dashoffset:3000; }
+  .a3w-glass { position:absolute; box-sizing:border-box; white-space:nowrap;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); }
+  .a3w-headline { left:110px; top:90px; padding:18px 28px; border-radius:28px; box-shadow:0 18px 50px rgba(0,0,0,.35);
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1.1; color:#f2f5f8;
+    opacity:0; visibility:hidden; }
+  .a3w-chip { padding:10px 18px; border-radius:14px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:40px; line-height:44px;
+    opacity:0; visibility:hidden; }
+  /* brief: left 1430 with right edge <= 1824; at 40 px Arial Black the box is ~475 px wide, so it is anchored on the right edge (x 1824) */
+  .a3w-warmchip { right:96px; top:110px; color:#d8a13a; }
+  .a3w-coldchip { left:130px; top:330px; color:#7fb2e5; }
+  /* g-a3-1 chip, held at .3; fades out on "counterclockwise" */
+  .a3w-usualchip { right:180px; top:184px; padding:10px 18px; border-radius:14px; font-weight:700; font-size:26px; line-height:30px; letter-spacing:3px;
+    color:#93a3b2; opacity:.3; }
+  .a3w-ohio { position:absolute; right:1034px; top:385px; line-height:30px; font-weight:700; font-size:26px; letter-spacing:4px;
+    color:#f2f5f8; -webkit-text-stroke:5px #04070c; paint-order:stroke fill; white-space:nowrap; }
+  .a3w-source { position:absolute; left:110px; bottom:60px; font-weight:700; font-size:19px; letter-spacing:2px; color:#c8d3e0;
+    text-shadow:0 1px 4px rgba(4,7,12,.9); white-space:nowrap; }
+</style>
+<div id="a3w-root" data-composition-id="g-a3-2-swirl" data-width="1920" data-height="1080">
+  <img class="a3w-chart" id="a3w-chart" src="media/a3/A3-S1_c1_nws-jkl-surface-1950-11-25.jpg" alt="">
+  <div class="a3w-dim" id="a3w-dim"></div>
+  <div class="a3w-scan" id="a3w-scan"></div>
+  <svg class="a3w-svg" id="a3w-svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+    <defs>
+      <radialGradient id="a3w-halograd">
+        <stop offset="0" stop-color="#dfe7ee" stop-opacity=".14"/>
+        <stop offset=".7" stop-color="#dfe7ee" stop-opacity=".10"/>
+        <stop offset="1" stop-color="#dfe7ee" stop-opacity="0"/>
+      </radialGradient>
+      <!-- shaft d = g-a3-3-pins' arrow d exactly (its frame 0 = this comp's last frame) -->
+      <mask id="a3w-w1mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path class="a3w-maskpath" id="a3w-w1-m" d="M1560 640 C1520 420 1360 300 1203 256"/></mask>
+      <mask id="a3w-w2mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path class="a3w-maskpath" id="a3w-w2-m" d="M1580 520 C1480 330 1300 220 1199 212"/></mask>
+      <mask id="a3w-w3mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path class="a3w-maskpath" id="a3w-w3-m" d="M1590 600 C1500 420 1445 360 1433 344"/></mask>
+      <mask id="a3w-c1mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path class="a3w-maskpath" id="a3w-c1-m" d="M820 110 C960 260 1060 380 1110 498"/></mask>
+      <mask id="a3w-c2mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path class="a3w-maskpath" id="a3w-c2-m" d="M680 160 C860 330 1000 470 1088 619"/></mask>
+      <mask id="a3w-c3mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path class="a3w-maskpath" id="a3w-c3-m" d="M960 90 C1040 220 1100 330 1148 419"/></mask>
+    </defs>
+    <!-- soft halo round the printed low "L" (1284, 576) -->
+    <circle class="a3w-halo" id="a3w-halo" cx="1284" cy="576" r="160" fill="url(#a3w-halograd)"/>
+    <!-- g-a3-1 end state: ghost (usual path) and its head at .3 -->
+    <path class="a3w-ghost" id="a3w-ghost" d="M1238 660 C1300 580 1380 500 1420 430 C1520 360 1760 330 1768 160"/>
+    <polygon class="a3w-ghosthead" id="a3w-ghosthead" points="1768,160 1778,183 1756,181"/>
+    <!-- red track (schematic), same d as g-a3-1, complete -->
+    <path class="a3w-track" id="a3w-track" d="M1238 660 C1262 590 1300 500 1300 430 C1300 385 1250 360 1180 360 C1080 360 990 378 910 400"/>
+    <path class="a3w-hl" id="a3w-hl" d="M1238 660 C1262 590 1300 500 1300 430 C1300 385 1250 360 1180 360 C1080 360 990 378 910 400"/>
+    <polygon class="a3w-head" id="a3w-head" points="0,0 -22,-11 -22,11"/>
+    <g id="a3w-pin">
+      <circle id="a3w-pinring" cx="1238" cy="660" r="15.5" fill="none" stroke="#d0121f" stroke-width="3"/>
+      <circle id="a3w-pincore" cx="1238" cy="660" r="9" fill="#f2f5f8"/>
+    </g>
+    <!-- counterclockwise ring, r 110 about the low; drawn CCW (sweep 0), turned CCW about svgOrigin 1284 576 -->
+    <g class="a3w-ring" id="a3w-ring">
+      <path class="a3w-ringpath" id="a3w-ringpath" d="M1394 576 A110 110 0 1 0 1174 576 A110 110 0 1 0 1394 576"/>
+      <!-- same three heads as g-a3-3-pins (0, 120, 240 deg on the ring); never moved by GSAP themselves, only their group -->
+      <g class="a3w-ringheads" id="a3w-ringheads">
+        <polygon points="0,0 -12,-6 -12,6" transform="translate(1394 576) rotate(-90)"/>
+        <polygon points="0,0 -12,-6 -12,6" transform="translate(1229 671.3) rotate(30)"/>
+        <polygon points="0,0 -12,-6 -12,6" transform="translate(1229 480.7) rotate(150)"/>
+      </g>
+    </g>
+    <!-- warm Atlantic air (schematic): in off the ocean east of the low, curling CCW across its north side to the north-west.
+         W2 and W3 end short of the Buffalo and Newark pins, as g-a3-3-pins draws them -->
+    <path class="a3w-air a3w-warm" id="a3w-w1" mask="url(#a3w-w1mask)" d="M1560 640 C1520 420 1360 300 1203 256"/>
+    <path class="a3w-air a3w-warm" id="a3w-w2" mask="url(#a3w-w2mask)" d="M1580 520 C1480 330 1300 220 1199 212"/>
+    <path class="a3w-air a3w-warm" id="a3w-w3" mask="url(#a3w-w3mask)" d="M1590 600 C1500 420 1445 360 1433 344"/>
+    <!-- arctic air (schematic): pours south down the low's west side; Pittsburgh (1078,364) sits between C1 and C3 -->
+    <path class="a3w-air a3w-cold" id="a3w-c1" mask="url(#a3w-c1mask)" d="M820 110 C960 260 1060 380 1110 498"/>
+    <path class="a3w-air a3w-cold" id="a3w-c2" mask="url(#a3w-c2mask)" d="M680 160 C860 330 1000 470 1088 619"/>
+    <path class="a3w-air a3w-cold" id="a3w-c3" mask="url(#a3w-c3mask)" d="M960 90 C1040 220 1100 330 1148 419"/>
+    <!-- arrowheads: tip at local (0,0), HEAD px ahead of the revealed shaft along its tangent, by GSAP x/y/rotation -->
+    <polygon class="a3w-ahead a3w-whead" id="a3w-w1-h" points="0,0 -26,-13 -26,13"/>
+    <polygon class="a3w-ahead a3w-whead" id="a3w-w2-h" points="0,0 -26,-13 -26,13"/>
+    <polygon class="a3w-ahead a3w-whead" id="a3w-w3-h" points="0,0 -26,-13 -26,13"/>
+    <polygon class="a3w-ahead a3w-chead" id="a3w-c1-h" points="0,0 -26,-13 -26,13"/>
+    <polygon class="a3w-ahead a3w-chead" id="a3w-c2-h" points="0,0 -26,-13 -26,13"/>
+    <polygon class="a3w-ahead a3w-chead" id="a3w-c3-h" points="0,0 -26,-13 -26,13"/>
+  </svg>
+  <div class="a3w-glass a3w-usualchip" id="a3w-usualchip">THE USUAL PATH</div>
+  <div class="a3w-ohio" id="a3w-ohio">OHIO</div>
+  <div class="a3w-glass a3w-headline" id="a3w-headline">WIND TURNS COUNTERCLOCKWISE</div>
+  <div class="a3w-glass a3w-chip a3w-warmchip" id="a3w-warmchip">WARM OCEAN AIR</div>
+  <div class="a3w-glass a3w-chip a3w-coldchip" id="a3w-coldchip">ARCTIC AIR</div>
+  <div class="a3w-source" id="a3w-source">Source: NWS Jackson, KY · arrows schematic</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var P = "#a3w-", END = 16.96, SPEED = 80, HEAD = 24, DASH = 70;
+  var $ = function (id) { return document.getElementById("a3w-" + id); };
+  var tl = gsap.timeline({ paused: true });
+
+  // point and tangent angle at a length along a path; angles unwrapped so a rider never spins
+  function tracer(path) {
+    var L = path.getTotalLength(), lastR = null;
+    return { path: path, L: L, at: function (len) {
+      var p = path.getPointAtLength(len);
+      var a = path.getPointAtLength(Math.max(0, len - 1)), b = path.getPointAtLength(Math.min(L, len + 1));
+      var r = Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI;
+      if (lastR !== null) { while (r - lastR > 180) r -= 360; while (r - lastR < -180) r += 360; }
+      lastR = r;
+      return { x: p.x, y: p.y, r: r };
+    } };
+  }
+  // head tip HEAD px ahead of the shaft point at a length, along its tangent
+  function tipAt(tr, len) {
+    var h = tr.at(len), a = h.r * Math.PI / 180;
+    return { x: h.x + HEAD * Math.cos(a), y: h.y + HEAD * Math.sin(a), r: h.r };
+  }
+  // a head follows the reveal in n linear legs sampled on the same ease as the mask
+  function ride(tr, head, start, dur, ease, n) {
+    var e = gsap.parseEase(ease);
+    for (var k = 1; k <= n; k++) {
+      var h = tipAt(tr, tr.L * e(k / n));
+      tl.to(head, { x: h.x, y: h.y, rotation: h.r, duration: dur / n, ease: "none" }, start + dur * (k - 1) / n);
+    }
+  }
+  // one air arrow: mask draws the shaft, head rides 24 px ahead, dashes run to the host end and stop on a whole
+  // dash period (offset = 0 mod 70), so the cut to g-a3-3 (dash offset 0 at its frame 0) keeps the dash phase
+  var arrows = [];
+  function arrow(name, start, dur) {
+    var path = $(name), mask = $(name + "-m"), head = $(name + "-h");
+    var tr = tracer(path), ML = Math.ceil(tr.L) + 1, p = tipAt(tr, 0);
+    var run = Math.round(SPEED * (END - start) / DASH) * DASH;
+    tl.set(mask, { strokeDasharray: ML + " " + ML, strokeDashoffset: ML }, 0);
+    tl.set(head, { x: p.x, y: p.y, rotation: p.r, transformOrigin: "100% 50%" }, 0);
+    tl.set([path, head], { autoAlpha: 0.9 }, start);
+    tl.to(mask, { strokeDashoffset: ML - tr.L, duration: dur, ease: "power2.out" }, start);
+    ride(tr, head, start, dur, "power2.out", 24);
+    tl.fromTo(path, { strokeDashoffset: 0 }, { strokeDashoffset: -run, duration: END - start, ease: "none" }, start);
+    arrows.push({ name: name, tr: tr, mask: mask, head: head, ML: ML, start: start, dur: dur });
+  }
+
+  /* NOW @0.00: g-a3-1's last frame; scan line continues from y 968.4 (g-a3-1: 60 px/s over its 16.14 s host) */
+  var trk = tracer($("track")), TL = Math.ceil(trk.L) + 1, h = trk.at(trk.L);
+  tl.set(P + "head", { x: h.x, y: h.y, rotation: h.r, transformOrigin: "100% 50%" }, 0);
+  tl.set(P + "hl", { strokeDasharray: "140 " + (TL + 140) }, 0);
+  var RL = Math.ceil($("ringpath").getTotalLength()) + 1;
+  tl.set(P + "ringpath", { strokeDasharray: RL + " " + RL, strokeDashoffset: RL }, 0);
+  tl.fromTo(P + "scan", { y: 968.4 }, { y: 1080, duration: 1.86, ease: "none" }, 0);
+  tl.fromTo(P + "scan", { y: 0 }, { y: 905.9, duration: END - 1.86, ease: "none", immediateRender: false }, 1.86);
+
+  /* LINE @0.82: one bright pass along the red track, Carolinas pin to the Ohio end */
+  tl.set(P + "hl", { autoAlpha: 1 }, 0.82);
+  tl.fromTo(P + "hl", { strokeDashoffset: 140 }, { strokeDashoffset: -TL, duration: 0.8, ease: "power1.inOut" }, 0.82);
+  tl.set(P + "hl", { autoAlpha: 0 }, 1.62);
+
+  /* AIR @1.76: halo breathes in round the printed low */
+  tl.fromTo(P + "halo", { attr: { r: 100 }, autoAlpha: 0 }, { attr: { r: 160 }, autoAlpha: 1, duration: 1.2, ease: "power2.out" }, 1.76);
+
+  /* COUNTERCLOCKWISE @3.70: headline in, g-a3-1's usual-path chip out, ring draws on and turns CCW to the host end */
+  tl.fromTo(P + "headline", { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 3.7);
+  tl.fromTo(P + "usualchip", { x: 0, autoAlpha: 0.3 }, { x: 16, autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 3.7);
+  tl.set(P + "ring", { autoAlpha: 1 }, 3.7);
+  tl.to(P + "ringpath", { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, 3.7);
+  tl.fromTo(P + "ringheads", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 4.3);
+  tl.fromTo(P + "ring", { rotation: 0, svgOrigin: "1284 576", smoothOrigin: false },
+    { rotation: -600, svgOrigin: "1284 576", smoothOrigin: false, duration: END - 3.7, ease: "none" }, 3.7); // ~-360 per 8 s; -600 = 5 x 120, so the 3 heads end where g-a3-3 draws them
+
+  /* A LOW @4.88 (Whisper "below."): halo pulses once */
+  tl.to(P + "halo", { attr: { r: 185 }, duration: 0.35, ease: "sine.inOut", yoyo: true, repeat: 1 }, 4.88);
+
+  /* EAST @6.24: W1 */
+  arrow("w1", 6.24, 1.0);
+
+  /* WARM @8.14: W2 + warm chip */
+  arrow("w2", 8.14, 1.0);
+  tl.fromTo(P + "warmchip", { scale: 0.9, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.4, ease: "back.out(1.4)" }, 8.14);
+
+  /* ATLANTIC @9.82: W3 comes ashore at Newark */
+  arrow("w3", 9.82, 1.0);
+
+  /* NORTHWEST @11.20: warm arrowheads pulse once about their tips */
+  tl.to([P + "w1-h", P + "w2-h", P + "w3-h"], { scale: 1.25, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 11.2);
+
+  /* INLAND @12.70: headline exits early so it is gone before C1 starts under it at 13.20 */
+  tl.to(P + "headline", { x: -60, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 12.7);
+
+  /* WEST @13.20: C1, warm chip dims */
+  arrow("c1", 13.2, 1.0);
+  tl.to(P + "warmchip", { autoAlpha: 0.35, duration: 0.4 }, 13.2);
+
+  /* ARCTIC @14.80: C2 + arctic chip */
+  arrow("c2", 14.8, 1.0);
+  tl.fromTo(P + "coldchip", { scale: 0.9, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.4, ease: "back.out(1.4)" }, 14.8);
+
+  /* CANADA @16.32: C3 */
+  arrow("c3", 16.32, 0.5);
+
+  /* EXIT @16.70: both chips out in the last 0.26 s (arctic chip readable 15.20 to 16.70); g-a3-3 opens on chart + track + arrows + ring */
+  tl.to([P + "warmchip", P + "coldchip"], { scale: 0.94, autoAlpha: 0, duration: 0.26, ease: "power2.in" }, 16.7);
+
+  // self-check: each arrowhead tip sits HEAD px from its revealed shaft end at three times in its draw
+  arrows.forEach(function (a) {
+    [a.start + a.dur * 0.3, a.start + a.dur * 0.7, a.start + a.dur].forEach(function (t) {
+      tl.seek(t);
+      var shown = a.ML - parseFloat(gsap.getProperty(a.mask, "strokeDashoffset"));
+      var p = a.tr.path.getPointAtLength(Math.min(a.tr.L, shown));
+      var dx = gsap.getProperty(a.head, "x") - p.x, dy = gsap.getProperty(a.head, "y") - p.y, d = Math.sqrt(dx * dx + dy * dy);
+      if (Math.abs(d - HEAD) > 4) console.error("g-a3-2-swirl: " + a.name + " head " + d.toFixed(1) + " px from its shaft end at " + t.toFixed(2) + " s (want " + HEAD + ")");
+    });
+  });
+  tl.seek(0);
+
+  window.__timelines["g-a3-2-swirl"] = tl;
+})();
+</script>
+</template>

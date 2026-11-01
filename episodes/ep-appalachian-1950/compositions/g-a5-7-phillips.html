@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a5-7-phillips (A5-S7): text-only name card, then beige citation card for Phillips 1958, storm name underlined.
+     Beige values from ep-1974 g-cite-paper, name card from cards.css .namecard. Host 12.40 s. */
+  #g-a5-7-phillips-root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .a57-ground { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden; opacity:0.14; }
+  .a57-chart { position:absolute; left:0; top:-79px; width:1920px; height:1238px; object-fit:cover;
+    filter:sepia(0.28) contrast(1.08) brightness(0.96) saturate(0.8); }
+  .a57-nc { position:absolute; inset:auto; left:0; right:0; bottom:150px; text-align:center; opacity:0; visibility:hidden; }
+  .a57-name { display:table; margin:0 auto; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:64px;
+    color:#f2f5f8; letter-spacing:1px; padding:10px 42px; text-shadow:0 3px 26px rgba(0,0,0,0.9); opacity:0; visibility:hidden; }
+  .a57-sub { display:table; margin:10px auto 0; font-family:Georgia,'Times New Roman',serif; font-style:italic; font-size:32px;
+    color:#e8c56a; padding:8px 30px; opacity:0; visibility:hidden; }
+  .a57-card { position:absolute; inset:auto; left:260px; right:260px; top:250px; box-sizing:border-box;
+    padding:56px 64px; background:rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); border-radius:28px;
+    opacity:0; visibility:hidden; }
+  .a57-eyebrow { font-family:Arial,sans-serif; font-weight:700; font-size:20px; letter-spacing:6px; color:#6b6257; }
+  .a57-l1 { margin-top:18px; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; line-height:1.15;
+    color:#2a2622; white-space:nowrap; }
+  .a57-title { margin-top:18px; font-family:Georgia,'Times New Roman',serif; font-style:italic; font-size:44px;
+    line-height:1.25; color:#2a2622; }
+  .a57-t { display:block; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a57-hl { position:relative; display:inline-block; }
+  .a57-ul { position:absolute; left:0; bottom:-2px; width:100%; height:5px; background:#d0121f; opacity:0.85;
+    transform-origin:left center; visibility:hidden; }
+  .a57-jour { margin-top:22px; font-family:Arial,sans-serif; font-weight:700; font-size:26px; color:#6b6257;
+    white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-7-phillips-root" data-composition-id="g-a5-7-phillips" data-width="1920" data-height="1080">
+  <div class="a57-ground" id="a57-ground">
+    <img class="a57-chart" id="a57-chart" src="media/a5/jkl-surface-1950-11-24.jpg" alt="">
+  </div>
+  <div class="a57-nc" id="a57-nc">
+    <div class="a57-name" id="a57-name">NORMAN PHILLIPS</div>
+    <div class="a57-sub" id="a57-sub">Charney's group, Princeton</div>
+  </div>
+  <div class="a57-card" id="a57-card">
+    <div class="a57-eyebrow" id="a57-eyebrow">PUBLISHED PAPER</div>
+    <div class="a57-l1" id="a57-l1">Phillips, N. A., 1958</div>
+    <div class="a57-title">
+      <span class="a57-t" id="a57-t1">Geostrophic errors in predicting</span>
+      <span class="a57-t" id="a57-t2"><span class="a57-hl" id="a57-hl">the Appalachian storm of November 1950<i class="a57-ul" id="a57-ul"></i></span></span>
+    </div>
+    <div class="a57-jour" id="a57-jour">Geophysica 6, 389-405</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#a57-";
+  /* 0.00: ground on, chart drifts the whole window (x 0 to -40, scale 1.00 to 1.05) */
+  tl.fromTo(P+"ground", { x:0, scale:1.0 }, { x:-40, scale:1.05, duration:12.40, ease:"none", transformOrigin:"50% 50%" }, 0);
+  tl.set(P+"ul", { scaleX:0 }, 0);
+  /* NORMAN @1.64 */
+  tl.set(P+"nc", { autoAlpha:1 }, 1.64);
+  tl.fromTo(P+"name", { autoAlpha:0, y:30 }, { autoAlpha:1, y:0, duration:0.5, ease:"power3.out" }, 1.64);
+  tl.fromTo(P+"sub", { autoAlpha:0, y:30 }, { autoAlpha:1, y:0, duration:0.5, ease:"power3.out" }, 1.94);
+  /* float 2.00 to 3.30 */
+  tl.to(P+"nc", { y:-6, duration:1.30, ease:"sine.inOut" }, 2.00);
+  /* exit 3.30, gone by 3.75 */
+  tl.to(P+"nc", { y:30, autoAlpha:0, duration:0.45, ease:"power3.in" }, 3.30);
+  /* 1958 @3.90 */
+  tl.fromTo(P+"card", { autoAlpha:0, y:40 }, { autoAlpha:1, y:0, duration:0.6, ease:"power3.out" }, 3.90);
+  /* ERRORS @6.08 */
+  tl.fromTo(P+"t1", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4, ease:"power3.out" }, 6.08);
+  /* APPALACHIAN @7.66 */
+  tl.fromTo(P+"t2", { autoAlpha:0, y:20 }, { autoAlpha:1, y:0, duration:0.4, ease:"power3.out" }, 7.66);
+  /* 1950 @9.16 */
+  tl.set(P+"ul", { autoAlpha:1 }, 9.16);
+  tl.to(P+"ul", { scaleX:1, duration:0.6, ease:"power2.out" }, 9.16);
+  tl.fromTo(P+"jour", { autoAlpha:0, y:12 }, { autoAlpha:1, y:0, duration:0.3, ease:"power3.out" }, 9.46);
+  /* float 9.80 to 11.30 */
+  tl.to(P+"card", { y:-8, duration:1.50, ease:"sine.inOut" }, 9.80);
+  /* HOMEWORK @11.60: card exits from 11.32, ends 11.92 */
+  tl.to(P+"card", { x:980, autoAlpha:0, duration:0.6, ease:"power3.in" }, 11.32);
+  window.__timelines["g-a5-7-phillips"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

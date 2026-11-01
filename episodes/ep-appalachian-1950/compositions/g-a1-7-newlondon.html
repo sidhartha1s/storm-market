@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a1-7-newlondon (A1-S9): scene 1 bar card "NEW LONDON, CT / TOP FOUR TIDES IN 100 YEARS", scene 2 NY State map + chip.
+  Hand-authored from briefs/a1/g-a1-7-newlondon.md. Cues from audio/a1-s9.words.json (seconds from A1-S9 start).
+  Map: frame A1-Y, s 0.03, top-left (58158.5, 5498.5): sx = 115.23*lon + 9498.9, sy = 7646.3 - 167.55*lat (Albany = 1000,500).
+  BASEMAP: Natural Earth 50m admin-1 (public domain), vertices copied verbatim in map units from the reduced state paths in
+    compositions/g-a4-4-statemap.html defs (= the US path of library/inhouse/master-map-us-canada.html, RDP 15):
+    NY = a44-g-ny whole (main, Long Island, Staten Island subpaths); PA = a44-g-pa vertices 14..28 (Delaware south of the
+    NY-NJ-PA tripoint) and 36,37,38,0 (OH-PA line and Erie lake shore); NJ = a44-g-nj vertices 15..25 (Hudson and harbor
+    shore). Borders shared with NY are drawn once, by NY. Neighbours are clipped at screen y 900.
+    Map X = 3841*(lon+97.576), Y = -5585*(lat-46.6213); screen = (map - TL) * 0.03 = matrix(0.03 0 0 0.03 -1744.755 -164.955).
+  Timeline runs 18.96 s so the $20 MILLION chip stays settled 1.5 s before its exit; host data-duration should be 18.96.
+-->
+<template>
+<style>
+  #nl7-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 38% 50%, #0b1016 0%, #030507 78%); }
+  .nl7-fill { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .nl7-abs { position:absolute; opacity:0; visibility:hidden; }
+  .nl7-base { position:absolute; left:200px; top:900px; width:1300px; height:2px; background:rgba(255,255,255,.14); opacity:0; visibility:hidden; }
+  .nl7-title { left:110px; top:70px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; white-space:nowrap; }
+  .nl7-sub { left:110px; top:140px; font-weight:700; font-size:26px; line-height:30px; letter-spacing:8px; color:#93a3b2; white-space:nowrap; }
+  .nl7-bar { position:absolute; width:180px; opacity:0; visibility:hidden; }
+  .nl7-hbar { top:200px; height:700px; background:linear-gradient(to top, #5a768f 0%, #5a768f 85.7%, rgba(90,118,143,0) 100%); }
+  .nl7-nbar { left:1140px; top:369.4px; height:530.6px; background:#7fb2e5; border-radius:4px 4px 0 0; }
+  .nl7-ref { left:260px; top:369px; width:1060px; height:0; border-top:1px dashed rgba(255,255,255,.3); }
+  .nl7-val { left:1090px; top:290px; width:280px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; white-space:nowrap; }
+  .nl7-lab { top:940px; width:240px; text-align:center; font-weight:700; font-size:22px; line-height:26px; letter-spacing:3px; color:#dfe7ee; white-space:nowrap; }
+  .nl7-lab-n { color:#f2f5f8; }
+  .nl7-win { left:1110px; top:972px; width:240px; text-align:center; font-weight:700; font-size:19px; line-height:22px; letter-spacing:3px; color:#7fb2e5; white-space:nowrap; }
+  .nl7-gw { top:906px; width:26px; height:26px; }
+  .nl7-gl { position:absolute; left:0; top:0; width:26px; height:26px; }
+  .nl7-src { left:110px; font-weight:700; font-size:19px; line-height:22px; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+  .nl7-chip { left:460px; top:342px; width:600px; height:130px; box-sizing:border-box; padding:18px 28px; border-radius:28px; text-align:center;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); }
+  .nl7-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; line-height:61px; color:#f2f5f8; white-space:nowrap; }
+  .nl7-csub { margin-top:8px; font-weight:700; font-size:22px; line-height:26px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .nl7-ml { font-family:Arial, sans-serif; font-weight:700; font-size:22px; fill:#dfe7ee; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+</style>
+<div id="nl7-root" data-composition-id="g-a1-7-newlondon" data-width="1920" data-height="1080">
+
+  <!-- scene 1: the tide bars -->
+  <div id="nl7-card" class="nl7-fill">
+    <div id="nl7-drift" class="nl7-fill">
+      <div id="nl7-baseline" class="nl7-base"></div>
+      <div id="nl7-title" class="nl7-abs nl7-title">NEW LONDON, CT</div>
+      <div id="nl7-sub" class="nl7-abs nl7-sub">TOP FOUR TIDES IN 100 YEARS</div>
+
+      <div id="nl7-b1" class="nl7-bar nl7-hbar" style="left:260px"></div>
+      <div id="nl7-b2" class="nl7-bar nl7-hbar" style="left:520px"></div>
+      <div id="nl7-b3" class="nl7-bar nl7-hbar" style="left:780px"></div>
+      <div id="nl7-b4" class="nl7-bar nl7-nbar"></div>
+      <div id="nl7-ref" class="nl7-abs nl7-ref"></div>
+      <div id="nl7-val" class="nl7-abs nl7-val">0.00 FT</div>
+
+      <div id="nl7-gw1" class="nl7-abs nl7-gw" style="left:337px"><svg id="nl7-g1" class="nl7-gl" viewBox="0 0 26 26"><path d="M13 13 C13 11 15 10 16 12 C18 14 16 17 13 17 C9 17 7 13 9 10 C11 6 17 6 20 9 C23 13 21 18 17 21 C12 24 5 22 3 16" fill="none" stroke="#d8a13a" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+      <div id="nl7-gw2" class="nl7-abs nl7-gw" style="left:597px"><svg id="nl7-g2" class="nl7-gl" viewBox="0 0 26 26"><path d="M13 13 C13 11 15 10 16 12 C18 14 16 17 13 17 C9 17 7 13 9 10 C11 6 17 6 20 9 C23 13 21 18 17 21 C12 24 5 22 3 16" fill="none" stroke="#d8a13a" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+      <div id="nl7-gw3" class="nl7-abs nl7-gw" style="left:857px"><svg id="nl7-g3" class="nl7-gl" viewBox="0 0 26 26"><path d="M13 13 C13 11 15 10 16 12 C18 14 16 17 13 17 C9 17 7 13 9 10 C11 6 17 6 20 9 C23 13 21 18 17 21 C12 24 5 22 3 16" fill="none" stroke="#d8a13a" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+
+      <div id="nl7-l1" class="nl7-abs nl7-lab" style="left:230px">1938 HURRICANE</div>
+      <div id="nl7-l2" class="nl7-abs nl7-lab" style="left:490px">CAROL</div>
+      <div id="nl7-l3" class="nl7-abs nl7-lab" style="left:750px">SANDY</div>
+      <div id="nl7-l4" class="nl7-abs nl7-lab nl7-lab-n" style="left:1110px">NOV 1950</div>
+      <div id="nl7-win" class="nl7-abs nl7-win">WINTER STORM</div>
+
+      <div id="nl7-src1" class="nl7-abs nl7-src" style="bottom:60px">Source: NBC Connecticut; NWS Albany</div>
+    </div>
+  </div>
+
+  <!-- scene 2: New York State -->
+  <div id="nl7-map" class="nl7-fill" style="opacity:0;visibility:hidden">
+    <div id="nl7-mapdrift" class="nl7-fill">
+      <svg class="nl7-fill" viewBox="0 0 1920 1080">
+        <defs><clipPath id="nl7-nbclip"><rect x="0" y="0" width="1920" height="900"/></clipPath></defs>
+        <!-- neighbours, outline only (Natural Earth vertices, map units) -->
+        <g clip-path="url(#nl7-nbclip)">
+          <g transform="matrix(0.03 0 0 0.03 -1744.755 -164.955)" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="2" stroke-linejoin="round">
+            <path id="nl7-pa" vector-effect="non-scaling-stroke" d="M65514,38530 L65511,25868 L66225,25582 L68420,24301"/>
+            <path id="nl7-pa2" vector-effect="non-scaling-stroke" d="M87870,29399 L87435,29711 L87051,30528 L86593,31106 L86242,31401 L86424,32198 L86285,32500 L86043,32649 L85976,33127 L85988,33652 L86340,33947 L86584,34632 L86805,34713 L87733,36117 L86624,36883"/>
+            <path id="nl7-nj" vector-effect="non-scaling-stroke" d="M90901,31438 L90835,31874 L90457,32756 L89837,33361 L89685,33584 L89541,34028 L89628,34432 L90364,34579 L90561,34455 L90718,35146 L90447,36572"/>
+          </g>
+        </g>
+        <!-- New York State (Natural Earth vertices, map units) -->
+        <g transform="matrix(0.03 0 0 0.03 -1744.755 -164.955)">
+          <path id="nl7-ny" vector-effect="non-scaling-stroke" fill="#15202b" stroke="rgba(255,255,255,.3)" stroke-width="2" stroke-linejoin="round" style="opacity:.9"
+            d="M71097,19632 L71115,18645 L72543,18206 L73434,18060 L74519,18021 L75813,18231 L76315,18422 L76633,18666 L77000,18732 L77416,18618 L77992,18580 L78729,18618 L79123,18676 L79174,18752 L79473,18471 L80026,18270 L80099,18311 L80647,17690 L81058,17392 L81429,17237 L81983,17151 L82095,17016 L82124,16624 L82036,15993 L81882,15594 L81767,15485 L81780,15370 L81980,15229 L81965,15361 L82018,15401 L82112,15341 L82602,14648 L82200,14675 L82135,14621 L82281,14386 L82208,14196 L82114,14174 L81698,14399 L81520,14048 L81960,13617 L83518,12421 L83735,12077 L83672,11864 L85173,10327 L86025,9617 L86729,9222 L87265,9033 L93044,9025 L93071,9396 L92991,9835 L93058,10310 L92967,11304 L93207,12073 L93164,13138 L92933,13593 L92760,14222 L92956,15734 L92799,16932 L92893,16994 L93127,16725 L93447,17136 L93320,21269 L93423,21609 L92448,25363 L92551,25500 L92304,29742 L92537,30172 L91619,30811 L91975,31440 L91404,32074 L91127,32337 L90899,32422 L90605,32783 L90914,31884 L91047,31087 L91008,30442 L90842,30177 L90671,30000 L90872,30637 L90901,31438 L87870,29399 L87649,29027 L86963,28746 L86627,28307 L86517,27997 L86457,27412 L86508,27122 L86350,26930 L86347,26750 L86246,26629 L85797,26412 L85662,26108 L85365,25819 L68420,25805 L68420,24270 L69383,23626 L69751,23258 L70547,22709 L70870,22396 L71375,21729 L71664,21543 L71820,21347 L71841,21141 L71641,20239 L71755,19902 L71703,19832 Z M96006,31834 L96253,31871 L97133,31260 L97531,31134 L97656,31107 L97846,31311 L98609,31056 L96935,31986 L96593,32091 L96104,32368 L93650,33326 L93377,33274 L92012,33630 L91451,33670 L90941,33794 L91319,33507 L91327,33400 L91237,33316 L91035,33341 L90828,33636 L90498,33734 L90432,33413 L90691,32929 L91019,32558 L91488,32324 L91726,32121 L91891,32300 L91927,32058 L92192,31844 L92524,31842 L92965,31709 L93328,31818 L93683,31787 L93969,31636 L94267,31585 L95836,31441 L96806,30694 L97184,30540 Z M89649,34083 L89833,33547 L90169,33303 L90291,33354 L90249,33705 L90023,33954 Z"/>
+        </g>
+        <g id="nl7-pin" style="opacity:0;visibility:hidden">
+          <circle id="nl7-ring" cx="1000" cy="500" r="8" fill="none" stroke="#f2f5f8" stroke-width="2"/>
+          <circle id="nl7-dot" cx="1000" cy="500" r="8" fill="#f2f5f8"/>
+          <text id="nl7-albany" class="nl7-ml" x="1022" y="508">ALBANY</text>
+        </g>
+      </svg>
+    </div>
+    <div id="nl7-chip" class="nl7-abs nl7-chip">
+      <div id="nl7-amt" class="nl7-big">$0 MILLION</div>
+      <div id="nl7-csub" class="nl7-csub">NY STATE WIND DAMAGE (1950 $)</div>
+    </div>
+    <div id="nl7-src2" class="nl7-abs nl7-src" style="bottom:90px">Source: NBC Connecticut; NWS Albany</div>
+    <div id="nl7-bm" class="nl7-abs nl7-src" style="bottom:60px">Basemap: Natural Earth</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#nl7-";
+  const HIDE = ["title","sub","ref","val","gw1","gw2","gw3","l1","l2","l3","l4","win","src1","baseline","src2","bm","chip","pin"].map(function(k){ return P + k; });
+  tl.set(HIDE, { autoAlpha: 0 }, 0);
+  tl.set([P+"b1",P+"b2",P+"b3",P+"b4"], { autoAlpha: 1, scaleY: 0, transformOrigin: "50% 100%" }, 0);
+  tl.set(P+"ref", { transformOrigin: "0% 50%", scaleX: 0 }, 0);
+  tl.set(P+"baseline", { transformOrigin: "0% 50%", scaleX: 0 }, 0);
+  tl.set(P+"map", { autoAlpha: 0 }, 0);
+
+  /* ON @0.00: baseline draws, whole card drifts */
+  tl.to(P+"baseline", { autoAlpha: 1, scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.0);
+  tl.fromTo(P+"src1", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.3);
+  tl.to(P+"drift", { y: -10, duration: 13.84, ease: "none" }, 0.0);
+
+  /* NEWLONDON @1.02 */
+  tl.fromTo(P+"title", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 1.02);
+
+  /* 7 @2.62: the 1950 bar rises, value counts to 7.58 landing 3.72, NOV 1950 label in */
+  tl.to(P+"b4", { scaleY: 1, duration: 0.8, ease: "power4.out" }, 2.62);
+  tl.fromTo(P+"val", { autoAlpha: 0, y: 530 }, { autoAlpha: 1, y: 0, duration: 0.8, ease: "power4.out" }, 2.62);
+  const cnt = { v: 0 };
+  tl.to(cnt, { v: 7.58, duration: 1.1, ease: "power3.out", onUpdate: function() {
+    const el = document.getElementById("nl7-val"); if (el) el.textContent = cnt.v.toFixed(2) + " FT";
+  } }, 2.62);
+  tl.fromTo(P+"l4", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.62);
+
+  /* HUNDRED @4.78: sub line in, reference line draws */
+  tl.fromTo(P+"sub", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.78);
+  tl.to(P+"ref", { autoAlpha: 1, scaleX: 1, duration: 0.9, ease: "power2.out" }, 4.78);
+
+  /* THREE @6.66: the three hurricane bars rise together past the line */
+  tl.to([P+"b1", P+"b2", P+"b3"], { scaleY: 1, duration: 0.9, ease: "power3.out" }, 6.66);
+
+  /* HURRICANES @9.38: glyphs in and spinning, WINTER STORM under the 1950 bar */
+  tl.fromTo([P+"gw1", P+"gw2", P+"gw3"], { autoAlpha: 0, scale: 0.4 }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "back.out(1.8)" }, 9.38);
+  tl.set([P+"g1", P+"g2", P+"g3"], { transformOrigin: "50% 50%" }, 0);
+  tl.to([P+"g1", P+"g2", P+"g3"], { rotation: 360, duration: 2, ease: "none", repeat: 1 }, 9.38);
+  tl.fromTo(P+"win", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.38);
+
+  /* 1938 @10.86 / CAROL @12.36 / SANDY @12.82 */
+  tl.fromTo(P+"l1", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 10.86);
+  tl.fromTo(P+"l2", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 12.36);
+  tl.fromTo(P+"l3", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 12.82);
+
+  /* NEWYORK @13.84: card slides up and out, map rises in */
+  tl.to(P+"card", { y: -120, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 13.84);
+  tl.fromTo(P+"map", { y: 200, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 13.84);
+  tl.fromTo(P+"src2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 14.2);
+  tl.fromTo(P+"bm", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 14.2);
+  /* Albany pin */
+  tl.set(P+"pin", { svgOrigin: "1000 500" }, 0);
+  tl.fromTo(P+"pin", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)" }, 14.54);
+  tl.fromTo(P+"ring", { attr: { r: 8 }, opacity: 0.8 }, { attr: { r: 30 }, opacity: 0, duration: 1.2, ease: "power2.out", repeat: 2 }, 15.0);
+
+  /* hold: state fill breathes, map drifts */
+  tl.to(P+"ny", { opacity: 1, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 3 }, 14.5);
+  tl.to(P+"mapdrift", { x: -16, duration: 4.46, ease: "none" }, 14.5);
+
+  /* 20 @16.26: chip in (from 15.84 so it is settled well before the exit), $0 to $20 */
+  tl.fromTo(P+"chip", { autoAlpha: 0, scale: 0.9 }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 15.84);
+  const amt = { v: 0 };
+  tl.to(amt, { v: 20, duration: 0.6, ease: "power3.out", onUpdate: function() {
+    const el = document.getElementById("nl7-amt"); if (el) el.textContent = "$" + Math.round(amt.v) + " MILLION";
+  } }, 16.26);
+
+  /* exit 17.66-18.26 lands on the g-a1-8 hand-off (episode 213.582); chip settled since about 16.86 */
+  tl.to(P+"chip", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.66);
+  tl.to(P+"map", { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 17.66);
+
+  window.__timelines["g-a1-7-newlondon"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

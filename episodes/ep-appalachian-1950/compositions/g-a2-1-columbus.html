@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a2-1-columbus (A2-S1): Columbus, noon Saturday 25 Nov 1950. Full-frame designed map, host 13.70 s.
+  Camera A2-C: screen px = 700 + 384.1*(lon+82.9988), 560 - 558.5*(lat-39.9612) (same formula as the shared
+  map: x = 3841*(lon+97.576), y = -5585*(lat-46.6213), s 0.10, Columbus pin at (700, 560)).
+  GROUND: Natural Earth 50m admin-1 (public domain), vertices copied verbatim in map units from the reduced state paths in
+  compositions/g-a4-4-statemap.html defs (= the US path of library/inhouse/master-map-us-canada.html, RDP 15):
+  a44-g-oh vertices 0..20 (OH-PA line, WV panhandle, Ohio River OH-WV) and 50..59 (Ohio River OH-KY, OH-IN line);
+  a44-g-wv vertices 43..46 (PA-WV line, Mason-Dixon). Each border drawn once. Group matrix(0.1 0 0 0.1 -4899.1 -3159.67)
+  = frame A2-C. Frame 0 (#c1-wrap x +480) = g-a1-9's right half: same #0b1016 land, same Ohio River vertices
+  (63809,39375 ... 60672,42861), same 1.5 px rgba(255,255,255,.14) stroke; no other line falls in the frame-0 window.
+  Cues (audio/a2-s1.words.json): COLUMBUS 1.68, NOON 3.80, 18 5.32, 10 7.12, 8 9.00, HALF 11.16, KEPT 12.74.
+-->
+<template>
+<style>
+  #c1-root { position:absolute; inset:0; overflow:hidden; background:#04070c; font-family:Arial, sans-serif; color:#f2f5f8; }
+  .c1-clip { position:absolute; left:0; top:0; width:1920px; height:1080px; clip-path:inset(0px 0px 0px 960px); background:#04070c; }
+  .c1-wrap { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .c1-ground { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .c1-seam { position:absolute; left:959px; top:0; width:2px; height:1080px; background:rgba(255,255,255,.14); }
+  .c1-ring { position:absolute; left:691px; top:551px; width:18px; height:18px; box-sizing:border-box; border-radius:50%; border:2px solid #7fb2e5; opacity:.6; }
+  .c1-dot { position:absolute; left:691px; top:551px; width:18px; height:18px; box-sizing:border-box; border-radius:50%; background:#f2f5f8; border:2px solid #7fb2e5; }
+  .c1-pinlab { position:absolute; left:731px; top:545px; height:30px; line-height:30px; white-space:nowrap; font-family:Arial, sans-serif; font-weight:700; font-size:26px; letter-spacing:4px; color:#f2f5f8; text-shadow:0 0 6px #04070c, 0 0 12px #04070c; }
+  .c1-snow { position:absolute; left:0; top:0; width:1920px; height:1080px; pointer-events:none; }
+  .c1-flake { position:absolute; left:0; top:0; border-radius:50%; background:#ffffff; }
+  #c1-snow2 { opacity:0; visibility:hidden; }
+  .c1-chip { position:absolute; left:110px; top:90px; padding:18px 28px; border-radius:28px; box-sizing:border-box;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); }
+  .c1-chip-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; line-height:64px; color:#f2f5f8; white-space:nowrap; }
+  .c1-chip-sub { margin-top:4px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .c1-panel { position:absolute; right:0; top:0; bottom:0; width:700px; box-sizing:border-box; padding:160px 96px 0 170px;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); opacity:0; visibility:hidden; }
+  .c1-row { height:120px; opacity:0; visibility:hidden; }
+  .c1-val { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; line-height:62px; color:#f2f5f8; white-space:nowrap; }
+  .c1-lab { margin-top:4px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .c1-src { position:absolute; left:110px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:22px; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+</style>
+<div id="c1-root" data-composition-id="g-a2-1-columbus" data-width="1920" data-height="1080">
+  <div class="c1-clip" id="c1-clip">
+    <div class="c1-wrap" id="c1-wrap">
+      <svg class="c1-ground" id="c1-ground" viewBox="0 0 1920 1080" width="1920" height="1080">
+        <rect x="0" y="0" width="1920" height="1080" fill="#0b1016"/>
+        <!-- state lines, Natural Earth vertices in map units (same vertices, projection and stroke as g-a1-9's right half) -->
+        <g transform="matrix(0.1 0 0 0.1 -4899.1 -3159.67)" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1.5" stroke-linejoin="round">
+          <!-- OH east border: OH-PA line, WV panhandle, Ohio River (OH-WV) -->
+          <path vector-effect="non-scaling-stroke" d="M65511,25868 L65516,33367 L65061,33611 L64978,33836 L65189,34494 L65198,34948 L64159,38457 L64151,38855 L63809,39375 L62660,40406 L62388,40539 L62161,40527 L61980,40373 L61776,40478 L61550,40845 L61339,41034 L61144,41046 L60977,41283 L60708,42013 L60586,42084 L60672,42861"/>
+          <!-- Ohio River (OH-KY) and the OH-IN line -->
+          <path vector-effect="non-scaling-stroke" d="M51030,42706 L50770,42286 L50494,42057 L50191,41991 L49862,42086 L49608,42037 L49430,41845 L49204,41867 L48989,42051 L49088,27477"/>
+          <!-- WV panhandle east edge (PA-WV) and the Mason-Dixon line -->
+          <path vector-effect="non-scaling-stroke" d="M65516,33367 L65514,38530 L69516,38528 L69476,41387"/>
+        </g>
+      </svg>
+      <div class="c1-ring" id="c1-ring"></div>
+      <div class="c1-dot" id="c1-dot"></div>
+      <div class="c1-pinlab" id="c1-pinlab">COLUMBUS, OHIO</div>
+    </div>
+  </div>
+  <div class="c1-seam" id="c1-seam"></div>
+  <div class="c1-snow" id="c1-snow1"></div>
+  <div class="c1-snow" id="c1-snow2"></div>
+  <div class="c1-chip" id="c1-chip">
+    <div class="c1-chip-big">NOON</div>
+    <div class="c1-chip-sub">SAT, NOV 25</div>
+  </div>
+  <div class="c1-panel" id="c1-panel">
+    <div class="c1-row" id="c1-r1"><div class="c1-val">10&deg;F</div><div class="c1-lab">AIR TEMPERATURE</div></div>
+    <div class="c1-row" id="c1-r2"><div class="c1-val">18 MPH</div><div class="c1-lab">WIND</div></div>
+    <div class="c1-row" id="c1-r3"><div class="c1-val" id="c1-v3">-8&deg;F</div><div class="c1-lab">FEELS LIKE</div></div>
+    <div class="c1-row" id="c1-r4"><div class="c1-val">1/2 MILE</div><div class="c1-lab">VISIBILITY</div></div>
+  </div>
+  <div class="c1-src" id="c1-src1" style="bottom:90px;">Source: NWS Wilmington OH</div>
+  <div class="c1-src" id="c1-src2" style="bottom:60px;">Basemap: Natural Earth</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#c1-", DUR = 13.70, EXIT = DUR - 0.6;
+  const tl = gsap.timeline({ paused: true });
+
+  /* seeded snow: fixed LCG, no Math.random */
+  function mk(host, n, seed, tag) {
+    let s = seed;
+    const r = function () { s = (Math.imul(s, 1664525) + 1013904223) >>> 0; return s / 4294967296; };
+    const el = document.querySelector(P + host);
+    for (let i = 0; i < n; i++) {
+      const x0 = -1200 + r() * 3120, y0 = r() * 1080, sz = 2 + r() * 3, op = 0.35 + r() * 0.45;
+      const sp = 60 + r() * 60, dr = 40 + r() * 50;
+      const f = document.createElement("div");
+      f.className = "c1-flake"; f.id = "c1-" + tag + i;
+      f.style.width = sz.toFixed(1) + "px"; f.style.height = sz.toFixed(1) + "px"; f.style.opacity = op.toFixed(2);
+      el.appendChild(f);
+      const d1 = (1100 - y0) / sp, d = 1120 / sp;
+      tl.fromTo(f, { x: x0, y: y0 }, { x: x0 + dr * d1, y: 1100, duration: d1, ease: "none" }, 0);
+      tl.fromTo(f, { x: x0, y: -20 }, { x: x0 + dr * d, y: 1100, duration: d, ease: "none", repeat: Math.ceil(DUR / d) }, d1);
+    }
+  }
+  mk("snow1", 70, 1950, "fa");
+  mk("snow2", 40, 2511, "fb");
+
+  /* WHILE @0.00: half map, pin, label, chip, snow already on; pin ring pulses every 1.5 s */
+  tl.fromTo(P + "ring", { scale: 1, autoAlpha: 0.6 }, { scale: 2.4, autoAlpha: 0, duration: 1.5, ease: "power1.out", repeat: 9 }, 0);
+
+  /* COLUMBUS @1.68: clip opens full, map slides, pin 1180 to 700 (1.4 s from 0.20 lands on 1.60); seam fades; panel in */
+  tl.fromTo(P + "clip", { clipPath: "inset(0px 0px 0px 960px)" }, { clipPath: "inset(0px 0px 0px 0px)", duration: 1.4, ease: "power3.inOut" }, 0.2);
+  tl.fromTo(P + "wrap", { x: 480 }, { x: 0, duration: 1.4, ease: "power3.inOut" }, 0.2);
+  tl.to(P + "seam", { autoAlpha: 0, duration: 1.4, ease: "power2.inOut" }, 0.2);
+  tl.fromTo(P + "panel", { x: 660, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 1.68);
+
+  /* NOON @3.80: clock chip pulse */
+  tl.to(P + "chip", { scale: 1.06, transformOrigin: "left top", duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 3.8);
+
+  /* 18 @5.32: row 2 (wind) in */
+  tl.fromTo(P + "r2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.32);
+  /* 10 @7.12: row 1 (air temperature) in, above row 2 */
+  tl.fromTo(P + "r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.12);
+  /* 8 @9.00: row 3 (feels like) in, value flashes white to blue */
+  tl.fromTo(P + "r3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.0);
+  tl.fromTo(P + "v3", { color: "#f2f5f8" }, { color: "#7fb2e5", duration: 0.5, ease: "power2.out" }, 9.0);
+
+  /* HALF @11.16: row 4 in, second flake set fades in, ground dims to 70 % */
+  tl.fromTo(P + "r4", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.16);
+  tl.to(P + "snow2", { autoAlpha: 1, duration: 0.6, ease: "power1.out" }, 11.16);
+  tl.to(P + "ground", { opacity: 0.7, duration: 0.6, ease: "power1.out" }, 11.16);
+
+  /* KEPT @12.74: hold; flakes and pin pulse keep moving (no tween needed) */
+
+  /* EXIT, last 0.6 s: panel and chip slide out, map and snow fade to #04070c */
+  tl.to(P + "panel", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, EXIT);
+  tl.to(P + "chip", { x: -60, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, EXIT);
+  tl.to(P + "clip", { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, EXIT);
+  tl.to([P + "snow1", P + "snow2", P + "src1", P + "src2"], { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, EXIT);
+
+  window.__timelines["g-a2-1-columbus"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

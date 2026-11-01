@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a2-4-snowbowl (A2-S4, standard): red Abril popfig "NOV 25, 1950" / "OHIO STADIUM", then glass chip "45 PUNTS", then scoreboard chip "FINAL / MICHIGAN 9 / OHIO STATE 3"
+  over the Snow Bowl still A2-S4_c1 (track 1, orchestrator mount). Host: data-start = A2-S4 start, data-duration 21.24, track 3. Times are comp-local = A2-S4 word times.
+  Chips sit TOP-LEFT (left 110, top 110), not bottom-left: on the still (cover-scaled 1920 x 1080) the kicker's boot and the crouched holder fill the lower left, x 17..560, y 550..1000.
+  Source line stays at the brief's spot (left 110, bottom 60) as a small credit over snow.
+  Font: fonts/AbrilFatface-Regular.ttf under the episode root.
+-->
+<template>
+<style>
+  @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+  #s4-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; font-family: Arial, sans-serif; color:#f2f5f8; }
+
+  /* popfig: local scrim + outer (exit) > drift layer > big line, sub line */
+  #s4-scrim { position:absolute; left:410px; top:290px; width:1100px; height:420px; opacity:0; visibility:hidden;
+    background: radial-gradient(ellipse closest-side, rgba(3,5,8,0.55), rgba(3,5,8,0)); }
+  #s4-pf { position:absolute; left:0; top:395px; width:1920px; height:225px; text-align:center; white-space:nowrap; transform-origin:50% 50%; }
+  #s4-pfd { position:absolute; inset:0; transform-origin:50% 50%; }
+  #s4-big { position:absolute; left:0; right:0; top:0; font-family:'AbrilFig', Georgia, serif; font-size:150px; line-height:150px; color:#d0121f; letter-spacing:0.04em;
+    opacity:0; visibility:hidden; transform-origin:50% 50%;
+    text-shadow:0 4px 24px rgba(0,0,0,0.65), 0 0 2px rgba(0,0,0,0.9); }
+  #s4-sub { position:absolute; left:0; right:0; top:180px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:40px; line-height:45px; color:#f2f5f8; letter-spacing:6px;
+    opacity:0; visibility:hidden;
+    text-shadow:0 4px 24px rgba(0,0,0,0.65), 0 0 2px rgba(0,0,0,0.9); }
+
+  /* glass chips, top-left slot */
+  .s4-chip { position:absolute; left:110px; top:110px; display:table; box-sizing:border-box; padding:22px 34px; opacity:0; visibility:hidden;
+    background: rgba(10,16,24,0.55); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px;
+    box-shadow: 0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
+  .s4-big58 { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; line-height:66px; color:#f2f5f8; white-space:nowrap; }
+  #s4-final { display:block; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:28px; color:#93a3b2; letter-spacing:6px; opacity:0; visibility:hidden; }
+  .s4-team { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; white-space:nowrap; opacity:0; visibility:hidden; }
+  #s4-rule { display:block; height:2px; margin:10px 0; background:rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
+
+  /* source line */
+  #s4-src, #s4-src2 { position:absolute; left:94px; bottom:46px; padding:12px 16px; border-radius:14px; background:rgba(10,16,24,0.72); border:1px solid rgba(255,255,255,0.14); font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:24px; color:#c8d3e0; letter-spacing:2px; white-space:nowrap;
+    text-shadow:0 2px 10px rgba(0,0,0,0.85); opacity:0; visibility:hidden; }
+</style>
+<div id="s4-root" data-composition-id="g-a2-4-snowbowl" data-width="1920" data-height="1080" data-type-ok="popfig and chips over a photo: sizes set by the brief">
+  <div id="s4-scrim"></div>
+  <div id="s4-pf">
+    <div id="s4-pfd">
+      <span id="s4-big">NOV 25, 1950</span>
+      <span id="s4-sub">OHIO STADIUM</span>
+    </div>
+  </div>
+
+  <div class="s4-chip" id="s4-chip1"><span class="s4-big58" id="s4-c1t">45 PUNTS</span></div>
+
+  <div class="s4-chip" id="s4-chip2">
+    <span id="s4-final">FINAL</span>
+    <span class="s4-team" id="s4-t1">MICHIGAN 9</span>
+    <span id="s4-rule"></span>
+    <span class="s4-team" id="s4-t2">OHIO STATE 3</span>
+  </div>
+
+  <div id="s4-src">Photo: Michiganensian 1951 (public domain)</div>
+  <div id="s4-src2">Postcard: GNU Card Company, 1950s (public domain)</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+
+  /* THAT @0.00: source line in */
+  tl.fromTo("#s4-src", {autoAlpha:0, y:10}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0);
+
+  /* credit follows the photo on screen: Allis 0 to 9.24 (two windows), postcard from 9.24 (index cut 290.802 minus host start 281.562) */
+  tl.set("#s4-src2", {autoAlpha:0}, 0);
+  tl.set("#s4-src", {autoAlpha:0}, 9.24);
+  tl.fromTo("#s4-src2", {autoAlpha:0, y:10}, {autoAlpha:1, y:0, duration:0.3, ease:"power3.out", immediateRender:false}, 9.24);
+
+  /* OHIO @0.36: scrim and big line in, sub line 0.25 s later (OHIO STADIUM), whole popfig lands by 0.81 / 1.06 */
+  tl.fromTo("#s4-scrim", {autoAlpha:0}, {autoAlpha:1, duration:0.45, ease:"power2.out"}, 0.36);
+  tl.fromTo("#s4-big", {autoAlpha:0, scale:1.25}, {autoAlpha:1, scale:1, duration:0.45, ease:"power4.out"}, 0.36);
+  tl.fromTo("#s4-sub", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.45, ease:"power3.out"}, 0.61);
+  /* 0.36 to 3.74: popfig drifts */
+  tl.to("#s4-pfd", {scale:1.03, duration:3.38, ease:"none"}, 0.36);
+  /* BOWL @3.74: popfig and scrim out, gone by 4.14, 1.08 s before chip 1 enters */
+  tl.to("#s4-pf", {scale:0.94, autoAlpha:0, duration:0.4, ease:"power3.in"}, 3.74);
+  tl.to("#s4-scrim", {autoAlpha:0, duration:0.4, ease:"power2.in"}, 3.74);
+
+  /* 45 @5.22: chip 1 in, readable 5.82 to 16.20 (10.4 s) */
+  tl.fromTo("#s4-chip1", {autoAlpha:0, x:-60}, {autoAlpha:1, x:0, duration:0.6, ease:"power3.out"}, 5.22);
+  /* 5.82 to 15.42: float, 6 legs of 1.6 s, ends back at rest */
+  tl.to("#s4-chip1", {y:-6, duration:1.6, ease:"sine.inOut", yoyo:true, repeat:5}, 5.82);
+  /* 16.20 (0.5 s before "Michigan" 16.70): chip 1 out, done 16.60 */
+  tl.to("#s4-chip1", {x:-60, autoAlpha:0, duration:0.4, ease:"power3.in"}, 16.2);
+
+  /* WON @16.76: chip 2 card in with FINAL */
+  tl.fromTo("#s4-chip2", {autoAlpha:0}, {autoAlpha:1, duration:0.35, ease:"power2.out"}, 16.76);
+  tl.fromTo("#s4-final", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 16.76);
+  /* 9 @17.00: MICHIGAN 9 and the rule */
+  tl.fromTo("#s4-t1", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 17);
+  tl.fromTo("#s4-rule", {autoAlpha:0}, {autoAlpha:1, duration:0.35, ease:"power2.out"}, 17);
+  /* 3 @17.30 ("-3"): OHIO STATE 3, complete at 17.65, readable until 20.64 (about 3 s) */
+  tl.fromTo("#s4-t2", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 17.3);
+  /* 17.70 to 20.64: float, 2 legs of 1.47 s */
+  tl.to("#s4-chip2", {y:-6, duration:1.47, ease:"sine.inOut", yoyo:true, repeat:1}, 17.7);
+  /* exit in the host's last 0.6 s (host 21.24) */
+  tl.to("#s4-chip2", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 20.64);
+
+  window.__timelines["g-a2-4-snowbowl"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

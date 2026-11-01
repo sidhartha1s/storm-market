@@ -1,0 +1,255 @@
+<template>
+<style>
+  #a3p-root { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8; }
+  /* chart camera C1 (briefs/a3/_list.md): screen = (chart px - (196,110)) x 2.0; static */
+  .a3p-chart { position:absolute; left:-392px; top:-220px; width:2312px; height:1518px; }
+  .a3p-dim { position:absolute; inset:0; background:rgba(4,7,12,.38); }
+  .a3p-scan { position:absolute; left:370px; top:0; width:1180px; height:2px; background:rgba(127,178,229,.30); }
+  .a3p-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .a3p-track { fill:none; stroke:#d0121f; stroke-width:6; stroke-linecap:round; stroke-linejoin:round; filter:drop-shadow(0 0 6px rgba(208,18,31,.6)); }
+  .a3p-trackhead { fill:#d0121f; filter:drop-shadow(0 0 6px rgba(208,18,31,.6)); }
+  .a3p-pass { fill:none; stroke:#ff4d5a; stroke-width:9; stroke-linecap:round; stroke-linejoin:round; filter:drop-shadow(0 0 10px rgba(255,77,90,.8)); opacity:0; visibility:hidden; }
+  .a3p-conn { fill:none; stroke:#d0121f; stroke-width:4; stroke-dasharray:8 6; opacity:.6; }
+  .a3p-cmaskpath { fill:none; stroke:#fff; stroke-width:18; }
+  .a3p-ghost { fill:none; stroke:#93a3b2; stroke-width:5; stroke-dasharray:14 10; opacity:.3; }
+  .a3p-ghosthead { fill:#93a3b2; opacity:.3; }
+  .a3p-warm { fill:none; stroke:#d8a13a; stroke-width:10; stroke-dasharray:40 30; opacity:.9; filter:drop-shadow(0 0 8px rgba(216,161,58,.5)); }
+  .a3p-cold { fill:none; stroke:#7fb2e5; stroke-width:10; stroke-dasharray:40 30; opacity:.9; filter:drop-shadow(0 0 8px rgba(127,178,229,.5)); }
+  .a3p-whead { fill:#d8a13a; opacity:.9; filter:drop-shadow(0 0 8px rgba(216,161,58,.5)); }
+  .a3p-chead { fill:#7fb2e5; opacity:.9; filter:drop-shadow(0 0 8px rgba(127,178,229,.5)); }
+  .a3p-ring { fill:none; stroke:#dfe7ee; stroke-width:3; opacity:.35; }
+  .a3p-ringhead { fill:#dfe7ee; opacity:.5; }
+  .a3p-pin, .a3p-snow2 { opacity:0; visibility:hidden; }
+  .a3p-snow1 { opacity:0; visibility:hidden; }
+  .a3p-flake { fill:#dfe7ee; opacity:0; }
+  .a3p-pulse { fill:none; stroke:#7fb2e5; stroke-width:3; opacity:0; }
+  .a3p-lab { position:absolute; line-height:30px; font-weight:700; font-size:26px; color:#dfe7ee;
+    -webkit-text-stroke:5px #04070c; paint-order:stroke fill; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a3p-ohio { position:absolute; right:1034px; top:385px; line-height:30px; font-weight:700; font-size:26px; letter-spacing:4px;
+    color:#f2f5f8; -webkit-text-stroke:5px #04070c; paint-order:stroke fill; white-space:nowrap; }
+  /* NEWARK: left edge 24 px right of the dot (1380 -> 1404), centre y 284 (raised 12 px off the W3 arrow body) */
+  #a3p-lab-n { left:1404px; top:269px; }
+  /* PITTSBURGH: right edge 24 px left of the dot (1078 -> 1054), centre y 364 */
+  #a3p-lab-p { right:866px; top:349px; }
+  /* BUFFALO: right edge 24 px left of the dot (1132 -> 1108), centre y 224 */
+  #a3p-lab-b { right:812px; top:209px; }
+  .a3p-glass { box-sizing:border-box; white-space:nowrap;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); }
+  .a3p-row { position:absolute; display:flex; gap:8px; }
+  .a3p-piece { padding:10px 18px; border-radius:14px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:40px; line-height:44px;
+    opacity:0; visibility:hidden; }
+  /* Pittsburgh chip: right edge x 874 (30 px below-left of its label), top 407 */
+  #a3p-prow { right:1046px; top:407px; }
+  /* Buffalo chip: above its label, bottom ~181, left x 1030 (clear of the cold-arrow tails at the top-left) */
+  #a3p-brow { left:1030px; top:117px; }
+  .a3p-q { position:absolute; left:110px; bottom:140px; padding:18px 28px; border-radius:28px; box-shadow:0 18px 50px rgba(0,0,0,.35);
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:58px; color:#f2f5f8; opacity:0; visibility:hidden; }
+  .a3p-source { position:absolute; left:110px; bottom:60px; font-weight:700; font-size:19px; letter-spacing:2px; color:#c8d3e0;
+    text-shadow:0 1px 4px rgba(4,7,12,.9); white-space:nowrap; }
+</style>
+<div id="a3p-root" data-composition-id="g-a3-3-pins" data-width="1920" data-height="1080">
+  <img class="a3p-chart" id="a3p-chart" src="media/a3/A3-S1_c1_nws-jkl-surface-1950-11-25.jpg" alt="">
+  <div class="a3p-dim" id="a3p-dim"></div>
+  <div class="a3p-scan" id="a3p-scan"></div>
+  <svg class="a3p-svg" id="a3p-svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+    <defs>
+      <clipPath id="a3p-pclip" clipPathUnits="userSpaceOnUse"><rect id="a3p-pclip-r" x="1069" y="355" width="18" height="0"/></clipPath>
+      <clipPath id="a3p-bclip" clipPathUnits="userSpaceOnUse"><rect id="a3p-bclip-r" x="1123" y="215" width="18" height="0"/></clipPath>
+      <mask id="a3p-cmask-n" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+        <path class="a3p-cmaskpath" id="a3p-cmaskpath-n" d="M1299 417 L1370 310"/>
+      </mask>
+      <mask id="a3p-cmask-b" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+        <path class="a3p-cmaskpath" id="a3p-cmaskpath-b" d="M1180 360 L1138 240"/>
+      </mask>
+    </defs>
+    <!-- ghost: the usual path, dimmed to .3 as g-a3-1/-2 leave it -->
+    <path class="a3p-ghost" id="a3p-ghost" d="M1238 660 C1300 580 1380 500 1420 430 C1520 360 1760 330 1768 160"/>
+    <polygon class="a3p-ghosthead" id="a3p-ghosthead" points="1768,160 1778,183 1756,181"/>
+
+    <!-- swirl (schematic, g-a3-2's last frame): geometry from briefs/a3/g-a3-2-swirl.md, W2 and W3 shortened (see receipt) -->
+    <circle class="a3p-ring" id="a3p-ring-c" cx="1284" cy="576" r="110"/>
+    <g id="a3p-ringg">
+      <polygon class="a3p-ringhead" points="0,0 -12,-6 -12,6" transform="translate(1394 576) rotate(-90)"/>
+      <polygon class="a3p-ringhead" points="0,0 -12,-6 -12,6" transform="translate(1229 671.3) rotate(30)"/>
+      <polygon class="a3p-ringhead" points="0,0 -12,-6 -12,6" transform="translate(1229 480.7) rotate(150)"/>
+    </g>
+    <path class="a3p-cold" id="a3p-c1" d="M820 110 C960 260 1060 380 1110 498"/>
+    <path class="a3p-cold" id="a3p-c2" d="M680 160 C860 330 1000 470 1088 619"/>
+    <path class="a3p-cold" id="a3p-c3" d="M960 90 C1040 220 1100 330 1148 419"/>
+    <path class="a3p-warm" id="a3p-w1" d="M1560 640 C1520 420 1360 300 1203 256"/>
+    <path class="a3p-warm" id="a3p-w2" d="M1580 520 C1480 330 1300 220 1199 212"/>
+    <path class="a3p-warm" id="a3p-w3" d="M1590 600 C1500 420 1445 360 1433 344"/>
+    <polygon class="a3p-chead" id="a3p-c1h" points="0,0 -26,-13 -26,13"/>
+    <polygon class="a3p-chead" id="a3p-c2h" points="0,0 -26,-13 -26,13"/>
+    <polygon class="a3p-chead" id="a3p-c3h" points="0,0 -26,-13 -26,13"/>
+    <polygon class="a3p-whead" id="a3p-w1h" points="0,0 -26,-13 -26,13"/>
+    <polygon class="a3p-whead" id="a3p-w2h" points="0,0 -26,-13 -26,13"/>
+    <polygon class="a3p-whead" id="a3p-w3h" points="0,0 -26,-13 -26,13"/>
+
+    <!-- red track, complete (g-a3-1), Carolinas pin, and the bright pass -->
+    <path class="a3p-track" id="a3p-track" d="M1238 660 C1262 590 1300 500 1300 430 C1300 385 1250 360 1180 360 C1080 360 990 378 910 400"/>
+    <polygon class="a3p-trackhead" id="a3p-trackhead" points="0,0 -22,-11 -22,11"/>
+    <path class="a3p-pass" id="a3p-pass" d="M1238 660 C1262 590 1300 500 1300 430 C1300 385 1250 360 1180 360 C1080 360 990 378 910 400"/>
+    <circle cx="1238" cy="660" r="15.5" fill="none" stroke="#d0121f" stroke-width="3"/>
+    <circle cx="1238" cy="660" r="9" fill="#f2f5f8"/>
+
+    <!-- connectors: same red, dashed, drawn on through a mask so the dash pattern stays intact -->
+    <path class="a3p-conn" id="a3p-conn-n" mask="url(#a3p-cmask-n)" d="M1299 417 L1370 310"/>
+    <path class="a3p-conn" id="a3p-conn-b" mask="url(#a3p-cmask-b)" d="M1180 360 L1138 240"/>
+
+    <!-- snow round Pittsburgh (radius 70 about 1078,364), seeded by hand -->
+    <g class="a3p-snow1" id="a3p-snow1">
+      <circle class="a3p-flake" cx="1018" cy="328" r="1.3"/><circle class="a3p-flake" cx="1033" cy="310.4" r="1.5"/>
+      <circle class="a3p-flake" cx="1048" cy="300.8" r="1.1"/><circle class="a3p-flake" cx="1063" cy="295.6" r="1.4"/>
+      <circle class="a3p-flake" cx="1078" cy="294" r="1.2"/><circle class="a3p-flake" cx="1088" cy="294.7" r="1.5"/>
+      <circle class="a3p-flake" cx="1103" cy="298.6" r="1.1"/><circle class="a3p-flake" cx="1118" cy="306.6" r="1.3"/>
+      <circle class="a3p-flake" cx="1133" cy="320.7" r="1.4"/><circle class="a3p-flake" cx="1140" cy="331.5" r="1.2"/>
+    </g>
+    <g class="a3p-snow2" id="a3p-snow2">
+      <circle class="a3p-flake" cx="1026" cy="317.1" r="1.4"/><circle class="a3p-flake" cx="1040" cy="305.2" r="1.2"/>
+      <circle class="a3p-flake" cx="1056" cy="297.5" r="1.5"/><circle class="a3p-flake" cx="1070" cy="294.5" r="1.1"/>
+      <circle class="a3p-flake" cx="1084" cy="294.3" r="1.3"/><circle class="a3p-flake" cx="1096" cy="296.4" r="1.4"/>
+      <circle class="a3p-flake" cx="1110" cy="301.7" r="1.2"/><circle class="a3p-flake" cx="1126" cy="313.1" r="1.5"/>
+      <circle class="a3p-flake" cx="1136" cy="324.8" r="1.1"/><circle class="a3p-flake" cx="1014" cy="335.6" r="1.3"/>
+    </g>
+
+    <!-- pins: core 18 px, ring 34 px, 3 px stroke -->
+    <circle class="a3p-pulse" id="a3p-pulse-n" cx="1380" cy="296" r="17"/>
+    <g class="a3p-pin" id="a3p-pin-n">
+      <circle cx="1380" cy="296" r="17" fill="none" stroke="#7fb2e5" stroke-width="3"/>
+      <circle cx="1380" cy="296" r="9" fill="#7fb2e5"/>
+    </g>
+    <g class="a3p-pin" id="a3p-pin-p">
+      <circle id="a3p-ring-p" cx="1078" cy="364" r="17" fill="none" stroke="#93a3b2" stroke-width="3"/>
+      <circle cx="1078" cy="364" r="9" fill="#f2f5f8" clip-path="url(#a3p-pclip)"/>
+    </g>
+    <g class="a3p-pin" id="a3p-pin-b">
+      <circle id="a3p-ring-b" cx="1132" cy="224" r="17" fill="none" stroke="#93a3b2" stroke-width="3"/>
+      <circle cx="1132" cy="224" r="9" fill="#d8a13a" clip-path="url(#a3p-bclip)"/>
+    </g>
+  </svg>
+  <div class="a3p-ohio" id="a3p-ohio">OHIO</div>
+  <div class="a3p-lab" id="a3p-lab-n">NEWARK</div>
+  <div class="a3p-lab" id="a3p-lab-p">PITTSBURGH</div>
+  <div class="a3p-lab" id="a3p-lab-b">BUFFALO</div>
+  <div class="a3p-row" id="a3p-prow">
+    <div class="a3p-glass a3p-piece" id="a3p-p-a" style="color:#7fb2e5">SINGLE DIGITS</div>
+    <div class="a3p-glass a3p-piece" id="a3p-p-b" style="color:#f2f5f8">· SNOW</div>
+  </div>
+  <div class="a3p-row" id="a3p-brow">
+    <div class="a3p-glass a3p-piece" id="a3p-b-a" style="color:#d8a13a">40s</div>
+    <div class="a3p-glass a3p-piece" id="a3p-b-b" style="color:#f2f5f8">· NO SNOW</div>
+  </div>
+  <div class="a3p-glass a3p-q" id="a3p-q">WHY DID IT TURN INLAND?</div>
+  <div class="a3p-source" id="a3p-source">Source: NWS Jackson, KY</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var P = "#a3p-";
+  var END = 22.14;
+  var tl = gsap.timeline({ paused: true });
+  var track = document.getElementById("a3p-track");
+  var TL = Math.ceil(track.getTotalLength()) + 1;
+
+  /* static arrowheads ride the arrow ends: tip x, y, angle (deg) */
+  var HEADS = [
+    ["c1h", 1119.4, 520.1, 67.0], ["c2h", 1100.2, 639.7, 59.4], ["c3h", 1159.4, 440.1, 61.7],
+    ["w1h", 1180, 249.5, -164.3], ["w2h", 1175, 210, -175.5], ["w3h", 1418.6, 324.8, -126.9],
+    ["trackhead", 910, 400, 164.6]
+  ];
+  HEADS.forEach(function (h) { tl.set(P + h[0], { x: h[1], y: h[2], rotation: h[3], transformOrigin: "100% 50%" }, 0); });
+
+  /* NOW @0.00: frame 0 = g-a3-2's last frame; chart, scan line, conveyors and the ring are already moving */
+  tl.set(P + "pin-n", { svgOrigin: "1380 296", scale: 0.4 }, 0);
+  tl.set(P + "pin-p", { svgOrigin: "1078 364", scale: 0.4 }, 0);
+  tl.set(P + "pin-b", { svgOrigin: "1132 224", scale: 0.4 }, 0);
+  tl.set(P + "lab-n", { scale: 0.6, transformOrigin: "0% 50%" }, 0);
+  tl.set(P + "lab-p", { scale: 0.6, transformOrigin: "100% 50%" }, 0);
+  tl.set(P + "lab-b", { scale: 0.6, transformOrigin: "100% 50%" }, 0);
+  tl.set(P + "cmaskpath-n", { strokeDasharray: "150 150", strokeDashoffset: 150 }, 0);
+  tl.set(P + "cmaskpath-b", { strokeDasharray: "130 130", strokeDashoffset: 130 }, 0);
+  tl.set(P + "ringg", { svgOrigin: "1284 576" }, 0);
+  tl.set(P + "pass", { strokeDasharray: "170 " + (TL + 200), strokeDashoffset: 170 }, 0);
+  /* scan continues g-a3-2's last y 905.9 at 60 px/s, wrapping at 1080 */
+  tl.fromTo(P + "scan", { y: 905.9 }, { y: 1080, duration: 2.9, ease: "none" }, 0);
+  tl.fromTo(P + "scan", { y: 0 }, { y: 1080, duration: 18, ease: "none", immediateRender: false }, 2.9);
+  tl.fromTo(P + "scan", { y: 0 }, { y: 74.4, duration: 1.24, ease: "none", immediateRender: false }, 20.9);
+  tl.to(P + "ringg", { rotation: -360, svgOrigin: "1284 576", duration: 7.38, ease: "none", repeat: 2 }, 0);
+  ["c1", "c2", "c3", "w1", "w2", "w3"].forEach(function (id, i) {
+    tl.to(P + id, { strokeDashoffset: -700, duration: END, ease: "none" }, 0);
+  });
+
+  /* NEWARK @2.24 */
+  tl.fromTo(P + "pin-n", { svgOrigin: "1380 296", scale: 0.4, autoAlpha: 0 }, { svgOrigin: "1380 296", scale: 1, autoAlpha: 1, duration: 0.4, ease: "back.out(1.6)" }, 2.24);
+  tl.fromTo(P + "lab-n", { scale: 0.6, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.4, ease: "back.out(1.6)" }, 2.24);
+  /* PITTSBURGH @2.82 */
+  tl.fromTo(P + "pin-p", { svgOrigin: "1078 364", scale: 0.4, autoAlpha: 0 }, { svgOrigin: "1078 364", scale: 1, autoAlpha: 1, duration: 0.4, ease: "back.out(1.6)" }, 2.82);
+  tl.fromTo(P + "lab-p", { scale: 0.6, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.4, ease: "back.out(1.6)" }, 2.82);
+  /* BUFFALO @3.58: ring only, grey, no fill yet */
+  tl.fromTo(P + "pin-b", { svgOrigin: "1132 224", scale: 0.4, autoAlpha: 0 }, { svgOrigin: "1132 224", scale: 1, autoAlpha: 1, duration: 0.4, ease: "back.out(1.6)" }, 3.58);
+  tl.fromTo(P + "lab-b", { scale: 0.6, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.4, ease: "back.out(1.6)" }, 3.58);
+
+  /* NEWARK2 @5.80: pulse every 1.4 s (finite, 11 pulses), W3 arrowhead flashes once */
+  tl.fromTo(P + "pulse-n", { attr: { r: 17 }, opacity: 0.8 }, { attr: { r: 35 }, opacity: 0, duration: 1.2, ease: "power2.out", repeat: 10, repeatDelay: 0.2 }, 5.8);
+  tl.to(P + "w3h", { scale: 1.4, duration: 0.2, ease: "power2.out" }, 5.8);
+  tl.to(P + "w3h", { scale: 1, duration: 0.2, ease: "power2.in" }, 6.0);
+
+  /* PITTSBURGH2 @8.28: fill sweeps white top to bottom, snowfall starts */
+  tl.to(P + "pclip-r", { attr: { height: 18 }, duration: 0.5, ease: "none" }, 8.28);
+  tl.to(P + "ring-p", { attr: { stroke: "#f2f5f8" }, duration: 0.5, ease: "none" }, 8.28);
+  tl.set(P + "snow1", { autoAlpha: 1 }, 8.28);
+  /* SNOW @10.40: second set of flakes fades in */
+  tl.fromTo(P + "snow2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "none" }, 10.4);
+
+  /* flakes: 30-50 px/s fall inside the 70 px radius, one fade in and out per fall, finite repeats */
+  function snow(sel, start) {
+    var dots = document.querySelectorAll(sel + " circle");
+    for (var i = 0; i < dots.length; i++) {
+      var d = dots[i], h = 364 - parseFloat(d.getAttribute("cy"));
+      var dur = (2 * h) / (30 + (i % 5) * 5), st = start + i * 0.23;
+      var n = Math.ceil((END - st) / dur);
+      tl.fromTo(d, { y: 0 }, { y: 2 * h, duration: dur, ease: "none", repeat: n - 1 }, st);
+      tl.fromTo(d, { opacity: 0 }, { opacity: 0.7, duration: dur / 2, ease: "sine.inOut", yoyo: true, repeat: 2 * n - 1 }, st);
+    }
+  }
+  snow("#a3p-snow1", 8.28);
+  snow("#a3p-snow2", 10.4);
+
+  /* SINGLE @12.06 */
+  tl.fromTo(P + "p-a", { scale: 0.9, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.4, ease: "back.out(1.4)" }, 12.06);
+  /* DIGITS @12.34 */
+  tl.fromTo(P + "p-b", { x: -12, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.3, ease: "power3.out" }, 12.34);
+  /* BUFFALO2 @13.42: Pittsburgh chip dims, Buffalo fill sweeps orange */
+  tl.to(P + "prow", { opacity: 0.7, duration: 0.3, ease: "none" }, 13.42);
+  tl.to(P + "bclip-r", { attr: { height: 18 }, duration: 0.4, ease: "none" }, 13.42);
+  tl.to(P + "ring-b", { attr: { stroke: "#d8a13a" }, duration: 0.4, ease: "none" }, 13.42);
+  /* 40S @16.74 */
+  tl.fromTo(P + "b-a", { scale: 0.9, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.4, ease: "back.out(1.4)" }, 16.74);
+  /* NO SNOW @17.26 */
+  tl.fromTo(P + "b-b", { x: -12, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.3, ease: "power3.out" }, 17.26);
+
+  /* SO @18.58: both chips dim, one bright pass along the red track, connectors draw to Newark and Buffalo */
+  tl.to([P + "prow", P + "brow"], { opacity: 0.7, duration: 0.3, ease: "none" }, 18.58);
+  tl.set(P + "pass", { autoAlpha: 1 }, 18.58);
+  tl.to(P + "pass", { strokeDashoffset: -(TL + 20), duration: 0.8, ease: "power1.inOut" }, 18.58);
+  tl.set(P + "pass", { autoAlpha: 0 }, 19.4);
+  tl.to(P + "cmaskpath-n", { strokeDashoffset: 0, duration: 0.8, ease: "power2.out" }, 18.58);
+  tl.to(P + "cmaskpath-b", { strokeDashoffset: 0, duration: 0.8, ease: "power2.out" }, 18.58);
+  /* WHY @18.74: the open-loop question lands here (not at "turn" 21.08) so it reads for ~2.8 s before the exit */
+  tl.fromTo(P + "q", { y: 30, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 18.74);
+
+  /* USUALLY @19.80: the usual path brightens to .6 for 0.6 s and back to .3 */
+  tl.to([P + "ghost", P + "ghosthead"], { opacity: 0.6, duration: 0.3, ease: "power2.out" }, 19.8);
+  tl.to([P + "ghost", P + "ghosthead"], { opacity: 0.3, duration: 0.3, ease: "power2.in" }, 20.1);
+
+  /* EXIT @21.54 (host end - 0.6): question card slides out; pins, labels, chips and snow fade with it */
+  tl.to(P + "q", { y: 30, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 21.54);
+  tl.to([P + "pin-n", P + "pin-p", P + "pin-b", P + "lab-n", P + "lab-p", P + "lab-b", P + "prow", P + "brow", P + "snow1", P + "snow2", P + "pulse-n"],
+    { autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 21.54);
+
+  window.__timelines["g-a3-3-pins"] = tl;
+})();
+</script>
+</template>

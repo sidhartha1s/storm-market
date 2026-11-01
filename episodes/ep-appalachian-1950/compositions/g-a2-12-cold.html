@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a2-12-cold: Saturday's highs in West Virginia, about 40 degrees below normal (A2-S12).
+  Brief: briefs/a2/g-a2-12-cold.md. Full-frame designed card on track 2. Host: data-start = A2-S12 start, data-duration = 12.36.
+  One shared scale 0F..60F, 8 px per degree, 0F at y 860. Liquid tops y 780/764/740, ghost tops y 460/444/420 (each exactly 320 px = 40 degrees above its liquid).
+  No normal temperature number on screen. Nothing in x >= 1600, y >= 680.
+-->
+<template>
+<style>
+  #c12-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #c12-card { position:absolute; inset:0; }
+  #c12-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .c12-h { opacity:0; visibility:hidden; }
+  .c12-eb { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:6px; fill:#93a3b2; }
+  .c12-hd { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; fill:#f2f5f8; }
+  .c12-gl { font-family:Arial, sans-serif; font-weight:700; font-size:22px; fill:#93a3b2; }
+  .c12-val { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; fill:#f2f5f8; }
+  .c12-city { font-family:Arial, sans-serif; font-weight:700; font-size:26px; letter-spacing:4px; fill:#93a3b2; }
+  .c12-norm { font-family:Arial, sans-serif; font-weight:700; font-size:20px; letter-spacing:6px; fill:#c8d3e0; }
+  .c12-brk { font-family:Arial, sans-serif; font-weight:700; font-size:26px; fill:#d8a13a; }
+  .c12-src { font-family:Arial, sans-serif; font-weight:700; font-size:19px; letter-spacing:2px; fill:#c8d3e0; }
+  .c12-tube { fill:#0b1016; stroke:#5a768f; stroke-width:3; }
+  .c12-ghost { fill:none; stroke:rgba(242,245,248,.45); stroke-width:2; }
+  .c12-liq { fill:#7fb2e5; }
+  .c12-glint { fill:#dfe7ee; opacity:.7; }
+</style>
+<div id="c12-wrap" data-composition-id="g-a2-12-cold" data-width="1920" data-height="1080" data-duration="12.36">
+  <div id="c12-card">
+    <svg id="c12-svg" viewBox="0 0 1920 1080">
+      <!-- frost glints, drift up-left the whole window -->
+      <circle class="c12-glint" id="c12-gl1" cx="180" cy="260" r="2"/>
+      <circle class="c12-glint" id="c12-gl2" cx="420" cy="180" r="2.5"/>
+      <circle class="c12-glint" id="c12-gl3" cx="760" cy="300" r="1.5"/>
+      <circle class="c12-glint" id="c12-gl4" cx="1060" cy="210" r="2"/>
+      <circle class="c12-glint" id="c12-gl5" cx="1380" cy="160" r="2.5"/>
+      <circle class="c12-glint" id="c12-gl6" cx="1560" cy="330" r="2"/>
+      <circle class="c12-glint" id="c12-gl7" cx="240" cy="520" r="1.5"/>
+      <circle class="c12-glint" id="c12-gl8" cx="1420" cy="520" r="2"/>
+      <circle class="c12-glint" id="c12-gl9" cx="1540" cy="640" r="2.5"/>
+      <circle class="c12-glint" id="c12-gl10" cx="700" cy="660" r="2"/>
+      <circle class="c12-glint" id="c12-gl11" cx="1100" cy="560" r="1.5"/>
+      <circle class="c12-glint" id="c12-gl12" cx="150" cy="820" r="2"/>
+
+      <!-- title -->
+      <text class="c12-eb c12-h" id="c12-eb" x="110" y="90">WEST VIRGINIA · SAT, NOV 25</text>
+      <text class="c12-hd c12-h" id="c12-hd" x="110" y="160">HIGH FOR THE DAY</text>
+
+      <!-- gridlines 0, 20, 40, 60 F -->
+      <g class="c12-h" id="c12-grid">
+        <line x1="300" y1="860" x2="1500" y2="860" stroke="#2a3644" stroke-width="1"/>
+        <line x1="300" y1="700" x2="1500" y2="700" stroke="#2a3644" stroke-width="1"/>
+        <line x1="300" y1="540" x2="1500" y2="540" stroke="#2a3644" stroke-width="1"/>
+        <line x1="300" y1="380" x2="1500" y2="380" stroke="#2a3644" stroke-width="1"/>
+        <text class="c12-gl" x="285" y="868" text-anchor="end">0°F</text>
+        <text class="c12-gl" x="285" y="708" text-anchor="end">20°F</text>
+        <text class="c12-gl" x="285" y="548" text-anchor="end">40°F</text>
+        <text class="c12-gl" x="285" y="388" text-anchor="end">60°F</text>
+      </g>
+
+      <!-- Elkins -->
+      <g class="c12-h" id="c12-tube-e">
+        <rect class="c12-tube" x="532" y="360" width="56" height="520" rx="10"/>
+        <circle class="c12-tube" cx="560" cy="900" r="40"/>
+        <rect x="535" y="852" width="50" height="40" fill="#0b1016"/>
+        <circle class="c12-liq" cx="560" cy="900" r="32"/>
+        <path class="c12-ghost" id="c12-gh-e" d="M532 860 V460 H588 V860" style="opacity:0"/>
+        <g id="c12-q-e"><rect class="c12-liq" id="c12-lq-e" x="538" y="780" width="44" height="110"/></g>
+      </g>
+      <!-- Charleston -->
+      <g class="c12-h" id="c12-tube-c">
+        <rect class="c12-tube" x="872" y="360" width="56" height="520" rx="10"/>
+        <circle class="c12-tube" cx="900" cy="900" r="40"/>
+        <rect x="875" y="852" width="50" height="40" fill="#0b1016"/>
+        <circle class="c12-liq" cx="900" cy="900" r="32"/>
+        <path class="c12-ghost" id="c12-gh-c" d="M872 860 V444 H928 V860" style="opacity:0"/>
+        <g id="c12-q-c"><rect class="c12-liq" id="c12-lq-c" x="878" y="764" width="44" height="126"/></g>
+      </g>
+      <!-- Huntington -->
+      <g class="c12-h" id="c12-tube-h">
+        <rect class="c12-tube" x="1212" y="360" width="56" height="520" rx="10"/>
+        <circle class="c12-tube" cx="1240" cy="900" r="40"/>
+        <rect x="1215" y="852" width="50" height="40" fill="#0b1016"/>
+        <circle class="c12-liq" cx="1240" cy="900" r="32"/>
+        <path class="c12-ghost" id="c12-gh-h" d="M1212 860 V420 H1268 V860" style="opacity:0"/>
+        <g id="c12-q-h"><rect class="c12-liq" id="c12-lq-h" x="1218" y="740" width="44" height="150"/></g>
+      </g>
+
+      <!-- ghost labels, no figure -->
+      <text class="c12-norm c12-h" id="c12-nm-e" x="563" y="448" text-anchor="middle">NORMAL</text>
+      <text class="c12-norm c12-h" id="c12-nm-c" x="903" y="432" text-anchor="middle">NORMAL</text>
+      <text class="c12-norm c12-h" id="c12-nm-h" x="1243" y="408" text-anchor="middle">NORMAL</text>
+
+      <!-- Elkins bracket: about 40 colder (two lines: one line would run into the Charleston tube) -->
+      <path class="c12-h" id="c12-brk" d="M600 780 H620 M610 780 V460 M600 460 H620" fill="none" stroke="#d8a13a" stroke-width="2"/>
+      <!-- two leaf texts, no tspans: a <text> with tspan children was read as a third box over both lines (overlap_check) -->
+      <g class="c12-h" id="c12-brkl">
+        <text class="c12-brk" x="628" y="611">ABOUT 40°</text>
+        <text class="c12-brk" x="628" y="643">COLDER</text>
+      </g>
+
+      <!-- values, right of each tube, above the liquid top -->
+      <text class="c12-val c12-h" id="c12-v-e" x="624" y="772">10°F</text>
+      <text class="c12-val c12-h" id="c12-v-c" x="964" y="756">12°F</text>
+      <text class="c12-val c12-h" id="c12-v-h" x="1304" y="732">15°F</text>
+
+      <!-- city names under the bulbs -->
+      <text class="c12-city c12-h" id="c12-n-e" x="562" y="984" text-anchor="middle">ELKINS</text>
+      <text class="c12-city c12-h" id="c12-n-c" x="902" y="984" text-anchor="middle">CHARLESTON</text>
+      <text class="c12-city c12-h" id="c12-n-h" x="1242" y="984" text-anchor="middle">HUNTINGTON</text>
+
+      <text class="c12-src" x="110" y="1016">Source: NWS Charleston WV</text>
+    </svg>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 12.36;
+
+  /* ghost outlines: dashed pattern (10 on, 6 off) long enough to cover the path, then one gap of the path length,
+     so dashoffset still draws the dashed outline up the tube. Returns the hidden offset. */
+  const ghostSetup = (id) => {
+    const p = document.getElementById(id);
+    const L = Math.ceil(p.getTotalLength()) + 1;
+    const k = Math.ceil((L + 60) / 16);
+    const a = [];
+    for (let i = 0; i < k; i++) { a.push(10, 6); }
+    a[a.length - 1] = L;
+    p.style.strokeDasharray = a.join(" ");
+    return 16 * k - 6;
+  };
+  const GE = ghostSetup("c12-gh-e"), GC = ghostSetup("c12-gh-c"), GH = ghostSetup("c12-gh-h");
+
+  tl.set(["#c12-eb", "#c12-hd", "#c12-grid", "#c12-tube-e", "#c12-tube-c", "#c12-tube-h",
+          "#c12-nm-e", "#c12-nm-c", "#c12-nm-h", "#c12-brk", "#c12-brkl",
+          "#c12-v-e", "#c12-v-c", "#c12-v-h", "#c12-n-e", "#c12-n-c", "#c12-n-h",
+          "#c12-gh-e", "#c12-gh-c", "#c12-gh-h"], { autoAlpha: 0 }, 0);
+  tl.set("#c12-gh-e", { strokeDashoffset: GE }, 0);
+  tl.set("#c12-gh-c", { strokeDashoffset: GC }, 0);
+  tl.set("#c12-gh-h", { strokeDashoffset: GH }, 0);
+  tl.set("#c12-lq-e", { scaleY: 0, svgOrigin: "560 890", smoothOrigin: false }, 0);
+  tl.set("#c12-lq-c", { scaleY: 0, svgOrigin: "900 890", smoothOrigin: false }, 0);
+  tl.set("#c12-lq-h", { scaleY: 0, svgOrigin: "1240 890", smoothOrigin: false }, 0);
+  tl.set("#c12-brk", { scaleY: 0, svgOrigin: "610 780", smoothOrigin: false }, 0);
+
+  /* ambient, whole window: frost glints drift up-left and twinkle */
+  tl.to(["#c12-gl1", "#c12-gl2", "#c12-gl3", "#c12-gl4", "#c12-gl5", "#c12-gl6", "#c12-gl7", "#c12-gl8", "#c12-gl9", "#c12-gl10", "#c12-gl11", "#c12-gl12"],
+        { x: -60, y: -36, duration: DUR, ease: "none" }, 0);
+  tl.to(["#c12-gl1", "#c12-gl4", "#c12-gl7", "#c12-gl10"], { opacity: 0.15, duration: 1.5, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0);
+  tl.to(["#c12-gl2", "#c12-gl5", "#c12-gl8", "#c12-gl11"], { opacity: 0.15, duration: 2, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0.4);
+  tl.to(["#c12-gl3", "#c12-gl6", "#c12-gl9", "#c12-gl12"], { opacity: 0.15, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0.8);
+
+  /* THE @0.00: ground, gridlines, three empty tubes, city names on */
+  tl.fromTo("#c12-grid", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0);
+  tl.fromTo(["#c12-tube-e", "#c12-tube-c", "#c12-tube-h"], { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.1 }, 0);
+  tl.fromTo(["#c12-n-e", "#c12-n-c", "#c12-n-h"], { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.1 }, 0.3);
+
+  /* SATURDAY @2.66: eyebrow + headline in */
+  tl.fromTo("#c12-eb", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.66);
+  tl.fromTo("#c12-hd", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.78);
+
+  /* ELKINS @4.02: name brightens. 10 @5.40: liquid to 10F, label in */
+  tl.to("#c12-n-e", { fill: "#f2f5f8", duration: 0.3 }, 4.02);
+  tl.fromTo("#c12-lq-e", { scaleY: 0, svgOrigin: "560 890", smoothOrigin: false }, { scaleY: 1, svgOrigin: "560 890", smoothOrigin: false, duration: 0.6, ease: "power3.out" }, 5.4);
+  tl.fromTo("#c12-v-e", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.4);
+
+  /* CHARLESTON @6.88: name brightens. 12 @7.90: liquid to 12F, label in */
+  tl.to("#c12-n-c", { fill: "#f2f5f8", duration: 0.3 }, 6.88);
+  tl.fromTo("#c12-lq-c", { scaleY: 0, svgOrigin: "900 890", smoothOrigin: false }, { scaleY: 1, svgOrigin: "900 890", smoothOrigin: false, duration: 0.6, ease: "power3.out" }, 7.9);
+  tl.fromTo("#c12-v-c", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.9);
+
+  /* BOTH @8.74: Huntington liquid to 15F + label; the three ghost bars draw up, stagger 0.15 */
+  tl.to("#c12-n-h", { fill: "#f2f5f8", duration: 0.3 }, 8.74);
+  tl.fromTo("#c12-lq-h", { scaleY: 0, svgOrigin: "1240 890", smoothOrigin: false }, { scaleY: 1, svgOrigin: "1240 890", smoothOrigin: false, duration: 0.6, ease: "power3.out" }, 8.74);
+  tl.fromTo("#c12-v-h", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.74);
+  tl.set("#c12-gh-e", { autoAlpha: 1 }, 8.74);
+  tl.set("#c12-gh-c", { autoAlpha: 1 }, 8.89);
+  tl.set("#c12-gh-h", { autoAlpha: 1 }, 9.04);
+  tl.to("#c12-gh-e", { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, 8.74);
+  tl.to("#c12-gh-c", { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, 8.89);
+  tl.to("#c12-gh-h", { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, 9.04);
+
+  /* 40 @9.60: NORMAL labels in; Elkins bracket draws up, "ABOUT 40° COLDER" in */
+  tl.fromTo(["#c12-nm-e", "#c12-nm-c", "#c12-nm-h"], { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out", stagger: 0.1 }, 9.6);
+  tl.set("#c12-brk", { autoAlpha: 1 }, 9.6);
+  tl.fromTo("#c12-brk", { scaleY: 0, svgOrigin: "610 780", smoothOrigin: false }, { scaleY: 1, svgOrigin: "610 780", smoothOrigin: false, duration: 0.5, ease: "power3.out" }, 9.6);
+  tl.fromTo("#c12-brkl", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 9.74);
+
+  /* 10.64 to exit: ghost dashes crawl 10 px/s, liquid tops quiver +-2 px */
+  tl.fromTo(["#c12-gh-e", "#c12-gh-c", "#c12-gh-h"], { strokeDashoffset: 0 }, { strokeDashoffset: 17.2, duration: 1.72, ease: "none", immediateRender: false }, 10.64);
+  tl.to(["#c12-q-e", "#c12-q-c", "#c12-q-h"], { y: -2, duration: 0.3, ease: "sine.inOut" }, 10.64);
+  tl.to(["#c12-q-e", "#c12-q-c", "#c12-q-h"], { y: 2, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 10.94);
+
+  /* exit: last 0.6 s, the card slides off left */
+  tl.to("#c12-card", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 11.76);
+
+  window.__timelines["g-a2-12-cold"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

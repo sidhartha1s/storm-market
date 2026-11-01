@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a2-5-janowicz (A2-S5), Sonnet 5.5 build, 28 Oct 26. Host data-start = A2-S5 start, data-duration 14.06.
+  Left: polaroid portrait (baked caption bar cropped off, name once in our type). Right: schematic goalpost half lost in
+  blowing snow, ball arc fading, chip. No yardage anywhere. Nothing in x >= 1600, y >= 680.
+  Source: factcheck/a2-r1.md rows 18-20 (SABR biography project). Portrait: media/a2/A2-S5_c1_janowicz-1952-makio.png
+-->
+<template>
+<style>
+  #j5-root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #j5-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #j5-ball, #j5-trail { opacity:0; visibility:hidden; }
+  #j5-pol { position:absolute; left:200px; top:200px; width:440px; height:560px; box-sizing:border-box; padding:22px 22px 0;
+    background:#f4f0e6; box-shadow:0 18px 60px rgba(0,0,0,0.65); opacity:0; visibility:hidden; }
+  #j5-imgbox { width:396px; height:446px; overflow:hidden; }
+  #j5-img { display:block; width:396px; height:446px; object-fit:cover; object-position:50% 20%;
+    filter: sepia(0.28) contrast(1.08) brightness(0.96) saturate(0.8); }
+  #j5-band { height:90px; box-sizing:border-box; padding-top:8px; text-align:center; }
+  #j5-cap1 { font-family:Georgia,'Times New Roman',serif; font-style:italic; font-size:34px; line-height:39px; color:#2a2622; opacity:0; visibility:hidden; }
+  #j5-cap2 { font-family:Arial,sans-serif; font-weight:700; font-size:19px; line-height:23px; color:#6b6257; margin-top:6px; opacity:0; visibility:hidden; }
+  #j5-chip { position:absolute; left:920px; top:570px; padding:18px 30px; white-space:nowrap; box-sizing:border-box;
+    font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; line-height:57px; color:#f2f5f8;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10);
+    opacity:0; visibility:hidden; }
+  #j5-src { position:absolute; left:110px; bottom:60px; font-family:Arial,sans-serif; font-weight:700; font-size:19px;
+    letter-spacing:2px; color:#c8d3e0; }
+</style>
+<div id="j5-root" data-composition-id="g-a2-5-janowicz" data-width="1920" data-height="1080">
+  <svg id="j5-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <clipPath id="j5-clip"><rect x="860" y="160" width="760" height="400"/></clipPath>
+      <radialGradient id="j5-g1" cx="0.40" cy="0.5" r="0.55"><stop offset="0" stop-color="#f2f5f8" stop-opacity="0.9"/><stop offset="0.6" stop-color="#f2f5f8" stop-opacity="0.45"/><stop offset="1" stop-color="#f2f5f8" stop-opacity="0"/></radialGradient>
+      <radialGradient id="j5-g2" cx="0.55" cy="0.45" r="0.5"><stop offset="0" stop-color="#f2f5f8" stop-opacity="0.9"/><stop offset="0.6" stop-color="#f2f5f8" stop-opacity="0.45"/><stop offset="1" stop-color="#f2f5f8" stop-opacity="0"/></radialGradient>
+      <radialGradient id="j5-g3" cx="0.70" cy="0.55" r="0.5"><stop offset="0" stop-color="#f2f5f8" stop-opacity="0.9"/><stop offset="0.6" stop-color="#f2f5f8" stop-opacity="0.45"/><stop offset="1" stop-color="#f2f5f8" stop-opacity="0"/></radialGradient>
+      <linearGradient id="j5-ground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#15202b" stop-opacity="0.9"/><stop offset="1" stop-color="#15202b" stop-opacity="0"/></linearGradient>
+    </defs>
+    <g id="j5-scene">
+      <rect x="900" y="540" width="660" height="24" fill="url(#j5-ground)"/>
+      <line x1="900" y1="540" x2="1560" y2="540" stroke="#5a768f" stroke-width="3" stroke-opacity="0.6"/>
+      <g id="j5-posts" stroke="#f2f5f8" stroke-opacity="0.85" stroke-width="10" stroke-linecap="square" fill="none">
+        <line x1="1060" y1="470" x2="1400" y2="470"/>
+        <line x1="1060" y1="180" x2="1060" y2="470"/>
+        <line x1="1400" y1="180" x2="1400" y2="470"/>
+        <line x1="1230" y1="470" x2="1230" y2="540"/>
+      </g>
+      <path id="j5-trail" d="M980 700 Q1187 61 1260 330" fill="none" stroke="rgba(242,245,248,0.5)" stroke-width="3"/>
+      <ellipse id="j5-ball" cx="980" cy="700" rx="14" ry="9" fill="#d8a13a"/>
+      <g clip-path="url(#j5-clip)">
+        <g id="j5-veil" opacity="0.45">
+          <rect id="j5-v1" x="860" y="160" width="760" height="400" fill="url(#j5-g1)"/>
+          <rect id="j5-v2" x="860" y="160" width="760" height="400" fill="url(#j5-g2)"/>
+          <rect id="j5-v3" x="860" y="160" width="760" height="400" fill="url(#j5-g3)"/>
+        </g>
+        <g id="j5-flakes" fill="#f2f5f8"></g>
+      </g>
+    </g>
+  </svg>
+  <div id="j5-pol">
+    <div id="j5-imgbox"><img id="j5-img" src="media/a2/A2-S5_c1_janowicz-1952-makio.png" alt="Vic Janowicz, 1952 Makio yearbook portrait"></div>
+    <div id="j5-band">
+      <div id="j5-cap1">Vic Janowicz</div>
+      <div id="j5-cap2">Ohio State &middot; photo 1951</div>
+    </div>
+  </div>
+  <div id="j5-chip">OHIO STATE'S ONLY POINTS</div>
+  <div id="j5-src">Source: SABR biography project</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const S = "#j5-";
+  const END = 14.06, EXIT = 13.46;
+
+  /* flakes: deterministic precomputed field, left to right at 140-220 px/s, one linear tween each over the whole window */
+  const NS = "http://www.w3.org/2000/svg";
+  const fl = document.getElementById("j5-flakes");
+  let seed = 51950;
+  const rnd = () => (seed = (seed * 1664525 + 1013904223) % 4294967296) / 4294967296;
+  const flakes = [];
+  for (let i = 0; i < 90; i++) {
+    const sp = 140 + rnd() * 80, D = sp * END;
+    const c = document.createElementNS(NS, "circle");
+    c.setAttribute("cx", 860); c.setAttribute("cy", (160 + rnd() * 400).toFixed(1));
+    c.setAttribute("r", (1.5 + rnd() * 2).toFixed(2)); c.setAttribute("fill-opacity", (0.5 + rnd() * 0.45).toFixed(2));
+    fl.appendChild(c);
+    flakes.push({ el: c, x0: 860 - D + rnd() * (D + 760), D: D, dy: (rnd() - 0.5) * 60 });
+  }
+  flakes.forEach(f => tl.fromTo(f.el, { x: f.x0 - 860, y: 0 }, { x: f.x0 - 860 + f.D, y: f.dy, duration: END, ease: "none" }, 0));
+
+  /* trail: dash length from the real path length */
+  const trail = document.getElementById("j5-trail");
+  const len = Math.ceil(trail.getTotalLength()) + 1;
+  trail.style.strokeDasharray = len + " " + len;
+  trail.style.strokeDashoffset = len;
+
+  tl.set(S + "pol", { rotation: -2 }, 0);
+  tl.set(S + "veil", { opacity: 0.45 }, 0);
+
+  /* snow veil drifting the whole window (finite sine repeats, each ~14 s) */
+  tl.fromTo(S + "v1", { x: -40 }, { x: 40, duration: 2.8, ease: "sine.inOut", repeat: 4, yoyo: true }, 0);
+  tl.fromTo(S + "v2", { x: 40 }, { x: -40, duration: 3.5, ease: "sine.inOut", repeat: 3, yoyo: true }, 0);
+  tl.fromTo(S + "v3", { x: -40 }, { x: 40, duration: 4.7, ease: "sine.inOut", repeat: 2, yoyo: true }, 0);
+
+  /* VIC @1.76 (Janowicz @1.96): portrait card in, caption lines after */
+  tl.fromTo(S + "pol", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 1.76);
+  tl.fromTo(S + "cap1", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2.06);
+  tl.fromTo(S + "cap2", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2.26);
+
+  /* KICKED @2.90 .. snow. @4.30: ball along the arc by per-leg attr tweens, fading to 15 % */
+  const pts = [[980,700],[1029.7,554.5],[1075.1,437.3],[1116.4,348.4],[1153.5,288],[1186.4,255.9],[1215.1,252.3],[1239.7,276.9],[1260,330]];
+  const dur = [0.13,0.14,0.15,0.16,0.18,0.19,0.21,0.24];
+  const cum = [153.7,279.4,377.4,448.3,494.3,523.2,558,614.8];
+  tl.set(S + "ball", { autoAlpha: 1 }, 2.90);
+  tl.set(S + "trail", { autoAlpha: 1 }, 2.90);
+  tl.to(S + "ball", { opacity: 0.15, duration: 1.4, ease: "power1.out" }, 2.90);
+  tl.to(S + "trail", { opacity: 0.3, duration: 1.4, ease: "power1.out" }, 2.90);
+  let t = 2.90;
+  for (let i = 0; i < 8; i++) {
+    tl.to(S + "ball", { attr: { cx: pts[i+1][0], cy: pts[i+1][1] }, duration: dur[i], ease: "none" }, t);
+    tl.to(S + "trail", { strokeDashoffset: len * (1 - cum[i] / 614.8), duration: dur[i], ease: "none" }, t);
+    t += dur[i];
+  }
+
+  /* ARGUED @5.90: posts flicker in the veil */
+  tl.to(S + "veil", { opacity: 0.60, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 5.90);
+  /* SEE @8.38: veil to its max */
+  tl.to(S + "veil", { opacity: 0.65, duration: 1.0, ease: "sine.inOut" }, 8.38);
+  /* GAVE @10.18: chip in, veil clears so the posts read */
+  tl.fromTo(S + "chip", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 10.18);
+  tl.to(S + "veil", { opacity: 0.35, duration: 0.6, ease: "power2.out" }, 10.18);
+
+  /* 11.32 to exit: portrait floats */
+  tl.to(S + "pol", { y: -6, duration: 2.1, ease: "sine.inOut" }, 11.32);
+
+  /* exit: last 0.6 s, everything leaves together */
+  tl.to(S + "chip", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, EXIT);
+  tl.to(S + "pol", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, EXIT);
+  tl.to(S + "scene", { autoAlpha: 0, duration: 0.6, ease: "power3.in" }, EXIT);
+  tl.to(S + "src", { autoAlpha: 0, duration: 0.6, ease: "power3.in" }, EXIT);
+
+  window.__timelines["g-a2-5-janowicz"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a1-4-ladder · A1-S4, A1-S5, A1-S6 · ep-appalachian-1950 · DEEP (Opus) · brief: briefs/a1/g-a1-4-ladder.md
+  Claim: the 160 mph was one mountaintop station (a footnote); where people lived gusts climbed Albany 83 (its record),
+  Allentown 88, Newark 108 (its record); New York City has two numbers: 94 (NWS Jackson, station not named) and
+  Central Park 70 (NWS Mount Holly, park record). Source: research/nws-facts.md §1. L1 stays closed: no track, low,
+  front, or line joining two pins.
+  COPIED FROM g-a1-2-bearmtn.html: map panel (frame A1-N, the same verbatim Natural Earth state paths, ids renamed
+    bm2- -> ld4-) and the ladder (Bear Mountain and Newark rows). Frame 0 = g-a1-2's last frame: camera at scale 1.03
+    about the Bear Mountain pin, Newark pin + label, Bear Mountain pin + both labels, header, Newark guide, Bear
+    Mountain row full with its end glow at 0.9, Newark row at 35 %, source "NWS Jackson KY".
+  CAMERA: the 1.03 that g-a1-2 ended on is a STATIC transform on the inner group (not a mover), so frame 0 cannot
+    flash scale 1; #ld4-cam then drifts 1 -> 1.06/1.03 = 1.029126 about (504,575), ease none, whole host = 1.03 -> 1.06.
+  PINS (A1-N px, inside the 1.03 group, ride the drift): Albany (560,140), Allentown (178,804), Central Park (513,746),
+    14 px dots #7fb2e5. Screen at camera k: x = 504 + (x0-504)k, y = 575 + (y0-575)k. Labels are fixed HUD, placed
+    for k about 1.05 (each pin moves <= 8 px after its label lands): Albany pin (562.8,118.3) -> label x 578 baseline
+    126; Allentown (161.7,815.5) -> x 177 baseline 824; Central Park (513.5,754.6) -> x 536 baseline 763 (same offset
+    as NEWARK's label from its pin; brief said (535,735) in A1-N px, moved to the pin's drifted screen spot).
+  COLLISION (from the a1-2 builder): "STATE PARK ON THE HUDSON" ends near x 906 at y 614; the split ghost (x 900,
+    y 533 to 657, S5 15.44) and the Central Park name line (x 900, baseline 609) both touch it. Resolved: the sub-label
+    fades out at S5 15.04 (0.3 s), before the ghost; it has been on screen 28 s.
+  LADDER (_list.md "The gust ladder"): origin x 900, 3.5 px per mph, bar 34 px, radius 4; name top = bar top - 32
+    (baseline 14 above the bar top), value left = bar end + 18, value top = centre - 26.
+    MW 160 -> 560 (end 1460, centre 190) · BM 140 -> 490 (1390, 330) · Newark 108 -> 378 (1278, 440) ·
+    NYC 94 -> 329 (1229, 550) · Central Park 70 -> 245 (1145, 640) · Allentown 88 -> 308 (1208, 750) ·
+    Albany 83 -> 290.5 (1190.5, 860).
+  TIMES: SEG = {s4: 0, s5: 13.359, s6: 30.777} (0.40 s gaps assumed); positions below are literal SEG + word time,
+    each with its spoken word in a comment. Host: data-start = A1-S4 start, duration = 30.777 + 13.047 + 0.40 = 44.22 s.
+-->
+<template>
+<style>
+  #ld4-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 30% 55%, #070b10 0%, #04070a 70%); }
+  .ld4-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  /* map panel fades into the ladder ground over x 700 to 820; solid #04070c from 820 */
+  .ld4-fade { position:absolute; left:700px; top:0; right:0; bottom:0;
+    background:linear-gradient(90deg, rgba(4,7,12,0) 0px, #04070c 120px); }
+  .ld4-lab { font-family:Arial, sans-serif; font-weight:700; fill:#f2f5f8; letter-spacing:3px;
+    paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .ld4-layer { position:absolute; inset:0; }
+  .ld4-row { position:absolute; left:0; top:0; }
+  .ld4-head { position:absolute; left:900px; top:70px; font-family:Arial, sans-serif; font-weight:700; font-size:26px;
+    line-height:1; letter-spacing:8px; color:#93a3b2; white-space:nowrap; }
+  .ld4-name { position:absolute; left:900px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:1;
+    letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
+  .ld4-name span { display:inline-block; }
+  .ld4-rec { color:#d8a13a; }
+  .ld4-tag { margin-left:24px; font-size:19px; color:#e8c56a; letter-spacing:3px; }
+  .ld4-bar { position:absolute; left:900px; height:34px; border-radius:4px; background:#7fb2e5; }
+  .ld4-val { position:absolute; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:52px;
+    color:#f2f5f8; white-space:nowrap; }
+  .ld4-tick { position:absolute; left:899px; width:3px; height:34px; background:#93a3b2; }
+  .ld4-guide { position:absolute; left:1278px; top:300px; width:0; height:170px; border-left:1px dashed rgba(255,255,255,0.3); }
+  .ld4-glow { position:absolute; left:1340px; top:313px; width:50px; height:34px; border-radius:4px;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(190,220,248,0.95)); box-shadow:0 0 34px rgba(127,178,229,0.75); }
+  .ld4-divider { position:absolute; left:900px; top:249px; width:800px; height:0; border-top:2px dashed rgba(255,255,255,0.14); }
+  .ld4-fn { position:absolute; left:900px; top:257px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:1;
+    letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
+  .ld4-ghost { position:absolute; left:900px; top:533px; width:280px; height:124px; box-sizing:border-box;
+    border:2px dashed #7fb2e5; border-radius:4px; }
+  .ld4-q { position:absolute; left:1200px; top:569px; }
+  .ld4-qin { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:52px; color:#d8a13a; }
+  .ld4-credit { position:absolute; left:110px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:1;
+    letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+  /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
+  .ld4-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="ld4-root" data-composition-id="g-a1-4-ladder" data-width="1920" data-height="1080" data-duration="44.22">
+
+  <!-- MAP PANEL: #ld4-cam is the only mover; the inner 1.03 group is g-a1-2's end scale, static -->
+  <svg class="ld4-svg" id="ld4-map" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- state shapes, map units, no paint (verbatim from g-a1-2-bearmtn.html, Natural Earth) -->
+      <path vector-effect="non-scaling-stroke" id="ld4-g-pa" d="M68420,24301 L68420,25805 L85365,25819 L85662,26108 L85797,26412 L86246,26629 L86347,26750 L86350,26930 L86508,27122 L86457,27412 L86517,27997 L86786,28559 L86963,28746 L87649,29027 L87870,29399 L87435,29711 L87051,30528 L86593,31106 L86242,31401 L86424,32198 L86285,32500 L86043,32649 L85976,33127 L85988,33652 L86340,33947 L86584,34632 L86805,34713 L87733,36117 L86624,36883 L86050,37568 L85482,37736 L85097,38011 L84754,37854 L84277,37876 L83991,38081 L83700,38531 L65514,38530 L65511,25868 L66225,25582 Z"/>
+      <path vector-effect="non-scaling-stroke" id="ld4-g-ny" d="M71097,19632 L71115,18645 L72543,18206 L73434,18060 L74519,18021 L75813,18231 L76315,18422 L76633,18666 L77000,18732 L77416,18618 L77992,18580 L78729,18618 L79123,18676 L79174,18752 L79473,18471 L80026,18270 L80099,18311 L80647,17690 L81058,17392 L81429,17237 L81983,17151 L82095,17016 L82124,16624 L82036,15993 L81882,15594 L81767,15485 L81780,15370 L81980,15229 L81965,15361 L82018,15401 L82112,15341 L82602,14648 L82200,14675 L82135,14621 L82281,14386 L82208,14196 L82114,14174 L81698,14399 L81520,14048 L81960,13617 L83518,12421 L83735,12077 L83672,11864 L85173,10327 L86025,9617 L86729,9222 L87265,9033 L93044,9025 L93071,9396 L92991,9835 L93058,10310 L92967,11304 L93207,12073 L93164,13138 L92933,13593 L92760,14222 L92956,15734 L92799,16932 L92893,16994 L93127,16725 L93447,17136 L93320,21269 L93423,21609 L92448,25363 L92551,25500 L92304,29742 L92537,30172 L91619,30811 L91975,31440 L91404,32074 L91127,32337 L90899,32422 L90605,32783 L90914,31884 L91047,31087 L91008,30442 L90842,30177 L90671,30000 L90872,30637 L90901,31438 L87870,29399 L87649,29027 L86963,28746 L86627,28307 L86517,27997 L86457,27412 L86508,27122 L86350,26930 L86347,26750 L86246,26629 L85797,26412 L85662,26108 L85365,25819 L68420,25805 L68420,24270 L69383,23626 L69751,23258 L70547,22709 L70870,22396 L71375,21729 L71664,21543 L71820,21347 L71841,21141 L71641,20239 L71755,19902 L71703,19832 Z M96006,31834 L96253,31871 L97133,31260 L97531,31134 L97656,31107 L97846,31311 L98609,31056 L96935,31986 L96593,32091 L96104,32368 L93650,33326 L93377,33274 L92012,33630 L91451,33670 L90941,33794 L91319,33507 L91327,33400 L91237,33316 L91035,33341 L90828,33636 L90498,33734 L90432,33413 L90691,32929 L91019,32558 L91488,32324 L91726,32121 L91891,32300 L91927,32058 L92192,31844 L92524,31842 L92965,31709 L93328,31818 L93683,31787 L93969,31636 L94267,31585 L95836,31441 L96806,30694 L97184,30540 Z M89649,34083 L89833,33547 L90169,33303 L90291,33354 L90249,33705 L90023,33954 Z"/>
+      <path vector-effect="non-scaling-stroke" id="ld4-g-nj" d="M86430,37072 L87733,36117 L86805,34713 L86584,34632 L86340,33947 L85988,33652 L86001,32826 L86043,32649 L86285,32500 L86424,32198 L86242,31401 L86593,31106 L87051,30528 L87435,29711 L87870,29399 L90901,31438 L90835,31874 L90457,32756 L89837,33361 L89685,33584 L89541,34028 L89628,34432 L90364,34579 L90561,34455 L90718,35146 L90447,36572 L90248,38163 L90307,37018 L90187,37114 L90104,37326 L89879,38507 L89570,39137 L89286,39572 L88992,39500 L89058,39846 L88908,40403 L88733,40652 L88569,40628 L88333,40800 L88239,40931 L88232,41183 L87504,42554 L87008,42894 L86890,42844 L87110,41753 L86522,41387 L86192,41404 L85827,40977 L85357,40667 L84701,39827 L84703,39204 L85094,38154 L85358,37931 L86124,37703 Z"/>
+      <path vector-effect="non-scaling-stroke" id="ld4-g-ct" d="M98999,25683 L99022,28491 L98988,29067 L98891,29202 L98843,29521 L98506,29490 L97219,29766 L96812,29652 L96396,29855 L94984,29910 L94686,29802 L94305,30186 L93696,30413 L92157,31273 L91975,31440 L91619,30811 L92537,30172 L92304,29742 L92551,25500 L95135,25620 L95140,25765 L95305,25747 L95327,25620 L98999,25683 Z"/>
+      <path vector-effect="non-scaling-stroke" id="ld4-g-ma" d="M98999,25683 L95327,25620 L95305,25747 L95140,25765 L95135,25620 L92551,25500 L92448,25363 L93423,21609 L100812,21887 L100812,25716 L100591,25716 L99002,25743 Z"/>
+      <path vector-effect="non-scaling-stroke" id="ld4-g-vt" d="M93044,9025 L100091,9013 L100029,9122 L100119,9567 L99694,10329 L99895,11246 L99738,11769 L99455,12125 L98908,12551 L98231,12800 L98118,12960 L97998,13990 L97796,14833 L97383,15808 L97098,16232 L96846,16949 L96418,20010 L96126,20858 L96165,21176 L96444,21731 L93423,21609 L93320,21269 L93447,17136 L93127,16725 L92893,16994 L92799,16932 L92956,15734 L92760,14222 L92933,13593 L93164,13138 L93207,12073 L92967,11304 L93058,10310 L92991,9835 L93071,9396 L93044,9025 Z"/>
+    </defs>
+    <g id="ld4-cam">
+      <g transform="translate(504,575) scale(1.03) translate(-504,-575)">
+        <g transform="translate(-4746.5286,-1145.5812) scale(0.058)">
+          <g fill="#0b1016" stroke="none">
+            <use href="#ld4-g-pa"/><use href="#ld4-g-ny"/><use href="#ld4-g-nj"/>
+            <use href="#ld4-g-ct"/><use href="#ld4-g-ma"/><use href="#ld4-g-vt"/>
+          </g>
+          <g fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round" opacity="0.14">
+            <use href="#ld4-g-pa"/><use href="#ld4-g-ny"/><use href="#ld4-g-nj"/>
+            <use href="#ld4-g-ct"/><use href="#ld4-g-ma"/><use href="#ld4-g-vt"/>
+          </g>
+        </g>
+        <!-- Hudson, Battery to Albany (screen px from _list.md frame A1-N) -->
+        <polyline points="501,773 528,698 532,653 509,572 503,513 519,449 515,374 560,140" fill="none"
+          stroke="#5a768f" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+        <!-- Newark pin (as g-a1-2) -->
+        <circle id="ld4-nwkpulse" cx="467" cy="761" r="8" fill="none" stroke="#7fb2e5" stroke-width="2" opacity="0"/>
+        <circle cx="467" cy="761" r="8" fill="#7fb2e5"/>
+        <!-- Bear Mountain pin (as g-a1-2's end: shown) -->
+        <circle cx="504" cy="575" r="12" fill="#04070c" fill-opacity="0.6" stroke="#7fb2e5" stroke-width="2"/>
+        <circle cx="504" cy="575" r="9" fill="#f2f5f8"/>
+        <!-- new city pins: 14 px dots; rings pulse by attr r only (no transform), dots pop by scale -->
+        <circle id="ld4-albring" cx="560" cy="140" r="7" fill="none" stroke="#7fb2e5" stroke-width="2" opacity="0"/>
+        <circle id="ld4-albpin" class="ld4-hide" cx="560" cy="140" r="7" fill="#7fb2e5"/>
+        <circle id="ld4-alnring" cx="178" cy="804" r="7" fill="none" stroke="#7fb2e5" stroke-width="2" opacity="0"/>
+        <circle id="ld4-alnpin" class="ld4-hide" cx="178" cy="804" r="7" fill="#7fb2e5"/>
+        <circle id="ld4-cpring" cx="513" cy="746" r="7" fill="none" stroke="#7fb2e5" stroke-width="2" opacity="0"/>
+        <circle id="ld4-cppin" class="ld4-hide" cx="513" cy="746" r="7" fill="#7fb2e5"/>
+      </g>
+    </g>
+  </svg>
+  <div class="ld4-fade"></div>
+
+  <!-- HUD map labels: fixed, never ride the drift -->
+  <svg class="ld4-svg" id="ld4-hud" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <text class="ld4-lab" x="447" y="769" font-size="22" text-anchor="end">NEWARK</text>
+    <text class="ld4-lab" x="548" y="584" font-size="26">BEAR MOUNTAIN, NY</text>
+    <text id="ld4-bmsub" class="ld4-lab" x="548" y="614" font-size="19" style="fill:#93a3b2">STATE PARK ON THE HUDSON</text>
+    <text id="ld4-alblab" class="ld4-lab ld4-hide" x="578" y="126" font-size="22">ALBANY</text>
+    <text id="ld4-alnlab" class="ld4-lab ld4-hide" x="177" y="824" font-size="22">ALLENTOWN</text>
+    <text id="ld4-cplab" class="ld4-lab ld4-hide" x="536" y="763" font-size="22">CENTRAL PARK</text>
+  </svg>
+
+  <!-- LADDER: one layer so the exit slides it whole; slots fixed (_list.md), no reflow -->
+  <div class="ld4-layer" id="ld4-ladder">
+    <div class="ld4-head">PEAK GUSTS · MPH</div>
+    <div class="ld4-guide" id="ld4-guide"></div>
+
+    <!-- Mount Washington: footnote row above the divider, grey at 45 %, never wind blue -->
+    <div class="ld4-row" id="ld4-mwrow">
+      <div class="ld4-name ld4-hide" id="ld4-mwname" style="top:141px"><span>MOUNT WASHINGTON, NH · SUMMIT</span> <span id="ld4-mwstar" class="ld4-hide">*</span></div>
+      <div class="ld4-bar ld4-hide" id="ld4-mwbar" style="top:173px; width:560px; background:#93a3b2"></div>
+      <div class="ld4-val ld4-hide" id="ld4-mwval" style="left:1478px; top:164px; color:#93a3b2">160</div>
+    </div>
+    <div class="ld4-divider ld4-hide" id="ld4-divider"></div>
+    <div class="ld4-fn ld4-hide" id="ld4-fn">* ONE MOUNTAINTOP STATION</div>
+
+    <!-- Bear Mountain (as g-a1-2's end) -->
+    <div class="ld4-name" style="top:281px" data-repeat-ok="pin label and ladder row name">BEAR MOUNTAIN, NY</div>
+    <div class="ld4-bar" style="top:313px; width:490px"></div>
+    <div class="ld4-glow" id="ld4-glow" style="opacity:0.9"></div>
+    <div class="ld4-val" style="left:1408px; top:304px">140 MPH</div>
+
+    <!-- Newark (as g-a1-2's end, 35 %) -->
+    <div class="ld4-name" style="top:391px"><span>NEWARK, NJ</span> <span id="ld4-nwkrec" class="ld4-rec ld4-hide">· ITS RECORD</span></div>
+    <div class="ld4-bar" id="ld4-nwkbar" style="top:423px; width:378px; opacity:0.35"></div>
+    <div class="ld4-val" style="left:1296px; top:414px">108 MPH</div>
+
+    <!-- New York City: no pin, ever (station not named) -->
+    <div class="ld4-tick ld4-hide" id="ld4-tnyc" style="top:533px"></div>
+    <div class="ld4-name ld4-hide" id="ld4-nycname" style="top:501px"><span>NEW YORK CITY</span> <span id="ld4-nyc2" class="ld4-hide">· NWS JACKSON</span><span id="ld4-nyctag" class="ld4-tag ld4-hide">STATION NOT NAMED</span></div>
+    <div class="ld4-bar ld4-hide" id="ld4-nycbar" style="top:533px; width:329px"></div>
+    <div class="ld4-val ld4-hide" id="ld4-nycval" style="left:1247px; top:524px">94</div>
+
+    <!-- split slot (S5 end): one ghost over the NYC and Central Park rows, plus "?" -->
+    <div class="ld4-ghost ld4-hide" id="ld4-ghost"></div>
+    <div class="ld4-q ld4-hide" id="ld4-q"><span class="ld4-qin" id="ld4-qin">?</span></div>
+
+    <!-- Central Park -->
+    <div class="ld4-name ld4-hide" id="ld4-cpname" style="top:591px"><span>CENTRAL PARK · NWS MOUNT HOLLY ·</span> <span id="ld4-cprec">PARK RECORD</span></div>
+    <div class="ld4-bar ld4-hide" id="ld4-cpbar" style="top:623px; width:245px"></div>
+    <div class="ld4-val ld4-hide" id="ld4-cpval" style="left:1163px; top:614px">70</div>
+
+    <!-- Allentown -->
+    <div class="ld4-tick ld4-hide" id="ld4-taln" style="top:733px"></div>
+    <div class="ld4-name ld4-hide" id="ld4-alnname" style="top:701px">ALLENTOWN, PA</div>
+    <div class="ld4-bar ld4-hide" id="ld4-alnbar" style="top:733px; width:308px; background:#5a768f"></div>
+    <div class="ld4-val ld4-hide" id="ld4-alnval" style="left:1226px; top:724px">88</div>
+
+    <!-- Albany -->
+    <div class="ld4-tick ld4-hide" id="ld4-talb" style="top:843px"></div>
+    <div class="ld4-name ld4-hide" id="ld4-albname" style="top:811px"><span>ALBANY, NY</span> <span id="ld4-albrec" class="ld4-rec ld4-hide">· ITS RECORD</span></div>
+    <div class="ld4-bar ld4-hide" id="ld4-albbar" style="top:843px; width:290.5px; background:#5a768f"></div>
+    <div class="ld4-val ld4-hide" id="ld4-albval" style="left:1209px; top:834px">83</div>
+  </div>
+
+  <!-- credits: source line swaps per segment (bottom 90), basemap bottom 60 -->
+  <div class="ld4-layer" id="ld4-credits">
+    <div class="ld4-credit" id="ld4-src0" style="bottom:90px">Source: NWS Jackson KY</div>
+    <div class="ld4-credit ld4-hide" id="ld4-src4" style="bottom:90px">Source: NCEI; NWS Jackson KY</div>
+    <div class="ld4-credit ld4-hide" id="ld4-src5" style="bottom:90px">Source: NWS Albany; NWS Mount Holly</div>
+    <div class="ld4-credit ld4-hide" id="ld4-src6" style="bottom:90px">Source: NWS Jackson KY; NWS Mount Holly</div>
+    <div class="ld4-credit" style="bottom:60px">Basemap: Natural Earth</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#ld4-";
+  const DUR = 44.22;                                   /* SEG.s6 30.777 + 13.047 wav + 0.40 gap */
+  const BM = "504 575";                                /* Bear Mountain pin, screen px: drift origin */
+  const LO = "left center";
+  const tl = gsap.timeline({ paused: true });
+
+  /* transforms start in set() at 0 (file contract) */
+  tl.set(P + "cam", { scale: 1, svgOrigin: BM, smoothOrigin: false }, 0);
+  tl.set(P + "glow", { scaleY: 1.25, transformOrigin: "right center" }, 0);
+  tl.set([P + "ladder", P + "mwrow", P + "mwname", P + "nycname", P + "cpname", P + "alnname", P + "albname",
+          P + "mwval", P + "nycval", P + "cpval", P + "alnval", P + "albval", P + "nwkrec", P + "albrec", P + "nyc2",
+          P + "alblab", P + "alnlab", P + "cplab"], { x: 0 }, 0);
+  tl.set(P + "nyctag", { y: 0 }, 0);
+  tl.set([P + "mwbar", P + "nycbar", P + "cpbar", P + "alnbar", P + "albbar", P + "divider"], { scaleX: 0, transformOrigin: LO }, 0);
+  tl.set(P + "nwkbar", { scaleX: 1, scaleY: 1, transformOrigin: LO }, 0);
+  tl.set([P + "nycbar", P + "cpbar"], { scaleY: 1 }, 0);
+  tl.set([P + "tnyc", P + "taln", P + "talb"], { scaleY: 0, transformOrigin: "center center" }, 0);
+  tl.set([P + "albpin", P + "alnpin", P + "cppin"], { scale: 1, transformOrigin: "50% 50%" }, 0);
+  tl.set([P + "q", P + "qin"], { scale: 1, transformOrigin: "50% 50%" }, 0);
+
+  /* YOULL @s4 0.00: frame 0 = g-a1-2's end; drift continues 1.03 -> 1.06 over the host, ease none */
+  tl.to(P + "cam", { scale: 1.029126, svgOrigin: BM, smoothOrigin: false, duration: DUR, ease: "none" }, 0);
+  /* g-a1-2's Newark guide and Bear Mountain end glow settle out */
+  tl.to(P + "glow", { autoAlpha: 0, scaleY: 1, duration: 0.5, ease: "power2.out" }, 0.10);
+  tl.to(P + "guide", { autoAlpha: 0, duration: 0.5, ease: "power2.out" }, 0.10);
+
+  /* 160 @s4 2.32: Mount Washington bar, grey at 45 %, value counts to 160; source swaps */
+  tl.fromTo(P + "mwbar", { autoAlpha: 0, scaleX: 0, transformOrigin: LO }, { autoAlpha: 0.45, scaleX: 1, transformOrigin: LO, duration: 0.8, ease: "power4.out" }, 2.32);
+  tl.fromTo(P + "mwval", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.25, ease: "power3.out" }, 2.32);
+  const MW = { v: 1 }, MWV = document.getElementById("ld4-mwval");
+  tl.fromTo(MW, { v: 1 }, { v: 160, duration: 0.8, ease: "power3.out", onUpdate: () => (MWV.textContent = Math.round(MW.v)) }, 2.32);
+  /* credit swaps share one slot: old out, then new in (no crossfade, overlap_check) */
+  tl.to(P + "src0", { autoAlpha: 0, duration: 0.15, ease: "none" }, 2.32);
+  tl.fromTo(P + "src4", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "none" }, 2.47);
+
+  /* SUMMIT @s4 6.06: name line in; divider draws */
+  tl.fromTo(P + "mwname", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 6.06);
+  tl.fromTo(P + "divider", { autoAlpha: 0, scaleX: 0, transformOrigin: LO }, { autoAlpha: 1, scaleX: 1, transformOrigin: LO, duration: 0.6, ease: "power2.out" }, 6.06);
+
+  /* STATION @s4 8.70: star and footnote tag */
+  tl.fromTo(P + "mwstar", { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 8.70);
+  tl.fromTo(P + "fn", { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.70);
+
+  /* FOOTNOTE @s4 12.46: whole row settles x 0 -> -8 -> 0 */
+  tl.to(P + "mwrow", { x: -8, duration: 0.2, ease: "power2.out" }, 12.46);
+  tl.to(P + "mwrow", { x: 0, duration: 0.35, ease: "power2.inOut" }, 12.66);
+
+  /* S5 starts @13.359: source swaps */
+  tl.to(P + "src4", { autoAlpha: 0, duration: 0.15, ease: "none" }, 13.359);
+  tl.fromTo(P + "src5", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "none" }, 13.509);
+
+  /* LADDER @s5 2.82 = 16.179: empty-slot ticks, bottom to top (Albany, Allentown, NYC), 0.15 s stagger */
+  tl.fromTo(P + "talb", { autoAlpha: 0, scaleY: 0 }, { autoAlpha: 0.3, scaleY: 1, duration: 0.3, ease: "power3.out" }, 16.179);
+  tl.fromTo(P + "taln", { autoAlpha: 0, scaleY: 0 }, { autoAlpha: 0.3, scaleY: 1, duration: 0.3, ease: "power3.out" }, 16.329);
+  tl.fromTo(P + "tnyc", { autoAlpha: 0, scaleY: 0 }, { autoAlpha: 0.3, scaleY: 1, duration: 0.3, ease: "power3.out" }, 16.479);
+
+  /* 83 @s5 4.12 = 17.479: Albany bar, value, pin + label */
+  tl.to(P + "talb", { autoAlpha: 0, duration: 0.2, ease: "none" }, 17.479);
+  tl.fromTo(P + "albname", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 17.479);
+  tl.fromTo(P + "albbar", { autoAlpha: 0, scaleX: 0, transformOrigin: LO }, { autoAlpha: 1, scaleX: 1, transformOrigin: LO, duration: 0.6, ease: "power4.out" }, 17.479);
+  tl.to(P + "albbar", { backgroundColor: "#7fb2e5", duration: 0.3, ease: "power1.out" }, 18.079);
+  tl.fromTo(P + "albval", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.25, ease: "power3.out" }, 17.479);
+  const AB = { v: 1 }, ABV = document.getElementById("ld4-albval");
+  tl.fromTo(AB, { v: 1 }, { v: 83, duration: 0.6, ease: "power3.out", onUpdate: () => (ABV.textContent = Math.round(AB.v)) }, 17.479);
+  tl.fromTo(P + "albpin", { autoAlpha: 0, scale: 0, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, transformOrigin: "50% 50%", duration: 0.35, ease: "back.out(2)" }, 17.479);
+  tl.fromTo(P + "albring", { opacity: 0.8, attr: { r: 7 } }, { opacity: 0, attr: { r: 20 }, duration: 0.8, ease: "power1.out", repeat: 1, repeatDelay: 0.2 }, 17.579);
+  tl.fromTo(P + "alblab", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 17.579);
+
+  /* STRONGEST @s5 5.42 = 18.779: Albany "· ITS RECORD" */
+  tl.fromTo(P + "albrec", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 18.779);
+
+  /* 88 @s5 9.06 = 22.419: Allentown bar, value, pin + label (lands on the number, not the name at 7.44) */
+  tl.to(P + "taln", { autoAlpha: 0, duration: 0.2, ease: "none" }, 22.419);
+  tl.fromTo(P + "alnname", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 22.419);
+  tl.fromTo(P + "alnbar", { autoAlpha: 0, scaleX: 0, transformOrigin: LO }, { autoAlpha: 1, scaleX: 1, transformOrigin: LO, duration: 0.6, ease: "power4.out" }, 22.419);
+  tl.to(P + "alnbar", { backgroundColor: "#7fb2e5", duration: 0.3, ease: "power1.out" }, 23.019);
+  tl.fromTo(P + "alnval", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.25, ease: "power3.out" }, 22.419);
+  const AL = { v: 1 }, ALV = document.getElementById("ld4-alnval");
+  tl.fromTo(AL, { v: 1 }, { v: 88, duration: 0.6, ease: "power3.out", onUpdate: () => (ALV.textContent = Math.round(AL.v)) }, 22.419);
+  tl.fromTo(P + "alnpin", { autoAlpha: 0, scale: 0, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, transformOrigin: "50% 50%", duration: 0.35, ease: "back.out(2)" }, 22.419);
+  tl.fromTo(P + "alnring", { opacity: 0.8, attr: { r: 7 } }, { opacity: 0, attr: { r: 20 }, duration: 0.8, ease: "power1.out", repeat: 1, repeatDelay: 0.2 }, 22.519);
+  tl.fromTo(P + "alnlab", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 22.519);
+
+  /* 108 @s5 11.52 = 24.879: Newark bar 35 % -> full with a scaleX punch; pin pulses */
+  tl.to(P + "nwkbar", { opacity: 1, duration: 0.4, ease: "power2.out" }, 24.879);
+  tl.to(P + "nwkbar", { scaleX: 1.02, duration: 0.15, ease: "power2.out" }, 24.879);
+  tl.to(P + "nwkbar", { scaleX: 1, duration: 0.25, ease: "power2.inOut" }, 25.029);
+  tl.fromTo(P + "nwkpulse", { opacity: 0.8, attr: { r: 8 } }, { opacity: 0, attr: { r: 18 }, duration: 0.8, ease: "power1.out", repeat: 1, repeatDelay: 0.2 }, 24.879);
+
+  /* RECORD @s5 12.90 = 26.259: Newark "· ITS RECORD" */
+  tl.fromTo(P + "nwkrec", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 26.259);
+
+  /* collision fix: Bear Mountain sub-label (ends x ~906, y 614) leaves before the ghost reaches x 900 */
+  tl.to(P + "bmsub", { autoAlpha: 0, duration: 0.3, ease: "power1.in" }, 28.399);
+
+  /* TWO @s5 15.44 = 28.799: ghost split bar draws, "?" pops and pulses every 1.0 s, name line NEW YORK CITY */
+  tl.to(P + "tnyc", { autoAlpha: 0, duration: 0.2, ease: "none" }, 28.799);
+  tl.fromTo(P + "ghost", { autoAlpha: 0, clipPath: "inset(0% 100% 0% 0%)" }, { autoAlpha: 1, clipPath: "inset(0% 0% 0% 0%)", duration: 0.6, ease: "power2.out" }, 28.799);
+  tl.fromTo(P + "nycname", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 28.799);
+  tl.fromTo(P + "q", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 29.149);
+  tl.fromTo(P + "qin", { scale: 1 }, { scale: 1.15, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 7 }, 29.499);
+
+  /* S6 starts @30.777: source swaps */
+  tl.to(P + "src5", { autoAlpha: 0, duration: 0.15, ease: "none" }, 30.777);
+  tl.fromTo(P + "src6", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "none" }, 30.927);
+
+  /* 94 @s6 2.40 = 33.177: ghost and "?" out; NYC bar, value to 94, name gains "· NWS JACKSON" */
+  tl.to(P + "ghost", { autoAlpha: 0, duration: 0.3, ease: "power1.in" }, 33.177);
+  tl.to(P + "q", { autoAlpha: 0, scale: 0.6, duration: 0.3, ease: "power2.in" }, 33.177);
+  tl.fromTo(P + "nyc2", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 33.177);
+  tl.fromTo(P + "nycbar", { autoAlpha: 0, scaleX: 0, transformOrigin: LO }, { autoAlpha: 1, scaleX: 1, transformOrigin: LO, duration: 0.6, ease: "power4.out" }, 33.177);
+  tl.fromTo(P + "nycval", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.25, ease: "power3.out" }, 33.177);
+  const NY = { v: 1 }, NYV = document.getElementById("ld4-nycval");
+  tl.fromTo(NY, { v: 1 }, { v: 94, duration: 0.6, ease: "power3.out", onUpdate: () => (NYV.textContent = Math.round(NY.v)) }, 33.177);
+
+  /* 70 @s6 5.86 = 36.637: Central Park bar, value to 70, name line, pin + label */
+  tl.fromTo(P + "cpname", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 36.637);
+  tl.fromTo(P + "cpbar", { autoAlpha: 0, scaleX: 0, transformOrigin: LO }, { autoAlpha: 1, scaleX: 1, transformOrigin: LO, duration: 0.6, ease: "power4.out" }, 36.637);
+  tl.fromTo(P + "cpval", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.25, ease: "power3.out" }, 36.637);
+  const CP = { v: 1 }, CPV = document.getElementById("ld4-cpval");
+  tl.fromTo(CP, { v: 1 }, { v: 70, duration: 0.6, ease: "power3.out", onUpdate: () => (CPV.textContent = Math.round(CP.v)) }, 36.637);
+  tl.fromTo(P + "cppin", { autoAlpha: 0, scale: 0, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, transformOrigin: "50% 50%", duration: 0.35, ease: "back.out(2)" }, 36.637);
+  tl.fromTo(P + "cpring", { opacity: 0.8, attr: { r: 7 } }, { opacity: 0, attr: { r: 20 }, duration: 0.8, ease: "power1.out", repeat: 1, repeatDelay: 0.2 }, 36.737);
+  tl.fromTo(P + "cplab", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 36.737);
+
+  /* STRONGEST @s6 6.84 = 37.617: "PARK RECORD" brightens grey -> amber */
+  tl.to(P + "cprec", { color: "#d8a13a", duration: 0.4, ease: "power2.out" }, 37.617);
+
+  /* STATION @s6 10.48 = 41.257: STATION NOT NAMED tag (readable 2.16 s before the exit) */
+  tl.fromTo(P + "nyctag", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 41.257);
+
+  /* BOTH @s6 12.50 = 43.277: NYC and Central Park bars pulse together once */
+  tl.to([P + "nycbar", P + "cpbar"], { scaleY: 1.2, duration: 0.15, ease: "power2.out", yoyo: true, repeat: 1 }, 43.277);
+
+  /* exit, last 0.8 s: ladder slides out right, map, labels and credits dim to the ground; host cuts to g-a1-5 */
+  tl.to(P + "ladder", { x: 980, autoAlpha: 0, duration: 0.8, ease: "power3.in" }, 43.42);
+  tl.to([P + "map", P + "hud", P + "credits"], { autoAlpha: 0, duration: 0.8, ease: "power2.in" }, 43.42);
+
+  window.__timelines["g-a1-4-ladder"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

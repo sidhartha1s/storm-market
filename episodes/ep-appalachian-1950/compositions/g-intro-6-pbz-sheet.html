@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-intro-6-pbz-sheet (I1-S2 first 5 s, standard): NWS Pittsburgh "largest snow storms" crop on beige cite stock, rank-1 row highlighted, chip "27.4 IN / BIGGEST ON RECORD".
+  Host: data-start = I1-S2 start + 2.04, data-duration 2.98, track 3, over g-intro-5-inland. Cues are LOCAL = i1-s2.words.json time - 2.04.
+  CROP (fit 28 Oct 26): media/docs/pbz-snow-records.png is 500 x 170, ink x 24-476, title y 20-37, rank1 y 82-101, rank2 114-133, rank3 145-164.
+    Shown 540 px wide: factor 1.08 -> 540 x 183.6, window 540 x 184 (card height 56 + 184 + 20 = 260). Rank1 centre y 91.5*1.08 = 98.8 -> origin 99.
+    Bar: rank1 ink 88.6-109.1, next row ink starts 123.1; bar top 82 height 34 (82-116), x 22-518 (ink 25.9-514.1).
+  Eyebrow is 18 px, tracking 2 (brief: 22 px, tracking 4): 35 characters at 22/4 measure about 660 px, wider than the 540 px card interior.
+-->
+<template>
+<style>
+  #g6-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; font-family:Arial, sans-serif; }
+  #g6-card { position:absolute; left:980px; top:170px; width:580px; height:260px; box-sizing:border-box; border-radius:18px; overflow:hidden;
+    background:rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 24px 70px rgba(0,0,0,0.55); opacity:0; visibility:hidden; }
+  #g6-eyebrow { position:absolute; left:20px; top:18px; font-weight:700; font-size:18px; line-height:24px; letter-spacing:2px; color:#2a2622; white-space:nowrap; }
+  #g6-page { position:absolute; left:20px; top:56px; width:540px; height:184px; overflow:hidden; background:#fff; }
+  #g6-zoom { position:absolute; left:0; top:0; width:540px; height:184px; transform-origin:50% 99px; }
+  #g6-img { position:absolute; left:0; top:0; width:540px; height:auto; display:block; }
+  #g6-bar { position:absolute; left:22px; top:82px; width:496px; height:34px; background:rgba(216,161,58,0.35); mix-blend-mode:multiply; transform-origin:left center; transform:scaleX(0); }
+  #g6-chip { position:absolute; left:980px; top:450px; width:440px; height:120px; box-sizing:border-box; padding:10px 22px; border-radius:14px; text-align:center;
+    background:rgba(10,16,24,0.55); -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,0.14);
+    opacity:0; visibility:hidden; }
+  #g6-fig { position:absolute; left:0; right:0; top:12px; font-family:"Arial Black", Arial, sans-serif; font-weight:900; font-size:58px; line-height:64px; color:#f2f5f8; white-space:nowrap; }
+  #g6-cap { position:absolute; left:0; right:0; top:80px; font-weight:700; font-size:26px; line-height:30px; letter-spacing:3px; color:#dfe7ee; white-space:nowrap; }
+</style>
+<div id="g6-root" data-composition-id="g-intro-6-pbz-sheet" data-width="1920" data-height="1080">
+  <div id="g6-cardwrap" data-start="0" data-duration="2.98" data-track-index="1">
+    <div id="g6-card">
+      <div id="g6-eyebrow">NWS PITTSBURGH · LARGEST SNOWSTORMS</div>
+      <div id="g6-page">
+        <div id="g6-zoom">
+          <img id="g6-img" src="media/docs/pbz-snow-records.png" alt="NWS Pittsburgh snowfall records page, largest snow storms list" data-crop-ok="document page cropped to the largest-storms table by design">
+          <div id="g6-bar"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="g6-chipwrap" data-start="0" data-duration="2.98" data-track-index="2">
+    <div id="g6-chip" data-overlap-ok="chip sits on the sheet foot by design">
+      <div id="g6-fig">27.4 IN</div>
+      <div id="g6-cap">BIGGEST ON RECORD</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#g6-card", "#g6-chip"], { autoAlpha: 0 }, 0);
+  /* WENT DOWN @2.04 (local 0.00): card + eyebrow slide in */
+  tl.fromTo("#g6-card", { x: 660, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 0);
+  /* push 2.04 to 4.62 (local 0 to 2.58), about the rank 1 row */
+  tl.to("#g6-zoom", { scale: 1.06, duration: 2.58, ease: "none" }, 0);
+  /* BIGGEST @3.26 (local 1.22): highlight draws on rank 1 row, to 1.72 */
+  tl.to("#g6-bar", { scaleX: 1, duration: 0.5, ease: "power2.out" }, 1.22);
+  /* SNOWSTORM @3.52 (local 1.48): chip in, to 1.88 */
+  tl.fromTo("#g6-chip", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.4)" }, 1.48);
+  /* EXIT before COLD @5.12: 4.42 to 5.02 (local 2.38 to 2.98) */
+  tl.to("#g6-card", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 2.38);
+  tl.to("#g6-chip", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 2.38);
+  window.__timelines["g-intro-6-pbz-sheet"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
