@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a5-age-gap: A5-S9 full-frame bar pair, host data-start 950.717 for 21.5 s (nx-a5-s9 + 0.00, clamped to g-a5-why).
+     Local t = a5-s9 words.json time. Scale 60 px per 1 death per 1,000 (A 8 -> 480 px, B 2 -> 120 px, ratio 4.0), baseline y 860.
+     Shared a5 rules: _list.md. Lib base: library/inhouse/ranked-bars.html (ruler grid drift, axis ticks, bar-grow choreography), hand-retuned to vertical bars. */
+  #a5ag-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; color:#f2f5f8; }
+  #a5ag-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 46% 52%, #0d141c 0%, #04070a 76%); }
+  #a5ag-grid { position:absolute; left:0; top:0; width:2098px; height:1080px;
+    background:repeating-linear-gradient(90deg, #101d28 0px, #101d28 2px, transparent 2px, transparent 44.5px); }
+  #a5ag-stage { position:absolute; inset:0; }
+
+  .a5ag-t { position:absolute; inset:auto; visibility:hidden; opacity:0; white-space:nowrap; line-height:1; }
+  .a5ag-gl { position:absolute; inset:auto; left:520px; width:880px; height:2px; background:#16232e; visibility:hidden; opacity:0; }
+  .a5ag-tm { position:absolute; inset:auto; left:508px; width:12px; height:2px; background:#93a3b2; visibility:hidden; opacity:0; }
+  .a5ag-tk { left:380px; width:116px; text-align:right; font-size:22px; font-weight:700; letter-spacing:2px; color:#93a3b2; height:26px; line-height:26px; }
+  #a5ag-ttl { left:300px; width:200px; text-align:right; top:316px; font-size:22px; font-weight:700; color:#93a3b2; height:28px; line-height:28px; }
+  #a5ag-axis { position:absolute; inset:auto; left:519px; top:380px; width:2px; height:480px; background:#93a3b2; transform-origin:50% 100%; visibility:hidden; opacity:0; }
+  #a5ag-base { position:absolute; inset:auto; left:520px; top:859px; width:880px; height:2px; background:#93a3b2; transform-origin:0% 50%; visibility:hidden; opacity:0; }
+
+  .a5ag-grp { left:550px; width:400px; text-align:center; top:900px; font-size:30px; font-weight:700; letter-spacing:1px; color:#dfe7ee; height:34px; line-height:34px; }
+  #a5ag-grpB { left:970px; }
+  .a5ag-val { width:220px; text-align:center; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; color:#f2f5f8; height:56px; line-height:56px;
+    text-shadow:0 2px 14px rgba(0,0,0,.7); }
+  #a5ag-valA { left:640px; top:312px; }
+  #a5ag-valB { left:1060px; top:672px; }
+
+  #a5ag-barA { position:absolute; inset:auto; left:640px; top:380px; width:220px; height:480px; transform-origin:50% 100%; visibility:hidden; opacity:0; }
+  #a5ag-barAbody { position:absolute; inset:auto; left:0; top:60px; width:220px; height:420px; background:#c0392b; }
+  #a5ag-slice { position:absolute; inset:auto; left:0; top:0; width:220px; height:60px; background:#c0392b; box-sizing:border-box; border-bottom:2px solid #8e2020; }
+  #a5ag-barB { position:absolute; inset:auto; left:1060px; top:740px; width:220px; height:120px; background:#5a768f; transform-origin:50% 100%; visibility:hidden; opacity:0; }
+
+  #a5ag-guide { position:absolute; inset:auto; left:860px; top:739px; width:200px; height:2px; transform-origin:0% 50%; visibility:hidden; opacity:0;
+    background:repeating-linear-gradient(90deg, #93a3b2 0px, #93a3b2 10px, transparent 10px, transparent 18px); }
+  #a5ag-brk { position:absolute; inset:auto; left:872px; top:380px; width:20px; height:360px; transform-origin:0% 50%; }
+  #a5ag-brkv { position:absolute; inset:auto; left:16px; top:0; width:4px; height:360px; background:#d8a13a; transform-origin:50% 100%; visibility:hidden; opacity:0; }
+  #a5ag-brkt { position:absolute; inset:auto; left:0; top:0; width:20px; height:4px; background:#d8a13a; visibility:hidden; opacity:0; }
+  #a5ag-brkb { position:absolute; inset:auto; left:0; top:356px; width:20px; height:4px; background:#d8a13a; visibility:hidden; opacity:0; }
+
+  #a5ag-slab { right:1300px; top:396px; font-size:22px; font-weight:700; letter-spacing:3px; color:#e74c3c; height:26px; line-height:26px; }
+
+  /* glass chips, values from _list.md (.popup under own class names) */
+  .a5ag-float { position:absolute; inset:auto; }
+  #a5ag-chipfloat { left:660px; width:600px; top:140px; }
+  #a5ag-srcfloat { left:96px; bottom:54px; }
+  #a5ag-chip { position:relative; display:table; margin:0 auto; box-sizing:border-box; padding:16px 36px 16px 44px; border-radius:14px; overflow:hidden;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.10);
+    visibility:hidden; opacity:0; white-space:nowrap; }
+  #a5ag-chipbar { position:absolute; inset:auto; left:0; top:0; bottom:0; width:8px; background:#d0121f; }
+  #a5ag-chiptxt { display:block; font-family:Arial,sans-serif; font-weight:700; font-size:40px; line-height:56px; letter-spacing:1px; color:#f2f5f8; text-shadow:0 2px 14px rgba(0,0,0,.7); }
+  #a5ag-src { display:table; box-sizing:border-box; padding:8px 16px; border-radius:14px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14);
+    font-family:Arial,sans-serif; font-weight:400; font-size:19px; line-height:26px; letter-spacing:.5px; color:rgba(200,211,224,.75); white-space:nowrap;
+    visibility:hidden; opacity:0; }
+</style>
+<div id="a5ag-root" data-composition-id="g-a5-age-gap" data-width="1920" data-height="1080">
+  <div id="a5ag-ground"><div id="a5ag-grid"></div></div>
+  <div id="a5ag-stage">
+    <!-- scale: gridlines, axis, ticks at 0 2 4 6 8 per 1,000 (y 860 740 620 500 380) -->
+    <div id="a5ag-gl2" class="a5ag-gl" style="top:739px"></div>
+    <div id="a5ag-gl4" class="a5ag-gl" style="top:619px"></div>
+    <div id="a5ag-gl6" class="a5ag-gl" style="top:499px"></div>
+    <div id="a5ag-gl8" class="a5ag-gl" style="top:379px"></div>
+    <div id="a5ag-axis"></div>
+    <div id="a5ag-tm0" class="a5ag-tm" style="top:859px"></div>
+    <div id="a5ag-tm2" class="a5ag-tm" style="top:739px"></div>
+    <div id="a5ag-tm4" class="a5ag-tm" style="top:619px"></div>
+    <div id="a5ag-tm6" class="a5ag-tm" style="top:499px"></div>
+    <div id="a5ag-tm8" class="a5ag-tm" style="top:379px"></div>
+    <div id="a5ag-tk0" class="a5ag-t a5ag-tk" style="top:847px">0</div>
+    <div id="a5ag-tk2" class="a5ag-t a5ag-tk" style="top:727px">2</div>
+    <div id="a5ag-tk4" class="a5ag-t a5ag-tk" style="top:607px">4</div>
+    <div id="a5ag-tk6" class="a5ag-t a5ag-tk" style="top:487px">6</div>
+    <div id="a5ag-tk8" class="a5ag-t a5ag-tk" style="top:367px">8</div>
+    <div id="a5ag-ttl" class="a5ag-t">per 1,000 people</div>
+    <div id="a5ag-base"></div>
+
+    <!-- bars: A 60 and over (480 px), B under 60 (120 px); the hospital and nursing-home share is its own rect on top of A -->
+    <div id="a5ag-barA"><div id="a5ag-barAbody"></div><div id="a5ag-slice"></div></div>
+    <div id="a5ag-barB"></div>
+    <div id="a5ag-valA" class="a5ag-t a5ag-val">8</div>
+    <div id="a5ag-valB" class="a5ag-t a5ag-val">2</div>
+    <div id="a5ag-grpA" class="a5ag-t a5ag-grp">60 and over</div>
+    <div id="a5ag-grpB" class="a5ag-t a5ag-grp">Under 60</div>
+
+    <!-- gap guide + bracket -->
+    <div id="a5ag-guide"></div>
+    <div id="a5ag-brk"><div id="a5ag-brkv"></div><div id="a5ag-brkt"></div><div id="a5ag-brkb"></div></div>
+    <div id="a5ag-slab" class="a5ag-t">HOSPITAL + NURSING HOMES</div>
+
+    <div id="a5ag-chipfloat" class="a5ag-float">
+      <div id="a5ag-chip"><div id="a5ag-chipbar"></div><span id="a5ag-chiptxt">THE GAP STAYS</span></div>
+    </div>
+    <div id="a5ag-srcfloat" class="a5ag-float"><div id="a5ag-src">NIST Finding 47</div></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a5ag-";
+  const READOUT = [Q + "gl2", Q + "gl4", Q + "gl6", Q + "gl8", Q + "axis", Q + "tm0", Q + "tm2", Q + "tm4", Q + "tm6", Q + "tm8",
+                   Q + "tk0", Q + "tk2", Q + "tk4", Q + "tk6", Q + "tk8", Q + "ttl", Q + "valA", Q + "valB"];
+
+  /* ground: ruler grid drifts left 178 px (4 periods, seamless) for the whole host window, so the frame is never still */
+  tl.fromTo(Q + "grid", { x: 0 }, { x: -178, duration: 21.5, ease: "none" }, 0);
+
+  /* a5-s9 0.00: baseline, axis, ticks, group labels, source line */
+  tl.fromTo(Q + "base", { scaleX: 0, autoAlpha: 1 }, { scaleX: 1, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 0);
+  tl.fromTo(Q + "axis", { scaleY: 0, autoAlpha: 1 }, { scaleY: 1, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 0);
+  tl.fromTo([Q + "gl2", Q + "gl4", Q + "gl6", Q + "gl8"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6, ease: "power2.out", stagger: 0.08 }, 0.2);
+  tl.fromTo([Q + "tm0", Q + "tm2", Q + "tm4", Q + "tm6", Q + "tm8"], { autoAlpha: 0, x: 12 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out", stagger: 0.08 }, 0.2);
+  tl.fromTo([Q + "tk0", Q + "tk2", Q + "tk4", Q + "tk6", Q + "tk8", Q + "ttl"], { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.08 }, 0.2);
+  tl.fromTo([Q + "grpA", Q + "grpB"], { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out", stagger: 0.3 }, 0.1);
+  tl.fromTo(Q + "src", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0);
+
+  /* bars grow from the baseline, A then B 0.3 s later; each value lands with its bar */
+  tl.fromTo(Q + "barA", { scaleY: 0 }, { scaleY: 1, autoAlpha: 1, duration: 0.8, ease: "power3.out" }, 0);
+  tl.fromTo(Q + "barB", { scaleY: 0 }, { scaleY: 1, autoAlpha: 1, duration: 0.8, ease: "power3.out" }, 0.3);
+  tl.fromTo(Q + "valA", { autoAlpha: 0, scale: 1.5 }, { autoAlpha: 1, scale: 1, duration: 0.36, ease: "power4.in" }, 0.8);
+  tl.fromTo(Q + "valB", { autoAlpha: 0, scale: 1.5 }, { autoAlpha: 1, scale: 1, duration: 0.36, ease: "power4.in" }, 1.1);
+
+  /* "Meadows" answer 1.4 to 10.94: both bars breathe by the same 1 % so the 4.0 ratio holds; 6 legs end exactly at rest, when the guide draws */
+  tl.fromTo([Q + "barA", Q + "barB"], { scaleY: 1 }, { scaleY: 1.01, duration: 1.59, ease: "sine.inOut", yoyo: true, repeat: 5, immediateRender: false }, 1.4);
+
+  /* "age"@10.94: gap guide and bracket draw on */
+  tl.fromTo(Q + "guide", { scaleX: 0, autoAlpha: 1 }, { scaleX: 1, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 10.94);
+  tl.fromTo(Q + "brkv", { scaleY: 0, autoAlpha: 1 }, { scaleY: 1, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 11.1);
+  tl.fromTo([Q + "brkb", Q + "brkt"], { autoAlpha: 0, x: 14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out", stagger: 0.5 }, 11.1);
+
+  /* "took"@13.30: every number, tick, gridline and axis label fades, so no value can be read off the after state (section 4 truth 3) */
+  tl.to(READOUT, { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 13.3);
+
+  /* "hospital"@14.92 to "homes,"@16.04 + 0.4: the share is named, lit, and drains up and out of frame; the bracket drops to bar A's new top (y 440) */
+  tl.fromTo(Q + "slab", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 14.92);
+  tl.to(Q + "slice", { backgroundColor: "#e74c3c", duration: 0.3, ease: "power2.out" }, 14.92);
+  tl.to(Q + "slice", { y: -440, duration: 1.44, ease: "power2.in" }, 15.0);
+  tl.to(Q + "slice", { autoAlpha: 0, duration: 0.5, ease: "power1.in" }, 15.94);
+  tl.to(Q + "slab", { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 15.9);
+  tl.to(Q + "brkt", { y: 60, duration: 0.7, ease: "power3.inOut" }, 15.1);
+  tl.to(Q + "brkv", { scaleY: 0.8333, duration: 0.7, ease: "power3.inOut" }, 15.1);
+
+  /* "gap"@16.94: chip lands, then floats */
+  tl.fromTo(Q + "chip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 16.94);
+  tl.fromTo(Q + "chipfloat", { y: 0 }, { y: -4, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 17.34);
+
+  /* "Why"@18.80 to 21.20: bracket pulses (scaleX, 4 legs, ends at rest) */
+  tl.fromTo(Q + "brk", { scaleX: 1 }, { scaleX: 1.15, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 18.8);
+
+  /* exit: fade-through. The brief's 21.20 to 21.80 runs past the host (21.5, clamped to g-a5-why), so it runs 21.00 to 21.50 and ends fully clear */
+  tl.to(Q + "stage", { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 21.0);
+  tl.to(Q + "ground", { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 21.0);
+
+  window.__timelines["g-a5-age-gap"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-z1-close: the last 4.0 s of the episode (host-z1-close, start 1179.397 = end of ins-paul-6, duration 4). No audio, no words.json cues.
+     Wordmark: hand-copied from library/inhouse/outro-brand.html (.twh: Arial Black 900, 120 px, tracking 6, #f2f5f8, WARNING amber #d8a13a),
+     line box top 468, line-height 144, centre (960, 540). Episode line, tag line and flat ground of the exemplar are not copied.
+     Cues (local s): 0.00 to 0.45 settle in (scale 1.14 to 1, opacity 0 to 1); 0.45 to 3.00 breathing hold (1 to 1.015); 3.00 to 4.00 black cover 0 to 1. */
+  #zc-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #zc-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  /* padding-left 6 = the tracking after the last glyph, so the ink (not the box) is centred on x 960 */
+  #zc-twh { position:absolute; inset:auto; left:0; top:468px; width:1920px; height:144px; box-sizing:border-box; padding-left:6px; text-align:center; white-space:nowrap;
+    font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:120px; line-height:144px; letter-spacing:6px; color:#f2f5f8; opacity:0; }
+  #zc-amber { color:#d8a13a; }
+  #zc-cover { position:absolute; inset:0; background:#000; opacity:0; }
+</style>
+<div id="zc-root" data-composition-id="g-z1-close" data-width="1920" data-height="1080" data-type-ok="close card: the channel name only, no small print">
+  <div id="zc-ground"></div>
+  <div id="zc-twh">THE <span id="zc-amber">WARNING</span> HOUR</div>
+  <div id="zc-cover"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set("#zc-twh", { scale: 1.14, transformOrigin: "50% 50%" }, 0);
+  /* settle in 0.00 to 0.45 */
+  tl.to("#zc-twh", { opacity: 1, scale: 1, duration: 0.45, ease: "power3.out" }, 0);
+  /* breathing hold 0.45 to 3.00 */
+  tl.to("#zc-twh", { scale: 1.015, duration: 2.55, ease: "sine.inOut" }, 0.45);
+  /* black cover 3.00 to 4.00; the comp root is never faded */
+  tl.to("#zc-cover", { opacity: 1, duration: 1.0, ease: "power1.inOut" }, 3.0);
+  window.__timelines["g-z1-close"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

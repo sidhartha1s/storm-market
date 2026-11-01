@@ -1,0 +1,91 @@
+# Joplin graphics: builder model per graphic (CLAUDE.md "Chain of command", 17 Oct 26)
+
+Opus 5.5 high: the 4 shared bases (MASTER MAP g-intro-map, SIREN STRIP g-a1-strip-sirens, SIREN RING g-a2-countdown,
+HOUSE SECTION g-a3-house-section) and every map with a moving path or zoom: 15 graphics. Everything else: Sonnet 5.5 high.
+A Sonnet graphic that fails the orchestrator's frame read twice moves to Opus. Bases build first; a copy waits for its base.
+
+| graphic | brief tier | model |
+|---|---|---|
+| g-intro-161 | STANDARD | Sonnet |
+| g-intro-hook | STANDARD | Sonnet |
+| g-intro-map-dots | DEEP | Opus |
+| g-intro-map | DEEP | Opus |
+| g-intro-nist | STANDARD | Sonnet |
+| g-intro-nobasement | DEEP | Opus |
+| g-intro-page-sirens | STANDARD | Sonnet |
+| g-intro-page-survivors | STANDARD | Sonnet |
+| g-intro-strip-back | STANDARD | Sonnet |
+| g-intro-strip | DEEP | Sonnet |
+| g-a1-bubble-page | STANDARD | Sonnet |
+| g-a1-finding31 | STANDARD | Sonnet |
+| g-a1-gutter | STANDARD | Sonnet |
+| g-a1-numb | STANDARD | Sonnet |
+| g-a1-quote-120 | STANDARD | Sonnet |
+| g-a1-quote-58 | STANDARD | Sonnet |
+| g-a1-ring | DEEP | Sonnet |
+| g-a1-second-siren | DEEP | Sonnet |
+| g-a1-strip-sirens | DEEP | Opus |
+| g-a1-strip-warnings | DEEP | Sonnet |
+| g-a1-theater-map | DEEP | Opus |
+| g-a2-countdown | DEEP | Opus |
+| g-a2-doc-cues | STANDARD | Sonnet |
+| g-a2-lead-time | STANDARD | Sonnet |
+| g-a2-map-close | DEEP | Opus |
+| g-a2-paul-chip | STANDARD | Sonnet |
+| g-a2-quote-108 | STANDARD | Sonnet |
+| g-a2-radar | STANDARD | Sonnet |
+| g-a3-apartments | DEEP | Sonnet |
+| g-a3-comment | STANDARD | Sonnet |
+| g-a3-counter | STANDARD | Sonnet |
+| g-a3-house-joints | DEEP | Sonnet |
+| g-a3-house-section | DEEP | Opus |
+| g-a3-map-homes | DEEP | Opus |
+| g-a3-map-ranch | DEEP | Opus |
+| g-a3-paul-chip | STANDARD | Sonnet |
+| g-a3-shelter-chip | STANDARD | Sonnet |
+| g-a3-stair | STANDARD | Sonnet |
+| g-a3-tally | STANDARD | Sonnet |
+| g-a4-20th | DEEP | Sonnet |
+| g-a4-above | STANDARD | Sonnet |
+| g-a4-cellar | DEEP | Sonnet |
+| g-a4-churches | STANDARD | Sonnet |
+| g-a4-comment | STANDARD | Sonnet |
+| g-a4-counter | STANDARD | Sonnet |
+| g-a4-handoff | STANDARD | Sonnet |
+| g-a4-hd-panels | STANDARD | Sonnet |
+| g-a4-homedepot | DEEP | Sonnet |
+| g-a4-stairs | STANDARD | Sonnet |
+| g-a4-strip | DEEP | Sonnet |
+| g-a4-theater-quote | STANDARD | Sonnet |
+| g-a4-walmart | DEEP | Sonnet |
+| g-a5-age-gap | DEEP | Sonnet |
+| g-a5-cc-greenbrier | STANDARD | Sonnet |
+| g-a5-cc-midmost | STANDARD | Sonnet |
+| g-a5-cc-standing | STANDARD | Sonnet |
+| g-a5-condition-gray | DEEP | Sonnet |
+| g-a5-counter3 | STANDARD | Sonnet |
+| g-a5-greenbriar | DEEP | Sonnet |
+| g-a5-map-meadows | DEEP | Opus |
+| g-a5-map-sjrmc | DEEP | Opus |
+| g-a5-paul-rates | STANDARD | Sonnet |
+| g-a5-recs-board | STANDARD | Sonnet |
+| g-a5-sjrmc-open | STANDARD | Sonnet |
+| g-a5-tower-wind | STANDARD | Sonnet |
+| g-a5-why | STANDARD | Sonnet |
+| g-a5-windows | STANDARD | Sonnet |
+| g-a6-board-half | DEEP | Sonnet |
+| g-a6-board-r7 | DEEP | Sonnet |
+| g-a6-cmt-mandatory | STANDARD | Sonnet |
+| g-a6-cmt-nurse | STANDARD | Sonnet |
+| g-a6-cmt-thriving | STANDARD | Sonnet |
+| g-a6-doc-nwsrec2 | STANDARD | Sonnet |
+| g-a6-doc-rec7 | STANDARD | Sonnet |
+| g-a6-empty | STANDARD | Sonnet |
+| g-a6-map135 | DEEP | Opus |
+| g-a6-mercy | STANDARD | Sonnet |
+| g-a6-saferoom | DEEP | Sonnet |
+| g-a6-siren | STANDARD | Sonnet |
+| g-a6-usmap | DEEP | Opus |
+| g-z1-board | STANDARD | Sonnet |
+| g-z1-map | DEEP | Opus |
+| g-z1-strip | STANDARD | Sonnet |

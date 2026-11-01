@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a5-greenbriar: A5-S6, host 912.857 for 17.58 s (host clamped to g-a5-map-meadows at 930.437, so the brief's 17.88 s ends 0.30 s early).
+     nx-a5-s6 (audio/a5-s6-v2.wav) starts at 902.657, so comp-local t = a5-s6-v2.words.json time - 10.20.
+     State 1, 0 to 3.74: overlay over c-a5-s6-greenbriar-wall (NIST Fig 3-106): source line, chip "19 OF 95 LOST".
+     State 2, 3.74 to end: full-frame plan of the one-storey wing on its own ground. SCHEMATIC, NOT TO SCALE (NIST Fig 3-102 is not extracted).
+     Walls are plain lines, no material (CONFLICT facts.md line 278). Nothing in the building marks where the 19 were (NIST Sec. 4.6.2.2). */
+  #g-a5-greenbriar-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  .a5gb-hid { opacity:0; visibility:hidden; }
+  #a5gb-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #a5gb-cam { position:absolute; inset:0; }
+  #a5gb-svg { position:absolute; inset:0; width:1920px; height:1080px; }
+
+  /* glass surface shared by the chips (tokens.md): .popup values under this comp's own names */
+  #a5gb-chip, #a5gb-schip, #a5gb-src { background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); border-radius:14px; visibility:hidden; opacity:0; }
+
+  #a5gb-chipmove { position:absolute; inset:auto; left:0; top:0; z-index:6; }
+  #a5gb-chipfloat { display:table; }
+  /* 52 px, the headline tier: graphics_qc flat-type wants a tier at 52 or above, and the brief's 40 px would leave the comp with two */
+  #a5gb-chip { display:table; box-sizing:border-box; padding:12px 32px; box-shadow:0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.10); }
+  #a5gb-chiptext { display:block; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; line-height:56px; letter-spacing:1px;
+    color:#f2f5f8; white-space:nowrap; text-shadow:0 2px 14px rgba(0,0,0,.7); }
+
+  #a5gb-schipfloat { position:absolute; inset:auto; left:96px; top:196px; z-index:6; display:table; }
+  #a5gb-schip { display:table; box-sizing:border-box; padding:8px 16px; }
+  #a5gb-schiptext { display:block; font-family:Arial,sans-serif; font-weight:400; font-size:21px; line-height:26px; letter-spacing:.5px; color:#c8d3e0; white-space:nowrap; }
+
+  #a5gb-srcfloat { position:absolute; inset:auto; left:96px; bottom:54px; z-index:7; display:table; }
+  #a5gb-src { display:table; box-sizing:border-box; padding:5px 12px; }
+  #a5gb-srcline { display:block; font-family:Arial,sans-serif; font-weight:400; font-size:19px; line-height:26px; letter-spacing:.5px; color:rgba(200,211,224,.75); white-space:nowrap; }
+
+  #a5gb-sch { position:absolute; inset:auto; right:96px; top:100px; z-index:6; font-family:Arial,sans-serif; font-weight:700; font-size:26px; line-height:30px;
+    letter-spacing:6px; color:#93a3b2; white-space:nowrap; visibility:hidden; opacity:0; }
+</style>
+<div id="g-a5-greenbriar-root" data-composition-id="g-a5-greenbriar" data-width="1920" data-height="1080">
+  <div id="a5gb-ground" class="a5gb-hid"></div>
+  <div id="a5gb-cam" class="a5gb-hid">
+    <svg id="a5gb-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <clipPath id="a5gb-clip"><rect x="180" y="470" width="1260" height="140"/></clipPath>
+      </defs>
+
+      <!-- inner hallway band y 470 to 610: #2a3644 at rest, #d8a13a at 0.55 when lit -->
+      <rect id="a5gb-hall" class="a5gb-hid" x="180" y="470" width="1260" height="140" fill="#2a3644"/>
+      <rect id="a5gb-lit" class="a5gb-hid" x="180" y="470" width="1260" height="140" fill="#d8a13a"/>
+
+      <!-- room walls, 2 px #4a5560: 6 dividers per side, and each hallway-side wall broken by seven 40 px door gaps (hinge at room x + 70) -->
+      <path id="a5gb-rw" fill="none" stroke="#4a5560" stroke-width="2" stroke-dasharray="171" stroke-dashoffset="171"
+        d="M360 300 V470 M540 300 V470 M720 300 V470 M900 300 V470 M1080 300 V470 M1260 300 V470
+           M360 610 V780 M540 610 V780 M720 610 V780 M900 610 V780 M1080 610 V780 M1260 610 V780
+           M180 470 H250 M290 470 H430 M470 470 H610 M650 470 H790 M830 470 H970 M1010 470 H1150 M1190 470 H1330 M1370 470 H1440
+           M180 610 H250 M290 610 H430 M470 610 H610 M650 610 H790 M830 610 H970 M1010 610 H1150 M1190 610 H1330 M1370 610 H1440"/>
+      <!-- outer wall of the wing, 3 px #93a3b2, plain line (perimeter 3480) -->
+      <path id="a5gb-outer" fill="none" stroke="#93a3b2" stroke-width="3" stroke-dasharray="3481" stroke-dashoffset="3481" d="M180 300 H1440 V780 H180 Z"/>
+
+      <!-- 28 window marks, 4 px #7fb2e5, two per room on the outer long walls -->
+      <path id="a5gb-win" class="a5gb-hid" fill="none" stroke="#7fb2e5" stroke-width="4"
+        d="M215 300 H255 M285 300 H325 M395 300 H435 M465 300 H505 M575 300 H615 M645 300 H685 M755 300 H795 M825 300 H865 M935 300 H975 M1005 300 H1045 M1115 300 H1155 M1185 300 H1225 M1295 300 H1335 M1365 300 H1405
+           M215 780 H255 M285 780 H325 M395 780 H435 M465 780 H505 M575 780 H615 M645 780 H685 M755 780 H795 M825 780 H865 M935 780 H975 M1005 780 H1045 M1115 780 H1155 M1185 780 H1225 M1295 780 H1335 M1365 780 H1405"/>
+
+      <!-- 14 door leaves, 40 px, drawn closed along the gap, stood open at 70 degrees by tl.set (rotation about the hinge) -->
+      <g id="a5gb-doors" class="a5gb-hid" stroke="#93a3b2" stroke-width="3">
+        <line id="a5gb-dt0" x1="250"  y1="470" x2="290"  y2="470"/>
+        <line id="a5gb-dt1" x1="430"  y1="470" x2="470"  y2="470"/>
+        <line id="a5gb-dt2" x1="610"  y1="470" x2="650"  y2="470"/>
+        <line id="a5gb-dt3" x1="790"  y1="470" x2="830"  y2="470"/>
+        <line id="a5gb-dt4" x1="970"  y1="470" x2="1010" y2="470"/>
+        <line id="a5gb-dt5" x1="1150" y1="470" x2="1190" y2="470"/>
+        <line id="a5gb-dt6" x1="1330" y1="470" x2="1370" y2="470"/>
+        <line id="a5gb-db0" x1="250"  y1="610" x2="290"  y2="610"/>
+        <line id="a5gb-db1" x1="430"  y1="610" x2="470"  y2="610"/>
+        <line id="a5gb-db2" x1="610"  y1="610" x2="650"  y2="610"/>
+        <line id="a5gb-db3" x1="790"  y1="610" x2="830"  y2="610"/>
+        <line id="a5gb-db4" x1="970"  y1="610" x2="1010" y2="610"/>
+        <line id="a5gb-db5" x1="1150" y1="610" x2="1190" y2="610"/>
+        <line id="a5gb-db6" x1="1330" y1="610" x2="1370" y2="610"/>
+      </g>
+
+      <!-- rubble: 70 seeded polygons, hallway band only (clipped to it, so nothing shows above the band while falling); filled by the script below -->
+      <g clip-path="url(#a5gb-clip)"><g id="a5gb-rub"></g></g>
+    </svg>
+  </div>
+
+  <div id="a5gb-chipmove">
+    <div id="a5gb-chipfloat"><div id="a5gb-chip"><span id="a5gb-chiptext">19 OF 95 LOST</span></div></div>
+  </div>
+  <div id="a5gb-schipfloat"><div id="a5gb-schip"><span id="a5gb-schiptext">media reports &#183; CDC interviews &#183; where the 19 were: not known (NIST)</span></div></div>
+  <div id="a5gb-srcfloat"><div id="a5gb-src"><span id="a5gb-srcline">NIST Sec. 1.2 &#183; Sec. 4.4.4 &#183; Sec. 4.6.2.2</span></div></div>
+  <div id="a5gb-sch">SCHEMATIC &#183; NOT TO SCALE</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a5gb-";
+  const END = 17.58;
+  const SVGNS = "http://www.w3.org/2000/svg";
+
+  /* rubble polygons: 35 columns x 2 rows of jittered cells, centres inside x 202 to 1398, y 492 to 588, radius at most 20, so every polygon rests inside the band */
+  let seed = 2011;
+  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const rub = document.getElementById("a5gb-rub");
+  const bits = [];
+  for (let row = 0; row < 2; row++) for (let col = 0; col < 35; col++) {
+    const cx = 202 + (col + rnd()) * (1196 / 35), cy = 492 + (row + rnd()) * 48;
+    const r = 10 + rnd() * 10, n = 5 + Math.floor(rnd() * 3), a0 = rnd() * 6.28;
+    let pts = "";
+    for (let k = 0; k < n; k++) {
+      const a = a0 + (k + (rnd() - 0.5) * 0.5) * 6.28318 / n, rr = r * (0.55 + rnd() * 0.45);
+      pts += (cx + rr * Math.cos(a)).toFixed(1) + "," + (cy + rr * Math.sin(a)).toFixed(1) + " ";
+    }
+    const p = document.createElementNS(SVGNS, "polygon");
+    p.setAttribute("points", pts.trim());
+    p.setAttribute("fill", rnd() < 0.5 ? "#4a5560" : "#2a3644");
+    p.setAttribute("stroke", "#04070c");
+    p.setAttribute("stroke-width", "1");
+    p.setAttribute("class", "a5gb-hid");
+    p.id = "a5gb-r" + bits.length;
+    rub.appendChild(p);
+    bits.push(p.id);
+  }
+
+  /* slow float: wrappers only, so entrances and slides on the elements inside them never fight it */
+  const float = (el, t0, amp) => tl.to(Q + el, { y: -amp, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: Math.max(1, Math.floor((END - 0.6 - t0) / 2.4) - 1) }, t0);
+
+  /* state 1, overlay: NINETY a5-s6 10.38 source line in and floating */
+  tl.fromTo(Q + "src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.18);
+  float("srcfloat", 0.58, 4);
+
+  /* NINETEEN 12.38: the whole chip, centred x 960, top 140 (chipmove at x 960 -50 %, y 140) */
+  tl.set(Q + "chipmove", { x: 960, xPercent: -50, y: 140 }, 0);
+  tl.fromTo(Q + "chip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.18);
+  float("chipfloat", 2.58, 5);
+
+  /* THE 13.94: ground in over 0.5 s, walls draw over 1.0 s, chip slides to left 96 top 96, label of the drawing in */
+  tl.set(Q + "cam", { scale: 1, transformOrigin: "810px 540px", autoAlpha: 0 }, 0);
+  tl.set(Q + "ground", { autoAlpha: 0 }, 0);
+  tl.to([Q + "ground", Q + "cam"], { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, 3.74);
+  tl.to(Q + "outer", { strokeDashoffset: 0, duration: 1.0, ease: "power2.inOut" }, 3.74);
+  tl.to(Q + "rw", { strokeDashoffset: 0, duration: 1.0, ease: "power2.inOut" }, 3.74);
+  tl.to(Q + "hall", { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, 4.1);
+  tl.to(Q + "doors", { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 4.3);
+  tl.to(Q + "win", { autoAlpha: 0.55, duration: 0.4, ease: "power1.out" }, 4.3);
+  tl.to(Q + "chipmove", { x: 96, xPercent: 0, y: 96, duration: 0.6, ease: "power3.inOut" }, 3.74);
+  tl.fromTo(Q + "sch", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.74);
+
+  /* doors stand open at 70 degrees: top row swings down into the hallway (+70), bottom row up (-70), each about its own hinge */
+  const HX = [250, 430, 610, 790, 970, 1150, 1330];
+  const leaves = [];
+  HX.forEach((hx, k) => {
+    leaves.push([Q + "dt" + k, hx, 470, 70], [Q + "db" + k, hx, 610, -70]);
+  });
+  leaves.forEach(([id, hx, y, deg]) => tl.set(id, { svgOrigin: hx + " " + y, rotation: deg }, 0));
+
+  /* INNER 15.44 -> 5.24: hallway lit to 0.55 */
+  tl.to(Q + "lit", { autoAlpha: 0.55, duration: 0.5, ease: "power2.out" }, 5.24);
+
+  /* CLOSE 16.24 -> 6.04: the 14 doors swing shut, 0.06 s apart */
+  leaves.forEach(([id, hx, y], i) => tl.to(id, { rotation: 0, svgOrigin: hx + " " + y, duration: 0.5, ease: "power2.inOut" }, 6.04 + i * 0.06));
+
+  /* "glass." 17.78 -> 7.58 (Whisper wrote "class."): the window marks flicker once */
+  tl.to(Q + "win", { autoAlpha: 1, duration: 0.08, ease: "power1.out" }, 7.58);
+  tl.to(Q + "win", { autoAlpha: 0.2, duration: 0.1, ease: "none" }, 7.66);
+  tl.to(Q + "win", { autoAlpha: 1, duration: 0.08, ease: "none" }, 7.76);
+  tl.to(Q + "win", { autoAlpha: 0.55, duration: 0.4, ease: "power1.inOut" }, 7.84);
+
+  /* slow push 1.00 -> 1.06 from 17.8 to 23.0 (7.6 to 12.8), on the drawing only: every label is HUD */
+  tl.to(Q + "cam", { scale: 1.06, duration: 5.2, ease: "none" }, 7.6);
+
+  /* BURIED 23.10 -> 12.90: rubble falls into the hallway from y -40, 0.8 s each, starts spread over 0.45 s; source chip in */
+  bits.forEach((id) => tl.fromTo("#" + id, { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.8, ease: "power2.in" }, 12.9 + rnd() * 0.45));
+  tl.fromTo(Q + "schip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 12.9);
+  float("schipfloat", 13.3, 4);
+
+  /* NOBODY 24.60 -> 14.40 to 27.48 -> 17.28: pull-out 1.06 -> 1.00 */
+  tl.to(Q + "cam", { scale: 1, duration: 2.88, ease: "none" }, 14.4);
+
+  /* exit, last 0.6 s (host ends 17.58): chips and source slide out, the drawing and its ground fade through to the next shot */
+  tl.to(Q + "chip", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, END - 0.6);
+  tl.to(Q + "schip", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, END - 0.6);
+  tl.to(Q + "src", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, END - 0.6);
+  tl.to(Q + "sch", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, END - 0.6);
+  tl.to([Q + "cam", Q + "ground"], { autoAlpha: 0, duration: 0.6, ease: "power1.in" }, END - 0.6);
+
+  window.__timelines["g-a5-greenbriar"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!--
+  g-a2-paul-chip: a2-s9, host 429.51 for 5.71 s (the clip's "four" mark to the clip cut after "again.", host end 435.22). Brief briefs/a2/g-a2-paul-chip.md.
+  Overlay: one glass chip over Paul full frame (ins-paul-3, mounted in index.html at 426.47, not here).
+  Comp-local time = media/paul/ins-paul-3/raw-01.words.json word start - 3.04 ("four" 3.04, "minutes." 3.40, "again." 8.30 to 8.58).
+  Chip: left 110, bottom 110, padding 20 x 30; clear of x >= 1600 and of the logo at (1740, 900). Claim: E15, 4 minutes after touchdown.
+-->
+<template>
+<style>
+  #a2pc-root { position:absolute; inset:0; overflow:hidden; }
+  #a2pc-card { position:absolute; inset:auto; left:110px; bottom:110px; box-sizing:border-box; padding:20px 30px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); border-radius:28px; box-shadow:none; visibility:hidden; }
+  #a2pc-l1 { display:block; font:900 52px/60px 'Arial Black', Arial, sans-serif; letter-spacing:2px; color:#f2f5f8;
+    white-space:nowrap; }
+  #a2pc-l2 { display:block; margin-top:6px; font:700 20px/24px Arial, sans-serif; letter-spacing:3px; color:#c8d3e0;
+    white-space:nowrap; visibility:hidden; }
+</style>
+<div id="a2pc-root" data-composition-id="g-a2-paul-chip" data-duration="5.71" data-width="1920" data-height="1080">
+  <div id="a2pc-card">
+    <span id="a2pc-l1">4 MIN AFTER TOUCHDOWN</span>
+    <span id="a2pc-l2">NIST Finding 35</span>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#a2pc-";
+  /* FOUR clip 3.04 -> local 0.00: card in, line 1 */
+  tl.fromTo(P+"card", {autoAlpha:0, x:-40}, {autoAlpha:1, x:0, duration:0.4, ease:"power3.out"}, 0);
+  /* MINUTES. clip 3.40 -> local 0.36: line 2 */
+  tl.fromTo(P+"l2", {autoAlpha:0, x:-40}, {autoAlpha:1, x:0, duration:0.4, ease:"power3.out"}, 0.36);
+  /* hold 0.4 to 5.0: card floats y 0 > -5 > 0 */
+  tl.to(P+"card", {y:-5, duration:2.3, ease:"sine.inOut", yoyo:true, repeat:1}, 0.4);
+  /* exit 0.6 s from 5.0 (during "off", "again." starts 5.26), gone at 5.6 = host end 5.71 - 0.1 for truth 3 */
+  tl.to(P+"card", {x:-980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 5.0);
+  tl.set(P+"card", {autoAlpha:0}, 5.71);
+  window.__timelines["g-a2-paul-chip"] = tl;
+})();
+</script>
+</template>

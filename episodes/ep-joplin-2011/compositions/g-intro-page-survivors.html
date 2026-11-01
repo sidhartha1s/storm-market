@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-intro-page-survivors: I1-S9 second part, a copy of the PAGE UNDERLINE base g-intro-page-sirens (crop, phrase box and text changed).
+     Host data-start 118.59 = nx-i1-s9 111.13 + "After" 7.46, so local t = i1-s9 word time - 7.46. Host 7.02 s: wav end 14.48 -> 7.02.
+     Numbers (python from the native boxes, 18 Oct 26): crop native x 118..988, y 1086..1240, scale 1.85, card 1609.5 x 284.9 at left 155.25,
+     top 377.55 (centre 960, 520). img 2044.25 x 2645.5 at (-218.3, -2009.1) inside the clip box. Phrase band native y 1124..1144 lands at
+     y 447.85..484.85 (ink bottom row 1138 = 475.6, descenders of the line to 484.85); next line's tops at native 1152 (y 499.65).
+     Bar from the pixel scan: "interviewed" first ink col 621, "survivors" last ink col 878 (edge 879, before the comma): x 1085.8 to 1563.1.
+     Bar 6 px tall, top 488.05 (3.2 px under the descender zone, 5.6 px above the next line).
+     Push 1.00 to 1.04 about (960, 520): card y 371.9 to 668.15, x 123.1 to 1796.9; bottom clear of the presenter circle (680). Crop never shows "158" or Figure 1. */
+  #pv-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+
+  #pv-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+
+  /* the group carries the push; origin is the card centre in frame pixels (the group is the whole frame) */
+  #pv-grp { position:absolute; inset:0; transform-origin:960px 520px; }
+
+  #pv-card { position:absolute; inset:auto; left:155.25px; top:377.55px; width:1609.5px; height:284.9px; overflow:hidden; border-radius:6px;
+    box-shadow:0 24px 60px rgba(0,0,0,.55); background:#ffffff; visibility:hidden; opacity:0; }
+  #pv-img { position:absolute; inset:auto; left:-218.3px; top:-2009.1px; width:2044.25px; height:2645.5px; max-width:none; display:block; }
+
+  /* soft wash over every line but the phrase line (card-local: above 0..68.45, below 109.15..284.9), so the phrase line is the brightest */
+  #pv-wash { position:absolute; inset:0; visibility:hidden; opacity:0; }
+  #pv-wash-a { position:absolute; inset:auto; left:0; top:0; width:1609.5px; height:68.45px; background:rgba(4,7,12,.35); }
+  #pv-wash-b { position:absolute; inset:auto; left:0; top:109.15px; width:1609.5px; height:175.75px; background:rgba(4,7,12,.35); }
+
+  #pv-bar { position:absolute; inset:auto; left:1085.8px; top:488.05px; width:477.3px; height:6px; border-radius:3px; background:#e74c3c;
+    transform-origin:left center; visibility:hidden; opacity:0; }
+
+  #pv-src { position:absolute; inset:auto; left:96px; top:991px; height:24px; white-space:nowrap;
+    font-family:Arial,sans-serif; font-weight:700; font-size:20px; line-height:24px; letter-spacing:1px; color:#c8d3e0; visibility:hidden; opacity:0; }
+
+  /* the chapter blackout begins inside this comp: a black sheet over everything for the last 0.4 s */
+  #pv-black { position:absolute; inset:0; background:#000; visibility:hidden; opacity:0; }
+</style>
+<div id="pv-root" data-composition-id="g-intro-page-survivors" data-width="1920" data-height="1080" data-duration="7.02">
+  <div id="pv-ground"></div>
+  <div id="pv-grp">
+    <div id="pv-card">
+      <img id="pv-img" src="media/candidates/intro/i1-s9_c1_nws-assessment-p7-60-survivors.png" alt="NWS Central Region Service Assessment, Joplin, 2011, page 7">
+      <div id="pv-wash"><div id="pv-wash-a"></div><div id="pv-wash-b"></div></div>
+    </div>
+    <div id="pv-bar"></div>
+  </div>
+  <div id="pv-src">NWS assessment team · interviewed over 60 survivors</div>
+  <div id="pv-black"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+
+  /* AFTER i1-s9 7.46 (local 0.00): the card rises in */
+  tl.fromTo("#pv-card", { y: 40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 0);
+  /* AFTER i1-s9 7.46: the push starts and runs to the host end, no easing (a move from rest is a to) */
+  tl.to("#pv-grp", { scale: 1.04, duration: 7.02, ease: "none" }, 0);
+  /* NWS i1-s9 8.98 (local 1.52): source line */
+  tl.fromTo("#pv-src", { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 1.52);
+
+  tl.set("#pv-bar", { scaleX: 0, scaleY: 1 }, 0);
+  /* INTERVIEWED i1-s9 9.52 (local 2.06): bar draws under "interviewed over 60 survivors", lands on "survivors," 11.06 + 0.3 (local 3.60 + 0.3) */
+  tl.fromTo("#pv-bar", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.05, ease: "none" }, 2.06);
+  tl.to("#pv-bar", { scaleX: 1, duration: 1.84, ease: "power1.inOut" }, 2.06);
+  /* INTERVIEWED i1-s9 9.52 (local 2.06): the wash over the other lines */
+  tl.fromTo("#pv-wash", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 2.06);
+  /* SIRENS. i1-s9 13.62 (local 6.16): the bar pulses once, 0.4 s */
+  tl.to("#pv-bar", { scaleY: 1.6, duration: 0.2, ease: "power2.out" }, 6.16);
+  tl.to("#pv-bar", { scaleY: 1, duration: 0.2, ease: "power2.in" }, 6.36);
+  /* wav end 14.48 (local 7.02): fade to black over the last 0.4 s into the chapter blackout */
+  tl.to("#pv-black", { autoAlpha: 1, duration: 0.4, ease: "power1.in" }, 6.62);
+
+  window.__timelines["g-intro-page-survivors"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

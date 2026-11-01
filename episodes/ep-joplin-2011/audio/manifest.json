@@ -1,0 +1,704 @@
+{
+ "h1-s1": {
+  "wav": "audio/h1-s1.wav",
+  "duration": 17.56,
+  "words": 53,
+  "text_hash": "b02c8881e446f8714492d2dc0ef7af63fe97518f",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "t1-s1": {
+  "wav": "audio/t1-s1.wav",
+  "duration": 9.52,
+  "words": 21,
+  "text_hash": "864bda41a04ab17a32dbf83cc5b90113479e0fa7",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "t1-s2": {
+  "wav": "audio/t1-s2.wav",
+  "duration": 5.96,
+  "words": 16,
+  "text_hash": "fadcad8f5fb28ac9797606897784dbc79a2b67c5",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "t1-s3": {
+  "wav": "audio/t1-s3.wav",
+  "duration": 5.24,
+  "words": 16,
+  "text_hash": "0abab7703762eef1c831ea37e70de89dfbdb8c76",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "i1-s1": {
+  "wav": "audio/i1-s1.wav",
+  "duration": 14.56,
+  "words": 44,
+  "text_hash": "bdb0e8396519a6ea6c48c093ad5e003e57f03bcd",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "i1-s2": {
+  "wav": "audio/i1-s2.wav",
+  "duration": 12.04,
+  "words": 41,
+  "text_hash": "6c32645cf7b07bd470d3895d11031efafcb792ff",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "i1-s3": {
+  "wav": "audio/i1-s3.wav",
+  "duration": 4.16,
+  "words": 10,
+  "text_hash": "3f804547508d9a29ccd0f15c5b2efd3b42dc356c",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "i1-s4": {
+  "wav": "audio/i1-s4.wav",
+  "duration": 6.96,
+  "words": 18,
+  "text_hash": "34407425c7f6fd3e73a0061a6ce4ced2b1234c30",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "i1-s5": {
+  "wav": "audio/i1-s5.wav",
+  "duration": 6.2,
+  "words": 19,
+  "text_hash": "a76b2f7362a39fb3f58628e3c8b4ac20c55dc2f3",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "i1-s6": {
+  "wav": "audio/i1-s6.wav",
+  "duration": 9.8,
+  "words": 30,
+  "text_hash": "a86bcf772dce734837256d59fea4c44d10450dfd",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "i1-s7": {
+  "wav": "audio/i1-s7.wav",
+  "duration": 9.56,
+  "words": 23,
+  "text_hash": "f00c3f66403dfb1760419dda3ae94d6d26affa39",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "i1-s8": {
+  "wav": "audio/i1-s8.wav",
+  "duration": 6.12,
+  "words": 21,
+  "text_hash": "286a5f5677ea7aa6196f3fe54bd9b0b622b4fd75",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "i1-s9": {
+  "wav": "audio/i1-s9.wav",
+  "duration": 14.48,
+  "words": 42,
+  "text_hash": "c42db16247c9d87561d5a3964865638b0f00ff5e",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a1-s1": {
+  "wav": "audio/a1-s1.wav",
+  "duration": 14.04,
+  "words": 42,
+  "text_hash": "4e23f58e39599fd19d7f04480855822fef5b2343",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a1-s2": {
+  "wav": "audio/a1-s2.wav",
+  "duration": 15.96,
+  "words": 48,
+  "text_hash": "bfd8e9baeb19451c55564fa785e14c5252588054",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a1-s3": {
+  "wav": "audio/a1-s3.wav",
+  "duration": 17.92,
+  "words": 56,
+  "text_hash": "29af8fa04043df1ced76e19b2f16790c7b31be6a",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a1-s4": {
+  "wav": "audio/a1-s4.wav",
+  "duration": 14.64,
+  "words": 38,
+  "text_hash": "b094f602ef7c7bfdfb2193ca3bf3f78466e464da",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a1-s5": {
+  "wav": "audio/a1-s5.wav",
+  "duration": 6.76,
+  "words": 23,
+  "text_hash": "2805f95f8045c1c06668cf4ab5a569df82e2ded7",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a1-s6": {
+  "wav": "audio/a1-s6.wav",
+  "duration": 12.96,
+  "words": 35,
+  "text_hash": "a687be831a0f0b384024ef584dcc470326efbbb9",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a1-s7": {
+  "wav": "audio/a1-s7.wav",
+  "duration": 20.32,
+  "words": 54,
+  "text_hash": "c8a05278b2d5fdd572e59ff2d4889ae5de1bb4f3",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a1-s8": {
+  "wav": "audio/a1-s8.wav",
+  "duration": 17.36,
+  "words": 51,
+  "text_hash": "3347740e2b324db7f0377027094ecb8978787d6d",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a1-s9": {
+  "wav": "audio/a1-s9.wav",
+  "duration": 11.72,
+  "words": 38,
+  "text_hash": "c6ecd87f6a8b425b4fcd2ed125279c3fdc25596a",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a1-s10": {
+  "wav": "audio/a1-s10.wav",
+  "duration": 19.56,
+  "words": 59,
+  "text_hash": "8f2540f0ffc364af5502194ae82a9bab47a9eacb",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a1-s11": {
+  "wav": "audio/a1-s11.wav",
+  "duration": 5.88,
+  "words": 17,
+  "text_hash": "0ed46a81db57c823f49507a747d5f973aef440d6",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a2-s1": {
+  "wav": "audio/a2-s1.wav",
+  "duration": 21.48,
+  "words": 52,
+  "text_hash": "0412506827f712f932da22f75a08bc511c9c239f",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a2-s2": {
+  "wav": "audio/a2-s2.wav",
+  "duration": 9.28,
+  "words": 25,
+  "text_hash": "ceac6d6f4032975691d898a2eea3d3d8da2da31e",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a2-s3": {
+  "wav": "audio/a2-s3.wav",
+  "duration": 16.52,
+  "words": 47,
+  "text_hash": "0266a32fa0a88a0b892349dd271ff34e83a0da99",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a2-s4": {
+  "wav": "audio/a2-s4.wav",
+  "duration": 9.76,
+  "words": 30,
+  "text_hash": "9b309173335e55e00b5d83342996b90e777154cb",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a2-s5": {
+  "wav": "audio/a2-s5.wav",
+  "duration": 7.08,
+  "words": 17,
+  "text_hash": "5f2521f5260f0c5ca9b48b39521379d6f9497b89",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a2-s6": {
+  "wav": "audio/a2-s6.wav",
+  "duration": 18.0,
+  "words": 54,
+  "text_hash": "0d9181b6df1b13df2cf2bbb96b8ca85a301570ee",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a2-s7": {
+  "wav": "audio/a2-s7.wav",
+  "duration": 18.96,
+  "words": 52,
+  "text_hash": "07ed6c5d9478b867fc4197b5ee733990526d91ca",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a2-s8": {
+  "wav": "audio/a2-s8.wav",
+  "duration": 22.92,
+  "words": 72,
+  "text_hash": "2e9d5f9546d2fee8aa7637de40a736327af7739d",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a2-s9": {
+  "wav": "audio/a2-s9.wav",
+  "duration": 8.52,
+  "words": 26,
+  "text_hash": "80d8a6b0bae720ed7344d003e614c4d659da647c",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a2-s10": {
+  "wav": "audio/a2-s10.wav",
+  "duration": 17.72,
+  "words": 62,
+  "text_hash": "de1e571d4554a919c996958ec9ee56b9c4557a61",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a2-s11": {
+  "wav": "audio/a2-s11.wav",
+  "duration": 9.2,
+  "words": 30,
+  "text_hash": "ccaa937f7e6aa637b293905a8594266124ab4436",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a2-s12": {
+  "wav": "audio/a2-s12.wav",
+  "duration": 8.0,
+  "words": 25,
+  "text_hash": "58507c7530e2130609bca32038a77e1bcc16676c",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a3-s1": {
+  "wav": "audio/a3-s1.wav",
+  "duration": 11.12,
+  "words": 34,
+  "text_hash": "900a8efa2de935feb7d4db18d1c290be9ca0139f",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a3-s3": {
+  "wav": "audio/a3-s3.wav",
+  "duration": 12.4,
+  "words": 41,
+  "text_hash": "2acc3462e7dd8a1960f74c4b8576e237405289bf",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a3-s4": {
+  "wav": "audio/a3-s4.wav",
+  "duration": 21.12,
+  "words": 64,
+  "text_hash": "a6801a28ef605e3824d596a1329aed2b4c5fe3e6",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a3-s5": {
+  "wav": "audio/a3-s5.wav",
+  "duration": 18.04,
+  "words": 56,
+  "text_hash": "5834def6c61125a6b60cf777640e168562c2f12c",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a3-s6": {
+  "wav": "audio/a3-s6.wav",
+  "duration": 7.88,
+  "words": 24,
+  "text_hash": "627076e86b791f7385eb23cbe6c1895ca6e9b21d",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a3-s7": {
+  "wav": "audio/a3-s7.wav",
+  "duration": 6.64,
+  "words": 21,
+  "text_hash": "94ed2008c2526a71e8ef149ed6b78aa137404a86",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a3-s8": {
+  "wav": "audio/a3-s8.wav",
+  "duration": 7.0,
+  "words": 22,
+  "text_hash": "00561f316f95e7eafa23431c27242e7df6307561",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a3-s9": {
+  "wav": "audio/a3-s9.wav",
+  "duration": 11.16,
+  "words": 40,
+  "text_hash": "5fec60e080464f0a36d7efb7e45838ed113e15ca",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a3-s10": {
+  "wav": "audio/a3-s10.wav",
+  "duration": 12.72,
+  "words": 38,
+  "text_hash": "2b0b2b869c5499b7ba6db483052df37b4f796de6",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a3-s11": {
+  "wav": "audio/a3-s11.wav",
+  "duration": 6.84,
+  "words": 23,
+  "text_hash": "347b06e61e96fa12adbd96a2e1f2ad3561451e4b",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a4-s1": {
+  "wav": "audio/a4-s1.wav",
+  "duration": 7.32,
+  "words": 26,
+  "text_hash": "9317be1064250fdc1552f735a13d043f6f3135aa",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a4-s3": {
+  "wav": "audio/a4-s3.wav",
+  "duration": 18.4,
+  "words": 59,
+  "text_hash": "97645b4fb6f64ca04a7de1ff74825f2a885aab4e",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a4-s4": {
+  "wav": "audio/a4-s4.wav",
+  "duration": 17.32,
+  "words": 59,
+  "text_hash": "8ad9c93564dccd09a92149464e4f77a394a3d95d",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a4-s5": {
+  "wav": "audio/a4-s5.wav",
+  "duration": 30.08,
+  "words": 99,
+  "text_hash": "b6aa161716ac960cda17239420579c35b7b878a1",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a4-s6": {
+  "wav": "audio/a4-s6.wav",
+  "duration": 15.4,
+  "words": 44,
+  "text_hash": "e3c5d2b3fc3cecf0caf9cd91215c82e7be7e7af7",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a4-s7": {
+  "wav": "audio/a4-s7.wav",
+  "duration": 15.0,
+  "words": 46,
+  "text_hash": "12cd6cac5e1e8b3e62bc3a8e505677ee3fe26af9",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a4-s9": {
+  "wav": "audio/a4-s9.wav",
+  "duration": 24.56,
+  "words": 81,
+  "text_hash": "527c275df16a57c25eece5f48576e97702246a15",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a4-s10": {
+  "wav": "audio/a4-s10.wav",
+  "duration": 14.0,
+  "words": 50,
+  "text_hash": "a2b6745df994589e20e39e8cbb36e8184e84a119",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a4-s11": {
+  "wav": "audio/a4-s11.wav",
+  "duration": 22.24,
+  "words": 67,
+  "text_hash": "99e410529cfb0ab13711f89cd67db8fa5ef7a125",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a4-s12": {
+  "wav": "audio/a4-s12.wav",
+  "duration": 12.04,
+  "words": 40,
+  "text_hash": "3eb85cf4a8a13dd593668b0cd2bc96de84a88f74",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a4-s13": {
+  "wav": "audio/a4-s13.wav",
+  "duration": 12.4,
+  "words": 38,
+  "text_hash": "93fb6dd4fc4a8bd58c2467f21d8fa2dfb25bdf55",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a4-s14": {
+  "wav": "audio/a4-s14.wav",
+  "duration": 7.8,
+  "words": 27,
+  "text_hash": "0de14e2301a936802d1f99a4c7ae5eed5ce0bf62",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a5-s1": {
+  "wav": "audio/a5-s1.wav",
+  "duration": 11.44,
+  "words": 37,
+  "text_hash": "d092be722f4baec837ed0e16091b4a3681a8323e",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a5-s2": {
+  "wav": "audio/a5-s2.wav",
+  "duration": 22.76,
+  "words": 68,
+  "text_hash": "6e11cc246cc8450a66d56e0c09d9b67c143e4b07",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a5-s3": {
+  "wav": "audio/a5-s3.wav",
+  "duration": 17.32,
+  "words": 53,
+  "text_hash": "12dafc4612b92887a7162896cc7fc7acc04e2f89",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a5-s4": {
+  "wav": "audio/a5-s4.wav",
+  "duration": 18.0,
+  "words": 59,
+  "text_hash": "fd43b6ca52fc71885b94d4525a58d28fa6473533",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a5-s5": {
+  "wav": "audio/a5-s5.wav",
+  "duration": 6.4,
+  "words": 16,
+  "text_hash": "292d853b2991df3e28f67c4d1d90ccd9fa15c3da",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a5-s6": {
+  "wav": "audio/a5-s6.wav",
+  "duration": 27.48,
+  "words": 90,
+  "text_hash": "ce3c174df969a62647297eae587be7fd9ba6cb36",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a5-s7": {
+  "wav": "audio/a5-s7.wav",
+  "duration": 10.48,
+  "words": 33,
+  "text_hash": "59b30a7ea30f99d6852c317dcdd015f6655c63f4",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a5-s8": {
+  "wav": "audio/a5-s8.wav",
+  "duration": 8.2,
+  "words": 27,
+  "text_hash": "9f09f1701adaccd9d9e4e21e07e2042b2af71110",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a5-s9": {
+  "wav": "audio/a5-s9.wav",
+  "duration": 21.2,
+  "words": 66,
+  "text_hash": "3cda1262ebed8ff5a6469166aa3c54d7fcdfa165",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a5-s10": {
+  "wav": "audio/a5-s10.wav",
+  "duration": 17.76,
+  "words": 62,
+  "text_hash": "f5751ae5c7c6946fbd6fda7ae783cb1ad6b16010",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a5-s11": {
+  "wav": "audio/a5-s11.wav",
+  "duration": 6.2,
+  "words": 17,
+  "text_hash": "e2eb1a0ab650b99678c995a9e4f3d82f3e668895",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a6-s1": {
+  "wav": "audio/a6-s1.wav",
+  "duration": 25.12,
+  "words": 61,
+  "text_hash": "b9b2fc37727f014f6d81975844779cae31e40419",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a6-s2": {
+  "wav": "audio/a6-s2.wav",
+  "duration": 17.8,
+  "words": 57,
+  "text_hash": "9ea67444a019b111d644eff74e1a71258a5dc0bb",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a6-s3": {
+  "wav": "audio/a6-s3.wav",
+  "duration": 23.32,
+  "words": 64,
+  "text_hash": "2322cd18dca645d8c3f4ae522f1cbb8c6dc4ef55",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a6-s4": {
+  "wav": "audio/a6-s4.wav",
+  "duration": 13.12,
+  "words": 40,
+  "text_hash": "cd53f630fe73b3de574f09572776d2c183bb81a3",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a6-s5": {
+  "wav": "audio/a6-s5.wav",
+  "duration": 10.68,
+  "words": 26,
+  "text_hash": "c7f5f655bd20787e1c6f7791ee3315284dc835d2",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a6-s6": {
+  "wav": "audio/a6-s6.wav",
+  "duration": 24.16,
+  "words": 57,
+  "text_hash": "7f5641cacffdf9c627e489d58ea7b211c2a9240f",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "a6-s7": {
+  "wav": "audio/a6-s7.wav",
+  "duration": 10.56,
+  "words": 25,
+  "text_hash": "0284b03bf99672e5495746d12ac567131aaf33c6",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "z1-s1": {
+  "wav": "audio/z1-s1.wav",
+  "duration": 22.92,
+  "words": 60,
+  "text_hash": "6ff9c460f3d381f9edc386bcb4ec292642f8701c",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ },
+ "z1-s3": {
+  "wav": "audio/z1-s3.wav",
+  "duration": 10.84,
+  "words": 26,
+  "text_hash": "7e004bfd636cd30e5fd7a2cd5d3ff07d50170d41",
+  "tempo": "legacy",
+  "engine": "gemini-3.8-flash-tts Iapetus, chatterbox VC to assets/voice/paul-v2-clone-ref.wav",
+  "tempo_actual": 1.0
+ }
+}

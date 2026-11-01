@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a4-hd-panels: A4-S5 overlay, host 669.987 to 674.987 (5.0 s). Local t = a4-s5 words.json time - 22.24 ("tornado").
+     Transparent root: the DVIDS Home Depot site aerial (orchestrator's mount, whole host window) sits on a lower track.
+     Card left 96 / top 684 (bottom 96) / 760 x 300. Strip: 73 ticks, 6 px wide, 3 px gap = 9 px pitch = 654 px, left = card-left + 52, top = card-top + 200.
+     Presenter corner (x >= 1600, y >= 680) stays empty. */
+  #a4hp-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+
+  /* the float carries the 3 px drift so the card keeps its own entrance and exit tweens */
+  #a4hp-float { position:absolute; inset:auto; left:96px; top:684px; width:760px; height:300px; }
+  #a4hp-card { position:absolute; inset:auto; left:0; top:0; width:760px; height:300px; box-sizing:border-box; border-radius:28px; overflow:hidden;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:0 30px 90px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.10);
+    visibility:hidden; opacity:0; }
+
+  .a4hp-tx { position:absolute; inset:auto; left:52px; display:block; white-space:nowrap; visibility:hidden; opacity:0; }
+  #a4hp-eye { top:40px; font-weight:700; font-size:22px; line-height:26px; letter-spacing:6px; color:#93a3b2; }
+  #a4hp-big { top:70px; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:72px; line-height:80px; color:#f2f5f8; text-shadow:0 2px 14px rgba(0,0,0,.7); }
+  #a4hp-sub { top:150px; font-weight:700; font-size:30px; line-height:36px; letter-spacing:1px; color:#dfe7ee; }
+  #a4hp-src { top:252px; font-weight:400; font-size:19px; line-height:24px; letter-spacing:.2px; color:#c8d3e0; }
+
+  #a4hp-ticks { position:absolute; inset:auto; left:52px; top:200px; width:654px; height:40px; display:flex; gap:3px; visibility:hidden; opacity:0; }
+  #a4hp-ticks i { display:block; flex:none; width:6px; height:40px; background:#dfe7ee; }
+</style>
+<div id="a4hp-root" data-composition-id="g-a4-hd-panels" data-width="1920" data-height="1080">
+  <div id="a4hp-float">
+    <div id="a4hp-card">
+      <span class="a4hp-tx" id="a4hp-eye">HOME DEPOT</span>
+      <span class="a4hp-tx" id="a4hp-big">63 of 73</span>
+      <span class="a4hp-tx" id="a4hp-sub">wall panels collapsed</span>
+      <div id="a4hp-ticks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <span class="a4hp-tx" id="a4hp-src">NIST Sec. 4.6.2.1</span>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a4hp-";
+  const FALL = Q + "ticks i:nth-child(-n+63)"; /* 63 of the 73 fall; ticks 64 to 73 stay standing */
+  tl.set(Q + "ticks i", { transformOrigin: "50% 100%" }, 0);
+
+  /* TORNADO a4-s5 22.24 (local 0.00): card slides in */
+  tl.fromTo(Q + "card", { x: -660, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 0);
+
+  /* CENTER a4-s5 22.52 (local 0.28): eyebrow, big line, sub, the 73 standing ticks */
+  tl.fromTo(Q + "eye", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.28);
+  tl.fromTo(Q + "big", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.28);
+  tl.fromTo(Q + "sub", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.34);
+  tl.fromTo(Q + "ticks", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.28);
+
+  /* PASSED a4-s5 22.88 (local 0.64) to 24.28 (local 2.04): 63 ticks fall left to right; last one starts 1.15 s after the first and lands at 2.04 */
+  tl.to(FALL, { rotation: 90, backgroundColor: "#8e2020", duration: 0.25, ease: "power2.in", stagger: { each: 1.15 / 62 } }, 0.64);
+
+  /* a4-s5 24.28 (local 2.04): source line once the count has landed */
+  tl.fromTo(Q + "src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.04);
+
+  /* hold: the card floats y -3 px, finite repeats (0.5 to 4.4) */
+  tl.to(Q + "float", { y: -3, duration: 1.3, ease: "sine.inOut", yoyo: true, repeat: 2 }, 0.5);
+
+  /* exit: last 0.6 s, from WHAT a4-s5 26.64 (local 4.40) to host end 5.0 */
+  tl.to(Q + "card", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 4.4);
+
+  window.__timelines["g-a4-hd-panels"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

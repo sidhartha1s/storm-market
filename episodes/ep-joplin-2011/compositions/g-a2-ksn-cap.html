@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a2-ksn-cap: running caption for the KSN broadcast clip (host 435.22, v-a2-s10-ksn). Transparent except an opaque bottom band, y 860 to 1080, that
+     hides the broadcast's own "Tornado Warning / town" text and county minimap (both below y 950 in the composite frames).
+     Words are comp-local seconds from briefs/cap/caption-words.json (verbatim). Chunk (2 lines) appears at its first word; each word goes
+     45 % to 100 % at its own start; the next chunk replaces it at its first word; the last chunk stays to the end (6.0 s). No source label. */
+  #g-a2-ksn-cap-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #k2-band { position:absolute; left:0; right:0; top:860px; height:220px; background:linear-gradient(180deg,#0b1016 0%,#04070c 100%); border-top:1px solid rgba(255,255,255,0.14); box-sizing:border-box; }
+  .k2-chunk { position:absolute; left:96px; right:96px; display:flex; flex-direction:column; justify-content:center; align-items:center; visibility:hidden; opacity:0; }
+  .k2-ln { white-space:nowrap; text-align:center; font-family:Arial,sans-serif; font-weight:700; font-size:56px; line-height:68px; color:#f2f5f8; }
+  .k2-w { opacity:0.45; }
+  .k2-chunk { top:884px; height:136px; }
+</style>
+<div id="g-a2-ksn-cap-root" data-composition-id="g-a2-ksn-cap" data-width="1920" data-height="1080">
+  <div id="k2-band"></div>
+  <div id="k2-caps">
+    <div class="k2-chunk" id="k2-c0">
+      <div class="k2-ln"><span class="k2-w" id="k2-w0">Tornado</span> <span class="k2-w" id="k2-w1">sirens</span> <span class="k2-w" id="k2-w2">once</span> <span class="k2-w" id="k2-w3">again.</span></div>
+      <div class="k2-ln"><span class="k2-w" id="k2-w4">Tornado</span> <span class="k2-w" id="k2-w5">sirens</span> <span class="k2-w" id="k2-w6">once</span> <span class="k2-w" id="k2-w7">again</span> <span class="k2-w" id="k2-w8">going</span> <span class="k2-w" id="k2-w9">off</span> <span class="k2-w" id="k2-w10">in</span> <span class="k2-w" id="k2-w11">Joplin.</span></div>
+    </div>
+    <div class="k2-chunk" id="k2-c1">
+      <div class="k2-ln"><span class="k2-w" id="k2-w12">Those</span> <span class="k2-w" id="k2-w13">are</span> <span class="k2-w" id="k2-w14">definitely</span> <span class="k2-w" id="k2-w15">power</span> <span class="k2-w" id="k2-w16">flashes.</span></div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.to({}, { duration: 6.0 }, 0); /* clock: sets the timeline length to the host window */
+  /* chunk 0 @0.90: Tornado sirens once again. Tornado sirens once again going off in Joplin. */
+  tl.fromTo("#k2-c0", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.18, ease: "power3.out" }, 0.90);
+  tl.to("#k2-w0", { opacity: 1, duration: 0.1, ease: "power3.out" }, 0.90); /* Tornado */
+  tl.to("#k2-w1", { opacity: 1, duration: 0.1, ease: "power3.out" }, 1.10); /* sirens */
+  tl.to("#k2-w2", { opacity: 1, duration: 0.1, ease: "power3.out" }, 1.46); /* once */
+  tl.to("#k2-w3", { opacity: 1, duration: 0.1, ease: "power3.out" }, 1.72); /* again. */
+  tl.to("#k2-w4", { opacity: 1, duration: 0.1, ease: "power3.out" }, 1.88); /* Tornado */
+  tl.to("#k2-w5", { opacity: 1, duration: 0.1, ease: "power3.out" }, 1.90); /* sirens */
+  tl.to("#k2-w6", { opacity: 1, duration: 0.1, ease: "power3.out" }, 2.38); /* once */
+  tl.to("#k2-w7", { opacity: 1, duration: 0.1, ease: "power3.out" }, 2.62); /* again */
+  tl.to("#k2-w8", { opacity: 1, duration: 0.1, ease: "power3.out" }, 2.88); /* going */
+  tl.to("#k2-w9", { opacity: 1, duration: 0.1, ease: "power3.out" }, 3.14); /* off */
+  tl.to("#k2-w10", { opacity: 1, duration: 0.1, ease: "power3.out" }, 3.42); /* in */
+  tl.to("#k2-w11", { opacity: 1, duration: 0.1, ease: "power3.out" }, 3.60); /* Joplin. */
+  tl.set("#k2-c0", { autoAlpha: 0 }, 4.00);
+  /* chunk 1 @4.00: Those are definitely power flashes. */
+  tl.fromTo("#k2-c1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.18, ease: "power3.out" }, 4.00);
+  tl.to("#k2-w12", { opacity: 1, duration: 0.1, ease: "power3.out" }, 4.00); /* Those */
+  tl.to("#k2-w13", { opacity: 1, duration: 0.1, ease: "power3.out" }, 4.20); /* are */
+  tl.to("#k2-w14", { opacity: 1, duration: 0.1, ease: "power3.out" }, 4.40); /* definitely */
+  tl.to("#k2-w15", { opacity: 1, duration: 0.1, ease: "power3.out" }, 4.86); /* power */
+  tl.to("#k2-w16", { opacity: 1, duration: 0.1, ease: "power3.out" }, 5.32); /* flashes. */
+  window.__timelines["g-a2-ksn-cap"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

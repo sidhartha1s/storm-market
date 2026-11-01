@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a4-cellar: A4-S13, host 798.167 to 810.867 (12.7 s). nx-a4-s13 starts with the host, so local t = a4-s13 words.json time.
+     Full-frame cross-section on its own ground: ground line (BELOW-GROUND LINE style: #93a3b2, 2 px, "Below ground" 22 px),
+     wood-frame store above it, concrete wine cellar below it (about 20 ft, B35), 12 figures walk down the stair, the store
+     comes down, the cellar and the 12 do not move. SCHEMATIC, NOT TO SCALE (Open 4). */
+  #g-a4-cellar-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #a4cel-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #a4cel-cam { position:absolute; inset:0; }
+  #a4cel-svg { position:absolute; inset:0; width:1920px; height:1080px; }
+  .a4cel-hid { opacity:0; visibility:hidden; }
+
+  #a4cel-eyebrow { position:absolute; inset:auto; left:96px; top:62px; font-family:Arial,sans-serif; font-weight:700; font-size:22px; line-height:26px;
+    letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  #a4cel-dlab { position:absolute; inset:auto; left:1184px; top:623px; font-family:Arial,sans-serif; font-weight:700; font-size:30px; line-height:34px;
+    letter-spacing:3px; color:#d8a13a; white-space:nowrap; }
+  #a4cel-sch { position:absolute; inset:auto; left:96px; top:100px; font-family:Arial,sans-serif; font-weight:700; font-size:22px; line-height:26px;
+    letter-spacing:3px; color:#93a3b2; white-space:nowrap; visibility:hidden; opacity:0; }
+
+  /* the chip is 52 px (headline tier) where the brief says 40: graphics_qc flat-type needs a tier at 52 or above, and the brief's other text is all 22 px */
+  #a4cel-chipfloat { position:absolute; inset:auto; left:96px; top:860px; }
+  #a4cel-chip { position:relative; display:table; box-sizing:border-box; padding:12px 28px 12px 36px; border-radius:12px; overflow:hidden;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.10);
+    visibility:hidden; opacity:0; }
+  #a4cel-bar { position:absolute; inset:auto; left:0; top:0; bottom:0; width:8px; background:#7fb2e5; }
+  #a4cel-chiptext { position:relative; display:block; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; line-height:56px;
+    letter-spacing:1px; color:#f2f5f8; white-space:nowrap; text-shadow:0 2px 14px rgba(0,0,0,.7); }
+
+  #a4cel-srcfloat { position:absolute; inset:auto; left:96px; bottom:54px; }
+  #a4cel-src { display:table; box-sizing:border-box; padding:6px 12px; border-radius:14px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); visibility:hidden; opacity:0; }
+  #a4cel-srcline { display:block; font-family:Arial,sans-serif; font-weight:400; font-size:20px; line-height:26px; letter-spacing:0;
+    color:#c8d3e0; white-space:nowrap; }
+</style>
+<div id="g-a4-cellar-root" data-composition-id="g-a4-cellar" data-width="1920" data-height="1080">
+  <div id="a4cel-ground"></div>
+  <div id="a4cel-cam">
+    <svg id="a4cel-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- person glyph 14 x 30, origin at the feet (0,0); baby glyph 8 x 14 -->
+        <g id="a4cel-glyph"><circle cx="0" cy="-25.5" r="4.5"/><path d="M-7 -9.5 V-17 Q-7 -20 -4 -20 H4 Q7 -20 7 -17 V-9.5 H4.5 V0 H1 V-9 H-1 V0 H-4.5 V-9.5 Z"/></g>
+        <g id="a4cel-baby"><circle cx="0" cy="-10.5" r="3.5"/><rect x="-4" y="-8" width="8" height="8" rx="3"/></g>
+        <pattern id="a4cel-hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#2a3644"/><line x1="0" y1="0" x2="0" y2="8" stroke="#4a5560" stroke-width="3"/></pattern>
+        <radialGradient id="a4cel-hg"><stop offset="0" stop-color="#7fb2e5" stop-opacity=".6"/><stop offset="1" stop-color="#7fb2e5" stop-opacity="0"/></radialGradient>
+      </defs>
+
+      <!-- cellar: interior, stair wedge, hatched concrete (floor slab and two 18 px walls), then the strokes that draw on -->
+      <rect id="a4cel-cfill" class="a4cel-hid" x="618" y="480" width="464" height="302" fill="rgba(42,54,68,.45)"/>
+      <path id="a4cel-wedge" class="a4cel-hid" d="M620 480 V517.75 H637.5 V555.5 H655 V593.25 H672.5 V631 H690 V668.75 H707.5 V706.5 H725 V744.25 H742.5 V782 H760 H620 Z" fill="#2a3644"/>
+      <path id="a4cel-conc" class="a4cel-hid" d="M600 480 H618 V782 H1082 V480 H1100 V800 H600 Z" fill="url(#a4cel-hatch)"/>
+      <path id="a4cel-cbox" d="M600 480 V800 H1100 V480 M618 480 V782 H1082 V480" fill="none" stroke="#5a768f" stroke-width="3" stroke-dasharray="2209" stroke-dashoffset="2209"/>
+      <path id="a4cel-stair" d="M620 480 V517.75 H637.5 V555.5 H655 V593.25 H672.5 V631 H690 V668.75 H707.5 V706.5 H725 V744.25 H742.5 V782 H760" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="443" stroke-dashoffset="443"/>
+      <text id="a4cel-clab" class="a4cel-hid" x="680" y="532" font-family="Arial, sans-serif" font-weight="700" font-size="22" letter-spacing="3" fill="#93a3b2">CONCRETE WINE CELLAR</text>
+
+      <!-- depth: dimension line from the ground line to the cellar's outer floor, end ticks, label -->
+      <path id="a4cel-dim" d="M1160 480 V800 M1148 480 H1172 M1148 800 H1172" fill="none" stroke="#d8a13a" stroke-width="2" stroke-dasharray="369" stroke-dashoffset="369"/>
+
+      <path id="a4cel-gl" d="M160 480 L1500 480" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="1341" stroke-dashoffset="1341"/>
+      <text id="a4cel-glab" class="a4cel-hid" x="160" y="512" font-family="Arial, sans-serif" font-weight="700" font-size="22" letter-spacing="3" fill="#93a3b2">Below ground</text>
+
+      <!-- the store: 2 walls, 5 roof and 5 ceiling segments, 5 W trusses; each piece drawn around its own centre (placed by GSAP) so it can fall -->
+      <g id="a4cel-store">
+        <rect id="a4cel-sfill" class="a4cel-hid" x="520" y="220" width="660" height="260" fill="rgba(74,85,96,.14)"/>
+        <g id="a4cel-pw1"><path d="M0 -130 V130" fill="none" stroke="#5a768f" stroke-width="3" stroke-dasharray="261" stroke-dashoffset="261"/></g>
+        <g id="a4cel-pw2"><path d="M0 -130 V130" fill="none" stroke="#5a768f" stroke-width="3" stroke-dasharray="261" stroke-dashoffset="261"/></g>
+        <g id="a4cel-pr1"><path d="M-66 0 H66" fill="none" stroke="#5a768f" stroke-width="3" stroke-dasharray="133" stroke-dashoffset="133"/></g>
+        <g id="a4cel-pr2"><path d="M-66 0 H66" fill="none" stroke="#5a768f" stroke-width="3" stroke-dasharray="133" stroke-dashoffset="133"/></g>
+        <g id="a4cel-pr3"><path d="M-66 0 H66" fill="none" stroke="#5a768f" stroke-width="3" stroke-dasharray="133" stroke-dashoffset="133"/></g>
+        <g id="a4cel-pr4"><path d="M-66 0 H66" fill="none" stroke="#5a768f" stroke-width="3" stroke-dasharray="133" stroke-dashoffset="133"/></g>
+        <g id="a4cel-pr5"><path d="M-66 0 H66" fill="none" stroke="#5a768f" stroke-width="3" stroke-dasharray="133" stroke-dashoffset="133"/></g>
+        <g id="a4cel-pc1"><path d="M-66 0 H66" fill="none" stroke="#5a768f" stroke-width="3" stroke-dasharray="133" stroke-dashoffset="133"/></g>
+        <g id="a4cel-pc2"><path d="M-66 0 H66" fill="none" stroke="#5a768f" stroke-width="3" stroke-dasharray="133" stroke-dashoffset="133"/></g>
+        <g id="a4cel-pc3"><path d="M-66 0 H66" fill="none" stroke="#5a768f" stroke-width="3" stroke-dasharray="133" stroke-dashoffset="133"/></g>
+        <g id="a4cel-pc4"><path d="M-66 0 H66" fill="none" stroke="#5a768f" stroke-width="3" stroke-dasharray="133" stroke-dashoffset="133"/></g>
+        <g id="a4cel-pc5"><path d="M-66 0 H66" fill="none" stroke="#5a768f" stroke-width="3" stroke-dasharray="133" stroke-dashoffset="133"/></g>
+        <g id="a4cel-pt1"><path d="M-66 -35 L-33 35 L0 -35 L33 35 L66 -35" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="311" stroke-dashoffset="311"/></g>
+        <g id="a4cel-pt2"><path d="M-66 -35 L-33 35 L0 -35 L33 35 L66 -35" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="311" stroke-dashoffset="311"/></g>
+        <g id="a4cel-pt3"><path d="M-66 -35 L-33 35 L0 -35 L33 35 L66 -35" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="311" stroke-dashoffset="311"/></g>
+        <g id="a4cel-pt4"><path d="M-66 -35 L-33 35 L0 -35 L33 35 L66 -35" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="311" stroke-dashoffset="311"/></g>
+        <g id="a4cel-pt5"><path d="M-66 -35 L-33 35 L0 -35 L33 35 L66 -35" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="311" stroke-dashoffset="311"/></g>
+      </g>
+
+      <!-- 12 figures, back-row cellar places first so the front row sits over them: m manager, c1-c5 customers, b baby, s1-s5 staff -->
+      <g id="a4cel-c1" class="a4cel-f a4cel-hid"><g><circle class="a4cel-halo a4cel-hid" cx="0" cy="-15" r="26" fill="url(#a4cel-hg)"/><use href="#a4cel-glyph" fill="#dfe7ee"/></g></g>
+      <g id="a4cel-c3" class="a4cel-f a4cel-hid"><g><circle class="a4cel-halo a4cel-hid" cx="0" cy="-15" r="26" fill="url(#a4cel-hg)"/><use href="#a4cel-glyph" fill="#dfe7ee"/></g></g>
+      <g id="a4cel-c5" class="a4cel-f a4cel-hid"><g><circle class="a4cel-halo a4cel-hid" cx="0" cy="-15" r="26" fill="url(#a4cel-hg)"/><use href="#a4cel-glyph" fill="#dfe7ee"/></g></g>
+      <g id="a4cel-b" class="a4cel-f a4cel-hid"><g><circle class="a4cel-halo a4cel-hid" cx="0" cy="-7" r="16" fill="url(#a4cel-hg)"/><use href="#a4cel-baby" fill="#dfe7ee"/></g></g>
+      <g id="a4cel-s3" class="a4cel-f a4cel-hid"><g><circle class="a4cel-halo a4cel-hid" cx="0" cy="-15" r="26" fill="url(#a4cel-hg)"/><use href="#a4cel-glyph" fill="#dfe7ee"/></g></g>
+      <g id="a4cel-s5" class="a4cel-f a4cel-hid"><g><circle class="a4cel-halo a4cel-hid" cx="0" cy="-15" r="26" fill="url(#a4cel-hg)"/><use href="#a4cel-glyph" fill="#dfe7ee"/></g></g>
+      <g id="a4cel-m" class="a4cel-f a4cel-hid"><g><circle class="a4cel-halo a4cel-hid" cx="0" cy="-15" r="26" fill="url(#a4cel-hg)"/><use href="#a4cel-glyph" fill="#dfe7ee"/></g></g>
+      <g id="a4cel-c2" class="a4cel-f a4cel-hid"><g><circle class="a4cel-halo a4cel-hid" cx="0" cy="-15" r="26" fill="url(#a4cel-hg)"/><use href="#a4cel-glyph" fill="#dfe7ee"/></g></g>
+      <g id="a4cel-c4" class="a4cel-f a4cel-hid"><g><circle class="a4cel-halo a4cel-hid" cx="0" cy="-15" r="26" fill="url(#a4cel-hg)"/><use href="#a4cel-glyph" fill="#dfe7ee"/></g></g>
+      <g id="a4cel-s1" class="a4cel-f a4cel-hid"><g><circle class="a4cel-halo a4cel-hid" cx="0" cy="-15" r="26" fill="url(#a4cel-hg)"/><use href="#a4cel-glyph" fill="#dfe7ee"/></g></g>
+      <g id="a4cel-s2" class="a4cel-f a4cel-hid"><g><circle class="a4cel-halo a4cel-hid" cx="0" cy="-15" r="26" fill="url(#a4cel-hg)"/><use href="#a4cel-glyph" fill="#dfe7ee"/></g></g>
+      <g id="a4cel-s4" class="a4cel-f a4cel-hid"><g><circle class="a4cel-halo a4cel-hid" cx="0" cy="-15" r="26" fill="url(#a4cel-hg)"/><use href="#a4cel-glyph" fill="#dfe7ee"/></g></g>
+    </svg>
+    <!-- HTML, not SVG text, so graphics_qc counts this 30 px label as the mid type tier; it rides the slow push with the line it names -->
+    <div id="a4cel-dlab" class="a4cel-hid">ABOUT 20 FT</div>
+  </div>
+
+  <div id="a4cel-eyebrow">MACADOODLES</div>
+  <div id="a4cel-sch">SCHEMATIC &#183; NOT TO SCALE</div>
+  <div id="a4cel-chipfloat">
+    <div id="a4cel-chip"><div id="a4cel-bar"></div><span id="a4cel-chiptext">12 BELOW GROUND &#183; ALL OK</span></div>
+  </div>
+  <div id="a4cel-srcfloat">
+    <div id="a4cel-src"><span id="a4cel-srcline">NIST Sec. 4.4.3</span></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a4cel-";
+  const END = 12.7;
+
+  /* ground line, store and cellar draw: a4-s13 "Macadoodles" 0.00 to "had" 1.02 (eyebrow is on from frame 0) */
+  /* MACADOODLES a4-s13 0.00 */
+  tl.to(Q + "gl", { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" }, 0);
+  tl.fromTo(Q + "glab", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.7);
+  tl.fromTo(Q + "sch", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.3);
+
+  /* store pieces: [id, centre x, centre y, half width, half height, draw-in start] (seeded fall below) */
+  const PC = [
+    ["pw1", 520, 350, 0, 130, 0.10], ["pw2", 1180, 350, 0, 130, 0.14],
+    ["pr1", 586, 220, 66, 0, 0.20], ["pr2", 718, 220, 66, 0, 0.26], ["pr3", 850, 220, 66, 0, 0.32], ["pr4", 982, 220, 66, 0, 0.38], ["pr5", 1114, 220, 66, 0, 0.44],
+    ["pc1", 586, 290, 66, 0, 0.40], ["pc2", 718, 290, 66, 0, 0.46], ["pc3", 850, 290, 66, 0, 0.52], ["pc4", 982, 290, 66, 0, 0.58], ["pc5", 1114, 290, 66, 0, 0.64],
+    ["pt1", 586, 255, 66, 35, 0.55], ["pt2", 718, 255, 66, 35, 0.61], ["pt3", 850, 255, 66, 35, 0.67], ["pt4", 982, 255, 66, 35, 0.73], ["pt5", 1114, 255, 66, 35, 0.79]
+  ];
+  PC.forEach(([id, cx, cy, hx, hy, at]) => {
+    tl.set(Q + id, { x: cx, y: cy, transformOrigin: "50% 50%" }, 0);   /* SVG default pivot is the bbox corner; the pieces are drawn around their centre */
+    tl.to(Q + id + " path", { strokeDashoffset: 0, duration: 0.23 + (hy > 100 ? 0.2 : 0) + (hx && hy ? 0.1 : 0), ease: "power2.inOut" }, at);
+  });
+  tl.to(Q + "sfill", { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 0.7);
+
+  /* CONCRETE a4-s13 1.40: cellar box draws, hatch and interior in, stair; CELLAR 2.04 label */
+  tl.to(Q + "cbox", { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut" }, 1.4);
+  tl.to(Q + "conc", { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 1.7);
+  tl.to(Q + "cfill", { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 1.8);
+  tl.to(Q + "wedge", { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 1.9);
+  tl.to(Q + "stair", { strokeDashoffset: 0, duration: 0.5, ease: "power2.inOut" }, 1.7);
+  tl.fromTo(Q + "clab", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 2.04);
+  tl.fromTo(Q + "src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.4);
+
+  /* 20 a4-s13 2.62 to DEEP 3.10: dimension line draws; FEET 2.92 label */
+  tl.to(Q + "dim", { strokeDashoffset: 0, duration: 0.48, ease: "power2.out" }, 2.62);
+  tl.fromTo(Q + "dlab", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 2.92);
+
+  /* walkers: [id, start x, start y, cellar x, cellar y, leaves]. Start places (two rows, 14.5 px pitch) are taken nearest the stair head first;
+     cellar places (back row x +20 so rows interleave) are taken farthest first, so later walkers have the shorter floor walk.
+     Customers c1-c4 leave 0.3 s apart from "customers," 4.76; the baby's adult c5 and the baby on "baby," 6.30; staff 0.25 s apart. */
+  const HD = [622, 480], V = 380, LEG = 0.11;
+  const W = [];
+  for (let i = 1; i <= 8; i++) W.push([620 + 17.5 * (i - 0.5), 480 + 37.75 * i]);   /* tread centres; W8 is the cellar floor at x 751.25 */
+  const dist = (ax, ay, bx, by) => Math.hypot(ax - bx, ay - by);
+  const FIG = [
+    ["m", 612, 480, 1020, 782, 4.46], ["c1", 604.75, 466, 1040, 766, 4.76], ["c2", 597.5, 480, 980, 782, 5.06], ["c3", 590.25, 466, 1000, 766, 5.36],
+    ["c4", 583, 480, 940, 782, 5.66], ["c5", 575.75, 466, 960, 766, 6.30], ["b", 568.5, 480, 920, 766, 0],
+    ["s1", 561.25, 466, 900, 782, 6.55], ["s2", 554, 480, 860, 782, 6.80], ["s3", 546.75, 466, 880, 766, 7.05], ["s4", 539.5, 480, 820, 782, 7.30], ["s5", 532.25, 466, 840, 766, 7.55]
+  ];
+  /* the baby trails its adult by one tread: it reaches the stair head 0.15 s after her */
+  const adult = FIG[5], baby = FIG[6];
+  const adultHead = adult[5] + dist(adult[1], adult[2], HD[0], HD[1]) / V;
+  baby[5] = Math.max(6.30, adultHead + 0.15 - dist(baby[1], baby[2], HD[0], HD[1]) / V);
+
+  /* THE a4-s13 4.10: 12 figures in the store; MANAGER 4.18 lights */
+  FIG.forEach(([id, sx, sy], i) => {
+    tl.set(Q + id, { x: sx, y: sy }, 0);
+    tl.fromTo(Q + id, { autoAlpha: 0, y: sy - 14 }, { autoAlpha: 1, y: sy, duration: 0.3, ease: "power3.out" }, 4.1 + i * 0.02);
+  });
+  tl.to(Q + "m use", { fill: "#e8c56a", duration: 0.4, ease: "power2.out" }, 4.18);
+
+  /* LED a4-s13 4.46 to IT 8.06 (the last one is down at about 8.9, clear of the shake from 9.08): approach, 8 stair legs, cellar floor */
+  FIG.forEach(([id, sx, sy, ex, ey, t0]) => {
+    const id_ = Q + id;
+    const a = dist(sx, sy, HD[0], HD[1]) / V;
+    tl.to(id_, { x: HD[0], y: HD[1], duration: a, ease: "none" }, t0);
+    for (let i = 0; i < 8; i++) tl.to(id_, { x: W[i][0], y: W[i][1], duration: LEG, ease: "none" }, t0 + a + i * LEG);
+    tl.to(id_, { x: ex, y: ey, duration: dist(W[7][0], W[7][1], ex, ey) / V, ease: "none" }, t0 + a + 8 * LEG);
+  });
+
+  /* BUILDING a4-s13 9.08: 3 px shake on the store layer only, to DEMOLISHED 10.06 (even half-cycles, so it ends at rest) */
+  tl.to(Q + "store", { x: 3, duration: 0.07, ease: "none", yoyo: true, repeat: 13 }, 9.08);
+  tl.to(Q + "store", { y: 2, duration: 0.08, ease: "none", yoyo: true, repeat: 11 }, 9.1);
+
+  /* DEMOLISHED a4-s13 10.06 to 10.90: every piece falls, turns and rests ON the ground line (seeded; rest height from its rotated extent) */
+  let seed = 2011;
+  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  PC.forEach(([id, cx, cy, hx, hy], i) => {
+    const wall = hx === 0;
+    const deg = wall ? (cx < 900 ? -1 : 1) * (80 + rnd() * 8) : (i % 2 ? 1 : -1) * (8 + rnd() * 30);
+    const r = deg * Math.PI / 180;
+    const ext = hx * Math.abs(Math.sin(r)) + hy * Math.abs(Math.cos(r));
+    const rx = wall ? cx + (cx < 900 ? -115 : 115) : cx + (rnd() - 0.5) * 90;
+    const ry = 480 - ext - 1.5;
+    const at = 10.06 + rnd() * 0.14, d = 0.5 + rnd() * 0.18;
+    tl.to(Q + id, { y: ry, duration: d, ease: "power2.in" }, at);
+    tl.to(Q + id, { x: rx, rotation: deg, duration: d, ease: "power1.out" }, at);
+  });
+  tl.to(Q + "sfill", { autoAlpha: 0, duration: 0.3, ease: "power1.in" }, 10.06);
+
+  /* NOBODY a4-s13 10.96: chip lands, figures glow (halo in, then two soft pulses), slow push over the hold */
+  tl.fromTo(Q + "chip", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 10.96);   /* y, not x: graphics_qc skips samples inside an x entrance, and the last sample is 11.7 s */
+  tl.fromTo(Q + "bar", { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: "power2.out", transformOrigin: "center top" }, 11.04);
+  tl.set(Q + "svg .a4cel-halo", { transformOrigin: "50% 50%" }, 0);
+  FIG.forEach(([id], i) => {
+    const h = Q + id + " .a4cel-halo";
+    tl.fromTo(h, { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power2.out" }, 10.96 + i * 0.03);
+    tl.to(h, { scale: 1.3, autoAlpha: 0.45, duration: 0.55, ease: "sine.inOut", yoyo: true, repeat: 1 }, 11.4 + (i % 4) * 0.05);
+  });
+  /* an identity transform and an explicit opacity 1 from frame 0, so text anti-aliasing is the same whichever way a frame is reached
+     (a seek back from the exit left opacity:1 inline on these and shifted the SVG labels' anti-aliasing) */
+  tl.set(Q + "cam", { scale: 1, autoAlpha: 1 }, 0);
+  tl.set([Q + "ground", Q + "eyebrow"], { autoAlpha: 1 }, 0);
+  tl.to(Q + "cam", { scale: 1.05, duration: END - 0.5 - 0.9, ease: "none" }, 0.9);   /* slow push from 0.9: draft-v1 froze 6.1 s (806.8-812.9) under the small walking figures */
+
+  /* exit, last 0.5 s: chip and source slide out left, the diagram and its ground fade through to the next picture */
+  tl.to(Q + "chip", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, END - 0.6);
+  tl.to(Q + "src", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, END - 0.6);
+  tl.to(Q + "eyebrow", { autoAlpha: 0, duration: 0.5, ease: "power1.in" }, END - 0.5);
+  tl.to(Q + "sch", { autoAlpha: 0, duration: 0.5, ease: "power1.in" }, END - 0.5);
+  tl.to(Q + "cam", { autoAlpha: 0, duration: 0.5, ease: "power1.in" }, END - 0.5);
+  tl.to(Q + "ground", { autoAlpha: 0, duration: 0.5, ease: "power1.in" }, END - 0.5);
+
+  window.__timelines["g-a4-cellar"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

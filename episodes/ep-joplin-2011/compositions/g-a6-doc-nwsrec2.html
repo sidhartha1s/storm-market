@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a6-doc-nwsrec2, A6-S6. NWS Central Region Service Assessment printed p11 (PDF p16), Recommendation #2.
+     Host: nx-a6-s6 1067.247 - host 1081.807 = -14.56, so every cue below is the words.json time - 14.56. Host 9.9 s.
+     Page image: PDF page 16 clip x 64-544, y 204-446 pt, rendered at 3.5 px/pt (1680 x 847), shown at 3.0 px/pt (1440 x 726).
+     Bar boxes are card-local px from the PDF glyph boxes: left = (x0-64)*3-2, width = (x1-x0)*3+4, top = (baseline-204)*3+4, 6 px thick.
+     The paper scales as one piece (bars ride with the glyphs). Paper x 120-1560 at 1.05 reaches x 1596, so x >= 1600 stays clear. */
+  #g-a6-doc-nwsrec2-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #nr2-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #nr2-paper { position:absolute; left:120px; top:200px; width:1440px; height:726px; background:#fff; overflow:hidden;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.14), 0 20px 60px rgba(0,0,0,0.5); }
+  #nr2-img { position:absolute; left:0; top:0; width:1440px; height:726px;
+    -webkit-mask-image:linear-gradient(180deg, #000 0, #000 calc(100% - 80px), transparent 100%);
+    mask-image:linear-gradient(180deg, #000 0, #000 calc(100% - 80px), transparent 100%); }
+  .nr2-bar { position:absolute; height:6px; border-radius:3px; background:#d8a13a; visibility:hidden; }
+  #nr2-u1  { left:839.0px;  top:167.5px; width:197.9px; }
+  #nr2-u2a { left:1050.7px; top:167.5px; width:267.5px; }
+  #nr2-u2b { left:22.1px;   top:215.2px; width:134.0px; }
+  #nr2-u3  { left:221.8px;  top:381.4px; width:474.1px; }
+  #nr2-u4  { left:494.8px;  top:422.8px; width:418.9px; }
+  #nr2-chip { position:absolute; left:96px; top:80px; height:56px; line-height:56px; padding:0 28px; box-sizing:border-box; white-space:nowrap;
+    font-family:Arial,sans-serif; font-weight:700; font-size:30px; letter-spacing:1px; color:#dfe7ee;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; visibility:hidden; opacity:0; }
+  #nr2-src { position:absolute; left:96px; top:996px; height:24px; line-height:24px; white-space:nowrap;
+    font-family:Arial,sans-serif; font-weight:700; font-size:20px; color:#c8d3e0; visibility:hidden; opacity:0; }
+</style>
+<div id="g-a6-doc-nwsrec2-root" data-composition-id="g-a6-doc-nwsrec2" data-width="1920" data-height="1080">
+  <div id="nr2-ground"></div>
+  <div id="nr2-paper">
+    <img id="nr2-img" src="media/candidates/a6/a6-s6_c1_nws-rec2-p11.png" alt="NWS Central Region Service Assessment, Joplin, 2011, printed page 11: Recommendation #2">
+    <div class="nr2-bar" id="nr2-u1"></div>
+    <div class="nr2-bar" id="nr2-u2a"></div>
+    <div class="nr2-bar" id="nr2-u2b"></div>
+    <div class="nr2-bar" id="nr2-u3"></div>
+    <div class="nr2-bar" id="nr2-u4"></div>
+  </div>
+  <div id="nr2-chip">STRONG AND VIOLENT TORNADOES &middot; NWS REC. 2</div>
+  <div id="nr2-src">NWS Assessment, Recommendation 2</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const HOST = 9.9;
+  const tl = gsap.timeline({ paused: true });
+  const P = "#nr2-";
+  tl.set(P+"paper", { transformOrigin: "50% 50%", scale: 1, y: 40 }, 0);
+
+  /* THE a6-s6 14.56 - 14.56 = 0: page settles in, linear push 1.00 to 1.05 across the host */
+  tl.to(P+"paper", { y: 0, duration: 0.5, ease: "power3.out" }, 0);
+  tl.to(P+"paper", { scale: 1.05, duration: HOST, ease: "none" }, 0);
+
+  /* NWS 14.72 */
+  tl.fromTo(P+"src", { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 0.16);
+
+  /* U1 impact 16.96 */
+  tl.set(P+"u1", { autoAlpha: 1, scaleX: 0, transformOrigin: "left center" }, 2.4);
+  tl.to(P+"u1", { scaleX: 1, duration: 0.5, ease: "none" }, 2.4);
+
+  /* U2 tears, 18.62 (whisper's "tiers"): line 1 "tiered information" then wrap to "structure", one pen speed (267.5 + 134 px) */
+  tl.set(P+"u2a", { autoAlpha: 1, scaleX: 0, transformOrigin: "left center" }, 4.06);
+  tl.to(P+"u2a", { scaleX: 1, duration: 0.333, ease: "none" }, 4.06);
+  tl.set(P+"u2b", { autoAlpha: 1, scaleX: 0, transformOrigin: "left center" }, 4.393);
+  tl.to(P+"u2b", { scaleX: 1, duration: 0.167, ease: "none" }, 4.393);
+
+  /* U3 out 20.10 (non-routine) */
+  tl.set(P+"u3", { autoAlpha: 1, scaleX: 0, transformOrigin: "left center" }, 5.54);
+  tl.to(P+"u3", { scaleX: 1, duration: 0.5, ease: "none" }, 5.54);
+
+  /* U4 strong 22.10 */
+  tl.set(P+"u4", { autoAlpha: 1, scaleX: 0, transformOrigin: "left center" }, 7.54);
+  tl.to(P+"u4", { scaleX: 1, duration: 0.5, ease: "none" }, 7.54);
+
+  /* chip tornadoes. 23.06 */
+  tl.fromTo(P+"chip", { autoAlpha: 0, y: -26 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.5);
+
+  /* exit: last 0.6 s before a6-s7 0.00, page slides out; chip and source line fade with it */
+  tl.to(P+"paper", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 9.3);
+  tl.to([P+"chip", P+"src"], { autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 9.3);
+
+  window.__timelines["g-a6-doc-nwsrec2"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

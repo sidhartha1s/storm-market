@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a5-condition-gray: A5-S2, full-frame floor plan. Host 836.977 for 23.36 s; comp-local t = a5-s2 words.json time (host start = a5-s2 0.00).
+     SCHEMATIC, NOT TO SCALE: NIST NCSTAR 3 Fig 3-127 not extracted; only "rooms on the perimeter, hallway in the centre" is claimed.
+     Camera: the plan group pushes about the hallway centre (800,560). Labels, chip, clock are HUD and leave before the 20.20 s push.
+     "Condition Gray" sits in the empty room 1 on two lines: one line (~200 px from x 220) would cross the room-1/room-2 wall at x 350. */
+  #a5cg-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #a5cg-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #a5cg-cam { position:absolute; inset:0; }
+  #a5cg-svg { position:absolute; inset:0; width:1920px; height:1080px; }
+  .a5cg-hid { opacity:0; visibility:hidden; }
+  #a5cg-hallfill { fill:#2a3644; }
+  .a5cg-lab { font-family:Arial,sans-serif; font-weight:700; font-size:26px; fill:#d8a13a; }
+  #a5cg-schem { font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+
+  .a5cg-glass { background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-sizing:border-box; }
+  #a5cg-hud { position:absolute; inset:0; }
+  #a5cg-clock { position:absolute; inset:auto; left:96px; top:96px; width:420px; height:150px; border-radius:28px; overflow:hidden; opacity:0; visibility:hidden; }
+  #a5cg-dial { position:absolute; left:0; top:0; width:420px; height:150px; }
+  #a5cg-tg { position:absolute; left:140px; top:0; height:150px; display:flex; align-items:center; white-space:nowrap; }
+  .a5cg-tt { font:900 84px/84px 'Arial Black', Arial, sans-serif; color:#f2f5f8; }
+  .a5cg-pm { margin-left:10px; padding-top:6px; font:700 30px/30px Arial, sans-serif; color:#dfe7ee; }
+
+  #a5cg-chipwrap { position:absolute; inset:auto; left:0; top:860px; width:1920px; display:flex; flex-direction:column; align-items:center; }
+  #a5cg-chip { display:table; padding:18px 34px; border-radius:14px; box-shadow:0 10px 40px rgba(0,0,0,.45);
+    font:700 40px/46px Arial, sans-serif; letter-spacing:1px; color:#f2f5f8; white-space:nowrap; opacity:0; visibility:hidden; }
+  #a5cg-fine { display:table; margin-top:10px; padding:6px 14px; border-radius:14px;
+    font:400 21px/26px Arial, sans-serif; letter-spacing:.5px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+
+  #a5cg-src { position:absolute; inset:auto; left:96px; bottom:54px; display:table; padding:5px 12px; border-radius:14px;
+    font:400 19px/24px Arial, sans-serif; letter-spacing:.5px; color:rgba(200,211,224,.75); white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="a5cg-root" data-composition-id="g-a5-condition-gray" data-width="1920" data-height="1080">
+  <div id="a5cg-bg"></div>
+  <div id="a5cg-cam">
+    <svg id="a5cg-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <!-- on from frame 0: blueprint ghost of the outer wall; the bright wall draws over it -->
+      <rect id="a5cg-ghost" x="200" y="300" width="1200" height="520" fill="none" stroke="#93a3b2" stroke-opacity=".25" stroke-width="3"/>
+
+      <rect id="a5cg-roomsT" class="a5cg-hid" x="200" y="300" width="1200" height="170" fill="rgba(223,231,238,.04)"/>
+      <rect id="a5cg-roomsB" class="a5cg-hid" x="200" y="650" width="1200" height="170" fill="rgba(223,231,238,.04)"/>
+      <rect id="a5cg-hallfill" class="a5cg-hid" x="200" y="470" width="1200" height="180"/>
+
+      <path id="a5cg-wallsT" class="a5cg-hid" fill="none" stroke="#4a5560" stroke-width="2"
+        d="M350 300V470 M500 300V470 M650 300V470 M800 300V470 M950 300V470 M1100 300V470 M1250 300V470 M200 470H255 M295 470H405 M445 470H555 M595 470H705 M745 470H855 M895 470H1005 M1045 470H1155 M1195 470H1305 M1345 470H1400"/>
+      <path id="a5cg-wallsB" class="a5cg-hid" fill="none" stroke="#4a5560" stroke-width="2"
+        d="M350 650V820 M500 650V820 M650 650V820 M800 650V820 M950 650V820 M1100 650V820 M1250 650V820 M200 650H255 M295 650H405 M445 650H555 M595 650H705 M745 650H855 M895 650H1005 M1045 650H1155 M1195 650H1305 M1345 650H1400"/>
+      <rect id="a5cg-outer" class="a5cg-hid" x="200" y="300" width="1200" height="520" fill="none" stroke="#93a3b2" stroke-width="3"/>
+
+      <text id="a5cg-label1" class="a5cg-lab a5cg-hid" x="220" y="418">Condition</text>
+      <text id="a5cg-label2" class="a5cg-lab a5cg-hid" x="220" y="450">Gray</text>
+      <text id="a5cg-schem" class="a5cg-hid" x="200" y="856">Schematic, not to scale</text>
+
+      <!-- beds: 90 x 44 body centred on the group origin; GSAP places and moves each group -->
+      <g id="a5cg-bed0" class="a5cg-hid"><rect x="-45" y="-22" width="90" height="44" rx="10" fill="#dfe7ee" fill-opacity=".85"/><rect x="-39" y="-15" width="20" height="30" rx="6" fill="#93a3b2"/></g>
+      <g id="a5cg-bed1" class="a5cg-hid"><rect x="-45" y="-22" width="90" height="44" rx="10" fill="#dfe7ee" fill-opacity=".85"/><rect x="-39" y="-15" width="20" height="30" rx="6" fill="#93a3b2"/></g>
+      <g id="a5cg-bed2" class="a5cg-hid"><rect x="-45" y="-22" width="90" height="44" rx="10" fill="#dfe7ee" fill-opacity=".85"/><rect x="-39" y="-15" width="20" height="30" rx="6" fill="#93a3b2"/></g>
+      <g id="a5cg-bed3" class="a5cg-hid"><rect x="-45" y="-22" width="90" height="44" rx="10" fill="#dfe7ee" fill-opacity=".85"/><rect x="-39" y="-15" width="20" height="30" rx="6" fill="#93a3b2"/></g>
+      <g id="a5cg-bed4" class="a5cg-hid"><rect x="-45" y="-22" width="90" height="44" rx="10" fill="#dfe7ee" fill-opacity=".85"/><rect x="-39" y="-15" width="20" height="30" rx="6" fill="#93a3b2"/></g>
+      <g id="a5cg-bed5" class="a5cg-hid"><rect x="-45" y="-22" width="90" height="44" rx="10" fill="#dfe7ee" fill-opacity=".85"/><rect x="-39" y="-15" width="20" height="30" rx="6" fill="#93a3b2"/></g>
+    </svg>
+  </div>
+
+  <div id="a5cg-hud">
+    <div id="a5cg-clock" class="a5cg-glass">
+      <svg id="a5cg-dial" viewBox="0 0 420 150">
+        <circle cx="78" cy="75" r="40" fill="none" stroke="#dfe7ee" stroke-opacity="0.85" stroke-width="3"/>
+        <path d="M78,39 L78,45 M114,75 L108,75 M78,111 L78,105 M42,75 L48,75" stroke="#93a3b2" stroke-width="3" stroke-linecap="round"/>
+        <line id="a5cg-hand" x1="78" y1="75" x2="78" y2="39" stroke="#f2f5f8" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="78" cy="75" r="5" fill="#e8c56a"/>
+      </svg>
+      <div id="a5cg-tg"><span class="a5cg-tt">5:38</span><span class="a5cg-pm">PM</span></div>
+    </div>
+    <div id="a5cg-chipwrap">
+      <div id="a5cg-chip" class="a5cg-glass">5 TO 7 MINUTES</div>
+      <div id="a5cg-fine" class="a5cg-glass">the head nurse's own recollection · before the tornado hit the hospital · NIST Sec. 4.4.2</div>
+    </div>
+    <div id="a5cg-src" class="a5cg-glass">NIST Sec. 1.2 · Sec. 4.4.2</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a5cg-";
+  const root = document.getElementById("a5cg-root");
+  /* stroke draw-on: dash = ceil(len) + 1, measured, never typed */
+  function draw(id, at, dur, ease) {
+    const el = root.querySelector(Q + id);
+    /* the dash pattern restarts on every subpath, so the dash is the longest subpath (a whole-path length would finish each piece in the first few percent) */
+    const probe = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    const pieces = el.tagName === "path" ? el.getAttribute("d").split("M").filter(Boolean).map(function (s) { return "M" + s; }) : [null];
+    const len = Math.ceil(Math.max.apply(null, pieces.map(function (s) {
+      if (!s) return el.getTotalLength();
+      probe.setAttribute("d", s);
+      return probe.getTotalLength();
+    }))) + 1;
+    tl.set(el, { strokeDasharray: len, strokeDashoffset: len }, 0);
+    tl.set(el, { autoAlpha: 1 }, at);
+    tl.to(el, { strokeDashoffset: 0, duration: dur, ease: ease || "power2.inOut" }, at);
+  }
+
+  /* bed i: room centre -> straight down/up through its door gap to the hallway row -> slide to its parked x.
+     Numbers computed from the brief table: rooms 2,3,4,5,6,7 centre x 425,575,725,875,1025,1175; top y 385, bottom y 735; parked x 300..1150 step 170. */
+  const BEDS = [[425, 385, 300], [575, 735, 470], [725, 385, 640], [875, 735, 810], [1025, 385, 980], [1175, 735, 1150]];
+  const ROW = 557; /* hallway row y 560 -3, so the +-3 float spans 557 to 563 */
+
+  tl.set(Q + "cam", { scale: 1, transformOrigin: "800px 560px" }, 0);
+  BEDS.forEach(function (b, i) { tl.set(Q + "bed" + i, { x: b[0], y: b[1], rotation: 90, transformOrigin: "50% 50%" }, 0); }); /* GSAP's SVG default origin is the bbox corner, which swung the rotated bed 70 px off its room centre */
+  tl.set([Q + "label1", Q + "label2"], { y: 0 }, 0);
+
+  /* camera: slow push 1.00 -> 1.04 from frame 0 to 20.20, then "What" a5-s2 20.20: push to 1.25 until 22.76 (under 1.5x, so plain scale) */
+  tl.to(Q + "cam", { scale: 1.04, duration: 20.2, ease: "none" }, 0);
+  tl.to(Q + "cam", { scale: 1.25, duration: 2.56, ease: "power2.inOut" }, 20.2);
+
+  /* clock hand: 360 deg per 12 s for the whole host, the comp's always-moving element once the card is in */
+  tl.fromTo(Q + "hand", { rotation: 0, svgOrigin: "78 75" }, { rotation: 360 * 23.36 / 12, svgOrigin: "78 75", duration: 23.36, ease: "none" }, 0);
+
+  /* the plan draws from frame 0 and is up by "hospital" a5-s2 1.54 (draft-v1 held an empty frame to 2.1 s): outer wall 1.2 s, walls 0.2 s later */
+  draw("outer", 0, 1.2);
+  draw("wallsT", 0.2, 1.2);
+  draw("wallsB", 0.2, 1.2);
+  tl.to([Q + "roomsT", Q + "roomsB", Q + "hallfill"], { autoAlpha: 1, duration: 0.7, ease: "power1.out" }, 0.6);
+  /* beds fade in over their rooms with the plan, 0.1 s apart */
+  BEDS.forEach(function (b, i) { tl.fromTo(Q + "bed" + i, { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power3.out" }, 0.7 + 0.1 * i); });
+  tl.fromTo(Q + "schem", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.5);
+
+  /* "Condition" a5-s2 2.60: label, source line */
+  tl.fromTo([Q + "label1", Q + "label2"], { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.6);
+  tl.fromTo(Q + "src", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 2.6);
+
+  /* "sirens" a5-s2 5.82: hallway band brightens #2a3644 -> #5a768f over 0.6 s */
+  tl.to(Q + "hallfill", { fill: "#5a768f", duration: 0.6, ease: "power1.inOut" }, 5.82);
+
+  /* "moved" a5-s2 7.50: beds roll through the door gaps, 0.15 s apart; leg 1 0.55 s, leg 2 0.38 s; last parks 9.18 <= "hallways." 8.62 + 0.6 */
+  BEDS.forEach(function (b, i) {
+    const t0 = 7.5 + 0.15 * i;
+    tl.to(Q + "bed" + i, { y: ROW, duration: 0.55, ease: "power2.inOut" }, t0);
+    tl.to(Q + "bed" + i, { x: b[2], rotation: 0, duration: 0.38, ease: "power2.out" }, t0 + 0.55);
+    /* bed float 557 <-> 563 through the hold and the push (finite: 16 half-cycles of 0.85 s from 9.30 + 0.12 i end past the host) */
+    tl.to(Q + "bed" + i, { y: 563, duration: 0.85, ease: "sine.inOut", yoyo: true, repeat: 15 }, 9.3 + 0.12 * i);
+  });
+
+  /* "538." a5-s2 13.48: clock card in (dial hand already turning) */
+  tl.fromTo(Q + "clock", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 13.48);
+
+  /* "five" a5-s2 16.72: chip and its source chip land together (brief section 4 truth 4: never the chip without its source) */
+  tl.fromTo(Q + "chip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 16.72);
+  tl.fromTo(Q + "fine", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 16.72);
+  tl.to([Q + "chip", Q + "fine"], { y: -4, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1 }, 17.2);
+
+  /* before the push (20.20): chip and fine line slide out left (the right exit would cross the presenter corner), clock and label fade; HUD never rides the move */
+  tl.to([Q + "chip", Q + "fine"], { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 19.55);
+  tl.to(Q + "clock", { x: -40, autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 19.65);
+  tl.to([Q + "label1", Q + "label2", Q + "schem"], { autoAlpha: 0, duration: 0.5, ease: "power1.in" }, 19.65);
+
+  window.__timelines["g-a5-condition-gray"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
