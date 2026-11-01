@@ -1,0 +1,59 @@
+NOUS41 KWBC 201530
+PNSWSH
+
+Service Change Notice 17-46A
+National Weather Service Headquarters Silver Spring MD
+1130 AM EDT Mon Apr 10 2017
+
+To:    Subscribers:
+
+       -NOAA Weather Wire Service
+
+       -Emergency Managers Weather Information Network
+
+       -NOAAPort
+
+       Other NWS Partners, Users and Employees
+
+From:  Michelle Hawkins, Chief
+       Severe, Fire, Public and Winter Weather Services Branch
+
+Subject: Impact-Based Warnings (IBW) to Become Operational at All
+Contiguous United States (CONUS) NWS Weather Forecast Offices (WFOs):
+Effective May 10, 2017
+
+The NWS will go operational with the IBW format at all the CONUS WFOs on
+May 10, 2017. Outside the CONUS (OCONUS) sites will transition to the IBW
+format no later than December 31, 2017. The NWS has been experimenting
+with the IBW format since 2013 at a variety of WFOs. Successes with this
+format along with comments received from the public, partners and social
+scientists have all been positive.
+
+Severe Thunderstorm Warning (SVR), Tornado Warning (TOR) and Severe
+Weather Statement (SVS) products will be stratified into categories
+distinguishing extreme cases from base convective warnings. Additional
+enhanced wording will be included to convey information about associated
+impacts, specific hazards expected, and recommended actions, both within
+the bullet statements and as part of the tag line codes.
+
+Additional information and product examples are online at:
+
+http://www.weather.gov/impacts
+
+A Product Description Document (PDD) outlining the products is online at:
+
+http://products.weather.gov/PDD/National_IBW_pdd_4_17.pdf
+
+For more information, please contact:
+
+Jim Keeney                Program  Lead
+Acting NWS Severe Storms
+Kansas City, MO
+jim.keeney@noaa.gov
+816-268-3141
+
+National Service Change Notices are online at:
+
+https://www.weather.gov/notification/archive
+NNNN
+

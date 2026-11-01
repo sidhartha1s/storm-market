@@ -1,0 +1,1157 @@
+      LOW-LEVEL WINDS IN
+TORNADOES AND POTENTIAL
+
+  CATASTROPHIC TORNADO
+   IMPACTS IN URBAN AREAS
+
+           BY JOSHUA WURMAN, CURTIS ALEXANDER, PAUL ROBINSON, AND YVETTE RICHARDSON
+
+A large and/or violent tornado crossing a densely populated area such as Chicago could cause
+  widespread damage and mortality--with thousands of deaths in some modeled scenarios.
+
+ RADAR OBSERVATIONS OF INTENSE                                           their homes in the tornado paths (Simmons and
+            T O R N A D O E S . Tornadoes are among the                  Sutter 2005). Fortunately, tornadoes usually spend
+            most intense and destructive atmospheric                     most or all of their lifetimes over sparsely populated
+      phenomena. Winds can exceed 100 m s_1 over limited                 areas. In addition, only a small fraction of tornadoes
+      areas causing nearly total destruction of structures               (1%--10%) are capable of causing the most intense
+      and loss of life (Wurman et al. 1996; Wurman and                   damage. Despite over 1,000 tornadoes annually,
+      Gill 2000; Wurman 2002; Alexander and Wurman                       tornado deaths in the United States are relatively rare,
+      2005; Marshall 2004). In the United States over 1,000              averaging 60 per year (Grazulis 1993). Unfortunately,
+      tornadoes occur annually (Grazulis 1993), but they                 on the rare occasions when intense tornadoes cross
+      are difficult to predict, and average warning lead                 populated areas, widespread damage can occur
+      times are only 10-15 minutes, meaning that, unlike                 (Grazulis 1993; Brooks and Doswell 2001; Speheger
+      with hurricanes, many people are unable to leave                   et al. 2002; Doswell et al. 2006; Forbes 2006). The
+                                                                         worst historical tornadoes in terms of deaths were
+AFFILIATIONS: WURMAN AND ROBINSON--Center for Severe                     the Tri-State tornado of 18 March 1925, causing
+                                                                         695 deaths, and the Natchez, Mississippi, tornado
+Weather Research, Boulder, Colorado; ALEXANDER--University of            of 7 May 1840, causing 317 deaths. Damage caused
+                                                                         by individual tornadoes to structures has exceeded
+Oklahoma, Norman, Oklahoma; RICHARDSON--The Pennsylvania                 $1,000,000,000 (Brooks and Doswell 2001).
+
+State University, University Park, Pennsylvania                              The areal extent of cities and surrounding densely
+                                                                         populated suburbs is growing and it is inevitable that
+CORRESPONDING AUTHOR: Joshua Wurman, Center for                          someday a large, intense, and long-track tornado will
+                                                                         impact a densely populated urban or suburban region.
+Severe Weather Research, 1945 Vassar Circle, Boulder, CO 80305           To quantify accurately the potential consequences of a
+                                                                         violent tornado crossing an urban area, it is necessary
+E-mail: jwurman@cswr.org                                                 to know the precise distribution of winds in the most
+                                                                         intense tornadoes. However, in nearly all tornadoes
+The abstract for this article can be found in this issue, following the
+table of contents.
+DOI: 10.1175/BAMS-88-I-3I
+
+In final form 31 July 2006
+©2007 American Meteorological Society
+
+AMERICAN METEOROLOGICAL SOCIETY                                                                            JANUARY 2007BAI15*|23
+                                                                         Unauthenticated | Downloaded 03/01/24 12:29 AM UTC
+the actual intensity, radius of maximum winds, rate     curately using these methods (Doswell and Burgess
+of decrease of winds away from the tornado core,        1988). The resulting maps of actual damage (Speheger
+and other structural metrics are unknown except         et al. 2002) inevitably underestimate the maximum
+in the most qualitative sense. Intensity is inferred    damage potential of these tornadoes. Previously,
+only well after the tornado s passage from the actual   efforts have been made to estimate the effect of
+damage that occurs using the Fujita scale and its       hypothetical tornadoes crossing urban areas (Rae and
+recent enhancements (Marshall 2004; Letzmann            Stefkovich 2000; information online at www.nctcog.
+1923; Fujita 1971, 1992). The intensity of strong tor-  org/weather/study/), but these have been conducted
+nadoes as they cross over areas devoid of engineered    by superimposing damage tracks from a tornado (the
+structures and vegetation cannot be determined ac-      3 May 1999 Bridgecreek-Moore, Oklahoma, tornado)
+
+                                                                                 that passed over largely
+
+                                                                                 rural terrain onto a differ-
+
+                                                                                 ent urban area (Dallas-Fort
+
+                                                                                 Worth, Texas). Since the
+
+                                                                                 portions of the actual dam-
+
+                                                                                 age track that were over
+
+                                                                                 rural regions in Oklahoma
+
+                                                                                 likely underestimated the
+
+                                                                                 full damage potential of
+
+                                                                                 the tornado, the resultant
+
+                                                                                 transposition also likely un-
+
+                                                                                 derestimated significantly
+
+                                                                                 the potential for damage
+
+                                                                                 if that same tornado had
+
+                                                                                 crossed through extensive
+
+                                                                                 lengths of high-density
+
+                                                                                 single-family housing.
+
+                                                                                 The Doppler-on-Wheels
+
+                                                                                 (DOW; Wurman et al. 1997;
+
+                                                                                 Wurman 2001) network of
+
+                                                                                 mobile Doppler weather
+
+                                                                                 radars has observed over
+
+                                                                                 100 different tornadoes at
+
+                                                                                 various elevations, produc-
+
+                                                                                 ing two- and three-dimen-
+
+                                                                                 sional high-resolution wind
+
+                                                                                 fields, typically at 30-60-s
+
+                                                                                 intervals, permitting rela-
+
+                                                                                 tively precise character-
+
+                                                                                 ization of the structure,
+
+                                                                                 intensity, and evolution of
+
+                                                                                 the tornadoes (Wurman
+
+                                                                                 et al. 1996; Wurman and
+
+                                                                                 Gill 2000; Alexander and
+
+                                                                                 Wurman 2005; Burgess
+
+FIG. I. DOW-measured Doppler velocity in two intense tornadoes. Couplets         et al. 2002; Wurman et al.
+of positive (brown/red) and negative (green/blue) Doppler velocities denote      2007a,b). Tornado obser-
+tornadic winds, (a) Bridgecreek, OK, at 2354 UTC 3 May 1999. Peak ground         vations from other mobile
+relative winds of 135 m s~' occur at 32 m AGL at a range of 1.9 km in a roughly  radars have also been
+350-m diameter circulation, (b) Near Mulhall, OK, at 0313 UTC 4 May 1999.        produced (Bluestein and
+Peak winds over 105 m s_l are observed at this time and 115 m s_l were ob-       Pazmany 2000; Bluestein
+served at other times in a circulation with diameter 1100 m at this time and     et al. 2003, 2004). In rare
+up to 1600 m at other times at 30 m AGL at a range of 4 - 5 km.                  cases, these wind fields
+
+3 2 I BAF15- JANUARY 2007
+
+                                                        Unauthenticated | Downloaded 03/01/24 12:29 AM UTC
+have been compared to actual surveyed damage                calculated, but it is likely that wind speeds averaged
+(Wurman and Alexander 2005). While most torna-              over 3 s were several meters per second lower. Doppler
+does are relatively weak, DOWs have measured winds          measurements represent mean wind speeds inside
+in several intense tornadoes, with Doppler winds in         a radar resolution volume. It is certain that short-
+the strongest exceeding 100 m s-1 below 50 m AGL.           duration and small-scale wind gusts higher than the
+                                                            means are present. As discussed later, care must be
+    Based on DOW Doppler data, peak Doppler wind            taken when comparing these Doppler measurements
+speeds of 135 m s_1 occurred at 32 m AGL in a tornado       at 32 m AGL to time-averaged anemometer measure-
+crossing Bridgecreek, Oklahoma, at 2354 UTC                 ments at 3 or 10 m or inferences from damage occur-
+3 May 1999 (Fig. 1), the strongest ever measured in a       ring at 3 - 5 m AGL.
+tornado (Glenday 2006). There is F5 intensity (Fujita
+1971) damage, consistent with these wind speeds,                The region containing the maximum intensity
+documented in the Bridgecreek development near the          winds of the BC tornado is measured by the DOWs
+location of this measurement (Speheger et al. 2002),        to have a diameter of 350 m, which is above average
+and later, 25 km distant, in Moore, Oklahoma, caused        for DOW-observed tornadoes, but is not the largest
+by the same tornado.                                        (Table 1). Other intense tornadoes have had much
+                                                            larger core flows, resulting in much broader regions
+    The DOW3 radar operates at a frequency of               of extreme winds. The largest tornadic core flow
+9.375 GHz with a beam width of 0.93°. A staggered           region ever measured by the DOWs, or in fact ever
+pulse repetition frequency scheme (Doviak and Zrnic         documented (Glenday 2006), occurred later during
+1993) is used to produce a Nyquist unambiguous              the same tornado outbreak, at 0310 UTC 4 May
+velocity range of 256 m s_1 (from +128 to -128 m s_1).      1999 near the town of Mulhall, Oklahoma. While
+Data where normalized coherent power is < 0.2 or            the peak winds measured by the DOW at 30 m AGL
+where values exceed the median of nearest neigh-            in the Mulhall (hereinafter MH) tornado are only
+bors by 0.4 times the Nyquist value are eliminated.         110-115 m s_1, the diameter of the core flow region
+This eliminates outlier Doppler velocities that range       is as large as 1600 m at some observation times.
+as high as 142 m s_1. Data are dealiased in the rare        Wind speeds capable of causing significant damage,
+cases where Doppler velocities exceed 128 m s_1.            > 43 m s_1, extended across a swath over 7 km wide
+The Bridgecreek-Moore (hereinafter BC) tornado              (Table 1), which is substantially wider than the
+was moving at a 29° angle at 9.0 m s_1 relative to the      damage swath of the Hallam, Nebraska, tornado of
+DOW radar beams, necessitating adjustment of the            22 May 2004 (McCarthy and Schaefer 2005). As with
+maximum Doppler velocities, which were 134.0 m s-1,         the Doppler measurements over Bridgecreek, care
+by 1.0 m s_1, resulting in a peak ground-relative wind      must be exercised when comparing these measure-
+velocity of 135.0 m s_1 (i.e., relative to a stationary     ments with wind estimates derived from damage or
+observer). Several measurements exceeding 110 m s_1         conventional anemometer measurements due to the
+are adjacent to the highest Doppler value, as required      differences in observation height, spatial and tempo-
+by the filtering described above, and lend credibility      ral averaging, and sampling.
+to the measurement. Estimated spectral widths were
+15-20 m s_1 in the most intense region of the tornado,          The BC tornado destroyed more than 1,500 homes
+suggesting that the measured Doppler velocities are         and killed 36 people. Despite this regrettable damage
+likely only accurate within ± 5 m s-1, so the resultant     and resultant loss of life, it is fortunate that the BC
+ground relative velocity is 135 ± 5 m s_1. These winds      tornado spent much of its lifetime over sparsely popu-
+speeds were measured in a region extending across           lated rural regions and did not cross over even more
+about 100 m. Air parcel trajectories could not be           populated regions of the Oklahoma City metropolitan
+
+TABLE I. Tornado parameters and width (m; Dxx) of track |VJ greater than thresholds (m s~') indicated by
+"D HN, H2, H3, H4, H5, H6, H7: Same as HB.
+
+Tornado            V rm          R  b                    g  V t  D43  D59  D76   DI02  DI20
+MH Mulhall
+                   100    700       -0.6                 1  13   7050 3760 2355  757   --
+
+BC Bridgecreek/Moore 126  175 -0.6                       1  9    2315 1280 835   506   320
+
+HB Hybrid          125    700       -0.6                 1  7    8800 5050 3270 1985 1327
+
+HR Hybrid reduced  105    700       -0.6                 1  7    6580 3710 2450 1121   --
+
+SM Small           75     100 -0.6                       1  7    548  313  133   --    --
+
+AMERICAN METEOROLOGICAL SOCIETY                                                                      JANUARY 2007 BAI15* | 3 3
+                                                                 Unauthenticated | Downloaded 03/01/24 12:29 AM UTC
+     area, that Moore was near the end of the tornado track   dard height for meteorological wind measurements
+     resulting in unusually long warning time to residents,   (World Meteorological Organization 2004), and that
+     and that the population densities in the Oklahoma        now used to correlate wind speeds and damage to
+     City metropolitan area are low compared to those in      buildings (Marshall 2004), is 10 m AGL and is a 3-s
+     other cities (Fig. 2). The MH tornado crossed almost     average. Typical residential structures extend from
+     entirely over rural low-population-density terrain       0 to 10 m AGL, while the DOW measurements of
+     containing few structures, so a wide damage swath        the BC and MH tornadoes are taken at about 30 m.
+     was not documented.                                      Radar beam spreading by 16 m knr1 and blockage
+                                                              by foliage, buildings, and terrain usually preclude
+         In this paper, we examine the potential impacts if   measurements by radar below 30 m AGL. On one
+     these or other large, violent, and/or long-track torna-  occasion (8 June 1998), when a tornado center was
+     does crossed densely populated urban areas.              at a range of 170 m and maximum winds were at a
+     NEAR-SURFACE WINDS IN TORNADOES.                         range of 30 m, a DOW observed winds near 10 m
+     Radar temporal and spatial sampling and spatial          AGL. The observation is at a sufficiently low level
+     averaging within radar resolution volumes preclude       to reveal axisymmetric convergence of 0.10 s-1, evi-
+     exact comparisons with surface-based anemom-             denced by the slight rotation of the Doppler velocity
+     eters that employ different sampling and temporal        couplet (Fig. 3). Axisymmetric convergence is esti-
+     averaging, and measure at single points. In addition,    mated using V*V = 2(AV/Ax)cos(a), where AV is the
+     radars measure scatterer motion, not air motion,         Doppler velocity difference across the couplet, Ax is
+     resulting in possible underestimation of the latter      the distance from the inbound to outbound Doppler
+     in intense tornadoes (Dowell et al. 2005). The stan-     velocity extrema, and a is the angle between the vec-
+                                                              tors drawn from the positive to the negative velocity
+FIG. 2. Track of Bridgecreek-Moore tornado and popu-          extrema and the radar beam from the radar to the
+lation density. The track of the tornado crossed largely      center of circulation. [A similar calculation, using
+over rural and low-density suburban regions of central        sin(a), where a is the angle between the radar beam
+Oklahoma with population densities < 4000 km'2. Most          through the center of the tornado and the zero isodop
+fatalities (pink dots) were associated with brief cross-      contour through the tornado, provides a consistent
+ings of populated low-medium-population-density               result.] The observed convergence is slightly higher
+suburban regions in Bridgecreek, Moore, and south-            than the value of 0.06 s_1 observed by Alexander and
+eastern Oklahoma City.                                        Wurman (2005) at a higher altitude in a much more
+                                                              intense tornado.
+
+                                                                  While having these low-level radar observations
+                                                              is useful, having a tornado core flow pass within
+                                                              30 m of a DOW is not a desirable or frequently re-
+                                                              alized observational strategy. In order to evaluate
+                                                              how DOW wind measurements typically collected
+                                                              at altitudes above 30 m AGL should be corrected to
+                                                              the 10-m-AGL level, the dependence of peak winds
+                                                              with height in the lowest 200 m AGL is calculated
+                                                              in two tornadoes where particularly low-level DOW
+                                                              observations are available. The rotational veloc-
+                                                              ity of tornadoes increases rapidly with decreasing
+                                                              altitude from 1000 m AGL down to 100 m AGL
+                                                              (Wurman and Gill 2000; Alexander and Wurman
+                                                              2005). However, peak winds on the track-relative
+                                                              right-hand side of some tornadoes are observed by
+                                                              DOWs to be relatively constant from 20 to 200 m
+                                                              AGL (Fig. 4).
+
+                                                                  Below 20 m AGL, frictional effects due to the
+                                                              ground, structures, and foliage likely cause wind
+                                                              speeds to decrease, dropping of course to 0 m s_1 at
+                                                              the ground. In situ measurements of tornadoes are
+                                                              rare (Winn et al. 1999; Lee et al. 2004; Wurman and
+
+3 4 I BAF15- JANUARY 2007
+
+                                                              Unauthenticated | Downloaded 03/01/24 12:29 AM UTC
+Samaras 2004) and do not usually
+
+produce wind speed data. In 2005,
+
+the first combined DOW radar and
+
+near-surface in situ wind measure-
+
+ments were obtained, permitting the
+
+evaluation of the dependence of tor-
+
+nado wind speeds on height below
+
+20 m AGL. On 12 June 2005, near
+
+Jayton, Texas, a DOW measured
+
+Doppler winds at 18 m AGL above
+
+an armored instrumented vehicle at
+
+the edge of a tornado, while the cen-
+
+ter of the core flow passed 100 m to
+
+the east of the instrumented vehicle
+
+(Fig. 5). The instrumented vehicle
+
+measured wind speeds, |V|, up to
+
+38 m s_1 at 3 m AGL using a con-
+
+ventional mast-mounted ultrasonic
+
+anemometer (0.1-s sampling every        FIG. 3. Doppler velocity in a tornado passing a DOW at extremely
+1 s). After correcting for DOW ob-      close range. The tornado center passed within 170 m from a DOW,
+servation geometry relative to the      with the region containing maximum winds (pink circle) passing 30 m
+tornado, specifically accounting        from the DOW. This close approach permitted measurements at an
+for the difference in wind direction    unusually low altitude near 10 m AGL. The data were collected near
+and the direction of the DOW radar      Cambridge, KS, on 8 Jun 1998. Convergence of 0.1 s_l is revealed from
+beams, and interpolating between        the orientation of the line (pink) connecting the inbound and outbound
+
+DOW observations that were spaced wind maxima and the rotation of the zero isoDop line (black).
+
+at 20-s intervals, the time history of
+
+winds at 18 and 3 m AGL can be compared (Fig. 6):
+
+IV3 M AGLMV ,8 M AGLI = ° - 7 4 t 0 °-80> though there are
+
+transient fluctuations, during the tornado's passage.
+
+This suggests that | V 10 m AGL |/|V 18-150 m AGLl          '
+
+approximately. (It matters little whether linear, log, or
+
+other interpolations are used since the scan-to-scan
+
+variation exceeds the differences in interpolation
+
+profiles.) The implied 10% reduction in winds from
+
+18 to 10 m AGL is less than the sweep-to-sweep vari-
+
+ability between 20 and 200 m AGL wind speeds evi-
+
+dent in Fig. 4. These data suggest that DOW measure-
+
+ments at 30 m AGL may be reasonably representative
+
+of conditions at 10 m AGL, at least in some tornadoes,
+
+in some terrain conditions.                                    FIG. 4. Normalized peak Doppler wind velocities ob-
+                                                               served by DOWs in low levels of two tornadoes exhibit
+The 12 June 2005 observations occurred in a region             little dependence on altitude below 150 m AGL. (left)
+                                                               Jayton, T X , 12 Jun 2005. (right) Spencer, SD, 30 May
+devoid of tall trees and buildings (Fig. 7). It is likely      1998. Peak Doppler velocities measured at levels below
+                                                               100 m AGL are normalized by the values observed at
+that tornadic wind speeds at 10 m AGL are less when            the level closest to and above 100 m. Measurements
+                                                               taken during individual 20-s periods are connected
+a substantial fraction of the ground surface is covered        with lines. No clear dependence of velocity on height
+                                                               is apparent, though a slight increase at the lowest lev-
+by structures, increasing the effective surface rough-         els is suggested in the Jayton tornado. Measurements
+                                                               taken at 2350-2358 UTC at a range of 2-3 km from the
+ness. However, no observational data exist to quantify         Jayton tornado and from 2334-2340 UTC at a range of
+                                                               1.7-5.0 km from the Spencer tornado.
+this effect in tornadoes. Wind speeds are likely 25%
+
+less close to the ground at the midlevel height of one-
+
+or two-story residential structures, as suggested by
+
+the 3-m-AGL in situ measurements. Additionally,
+
+the in situ measurements were obtained outside the
+
+core flow region of the tornado. The variation of peak
+
+AMERICAN METEOROLOGICAL SOCIETY                                                                   JANUARY 2007 BAI15* | 3 5
+                                                               Unauthenticated | Downloaded 03/01/24 12:29 AM UTC
+                                                                          tions (Wurman and Alexander
+                                                                          2005), is fit to profiles of radial
+                                                                          velocity. Ground-relative hori-
+                                                                          zontal wind speeds, |Vj, are
+                                                                          calculated (Fig. 8) by
+
+                                                                            |Vh| = [Vt2 + Vr' + V *
+                                                                                        + 2(Vt)(V.)cos(a)
+                                                                                        + 2(Vt)(V)sin(a)]1/2,
+
+                                                                          where V is the translational speed
+                                                                          of the tornado vortex,7 Vr is the
+                                                                          rotational velocity (positive is
+                                                                          counterclockwise) of the vortex,
+                                                                          V is the inflow velocity (positive
+                                                                          is outward), and a is the angle
+                                                                          between the direction of tornado
+                                                                          motion and the location of the
+                                                                          calculation,
+
+                                                                           Vr = V rm(v D/R)y when D < R,
+
+                                                                            v = Vrm(R/D)* when D > R,
+
+                                                                          where R is the radius of maxi-
+
+                                                                          mum winds, y and /? are the decay
+
+                                                                          rates of winds inside and outside
+
+                                                                          the radius of maximum winds,
+
+                                                                          and D is the horizontal distance
+
+                                                                          from the center of the tornado.
+
+FIG. 5. Deployment of DOW and Tornado Intercept Vehicle (TIV) to          The  values  of  Vr,  Vrm,' R,  y,  and 1B
+measure low-level winds in a tornado near Jayton, TX. (top) The loca-
+tions of the DOW and TIV and the path of the tornado. Times are MM:                                       '
+S S after 0000 UTC 13 Jun 2005. The center of circulation of the tornado
+passed 100 m to the east of the TIV. The small core flow region of the    are determined by DOW observa-
+tornado missed the TIV, which was at the radius of the DOW-measured
+                                                                          tions of the tornadoes to be simu-
+
+                                                                          lated. The sign and radial profile
+
+                                                                          of V. depends on whether the
+
+debris ring, (bottom) The TIV measured winds using an ultrasonic          tornado vortex exhibits single- or
+anemometer mounted at 3 m AGL (0.1-s samples every I s). Because          two-celled structure (Fiedler and
+of radar beam spreading and terrain blockage, the lowest-level winds      Rotunno 1986; Lewellen et al.
+measured by the DOW were at 18 m AGL over the TIV (which was in           1997). Observations of V. in actu-
+a slightly depressed area).                                               al tornadoes vary (Wurman et al.
+
+wind speed with height may be substantially different                            1996; Wurman and Gill 2000;
+inside and outside the core flow region.               Alexander and Wurman 2005; Lee and Wurman
+                                                       2005), and the conditions that result in the differing
+
+                                                       structures are not known; therefore, V. is set to 0 m s_1
+
+SIMULATIONS OF TORNADO W I N D S                       in these tornado simulations.
+                                                           Different tornadoes may have substantially dif-
+BASED O N D O W D A T A . As can be seen from
+Fig. 1, the wind field of actual tornadoes can be      ferent wind field structures (e.g., Wurman and Gill
+complex. Furthermore, single-Doppler radars can        2000 versus Wurman 2002), and both the horizon-
+only measure the component of wind field parallel to   tal and vertical distribution of winds may differ
+the direction of radar beam propagation. In order to   markedly from tornado to tornado. The structure
+reconstruct the full horizontal wind field impinging   assumed in this model is merely representative of a
+on structures, an axisymmetric wind field model of     simplified tornado. Simulated winds are calculated
+a translating tornado, constrained by DOW observa-     at 10-m intervals and a profile of maximum winds is
+
+3 6 I BAF15- JANUARY 2007
+
+                                                       Unauthenticated | Downloaded 03/01/24 12:29 AM UTC
+                                                       the DOWs, particularly in small, intense tornadoes
+
+                                                       such as BC. A hypothetical "hybrid" tornado's (HB)
+
+                                                       parameters represent the large size of the MH tornado
+
+                                                       and the peak intensity of the BC tornado. A slow tor-
+
+                                                       nado translational motion of 7 m s_1, typical of many
+
+                                                       tornadoes (Wurman et al. 1996; Wurman and Gill
+
+                                                       2000; Phan and Simiu 1998), is chosen to minimize the
+
+                                                       asymmetry between winds on the right and left sides of
+
+                                                       the HB tornado track. Slow translational speeds affect
+
+                                                       the duration of intense winds over individual loca-
+
+                                                       tions (Wurman and Alexander 2005; Phan and Simiu
+
+                                                       1998), which might have a very significant impact on
+
+                                                       resulting damage (e.g., the Jarrell, Texas, tornado of
+
+                                                       27 May 1997). Tornado HR contains winds reduced
+
+FIG. 6. Time history of ground-relative winds at 18 m  by 15% to account for reduced winds at 10 m AGL in
+AGL as calculated using DOW data, and measured         moderately rough terrain. Tornado SM represents a
+3-m winds as measured by TIV. The TIV data, recorded   more frequently observed class of moderately intense,
+every second, indicate that |VJ at 3 m AGL is about    but small, tornadoes (Wurman et al. 1996; Wurman
+74% to 80% of that at 18 m AGL.                        and Gill 2000).
+
+                                                       While the actual MH and BC tornadoes passed
+
+generated. This profile is slid across the various urban over mostly rural or low-population-density suburban
+
+domains. Due to the slowly varying simplified wind regions (Fig. 2), the paths of the simulated tornadoes
+
+field (about 10 m s_1 translation and tornado core flow are chosen so as to cross densely populated urban resi-
+
+diameters of 200-1400 m), the calculated peak wind dential areas and the downtown of Chicago, Illinois
+
+speeds at individual points closely correspond to peak (Fig. 9). The higher population density of Chicago
+
+3-s duration gusts, consistent with engineering and compared to Oklahoma City is striking. Thirty-five-
+
+damage intensity estimation standards.                 kilometer-long southwest to northeast tracks, typi-
+
+                                                       cal of many long-track tornadoes (Grazulis 1993;
+
+Impact of different tornadoes with same track. Using Speheger et al. 2002; Brooks 2004), are overlaid
+
+this observation-constrained model, the spatial on U.S. census block data regions. The number of
+
+distribution of peak winds, |Vj,
+
+experienced by structures can
+
+be calculated for many possible
+
+real and hypothetical tornado
+
+scenarios, varying in intensity,
+
+size, translational velocity, and
+
+location. The physical properties
+
+of several tornadoes, including
+
+the width of the swaths contain-
+
+ing |Vj in excess of the listed
+
+thresholds, are in Table 1.
+
+The parameters of tornadoes
+
+MH and BC represent those ob-
+
+served in the actual tornadoes
+
+at their maximum DOW-ob-
+
+served intensity. The tornadoes
+
+might have been even more in-
+
+tense during the periods when
+
+they were not observed by DOWs.
+
+Dowell et al. (2005) suggest that   FIG. 7. Terrain and foliage near the site of the in situ tornado wind
+the effects of debris centrifuging  observation on FM 1228 near Jayton, TX. The terrain was very flat and
+result in the underestimation of    low scrub trees dominated. Trees extending above 10 m AGL can be
+tornado winds by radars such as     see in the background of the top photograph.
+
+AMERICAN METEOROLOGICAL SOCIETY                                                           JANUARY 2007 B A I 1 5 * | 3 7
+                                                       Unauthenticated | Downloaded 03/01/24 12:29 AM UTC
+FIG. 8. Model wind field structure, (a) Schematic of      housing units and population impacted by different
+model wind field, (b) Cross section of Doppler veloc-     thresholds of peak | V j (43, 59, 76,102, and 120 m s"1)
+ity across actual and model tornado. An azimuthal         are calculated using ArcMap 9.1 software and the
+cross section through the Mulhall tornado shows the       tornado model (Fig. 10). To account for census blocks
+actual Doppler velocities (blue) measured in the core     that are only partially covered by the wind swaths, the
+flow and nearby regions and the model's axisymmetric      totals are adjusted by half of the difference between
+rotational velocity (red), (c) Top-down view of instan-   the value if all and the value if none of the partially
+taneous wind speed in simulated tornado and |VJ wind      impacted blocks are counted. This adjustment in-
+swaths (m s-1). The swath of peak |VJ is displaced south  volves only about 10% of the blocks covered by the
+of the track of the tornado center due to the additive    widest wind swaths, but all impacted blocks in the
+                                                          narrowest swaths. The areal coverage of high |VJ and
+nature of V.hand Vt on this side of the tornado.          the number of residents and housing units impacted
+                                                          are shown in Tables 2 and 3.
+
+                                                              No attempt is made here to correct for differences
+                                                          in terrain or surface roughness between the environ-
+                                                          ments of the observed tornadoes used to constrain the
+                                                          stimulations (i.e., BC, MH, and others) and the urban
+                                                          areas over which the simulated tornadoes cross. It is
+                                                          possible that surface roughness in highly built-up
+                                                          urban areas would be higher, reducing near-surface
+                                                          winds. It is also possible that local enhancements of
+                                                          winds could occur. However, the bulk of the tracks
+                                                          of the simulated tornadoes are over regions in which
+                                                          two-and three-story low-rise residential structures
+                                                          predominate, so the differences between the environ-
+                                                          ments of the observed and simulated tornadoes may
+                                                          not be significant.
+
+                                                              To calculate the extent of damage to impacted
+                                                          structures, tables correlating the degree of dam-
+                                                          age (DOD) to peak |VJ from the Enhanced Fujita
+                                                          Scale (EF-Scale)(Marshall 2004; as updated by
+                                                          J. McDonald 2006, personal communication) are
+                                                          used. Accordingly, one- and two-family residential
+                                                          structures exposed to |Vj > 76 m s_1 are completely
+                                                          destroyed, while those exposed to |Vj of 59-76 m s 1
+                                                          experience collapse of exterior walls and roofs. Three-
+                                                          story residential structures suffer collapse of the top
+                                                          two floors at |Vj > 76 m s_1. Satellite imagery is used
+                                                          to determine that the majority of housing units in
+                                                          the affected areas are of these two types (Fig. 11).
+                                                          According to the EF-Scale, tall apartment and office
+                                                          buildings on the Chicago shoreline and in the down-
+                                                          town area are more resistant to extreme winds and
+                                                          would not suffer "permanent structural damage" un-
+                                                          less |VJ > 102 m s_1, so the calculations for these areas
+                                                          are conducted separately (Table 3). No attempt is
+                                                          made here to account for the feedback effect of debris
+                                                          loading on the tornado wind speed structure itself
+                                                          (Lewellen et al. 2004) or on the damage-enhancing
+                                                          effects of excessive debris loading on buildings.
+
+                                                              There are no studies that relate the probability of
+                                                          death for residents to the DOD in these structures.
+                                                          However, it is likely that the risk of death is high if
+
+3 8 I BAF15- JANUARY 2007
+
+                                                          Unauthenticated | Downloaded 03/01/24 12:29 AM UTC
+      one is inside a single-family house                                                          JANUARY 2007 BAI15* | 3 9
+      that is totally destroyed (Fig. 12),                      Unauthenticated | Downloaded 03/01/24 12:29 AM UTC
+      with no walls standing (DOD: 9 or
+      10 @ |V | > 7 6 m s_1 wind speed), or
+      in the collapsed upper two floors of
+      a three-story apartment (DOD: 10 @
+      |Vh| > 80 m s-1). Warning times for
+      tornadoes, in stark contrast to those
+      for hurricanes, are typically only 10
+      minutes (Simmons and Sutter 2005),
+      often providing inadequate time for
+      evacuation. The probability of dying
+      in the actual BC tornado ranged from
+      1% to 3% in the regions that experi-
+      enced F4 and F5 damage [based on
+      the location of fatalities from D. A.
+      Speheger (2006, personal commu-
+      nication) and the F4/F5 maps from
+      Speheger et al. (2002)]. However, the
+      tornado formed well to the southwest
+      of Oklahoma City and residents
+      had unusually long warning times.
+      Additionally, it is likely that residents
+      of Oklahoma City are more aware of
+      tornado hazards and likely to respond
+      to warnings more efficiently than
+      residents of many other cities, includ-
+      ing Chicago. In the Spencer, South
+      Dakota, tornado (Wurman and Alexander 2005), the
+      destruction of fewer than 30 structures at the F3 or F4
+      level resulted in six deaths, representing a much higher
+
+FIG. 9 (TOP RIGHT). Tracks of simulated tornadoes across
+Chicago. Track of the tornado center (black) and out-
+lines of regions impacted by 120 (red), 102 (orange),
+76 (yellow), 59 (green), and 43 m s-1 (cyan) peak wind
+speeds shown. Population densities are much higher
+than those in Oklahoma City, over which the intense
+BC tornado actually crossed (see Fig. 2) Black rect-
+angle is region illustrated in Fig. 10. Black cross-track
+line (BC panel) is break between low-rise housing
+and high-rise housing areas; green alternate tornado
+center tracks (BC panel) are those used in sensitivity
+study. Pink track is "worst case" track (HN in Table 2)
+through length of high-density residential regions.
+
+FIG. 10 (RIGHT). Tornado peak wind swath detail.
+Regions enclosed by winds of 43, 59, 76, 102, and
+120 m s_l are shown for tornadoes BC and HB. U.S.
+census block polygons fully interior to the 76 m s_l peak
+3-s-duration wind contour, corresponding to DOD:9
+for single- and dual-family residences, are highlighted
+with black boundaries. The population residing within
+each polygon is shaded. Pink rectangles labeled " x , "
+"y," and " z " are satellite photo insets (Fig. II).
+
+       AMERICAN METEOROLOGICAL SOCIETY
+TABLE 2. Impacts of tornadoes over low-rise residential areas of Chicago. Area enclosed by various |Vh|
+thresholds, number of residents impacted, number of housing units impacted and DOD, and deaths listed.
+
+         Area (km2)                                   Residents (1000)                     Housing Units impacted (1000) and deaths
+
+|VJ 43   59   76           102 120 43                 59       76       102 120 43                   59        76       102 120
+
+                                                                                                                                    Deaths (1000s)
+
+EF-Scale D O D (single- and dual-family residences/three-story apartments)                 4/2 7/4 9/5 10/6 10/6
+
+MH 221 106 61              18       --         1,005 532 328 104 --                        337 182 I I I                36      --       33
+
+BC 71    38   23           14       8          359 197 126 75                     47       124 67              43       25      16       13
+
+HB 275 143 84              45       26 1,141 699 446 262 169 404 239 152 88                                                     28       45
+
+HR 204 106 63              27       --         892 530 337 154 --                          306       181       115      53      --       34
+
+SM  17   10   3            --       --         96     54       29       --        --       34        19        10       --      --       3
+
+H N 275 143 84             45       26 1,699 1,009 630 363 222 530 300 185 106                                                  65       63
+
+H2 (similar to HB, not calculated)             1,011 601 398 248 163 340 195 128 79                                             51       40
+
+H3 (similar to HB, not calculated)             926 540 348 203 134 298 175 75                                           62      41       35
+
+H4 (similar to HB, not calculated)             904 514 323 184 120 293 167 107 64                                               42       32
+
+H5 (similar to HB, not calculated)             908 503 317 214                    143 304            168       101      69      45       32
+
+H6 (similar to HB, not calculated)             1,055 585 350 199 129 366 202 120 69                                             45       35
+
+H7 (similar to HB, not calculated)             1,023 511 275            149       86       361       181       98       53      31       28
+
+TABLE 3. Impacts of tornadoes over high-rise apartment and office areas of Chicago. Area enclosed by vari-
+ous |VJ thresholds (m s_l), number of residents impacted, number of housing units impacted and DOD,
+and deaths listed.
+
+         Area (km2)                                       Residents (1000)                      Housing Units impacted (1000) and deaths
+
+IVJ 43   59   76               102 120 43                 59       76        102      120       43        59        76      102     120
+
+                                                                                                                                         Deaths
+
+EF-Scale D O D (> 20 story high-rise buildings)                                                 3         6         9       10      10
+
+MH 24    16   II               3        --       261      172      NO        28       --        115       74        45      12      --       280
+
+BC  6    4    2                1            1    79       45       30        19       13        33        18        12      8       5        190
+
+HB  34   22   15               9        6        310 230           154       91       59        136       97        63      36      24       910
+
+HR  27   17   II               5        --       274      178      119       48       --        117       75        48      20      --       480
+
+SM  0.5  0.3  0.1              --       --         8      5        3         --       --        4         2         1       --      --       --
+
+H N (does not pass through high-rise lakefront or downtown region)
+
+H2 (similar to HB, not calculated)               452 276           179       116      78        210       127       84      56      39       1160
+
+H3 (similar to HB, not calculated)               402 260           165       101      67        207       137       85      50      33       1010
+
+H4 (similar to HB, not calculated)               305      192      139       89       60        172       108       81      52      35       890
+
+H5 (similar to HB, not calculated)               208      147      95        58       34        125       90        57      34      21       580
+
+H6 (similar to HB, not calculated)               325 208           147       91       62        135       80        56      34      23       910
+
+H7 (similar to HB, not calculated)               202      118      72        43       28        82        44        28      17      II       430
+
+    average death rate per destroyed structure, 20%, and                    able to injury and slower to evacuate to safe locations.
+    per resident in the F3/F4 swath, about 6%. However, all                 The Spencer tornado family formed well to the west
+    of these deaths occurred in a single structure, housing                 of Spencer, 34 minutes before the town was impacted
+    the elderly. The probability of dying in a tornado is                   (Alexander and Wurman 2005). The formal warning
+    likely sensitive to the time of day, the day of week, and               lead time in Spencer was only six minutes (USDOC
+    the meteorological conditions, since these determine                    1998), which is less than average, but some residents
+    whether people are in their homes, driving, whether                     were aware of tornado warnings and the existence
+    they are asleep or awake, and whether the tornado                       of tornadoes to the west of the town. We estimate,
+    would be visible or surrounded by rain, and, as in                      crudely, that the probability of death to residents is
+    Spencer, the age and health of the residents, with the                  typically 10% in totally destroyed structures if there
+    very elderly and very young being particularly vulner-                  is little warning time. While lower peak wind speeds
+
+4 0 I BAF15- JANUARY 2007
+
+                                                                                          Unauthenticated | Downloaded 03/01/24 12:29 AM UTC
+FIG. 11. Aerial photographs of densely populated regions of Chicago, insets " x , " "y," and " z " in Fig. 10, containing
+mainly low-rise residential structures. Housing units are packed densely on small lots. A mixture of three-story
+apartments and single-family units is typical across a wide region of the Chicago metropolitan area, as well
+as other cities dominated by older construction such as New York City, (lower right) Aerial photograph of
+medium-density-populated region of Moore, OK, containing mainly low-rise residential structures, revealing
+that the less dense packing of housing units typical in the Oklahoma City metropolitan area and other cities
+are dominated by newer construction and larger residential lots.
+
+FIG. 12. Destroyed homes in
+Spencer, SD, May 1998. Winds
+at 30 m AGL in the tornado
+w e r e m e a s u r e d by a D O W
+radar. Using these data, and the
+axisymmetric model, ground-
+relative 3-s-duration winds of
+80-90 m s~' were calculated to
+have occurred in the foreground
+region in this photograph, near
+the intersection of 4th and
+Wilcox Streets. These DOW-
+based wind speeds are consis-
+tent with the EF-Scale wind
+speeds, > 76 m s_l, expected for
+the observed DOD:9.
+
+AMERICAN METEOROLOGICAL SOCIETY                                        JANUARY 2007 BAI15* | 4 1
+                                    Unauthenticated | Downloaded 03/01/24 12:29 AM UTC
+still cause substantial damage to homes--that is, in partially damaged homes is much less. In our calcu-
+
+|Vj > 59 m s_1 causes DOD:5 to single-family homes, lations, we assume zero deaths in these structures. The
+
+with top-floor exterior walls collapsed and large sec-      risks in high-rise apartment buildings are less clear and
+tions of roof removed--it is likely that the risk of death  there is scant historical basis for making estimates. The
+
+                                                                       highest EF-Scale DOD:6 is described
+
+                                                                       as "permanent structural damage,"
+
+                                                                       which occurs with |Vj > 102 m s_1.
+
+                                                                       We assume that the probability of
+
+                                                                       death in such structures is only 1%.
+
+                                                                       The actual probability of dying
+
+                                                                       could exceed these crude estimates.
+
+                                                                       Nevertheless, the number of people
+
+                                                                       living in the affected structures is
+
+                                                                       quite large, resulting in estimated
+
+                                                                       deaths as shown in Tables 2 and 3.
+
+                                                                       Most deaths occur in the smaller resi-
+
+                                                                       dential structures. In the simulations
+
+                                                                       over the Chicago metropolitan area,
+
+                                                                       the large and/or intense tornadoes
+
+                                                                       kill 13,000-45,000 people. Even the
+
+                                                                       smaller, moderate-intensity tornado
+
+                                                                       kills about 3,000 as |VJ > 76 m s 1
+
+                                                                       impacts 29,000 housing units. It is
+
+                                                                       important to note that a lower, but still
+
+                                                                       plausible, assumed death rate in low-
+
+                                                                       rise residential structures, say only
+
+                                                                       1% due to a long lead-time warning
+
+                                                                       or other factors, would result in many
+
+                                                                       fewer deaths.
+
+                                                                       The financial costs would be
+
+                                                                       correspondingly high. The value
+
+                                                                       of the destroyed homes and prop-
+
+                                                                       erty are difficult to estimate pre-
+
+                                                                       cisely. However, the 239,000 low-rise
+
+                                                                       housing units substantially dam-
+
+                                                                       aged by |Vj > 59 m s_1 in tornado
+
+                                                                       HB, even if valued at only $100,000
+
+                                                                       each, would require $23.9 billion to
+
+                                                                       replace. Depending on the precise
+
+                                                                       track of the tornado, | V | > 102 m s-1,
+
+                                                                       extending over a 1,985-m-wide swath
+
+                                                                       covering several square kilometers
+
+                                                                       of the downtown area, would cause
+
+                                                                       "permanent structural damage"
+
+                                                                       to dozens to hundreds of high-rise
+
+                                                                       offices and apartments. Such struc-
+
+                                                                       tures can cost over $200 million to
+
+                                                                       replace, not including the contents
+
+FIG. 13. Tracks and wind swaths of simulated tornado HB across         or the cost of lost business activities.
+several different metropolitan regions. Population density is shaded.  It is likely that "permanent struc-
+Population density and the resultant potential impacts from torna-     tural damage" to 100 such structures
+does vary greatly from older cities such as Chicago to newer cities    would add another $20 billion to the
+such as Oklahoma City and Dallas.                                      cost of the tornado.
+
+4 2 I BAF15- JANUARY 2007
+
+                                                            Unauthenticated | Downloaded 03/01/24 12:29 AM UTC
+TABLE 4. Impacts of tornadoes crossing different metropolitan areas. Number of residents (in thousands)
+impacted by |VJ > 76 m s"1 in Chicago (CHI), New York City (NYC), the District of Colombia (DC), Saint
+Louis (STL), Dallas-Fort Worth (DAL), Houston (HOU), Atlanta (ATL), and Oklahoma City (OKC).
+Chicago is repeated for comparison purposes. The majority of residents in the impacted regions live in
+low-rise single-family dwellings, but not all. Deaths are crudely estimated at 10% of those impacted by
+> 76 m s"1 winds, so, e.g., the 438,000 residents exposed to > 76 m s_l winds by the MH tornado in Chicago
+results in 43,800 estimated deaths.
+
+    CHI  NYC                     DC  STL                         DAL  HOU  ATL  OKC
+
+MH  438                              143                         221  170  149  83
+
+BC  157  192                     65  50                          80   67   55   33
+
+HB  600                              199                         297  237  195  112
+
+HR  456                              147                         233  174  153  87
+
+SM  32   44                      19                          16  29   20   20   II
+
+Sensitivity of impacts to particular track. The sensitivity  metropolitan areas are calculated, except that the
+of these results to the exact choice of tornado track is     calculation excludes unlikely large, violent tornadoes
+explored by repeating the above calculations for tracks      for New York City and the District of Colombia.
+that begin at several different latitudes at 3-km inter-     The major factor determining the level of impact
+vals (Fig. 9; Tables 2 and 3). While tracks that cover       is the population density in the low-rise residential
+proportionately more rural and less dense suburban           regions over which the tornadoes track (Figs. 13 and
+regions impact fewer people, the number of destroyed         14). Cities containing large regions with new lower-
+structures and impacted residents of the alternate tor-      density residential construction, including Oklahoma
+nadoes are almost always greater than 50% of that of         City, experience lesser impacts. However, the impact
+the base-track tornado (note that results from simula-       of long-track violent tornadoes in older cities, par-
+tions of alternate tracks of tornado structure HB are        ticularly from tornadoes crossing suburban New York
+the only ones listed in Tables 2 and 3). A more unusual,     City, would be even larger than that experienced if the
+but potentially worse, tornado track, crossing from          corresponding tornadoes crossed Chicago (Table 4).
+north-northwest to south-southeast across Chicago            The economic cost of the effects of |Vj > 102 m s_1
+(possible in a northwest flow regime) (Fig. 9; Tables 2      resulting in "permanent structural damage" to thou-
+and 3), results in 630,000 residents in 185,000 housing      sands of high-rise structures in Manhattan would
+units being impacted by |VJ > 76 m s_1 and 363,000           far exceed the economic cost of the destruction of
+residents in 106,000 housing units by | V j > 102 m s_1,     several such structures on 11 September 2001, though
+resulting in 63,000 deaths. Some tracks that impact          the number of fatalities is difficult to estimate. The
+fewer single-family residential structures, resulting in     impacts in Houston, Atlanta, Saint Louis, and the
+fewer deaths, pass directly over the Chicago downtown        District of Colombia are less that that in New York
+and lakefront, destroying proportionally more high-          City or Chicago, but are still extremely high.
+value, high-rise office buildings.
+                                                                 The simulated BC tornado crossing the most
+Tornado impacts in other major cities. Other major cities    densely populated portions of the Oklahoma City
+are vulnerable to the impact of violent tornadoes.           metropolitan area (recall that the actual BC tornado
+Several cities in the Midwestern and southern United         crossed over only limited regions of moderately dense
+States exist in regions that frequently experience           development) results in 33,000 people being impacted
+tornadoes, including Oklahoma City, Saint Louis,             by |VJ > 76 m s-1. Assuming a 10% probability of
+Missouri, Dallas-Fort Worth and Houston, Texas,              death, where |Vj > 76 m s_1, the estimated death toll
+and Atlanta, Georgia (Grazulis 1993). Violent tor-           is 3,300, compared to the 36 people who actually
+nadoes have occurred near the District of Colombia           died in the tornado that crossed Oklahoma City on
+(Manning and Zubrick 2004) and New York City                 3 May 1999. This discrepancy likely exists because
+(Grazulis 1993). While the precise conditions that           the simulated BC passed through a greater length
+lead to violent tornadoes are not known, the historical      of high-density, low-rise residential neighborhoods
+record suggests that large, violent tornadoes are            compared to the 3 May 1999 tornado, because the
+much less likely east of the Appalachian Mountains.          actual tornado narrowed considerably before crossing
+The effects of the various tornadoes crossing several        Moore, and because the probability of dying in the
+                                                             actual tornado was between 1% and 3% in neighbor-
+
+AMERICAN METEOROLOGICAL SOCIETY                                                                      JANUARY 2007 BAI15* | 4 3
+                                                                 Unauthenticated | Downloaded 03/01/24 12:29 AM UTC
+FIG. 14 (THIS PAGE AND N E X T ) . Tracks
+and wind swaths of simulated tornado
+BC across several different metro-
+politan regions. Otherwise, same as
+in Fig. 13.
+
+hoods affected by F4 and F5 damage,
+possibly due to unusually long warn-
+ing lead times.
+
+C O N C L U S I O N S . Simulated tor-                   and death tolls. Severe tornado impacts are possible
+nadoes with wind field structures                        in other Midwestern and southern cities such as
+similar to those observed, and po-                       Dallas, Oklahoma City, Saint Louis, Atlanta, and
+tentially worse plausible tornadoes,                     Houston. Though it is unlikely that the largest and
+crossing a densely populated urban                       most intense tornadoes would impact eastern cities
+region such as Chicago, could cause                      such as New York City or the District of Colombia,
+widespread damage and loss of life                       violent tornadoes could still result in widespread
+on a scale that has not been ob-                         structural damage and high death tolls exceed-
+served historically with tornadoes.                      ing 1,000-10,000, depending on the death rate in
+Despite the small size of tornadoes,                     destroyed structures.
+they occur with little warning and
+because of their intensity they can                          We recommend that awareness of the potentially
+cause nearly total destruction of                        catastrophic impacts of tornadoes in major urban
+many inhabited structures, result-                       areas be raised and that emergency managers have
+ing in potentially high death rates.                     contingency plans for these rare, but possible,
+The largest and most intense tor-                        events. The eventuality of intense tornadoes
+nadoes could completely destroy                          crossing urban areas cannot be avoided. However,
+structures across more than 90 km2,                      longer warning lead times and improved cred-
+killing perhaps 10% of the residents                     ibility of the warnings resulting from an increased
+in these structures, resulting in as                     understanding of the mechanisms of violent torna-
+many as 13,000-45,000 deaths in densely populated        dogenesis and better observations of thunderstorms
+cities such as Chicago. If, due to better warnings,      capable of producing violent tornadoes would en-
+efficient public response, or better shelters, the       able the public in densely populated regions more
+death rate in destroyed structures were only 1%,         time to seek robust shelter, thereby reducing the
+substantial death tolls of 1,300-4,500 might still
+be expected. These are comparable to or exceed the
+tolls from historical hurricanes such as those that
+impacted Galveston, Texas, in 1900, causing 8,000
+deaths, or New Orleans, Louisiana, in 2005, causing
+over 1,300 deaths. The scale of potential damage is
+far larger than that of the San Francisco, California,
+earthquake of 1906, which killed 700 people and
+destroyed buildings over a 13 km2 area. The cost
+of replacing tornado-destroyed structures could
+exceed $40 billion. This total is less than the cost of
+damaged infrastructure from Hurricane Katrina
+(2005), due to the much smaller area of damage,
+but is higher than that in Hurricane Andrew (1992)
+(Bryant 1991; Robinson 1993; NHC 2005). Worst-
+case, but less likely, scenarios where tornadoes move
+lengthwise along the highest-density, low-rise resi-
+dential areas, along the lakefront of Chicago, or with
+curved tracks, could result in even higher damage
+
+4 4 I BAF15- JANUARY 2007
+
+                                                         Unauthenticated | Downloaded 03/01/24 12:29 AM UTC
+death rates associated with destroyed structures. In                              Bluestein, H. B., and A. L. Pazmany,
+addition, we hope that an increased awareness by                                      2000: Observations oftornadoes and
+emergency managers and the public concerning the                                      other convective phenomena with a
+damage and fatality potential of intense tornadoes                                    mobile, 3-mm wavelength, Doppler
+in urban areas will increase the speed and efficiency                                 radar: The spring 1999 field experi-
+with which the urban public is able to seek robust                                    ment. Bull. Amer. Meteor. Soc., 81,
+shelter from violent tornadoes.                                                       2939-2951.
+
+ACKNOWLEDGEMENTS. Supported in part by                                                  , W.-C. Lee, M. Bell, C. C. Weiss,
+National Science Foundation Grants NSF-ATM-0437505,                                   and A. L. Pazmany, 2003: Mobile
+NSF-ATM-0437512, and NSF-ATM-0437898. Doug                                            Doppler radar observations of a
+Speheger provided track and fatality data for the 3 May                               tornado in a supercell near Bassett,
+1999 tornadoes. The DOWs have received support from                                   Nebraska, on 5 June 1999. Part II:
+the National Center for Atmospheric Research. Herb Stein,                             Tornado-vortex structure. Mon.
+David Dowell,William Martin, Jeff Beck, and Justin Walker                             Wea. Rev., 131, 2968-2984.
+helped the authors collect the data presented here.
+                                                                                        , C. C. Weiss, and A. L. Pazmany,
+REFERENCES                                                                            2004: The vertical structure of a
+                                                                                      tornado near Happy, Texas, on
+Alexander, C., and J. Wurman, 2005: The 30 May 1998                                   5 May 2002: High-resolution,
+    Spencer, South Dakota, storm. Part I: The structural                              mobile, W-band, Doppler radar
+    evolution and environment of the tornadoes. Mon.                                  observations. Mon. Wea. Rev., 132,
+    Wea. Rev., 133, 72-96.                                                            2325-2337.
+                                                                                  Brooks, H. E., 2004: On the relation-
+                                                                                      ship of tornado path length and
+                                                                                      width to intensity. Wea. Forecast-
+                                                                                      ing., 19, 310-319.
+
+                                                                                        , and C. A. Doswell III, 2001:
+                                                                                      Normalized damage from major
+                                                                                      tornadoes in the United States:
+                                                                                      1890-1999. Wea. Forecasting, 16,
+                                                                                      168-176.
+                                                           Bryant, E. A., 1991: Natural Hazards. Cambridge
+                                                               University Press, 294 pp.
+                                                           Burgess, D. W., M. A. Magsig, J. Wurman, D. C. Dowell,
+                                                               and Y. Richardson, 2002: Radar observations of
+                                                               the 3 May 1999 Oklahoma City tornado. Wea.
+                                                               Forecasting, 17, 456-471.
+                                                           Doswell, C. A., Ill, and D. Burgess, 1988: On some is-
+                                                               sues of United States tornado climatology. Mon. Wea.
+                                                               Rev., 116, 495-501.
+                                                                , R. Edwards, R. L. Thompson, J. A. Hart, and K. C.
+                                                               Crosbie, 2006: A simple and flexible method for ranking
+                                                               severe weather events. Wea. Forecasting, 21,939-951.
+                                                           Doviak, R. J., and D. S. Zrnic, 1993: Doppler Radar and
+                                                               Weather Observations. Academic Press, 562 pp.
+                                                           Dowell, D. C., C. Alexander, J. Wurman, and L. Wicker,
+                                                               2005: Centrifuging of hydrometers and debris in
+                                                               tornadoes: Radar reflectivity patterns and wind-
+                                                               measurement errors. Mon. Wea. Rev., 133,1501-1524.
+                                                           Fiedler, B. H., and R. Rotunno, 1986: A theory for the
+                                                               maximum windspeeds in tornado-like vortices. /.
+                                                               Atmos. Sci., 43, 2328-2340.
+                                                           Forbes, G., 2006: Meteorological aspects of high-impact
+                                                               tornado outbreaks. Extended Abstracts, Symp. on the
+
+AMERICAN METEOROLOGICAL SOCIETY                                                               JANUARY 2007 BAI15* | 4 5
+                                                           Unauthenticated | Downloaded 03/01/24 12:29 AM UTC
+    Challenges of Severe Convective Storms, Atlanta, GA,    Conf on Severe Local Storms, Orlando, FL, Amer.
+    Amer. Meteor. Soc., CD-ROM, PI.12.
+Fujita, T. T., 1971: Proposed characterization of torna-    Meteor. Soc., 295-296.
+    does and hurricanes by area and intensity. SMRP
+    Research Rep. 91, University of Chicago, 15 pp.         Robinson, A., 1993: Earth Shock: Hurricanes, Volcanoes,
+
+      , 1992: Mystery of Severe Storms. The University of   Earthquakes, Tornadoes and Other Forces of Nature.
+    Chicago Press, 298 pp.
+Glenday, C., 2005: Guinness Book of World Records 2007.     Thames and Hudson, 304 pp.
+    Guiness Ltd., 288 pp.
+Grazulis, T. P., 1993: Significant Tornadoes: 1680-1991.    Simmons, K. M., and D. Sutter, 2005: WSR-88D radar,
+    Environmental Films, 1326 pp.
+Lee, J., T. Samaras, and C. Young, 2004: Pressure mea-      tornado warnings, and tornado casualties. Wea.
+    surements at the ground in an F4 tornado. Preprints,
+    22d Conf. on Severe Local Storms, Hyannis, MA,          Forecasting, 20, 301-310.
+    Amer. Meteor. Soc., CD-ROM, 15.4.
+Lee, W. C., and J. Wurman, 2005: Diagnosed three-           Speheger, D. A., C. A. Doswell, and G. J. Stumpf, 2002:
+    dimensional axisymmetric structure of the Mulhall
+    tornado on 3 May 1999. /. Atmos. Sci., 62, 2373-        The tornadoes of 3 May 1999: Event verification
+    2393.
+Letzmann, J., 1923: Das Bewegungsfeld im Fuss einer         in central Oklahoma and related issues. Wea.
+    fortschreitenden Wind- oder Wasserhose (The flow        Forecasting., 17, 362-381.
+    field at the base of a progressing tornado). Ph.D.
+    thesis, University of Dorpat, 80 pp. [Available online  USDOC, 1998: Service assessment: Spencer, South
+    at www.essl.org/pdf/Letzmannl923/Letzmannl923.
+    pdfj                                                    Dakota, tornado May 30, 1998. NOAA/NWS, 18 pp.
+Lewellen, D. C., B. Gong, and W. S. Lewellen, 2004:
+    Effects of debris on near-surface tornado dynamics.     Winn, W. P., S. J. Hunyady, and G. D. Aulich, 1999:
+    Preprints, 22d Conf on Severe Local Storms, Hyannis,
+    MA, Amer. Meteor. Soc., CD-ROM, 15.5.                   Pressure at the ground in a large tornado. /. Geophys.
+Lewellen, W. S., D. C. Lewellen, and R. I. Sykes, 1997:     Res., 104D, 22 067-22 082.
+    Large-eddy simulation of a tornado's interaction with
+    the surface. /. Atmos. Sci., 54, 581-605.               World Meteorological Organization, 2004: Technical
+Manning, D. R., and S. M. Zubrick, 2004: Doppler radar
+    analysis of the 28 April 2002 La Plata, MD tornadic     regulations, Vol. II, Meteorological Service for Inter-
+    supercell. 22d Conf. on Severe Local Storms, Hyannis,
+    MA, Amer. Meteor. Soc., CD-ROM, 13.5.                   national Air Navigation, WMO-No. 49. [Available
+Marshall, T. P., 2004: The enhanced Fujita (EF) scale.
+    Preprints, 22d Conf on Severe Local Storms, Hyannis,    from WMO 41 Giuseppe-Mota, Case postale no. 2300,
+    MA, Amer. Meteor. Soc., CD-ROM, 3B.2.
+McCarthy, D., and J. Schaefer, 2005: 2004 year in           CH-1211 Geneve 2, Geneva, Switzerland.]
+    tornadoes: What a year it was! Preprints, 34th Conf.
+    on Broadcast Meteorology, Washington, DC, Amer.         Wurman, J., 2001: The DOW mobile multiple Doppler
+    Meteor. Soc., CD-ROM, 2.1.
+NHC, cited 2005: Tropical Storm Katrina. [Available         network. Preprints, 30th Int. Conf. on Radar Meteorol-
+    online at www.nhc.noaa.gov/2005atlan.shtml or www.
+    nhc.noaa.gov/pdf/TCR-AL122005_Katrina.pdf.]             ogy, Munich, Germany, Amer. Meteor. Soc., 95-97.
+Phan, L. T., and E. Simiu, 1998: The Fujita tornado
+    intensity scale: A critique based on observations of    , 2002: The multiple-vortex structure of a tornado.
+    the Jarrell tornado of May 27,1997. NIST Tech. Note
+    1426, 20 pp.                                            Wea. Forecasting, 17, 473-505.
+Rae, S., and J. Stefkovich, 2000: The tornado damage risk
+    assessment predicting the impact of a big outbreak in   , and S. Gill, 2000; Finescale radar observations
+    Dallas-Fort Worth, Texas. Extended Abstracts, 20th
+                                                            of the Dimmitt, Texas (2 June 1995), tornado. Mon.
+
+                                                            Wea. Rev., 128, 2135-2164.
+
+                                                            , and T. Samaras, 2004: Comparison of in-situ and
+
+                                                            DOW Doppler winds in a tornado and RHI verti-
+
+                                                            cal slices through 4 tornadoes during 1996-2004.
+
+                                                            Preprints, 22d Conf. on Severe Local Storms, Hyannis,
+
+                                                            MA, Amer. Meteor. Soc., CD-ROM, 15.4.
+
+                                                            , and C. Alexander, 2005: The 30 May 1998
+
+                                                            Spencer, South Dakota, storm. Part II: Comparison
+
+                                                            of observed damage and radar-derived winds in the
+
+                                                            tornadoes. Mon. Wea. Rev., 133, 97-119.
+
+                                                            , J. Straka, and E. Rasmussen, 1996: Fine scale
+
+                                                            Doppler radar observation of tornadoes, Science,
+
+                                                            272, 1774-1777.
+
+                                                            , , , M. Randall, and A. Zahrai, 1997:
+
+                                                            Design and deployment of a portable, pencil-beam,
+
+                                                            pulsed, 3-cm Doppler radar. /. Atmos.    Oceanic
+                                                            Technol., 14, 1502-1512.
+
+                                                            , Y. Richardson, C. Alexander, S. Weygandt, and
+
+                                                            P.-F. Zhang, 2007a: Dual-Doppler and single-Doppler
+
+                                                            analysis of a tornadic storm undergoing mergers and
+
+                                                            repeated tornadogenesis, Mon. Wea. Rev., in press.
+
+                                                            , , , , and , 2007b: Dual-Doppler
+
+                                                            analysis of winds and vorticity budget terms near a
+
+                                                            tornado. Mon. Wea. Rev., in press.
+
+4 6 I BAF15- JANUARY 2007
+
+                                                            Unauthenticated | Downloaded 03/01/24 12:29 AM UTC
+

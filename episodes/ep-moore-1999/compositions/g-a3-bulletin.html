@@ -1,0 +1,70 @@
+<template>
+<!-- g-a3-bulletin · ep-moore-1999 · A3-S2 second half · from library/inhouse/bulletin-typewriter.html (kept: CRT card, typed
+     phrases on a leaf span, cursor blink, scan lines, slow zoom drift). Host 511.201 to 518.934 (7.733 s), track 2, full frame.
+     Local s = a3-s2 word time - 10.24 (a3-s2 starts 500.961). Text: the two phrases of the 6:57 p.m. statement as the
+     Service Assessment Appendix C quotes them (research/fact-sheet.md line 53, CONFIRMED); nothing else is typed.
+     Cues: "It called this" 10.24 -> 0 (line 1 types); "extremely" 10.92 -> 0.68 (line 2 types to "situation" 13.20 -> 2.96);
+     "first warning" 16.10 -> 5.86 (chip FIRST WARNING OF ITS KIND + its source line). -->
+<style>
+  #g-a3-bulletin-root { position:absolute; inset:0; overflow:hidden; background:#050705; font-family:'Courier New', monospace; color:#c9e8c9; }
+  #g-a3-bulletin-crt { position:absolute; inset:0; }
+  .gab-flash { position:absolute; left:200px; top:96px; font-family:'Arial Black', Arial, sans-serif; font-size:54px; color:#f2f5f8; letter-spacing:2px;
+    background:rgba(140,30,30,0.9); padding:8px 28px; opacity:0; visibility:hidden; }
+  .gab-hdr { position:absolute; left:200px; top:214px; font-size:27px; color:#7ba97b; letter-spacing:2px; line-height:1.6; white-space:nowrap; opacity:0; visibility:hidden; }
+  .gab-l { position:absolute; left:200px; width:1520px; font-size:46px; font-weight:700; letter-spacing:1px; line-height:1.45; white-space:pre-wrap; color:#c9e8c9; }
+  #g-a3-bulletin-l1 { top:330px; }
+  #g-a3-bulletin-l2 { top:500px; }
+  .gab-hot { position:absolute; left:188px; top:494px; width:1544px; height:150px; background:rgba(140,30,30,0.55); transform-origin:left center; opacity:0; visibility:hidden; }
+  .gab-cur { position:absolute; width:24px; height:48px; background:#c9e8c9; }
+  #g-a3-bulletin-scan { position:absolute; inset:0; pointer-events:none; background:repeating-linear-gradient(0deg, rgba(0,0,0,0.16) 0 2px, transparent 2px 5px); }
+  .gab-chip { position:absolute; left:200px; top:760px; padding:16px 36px 18px; box-sizing:border-box; border-radius:28px; background:rgba(10,16,24,0.7);
+    backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,0.18);
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:1.1; color:#f2f5f8; white-space:nowrap; opacity:0; visibility:hidden; }
+  .gab-src { position:absolute; left:200px; top:880px; font-family:Arial, sans-serif; font-size:21px; line-height:26px; font-weight:700; letter-spacing:1px;
+    color:rgba(200,211,224,0.85); background:rgba(5,8,12,0.55); padding:6px 14px; white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a3-bulletin-root" data-composition-id="g-a3-bulletin" data-width="1920" data-height="1080" data-duration="7.733">
+  <div id="g-a3-bulletin-crt">
+    <div class="gab-flash" id="g-a3-bulletin-flash">SEVERE WEATHER STATEMENT</div>
+    <div class="gab-hdr" id="g-a3-bulletin-hdr">NWS NORMAN OK &middot; 6:57 PM CDT &middot; MAY 3, 1999</div>
+    <div class="gab-hot" id="g-a3-bulletin-hot"></div>
+    <div class="gab-l" id="g-a3-bulletin-l1"><span id="g-a3-bulletin-t1"></span></div>
+    <div class="gab-l" id="g-a3-bulletin-l2"><span id="g-a3-bulletin-t2"></span></div>
+    <div class="gab-cur" id="g-a3-bulletin-cur"></div>
+  </div>
+  <div id="g-a3-bulletin-scan"></div>
+  <div class="gab-chip" id="g-a3-bulletin-chip">FIRST WARNING OF ITS KIND</div>
+  <div class="gab-src" id="g-a3-bulletin-src">NWS Norman, May 3 1999 event page &middot; statement text: NWS Service Assessment, App. C</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a3-bulletin-", DUR = 7.733;
+  const tl = gsap.timeline({ paused: true });
+  const T1 = "TORNADO EMERGENCY IN SOUTH OKLAHOMA CITY METRO AREA";
+  const T2 = "...EXTREMELY DANGEROUS AND LIFE THREATENING SITUATION...";
+  const e1 = document.querySelector(P + "t1"), e2 = document.querySelector(P + "t2");
+  tl.set([P + "flash", P + "hdr", P + "hot", P + "chip", P + "src"], { autoAlpha: 0 }, 0);
+  tl.set(P + "cur", { x: 200, y: 336 }, 0);
+  tl.fromTo(P + "flash", { autoAlpha: 0, scale: 1.15, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power3.out" }, 0);
+  tl.fromTo(P + "hdr", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 0.1);
+  /* line 1 types 0.05 to 1.30 (mechanical, ease none); cursor rides the end of the typed text */
+  const s1 = { n: 0 }, s2 = { n: 0 };
+  tl.to(s1, { n: T1.length, duration: 1.25, ease: "none", onUpdate: () => { e1.textContent = T1.slice(0, Math.round(s1.n)); } }, 0.05);
+  tl.fromTo(P + "cur", { x: 200, y: 336 }, { x: 1700, y: 336, duration: 1.25, ease: "none", immediateRender: false }, 0.05);
+  tl.set(P + "cur", { x: 200, y: 506 }, 1.35);
+  /* EXTREMELY @0.68 -> line 2 types 1.40 to 2.96 ("situation" ends), then the red band sweeps under it */
+  tl.to(s2, { n: T2.length, duration: 1.56, ease: "none", onUpdate: () => { e2.textContent = T2.slice(0, Math.round(s2.n)); } }, 1.40);
+  tl.fromTo(P + "cur", { x: 200, y: 506 }, { x: 1700, y: 506, duration: 1.56, ease: "none", immediateRender: false }, 1.40);
+  tl.fromTo(P + "hot", { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.5, ease: "power3.out" }, 2.96);
+  tl.to(P + "cur", { autoAlpha: 0, duration: 0.3, ease: "steps(1)", yoyo: true, repeat: 15 }, 3.0);
+  tl.to(P + "flash", { opacity: 0.72, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 6 }, 0.6);
+  /* FIRST WARNING @5.86 */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: -120 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 5.86);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.0);
+  tl.fromTo(P + "crt", { scale: 1.0, transformOrigin: "50% 45%" }, { scale: 1.04, duration: DUR, ease: "none" }, 0);
+  tl.to({}, { duration: DUR }, 0);
+  window.__timelines["g-a3-bulletin"] = tl;
+})();
+</script>
+</template>

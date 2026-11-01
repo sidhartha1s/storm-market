@@ -1,0 +1,109 @@
+<template>
+<!--
+  g-a5-ages · ep-moore-1999 · A5-S1 · host 848.046 to 867.990 (19.944 s), track 2, full frame. Builder: Opus (deep).
+  Data: research/brooks-okcdeath.txt, the 36 direct losses of the OKC tornado (A1-A3, B1-B2, M1-M10, O1-O2, P1-P19).
+  Ages: two infants (3 weeks, 4 months) drawn at 0, one child of 4, then 24 and up; none aged 5 to 23 (the indirect
+  list's 23-year-old is not on this axis). "Under 1 in 3,000" CONFIRMED in fact_check.md (B&D02 p359).
+  SCALE: axis 0 to 95 years, x = 200 + age * 16 (95 = x 1720). Dots r 12, stacked upward when they would touch.
+  Cues = local seconds = nx-a5-s1 word times (host start 848.046 = local 0).
+-->
+<style>
+  #g-a5-ages-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .ga5a-eb { position:absolute; left:96px; top:64px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; line-height:1; white-space:nowrap; }
+  .ga5a-hl { position:absolute; left:96px; top:98px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:1; white-space:nowrap; }
+  .ga5a-src { position:absolute; right:96px; top:64px; font-size:20px; letter-spacing:1px; color:#c8d3e0; font-weight:700; line-height:1; white-space:nowrap; }
+  .ga5a-axis { position:absolute; left:200px; top:760px; width:1520px; height:3px; background:linear-gradient(90deg,#2a3644,#5a768f); }
+  .ga5a-tm { position:absolute; top:752px; width:2px; height:18px; background:#5a768f; }
+  .ga5a-tk { position:absolute; top:784px; width:80px; margin-left:-40px; text-align:center; font-size:22px; font-weight:700; color:#93a3b2; letter-spacing:1px; line-height:1; }
+  .ga5a-unit { position:absolute; left:1660px; top:820px; font-size:20px; font-weight:700; color:#93a3b2; letter-spacing:4px; line-height:1; }
+  .ga5a-dot { position:absolute; left:0; top:0; width:24px; height:24px; margin:-12px 0 0 -12px; border-radius:50%;
+    background:radial-gradient(circle at 38% 34%, #ff8a7a 0%, #e74c3c 45%, #8e2020 100%); box-shadow:0 0 14px rgba(231,76,60,0.45); }
+  .ga5a-band { position:absolute; left:280px; top:330px; width:288px; height:420px; box-sizing:border-box;
+    border:2px dashed rgba(232,197,106,0.85); background:rgba(232,197,106,0.07); }
+  .ga5a-chip { position:absolute; left:250px; top:214px; padding:14px 30px 16px; box-sizing:border-box; border-radius:24px;
+    background:rgba(10,16,24,0.72); backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); white-space:nowrap; }
+  .ga5a-cl { font-size:26px; font-weight:700; letter-spacing:4px; color:#e8c56a; line-height:1; }
+  .ga5a-cn { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:30px; color:#f2f5f8; letter-spacing:2px; line-height:1; }
+  .ga5a-odds { position:absolute; left:96px; top:880px; display:flex; align-items:baseline; gap:22px; white-space:nowrap; }
+  .ga5a-ol { font-size:26px; font-weight:700; letter-spacing:4px; color:#93a3b2; line-height:1; }
+  .ga5a-on { font-family:'Courier New', monospace; font-weight:700; font-size:72px; color:#e74c3c; line-height:1; }
+  .ga5a-scan { position:absolute; left:0; top:300px; width:3px; height:470px;
+    background:linear-gradient(180deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
+  #ga5a-eb, #ga5a-hl, #ga5a-src, #ga5a-band, #ga5a-chip, #ga5a-cl, #ga5a-cn, #ga5a-odds, #ga5a-ol, #ga5a-on, .ga5a-dot, .ga5a-tk { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-ages-root" data-composition-id="g-a5-ages" data-width="1920" data-height="1080" data-duration="19.944">
+  <div class="ga5a-eb" id="ga5a-eb">THE 36 DIRECT LOSSES</div>
+  <div class="ga5a-hl" id="ga5a-hl">Sorted by Age</div>
+  <div class="ga5a-src" id="ga5a-src">Brooks, NSSL list; Brooks and Doswell 2002</div>
+  <div class="ga5a-band" id="ga5a-band"></div>
+  <div class="ga5a-axis" id="ga5a-axis"></div>
+  <div id="ga5a-ticks"></div>
+  <div class="ga5a-unit" id="ga5a-unit">AGE</div>
+  <div id="ga5a-dots"></div>
+  <div class="ga5a-chip" id="ga5a-chip"><span class="ga5a-cl" id="ga5a-cl">DIRECT LOSSES · AGES 5 TO 23 · </span><span class="ga5a-cn" id="ga5a-cn">NONE</span></div>
+  <div class="ga5a-odds" id="ga5a-odds"><span class="ga5a-ol" id="ga5a-ol">ODDS OF A GAP LIKE THAT BY CHANCE</span><span class="ga5a-on" id="ga5a-on">UNDER 1 IN 3,000</span></div>
+  <div class="ga5a-scan" id="ga5a-scan"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#ga5a-";
+  /* 36 direct losses, Brooks list order; 3 wk and 4 mo drawn at age 0 */
+  const AGES = [26,24,94,37,52,55,44,59,41,39,73,73,50,59,25,26,40,36,0,53,36,50,75,49,80,33,60,30,86,28,43,89,62,4,0,67];
+  const X = a => 200 + a * 16;
+  /* ticks */
+  const tk = document.getElementById("ga5a-ticks");
+  for (let a = 0; a <= 90; a += 10) {
+    const m = document.createElement("div"); m.className = "ga5a-tm"; m.style.left = (X(a) - 1) + "px"; tk.appendChild(m);
+    const t = document.createElement("div"); t.className = "ga5a-tk"; t.id = "ga5a-tk" + a; t.style.left = X(a) + "px"; t.textContent = String(a); tk.appendChild(t);
+  }
+  /* beeswarm: sorted by age, each dot stacks above any placed dot it would touch */
+  const order = AGES.map((a, i) => ({ a, i })).sort((p, q) => p.a - q.a);
+  const placed = [];
+  order.forEach(o => {
+    const x = X(o.a); let y = 734;
+    while (placed.some(p => Math.hypot(p.x - x, p.y - y) < 25)) y -= 26;
+    placed.push({ x, y }); o.x = x; o.y = y;
+  });
+  /* unsorted start: one even row across the axis, in list order */
+  const host = document.getElementById("ga5a-dots");
+  AGES.forEach((a, i) => { const d = document.createElement("div"); d.className = "ga5a-dot"; d.id = "ga5a-d" + i; host.appendChild(d); });
+  const tl = gsap.timeline({ paused: true });
+  AGES.forEach((a, i) => tl.set(P + "d" + i, { x: 230 + i * 41.5, y: 560, scale: 1 }, 0));
+  tl.set(P + "band", { scaleY: 0, transformOrigin: "center bottom" }, 0);
+  tl.set(P + "axis", { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(P + "scan", { x: 200 }, 0);
+
+  /* ambient scan line across the chart, the whole window */
+  tl.fromTo(P + "scan", { x: 200 }, { x: 1720, duration: 6.4, ease: "none", repeat: 2 }, 0.2);
+
+  /* "the 36" @1.18: masthead, axis, the dots drop in one by one in list order */
+  tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.10);
+  tl.to(P + "axis", { scaleX: 1, duration: 0.9, ease: "power3.out" }, 0.30);
+  tl.fromTo(".ga5a-tk", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", stagger: 0.05 }, 0.50);
+  AGES.forEach((a, i) => tl.fromTo(P + "d" + i, { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2.5)" }, 1.18 + i * 0.05));
+  /* "sorted it by age" @4.34: headline; every dot falls to its age */
+  tl.fromTo(P + "hl", { autoAlpha: 0, y: -24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.34);
+  order.forEach((o, k) => tl.to(P + "d" + o.i, { x: o.x, y: o.y, duration: 1.0, ease: "power3.inOut" }, 4.40 + k * 0.025));
+  /* "hole in the middle" @6.10: the 5-23 band rises, empty */
+  tl.fromTo(P + "band", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2, ease: "none" }, 6.10);
+  tl.to(P + "band", { scaleY: 1, duration: 0.6, ease: "power3.out" }, 6.10);
+  /* "aged 5" @8.68: chip; "NONE" lands on "23" @9.40 */
+  tl.fromTo(P + "chip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 8.68);
+  tl.fromTo(P + "cl", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.25, ease: "none" }, 8.68);
+  tl.fromTo(P + "cn", { autoAlpha: 0, scale: 1.4 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 9.40);
+  /* "Harold Brooks" @10.56: source line */
+  tl.fromTo(P + "src", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 10.56);
+  /* "the odds" @15.50: odds label; "under 1 in 3,000" @18.12 */
+  tl.fromTo(P + "odds", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.01, ease: "none" }, 15.50);
+  tl.fromTo(P + "ol", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 15.50);
+  tl.fromTo(P + "on", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 18.12);
+  /* holds: the band breathes, the dots float */
+  tl.to(P + "band", { attr: {}, backgroundColor: "rgba(232,197,106,0.16)", duration: 1.2, ease: "sine.inOut", repeat: 7, yoyo: true }, 7.0);
+  tl.to(P + "dots", { y: -6, duration: 2.0, ease: "sine.inOut", repeat: 4, yoyo: true }, 9.6);
+  tl.to({}, { duration: 19.944 }, 0);
+  window.__timelines["g-a5-ages"] = tl;
+})();
+</script>
+</template>

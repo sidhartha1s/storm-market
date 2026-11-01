@@ -1,0 +1,116 @@
+<template>
+<!-- g-a4-corridor · ep-moore-1999 · A4-S3 from "Three other schools", track 2, full frame, host 699.90 for 16.03 s (to 715.927).
+     Self-made corridor diagram (FEMA 342 6.2.2 p6-25; NWS SA p12): a shelter hallway in one-point perspective with a strip of
+     high windows along the top of both walls; at Kelly Elementary that hallway came down. No figures: the corridor stood empty.
+     Cues local = abs - 699.90: "Three other schools" @0.18; "windows high" @2.70; "Kelly Elementary" @4.88; "came down" @6.70;
+     "School was already out" @7.96; "FEMA's engineers" @11.68; "had it been in use" @13.22; "hurt many children" @14.76; out 16.03. -->
+<style>
+  #g-a4-corridor-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 42%, #0b1016 0%, #030507 78%); }
+  .a4k-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .a4k-lab { font-family:Arial, sans-serif; font-weight:700; font-size:30px; letter-spacing:3px; fill:#7fb2e5; paint-order:stroke; stroke:#04070c; stroke-width:5px; }
+  .a4k-out { fill:#93a3b2; }
+  .a4k-chip { position:absolute; left:96px; top:60px; display:flex; align-items:baseline; gap:16px; padding:14px 34px 16px; border-radius:28px;
+    background:rgba(10,16,24,0.62); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,0.14);
+    white-space:nowrap; opacity:0; visibility:hidden; }
+  .a4k-ct { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; }
+  .a4k-cs { font-weight:700; font-size:36px; line-height:42px; letter-spacing:2px; color:#e74c3c; opacity:0; visibility:hidden; }
+  .a4k-src { position:absolute; left:96px; top:990px; font-weight:700; font-size:20px; line-height:26px; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a4k-scan { position:absolute; left:0; top:0; width:1920px; height:2px; background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.22), rgba(127,178,229,0)); }
+  #g-a4-corridor-labs text, #g-a4-corridor-danger, #g-a4-corridor-debris path, #g-a4-corridor-wins path, #g-a4-corridor-ceil,
+  #g-a4-corridor-floor, #g-a4-corridor-lwall, #g-a4-corridor-rwall, #g-a4-corridor-end { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-corridor-root" data-composition-id="g-a4-corridor" data-width="1920" data-height="1080" data-duration="16.03">
+  <svg class="a4k-svg" viewBox="0 0 1920 1080">
+    <g id="g-a4-corridor-hall">
+      <!-- surfaces: vanishing point (960, 500); near frame x 380-1540, y 200-900 -->
+      <path id="g-a4-corridor-ceil" d="M380,200 L1540,200 L1060,440 L860,440 Z" fill="#0f1922"/>
+      <path id="g-a4-corridor-floor" d="M380,900 L1540,900 L1060,580 L860,580 Z" fill="#15202b"/>
+      <path id="g-a4-corridor-lwall" d="M380,200 L860,440 L860,580 L380,900 Z" fill="#0b1219"/>
+      <path id="g-a4-corridor-rwall" d="M1540,200 L1060,440 L1060,580 L1540,900 Z" fill="#0b1219"/>
+      <path id="g-a4-corridor-end" d="M860,440 L1060,440 L1060,580 L860,580 Z" fill="#1b2836"/>
+      <path id="g-a4-corridor-danger" d="M380,900 L1540,900 L1060,580 L860,580 Z" fill="#c0392b" fill-opacity="0.35"/>
+      <path id="g-a4-corridor-edges" d="M380,200 L860,440 M1540,200 L1060,440 M380,900 L860,580 M1540,900 L1060,580 M860,440 L1060,440 L1060,580 L860,580 Z"
+        fill="none" stroke="#46586b" stroke-width="4" stroke-linejoin="round"/>
+      <!-- high window strip: four panes per wall just under the ceiling line -->
+      <g id="g-a4-corridor-wins" fill="#7fb2e5" fill-opacity="0.18" stroke="#7fb2e5" stroke-width="3">
+        <path id="g-a4-corridor-wl0" d="M400,232 L500,282 L500,352 L400,316 Z"/>
+        <path id="g-a4-corridor-wl1" d="M530,297 L610,337 L610,394 L530,365 Z"/>
+        <path id="g-a4-corridor-wl2" d="M635,350 L700,382 L700,428 L635,405 Z"/>
+        <path id="g-a4-corridor-wl3" d="M720,392 L770,417 L770,452 L720,436 Z"/>
+        <path id="g-a4-corridor-wr0" d="M1520,232 L1420,282 L1420,352 L1520,316 Z"/>
+        <path id="g-a4-corridor-wr1" d="M1390,297 L1310,337 L1310,394 L1390,365 Z"/>
+        <path id="g-a4-corridor-wr2" d="M1285,350 L1220,382 L1220,428 L1285,405 Z"/>
+        <path id="g-a4-corridor-wr3" d="M1200,392 L1150,417 L1150,452 L1200,436 Z"/>
+      </g>
+      <!-- debris: wall and roof slabs that fall on "came down" -->
+      <g id="g-a4-corridor-debris" fill="#2a3644" stroke="#93a3b2" stroke-width="2">
+        <path id="g-a4-corridor-s0" d="M380,200 L700,200 L660,330 L380,300 Z"/>
+        <path id="g-a4-corridor-s1" d="M700,200 L1100,200 L1000,330 L720,320 Z"/>
+        <path id="g-a4-corridor-s2" d="M1100,200 L1540,200 L1540,300 L1180,330 Z"/>
+        <path id="g-a4-corridor-s3" d="M520,300 L760,380 L740,450 L500,380 Z"/>
+        <path id="g-a4-corridor-s4" d="M1160,380 L1400,300 L1420,380 L1180,450 Z"/>
+      </g>
+    </g>
+    <g id="g-a4-corridor-labs">
+      <text id="g-a4-corridor-l-win" class="a4k-lab" x="960" y="170" text-anchor="middle">HIGH WINDOWS</text>
+      <text id="g-a4-corridor-l-out" class="a4k-lab a4k-out" x="960" y="960" text-anchor="middle">SCHOOL WAS OUT · EMPTY</text>
+    </g>
+  </svg>
+  <div class="a4k-scan" id="g-a4-corridor-scan"></div>
+  <div class="a4k-chip" id="g-a4-corridor-chip"><span class="a4k-ct" id="g-a4-corridor-ct">KELLY ELEMENTARY</span><span class="a4k-cs" id="g-a4-corridor-cs">· CORRIDOR CAME DOWN</span></div>
+  <div class="a4k-src" id="g-a4-corridor-src">FEMA 342, section 6.2.2, p6-25; NWS Service Assessment, p12</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a4-corridor", P = "#g-a4-corridor-", DUR = 16.03;
+  const $ = s => document.querySelector(P + s);
+  const tl = gsap.timeline({ paused: true });
+  const ed = $("edges"), EL = Math.ceil(ed.getTotalLength()) + 1;
+  tl.set(ed, { strokeDasharray: EL, strokeDashoffset: EL }, 0);
+  tl.set([P + "ceil", P + "floor", P + "lwall", P + "rwall", P + "end", P + "wins path", P + "debris path"], { autoAlpha: 0 }, 0);
+  tl.set([P + "chip", P + "cs", P + "src", P + "labs text", P + "danger"], { autoAlpha: 0 }, 0);
+  tl.set(P + "debris path", { x: 0, y: 0, rotation: 0 }, 0);
+
+  /* ambient: slow push into the corridor, scan line */
+  tl.fromTo(P + "hall", { scale: 1 }, { scale: 1.06, svgOrigin: "960 520", duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: DUR / 2, ease: "none", repeat: 1, yoyo: true }, 0);
+
+  /* "Three other schools ... shelter hallways" @0.18: the corridor draws */
+  tl.to(ed, { strokeDashoffset: 0, duration: 1.6, ease: "power2.inOut" }, 0.18);
+  tl.to([P + "ceil", P + "floor", P + "lwall", P + "rwall", P + "end"], { autoAlpha: 1, duration: 0.8, ease: "power2.out" }, 0.6);
+  /* "windows high along the walls" @2.70: panes light in pairs from the front */
+  for (let i = 0; i < 4; i++)
+    tl.fromTo([P + "wl" + i, P + "wr" + i], { autoAlpha: 0, scale: 0.6, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 2.70 + i * 0.18);
+  tl.fromTo(P + "l-win", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.04);
+  tl.fromTo(P + "wins", { attr: { "fill-opacity": 0.18 } }, { attr: { "fill-opacity": 0.45 }, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 2 }, 3.5);
+  /* "Kelly Elementary" @4.88 */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: -120 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 4.88);
+  tl.to(P + "l-win", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 6.20);
+  /* "came down" @6.70: windows and slabs fall to the floor */
+  tl.to(P + "wins path", { y: 380, rotation: 25, transformOrigin: "50% 50%", autoAlpha: 0, duration: 0.7, ease: "power3.in" }, 6.70);
+  const fall = [[0, 520, -14], [1, 470, 6], [2, 520, 12], [3, 330, -20], [4, 330, 18]];
+  fall.forEach(([i, dy, r]) => {
+    tl.fromTo(P + "s" + i, { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.15, ease: "none" }, 6.70 + i * 0.05);
+    tl.to(P + "s" + i, { y: dy, rotation: r, transformOrigin: "50% 50%", duration: 0.6, ease: "bounce.out" }, 6.85 + i * 0.05);
+  });
+  tl.fromTo(P + "cs", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 7.04);
+  /* "School was already out" @7.96: the empty floor is named */
+  tl.fromTo(P + "l-out", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.96);
+  tl.to(P + "chip", { y: 6, duration: 3.2, ease: "sine.inOut" }, 8.0);
+  /* "FEMA's engineers wrote" @11.68: the source */
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 11.68);
+  tl.to(P + "l-out", { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 13.0);
+  /* "had it been in use" @13.22 / "hurt many children" @14.76: the floor under the debris turns to danger */
+  tl.fromTo(P + "danger", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6, ease: "power2.out" }, 13.22);
+  tl.fromTo(P + "danger", { attr: { "fill-opacity": 0.35 } }, { attr: { "fill-opacity": 0.6 }, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 14.76);
+  /* exit by 16.00 */
+  tl.to(P + "chip", { x: -1100, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 15.45);
+  tl.to(P + "src", { x: -1100, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 15.45);
+  tl.to(P + "hall", { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 15.50);
+  tl.to({}, { duration: DUR }, 0);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>

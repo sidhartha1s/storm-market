@@ -1,0 +1,37 @@
+<!-- ============ A1 · Four forty-seven · picture mounts (act editor, 22 Oct 26) ============
+     Paste after the act-a1 structure section. Times from index.html nx-a1-* starts + audio/a1-s<k>.words.json word starts.
+     Coverage 107.582 (bo-1 end, act-a1 start) to 277.658 (bo-2), track 1 or 2, no gap; left empty for the orchestrator:
+     ins-paul-2 256.063 to 265.113 (already mounted). The presenter circle should be OFF over cut-a1-s8 (KFOR "LIVE 4" bug sits in the corner). -->
+
+  <!-- A1-S1: the 4:47 clock carried on from g-clock-i1; 107.582 (bo-1 end) to 114.32 ("It covered" 6.54 + 107.782 = 114.322) -->
+  <div id="host-a1-clock" data-composition-id="g-a1-clock" data-composition-src="compositions/g-a1-clock.html" data-start="107.582" data-duration="6.738" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A1-S1: three-county map; 114.32 to 132.376 (nx-a1-s2 start); Comanche 7.00 + 107.782 = 114.782 lights first -->
+  <div id="host-a1-counties" data-composition-id="g-a1-counties" data-composition-src="compositions/g-a1-counties.html" data-start="114.32" data-duration="18.056" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A1-S2 + S3: risk ladder; 132.376 (nx-a1-s2) to 161.56 ("tornado watch" s3 7.636 + 153.924 = 161.56) -->
+  <div id="host-a1-ladder" data-composition-id="g-a1-ladder" data-composition-src="compositions/g-a1-ladder.html" data-start="132.376" data-duration="29.184" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A1-S3: watch box, hard cut on "tornado watch"; 161.56 to 172.29 (nx-a1-s4) -->
+  <div id="host-a1-watch" data-composition-id="g-a1-watch" data-composition-src="compositions/g-a1-watch.html" data-start="161.56" data-duration="10.73" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A1-S4: SA p23 drill paragraph; 172.29 (nx-a1-s4) to 185.05 (after "forecasters" 10.80 + 172.29 = 183.09, line 4 lands) -->
+  <div id="host-a1-drill" data-composition-id="g-a1-drill" data-composition-src="compositions/g-a1-drill.html" data-start="172.29" data-duration="12.76" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A1-S4: the WDSS desk image (NSSL, PD); 185.05 to 190.997 (nx-a1-s5) = 5.947 s; reused from I1-S3 by the Picture line -->
+  <section class="clip still-wrap" id="c-a1-s4-wdss" data-start="185.05" data-duration="5.947" data-track-index="1" data-callback="A1-S4 Picture line names wdss.jpg as the forecasters' desk; first shown 2.8 s in I1-S3"><img id="kb-a1-s4-wdss" src="media/stills/nssl-wdss.jpg" alt=""></section>
+  <!-- A1-S5: counter + spotter; 190.997 (nx-a1-s5) to 201.128 (nx-a1-s6) -->
+  <div id="host-a1-spotters" data-composition-id="g-a1-spotters" data-composition-src="compositions/g-a1-spotters.html" data-start="190.997" data-duration="10.131" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A1-S6: "a warning only helps if people hear it": stock storm base, no named place under it; 201.128 to 204.25 ("Moore" 3.122 + 201.128) -->
+  <video id="c-a1-s6-storm" src="media/stills/pixabay/pixabay-190331-DancingSky-1920x1080.mp4" data-start="201.128" data-duration="3.122" data-media-start="2" data-track-index="1" muted></video>
+  <!-- A1-S6: water-bill insert; 204.25 to 213.13 ("And that night" 12.002 + 201.128) -->
+  <div id="host-a1-waterbill" data-composition-id="g-a1-waterbill" data-composition-src="compositions/g-a1-waterbill.html" data-start="204.25" data-duration="8.88" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A1-S6: cable override TV; 213.13 to 221.833 (nx-a1-s7) -->
+  <div id="host-a1-override" data-composition-id="g-a1-override" data-composition-src="compositions/g-a1-override.html" data-start="213.13" data-duration="8.703" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A1-S7: 5:41 bulletin + timeline bar; 221.833 (nx-a1-s7) to 238.639 (nx-a1-s8) -->
+  <div id="host-a1-bulletin" data-composition-id="g-a1-bulletin" data-composition-src="compositions/g-a1-bulletin.html" data-start="221.833" data-duration="16.806" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A1-S8: Grady pins; 238.639 (nx-a1-s8) to 252.6 ("Airport" 12.36 + 238.639 = 250.999 lands, then the film) -->
+  <div id="host-a1-grady" data-composition-id="g-a1-grady" data-composition-src="compositions/g-a1-grady.html" data-start="238.639" data-duration="13.961" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A1-S8: approved KFOR Chickasha airport damage, muted, bug uncovered; 252.6 to 256.063 (ins-paul-2) = 3.463 s, source 1.0 to 4.463 (hangar, before the pan) -->
+  <video id="c-a1-s8-chickasha" class="graded" src="media/clips/cuts/cut-a1-s8.mp4" data-start="252.6" data-duration="3.463" data-media-start="1.0" data-track-index="1" muted></video>
+  <!-- 256.063 to 265.113: ins-paul-2 (mounted in index.html) -->
+  <!-- A1-S10: path start at Amber, slide to Bridge Creek, hold on the dot through the room-tone hold; 265.113 (ins-paul-2 end) to 277.658 (bo-2) -->
+  <div id="host-a1-path" data-composition-id="g-a1-path" data-composition-src="compositions/g-a1-path.html" data-start="265.113" data-duration="12.545" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  /* A1 punches */
+  punch("#kb-a1-s4-wdss", 188.85, 1.06);   /* "That evening" 16.56 + 172.29 */

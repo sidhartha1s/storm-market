@@ -1,0 +1,472 @@
+JUNE 2002                              DOSWELL AND BROOKS                                                                611
+
+Lessons Learned from the Damage Produced by the Tornadoes of 3 May 1999
+
+                            CHARLES A. DOSWELL III* AND HAROLD E. BROOKS
+
+                                      NOAA/National Severe Storms Laboratory, Norman, Oklahoma
+
+                                   (Manuscript received 28 February 2001, in final form 30 May 2001)
+
+                                                                       ABSTRACT
+
+           After the tornadoes of 3 May 1999, the Federal Emergency Management Agency formed a Building Perfor-
+        mance Assessment Team (BPAT) to examine the main tornado paths during the outbreak and to make recom-
+        mendations based on the damage they saw. This is the first time a tornado disaster has been subjected to a BPAT
+        investigation. Some aspects of the BPAT final report are reviewed and considered in the context of tornado
+        preparedness in Kansas and Oklahoma. Although the preparedness efforts of many public and private institutions
+        apparently played a large role in reducing casualties from the storm, a number of building deficiencies were
+        found during the BPAT's evaluation. Especially in public facilities, there are several aspects of tornado pre-
+        paredness that could be improved. Moreover, there is clear evidence that a nonnegligible fraction of the damage
+        associated with these storms could have been mitigated with some relatively simple and inexpensive construction
+        enhancements. Widespread implementation of these enhancements would reduce projectile loading and its as-
+        sociated threats to both life and property.
+
+1. Introduction                                                          devastation they caused have not been seen in a gener-
+                                                                         ation within the United States.
+   As events unfolded in Oklahoma and Kansas on 3
+May 1999, it became clear that this day was going to                     BPATs have been used by FEMA to review how well
+test severely the tornado preparedness of communities                 structures have performed in various disasters (hurri-
+in these two states. The largest outbreak of tornadoes                canes, earthquakes, etc.), with the goal being to reduce
+ever to hit the state of Oklahoma left scores of paths of             the damage created by similar events in the future. Be-
+destruction, including an F5 tornado with a 61-km (38                 cause this was the first BPAT study ever devoted to a
+mi)-long path that crossed several interstate highways                tornadic event, it necessarily is the benchmark study for
+and devastated several suburban areas of Oklahoma                     improving building performance in tornado situations.
+City. In the days following the event, various groups                 The team created to review building performance in the
+conducted numerous surveys in an attempt to assess the                paths of the 3 May 1999 tornadoes was charged spe-
+damage to residential, public, and commercial buildings               cifically to evaluate the performance of
+and to evaluate the performance of the tornado pre-
+paredness efforts. This included the first-ever survey of             1) private residences, including both single-family and
+a tornado event by a Building Performance Assessment                      multifamily structures;
+Team (BPAT), created by the Federal Emergency Man-
+agement Agency (FEMA). The intensity and extent of                    2) public and commercial buildings, including schools,
+the damage was high enough to warrant the creation of                     hospitals, factories, and so on; and
+FEMA's first-ever tornado BPAT; as noted in the final
+report (BPAT 1999),                                                   3) any tornado shelters in the path.
+
+   The number of tornadoes that occurred on May 3, 1999,                 In this paper, we are not going to review the detailed
+   in Oklahoma and Kansas, their severity, and the level of           findings and recommendations of the BPAT; those are
+                                                                      provided in the final report of the team (BPAT 1999),
+   * Current affiliation: Cooperative Institute for Mesoscale Meteo-  and interested readers are advised to consult that report
+rological Studies, Norman, Oklahoma.                                  for a comprehensive treatment of the findings. Rather,
+                                                                      herein, we wish to consider how the findings of that
+   Corresponding author address: Dr. Charles A. Doswell III, Co-      report relate to the overall process of tornado prepared-
+operative Institute for Mesoscale Meteorological Studies, The Uni-    ness that has been evolving in the tornado-prone parts
+versity of Oklahoma, Sarkeys Energy Center, 100 East Boyd St.,        of the United States. Although that process includes the
+Room 1110, Norman, OK 73019-1011.                                     meteorological tasks of forecasting and warning for tor-
+E-mail: cdoswell@hoth.gcn.ou.edu                                      nadoes, we are not going to review them here, because
+                                                                      they are discussed elsewhere (Andra et al. 2002; Ed-
+                                                                      wards et al. 2002). On this fateful day, it appears that
+
+ 2002 American Meteorological Society
+612  WEATHER AND FORECASTING                               VOLUME 17
+
+preparedness in Oklahoma and Kansas paid off in terms         FIG. 1. Schematic illustration of the elements of the load path (bold
+of lives spared, but it was found that improvements in     arrows) for a single-story frame home; stippled circles indicate lo-
+construction practice could reduce the amount of struc-    cations of critical attachments along the load path that are vital to
+tural damage, which might offer additional reductions      the structural integrity of the home under various types of wind load-
+in casualties.                                             ing. The arrows show the ``dead-load'' path; under uplift forces cre-
+                                                           ated in a tornado, the arrows are reversed.
+   The notion of an integrated warning system (IWS)
+has been discussed in Doswell et al. (1999), wherein it
+was suggested that, ``The IWS process actually can be
+said to begin well before any severe weather has even
+begun to loom on the horizon.'' That is, tornado pre-
+paredness involves considerable planning and effort in
+the months and years preceding an eventful day such
+as 3 May 1999. Since tornado and severe thunderstorm
+forecasting began in the United States, weather fore-
+casters have assumed considerable responsibility for
+creating public awareness concerning severe weather
+hazards. For example, the spotter program requires
+training of local storm spotters, usually by the nearest
+office of the National Weather Service (NWS). The
+BPAT's investigation can be viewed in this context as
+providing information about how the structural integrity
+of buildings is part of the preparedness process. This
+issue is often overlooked by meteorologists.
+
+   Section 2 of this paper provides a few, selected high-
+lights from the BPAT final report; the goal is not to be
+comprehensive but, rather, to note specific issues that
+will be examined herein. Section 3 presents the findings
+of an informal survey conducted during the BPAT on
+the character of home remnants left in the wake of the
+F5 tornado in the suburbs of Oklahoma City. In section
+4, the findings from the BPAT survey are discussed in
+the context of the tornado preparedness program, and
+section 5 presents conclusions we draw from the study
+of the tornado damage.
+
+2. Selected findings from the BPAT report                  cases, these attachments might marginally meet the
+                                                           building codes, but they provide little in the way of
+a. Load path integrity                                     resistance to forces creating uplift. In some cases, the
+                                                           attachments did not meet building codes. In either case,
+   In engineering terminology, the so-called load path     when structures were subjected to tornadic winds, they
+is the set of structures designed to carry the weight of   would fail first at the weak points along the load path.
+a building. For buildings, this is typically the framing.  Once failure was initiated at a weak point on the load
+Under normal conditions, the weight of the building is     path, considerable structural breakdown could follow.
+carried from the roof along the framing to the foundation  When a structural failure occurs, it also can begin with
+and, ultimately, to the ground (Fig. 1). In Oklahoma,      a breach of the external ``envelope'' of that building.
+most of the residences do not have basements. Rather,      This breach allows wind to enter and exert additional
+most are on concrete slabs; a few are built on ``crawl     force on the walls and ceilings of breached rooms, lead-
+space'' foundations. On the other hand, most homes in      ing to additional failures such as wall collapse and loss
+Kansas were on foundations that included basements,        of roofs. Side loads from the winds could literally slide
+with some having crawl space foundations. This re-         a home off its slab or foundation, resulting in additional
+gional difference in construction practice is apparently   structural failures and causing total destruction of the
+associated with differences in soil types and problems     home.
+with the water table in Oklahoma.
+                                                              In most cases of damage to homes, either in
+   The issue of the continuity and integrity of attach-    Oklahoma or Kansas, the attachments along the load
+ments along the load path of a home was clearly a major    path were inadequate to resist side loads and uplift gen-
+factor in the damage viewed by the BPAT (BPAT 1999;        erated by the wind. In general, the building codes cur-
+Marshall 2002). This has also been the case in BPAT        rently in effect should prevent structural damage in
+studies of hurricane disasters (BPAT 1993). In most        winds up to about 90 mi h2 (i.e., corresponding roughly
+JUNE 2002  DOSWELL AND BROOKS                                              613
+
+   FIG. 2. Schematic illustration of how cones of damage might begin       patterns might also be a reflection of small-scale fluc-
+with weakly constructed structures (open circles), widening as they        tuations in the wind speeds.
+approach the centerline of the tornado's path (heavy line); thin straight
+lines represent city blocks and coarse stippling defines the area of          Within those parts of a tornado path that experience
+structural damage within the tornado path.                                 F2 and greater wind speeds, some structural damage is
+                                                                           nearly inevitable. As noted, however, projectiles of all
+to F1 wind speeds). Beyond that, increasing winds                          kinds create the potential for structural damage outside
+should result in increasing amounts of structural dam-                     of the part of the path with F2 and greater wind speeds.
+age. For cases in which the codes are not met, of course,                  Besides the breach-of-envelope process already men-
+much weaker winds could initiate structural failures.                      tioned, projectile impacts can cause failures in important
+Rural areas do not typically have building codes in                        structural elements that might otherwise have been able
+force. Hence, construction practices in rural areas can                    to resist the wind.
+vary widely, complicating any interpretation of the dam-
+age produced in an event. This was particularly evident                       The BPAT observed that some very large projectiles
+in the rural segments of the tornadoes on 3 May 1999.                      are created in violent tornadoes. When a large, heavy
+                                                                           projectile, such as an automobile or utility pole, strikes
+b. Projectiles                                                             a structure, severe damage is likely to be the result.
+                                                                           When a violent tornado strikes a populated area, the
+   Once structural failures occur, the tornadic wind field                 projectile load carried in the debris cloud of the tornado
+becomes filled with debris, acting as projectiles (or,                     represents a substantially increased hazard in compar-
+``missiles'') that fly at high speed. When tornadoes in-                   ison with an equivalent tornado in an open, rural setting.
+teract with homes, common projectiles are broken fram-                     In addition to increasing tornado damage potential, it is
+ing timbers and pieces of masonry. These projectiles                       well known that being hit by a projectile is arguably
+can breach the external envelope of other homes and                        the most important of the three major causes of casu-
+thereby can initiate failures that might not otherwise                     alties in tornadoes; the other two are becoming airborne
+have occurred. The BPAT found numerous instances in                        and being crushed within collapsing structures.
+which major structural failures occurred on the far pe-
+riphery of a tornado path, typically attributable to build-                   On the periphery of the tornadoes on this day, con-
+ing code violations or marginal construction practices.                    siderable damage to brick veneer was found, typically
+These failures would generate projectiles of various siz-                  owing to inadequate attachment of the masonry exterior
+es, perhaps up to the size of whole roofs, that would                      walls to the framing of the home. Many of these failed
+hit other buildings and initiate further structural failures.              attachments represented code violations of various
+In effect, off to the side of the tornado's centerline, there              kinds. The failure of masonry veneer generates a large
+would be ``cones of damage'' that would widen as they                      source of projectiles (e.g., bricks) that can cause breach-
+approached the path center, illustrated schematically in                   of-envelope failures emanating from the failed masonry
+Fig. 2. Each of these damage cones would begin at some                     wall.
+notably weak structure, surrounded on three sides by
+other structures suffering little or no structural damage.                 c. Garages
+One weak structure, therefore, could create additional
+structural damage in nearby structures that would oth-                        Many of the structures involved in the tornadoes were
+erwise have suffered little or no damage. Because it is                    typical suburban single-family residences, and most of
+not possible after the fact to know just what would have                   them had attached garages. Common garage door con-
+happened in the absence of the initial failure, some cau-                  struction is relatively flimsy, so many of the garage
+tion should be used in applying this explanation of the                    doors failed. Most failed with inward (positive) wind
+damage cones too literally, of course. These damage                        pressure, and some with outward (negative) wind pres-
+                                                                           sure. The cases with positive wind pressure constituted
+                                                                           a breach of the envelope, permitting winds to enter the
+                                                                           garage and create additional side loads and uplift. It was
+                                                                           found that many garages were built with framing and
+                                                                           attachments that were below code requirements, even
+                                                                           when the residence met those code requirements. Ap-
+                                                                           parently, this practice arises because garages are not
+                                                                           considered to be living space, although code require-
+                                                                           ments do not make this distinction. The failure of the
+                                                                           garage structure, when it was attached to the rest of the
+                                                                           home, often initiated structural failures in the rest of the
+                                                                           home. The orientation of the garage to the damaging
+                                                                           wind was an important factor in the occurrence of dam-
+                                                                           age; doors facing into the wind were more likely to be
+                                                                           associated with structural damage to the residence than
+                                                                           doors facing away from the wind.
+614  WEATHER AND FORECASTING                                            VOLUME 17
+
+d. Manufactured homes                                                   formation that the NWS and other organizations have
+                                                                        been disseminating on what to do in the event of a
+   In virtually all examples considered by the BPAT, it                 tornado. Given the excellent NWS performance in this
+was evident that manufactured homes generally were                      event (Andra et al. 2002; Edwards et al. 2002) and the
+far more vulnerable to tornadic damage than the typical                 widespread media attention prior to the arrival of most
+site-built frame home. At one point, on the periphery                   tornadoes, it seems obvious that the death toll was much
+of a violent tornado, a manufactured home that was                      less than what might have been expected. Given that
+anchored to the ground became airborne and was totally                  many thousands of structures were heavily damaged or
+destroyed when it landed about 100 m away from its                      destroyed, a community that was less prepared might
+original site, whereas a nearby site-built home that was                have suffered many more casualties [as discussed in
+actually closer to the center of the tornado path expe-                 Doswell et al. (1999)]. Note that although the violent
+rienced no more than F2 damage. Thus, even when the                     tornado that struck in the Oklahoma City area was the
+manufactured homes were anchored to the ground, the                     first tornado ever to produce $1 billion in assessed dam-
+anchor straps often were either broken or pulled out of                 age, this figure may be misleading, owing to a steady
+the ground. Anchoring methods for the manufactured                      increase of wealth in the United States (Pielke and Land-
+homes and their integrity varied considerably from place                sea 1998; Brooks and Doswell 2001).
+to place during the survey.
+                                                                        f. Shelters
+e. Tornado preparedness
+                                                                           Despite being within what might reasonably be called
+   It was a surprise that, in many public facilities (some              ``Tornado Alley,'' there were relatively few tornado
+of the schools, many of the workplace buildings, etc.)                  shelters found within the paths of the tornadoes in
+there was only minimal preparation for dealing with                     Oklahoma and Kansas. A number of below-ground shel-
+tornadoes. Most of the facilities had little or no idea                 ters were found; many of them had a number of prob-
+where the safest portions of the structure might be. In                 lems (notably, poor ventilation and water infiltration),
+some examples, safe areas had been designated that did                  but the biggest issue with most of them was the door
+not appear to be consistent with the actual structural                  and its attachments. Many of the doors were little more
+integrity of those areas. Most public facilities did not                than plywood sheathed in metal, and some had deteri-
+have a National Oceanic and Atmospheric Administra-                     orated since their installation. Most troublesome were
+tion (NOAA) weather radio for monitoring the tornado                    the absence of solid attachments, with flimsy hinges and
+threat and had only a rudimentary plan in place for                     a simple sliding bolt to hold the door. The general rec-
+tornado safety. At least one school used what amounted                  ommendation for shelter doors is six attachment points,
+to manufactured homes on their campus for additional                    including three sturdy hinges and three deadbolts, with
+classroom space, and, in the event of a warning, the                    all six attachments spaced roughly equally along the
+students in those buildings would have to evacuate their                door sides.2 Such a solid attachment of a door was not
+classroom and travel along walkways outdoors into the                   found during the BPAT survey. A relatively new in-
+main building to seek shelter. That school did not have                 ground shelter design performed well for its owner in
+a NOAA weather radio on site. Moreover, the hallway                     an F4 damage area associated with the tornado near
+in the main building designated as a shelter area did not               Wichita, Kansas, despite having some minor deficien-
+appear to be structurally safe, owing to the presence of                cies in ventilation and door attachment. Although the
+``clerestory'' windows,1 which are vulnerable to pro-                   BPAT found some deficiencies with the underground
+jectile penetration and reduce the resistance of the cor-               shelters, nevertheless they proved adequate to prevent
+ridor walls to lateral wind forces.                                     serious injuries to their occupants. In one case, a back-
+                                                                        yard underground shelter door had been torn off its en-
+   A few facilities, like one manufacturing plant in Kan-               trance and a clothes dryer had entered the shelter. As it
+sas, had done considerable planning for tornadoes. They                 turned out, in this case, the owners of that shelter had
+used NOAA weather radios, had well-conceived plans                      sought refuge in their neighbor's underground shelter
+for getting occupants to adequate shelters, and actually                in preference to their own and so escaped injury. It is
+practiced executing their plans during drills 2 times per               not known why they chose to use their neighbor's shelter
+year. The plant in Kansas was damaged by the tornado,                   rather than theirs.
+but the execution of their tornado action plan prevented
+any casualties. Of interest was that the person respon-                    A handful of ``safe rooms''3 constructed to meet
+sible for safety in the plant called for movement to
+shelter as if it were a drill, apparently to reduce the                    2 See ``National Performance Criteria for Tornado Shelters,'' pam-
+potential for panic.                                                    phlet issued by FEMA, in collaboration with the Wind Engineering
+                                                                        Research Center at Texas Tech University in Lubbock, Texas.
+   Most of the public seems to have been using the in-
+                                                                           3 The FEMA recommendations for these safe rooms, developed in
+   1 That is, windows designed for lighting at the top of the corridor  collaboration with engineers from Texas Tech University, are sum-
+walls.                                                                  marized in ``Taking Shelter from the Storm: Building a Safe Room
+                                                                        Inside Your House,'' a free pamphlet issued by FEMA.
+JUNE 2002  DOSWELL AND BROOKS                                                                                615
+
+FEMA recommendations had been constructed in and               TABLE 1. Results of informal core-remnants survey. Subjective
+near tornado paths. Apart from some questions regard-        determination was made concerning the likelihood of avoiding serious
+ing door attachments, these safe rooms performed as          injury or death within the remnant rooms, corresponding to the yes/
+intended; no casualties occurred in them. One such safe      no columns under each room type. A yes means a high likelihood of
+room was on the outskirts of F4 damage in Midwest            avoiding serious injury or death, whereas a no means a low likelihood
+City, Oklahoma. Another was on the periphery of F5           of avoiding serious injury or death. The first 38 data points were all
+damage near Bridge Creek, Oklahoma.                          independent core remnants, and each core remnant was determined
+                                                             to be one of the set (kitchen, closet, or bathroom). Subsequent data
+   One manufactured-home park in Kansas had a com-           points (38-91) are not necessarily independent core remnants, be-
+munity shelter. Numerous problems were found with            cause it was determined that core remnants might include any or all
+that shelter, including                                      of the set (kitchen, closet, or bathroom).
+
+� shelter access (door was normally locked),                  Data     Kitchen         Closet      Bathroom
+� lack of access for persons with disabilities,              point
+� long travel times for some of the residents to reach              Yes No         Yes         No  Yes  No
+                                                              1-38
+  the shelter,                                               39-94  5  33          27          11  29   9
+� rules for access that excluded personal pets,
+� moisture infiltration,                                      All   0           0  30          8   45   11
+� poor ventilation, and
+� inadequate doors and hardware.                                    5  33          57          19  74   20
+
+The shelter was partially underground, and the flat roof     During the first part of the work (data points 1-38), we
+was covered with a loose stone aggregate that likely         only determined which kind of room was left among
+would become a source of small projectiles in strong         the core remnants. As our study proceeded, however,
+winds. The rule excluding pets apparently resulted in        we found that several rooms could remain within the
+the death of a man who was refused admittance after          core at the same time, so data points 39-94 do not
+he chose not to abandon his dog.                             necessarily represent independent core remnants. The
+                                                             finding is clearly in favor of seeking shelter in bath-
+3. Core remnants study                                       rooms or closets, if adequate shelter is not available.
+                                                             Kitchens often were reduced to one standing wall that
+   As an unofficial part of the study, one of us (CAD)       typically included cabinets, on the other side of the wall
+participated in a nonsystematic examination of those         from a hallway leading to a bathroom or closet. Whereas
+homes that had lost roofs and exterior walls but still       the bathrooms or closets usually provided what clearly
+had some interior walls standing (and so would be rated      would have been adequate shelter in most such cases,
+as F3 damage). In effect, during the BPAT survey, we         the kitchens on the other side of the remaining interior
+considered ``targets of opportunity'' as we walked along     wall were regularly found to be open to the outside on
+the damage path in residential housing areas. There was      three sides and so would be very hazardous. Projectiles
+no attempt to find and assess all such remaining interior    penetrated the walls of some otherwise relatively intact
+walls (hereinafter called core remnants). The goal was       core-remnant rooms, rendering them unlikely places to
+to determine the kind of rooms left standing in F3 dam-      avoid serious injury or death.4
+age areas. According to the Fujita scale (e.g., Fujita
+1981), at damage levels of F4 and F5, no interior walls      4. Discussion of findings
+are left standing, so occupant survivability is a matter
+of luck if the occupants cannot reach adequate shelter.         It is very clear from the outcome of this devastating
+                                                             outbreak of tornadoes that, on the whole, the public in
+   After the pioneering engineering studies done by the      Oklahoma and Kansas is reasonably well prepared to
+engineers at Texas Tech University in the years since        handle tornado disasters. The limited toll of fatalities,
+the Lubbock, Texas, tornado of 11 April 1970 (Fujita         given the enormous magnitude of the event, is a tribute
+1970), the NWS and other agencies charged with tor-          to the many long hours of effort, spread out over many
+nado safety have recommended that occupants of resi-         years, by the public and private institutions responsible
+dences who cannot gain access to proper shelter (either      for public safety in this part of Tornado Alley. We be-
+below ground or within an in-house safe room) should         lieve it is unlikely that this performance would be pos-
+seek shelter in interior rooms (without windows). The        sible in parts of the country in which the perceived
+idea is to put as many walls between the occupants and       hazard of tornadoes is much lower than in Oklahoma
+the exterior as possible. Bathrooms, closets, and under      and Kansas.
+stairways have been recommended, owing to the ad-
+ditional structural elements that might resist the tornadic     However, the story regarding damage to structures
+winds. It seems that most residents within the path of       from the storm is much less optimistic. It is hard to
+the 3 May 1999 tornadoes followed these instructions.        understand how and why construction practice is so
+We were interested to confirm the validity of this advice.
+                                                                4 We had no way of knowing the actual outcome regarding injuries
+   Results of our informal study are shown in Table 1.       or fatalities to those occupying core-remnant rooms during the tor-
+                                                             nado.
+616  WEATHER AND FORECASTING                                                                          VOLUME 17
+
+        FIG. 3. Frequency of days per millennium with one or more violent (F4/F5) tornado touchdowns
+     within a grid box of 80 km on a side, based on tornado data from 1921 to 1995. This figure can
+     also be found online at http://www.nssl.noaa.gov/hazard.
+
+marginal in that part of the nation with the highest like-       decrease the damage potential from surrounding struc-
+lihood of violent tornadoes (Fig. 3). It seems obvious           tures is for all the structures to be enhanced over existing
+that no affordable, practical home could survive intact          codes. That is, it would be necessary to make entire
+from the impact of F4 or F5 tornadic wind speeds. How-           communities more resistant to tornadic winds to gain
+ever, several facts are relevant to this. First of all, violent  the full benefit from construction enhancements beyond
+(F4 and F5) tornadoes are unlikely events, even when             existing codes.
+given that a tornado has occurred. Violent tornadoes are
+only a few percent of the total number of tornadoes.                It is clear, as well, that efforts must be undertaken to
+Moreover, in a violent tornado, the strongest winds (i.e.,       reduce the likelihood of serious injuries or fatalities as-
+those of F4 or F5 intensity) occupy only a small per-            sociated with manufactured homes. It was curious that
+centage of the damage path. From what the BPAT report            in the Oklahoma City-area tornadoes, no manufactured-
+shows, some relatively modest enhancements to the con-           home parks were hit. Only in the unincorporated com-
+struction of a house (e.g., ``hurricane clips'' that tie         munity of Bridge Creek was there a concentration of
+together the framing members along the load path and             manufactured homes hit by the tornado, resulting in 11
+anchor bolts attaching the bottom plate of a wall to the         of the 36 fatalities produced by the F5 tornado. The
+foundation or slab) could reduce the damage, and es-             likelihood of having another violent tornado sweep
+pecially the structural damage, done to homes in the             through a populated area without hitting manufactured
+parts of a tornado path that experience winds of F3 or           home parks is probably not very high and appears to
+lower intensity. The installation costs for these enhance-       be decreasing (Brooks and Doswell 2002).
+ments are nominal for new construction, even including
+labor. Retrofitting these construction enhancements into            In some parts of the country, there are ``parks'' at
+existing construction is unfortunately not very practical        which recreational vehicles of those on extended va-
+and would be much more expensive.                                cations stay for months at a time, representing another
+                                                                 highly vulnerable residence. Local authorities often do
+   Limiting the damage to residences is not so simple            not know how many people are in such temporary
+as having one's own home built properly. As the BPAT             ``housing'' areas, because the residents are highly tran-
+findings make clear, having poorly constructed homes             sient. In locations dominated by the presence of man-
+in the neighborhood increases everyone's chances for             ufactured homes or recreational vehicles, the inherent
+serious damage from F2 or lower wind speeds, even if             vulnerability of such residences suggests that construc-
+isolated individual homes are capable of resisting struc-        tion enhancements are unlikely to do much to reduce
+tural damage at those wind speeds. The best way to               the potential casualties. Therefore, the way to protect
+                                                                 the residents (even if they are only temporary) must be
+JUNE 2002  DOSWELL AND BROOKS                                             617
+
+to provide adequate shelters. There are many possible                     provement. This fact is particularly noticeable in the
+options for this that might be practical.                                 area of public facilities, including workplaces. Even
+                                                                          within central Oklahoma, the nation's center for severe-
+   It is also difficult to understand how and why the                     weather awareness, many schools, sporting facilities,
+public in Oklahoma and Kansas generally has lost in-                      workplaces, shopping areas, and other public facilities
+terest in building tornado shelters, either below ground                  do not have adequate tornado-preparedness plans. The
+or as in-home safe rooms. With FEMA's financial as-                       current minimal use of the NOAA weather radio as a
+sistance, some fraction of the rebuilt homes in the paths                 means for getting NWS warnings as soon as possible,
+of the 3 May 1999 storms will now include an in-home                      especially for public-use facilities (schools, factories,
+safe room. The challenge clearly is to convince the pub-                  sporting events, etc.) is a disturbing finding, and we
+lic that it is worth an investment of several thousand                    conclude that this sorely needs to be addressed. Many
+dollars to construct some form of tornado shelter, even                   public facilities need to work with someone trained to
+though most people have not yet experienced a tornado                     recognize the presence (or absence) of truly safe shelter
+hit firsthand, and, given that the event's return frequency               areas within their structures. If no safe shelter exists
+is on the order of 1000 years for any particular square                   within the existing buildings, then shelters clearly need
+mile in central Oklahoma, it is unlikely they ever will                   to be constructed. Practical plans for getting occupants
+experience a tornado.                                                     to shelter in the event of a tornado need to be developed
+                                                                          in many places, and need to be practiced at least 2 times
+   Although the 3 May 1999 tornadoes were devastating,                    per year.
+they are by no means indicative of the worst possible
+events. In addition to not hitting very many manufac-                        It seems inexplicable that the public has increasingly
+tured-home parks, the tornadoes did not hit any public                    chosen not to build tornado shelters in the tornado-prone
+facilities with a large vulnerable population. Such events                areas of the United States. The choice to build a shelter
+have happened in the past, but apparently many public                     is clearly a personal one, given that it requires a con-
+facilities (including workplaces) are not very well pre-                  siderable investment, and should remain optional rather
+pared to handle tornado disasters. The United States has                  than mandatory for private residences. In tornado-prone
+not had a large school in session hit by a significant                    areas, home builders should be encouraged to offer safe
+tornado since the 1950s.5 The BPAT findings of a con-                     rooms as an option in new construction, whereby it is
+siderable shortfall in tornado preparedness by some                       possible to amortize the cost of a safe room over the
+schools and other public facilities represent a consid-                   length of a mortgage. However, we conclude that serious
+erable challenge to those institutions that have accepted                 consideration should be given to mandating the con-
+responsibility for public safety.                                         struction of shelters for mobile-home and recreational-
+                                                                          vehicle parks and in many other public facilities (es-
+5. Conclusions                                                            pecially in schools and day-care centers).
+
+   The events of 3 May 1999 contain several lessons                          Recently, the North Texas Council of Governments
+regarding tornado preparedness. The first is that, at least               has used the data from the 3 May 1999 event to simulate
+within the plains region of the United States where tor-                  what might happen if a similar outbreak of tornadoes
+nadoes are most common, the level of preparedness is                      hit in north Texas.6 The results of this study are stag-
+sufficient to result in a substantial reduction in casual-                gering, including the potential for several billion dollars
+ties. Most people were aware of what to do in the event                   in damage and thousands of casualties. The outcomes
+of a tornado, and the actions they took resulted in a                     of these experiments depend strongly on the specific
+remarkably low death toll for this event, given the in-                   circumstances of the outbreak: time of day, day of the
+tensity and number of tornadoes. The forecast and warn-                   week, the details of just what lies in the path, and so
+ing system in place is working well, especially for major                 on. Such hypothetical scenarios represent what we con-
+events. The concept of the integrated warning system,                     sider to be a sobering dose of reality. As noted in Dos-
+which includes a collaboration between public- and pri-                   well et al. (1998), public apathy as a result of the long
+vate-sector institutions, provided excellent warnings and                 interval between major disasters continues to be a major
+information to the public. Although we have not dis-                      factor in reducing tornado preparedness. Despite seem-
+cussed it, the emergency response after the event ap-                     ing to represent a form of ``scare tactics,'' the devel-
+pears to have been excellent and no doubt was respon-                     opment of such scenarios around the tornado-prone parts
+sible for amelioration of considerable postevent suffer-                  of the United States is certainly to be encouraged, if for
+ing.                                                                      no other reason than to offset public apathy.
+
+   However, another important lesson is that the pre-                        Damage mitigation has been given only minimal at-
+paredness program still has some aspects that need im-
+                                                                             6 ``Tornado Damage Risk Assessment,'' unpublished report avail-
+   5 On 16 November 1989, a number of schoolchildren were killed          able from North Central Texas Council of Governments, 616 Six Flags
+by a falling wall in Newburgh, New York, by what was called a             Dr., Suite 200, Centerpoint Two, P.O. Box 5888, Arlington, TX 76005-
+tornado (rated F1). It is virtually certain that this was not a tornado,  5888. More information is available online at http://
+but was a downburst.                                                      www.dfwinfo.com/weather/study.html.
+618  WEATHER AND FORECASTING                                           VOLUME 17
+
+tention over the years. Reducing damage is arguably of                    Acknowledgments. We are especially grateful to Dr.
+lower priority than reduction of casualties, and it is ap-             Peter Montpellier for his insights and his contributions
+parent that many believe there is nothing that can be                  to the study of core remnants during the BPAT survey.
+done to resist violent tornadoes. However, it is also ap-              The anonymous reviewers contributed many useful sug-
+parent that reduction of damage could well be a factor                 gestions to improve the presentation.
+in reducing hazards to the public. That is, for example,
+if we can minimize the projectile load in tornadoes by                                                  REFERENCES
+eliminating unnecessary structural damage outside of
+F4 and F5 wind speed areas (only a tiny fraction of the                Andra, D. L., Jr., E. M. Quoetone, and W. F. Bunting, 2002: Warning
+total area affected by tornadoes), then it is likely that                    decision making: The relative roles of conceptual models, tech-
+this would result in reduced casualties. Home builders                       nology, strategy, and forecaster expertise on 3 May 1999. Wea.
+in tornado-prone areas should be encouraged to offer                         Forecasting, 17, 559-566.
+enhanced load path attachments as an option, preferably
+within whole developments, to reduce damage created                    BPAT, 1993: Hurricane Andrew in Florida: Observations, recom-
+by debris from weakly constructed nearby homes. Per-                         mendations, and technical guidance. FEMA Publ. FIA-22, Item
+haps the insurance industry can be encouraged to offer                       3-0180, 93 pp. [Available from Federal Emergency Management
+premium reductions for homeowners who live in disas-                         Agency, Mitigation Directorate, Washington, DC 20472.]
+ter-resistant developments (including safe rooms). We
+are very supportive of FEMA's Project Impact,7 which                   ----, 1999: Midwest tornadoes of May 3, 1999: Observations, rec-
+seeks to develop communities that are resistant to a wide                    ommendations, and technical guidance. FEMA Publ. 342, Item
+range of disasters, including tornadoes.                                     9-1035, 195 pp. [Available from Federal Emergency Manage-
+                                                                             ment Agency, Mitigation Directorate, Washington, DC 20472.]
+   As our understanding of tornadoes has grown, it has
+become increasingly clear that damage mitigation from                  Brooks, H. E., and C. A. Doswell III, 2001: Normalized damage from
+tornadoes is quite possible. As with other aspects of                        major tornadoes in the United States: 1890-1999. Wea. Fore-
+tornado preparedness, a process of damage mitigation                         casting, 16, 168-176.
+necessarily begins long before a potential tornado day.
+If there is to be some positive impact on how decisions                ----, and ----, 2002: Deaths in the 3 May 1999 Oklahoma City
+are made regarding damage mitigation and shelter con-                        tornado from a historical perspective. Wea. Forecasting, 17,
+struction, a considerable effort must be expended by                         354-361.
+those public and private institutions responsible for pub-
+lic welfare in disasters. It is hoped that we can develop              Doswell, C. A., III, A. R. Moller, and H. E. Brooks, 1999: Storm
+a collaboration among all those institutions rather than                     spotting and public awareness since the first tornado forecasts
+a disorganized collection of individual programs.                            of 1948. Wea. Forecasting, 14, 544-557.
+
+   7 Information about Project Impact can be found online at: http://  Edwards, R., S. F. Corfidi, R. L. Thompson, J. S. Evans, J. P. Craven,
+www.fema.gov/.                                                               J. P. Racy, D. W. McCarthy, and M. D. Vescio, 2002: Storm
+                                                                             Prediction Center forecasting issues related to the 3 May 1999
+                                                                             tornado outbreak. Wea. Forecasting, 17, 544-558.
+
+                                                                       Fujita, T. T., 1970: The Lubbock tornadoes: A study of suction spots.
+                                                                             Weatherwise, 23, 160-173.
+
+                                                                       ----, 1981: Tornadoes and downbursts in the context of generalized
+                                                                             planetary scales. J. Atmos. Sci., 38, 1511-1534.
+
+                                                                       Marshall, T. P., 2002: Tornado damage survey at Moore, Oklahoma.
+                                                                             Wea. Forecasting, 17, 582-598.
+
+                                                                       Pielke, R. A., Jr., and C. W. Landsea, 1998: Normalized hurricane
+                                                                             damages in the United States: 1925-95. Wea. Forecasting, 13,
+                                                                             621-631.
+

@@ -1,0 +1,162 @@
+<template>
+<!--
+  g-a2-dow · ep-moore-1999 · A2-S3, host 319.26 (nx-a2-s3) for 24.688 s to ins-a2-newcastle 343.948, track 2, full frame.
+  Self-made (never Wurman et al.'s Figure 1). Built on library/inhouse/radar-beam.html's language: side view, ground line,
+  radar on the left, beam as a gradient wedge with travelling pulses, storm on the right. SCHEMATIC, NOT TO SCALE.
+  Claims (fact_check / Picture line A2-S3): Doppler on Wheels truck radar; about 100 ft above ground; 6:54 PM over Bridge
+  Creek; about 302 mph +/- 11 (Wurman et al. 2007, BAMS); 318 mph announced 1999 (NWS Norman event page, FAQ).
+  Cues: audio/a2-s3.words.json, local = words s.
+-->
+<style>
+  #g-a2-dow-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .gdw-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gdw-corner { position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(ellipse 520px 440px at 1790px 940px, #04070c 0%, #04070c 45%, rgba(4,7,12,0) 100%); }
+  .gdw-vig { position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse at 50% 50%, rgba(3,5,7,0) 60%, rgba(3,5,7,0.55) 100%); }
+  .gdw-lab { font-family:Arial, sans-serif; font-weight:700; font-size:30px; letter-spacing:3px; fill:#dfe7ee; paint-order:stroke; stroke:#04070c; stroke-width:6px; }
+  .gdw-labA { fill:#e8c56a; }
+  .gdw-glass { position:absolute; inset:auto; box-sizing:border-box; border-radius:28px; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14);
+    opacity:0; visibility:hidden; white-space:nowrap; }
+  .gdw-clock { left:96px; top:60px; padding:16px 34px 18px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:1.1; color:#f2f5f8; }
+  .gdw-read { left:140px; top:250px; padding:18px 40px 22px; }
+  .gdw-rk { display:block; font-family:Arial, sans-serif; font-weight:700; font-size:28px; letter-spacing:5px; color:#93a3b2; line-height:1.3; }
+  .gdw-rv { display:flex; align-items:baseline; gap:18px; }
+  .gdw-rn { font-family:'Courier New', monospace; font-weight:700; font-size:112px; line-height:1.0; color:#e74c3c; font-variant-numeric:tabular-nums; }
+  .gdw-ru { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; color:#f2f5f8; }
+  .gdw-pm { font-family:Arial, sans-serif; font-weight:700; font-size:44px; color:#e8c56a; opacity:0; visibility:hidden; }
+  .gdw-ann { left:140px; top:505px; padding:12px 30px 14px; font-family:Arial, sans-serif; font-weight:700; font-size:30px; letter-spacing:3px; color:#c8d3e0; }
+  .gdw-src { position:absolute; inset:auto; left:96px; bottom:54px; font-family:Arial, sans-serif; font-weight:700; font-size:20px; letter-spacing:1px;
+    color:#c8d3e0; white-space:nowrap; text-shadow:0 0 6px #04070c, 0 0 12px #04070c; opacity:0; visibility:hidden; }
+  #g-a2-dow-truck, #g-a2-dow-beamg, #g-a2-dow-bracket, #g-a2-dow-svg text { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a2-dow-root" data-composition-id="g-a2-dow" data-width="1920" data-height="1080" data-duration="24.688">
+  <svg class="gdw-svg" id="g-a2-dow-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <linearGradient id="g-a2-dow-bg" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#7fb2e5" stop-opacity="0.75"/><stop offset="100%" stop-color="#7fb2e5" stop-opacity="0.12"/>
+      </linearGradient>
+      <linearGradient id="g-a2-dow-cloud" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#1c2733"/><stop offset="100%" stop-color="#2f3c49"/>
+      </linearGradient>
+      <linearGradient id="g-a2-dow-gnd" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#121c26"/><stop offset="100%" stop-color="#05080b"/>
+      </linearGradient>
+      <linearGradient id="g-a2-dow-fun" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#5a6774"/><stop offset="50%" stop-color="#93a3b2"/><stop offset="100%" stop-color="#4a5560"/>
+      </linearGradient>
+      <clipPath id="g-a2-dow-fclip"><path d="M1170,262 L1390,262 C1340,420 1302,640 1298,800 L1252,800 C1248,640 1220,420 1170,262 Z"/></clipPath>
+    </defs>
+    <!-- ground and storm -->
+    <rect x="0" y="800" width="1920" height="280" fill="url(#g-a2-dow-gnd)"/>
+    <path id="g-a2-dow-ground" d="M0,800 L1920,800" stroke="#4a5560" stroke-width="3"/>
+    <g id="g-a2-dow-storm">
+      <path d="M760,250 C780,170 900,150 980,170 C1040,110 1200,100 1270,150 C1350,100 1520,110 1580,170 C1680,150 1820,180 1920,230 L1920,300 C1700,290 1500,280 1390,262 L1170,262 C1050,270 900,280 760,270 Z" fill="url(#g-a2-dow-cloud)" stroke="#4a5560" stroke-width="2"/>
+      <g id="g-a2-dow-funnel">
+        <path d="M1170,262 L1390,262 C1340,420 1302,640 1298,800 L1252,800 C1248,640 1220,420 1170,262 Z" fill="url(#g-a2-dow-fun)" fill-opacity="0.9"/>
+        <g clip-path="url(#g-a2-dow-fclip)" stroke="#2a3644" stroke-width="5" fill="none" opacity="0.8">
+          <g id="g-a2-dow-bands">
+            <path d="M1150,330 L1410,300"/><path d="M1150,410 L1410,380"/><path d="M1150,490 L1410,460"/><path d="M1150,570 L1410,540"/>
+            <path d="M1150,650 L1410,620"/><path d="M1150,730 L1410,700"/><path d="M1150,810 L1410,780"/><path d="M1150,890 L1410,860"/>
+          </g>
+        </g>
+      </g>
+      <ellipse id="g-a2-dow-dust" cx="1275" cy="792" rx="120" ry="26" fill="#5a6774" fill-opacity="0.45"/>
+    </g>
+    <!-- beam from the dish to the funnel, about 100 ft above the ground (schematic) -->
+    <g id="g-a2-dow-beamg">
+      <path id="g-a2-dow-beam" d="M488,690 L1275,730 L1275,790 Z" fill="url(#g-a2-dow-bg)"/>
+      <path id="g-a2-dow-axis" d="M488,690 L1275,760" stroke="#7fb2e5" stroke-width="2" stroke-opacity="0.9"/>
+      <g id="g-a2-dow-pulses" fill="#f2f5f8">
+        <circle id="g-a2-dow-p1" r="5" cx="488" cy="690"/><circle id="g-a2-dow-p2" r="5" cx="488" cy="690"/><circle id="g-a2-dow-p3" r="5" cx="488" cy="690"/>
+      </g>
+    </g>
+    <!-- height bracket beside the beam's spot on the funnel; its label sits above the beam (y 688), clear of the wedge (beam top 707 at x 822) -->
+    <g id="g-a2-dow-bracket" stroke="#e8c56a" stroke-width="3" fill="none">
+      <path d="M1150,760 L1150,800 M1138,760 L1162,760 M1138,800 L1162,800"/>
+    </g>
+    <text id="g-a2-dow-t100" class="gdw-lab gdw-labA" x="1128" y="688" text-anchor="end">ABOUT 100 FT UP</text>
+    <!-- the radar truck (icon) -->
+    <g id="g-a2-dow-truck">
+      <rect x="280" y="732" width="190" height="52" rx="6" fill="#2a3644" stroke="#93a3b2" stroke-width="2"/>
+      <path d="M470,748 L520,748 L540,770 L540,784 L470,784 Z" fill="#33414f" stroke="#93a3b2" stroke-width="2"/>
+      <rect x="486" y="752" width="30" height="16" fill="#7fb2e5" fill-opacity="0.5"/>
+      <circle cx="320" cy="790" r="16" fill="#0b1016" stroke="#93a3b2" stroke-width="3"/>
+      <circle cx="430" cy="790" r="16" fill="#0b1016" stroke="#93a3b2" stroke-width="3"/>
+      <circle cx="510" cy="790" r="16" fill="#0b1016" stroke="#93a3b2" stroke-width="3"/>
+      <path d="M380,732 L400,712 L420,732" fill="#4a5560"/>
+      <g id="g-a2-dow-dish"><path d="M462,668 C452,688 456,708 470,722 L496,690 Z" fill="#c8d3e0" stroke="#f2f5f8" stroke-width="2"/></g>
+      <path d="M400,712 L470,700" stroke="#93a3b2" stroke-width="5"/>
+    </g>
+    <text id="g-a2-dow-tdow" class="gdw-lab" x="410" y="860" text-anchor="middle">DOPPLER ON WHEELS</text>
+    <text id="g-a2-dow-tbc" class="gdw-lab gdw-labA" x="1275" y="860" text-anchor="middle">BRIDGE CREEK</text>
+  </svg>
+  <div class="gdw-vig"></div>
+  <div class="gdw-corner"></div>
+  <div class="gdw-glass gdw-clock" id="g-a2-dow-clock">6:54 PM</div>
+  <div class="gdw-glass gdw-read" id="g-a2-dow-read">
+    <span class="gdw-rk" id="g-a2-dow-rk">MEASURED WIND</span>
+    <span class="gdw-rv" id="g-a2-dow-rv"><span class="gdw-ru" id="g-a2-dow-about">ABOUT</span><span class="gdw-rn" id="g-a2-dow-rn">302</span><span class="gdw-ru" id="g-a2-dow-mph">MPH</span><span class="gdw-pm" id="g-a2-dow-pm">± 11</span></span>
+  </div>
+  <div class="gdw-glass gdw-ann" id="g-a2-dow-ann">318 MPH · ANNOUNCED 1999</div>
+  <div class="gdw-src" id="g-a2-dow-src">Wurman et al. 2007, BAMS · NWS Norman event page, FAQ · Schematic, not to scale</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a2-dow-";
+  const DUR = 24.688;
+  const C = { radar: 2.90, dow: 4.64, tornado: 6.44, beam: 7.24, h100: 9.18, t654: 11.18, bc: 12.48, v302: 14.02, pm11: 16.60, wurman: 17.54, v318: 21.94 };
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "truck", P + "beamg", P + "bracket", P + "t100", P + "tdow", P + "tbc", P + "clock", P + "read", P + "pm", P + "ann", P + "src"], { autoAlpha: 0 }, 0);
+  tl.set(P + "truck", { x: -420 }, 0);
+  tl.set(P + "beam", { scaleX: 0, svgOrigin: "488 690" }, 0);
+  tl.set(P + "axis", { scaleX: 0, svgOrigin: "488 690" }, 0);
+  tl.set(P + "storm", { x: 0 }, 0);
+
+  /* ambient: the funnel's bands spin down, the storm drifts east, the dust churns */
+  tl.fromTo(P + "bands", { y: 0 }, { y: -80, duration: 0.9, ease: "none", repeat: 26 }, 0);
+  tl.fromTo(P + "storm", { x: 0 }, { x: 40, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "funnel", { skewX: 0, svgOrigin: "1275 262" }, { skewX: -3, svgOrigin: "1275 262", duration: 2.2, ease: "sine.inOut", yoyo: true, repeat: 10 }, 0);
+  tl.fromTo(P + "dust", { scaleX: 1, svgOrigin: "1275 792" }, { scaleX: 1.25, svgOrigin: "1275 792", duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 16 }, 0);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.4);
+
+  /* A RESEARCH RADAR @2.90: the truck rolls in; DOPPLER ON WHEELS @4.64 */
+  tl.to(P + "truck", { autoAlpha: 1, duration: 0.2, ease: "none" }, C.radar);
+  tl.to(P + "truck", { x: 0, duration: 0.9, ease: "power3.out" }, C.radar);
+  tl.fromTo(P + "dish", { rotation: -25, svgOrigin: "470 700" }, { rotation: 0, svgOrigin: "470 700", duration: 0.6, ease: "back.out(2)" }, C.radar + 0.8);
+  tl.fromTo(P + "tdow", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.dow);
+
+  /* THIS TORNADO @6.44 to BEAM @7.24: the beam reaches out to the funnel, then pulses travel it */
+  tl.to(P + "beamg", { autoAlpha: 1, duration: 0.2, ease: "none" }, C.tornado);
+  tl.to([P + "beam", P + "axis"], { scaleX: 1, svgOrigin: "488 690", duration: 0.8, ease: "power3.out" }, C.tornado);
+  ["p1", "p2", "p3"].forEach((p, i) =>
+    tl.fromTo(P + p, { attr: { cx: 488, cy: 690 }, opacity: 1 }, { attr: { cx: 1275, cy: 760 }, opacity: 0.2, duration: 1.2, ease: "none", repeat: 12, immediateRender: false }, C.beam + i * 0.4));
+  tl.fromTo(P + "beam", { attr: { "fill-opacity": 1 } }, { attr: { "fill-opacity": 0.7 }, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 23, immediateRender: false }, C.beam);
+
+  /* 100 FEET @9.18: bracket and label */
+  tl.fromTo(P + "bracket", { autoAlpha: 0, scaleY: 0, svgOrigin: "1150 800" }, { autoAlpha: 1, scaleY: 1, svgOrigin: "1150 800", duration: 0.4, ease: "power3.out" }, C.h100);
+  tl.fromTo(P + "t100", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, C.h100 + 0.1);
+
+  /* 654 @11.18: clock chip; BRIDGE CREEK @12.48 under the funnel */
+  tl.fromTo(P + "clock", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, C.t654);
+  tl.fromTo(P + "tbc", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.bc);
+
+  /* 302 @14.02: the readout; count-up opens on 120, fast then slow into 302; +/- 11 @16.60 */
+  const rn = document.querySelector(P + "rn");
+  tl.fromTo(P + "read", { autoAlpha: 0, x: -80 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, C.v302 - 0.15);
+  const cnt = { v: 120 };
+  tl.fromTo(cnt, { v: 120 }, { v: 302, duration: 1.0, ease: "power4.out", immediateRender: false, onUpdate: () => { rn.textContent = Math.round(cnt.v); } }, C.v302);
+  tl.fromTo(P + "pm", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, C.pm11);
+  tl.fromTo(P + "pm", { scale: 1 }, { scale: 1.15, duration: 0.2, ease: "sine.out", yoyo: true, repeat: 1, transformOrigin: "0% 60%", immediateRender: false }, C.pm11 + 0.4);
+  tl.fromTo(P + "src", { color: "#c8d3e0" }, { color: "#f2f5f8", duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, C.wurman);
+  tl.fromTo(P + "read", { y: 0 }, { y: -6, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, C.v302 + 1.2);
+
+  /* 318 @21.94: the small second chip beside it */
+  tl.fromTo(P + "ann", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, C.v318);
+  tl.to({}, { duration: DUR }, 0);
+  window.__timelines["g-a2-dow"] = tl;
+})();
+</script>
+</template>

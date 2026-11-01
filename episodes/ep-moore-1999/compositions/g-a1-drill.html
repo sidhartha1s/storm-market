@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a1-drill · ep-moore-1999 · A1-S4 Service Assessment p23, the drill paragraph highlighted · host 172.29 to 185.05 (12.76 s), track 2, full frame.
+  Page: media/stills/sa/sa-page-pdf33-p23-drill-finding10.png (NWS Service Assessment, printed p23, PD; 1700 x 2200 at 200 dpi).
+  The whole page width is in frame at every scale (text column 200 to 1500 page px -> 167 to 1753 screen px at the end scale 1.22),
+  so no line is cut at a box edge. Highlights are page-px rectangles on the four lines of the Training FACT.
+  Local time = episode s minus 172.29 (= a1-s4 word s). Cues: "One page" 0 -> page rises; "Just before May 3rd" 2.42 -> lines 1-2
+  (drill just prior to the outbreak); "Norman office" 3.94 -> chip NWS NORMAN; "violent tornado" 8.10 -> line 3;
+  "forecasters at those desks" 10.80 -> line 4 (each forecaster wrote warnings). Ends 12.76 on the cut to the WDSS desk image. -->
+<template>
+<style>
+  #g-a1-drill-root { position:absolute; inset:0; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial, sans-serif; }
+  .a1d-page { position:absolute; left:110px; top:-745px; width:1700px; height:2200px; background:#fbfaf6; box-shadow:0 30px 90px rgba(0,0,0,0.6); }
+  .a1d-img { position:absolute; left:0; top:0; width:1700px; height:2200px; background:#fbfaf6; }
+  .a1d-hl { position:absolute; height:40px; background:rgba(255,206,40,0.5); mix-blend-mode:multiply; transform-origin:left center; }
+  .a1d-bar { position:absolute; left:470px; top:1238px; width:10px; height:160px; background:#d0121f; transform-origin:center top; }
+  .a1d-vig { position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse at 50% 50%, rgba(3,5,7,0) 52%, rgba(3,5,7,0.62) 100%); }
+  .a1d-glass { position:absolute; inset:auto; box-sizing:border-box; border-radius:28px; background:rgba(10,16,24,0.62);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); white-space:nowrap; opacity:0; visibility:hidden; }
+  .a1d-chip { left:96px; top:60px; padding:14px 34px 16px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:1.1; color:#f2f5f8; }
+  .a1d-src { left:96px; bottom:60px; padding:10px 24px 11px; font-weight:700; font-size:21px; line-height:26px; letter-spacing:1px; color:#c8d3e0; }
+</style>
+<div id="g-a1-drill-root" data-composition-id="g-a1-drill" data-width="1920" data-height="1080" data-duration="12.76">
+  <div class="a1d-page" id="g-a1-drill-page">
+    <img class="a1d-img" id="g-a1-drill-img" src="media/stills/sa/sa-page-pdf33-p23-drill-finding10.png" alt="">
+    <div class="a1d-hl" id="g-a1-drill-h1" style="left:518px; top:1240px; width:970px;"></div>
+    <div class="a1d-hl" id="g-a1-drill-h2" style="left:518px; top:1279px; width:940px;"></div>
+    <div class="a1d-hl" id="g-a1-drill-h3" style="left:518px; top:1318px; width:982px;"></div>
+    <div class="a1d-hl" id="g-a1-drill-h4" style="left:518px; top:1357px; width:982px;"></div>
+    <div class="a1d-bar" id="g-a1-drill-bar"></div>
+  </div>
+  <div class="a1d-vig" id="g-a1-drill-vig"></div>
+  <div class="a1d-glass a1d-chip" id="g-a1-drill-chip"><span id="g-a1-drill-chipt">NWS NORMAN</span></div>
+  <div class="a1d-glass a1d-src" id="g-a1-drill-src"><span id="g-a1-drill-srct">NWS Service Assessment, Aug 1999, p23</span></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a1-drill-";
+  const DUR = 12.76;
+  const tl = gsap.timeline({ paused: true });
+  tl.set(P + "page", { transformOrigin: "850px 1285px", scale: 1.15, y: 0 }, 0);
+  tl.set([P + "h1", P + "h2", P + "h3", P + "h4"], { scaleX: 0 }, 0);
+  tl.set(P + "bar", { scaleY: 0 }, 0);
+  tl.set([P + "chip", P + "src"], { autoAlpha: 0 }, 0);
+
+  /* "One page" 0: the page rises into place, then a slow push for the whole window */
+  tl.fromTo(P + "page", { y: 140 }, { y: 0, duration: 1.0, ease: "power3.out" }, 0);
+  tl.to(P + "page", { scale: 1.22, duration: DUR - 1.0, ease: "none" }, 1.0);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.6);
+
+  /* "Just before May 3rd" 2.42: the drill sentence, lines 1-2 */
+  tl.to(P + "bar", { scaleY: 1, duration: 0.5, ease: "power3.out" }, 2.42);
+  tl.to(P + "h1", { scaleX: 1, duration: 0.6, ease: "power2.inOut" }, 2.42);
+  tl.to(P + "h2", { scaleX: 1, duration: 0.6, ease: "power2.inOut" }, 3.0);
+  /* "Norman office" 3.94 */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: -80 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 3.94);
+  /* "violent tornado" 8.10: line 3 */
+  tl.to(P + "h3", { scaleX: 1, duration: 0.7, ease: "power2.inOut" }, 8.1);
+  /* "forecasters at those desks" 10.80: line 4 */
+  tl.to(P + "h4", { scaleX: 1, duration: 0.7, ease: "power2.inOut" }, 10.8);
+  tl.to(P + "chip", { x: -980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 12.1);
+  tl.to(P + "src", { y: 60, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 12.1);
+  tl.set({}, {}, DUR);
+  window.__timelines["g-a1-drill"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

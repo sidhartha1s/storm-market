@@ -1,0 +1,64 @@
+<template>
+<!-- g-a4-houses · ep-moore-1999 · A4-S6, track 2, full frame, host 760.747 for 8.149 s (to 768.896).
+     PROVISIONAL until ins-paul-5: covers Paul's A4-S6 slot while his clips are on hold (coordinator 22 Oct 26).
+     36 house glyphs (the 36 lives on the Brooks NSSL list), 19 turn red: "19 OF 36 · INSIDE HOUSES".
+     Cues local = abs - 760.747: "Here's the harder half" @0.00; "19" @2.68; "36" @3.32; "inside their houses" @4.06;
+     "Some were doing exactly what they'd been taught" @5.62; out 8.149. -->
+<style>
+  #g-a4-houses-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 50%, #0b1016 0%, #030507 78%); }
+  .a4h-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .a4h-chip { position:absolute; left:96px; top:60px; display:flex; align-items:baseline; gap:18px; padding:14px 34px 16px; border-radius:28px;
+    background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14); white-space:nowrap; opacity:0; visibility:hidden; }
+  .a4h-n { font-family:'Courier New', monospace; font-weight:700; font-size:80px; line-height:88px; color:#e74c3c; }
+  .a4h-of { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:64px; color:#f2f5f8; }
+  .a4h-cs { font-weight:700; font-size:40px; line-height:46px; letter-spacing:2px; color:#dfe7ee; opacity:0; visibility:hidden; }
+  .a4h-src { position:absolute; left:96px; top:990px; font-weight:700; font-size:20px; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a4h-scan { position:absolute; left:0; top:0; width:1920px; height:2px; background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.22), rgba(127,178,229,0)); }
+  #g-a4-houses-grid path { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-houses-root" data-composition-id="g-a4-houses" data-width="1920" data-height="1080" data-duration="8.149">
+  <svg class="a4h-svg" viewBox="0 0 1920 1080"><g id="g-a4-houses-grid"></g></svg>
+  <div class="a4h-scan" id="g-a4-houses-scan"></div>
+  <div class="a4h-chip" id="g-a4-houses-chip"><span class="a4h-n" id="g-a4-houses-n">19</span><span class="a4h-of" id="g-a4-houses-of">OF 36</span><span class="a4h-cs" id="g-a4-houses-cs">· INSIDE HOUSES</span></div>
+  <div class="a4h-src" id="g-a4-houses-src">Brooks, NSSL list of lives lost</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a4-houses", P = "#g-a4-houses-", DUR = 8.149;
+  /* 12 x 3 grid of house glyphs, 100 px pitch, centred; glyph = walls + roof, 64 px wide */
+  const g = document.querySelector(P + "grid"), H = [];
+  for (let i = 0; i < 36; i++) {
+    const cx = 410 + (i % 12) * 100, cy = 380 + Math.floor(i / 12) * 130;
+    const p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    p.setAttribute("id", "g-a4-houses-h" + i);
+    p.setAttribute("d", `M${cx - 30},${cy + 34} L${cx - 30},${cy - 4} L${cx},${cy - 34} L${cx + 30},${cy - 4} L${cx + 30},${cy + 34} Z`);
+    p.setAttribute("fill", "#15202b"); p.setAttribute("stroke", "#93a3b2"); p.setAttribute("stroke-width", "3"); p.setAttribute("stroke-linejoin", "round");
+    g.appendChild(p); H.push({ p, cx, cy });
+  }
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "grid path", P + "chip", P + "cs", P + "src"], { autoAlpha: 0 }, 0);
+  tl.fromTo(P + "grid", { y: 0 }, { y: -10, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: DUR, ease: "none" }, 0);
+  /* 0.00 "Here's the harder half": the 36 come up row by row */
+  H.forEach((h, i) => tl.fromTo(h.p, { autoAlpha: 0, scale: 0.4, svgOrigin: h.cx + " " + h.cy }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 0.2 + i * 0.045));
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.2);
+  /* "19" @2.68: nineteen turn red in quick order, chip counts with them */
+  H.slice(0, 19).forEach((h, i) => tl.to(h.p, { attr: { fill: "#8e2020", stroke: "#e74c3c" }, scale: 1.08, svgOrigin: h.cx + " " + h.cy, duration: 0.25, ease: "power2.out" }, 2.68 + i * 0.03));
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: -120 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.68);
+  const n = document.querySelector(P + "n"), cnt = { v: 1 };
+  tl.to(cnt, { v: 19, duration: 0.6, ease: "power3.out", onUpdate: () => { n.textContent = String(Math.round(cnt.v)); } }, 2.68);
+  /* "inside their houses" @4.06; the other 17 dim */
+  tl.fromTo(P + "cs", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 4.06);
+  tl.to(H.slice(19).map(h => h.p), { opacity: 0.35, duration: 0.5, ease: "power2.out" }, 4.06);
+  /* "doing exactly what they'd been taught" @5.62: the red ones breathe */
+  tl.to(H.slice(0, 19).map(h => h.p), { y: -6, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1, stagger: 0.02 }, 5.62);
+  /* out by 8.10 */
+  tl.to(P + "chip", { x: -1100, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 7.55);
+  tl.to([P + "grid", P + "src"], { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 7.55);
+  tl.to({}, { duration: DUR }, 0);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>

@@ -1,0 +1,57 @@
+<template>
+<!--
+  g-a5-s10-chips · ep-moore-1999 · A5-S10 · host 1069.811 to 1077.231 (7.42 s), track 4, overlay.
+  Under it: 1064.231-1071.721 KWTV Ranger 9 aerial (cut-a5-s10.mp4, muted; LIVE TORNADO WARNING + 9 bug burned in at the
+  bottom from clip ~5 s: chips stay in the sky, top-left, never over the broadcaster's marks), then 1071.721-1077.231 the SA
+  aerial of the path (sa-014-000.png, courtesy of John Jarboe, NWS; provenance row 19).
+  Chips from the Picture line; "once in a thousand years" D&B02 p617, 28 years in 2027 (fact_check.md A5-S10 rows).
+  Cues = local s = nx-a5-s10 word time - 5.58 (host start 1069.811).
+-->
+<style>
+  #g-a5-s10-chips-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; font-family:Arial, sans-serif; }
+  .ga5x-card { position:absolute; left:110px; top:90px; padding:16px 36px 18px; box-sizing:border-box; border-radius:28px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); }
+  .ga5x-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; color:#f2f5f8; letter-spacing:2px; line-height:1; }
+  .ga5x-sub { font-size:30px; font-weight:700; color:#e8c56a; letter-spacing:4px; line-height:1; margin-top:12px; }
+  .ga5x-src { font-size:20px; font-weight:700; color:#c8d3e0; letter-spacing:1px; line-height:1; margin-top:14px; }
+  .ga5x-cr { position:absolute; right:110px; top:70px; padding:11px 26px 12px; box-sizing:border-box; border-radius:28px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14);
+    font-size:21px; font-weight:700; color:#c8d3e0; letter-spacing:1px; line-height:26px; }
+  #ga5x-c1, #ga5x-c2, #ga5x-b1, #ga5x-s1, #ga5x-src, #ga5x-b2, #ga5x-s2, #ga5x-cr { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-s10-chips-root" data-composition-id="g-a5-s10-chips" data-width="1920" data-height="1080" data-duration="7.42">
+  <div class="ga5x-card" id="ga5x-c1">
+    <div class="ga5x-big" id="ga5x-b1">ABOUT 1 IN 1,000 YEARS</div>
+    <div class="ga5x-sub" id="ga5x-s1">ANY ONE SQUARE MILE</div>
+    <div class="ga5x-src" id="ga5x-src">Doswell and Brooks 2002</div>
+  </div>
+  <div class="ga5x-card" id="ga5x-c2">
+    <div class="ga5x-big" id="ga5x-b2">MAY 3, 2027</div>
+    <div class="ga5x-sub" id="ga5x-s2">28 YEARS</div>
+  </div>
+  <div class="ga5x-cr" id="ga5x-cr">Photo: John Jarboe, NWS</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#ga5x-";
+  const tl = gsap.timeline({ paused: true });
+  /* "about once in a thousand years" @0.00 (s10 5.58) */
+  tl.fromTo(P + "c1", { autoAlpha: 0, x: -140 }, { autoAlpha: 1, x: 0, duration: 0.55, ease: "power3.out" }, 0.0);
+  tl.fromTo(P + "b1", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.25, ease: "none" }, 0.0);
+  tl.fromTo([P + "s1", P + "src"], { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.15 }, 0.35);
+  tl.to(P + "c1", { x: -980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 1.75);
+  /* still cut at 1071.721 = local 1.91: photo credit; "Next May 3rd" @2.12; "28" @3.18 */
+  tl.fromTo(P + "cr", { autoAlpha: 0, x: 80 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1.95);
+  tl.fromTo(P + "c2", { autoAlpha: 0, x: -140 }, { autoAlpha: 1, x: 0, duration: 0.55, ease: "power3.out" }, 2.12);
+  tl.fromTo(P + "b2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.25, ease: "none" }, 2.12);
+  tl.fromTo(P + "s2", { autoAlpha: 0, scale: 1.3 }, { autoAlpha: 1, scale: 1, transformOrigin: "left center", duration: 0.4, ease: "back.out(2)" }, 3.18);
+  tl.to(P + "c2", { y: 6, duration: 1.5, ease: "sine.inOut", repeat: 1, yoyo: true }, 3.7);
+  /* exits on the cut to the hallway still */
+  tl.to(P + "c2", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 6.80);
+  tl.to(P + "cr", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 6.80);
+  tl.to({}, { duration: 7.42 }, 0);
+  window.__timelines["g-a5-s10-chips"] = tl;
+})();
+</script>
+</template>

@@ -1,0 +1,78 @@
+window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden","showSwfDownload":true};
+	      "1624816646");
+   3 May 1999 Oklahoma Tornado Death Information
+Oklahoma tornado deaths-3 May 1999
+N   Age    Location
+A1, 26     Emerald Springs apartments (near Westmoore HS)
+A2, 24     Emerald Springs apartments (near Westmoore HS)
+A3, 94     Emerald Springs apartments (near Westmoore HS)
+B1, 37     Permanent building (trucking company)
+B2, 52     Permanent building (trucking company)
+M1, 55     Mobile home (Bridge Creek)
+M2, 44     Mobile home (Bridge Creek)
+M3, 59     Mobile home (Bridge Creek)
+M4, 41     Mobile home (Bridge Creek)
+M5, 39     Mobile home (Bridge Creek)
+M6, 73     Mobile home (Bridge Creek)
+M7, 73     Mobile home (Bridge Creek)
+M8, 50     Mobile home (Bridge Creek)
+M9, 59     Mobile home (Bridge Creek)
+M10, 25    Mobile home (Bridge Creek)
+O1, 26     Under Shields overpass
+O2, 40     Under overpass (I-44)
+P1, 36     Permanent home
+P2, 3 wk   Under the staircase of home (Bridge Creek)
+P3, 53     Under the staircase of home (Bridge Creek)
+P4, 36     Bathroom of 2-story home (car fell through roof)
+P5, 50     In home (OKC)
+P6, 75     In bathtub of Del City home
+P7, 49     Midwest City home (SE 15 and Sooner Road)
+P8, 80     Midwest City home (SE 15 and Sooner Road)
+P9, 33     At home in Moore
+P10, 60    In home (Del City)
+P11, 30    In bathtub (permanent home-15th &amp; Cavalier)
+P12, 86    In home (Del City)
+P13, 28    Permanent home between Penn &amp; Western 
+P14, 43    In bathroom of Del City home
+P15, 89    In home (Greenbriar Eastlake)
+P16, 62    In Del City home (Del Aire)
+P17, 4     Home in Moore
+P18, 4 mo  In crib at Midwest City permanent home
+P19, 67    In home (Del City)
+&nbsp;
+Other Oklahoma tornado deaths 
+N   Age    Location
+M11, 41    Mobile home (Shawnee)
+V1,  45    In vehicle under overpass on I-35 (Perry)
+P20, 76    Frame home (Abell)
+P21, 46    Permanent home (Dover)
+&nbsp;
+&nbsp;
+Indirect deaths (all OKC storm)
+N   Age    Cause
+I1, 51     Heart attack
+I2, 23     Burns from candle-started fire
+I3, 54     Heart attack
+I4, 79     Wheelchair dropped down stairs
+I5, 68     Heart attack
+&nbsp;
+Key-
+A-Apartment, B-Permanent building, I-Indirect, M-Mobile Home, O-Outside (under overpass), P-Permanent building, V-Vehicle
+<!--
+     FILE ARCHIVED ON 17:57:26 Jun 27, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 17:45:37 Oct 21, 2026.
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 0.777
+  exclusion.robots: 0.078
+  exclusion.robots.policy: 0.062
+  esindex: 0.011
+  cdx.remote: 68.348
+  LoadShardBlock: 211.425 (3)
+  PetaboxLoader3.datanode: 141.351 (4)
+  PetaboxLoader3.resolve: 147.052 (2)
+  load_resource: 235.253
+-->

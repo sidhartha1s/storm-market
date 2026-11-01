@@ -1,0 +1,58 @@
+<template>
+<!-- g-a4-wallsr · ep-moore-1999 · A4-S10 open: return to the wall-cluster bars (g-a4-walls, same scale and layout), the
+     BATHROOM 81 % bar holds lit while the others step back. Track 2, full frame, host 834.88 for 4.54 s (to 839.42).
+     Cues local = abs - 834.88: "A bathroom" @0.12; "most likely" @1.00; "left standing" @2.06; "nobody built it" @2.98; out 4.54. -->
+<style>
+  #g-a4-wallsr-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 46% 50%, #0d141c 0%, #04070a 76%); }
+  .a4v-hd { position:absolute; left:96px; top:110px; display:flex; align-items:baseline; gap:24px; white-space:nowrap; }
+  .a4v-hn { font-family:'Courier New', monospace; font-weight:700; font-size:110px; line-height:1; color:#e74c3c; }
+  .a4v-ht { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1; letter-spacing:1px; color:#f2f5f8; }
+  .a4v-nm { position:absolute; left:96px; width:340px; text-align:right; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:34px; line-height:70px; color:#f2f5f8; white-space:nowrap; }
+  .a4v-rail { position:absolute; left:470px; width:1000px; height:70px; background:linear-gradient(180deg,#0f1922,#0a121a); border:1px solid #1b2836; box-sizing:border-box; }
+  .a4v-bar { position:absolute; left:470px; height:70px; background:linear-gradient(90deg,#33556f,#7fb2e5); }
+  .a4v-num { position:absolute; left:1440px; width:150px; text-align:right; font-family:'Courier New', monospace; font-weight:700; font-size:56px; line-height:70px; color:#dfe7ee; white-space:nowrap; }
+  .a4v-glow { position:absolute; left:462px; top:392px; width:826px; height:86px; border:4px solid #e8c56a; border-radius:6px; box-sizing:border-box; opacity:0; visibility:hidden; }
+  .a4v-src { position:absolute; left:96px; top:990px; font-weight:700; font-size:20px; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; }
+  .a4v-scan { position:absolute; left:0; top:380px; width:3px; height:380px; background:linear-gradient(180deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
+</style>
+<div id="g-a4-wallsr-root" data-composition-id="g-a4-wallsr" data-width="1920" data-height="1080" data-duration="4.54">
+  <div class="a4v-scan" id="g-a4-wallsr-scan"></div>
+  <div id="g-a4-wallsr-all">
+    <div class="a4v-hd" id="g-a4-wallsr-hd"><span class="a4v-hn" id="g-a4-wallsr-hn">89</span><span class="a4v-ht" id="g-a4-wallsr-ht">WALL CLUSTERS LEFT STANDING</span></div>
+    <div class="a4v-rail" id="g-a4-wallsr-r1" style="top:400px"></div>
+    <div class="a4v-rail" id="g-a4-wallsr-r2" style="top:530px"></div>
+    <div class="a4v-rail" id="g-a4-wallsr-r3" style="top:660px"></div>
+    <div class="a4v-bar" id="g-a4-wallsr-b1" style="top:400px; width:810px"></div>
+    <div class="a4v-bar" id="g-a4-wallsr-b2" style="top:530px; width:750px"></div>
+    <div class="a4v-bar" id="g-a4-wallsr-b3" style="top:660px; width:160px"></div>
+    <div class="a4v-nm" id="g-a4-wallsr-n1" style="top:400px">BATHROOM</div>
+    <div class="a4v-nm" id="g-a4-wallsr-n2" style="top:530px">CLOSET</div>
+    <div class="a4v-nm" id="g-a4-wallsr-n3" style="top:660px">KITCHEN</div>
+    <div class="a4v-num" id="g-a4-wallsr-v1" style="top:400px">81%</div>
+    <div class="a4v-num" id="g-a4-wallsr-v2" style="top:530px">75%</div>
+    <div class="a4v-num" id="g-a4-wallsr-v3" style="top:660px; left:660px; text-align:left">~16%</div>
+    <div class="a4v-glow" id="g-a4-wallsr-glow"></div>
+    <div class="a4v-src" id="g-a4-wallsr-src">FEMA 342, pp. 6-20 to 6-22</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a4-wallsr", P = "#g-a4-wallsr-", DUR = 4.54;
+  const tl = gsap.timeline({ paused: true });
+  tl.set(P + "glow", { autoAlpha: 0 }, 0);
+  tl.fromTo(P + "scan", { x: 96 }, { x: 1824, duration: DUR, ease: "none" }, 0);
+  /* "A bathroom" @0.12: the bathroom row is outlined and pulses */
+  tl.fromTo(P + "glow", { autoAlpha: 0, scale: 1.06 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 0.12);
+  tl.fromTo(P + "b1", { scaleX: 1 }, { scaleX: 1.015, transformOrigin: "left center", duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, 1.00);
+  /* "nobody built it for that" @2.98: closet and kitchen step back */
+  tl.to([P + "b2", P + "b3", P + "n2", P + "n3", P + "v2", P + "v3", P + "r2", P + "r3"], { opacity: 0.3, duration: 0.5, ease: "power2.out" }, 2.06);
+  tl.to(P + "all", { y: -8, duration: 2.4, ease: "sine.inOut" }, 2.0);
+  /* fade out into the map pull, by 4.50 */
+  tl.to(P + "all", { autoAlpha: 0, duration: 0.45, ease: "power2.in" }, 4.05);
+  tl.to({}, { duration: DUR }, 0);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
