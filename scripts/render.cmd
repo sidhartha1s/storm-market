@@ -135,7 +135,7 @@ if errorlevel 1 (
 del /q "render_%MODE%.log" 2>nul
 start "" /b "C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0stream_gate.py" watch "%CD%\render_%MODE%.log" "%CD%\render_%MODE%_done.marker" "%CD%\%PREFLIGHT_LOG%"
 echo %_FPS% > "render_%MODE%.fps"
-call npx hyperframes@0.8.185 render . -c %RENDER_COMPOSITION% --gpu --browser-gpu %QFLAGS% --workers %RENDER_WORKERS% -o "renders/%OUTBASE%.mp4" > "render_%MODE%.log" 2>&1
+call npx hyperframes@0.8.211 render . -c %RENDER_COMPOSITION% --gpu --browser-gpu %QFLAGS% --workers %RENDER_WORKERS% -o "renders/%OUTBASE%.mp4" > "render_%MODE%.log" 2>&1
 set RC=%ERRORLEVEL%
 REM A render that ran on another encoder, an iGPU or a disk capture fails here, not in a viewer's eyes.
 if "%RC%"=="0" (
