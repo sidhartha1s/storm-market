@@ -1,0 +1,157 @@
+<template>
+<style>
+  /* g-a1-gauges: A1-S6 (29.74 s of voice). Full frame on the BG gradient. Cues from audio/a1-s6.words.json.
+     Left 60 %: the episode's rain-gauge glyph (g-i1-rain drawing: cylinder 140 x 420 at x 300, y 300 to 720, 10 px per inch,
+     unlabelled tick every 5 in), climbing with no number, jammed at 11 in = 110 px (scaleY 0.2619); then the OFR 70-51 Table 1 rows.
+     Right 40 % (x 1180 to 1560, above y 680): SCHEMATIC terrain strip, base-map scale 5 mi = 107.25 px (compose_plan 4.0, k 1480),
+     dots 85.8 px apart = 4 mi. Presenter corner x >= 1600, y >= 680 stays empty. */
+  #g-a1-gauges-root { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  #g-a1-gauges-root .ga-hide { opacity:0; visibility:hidden; }
+  #g-a1-gauges-root .ga-cyl { position:absolute; left:300px; top:300px; width:140px; height:420px; border-radius:16px; overflow:hidden; background:rgba(255,255,255,0.05); }
+  #g-a1-gauges-root .ga-fill { position:absolute; left:0; top:0; width:140px; height:420px; transform-origin:center bottom;
+    background:linear-gradient(180deg, rgba(127,178,229,0.95), rgba(90,118,143,0.80)); }
+  #g-a1-gauges-root .ga-jam { position:absolute; left:96px; top:572px; width:184px; text-align:right; font:900 64px 'Arial Black', Arial, sans-serif;
+    line-height:76px; color:#e74c3c; white-space:nowrap; }
+  #g-a1-gauges-root .ga-card { position:absolute; left:480px; width:640px; box-sizing:border-box; padding:20px 32px 22px; border-radius:24px;
+    background:rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  #g-a1-gauges-root .ga-cite { font:700 19px Arial, sans-serif; letter-spacing:2px; color:#6b6257; margin-bottom:8px; white-space:nowrap; }
+  #g-a1-gauges-root .ga-r1 { font:700 30px Arial, sans-serif; line-height:38px; color:#1c1a17; white-space:nowrap; }
+  #g-a1-gauges-root .ga-r2 { font:italic 28px Georgia, 'Times New Roman', serif; line-height:36px; color:#2a2622; white-space:nowrap; }
+  #g-a1-gauges-root .ga-pill { position:absolute; left:480px; box-sizing:border-box; padding:8px 26px; border-radius:16px;
+    background:rgba(232,222,200,0.90); font:700 28px Arial, sans-serif; line-height:36px; color:#1c1a17; white-space:nowrap; }
+  #g-a1-gauges-root .ga-small { font:700 19px Arial, sans-serif; fill:#93a3b2; letter-spacing:2px; }
+  #g-a1-gauges-root .ga-dl { font:700 30px Arial, sans-serif; fill:#f2f5f8; paint-order:stroke; stroke:#05080c; stroke-width:4px; stroke-linejoin:round; }
+  #g-a1-gauges-root .ga-chip { position:absolute; left:1150px; top:590px; box-sizing:border-box; padding:8px 34px; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); font:900 52px 'Arial Black', Arial, sans-serif; line-height:60px; color:#f2f5f8; white-space:nowrap; }
+  #g-a1-gauges-root .ga-src { position:absolute; left:96px; top:990px; font:700 22px Arial, sans-serif; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+</style>
+<div id="g-a1-gauges-root" data-composition-id="g-a1-gauges" data-width="1920" data-height="1080">
+  <!-- rain falling into the gauge mouth (finite repeats) -->
+  <svg id="ga-rain" class="ga-hide" style="position:absolute;left:0;top:0" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g stroke="#7fb2e5" stroke-width="2" stroke-linecap="round" stroke-opacity="0.7">
+      <line id="ga-d0" x1="318" y1="120" x2="314" y2="140"/>
+      <line id="ga-d1" x1="342" y1="120" x2="338" y2="140"/>
+      <line id="ga-d2" x1="366" y1="120" x2="362" y2="140"/>
+      <line id="ga-d3" x1="390" y1="120" x2="386" y2="140"/>
+      <line id="ga-d4" x1="414" y1="120" x2="410" y2="140"/>
+      <line id="ga-d5" x1="330" y1="120" x2="326" y2="140"/>
+      <line id="ga-d6" x1="402" y1="120" x2="398" y2="140"/>
+    </g>
+  </svg>
+  <div class="ga-cyl ga-hide" id="ga-cyl"><div class="ga-fill" id="ga-fill"></div></div>
+  <svg id="ga-glyph" class="ga-hide" style="position:absolute;left:0;top:0" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="ga-ticks" x="0" y="18" width="50" height="50" patternUnits="userSpaceOnUse">
+        <rect x="0" y="0" width="50" height="3" fill="#f2f5f8" opacity="0.7"/>
+      </pattern>
+    </defs>
+    <rect x="304" y="300" width="30" height="420" fill="url(#ga-ticks)"/>
+    <rect x="300" y="300" width="140" height="420" rx="16" fill="none" stroke="#93a3b2" stroke-width="3"/>
+    <line id="ga-jamline" x1="292" y1="610" x2="448" y2="610" stroke="#e74c3c" stroke-width="4" opacity="0"/>
+  </svg>
+  <div class="ga-jam ga-hide" id="ga-jam">11+</div>
+
+  <div class="ga-card ga-hide" id="ga-card1" style="top:190px">
+    <div class="ga-cite" id="ga-cite">USGS Open-File Report 70-51 &middot; Table 1</div>
+    <div class="ga-r1" id="ga-c1a">WB Recorder &middot; 11+</div>
+    <div class="ga-r2" id="ga-c1b">Gage overflowed</div>
+  </div>
+  <div class="ga-card ga-hide" id="ga-card2" style="top:350px">
+    <div class="ga-r1" id="ga-c2a">11" bucket</div>
+    <div class="ga-r2" id="ga-c2b">Bucket overflowed before 2 a.m.</div>
+  </div>
+  <div class="ga-pill ga-hide" id="ga-p1" style="top:486px">Barrel</div>
+  <div class="ga-pill ga-hide" id="ga-p2" style="top:548px">Street trash container</div>
+  <div class="ga-pill ga-hide" id="ga-p3" style="top:610px">Plastic garbage container</div>
+
+  <!-- SCHEMATIC strip: no real coordinates; dot spacing 85.8 px = 4 mi at 21.45 px/mi -->
+  <svg id="ga-strip" class="ga-hide" style="position:absolute;left:0;top:0" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <text id="ga-schem" class="ga-small" x="1180" y="262">SCHEMATIC</text>
+    <path id="ga-terrain-fill" d="M1180,470 L1215,425 L1250,398 L1290,400 L1333,442 L1375.8,400 L1420,372 L1470,410 L1515,388 L1560,424 L1560,500 L1180,500 Z"
+      fill="#15202b" fill-opacity="0.8"/>
+    <path id="ga-terrain" d="M1180,470 L1215,425 L1250,398 L1290,400 L1333,442 L1375.8,400 L1420,372 L1470,410 L1515,388 L1560,424"
+      fill="none" stroke="#93a3b2" stroke-width="3" stroke-linejoin="round"/>
+    <g id="ga-scale">
+      <line id="ga-scale-bar" x1="1290" y1="540" x2="1397.25" y2="540" stroke="#93a3b2" stroke-width="3"/>
+      <line x1="1290" y1="532" x2="1290" y2="548" stroke="#93a3b2" stroke-width="2"/>
+      <line x1="1397.25" y1="532" x2="1397.25" y2="548" stroke="#93a3b2" stroke-width="2"/>
+      <text id="ga-scale-lbl" class="ga-small" x="1410" y="547">5 MI</text>
+    </g>
+    <circle id="ga-dot1" cx="1290" cy="400" r="9" fill="#d8a13a"/>
+    <circle id="ga-dot2" cx="1375.8" cy="400" r="9" fill="#7fb2e5"/>
+    <text id="ga-l1" class="ga-dl" x="1280" y="358" text-anchor="end">20+ in</text>
+    <text id="ga-l2" class="ga-dl" x="1386" y="358">under 6 in</text>
+  </svg>
+  <div class="ga-chip ga-hide" id="ga-chip">4 SEPARATE TIMES</div>
+  <div class="ga-src ga-hide" id="ga-src">Weather Bureau survey team, reported in USGS Professional Paper 804</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 30.3;
+  const C = { eleven: 5.40 /* 11 @5.40 */, overflowed: 6.74 /* overflowed @6.74 */, before: 9.62 /* before @9.62 */,
+    sitting: 14.36 /* sitting @14.36 */, survey: 17.72 /* survey @17.72 */, twenty: 18.96 /* 20 @18.96 */,
+    less: 23.20 /* less @23.20 */, four: 24.96 /* four @24.96 */, hollows: 29.18 /* hollows @29.18 */ };
+
+  tl.set("#ga-dot1", { scale: 0, svgOrigin: "1290 400" }, 0);
+  tl.set("#ga-dot2", { scale: 0, svgOrigin: "1375.8 400" }, 0);
+  tl.set(["#ga-l1", "#ga-l2", "#ga-scale"], { autoAlpha: 0 }, 0);
+  tl.set("#ga-scale-bar", { scaleX: 0, svgOrigin: "1290 540" }, 0);
+  tl.set("#ga-fill", { scaleY: 0 }, 0);
+  const T = document.querySelector("#ga-terrain"), TL = Math.ceil(T.getTotalLength()) + 1;
+  tl.set(T, { strokeDasharray: TL + " " + TL, strokeDashoffset: TL }, 0);
+
+  /* rain: each drop falls 140 px into the gauge mouth, 0.6 s a fall, finite repeats over the whole window */
+  for (let i = 0; i < 7; i++) {
+    const d0 = (i * 0.37) % 0.6, n = Math.floor((DUR - d0) / 0.6) - 1;
+    tl.fromTo("#ga-d" + i, { y: 0, opacity: 0.9 }, { y: 150, opacity: 0.2, duration: 0.6, ease: "none", repeat: n }, d0);
+  }
+
+  /* the gauge opens centre frame (no empty half while it climbs alone), moves to its x 300 slot as the rows arrive */
+  const GZ = ["#ga-rain", "#ga-cyl", "#ga-glyph", "#ga-jam"];
+  tl.set(GZ, { x: 520 }, 0);
+  tl.to(GZ, { x: 0, duration: 0.7, ease: "power3.inOut" }, C.overflowed - 0.5);
+
+  tl.to("#ga-rain", { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 0.3);
+
+  /* the gauge climbs with no number on it, then jams on "11" */
+  tl.fromTo(["#ga-cyl", "#ga-glyph"], { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0);
+  tl.to("#ga-fill", { scaleY: 0.2619, duration: C.eleven - 0.4, ease: "none" }, 0.4);
+  tl.fromTo("#ga-cyl", { rotation: 0 }, { rotation: 1.5, transformOrigin: "50% 100%", duration: 0.07, ease: "sine.inOut", yoyo: true, repeat: 5 }, C.eleven);
+  tl.to("#ga-jamline", { opacity: 1, duration: 0.15 }, C.eleven);
+  tl.fromTo("#ga-jam", { autoAlpha: 0, scale: 1.4, transformOrigin: "100% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, C.eleven);
+  tl.to("#ga-jam", { autoAlpha: 0.15, duration: 0.22, ease: "power1.inOut", yoyo: true, repeat: 5 }, C.eleven + 0.5);   // 3 blinks
+
+  /* OFR 70-51 Table 1 rows */
+  tl.fromTo("#ga-card1", { autoAlpha: 0, x: 120 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, C.overflowed);
+  tl.fromTo("#ga-card2", { autoAlpha: 0, x: 120 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, C.before);
+  ["#ga-p1", "#ga-p2", "#ga-p3"].forEach((s, i) =>
+    tl.fromTo(s, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.6)" }, C.sitting + i * 0.4));
+
+  /* the survey: left side steps back, the schematic strip comes up */
+  tl.to(["#ga-cyl", "#ga-glyph", "#ga-card1", "#ga-card2", "#ga-p1", "#ga-p2", "#ga-p3", "#ga-rain"], { opacity: 0.4, duration: 0.6, ease: "power2.out" }, C.survey - 0.2);
+  tl.fromTo("#ga-strip", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, C.survey - 0.2);
+  tl.to(T, { strokeDashoffset: 0, duration: 1.0, ease: "power2.inOut" }, C.survey - 0.1);
+  tl.to("#ga-scale", { autoAlpha: 1, duration: 0.3 }, C.survey + 0.4);
+  tl.to("#ga-scale-bar", { scaleX: 1, duration: 0.5, ease: "power3.out" }, C.survey + 0.4);
+  tl.fromTo("#ga-src", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.survey + 0.3);
+
+  tl.to("#ga-dot1", { scale: 1, duration: 0.4, ease: "back.out(2.5)" }, C.twenty);
+  tl.fromTo("#ga-l1", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.twenty + 0.1);
+  tl.to("#ga-dot2", { scale: 1, duration: 0.4, ease: "back.out(2.5)" }, C.less);
+  tl.fromTo("#ga-l2", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.less + 0.1);
+  tl.fromTo("#ga-chip", { autoAlpha: 0, scale: 1.15, transformOrigin: "0% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, C.four);
+  tl.to("#ga-dot1", { attr: { r: 12 }, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, C.four + 0.6);
+  tl.to("#ga-dot2", { attr: { r: 12 }, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, C.four + 0.85);
+
+  /* exit after "hollows": panels slide out, ground stays */
+  tl.to(["#ga-strip", "#ga-chip"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  tl.to(["#ga-card1", "#ga-card2", "#ga-p1", "#ga-p2", "#ga-p3", "#ga-cyl", "#ga-glyph", "#ga-jam", "#ga-src", "#ga-rain"],
+    { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  window.__timelines["g-a1-gauges"] = tl;
+})();
+</script>
+</template>

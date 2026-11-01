@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a2-oakhill: A2-S19 + A2-S20 (voice 16.91 s + 7.85 s), glass cite card (two screens, 3 lines each) then the chip, over the hold stills
+     (LVA/Along_Rt._29, West_of_Rockfish,_II, Overturned_Home_in_Nelson, then V23/pp804-p42-fig22.jpg; the host mounts them beneath; no place label, no church marker).
+     Comp time 0 = first word of A2-S19. A2-S20 starts at 17.21 (S19 wav 16.91 + 0.30 gap, the same gap the plan uses): re-set S20_START if the TTS gap changes.
+     Cues, audio/a2-s19.words.json: "Thirty" 0.00, "With" 5.66, "people" 9.60, "just" 12.04, "to" 13.34, "creek's" 14.56, "Oak" 15.84, "Church." 16.32.
+     audio/a2-s20.words.json (+17.21): "If" 0.00, "most" 4.10, "50" 5.12, "lived." 7.40 (ends ~7.85). The chip fades before S21 (25.36): host 25.1 s.
+     Corner x >= 1600, y >= 680 empty. */
+  #g-a2-oakhill-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8; }
+  .ao-wrap { position:absolute; inset:auto; left:160px; bottom:150px; width:1400px; }
+  .ao-card { position:relative; box-sizing:border-box; width:1400px; padding:40px 64px 40px 150px; border-radius:28px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:inset 0 1px 0 rgba(255,255,255,0.10); }
+  .ao-mark { position:absolute; left:42px; top:14px; font-family:'AbrilFig', Georgia, serif; font-size:150px; line-height:150px; color:#d8a13a; }
+  .ao-q { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:46px; line-height:62px; color:#f2f5f8; }
+  .ao-q span { display:inline-block; }
+  .ao-src { position:absolute; left:96px; bottom:54px; box-sizing:border-box; padding:12px 24px; border-radius:16px; opacity:0; visibility:hidden; white-space:nowrap;
+    font-weight:700; font-size:22px; letter-spacing:2px; color:#c8d3e0;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  .ao-chip { position:relative; box-sizing:border-box; width:1400px; padding:36px 64px 32px 64px; border-radius:28px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:inset 0 1px 0 rgba(255,255,255,0.10); }
+  .ao-c1 { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; line-height:68px; letter-spacing:2px; color:#d8a13a; }
+  .ao-c2 { margin-top:10px; font-weight:700; font-size:38px; line-height:48px; letter-spacing:1px; color:#f2f5f8; }
+  .ao-c3 { margin-top:12px; font-weight:700; font-size:22px; line-height:30px; letter-spacing:2px; color:#c8d3e0; }
+</style>
+<div id="g-a2-oakhill-root" data-composition-id="g-a2-oakhill" data-width="1920" data-height="1080" data-duration="25.1">
+  <div class="ao-wrap" id="ao-wrap1">
+    <div class="ao-card" id="ao-card1">
+      <div class="ao-mark" id="ao-mark1">&ldquo;</div>
+      <div class="ao-q" id="ao-q1"><span id="ao-p1">If both evacuation plans and a warning system had been in place ...</span> <span id="ao-p2">the citizens along Davis Creek would have been advised</span> <span id="ao-p3">just before midnight of August 19</span></div>
+    </div>
+  </div>
+  <div class="ao-wrap" id="ao-wrap2">
+    <div class="ao-card" id="ao-card2">
+      <div class="ao-q" id="ao-q2"><span id="ao-p4">... to seek refuge at a nearby structure</span> <span id="ao-p5">not in the path of streams draining steep slopes,</span> <span id="ao-p6">such as the Oak Hill Church.&rdquo;</span></div>
+    </div>
+  </div>
+  <div class="ao-src" id="ao-src">USGS Open-File Report 99-518, 1999</div>
+  <div class="ao-wrap" id="ao-wrap3">
+    <div class="ao-chip" id="ao-chip">
+      <div class="ao-c1" id="ao-c1">IF ALL HAD HEARD AND GONE:</div>
+      <div class="ao-c2" id="ao-c2">MOST OR ALL OF 50 COULD HAVE BEEN AVOIDED</div>
+      <div class="ao-c3" id="ao-c3">USGS OFR 99-518</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const S20 = 17.21;   /* A2-S20 start, comp time */
+  tl.set(["#ao-card1", "#ao-card2", "#ao-chip", "#ao-mark1", "#ao-src", "#ao-c2", "#ao-c3"], { autoAlpha: 0 }, 0);
+  /* each card shows its whole quote dim on entry and each phrase lights on its cue, so a card is never half empty */
+  tl.set(["#ao-p1", "#ao-p2", "#ao-p3", "#ao-p4", "#ao-p5", "#ao-p6"], { autoAlpha: 0.35, y: 6 }, 0);
+
+  /* source plate on "Thirty years later" @0.00 */
+  tl.fromTo("#ao-src", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.1);
+  tl.fromTo("#ao-src", { y: 0 }, { y: -5, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 11 }, 0.8);
+
+  /* SCREEN 1: card in on "With a warning system" @5.66 */
+  tl.fromTo("#ao-card1", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" }, 5.5);
+  tl.fromTo("#ao-mark1", { autoAlpha: 0, scale: 1.6, y: -20 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, 5.8);
+  tl.fromTo("#ao-p1", { autoAlpha: 0.35, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 5.8);
+  tl.fromTo("#ao-p2", { autoAlpha: 0.35, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 9.6);
+  tl.fromTo("#ao-p3", { autoAlpha: 0.35, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 12.04);
+  tl.fromTo("#ao-card1", { y: 0 }, { y: -8, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 5 }, 6.2);
+  /* screen 1 leaves left, gone by 13.3, then screen 2 enters from the right on "to get to a building" @13.34
+     (the two no longer cross: screen 2's dim phrases would overlap screen 1's text mid-swap) */
+  tl.to("#ao-card1", { x: -1100, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 12.75);
+  tl.fromTo("#ao-card2", { autoAlpha: 0, x: 1100 }, { autoAlpha: 1, x: 0, duration: 0.65, ease: "power3.out" }, 13.3);
+  tl.fromTo("#ao-p4", { autoAlpha: 0.35, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 13.5);
+  tl.fromTo("#ao-p5", { autoAlpha: 0.35, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 14.56);
+  tl.fromTo("#ao-p6", { autoAlpha: 0.35, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 15.84);
+  tl.fromTo("#ao-card2", { y: 0 }, { y: -8, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, 14.1);
+  /* screen 2 and the source plate leave before the chip */
+  tl.to(["#ao-card2", "#ao-src"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 16.5);
+
+  /* S20 chip: "If everyone" -> line 1 @17.35; "most or all" @21.31 -> line 2; source line @21.9 */
+  tl.fromTo("#ao-chip", { autoAlpha: 0, y: 50 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, S20 + 0.14);
+  tl.fromTo("#ao-c2", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, S20 + 4.10);
+  tl.fromTo("#ao-c3", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, S20 + 4.7);
+  tl.fromTo("#ao-chip", { y: 0 }, { y: -8, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 5 }, S20 + 1.0);
+  /* fades out before S21 (25.36) */
+  tl.to("#ao-chip", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 24.4);
+  window.__timelines["g-a2-oakhill"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

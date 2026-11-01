@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a1-peak: A1-S13, full frame. Photo LVA/Massies_Mill_Bridge,_II_(7797542906).jpg (aerial, Rt. 56 bridge over the Tye at Massies Mill; provenance row V13)
+     inside the comp, slow punch-in (1.0 -> 1.12, linear, under 1.5x). The Tye's visible channel is traced in thin Cold blue 2 over the photo.
+     Photo is 5550 x 4350: shown 1920 wide (scale 0.3459, 1920 x 1505), top offset -380 so the river sits mid-frame. Trace points were read off the
+     photo at 2000-wide display coords and x 0.96 (see path). The raw scan is mounted here; `optimize_clips.py --apply` swaps the downscaled copy (same name).
+     Comp time 0 = first word of A1-S13. Cues from audio/a1-s13.words.json: "Ties Peak" (= Tye's peak) 2.86/3.12, "70" 6.42, "66" 11.60.
+     HUD (chip, label, source) is on a fixed layer, never rides the push. Corner x >= 1600, y >= 680: no graphic there (photo only). */
+  #g-a1-peak-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8; background:#04070c; }
+  #ap-zoom { position:absolute; inset:auto; left:0; top:-380px; width:1920px; height:1505px; }
+  #ap-photo { position:absolute; left:0; top:0; width:1920px; height:1505px; display:block; filter:contrast(1.05) brightness(0.9); }
+  #ap-svg { position:absolute; left:0; top:0; width:1920px; height:1505px; }
+  #ap-trace { fill:none; stroke:#7fb2e5; stroke-width:5; stroke-linecap:round; stroke-linejoin:round; }
+  #ap-glow { fill:none; stroke:#7fb2e5; stroke-width:16; stroke-linecap:round; stroke-linejoin:round; opacity:0.28; }
+  #ap-scrim { position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(180deg, rgba(3,5,8,0.55) 0%, rgba(3,5,8,0) 32%, rgba(3,5,8,0) 72%, rgba(3,5,8,0.6) 100%); }
+  .ap-glass { position:absolute; box-sizing:border-box; border-radius:22px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); white-space:nowrap; }
+  #ap-chip { left:96px; top:96px; padding:16px 40px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; line-height:68px; letter-spacing:2px; color:#f2f5f8; }
+  #ap-lab { left:96px; top:224px; padding:12px 30px; font-weight:700; font-size:34px; line-height:42px; letter-spacing:2px; color:#7fb2e5; }
+  #ap-src { left:96px; bottom:54px; padding:12px 24px; border-radius:16px; font-weight:700; font-size:22px; letter-spacing:1px; color:#c8d3e0; }
+</style>
+<div id="g-a1-peak-root" data-composition-id="g-a1-peak" data-width="1920" data-height="1080" data-duration="13.4">
+  <div id="ap-zoom">
+    <img id="ap-photo" src="media/src/V13/Massies_Mill_Bridge,_II_(7797542906).jpg" alt="">
+    <svg id="ap-svg" viewBox="0 0 1920 1505">
+      <path id="ap-glow" d="M0,979 C140,1000 300,1012 480,1018 S760,1000 816,960 S1000,915 1056,893 S1170,850 1210,826"/>
+      <path id="ap-trace" d="M0,979 C140,1000 300,1012 480,1018 S760,1000 816,960 S1000,915 1056,893 S1170,850 1210,826"/>
+    </svg>
+  </div>
+  <div id="ap-scrim"></div>
+  <div class="ap-glass" id="ap-chip">&asymp; 70,000 CU FT / SECOND</div>
+  <div class="ap-glass" id="ap-lab">drains about 66 sq mi</div>
+  <div class="ap-glass" id="ap-src">USGS Open-File Report 70-51 &middot; Tye River at Massies Mill, slope-area measurement</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 13.7;
+  const len = Math.ceil(document.querySelector("#ap-trace").getTotalLength()) + 1;
+  gsap.set(["#ap-trace", "#ap-glow"], { strokeDasharray: len, strokeDashoffset: len });
+  tl.set(["#ap-chip", "#ap-lab", "#ap-src"], { autoAlpha: 0 }, 0);
+  tl.set("#ap-zoom", { transformOrigin: "760px 880px" }, 0);
+
+  /* slow punch-in the whole window */
+  tl.to("#ap-zoom", { scale: 1.12, duration: DUR, ease: "none" }, 0);
+  /* source on "Near Massies Mill" @0.22 */
+  tl.fromTo("#ap-src", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.3);
+  /* trace on "Tye's peak" ("Ties" @2.86, "Peak" @3.12) */
+  tl.set(["#ap-trace", "#ap-glow"], { autoAlpha: 1 }, 2.85);
+  tl.to("#ap-trace", { strokeDashoffset: 0, duration: 2.6, ease: "power2.inOut" }, 2.86);
+  tl.to("#ap-glow", { strokeDashoffset: 0, duration: 2.6, ease: "power2.inOut" }, 2.86);
+  /* chip on "70,000" @6.42 */
+  tl.fromTo("#ap-chip", { autoAlpha: 0, scale: 0.85, transformOrigin: "0% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" }, 6.42);
+  /* label on "66" @11.60 */
+  tl.fromTo("#ap-lab", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.6);
+  /* trace keeps breathing so the hold never idles */
+  tl.fromTo("#ap-glow", { opacity: 0.28 }, { opacity: 0.55, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 5 }, 5.6);
+  /* HUD exit, last 0.6 s (the photo carries to the cut) */
+  tl.to(["#ap-chip", "#ap-lab", "#ap-src"], { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 12.8);
+  window.__timelines["g-a1-peak"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

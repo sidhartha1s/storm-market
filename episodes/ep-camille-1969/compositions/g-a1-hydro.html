@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a1-hydro: A1-S14 (about 9.4 s). Vertical scale, base y 900: old 31-year record bar 100 px tall, the 1969 bar 800 px tall (8.0x, 8 px per unit).
+     No hourly curve (no hourly record exists). Full-frame BG gradient. Comp time 0 = first word of A1-S14.
+     Cues are estimated (words.json not on disk yet): CUE-PENDING. Presenter corner x >= 1600, y >= 680 stays empty. */
+  #g-a1-hydro-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .a1h-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size:120px 120px; }
+  .a1h-base { position:absolute; left:760px; top:900px; width:740px; height:3px; background:#4a5560; }
+  .a1h-old { position:absolute; left:860px; top:800px; width:200px; height:100px; background:linear-gradient(180deg, #7fb2e5, #5a768f); border-radius:6px 6px 0 0; transform-origin:center bottom; }
+  .a1h-new { position:absolute; left:1160px; top:100px; width:200px; height:800px; background:linear-gradient(180deg, #e74c3c, #8e2020); border-radius:6px 6px 0 0; transform-origin:center bottom;
+    box-shadow:0 0 50px rgba(231,76,60,0.35); }
+  .a1h-ref { position:absolute; left:860px; top:800px; width:640px; height:2px; background:rgba(127,178,229,0.55); transform-origin:left center; }
+  .a1h-oldlab { position:absolute; left:470px; top:830px; width:360px; text-align:right; font-weight:700; font-size:28px; line-height:34px; letter-spacing:2px; color:#7fb2e5; }
+  .a1h-newlab { position:absolute; left:1390px; top:100px; white-space:nowrap; font-weight:700; font-size:30px; line-height:38px; letter-spacing:2px; color:#f2f5f8; }
+  .a1h-card { position:absolute; left:96px; top:130px; width:760px; box-sizing:border-box; padding:34px 44px 38px; border-radius:24px;
+    background:rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  .a1h-card .c1 { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:58px; color:#1c1a17; }
+  .a1h-card .c2 { margin-top:16px; font-family:Georgia, serif; font-style:italic; font-size:32px; line-height:40px; color:#2a2622; }
+  .a1h-card .c3 { margin-top:14px; font-weight:700; font-size:22px; letter-spacing:2px; color:#5a4a2e; }
+  .a1h-chip { position:absolute; left:96px; top:600px; width:660px; box-sizing:border-box; padding:26px 44px; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#e74c3c; }
+  .a1h-src { position:absolute; left:96px; bottom:54px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; }
+</style>
+<div id="g-a1-hydro-root" data-composition-id="g-a1-hydro" data-width="1920" data-height="1080" data-duration="9.4">
+  <div class="a1h-grid" id="a1h-grid"></div>
+  <div class="a1h-base" id="a1h-base"></div>
+  <div class="a1h-ref" id="a1h-ref"></div>
+  <div class="a1h-old" id="a1h-old"></div>
+  <div class="a1h-new" id="a1h-new"></div>
+  <div class="a1h-oldlab" id="a1h-oldlab">Old record (31 years)</div>
+  <div class="a1h-newlab" id="a1h-newlab">Aug 20, 1969 &middot; 4 AM</div>
+  <div class="a1h-card" id="a1h-card">
+    <div class="c1" id="a1h-c1">Gage destroyed by flood</div>
+    <div class="c2" id="a1h-c2">Tye River near Lovingston</div>
+    <div class="c3" id="a1h-c3">USGS OFR 70-51</div>
+  </div>
+  <div class="a1h-chip" id="a1h-chip">8&times; THE 31-YEAR RECORD</div>
+  <div class="a1h-src" id="a1h-src">USGS Open-File Report 70-51</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 10.3;
+  tl.set(["#a1h-oldlab", "#a1h-newlab", "#a1h-card", "#a1h-chip", "#a1h-src"], { autoAlpha: 0 }, 0);
+  tl.set(["#a1h-old", "#a1h-new"], { scaleY: 0 }, 0);
+  tl.set("#a1h-ref", { scaleX: 0 }, 0);
+  tl.set("#a1h-base", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* ambient */
+  tl.fromTo("#a1h-grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+
+  /* base line + old record bar first (the yardstick) */
+  tl.to("#a1h-base", { scaleX: 1, duration: 0.7, ease: "power2.out" }, 0.2);
+  tl.to("#a1h-old", { scaleY: 1, duration: 0.6, ease: "power3.out" }, 0.5);
+  tl.fromTo("#a1h-oldlab", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.8);
+  tl.fromTo("#a1h-src", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.9);
+  /* tore @1.6 (CUE-PENDING tore): the beige gage card slides in */
+  tl.fromTo("#a1h-card", { autoAlpha: 0, x: -660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 1.6);
+  tl.fromTo("#a1h-card", { y: 0 }, { y: -8, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 2 }, 2.5);
+  /* the yardstick line runs up the right so the 8x is read against it */
+  tl.to("#a1h-ref", { scaleX: 1, duration: 0.7, ease: "power2.out" }, 5.0);
+  /* four @5.7 (CUE-PENDING four): the date label arrives where the bar will stand */
+  tl.fromTo("#a1h-newlab", { autoAlpha: 0, y: -16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.7);
+  /* eight times @7.6 (CUE-PENDING eight): the 1969 bar rises to 800 px, 8.0x the 100 px bar */
+  tl.to("#a1h-new", { scaleY: 1, duration: 1.0, ease: "power4.out" }, 7.6);
+  tl.fromTo("#a1h-chip", { autoAlpha: 0, scale: 1.12, transformOrigin: "0% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 8.1);
+  tl.fromTo("#a1h-new", { x: 0 }, { x: 5, duration: 0.15, ease: "sine.inOut", yoyo: true, repeat: 3 }, 8.7);
+  /* exit, last 0.6 s */
+  tl.to(["#a1h-card", "#a1h-chip"], { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 8.8);
+  tl.to(["#a1h-oldlab", "#a1h-newlab", "#a1h-src"], { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 8.9);
+  tl.to(["#a1h-old", "#a1h-new", "#a1h-ref", "#a1h-base"], { y: 60, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 8.8);
+  window.__timelines["g-a1-hydro"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

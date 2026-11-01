@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a1-staff: A1-S15 (about 6.4 s). Gauge staff at x 700, 30 px per ft from y 960 (0 ft): 13.7 ft -> y 549, 29.0 ft -> y 90.
+     Foot ticks are one SVG pattern (30 px period), unlabelled; only the two marks carry numbers. Full-frame BG gradient.
+     Comp time 0 = first word of A1-S15. Cues are estimated (words.json not on disk yet): CUE-PENDING.
+     Presenter corner x >= 1600, y >= 680 stays empty. */
+  #g-a1-staff-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .a1s-water { position:absolute; left:300px; top:90px; width:740px; height:870px; transform-origin:center bottom;
+    background:linear-gradient(180deg, rgba(127,178,229,0.55), rgba(90,118,143,0.30) 40%, rgba(90,118,143,0.18)); border-top:4px solid #7fb2e5; box-sizing:border-box; }
+  .a1s-ripple { position:absolute; left:300px; top:84px; width:740px; height:12px; background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.45), rgba(255,255,255,0)); }
+  .a1s-line44 { position:absolute; left:700px; top:547px; width:340px; height:4px; background:#d8a13a; transform-origin:left center; }
+  .a1s-line69 { position:absolute; left:700px; top:88px; width:340px; height:4px; background:#e74c3c; transform-origin:left center; }
+  .a1s-lab44 { position:absolute; left:1070px; top:506px; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#d8a13a; }
+  .a1s-lab44 .u { font-family:Georgia, serif; font-style:italic; font-weight:400; font-size:34px; color:#e8c56a; }
+  .a1s-lab69 { position:absolute; left:1070px; top:52px; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:84px; line-height:90px; color:#e74c3c; }
+  .a1s-lab69 .u { font-family:Georgia, serif; font-style:italic; font-weight:400; font-size:34px; color:#f2f5f8; }
+  .a1s-src { position:absolute; left:96px; bottom:56px; font-weight:700; font-size:21px; letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
+</style>
+<div id="g-a1-staff-root" data-composition-id="g-a1-staff" data-width="1920" data-height="1080" data-duration="7.4">
+  <div class="a1s-water" id="a1s-water"></div>
+  <div class="a1s-ripple" id="a1s-ripple"></div>
+  <svg id="a1s-staff" style="position:absolute;left:0;top:0" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="a1s-ft" x="0" y="0" width="60" height="30" patternUnits="userSpaceOnUse">
+        <rect x="0" y="0" width="60" height="2" fill="#93a3b2"/>
+      </pattern>
+    </defs>
+    <rect x="700" y="60" width="40" height="900" fill="#1b2836" stroke="#4a5560" stroke-width="2"/>
+    <rect x="700" y="60" width="40" height="900" fill="url(#a1s-ft)" transform="translate(0 0)" opacity="0.9"/>
+    <rect x="660" y="958" width="120" height="8" fill="#4a5560"/>
+  </svg>
+  <div class="a1s-line44" id="a1s-line44"></div>
+  <div class="a1s-line69" id="a1s-line69"></div>
+  <div class="a1s-lab44" id="a1s-lab44">13.7 ft <span class="u">&middot; 1944</span></div>
+  <div class="a1s-lab69" id="a1s-lab69">29.0 ft <span class="u">&middot; Aug 20, 1969</span></div>
+  <div class="a1s-src" id="a1s-src">USGS Open-File Report 70-51 &middot; Tye River near Lovingston, from floodmarks</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#a1s-lab44", "#a1s-lab69", "#a1s-src", "#a1s-ripple", "#a1s-line44", "#a1s-line69", "#a1s-staff"], { autoAlpha: 0 }, 0);
+  tl.set("#a1s-water", { scaleY: 0 }, 0);
+  tl.set(["#a1s-line44", "#a1s-line69"], { scaleX: 0 }, 0);
+
+  /* the staff stands first (bare, unlabelled ticks) */
+  tl.fromTo("#a1s-staff", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.1);
+  tl.fromTo("#a1s-src", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.5);
+  /* twenty-nine feet @1.8 (CUE-PENDING twenty-nine): the water climbs up the staff through the 1944 line to y 90 */
+  tl.to("#a1s-water", { scaleY: 1, duration: 1.6, ease: "power3.out" }, 0.9);
+  tl.fromTo("#a1s-ripple", { autoAlpha: 0, y: 870 }, { autoAlpha: 1, y: 0, duration: 1.6, ease: "power3.out" }, 0.9);
+  tl.fromTo("#a1s-line69", { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.5, ease: "power3.out" }, 2.0);
+  tl.fromTo("#a1s-lab69", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 2.1);
+  /* 1944 @4.8 (CUE-PENDING 1944): the old high is marked, under fourteen */
+  tl.fromTo("#a1s-line44", { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.5, ease: "power3.out" }, 4.7);
+  tl.fromTo("#a1s-lab44", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 4.8);
+  tl.fromTo("#a1s-lab44", { scale: 1 }, { scale: 1.06, transformOrigin: "0% 50%", duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 5.3);
+  /* ambient: the water surface ripples the whole way */
+  tl.fromTo("#a1s-ripple", { x: -80 }, { x: 80, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 2 }, 2.6);
+  /* exit, last 0.6 s */
+  tl.to(["#a1s-lab44", "#a1s-lab69"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 6.8);
+  tl.to(["#a1s-water", "#a1s-ripple", "#a1s-staff", "#a1s-line44", "#a1s-line69", "#a1s-src"], { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 6.9);
+  window.__timelines["g-a1-staff"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

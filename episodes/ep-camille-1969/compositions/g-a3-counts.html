@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a3-counts: A3-S11. Four cards in a row, never merged, built in spoken order 113, 150, 153, 124. No arithmetic between cards.
+     Card geometry (script-printed): x = 140 + 420*i, y 200, 380 x 340. Comp time 0 = first word of A3-S11. Corner x >= 1600, y >= 680 empty
+     (the card-4 ghost tag ends at y 636). */
+  #ct-root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  #ct-scan { position:absolute; left:0; top:0; width:3px; height:1080px; opacity:0.5; pointer-events:none;
+    background:linear-gradient(180deg, rgba(127,178,229,0), rgba(127,178,229,0.35) 50%, rgba(127,178,229,0)); }
+  .ct-grid { position:absolute; left:0; right:0; height:1px; background:rgba(120,150,180,0.10); }
+  .ct-card { position:absolute; top:200px; width:380px; height:340px; box-sizing:border-box; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  #ct-c1 { left:140px; } #ct-c2 { left:560px; } #ct-c3 { left:980px; } #ct-c4 { left:1400px; }
+  .ct-num { position:absolute; left:0; right:0; top:26px; text-align:center; font-family:'Courier New',monospace; font-weight:700;
+    font-size:120px; line-height:130px; color:#e74c3c; opacity:0; visibility:hidden; }
+  #ct-n4 { color:#e8c56a; }
+  .ct-chips { position:absolute; left:24px; right:24px; top:172px; opacity:0; visibility:hidden; }
+  .ct-chip { display:inline-block; margin:0 8px 8px 0; padding:5px 14px; box-sizing:border-box; border-radius:14px;
+    border:1px solid #5a768f; background:rgba(127,178,229,0.12); font-weight:700; font-size:26px; line-height:32px; letter-spacing:2px; color:#dfe7ee; }
+  .ct-src { position:absolute; left:24px; right:24px; bottom:22px; font-weight:700; font-size:21px; letter-spacing:1px; color:#c8d3e0; opacity:0; visibility:hidden; }
+  .ct-tag { position:absolute; width:380px; box-sizing:border-box; padding:10px 18px; border-radius:20px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); border:1px solid rgba(255,255,255,0.14); font-weight:700; font-size:21px; line-height:25px; letter-spacing:1px; color:#c8d3e0; }
+  #ct-inset { left:560px; top:560px; font-size:26px; line-height:32px; color:#e8c56a; }
+  #ct-ghost { left:1400px; top:566px; border-style:dashed; }
+</style>
+<div id="ct-root" data-composition-id="g-a3-counts" data-width="1920" data-height="1080">
+  <div class="ct-grid" style="top:130px"></div>
+  <div class="ct-grid" style="top:700px"></div>
+  <div class="ct-grid" style="top:860px"></div>
+  <div class="ct-grid" style="top:980px"></div>
+  <div id="ct-scan"></div>
+  <div class="ct-card" id="ct-c1">
+    <div class="ct-num" id="ct-n1">0</div>
+    <div class="ct-chips" id="ct-k1"><span class="ct-chip cs-va">VIRGINIA</span><span class="ct-chip cs-found">FOUND</span><span class="ct-chip cs-1969">NOV 1969</span></div>
+    <div class="ct-src" id="ct-s1">USGS</div>
+  </div>
+  <div class="ct-card" id="ct-c2">
+    <div class="ct-num" id="ct-n2">0</div>
+    <div class="ct-chips" id="ct-k2"><span class="ct-chip cs-va">VIRGINIA</span><span class="ct-chip cs-later">LATER COUNT</span></div>
+    <div class="ct-src" id="ct-s2">USGS 1973, 1999</div>
+  </div>
+  <div class="ct-card" id="ct-c3">
+    <div class="ct-num" id="ct-n3">0</div>
+    <div class="ct-chips" id="ct-k3"><span class="ct-chip cs-va">VIRGINIA</span><span class="ct-chip cs-later">LATER COUNT</span></div>
+    <div class="ct-src" id="ct-s3">National Weather Service</div>
+  </div>
+  <div class="ct-card" id="ct-c4">
+    <div class="ct-num" id="ct-n4">0</div>
+    <div class="ct-chips" id="ct-k4"><span class="ct-chip cs-nel">NELSON COUNTY</span></div>
+    <div class="ct-src" id="ct-s4">Virginia Dept. of Health</div>
+  </div>
+  <div class="ct-tag" id="ct-inset">125 in Nelson &middot; USGS PP 804</div>
+  <div class="ct-tag" id="ct-ghost">124 statewide &middot; Encyclopedia Virginia</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 31.2;
+  /* CUE-PENDING all cues are ESTIMATES (no audio/a3-s11.words.json yet), from word count at the measured pace:
+     113 "hundred thirteen" 4.43 · 150 "a hundred fifty" 10.51 · 153 "hundred fifty-three" 13.59 · 124 "hundred twenty-four" 15.46 ·
+     "Nelson County alone" 17.83 · "whole state" 20.84 · "one county" 21.74 · "found" 22.84 · "1969" 24.21 · "later" 24.87 · last word ends ~28.9 */
+  tl.set([".ct-card", ".ct-num", ".ct-chips", ".ct-src", ".ct-tag"], { autoAlpha: 0 }, 0);
+
+  tl.fromTo("#ct-scan", { x: -40 }, { x: 1560, duration: DUR, ease: "none" }, 0);
+  /* empty frames wait for their numbers, in order */
+  tl.fromTo("#ct-c1", { autoAlpha: 0, y: 40 }, { autoAlpha: 0.55, y: 0, duration: 0.5, ease: "power3.out" }, 0.4);
+  tl.fromTo("#ct-c2", { autoAlpha: 0, y: 40 }, { autoAlpha: 0.55, y: 0, duration: 0.5, ease: "power3.out" }, 0.6);
+  tl.fromTo("#ct-c3", { autoAlpha: 0, y: 40 }, { autoAlpha: 0.55, y: 0, duration: 0.5, ease: "power3.out" }, 0.8);
+  tl.fromTo("#ct-c4", { autoAlpha: 0, y: 40 }, { autoAlpha: 0.55, y: 0, duration: 0.5, ease: "power3.out" }, 1.0);
+
+  /* 113 */
+  const n1 = { v: 0 };
+  tl.to("#ct-c1", { autoAlpha: 1, borderColor: "rgba(127,178,229,0.6)", duration: 0.4 }, 4.3);
+  tl.fromTo("#ct-n1", { autoAlpha: 0, scale: 0.85 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(1.8)" }, 4.43);
+  tl.to(n1, { v: 113, duration: 0.9, ease: "power3.out", onUpdate: () => { document.querySelector("#ct-n1").textContent = Math.round(n1.v); } }, 4.43);
+  tl.fromTo("#ct-k1", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 5.3);
+  tl.fromTo("#ct-s1", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 5.7);
+  /* 150 */
+  const n2 = { v: 0 };
+  tl.to("#ct-c2", { autoAlpha: 1, borderColor: "rgba(127,178,229,0.6)", duration: 0.4 }, 10.3);
+  tl.fromTo("#ct-n2", { autoAlpha: 0, scale: 0.85 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(1.8)" }, 10.51);
+  tl.to(n2, { v: 150, duration: 0.9, ease: "power3.out", onUpdate: () => { document.querySelector("#ct-n2").textContent = Math.round(n2.v); } }, 10.51);
+  tl.fromTo("#ct-k2", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 11.2);
+  tl.fromTo("#ct-s2", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 11.5);
+  tl.fromTo("#ct-inset", { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 11.6);
+  /* 153 */
+  const n3 = { v: 0 };
+  tl.to("#ct-c3", { autoAlpha: 1, borderColor: "rgba(127,178,229,0.6)", duration: 0.4 }, 13.4);
+  tl.fromTo("#ct-n3", { autoAlpha: 0, scale: 0.85 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(1.8)" }, 13.59);
+  tl.to(n3, { v: 153, duration: 0.9, ease: "power3.out", onUpdate: () => { document.querySelector("#ct-n3").textContent = Math.round(n3.v); } }, 13.59);
+  tl.fromTo("#ct-k3", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 14.4);
+  tl.fromTo("#ct-s3", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 14.7);
+  /* 124 */
+  const n4 = { v: 0 };
+  tl.to("#ct-c4", { autoAlpha: 1, borderColor: "rgba(232,197,106,0.6)", duration: 0.4 }, 15.3);
+  tl.fromTo("#ct-n4", { autoAlpha: 0, scale: 0.85 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(1.8)" }, 15.46);
+  tl.to(n4, { v: 124, duration: 0.9, ease: "power3.out", onUpdate: () => { document.querySelector("#ct-n4").textContent = Math.round(n4.v); } }, 15.46);
+  tl.fromTo("#ct-k4", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 16.3);
+  tl.fromTo("#ct-s4", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 16.6);
+  /* ghost tag on "Nelson County alone" @17.83: flickers 3 times, then stays dim */
+  tl.fromTo("#ct-ghost", { autoAlpha: 0, y: -20 }, { autoAlpha: 0.9, y: 0, duration: 0.25, ease: "power3.out" }, 17.83);
+  tl.to("#ct-ghost", { autoAlpha: 0.15, duration: 0.18, ease: "none" }, 18.2);
+  tl.to("#ct-ghost", { autoAlpha: 0.9, duration: 0.18, ease: "none" }, 18.45);
+  tl.to("#ct-ghost", { autoAlpha: 0.15, duration: 0.18, ease: "none" }, 18.7);
+  tl.to("#ct-ghost", { autoAlpha: 0.9, duration: 0.18, ease: "none" }, 18.95);
+  tl.to("#ct-ghost", { autoAlpha: 0.15, duration: 0.18, ease: "none" }, 19.2);
+  tl.to("#ct-ghost", { autoAlpha: 0.9, duration: 0.18, ease: "none" }, 19.45);
+  tl.to("#ct-ghost", { autoAlpha: 0.4, duration: 0.5, ease: "power2.out" }, 19.8);
+
+  /* final pulses, each chip kind in turn on its spoken phrase */
+  const pulse = (sel, at) => {
+    tl.to(sel, { scale: 1.16, backgroundColor: "rgba(216,161,58,0.55)", duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, at);
+  };
+  pulse(".cs-va", 20.84);      /* whole state */
+  pulse(".cs-nel", 21.74);     /* one county */
+  pulse(".cs-found", 22.84);   /* the found */
+  pulse(".cs-1969", 24.21);    /* 1969 */
+  pulse(".cs-later", 24.87);   /* later */
+
+  /* exit, last 0.6 s */
+  tl.to(["#ct-c1", "#ct-c2"], { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 28.9);
+  tl.to(["#ct-c3", "#ct-c4"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 28.9);
+  tl.to(["#ct-inset"], { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 28.9);
+  tl.to(["#ct-ghost"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 28.9);
+  window.__timelines["g-a3-counts"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

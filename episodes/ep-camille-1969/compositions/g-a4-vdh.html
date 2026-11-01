@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<!--
+  g-a4-vdh: A4-S1 (voice 23.15 s). Typeset beige card (the VDH media-update item), rail stamp "Late August 2026", chip "NO AGES · NO NAMES".
+  Beige family copy of g-a1-forecast (a1fc- -> a4vd-; flat beige, no sheen). A real page capture replaces the typeset card if GAP 8 is filled.
+  Comp time 0 = first word of A4-S1. Cues from audio/a4-s1.words.json: "late" 0.16, "Virginia" 4.50, "eight" 10.64 / "people" 10.96, "124" 14.74, "new" 18.60, "leads," 18.78,
+  "no" 20.58 / "age" 20.72, "no" 22.58 / "name." 22.74 (voice ends 23.15). Host should run 23.6 s.
+  DEVIATION: the brief puts the chip on "no name" (22.58), which leaves 0.6 s before the segment ends: the chip lands on "no age" (20.72) so it can be read.
+  The words "generate new leads" sit in the fragment "working to raise awareness and generate new leads" (VDH raw text, the script's factcheck-A4 row); the brief carries only the three highlighted words.
+  Corner x >= 1600, y >= 680 empty (card right edge x 1560).
+-->
+<style>
+  #g-a4-vdh-root { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .a4vd-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .a4vd-glow { position:absolute; left:-200px; top:80px; width:1300px; height:900px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(232,197,106,0.08), rgba(232,197,106,0) 70%); }
+  .a4vd-glass { position:absolute; box-sizing:border-box; opacity:0; visibility:hidden; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  #a4vd-stamp { left:96px; top:96px; padding:14px 28px; border-radius:20px; font-weight:700; font-size:30px; letter-spacing:2px; color:#f5d98b; }
+  #a4vd-chip { left:160px; top:830px; padding:16px 44px; border-radius:22px;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:66px; letter-spacing:2px; color:#d8a13a; }
+  #a4vd-ghost { position:absolute; left:160px; top:230px; width:1400px; height:540px; box-sizing:border-box; border-radius:28px; opacity:0; visibility:hidden;
+    border:3px dashed rgba(232,222,200,0.45); background:rgba(232,222,200,0.06); }
+  #a4vd-gsrc { position:absolute; left:72px; bottom:44px; font-weight:700; font-size:24px; letter-spacing:1px; color:rgba(232,222,200,0.65); white-space:nowrap; }
+  #a4vd-card { position:absolute; left:160px; top:230px; width:1400px; box-sizing:border-box; padding:48px 72px 44px 72px; border-radius:28px; opacity:0; visibility:hidden;
+    background: rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  .a4vd-head { font-family:Georgia, serif; font-weight:700; font-size:56px; line-height:66px; color:#2a2622; }
+  .a4vd-hr { height:3px; margin-top:18px; background:#8a5a10; }
+  .a4vd-body { margin-top:34px; font-family:Georgia, serif; font-size:40px; line-height:54px; color:#1c1a17; }
+  .a4vd-hl { position:relative; display:inline-block; }
+  .a4vd-hlbar { position:absolute; left:-8px; right:-8px; top:2px; bottom:-2px; border-radius:8px; background:rgba(216,161,58,0.50); }
+  .a4vd-hl b { position:relative; font-weight:700; }
+  .a4vd-n { margin-top:30px; padding-left:28px; border-left:6px solid #8a5a10; }
+  .a4vd-nq { font-family:Georgia, serif; font-style:italic; font-size:38px; line-height:50px; color:#1c1a17; }
+  .a4vd-ns { margin-top:8px; font-weight:700; font-size:22px; line-height:30px; letter-spacing:2px; color:#5a4a2e; }
+  .a4vd-src { margin-top:30px; font-weight:700; font-size:24px; line-height:32px; letter-spacing:1px; color:#5a4a2e; }
+</style>
+<div id="g-a4-vdh-root" data-composition-id="g-a4-vdh" data-width="1920" data-height="1080" data-duration="23.6">
+  <div class="a4vd-grid" id="a4vd-grid"></div>
+  <div class="a4vd-glow" id="a4vd-glow"></div>
+  <div class="a4vd-glass" id="a4vd-stamp">Late August 2026</div>
+  <div id="a4vd-ghost"><div id="a4vd-gsrc">Virginia Department of Health &middot; media update, August 28, 2026</div></div>
+  <div id="a4vd-card">
+    <div class="a4vd-head" id="a4vd-head">OCME Missing Persons Program</div>
+    <div class="a4vd-hr" id="a4vd-hr"></div>
+    <div class="a4vd-body" id="a4vd-body">&hellip;working to raise awareness and <span class="a4vd-hl" id="a4vd-hl"><i class="a4vd-hlbar" id="a4vd-hlbar"></i><b>generate new leads</b></span></div>
+    <div class="a4vd-n" id="a4vd-n">
+      <div class="a4vd-nq" id="a4vd-nq">In total, 124 people died in Nelson County and eight fatalities are still unidentified</div>
+      <div class="a4vd-ns" id="a4vd-ns">Virginia Department of Health, 2026</div>
+    </div>
+    <div class="a4vd-src" id="a4vd-src">Virginia Department of Health &middot; media update, August 28, 2026</div>
+  </div>
+  <div class="a4vd-glass" id="a4vd-chip">NO AGES &middot; NO NAMES</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 23.7;
+  tl.set(["#a4vd-stamp", "#a4vd-chip", "#a4vd-ghost", "#a4vd-card", "#a4vd-n"], { autoAlpha: 0 }, 0);
+  tl.set("#a4vd-hlbar", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* ambient, whole window */
+  tl.fromTo("#a4vd-grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#a4vd-glow", { x: 0, y: 0 }, { x: 900, y: 100, duration: DUR, ease: "none" }, 0);
+
+  /* rail stamp on "late" @0.16 */
+  tl.fromTo("#a4vd-stamp", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.16);
+  /* ghost page outline + its source line on "Virginia Department of Health" @4.50 */
+  tl.fromTo("#a4vd-ghost", { autoAlpha: 0, scale: 0.94, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.6, ease: "power3.out" }, 4.4);
+  tl.fromTo("#a4vd-ghost", { y: 0 }, { y: -8, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 3 }, 5.2);
+  /* the card slams in on "eight people" @10.64: scale 1.15 -> 1 in 0.25 s; the ghost is replaced */
+  tl.to("#a4vd-ghost", { autoAlpha: 0, duration: 0.05 }, 10.62);
+  tl.fromTo("#a4vd-card", { autoAlpha: 0, scale: 1.15, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.25, ease: "power3.out" }, 10.64);
+  tl.fromTo("#a4vd-hr", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.6, ease: "power2.out" }, 10.9);
+  /* "124" line on "124" @14.74 */
+  tl.fromTo("#a4vd-n", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 14.74);
+  /* "generate new leads" highlight on "new leads" @18.60 */
+  tl.to("#a4vd-hlbar", { scaleX: 1, duration: 0.7, ease: "power3.out" }, 18.6);
+  /* chip on "no age" @20.72 (brief: "no name" @22.58, 0.6 s before the segment ends) */
+  tl.fromTo("#a4vd-chip", { autoAlpha: 0, scale: 0.8, transformOrigin: "0% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(1.7)" }, 20.72);
+  /* float through the hold */
+  tl.fromTo("#a4vd-card", { y: 0 }, { y: -8, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 9 }, 11.2);
+  /* exit, last 0.6 s */
+  tl.to(["#a4vd-card", "#a4vd-chip"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 23.0);
+  tl.to("#a4vd-stamp", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 23.0);
+  window.__timelines["g-a4-vdh"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a3-missing-b: A3-S7, copy of g-a3-missing-a (am- -> bm-). Opens at MISSING "110+" (frame 0 shows it), ticks to "109", then counts down to "89";
+     KNOWN LOST gets only a climbing arrow, no number. Full frame, BG gradient.
+     OFFSET: the plan opens A3-S7 on the real still V10/Rescue_Mission_Briefing (about 2.5 s, hard cut after bo-cta-out), then this comp. Comp time 0 = A3-S7 + 2.50 s
+     (OFFSET below; every cue = audio/a3-s7.words.json time - 2.50). Cues: "Associated" 3.02 -> 0.52, "109." 4.52 -> 2.02, "United" 7.02 -> 4.52, "89." 8.18 -> 5.68,
+     "And" 12.02 -> 9.52, "kept" 15.30 -> 12.80, "climbing." 15.58 -> 13.08 (voice ends ~16.2 -> 13.7). Host: A3-S7 start + 2.5, 14.4 s.
+     Corner x >= 1600, y >= 680 empty. */
+  #bm-root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  #bm-scan { position:absolute; left:0; top:0; width:3px; height:1080px; opacity:0.5; pointer-events:none;
+    background:linear-gradient(180deg, rgba(127,178,229,0), rgba(127,178,229,0.35) 50%, rgba(127,178,229,0)); }
+  .bm-grid { position:absolute; left:0; right:0; height:1px; background:rgba(120,150,180,0.10); }
+  .bm-panel { position:absolute; top:250px; width:520px; height:400px; box-sizing:border-box;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  #bm-pl { left:380px; } #bm-pr { left:1020px; }
+  .bm-head { position:absolute; left:0; right:0; top:44px; text-align:center; font-weight:700; font-size:34px; letter-spacing:8px; color:#93a3b2; }
+  .bm-rule { position:absolute; left:60px; right:60px; top:110px; height:3px; background:#5a768f; opacity:0.6; }
+  #bm-pr .bm-rule { background:#c0392b; opacity:0.9; }
+  .bm-slot { position:absolute; left:50px; top:160px; width:420px; height:190px; box-sizing:border-box; border:3px dashed #2f3f4f; border-radius:18px; }
+  #bm-arrow { position:absolute; left:210px; top:176px; width:100px; height:160px; }
+  .bm-val { position:absolute; left:0; right:0; top:164px; text-align:center; font-family:'Courier New',monospace; font-weight:700; font-size:150px; line-height:180px; color:#e74c3c; opacity:0; visibility:hidden; }
+  #bm-v110 { opacity:1; visibility:visible; }
+  .bm-stamp { position:absolute; left:96px; top:96px; padding:14px 28px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:20px; font-weight:700; font-size:30px; letter-spacing:2px; color:#f5d98b; white-space:nowrap; }
+  .bm-src { position:absolute; left:96px; bottom:54px; font-weight:700; font-size:22px; letter-spacing:1px; color:#c8d3e0; opacity:0; visibility:hidden; white-space:nowrap; }
+</style>
+<div id="bm-root" data-composition-id="g-a3-missing-b" data-width="1920" data-height="1080" data-duration="14.0">
+  <div class="bm-grid" style="top:180px"></div>
+  <div class="bm-grid" style="top:430px"></div>
+  <div class="bm-grid" style="top:700px"></div>
+  <div class="bm-grid" style="top:900px"></div>
+  <div id="bm-scan"></div>
+  <div class="bm-stamp" id="bm-st1">Aug 24 &middot; AP</div>
+  <div class="bm-stamp" id="bm-st2">Aug 25 &middot; UPI</div>
+  <div class="bm-panel" id="bm-pl">
+    <div class="bm-head" id="bm-hl">KNOWN LOST</div>
+    <div class="bm-rule" id="bm-rl"></div>
+    <div class="bm-slot" id="bm-sl"></div>
+    <svg id="bm-arrow" viewBox="0 0 100 160">
+      <path id="bm-ashaft" d="M50 150 L50 30" fill="none" stroke="#c0392b" stroke-width="12" stroke-linecap="round"/>
+      <path id="bm-ahead" d="M16 62 L50 18 L84 62" fill="none" stroke="#c0392b" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="bm-panel" id="bm-pr">
+    <div class="bm-head" id="bm-hr">MISSING</div>
+    <div class="bm-rule" id="bm-rr"></div>
+    <div class="bm-val" id="bm-v110">110+</div>
+    <div class="bm-val" id="bm-v109">109</div>
+    <div class="bm-val" id="bm-vc">109</div>
+  </div>
+  <div class="bm-src" id="bm-src1">Associated Press, via The Pontiac Press, Aug 25, 1969, p. 7</div>
+  <div class="bm-src" id="bm-src2">United Press International, via The Pontiac Press, Aug 25, 1969, p. 62 &middot; AP and UPI counts differ</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 14.0;  /* host window 13.993 */
+  /* all cues are a3-s7.words.json time minus the 2.50 s OFFSET (see header) */
+  const aShaft = document.querySelector("#bm-ashaft"), aHead = document.querySelector("#bm-ahead");
+  const sLen = Math.ceil(aShaft.getTotalLength()) + 1, hLen = Math.ceil(aHead.getTotalLength()) + 1;
+  gsap.set("#bm-ashaft", { strokeDasharray: sLen, strokeDashoffset: sLen });
+  gsap.set("#bm-ahead", { strokeDasharray: hLen, strokeDashoffset: hLen });
+  tl.set(["#bm-st1", "#bm-st2", "#bm-src1", "#bm-src2", "#bm-v109", "#bm-vc"], { autoAlpha: 0 }, 0);
+
+  tl.fromTo("#bm-scan", { x: -40 }, { x: 1560, duration: DUR, ease: "none" }, 0);
+  /* the panels are on from frame 0 (the hard cut lands on the opening state); the rule draws and the slot pulses */
+  tl.fromTo("#bm-rl", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.05);
+  tl.fromTo("#bm-rr", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.2);
+  tl.fromTo("#bm-sl", { opacity: 0.35 }, { opacity: 1, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0.3);
+  /* stamp + AP source on "Associated" @0.52 */
+  tl.fromTo("#bm-st1", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.52);
+  tl.fromTo("#bm-src1", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.72);
+  /* 110+ -> 109 on "109." @2.02 */
+  tl.to("#bm-v110", { y: -70, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, 2.02);
+  tl.fromTo("#bm-v109", { autoAlpha: 0, y: 70 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "back.out(2)" }, 2.22);
+  /* UPI: stamp + source swap on "United" @4.52 */
+  tl.to(["#bm-st1", "#bm-src1"], { x: -980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 4.3);
+  tl.fromTo("#bm-st2", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 4.52);
+  tl.fromTo("#bm-src2", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 4.72);
+  /* 109 -> 89 on "89." @5.68 (counts down) */
+  const cnt = { v: 109 };
+  tl.to("#bm-v109", { autoAlpha: 0, duration: 0.15 }, 5.6);
+  tl.set("#bm-vc", { autoAlpha: 1 }, 5.68);
+  tl.to(cnt, { v: 89, duration: 1.0, ease: "power3.out", onUpdate: () => { document.querySelector("#bm-vc").textContent = Math.round(cnt.v); } }, 5.68);
+  tl.fromTo("#bm-vc", { scale: 1.12 }, { scale: 1, duration: 0.45, ease: "back.out(2)" }, 6.7);
+  /* KNOWN LOST arrow climbs on "kept climbing" @12.80 (no number) */
+  tl.set("#bm-sl", { opacity: 1 }, 12.8);
+  tl.to("#bm-ashaft", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 12.8);
+  tl.to("#bm-ahead", { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 13.0);
+  tl.fromTo("#bm-arrow", { y: 40 }, { y: -14, duration: 1.0, ease: "power3.out" }, 12.8);
+  /* float so the hold keeps moving */
+  tl.fromTo(["#bm-pl", "#bm-pr"], { y: 0 }, { y: -6, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 7 }, 2.8);
+  /* exit, last 0.6 s */
+  tl.to("#bm-pl", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 13.4);
+  tl.to("#bm-pr", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 13.4);
+  tl.to(["#bm-st2", "#bm-src2"], { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 13.4);
+  window.__timelines["g-a3-missing-b"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

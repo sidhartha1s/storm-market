@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<!--
+  g-a1-letgo: A1-S19, full-frame beige quote (copy of the g-a1-forecast family base, a1fc- -> a1lg-; flat beige, no sheen).
+  Comp time 0 = the moment the card starts: right after the spoken line ends (audio/a1-s19.words.json: "water." starts 3.78, wav 4.22 s),
+  i.e. host data-start = A1-S19 start + 4.3 s, over/after the darkened V04 still. The quote itself is not narrated, so phrase reveals are read-time
+  design cues (not words.json cues): 0.5 / 2.9 / 4.7. Hold = last phrase + 5 s (brief): last phrase lands 4.7, read about 2.4 s, hold to 12.0.
+  No exit animation: the chapter blackout (bo-2) cuts it. Gentle drift only. Corner x >= 1600, y >= 680 empty (card right edge x 1560).
+-->
+<style>
+  #g-a1-letgo-root { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .a1lg-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .a1lg-glow { position:absolute; left:-200px; top:80px; width:1300px; height:900px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(232,197,106,0.08), rgba(232,197,106,0) 70%); }
+  .a1lg-card { position:absolute; left:160px; top:230px; width:1400px; height:620px; box-sizing:border-box; border-radius:28px; overflow:hidden;
+    background: rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  .a1lg-mark { position:absolute; left:40px; top:24px; font-family:'AbrilFig', Georgia, serif; font-size:170px; line-height:170px; color:#8a5a10; }
+  .a1lg-q { position:absolute; left:150px; right:80px; top:80px; font-family: Georgia, serif; font-style:italic; font-size:58px; line-height:80px; color:#1c1a17; }
+  .a1lg-q span { display:inline-block; }
+  .a1lg-rule { position:absolute; left:150px; bottom:158px; width:240px; height:3px; background:#8a5a10; }
+  .a1lg-who { position:absolute; left:150px; bottom:106px; font-weight:700; font-size:30px; letter-spacing:1px; color:#2a2622; white-space:nowrap; }
+  .a1lg-src { position:absolute; left:150px; bottom:60px; font-weight:700; font-size:24px; letter-spacing:2px; color:#5a4a2e; white-space:nowrap; }
+</style>
+<div id="g-a1-letgo-root" data-composition-id="g-a1-letgo" data-width="1920" data-height="1080" data-duration="12.5">
+  <div class="a1lg-grid" id="a1lg-grid"></div>
+  <div class="a1lg-glow" id="a1lg-glow"></div>
+  <div class="a1lg-card" id="a1lg-card">
+    <div class="a1lg-mark" id="a1lg-mark">&ldquo;</div>
+    <div class="a1lg-q" id="a1lg-q"><span id="a1lg-a1">My mother said, &lsquo;Let go. We&rsquo;ll catch you.&rsquo;</span> <span id="a1lg-a2">I let go of it.</span> <span id="a1lg-a3">And I got there, and they were gone.&rdquo;</span></div>
+    <div class="a1lg-rule" id="a1lg-rule"></div>
+    <div class="a1lg-who" id="a1lg-who">Warren Raines</div>
+    <div class="a1lg-src" id="a1lg-src">WTKR News 3, 2019</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 12.5;
+  tl.set(["#a1lg-mark", "#a1lg-who", "#a1lg-src", "#a1lg-a1", "#a1lg-a2", "#a1lg-a3"], { autoAlpha: 0 }, 0);
+  tl.set("#a1lg-rule", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* ambient, whole window */
+  tl.fromTo("#a1lg-grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#a1lg-glow", { x: 0, y: 0 }, { x: 900, y: 100, duration: DUR, ease: "none" }, 0);
+
+  /* the card is on from frame 0 (ground and card, no dark empty frame after the cut), then settles in */
+  tl.fromTo("#a1lg-card", { y: 40 }, { y: 0, duration: 0.55, ease: "power3.out" }, 0);
+  tl.fromTo("#a1lg-mark", { autoAlpha: 0, scale: 1.6, y: -20 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, 0.3);
+  tl.fromTo("#a1lg-who", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 0.8);
+  tl.fromTo("#a1lg-src", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 1.0);
+  tl.to("#a1lg-rule", { scaleX: 1, duration: 0.8, ease: "power2.out" }, 0.9);
+  /* phrase-by-phrase reveal (read-time cues) */
+  tl.fromTo("#a1lg-a1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 0.5);
+  tl.fromTo("#a1lg-a2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2.9);
+  tl.fromTo("#a1lg-a3", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 4.7);
+  /* gentle drift through the 5 s hold, no exit */
+  tl.fromTo("#a1lg-card", { y: 0 }, { y: -10, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 3 }, 1.0);
+  window.__timelines["g-a1-letgo"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

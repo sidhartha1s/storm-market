@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-i1-pmp: I1-S5 (about 7 s). Beige cite card, then ONE gauge (same glyph as g-i1-rain: cylinder 140 x 420 px at x 300, y 300 to 720)
+     filled to 82.5 % (346.5 px of 420), inside the 80 to 85 % band. Full-frame BG gradient. Comp time 0 = first word of I1-S5.
+     No 27 in vs 28 in comparison. Cues are estimated (words.json for I1-S5 not on disk yet): CUE-PENDING.
+     Presenter corner x >= 1600, y >= 680 stays empty. */
+  #g-i1-pmp-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .i1p-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size:120px 120px; }
+  .i1p-card { position:absolute; left:160px; top:330px; width:1400px; box-sizing:border-box; padding:56px 80px 56px; border-radius:28px;
+    background:rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  .i1p-card .c1 { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:76px; line-height:84px; color:#1c1a17; }
+  .i1p-card .c2 { margin-top:22px; font-family:Georgia, serif; font-style:italic; font-size:40px; line-height:50px; color:#2a2622; }
+  .i1p-card .c3 { margin-top:26px; font-weight:700; font-size:24px; letter-spacing:3px; color:#5a4a2e; }
+  .i1p-ground { position:absolute; left:0; top:-14px; width:1920px; height:1108px; opacity:0.22; transform-origin:50% 50%; }
+  .i1p-cyl { position:absolute; left:300px; top:300px; width:140px; height:420px; border-radius:16px; overflow:hidden; background:rgba(255,255,255,0.04); }
+  .i1p-fill { position:absolute; left:0; top:0; width:140px; height:420px; transform-origin:center bottom;
+    background:linear-gradient(180deg, rgba(127,178,229,0.95), rgba(90,118,143,0.80)); }
+  .i1p-band { position:absolute; left:300px; top:363px; width:140px; height:21px; background:rgba(216,161,58,0.35); }
+  .i1p-max { position:absolute; left:290px; top:298px; width:480px; height:3px; background:repeating-linear-gradient(90deg, #d8a13a 0 16px, rgba(216,161,58,0) 16px 28px); transform-origin:left center; }
+  .i1p-conn { position:absolute; left:440px; top:372px; width:80px; height:3px; background:#d8a13a; transform-origin:left center; }
+  .i1p-lab { position:absolute; left:540px; top:318px; width:940px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:66px; color:#f2f5f8; }
+  .i1p-sub { position:absolute; left:540px; top:458px; font-family:Georgia, serif; font-style:italic; font-size:32px; color:#d8a13a; white-space:nowrap; }
+</style>
+<div id="g-i1-pmp-root" data-composition-id="g-i1-pmp" data-width="1920" data-height="1080" data-duration="7">
+  <img class="i1p-ground" id="i1p-ground" src="media/src/V24/camille1969varainblk.gif">
+  <div class="i1p-grid" id="i1p-grid"></div>
+  <div class="i1p-card" id="i1p-card">
+    <div class="c1" id="i1p-c1">Probable maximum rainfall</div>
+    <div class="c2" id="i1p-c2">Weather Bureau study for the Corps of Engineers, 1956</div>
+    <div class="c3" id="i1p-c3">USGS OFR 70-51 p. 7</div>
+  </div>
+  <div class="i1p-cyl" id="i1p-cyl"><div class="i1p-fill" id="i1p-fill"></div></div>
+  <svg id="i1p-outline" style="position:absolute;left:0;top:0" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <rect x="300" y="300" width="140" height="420" rx="16" fill="none" stroke="#93a3b2" stroke-width="3"/>
+  </svg>
+  <div class="i1p-band" id="i1p-band"></div>
+  <div class="i1p-max" id="i1p-max"></div>
+  <div class="i1p-conn" id="i1p-conn"></div>
+  <div class="i1p-lab" id="i1p-lab">about 80 to 85 % of the maximum possible</div>
+  <div class="i1p-sub" id="i1p-sub">Schwarz 1970, via USGS PP 804</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 7.0;
+  tl.set(["#i1p-card", "#i1p-c1", "#i1p-c2", "#i1p-c3", "#i1p-cyl", "#i1p-outline", "#i1p-band", "#i1p-lab", "#i1p-sub"], { autoAlpha: 0 }, 0);
+  tl.set("#i1p-fill", { scaleY: 0 }, 0);
+  tl.set(["#i1p-max", "#i1p-conn"], { scaleX: 0, autoAlpha: 0 }, 0);
+
+  tl.fromTo("#i1p-grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#i1p-ground", { scale: 1.0 }, { scale: 1.05, duration: DUR, ease: "none" }, 0);
+
+  /* worked out @1.2 (CUE-PENDING worked): the cite card lands, then its lines build */
+  tl.fromTo("#i1p-card", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" }, 1.0);
+  tl.fromTo("#i1p-c1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 1.2);
+  tl.fromTo("#i1p-c2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 1.9);
+  tl.fromTo("#i1p-c3", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2.5);
+  tl.fromTo("#i1p-card", { y: 0 }, { y: -8, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 1 }, 1.8);
+  /* the card slides out, the gauge takes the frame */
+  tl.to("#i1p-card", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 3.5);
+  tl.fromTo("#i1p-cyl", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.0);
+  tl.fromTo("#i1p-outline", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.0);
+  tl.to("#i1p-max", { autoAlpha: 1, scaleX: 1, duration: 0.6, ease: "power2.out" }, 4.4);
+  /* that night reached @4.9 ... four-fifths @5.7 (CUE-PENDING four-fifths): the fill rises to 82.5 % of the gauge */
+  tl.to("#i1p-fill", { scaleY: 0.825, duration: 1.0, ease: "power2.out" }, 4.8);
+  tl.fromTo("#i1p-band", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 5.6);
+  tl.to("#i1p-conn", { autoAlpha: 1, scaleX: 1, duration: 0.4, ease: "power3.out" }, 5.7);
+  tl.fromTo("#i1p-lab", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 5.8);
+  tl.fromTo("#i1p-sub", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 6.0);
+  /* no exit: host window 6.213 ends before the old exit (6.4); the scene cuts on its landed state, grid and ground drifts hold */
+  window.__timelines["g-i1-pmp"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-z1-close: Z1-S3, the close card (library/inhouse/outro-brand.html retuned). The signature lines are NOT typed on screen: the narration
+     carries them (one reading target). Before the line, only slow warning rings move; THE / WARNING / HOUR land on "The Warning Hour".
+     Comp time 0 = first word of Z1-S3. Ends <= 3 s after the last word. Presenter circle is off here (plan 1.6). */
+  #zc-root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  #zc-glow { position:absolute; left:360px; top:140px; width:1200px; height:800px; border-radius:50%; opacity:0;
+    background:radial-gradient(ellipse at 50% 50%, rgba(216,161,58,0.16), rgba(216,161,58,0) 70%); }
+  #zc-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .zc-ring { fill:none; stroke:#5a768f; stroke-width:2; opacity:0; }
+  #zc-wrap { position:absolute; left:0; right:0; top:0; bottom:0; }
+  .zc-line { position:absolute; left:360px; width:1200px; height:2px; background:linear-gradient(90deg, rgba(216,161,58,0), #d8a13a, rgba(216,161,58,0));
+    transform-origin:center center; opacity:0; }
+  #zc-l1 { top:388px; } #zc-l2 { top:688px; }
+  #zc-wm { position:absolute; left:0; right:0; top:440px; display:flex; justify-content:center; gap:40px; }
+  .zc-w { display:inline-block; opacity:0; visibility:hidden; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:120px; line-height:150px;
+    letter-spacing:6px; color:#f2f5f8; }
+  #zc-w2 { color:#d8a13a; }
+</style>
+<div id="zc-root" data-composition-id="g-z1-close" data-width="1920" data-height="1080">
+  <div id="zc-glow"></div>
+  <svg id="zc-svg" viewBox="0 0 1920 1080">
+    <circle class="zc-ring" id="zc-r1" cx="960" cy="540" r="60"/>
+    <circle class="zc-ring" id="zc-r2" cx="960" cy="540" r="60"/>
+    <circle class="zc-ring" id="zc-r3" cx="960" cy="540" r="60"/>
+  </svg>
+  <div id="zc-wrap">
+    <div class="zc-line" id="zc-l1"></div>
+    <div id="zc-wm"><span class="zc-w" id="zc-w1">THE</span><span class="zc-w" id="zc-w2">WARNING</span><span class="zc-w" id="zc-w3">HOUR</span></div>
+    <div class="zc-line" id="zc-l2"></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 12.8;
+  /* CUE-PENDING all cues are ESTIMATES (audio/z1-s3 words.json not landed): "This" 8.8 · "The" 9.23 · "Warning" 9.43 · "Hour." 9.77 to ~10.0. Ends <= 3 s after the last word. */
+  tl.set([".zc-w"], { autoAlpha: 0 }, 0);
+  tl.set([".zc-line"], { scaleX: 0 }, 0);
+
+  /* before the line: three warning rings widen from the centre, two passes each */
+  tl.fromTo("#zc-r1", { attr: { r: 60 }, opacity: 0.55 }, { attr: { r: 780 }, opacity: 0, duration: 3.6, ease: "power1.out", repeat: 1 }, 0.2);
+  tl.fromTo("#zc-r2", { attr: { r: 60 }, opacity: 0.55 }, { attr: { r: 780 }, opacity: 0, duration: 3.6, ease: "power1.out", repeat: 1 }, 1.4);
+  tl.fromTo("#zc-r3", { attr: { r: 60 }, opacity: 0.55 }, { attr: { r: 780 }, opacity: 0, duration: 3.6, ease: "power1.out", repeat: 1 }, 2.6);
+  tl.to("#zc-glow", { opacity: 0.5, duration: 3.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, 1.0);
+
+  /* match-cut on "This was The Warning Hour" */
+  tl.to(".zc-line", { opacity: 1, scaleX: 1, duration: 0.7, ease: "power3.out", stagger: { each: 0.1 } }, 9.0);
+  tl.fromTo("#zc-w1", { autoAlpha: 0, scale: 1.14 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power3.out" }, 9.23);
+  tl.fromTo("#zc-w2", { autoAlpha: 0, scale: 1.14 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power3.out" }, 9.43);
+  tl.fromTo("#zc-w3", { autoAlpha: 0, scale: 1.14 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power3.out" }, 9.77);
+  tl.to("#zc-glow", { opacity: 0.9, duration: 0.8, ease: "power2.out" }, 9.4);
+  /* land time: a slow push on the lockup, then die to black with the bed */
+  tl.to("#zc-wm", { scale: 1.04, duration: 2.4, ease: "sine.out" }, 10.3);
+  tl.to("#zc-wrap", { autoAlpha: 0, duration: 1.0, ease: "power2.in" }, 11.8);
+  tl.to("#zc-glow", { opacity: 0, duration: 1.0 }, 11.8);
+  tl.to("#zc-wm", { scale: 1.05, duration: 0.4, ease: "sine.out" }, 12.7); /* host 12.99: timeline must outlast it */
+  window.__timelines["g-z1-close"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

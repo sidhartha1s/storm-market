@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a2-gamble: A2-S11 (voice 14.39 s), glass quote + chip over V05/Lovingston_Damages_(7797544338).jpg, then LVA/Home_Collapsed_in_Howardsville_(7797528336).jpg
+     (the host mounts both stills beneath; no place label on the second). Comp time 0 = first word of A2-S11.
+     Cues from audio/a2-s11.words.json: "Gamble" 3.64, "What" 8.18, "multiple" 10.74, "fractures" 11.10, "carrying." 13.82 (ends 14.39).
+     Host should run 14.9 s. Corner x >= 1600, y >= 680 empty (card right edge x 1560). */
+  #g-a2-gamble-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8; }
+  .ag-wrap { position:absolute; inset:auto; left:160px; bottom:150px; width:1400px; display:flex; flex-direction:column; align-items:flex-start; gap:22px; }
+  .ag-chip { box-sizing:border-box; padding:14px 34px; border-radius:22px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:40px; line-height:48px; letter-spacing:3px; color:#d8a13a; white-space:nowrap; }
+  .ag-card { position:relative; box-sizing:border-box; width:1400px; padding:40px 64px 36px 150px; border-radius:28px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:inset 0 1px 0 rgba(255,255,255,0.10); }
+  .ag-mark { position:absolute; left:42px; top:14px; font-family:'AbrilFig', Georgia, serif; font-size:150px; line-height:150px; color:#d8a13a; }
+  .ag-q { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:52px; line-height:68px; color:#f2f5f8; }
+  .ag-q span { display:inline-block; }
+  .ag-rule { width:220px; height:3px; margin-top:24px; background:#d8a13a; }
+  .ag-who { margin-top:16px; font-weight:700; font-size:28px; line-height:36px; letter-spacing:1px; color:#d8a13a; }
+  .ag-src { margin-top:6px; font-weight:700; font-size:22px; line-height:30px; letter-spacing:2px; color:#c8d3e0; }
+</style>
+<div id="g-a2-gamble-root" data-composition-id="g-a2-gamble" data-width="1920" data-height="1080" data-duration="14.9">
+  <div class="ag-wrap" id="ag-wrap">
+    <div class="ag-chip" id="ag-chip">MULTIPLE FRACTURES</div>
+    <div class="ag-card" id="ag-card">
+      <div class="ag-mark" id="ag-mark">&ldquo;</div>
+      <div class="ag-q" id="ag-q"><span id="ag-p1">almost none of the dead</span> <span id="ag-p2">showed evidence of drowning&rdquo;</span></div>
+      <div class="ag-rule" id="ag-rule"></div>
+      <div class="ag-who" id="ag-who">USGS Professional Paper 804 (1973)</div>
+      <div class="ag-src" id="ag-src">on the findings of Dr. J. H. Gamble of Lovingston</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#ag-chip", "#ag-card", "#ag-mark", "#ag-who", "#ag-src", "#ag-p1", "#ag-p2"], { autoAlpha: 0 }, 0);
+  tl.set("#ag-rule", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* card on "Gamble" @3.64 */
+  tl.fromTo("#ag-card", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" }, 3.64);
+  tl.fromTo("#ag-mark", { autoAlpha: 0, scale: 1.6, y: -20 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, 3.9);
+  tl.to("#ag-rule", { scaleX: 1, duration: 0.8, ease: "power2.out" }, 4.1);
+  tl.fromTo("#ag-who", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 4.4);
+  tl.fromTo("#ag-src", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 4.6);
+  /* phrases: "Gamble" 3.64 -> p1 · "identifying" 5.10 -> p2 */
+  tl.fromTo("#ag-p1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 3.9);
+  tl.fromTo("#ag-p2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 5.1);
+  /* chip on "multiple fractures" @10.74 */
+  tl.fromTo("#ag-chip", { autoAlpha: 0, scale: 0.8, transformOrigin: "0% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(1.7)" }, 10.74);
+  /* float through the hold */
+  tl.fromTo("#ag-card", { y: 0 }, { y: -8, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 7 }, 4.4);
+  /* exit, last 0.6 s */
+  tl.to(["#ag-card", "#ag-chip"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 14.3);
+  window.__timelines["g-a2-gamble"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

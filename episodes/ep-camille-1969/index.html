@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<!-- ep-camille-1969 · The Warning Hour · timeline v0 for the first draft (22 Oct 26), hand-authored on Joplin's shipped layout (git 64330f03).
+     Script: edit_script.md draft 5; narration: audio/manifest.json, 86 segments at tempo 0.94. Plan: compose_plan.md Parts 1 and 2.
+     Timing (numbers printed by a scratch arithmetic script from the real wav durations, never by eye; this file is hand-written):
+       - segments butt-join with a 0.30 s seam; 0.15 s after the hook line (h1-s1 -> t1-s1);
+       - act seams: last word -> [declared hold] -> chapter blackout (bo-1 0.7, bo-2 0.8, bo-3 0.9, bo-4 0.8) -> next voice 0.2 s after
+         the blackout; the act's first host opens on the blackout end (0.2 s early, Joplin's act-opener rule);
+       - A4 -> Z1: no blackout, plain 0.30 s seam (plan 1.2);
+       - CTA hinge a3-s6 -> CTA -> a3-s7 with 1.0 s dips (config channel.cta dip_in / dip_out); a3-s7 starts on the dip-out end.
+         CTA start 712.182 / runtime 1192.925 = 0.5970, inside window [0.40, 0.60] (only 0.003 of slack: keep any new hold after the CTA);
+       - Harvey insert per g-a2-harvey's own timeline (comp 0 = A2-S16 "Deborah"): bite at +9.20 for 6.06 s, A2-S17 at +15.56;
+       - end ask after z1-s2 + 0.30 s seam, e1 then e2 back to back (config durations), then z1-s3 + 0.30 s seam; close card ends
+         3.0 s after the last word. e1 starts 28.49 s before the end (config last_s 30).
+     Paul's five on-camera lines (h1-s1, a1-s9, a2-s4, a3-s6, a4-s14) play from his own clips ins-paul-1..5 (23 Oct 26; clip 1 is the retake),
+     each cut 0.35 s after his last word (ffmpeg silencedetect), on the slot the ph-paul-N placeholder held; the nx- line audio under each is gone.
+     Index overlays from Part 2 (popfigs, glance chips, source lines, name chips) are NOT mounted in v0.
+     RETIME 22 Oct 26 (one-shot content-blind transform, not committed): every time >= 358.9 moved -0.4 s, then >= 358.5 another -0.1 s (hold-a1-s19 3.5 -> 3.0 so the
+     hold + bo-2 + 0.2 s stays under lint's 4.0 s of bed alone). ATTRIBUTES ARE CURRENT; numbers in comments >= 358.9 are pre-retime (subtract 0.5).
+     After it: runtime 1192.425, CTA 711.682 / 1192.425 = 0.5968; circle passes 20.331-711.682 and 735.724-1163.635.
+     RETIME 23 Oct 26 (one-shot content-blind transform, not committed) for the clip mounts: each slot's later times moved by (clip - slot):
+     h1-s1 -0.183, a1-s9 +1.272, a2-s4 +0.763, a3-s6 +1.295, a4-s14 +1.705; spanning acts, beds and root stretched. ATTRIBUTES ARE CURRENT;
+     numbers in comments are pre-retime. After it: runtime 1197.277, CTA 714.829 / 1197.277 = 0.5970.
+     RETIME 24 Oct 26 (one-shot content-blind transform, not committed) for ins-paul-6 at 881.774: every time >= 881.774 moved +7.8; root, act-a3 and host-a3-list stretched; sx-bed-a3b, pip-w08, pip-ring-w08 split. After it: runtime 1205.077, CTA 714.829 / 1205.077 = 0.5932. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Camille 1969: The Eight Still Unnamed · The Warning Hour</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); font-display: block; }   /* tokens.md: display face for the comps' popfig figures */
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
+    video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    .hold, .act { position: absolute; inset: 0; pointer-events: none; }
+    .still-wrap { position: absolute; inset: 0; overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    /* Paint order follows data-track-index, not DOM order (Joplin 18 Oct 26 frame read). Track 0 (act markers) keeps auto. */
+    #root > [data-composition-id] { position: absolute; inset: 0; }
+    #root > [data-track-index="1"] { z-index: 1; }  #root > [data-track-index="2"] { z-index: 2; }
+    #root > [data-track-index="3"] { z-index: 3; }  #root > [data-track-index="4"] { z-index: 4; }
+    #root > [data-track-index="5"] { z-index: 5; }  #root > [data-track-index="6"] { z-index: 6; }
+    #root > [data-track-index="7"] { z-index: 7; }  #root > [data-track-index="8"] { z-index: 8; }
+    video.graded { filter: saturate(0.88) contrast(1.06) brightness(0.94); }   /* the one subtle grade: broadcast and news clips only */
+    /* WDBJ pieces sit exactly in the rectangle g-a2-harvey leaves open (x 120, y 140, 1120 x 630) */
+    video.panel-wdbj { inset: auto !important; left: 120px !important; top: 140px !important; width: 1120px !important; height: 630px !important; object-fit: cover !important; }
+    .bridge { background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+    /* presenter circle (references/mg-quickref.md): geometry !important so the renderer's video{inset:0} cannot win; ring is its own timed section */
+    .pip { position: absolute !important; inset: auto !important; left: 1640px !important; top: 708px !important;
+      width: 240px !important; height: 240px !important; border-radius: 50% !important; object-fit: cover !important; z-index: 8 !important; }
+    .pipring { position: absolute; left: 1632px; top: 700px; width: 256px; height: 256px; border-radius: 50%; border: 4px solid #d0121f;
+      box-sizing: border-box; z-index: 9; box-shadow: 0 10px 30px rgba(0,0,0,0.55); }
+  </style>
+</head>
+<body>
+<!-- 24 Oct 26: every ins-paul-N mounts its -vc file: the same take with its audio converted to the narrator's cloned voice by scripts/paul_voice.py (OpenVoice tone colour, timing kept, lips in sync); the -v5eq EQ pass before it is superseded (owner, Moore draft: "the pitch is different, the overall thing is different"); 1-4 kHz and 4-8 kHz energy within about 0.5 dB of the narration median, loudness unchanged. -->
+<div id="root" data-composition-id="ep-camille-1969" data-start="0" data-width="1920" data-height="1080" data-duration="1205.077" data-fps="30">
+
+  <!-- ============ NARRATION (86 segments, edit_script order). start = previous wav end + seam (header) ============ -->
+  <audio id="nx-t1-s1" src="audio/t1-s1.wav" data-start="8.508" data-duration="3.307" data-volume="1"></audio>
+  <audio id="nx-t1-s2" src="audio/t1-s2.wav" data-start="12.115" data-duration="7.733" data-volume="1"></audio>
+  <audio id="nx-i1-s1" src="audio/i1-s1-v2.wav" data-start="20.148" data-duration="9.288" data-volume="1"></audio>
+  <audio id="nx-i1-s2" src="audio/i1-s2.wav" data-start="29.658" data-duration="10.101" data-volume="1"></audio>
+  <audio id="nx-i1-s3" src="audio/i1-s3.wav" data-start="40.059" data-duration="7.673" data-volume="1"></audio>
+  <audio id="nx-i1-s4" src="audio/i1-s4.wav" data-start="48.032" data-duration="6.399" data-volume="1"></audio>
+  <audio id="nx-i1-s5" src="audio/i1-s5.wav" data-start="54.731" data-duration="5.913" data-volume="1"></audio>
+  <audio id="nx-i1-s6" src="audio/i1-s6.wav" data-start="60.944" data-duration="4.334" data-volume="1"></audio>
+  <audio id="nx-i1-s7" src="audio/i1-s7.wav" data-start="65.578" data-duration="5.532" data-volume="1"></audio>
+  <audio id="nx-i1-s8" src="audio/i1-s8.wav" data-start="71.41" data-duration="4.842" data-volume="1"></audio>
+  <audio id="nx-i1-s9" src="audio/i1-s9.wav" data-start="76.552" data-duration="3.489" data-volume="1"></audio>
+  <audio id="nx-i1-s10" src="audio/i1-s10.wav" data-start="80.341" data-duration="9.187" data-volume="1"></audio>
+  <audio id="nx-a1-s1" src="audio/a1-s1.wav" data-start="90.428" data-duration="10.714" data-volume="1"></audio>
+  <audio id="nx-a1-s2" src="audio/a1-s2.wav" data-start="101.442" data-duration="17.393" data-volume="1"></audio>
+  <audio id="nx-a1-s3" src="audio/a1-s3.wav" data-start="119.135" data-duration="11.939" data-volume="1"></audio>
+  <audio id="nx-a1-s4" src="audio/a1-s4.wav" data-start="131.374" data-duration="25.354" data-volume="1"></audio>
+  <audio id="nx-a1-s5" src="audio/a1-s5.wav" data-start="157.028" data-duration="29.702" data-volume="1"></audio>
+  <audio id="nx-a1-s6" src="audio/a1-s6.wav" data-start="187.03" data-duration="29.776" data-volume="1"></audio>
+  <audio id="nx-a1-s7" src="audio/a1-s7.wav" data-start="217.106" data-duration="13.795" data-volume="1"></audio>
+  <audio id="nx-a1-s8" src="audio/a1-s8-v2.wav" data-start="231.201" data-duration="15.039" data-volume="1"></audio>
+  <audio id="nx-a1-s10" src="audio/a1-s10.wav" data-start="256.623" data-duration="11.748" data-volume="1"></audio>
+  <audio id="nx-a1-s11" src="audio/a1-s11.wav" data-start="268.671" data-duration="14.14" data-volume="1"></audio>
+  <audio id="nx-a1-s12" src="audio/a1-s12.wav" data-start="283.111" data-duration="12.985" data-volume="1"></audio>
+  <audio id="nx-a1-s13" src="audio/a1-s13.wav" data-start="296.396" data-duration="13.33" data-volume="1"></audio>
+  <audio id="nx-a1-s14" src="audio/a1-s14.wav" data-start="310.026" data-duration="9.962" data-volume="1"></audio>
+  <audio id="nx-a1-s15" src="audio/a1-s15.wav" data-start="320.288" data-duration="7.092" data-volume="1"></audio>
+  <audio id="nx-a1-s16" src="audio/a1-s16.wav" data-start="327.68" data-duration="3.912" data-volume="1"></audio>
+  <audio id="nx-a1-s17" src="audio/a1-s17.wav" data-start="331.892" data-duration="12.207" data-volume="1"></audio>
+  <audio id="nx-a1-s18" src="audio/a1-s18.wav" data-start="344.399" data-duration="7.599" data-volume="1"></audio>
+  <audio id="nx-a1-s19" src="audio/a1-s19.wav" data-start="352.298" data-duration="4.224" data-volume="1"></audio>
+  <audio id="nx-a2-s1" src="audio/a2-s1.wav" data-start="360.522" data-duration="10.837" data-volume="1"></audio>
+  <audio id="nx-a2-s2" src="audio/a2-s2.wav" data-start="371.659" data-duration="5.09" data-volume="1"></audio>
+  <audio id="nx-a2-s3" src="audio/a2-s3-v2.wav" data-start="377.049" data-duration="17.744" data-volume="1"></audio>
+  <audio id="nx-a2-s5" src="audio/a2-s5.wav" data-start="404.588" data-duration="15.454" data-volume="1"></audio>
+  <audio id="nx-a2-s6" src="audio/a2-s6-v2.wav" data-start="420.342" data-duration="13.365" data-volume="1"></audio>
+  <audio id="nx-a2-s7" src="audio/a2-s7.wav" data-start="434.944" data-duration="27.393" data-volume="1"></audio>
+  <audio id="nx-a2-s8" src="audio/a2-s8.wav" data-start="462.637" data-duration="24.994" data-volume="1"></audio>
+  <audio id="nx-a2-s9" src="audio/a2-s9.wav" data-start="487.931" data-duration="13.677" data-volume="1"></audio>
+  <audio id="nx-a2-s10" src="audio/a2-s10.wav" data-start="501.908" data-duration="9.45" data-volume="1"></audio>
+  <audio id="nx-a2-s11" src="audio/a2-s11-v2.wav" data-start="511.658" data-duration="12.034" data-volume="1"></audio>
+  <audio id="nx-a2-s12" src="audio/a2-s12.wav" data-start="526.352" data-duration="16.405" data-volume="1"></audio>
+  <audio id="nx-a2-s13" src="audio/a2-s13.wav" data-start="543.057" data-duration="5.76" data-volume="1"></audio>
+  <audio id="nx-a2-s14" src="audio/a2-s14.wav" data-start="549.117" data-duration="6.492" data-volume="1"></audio>
+  <audio id="nx-a2-s15" src="audio/a2-s15.wav" data-start="555.909" data-duration="5.929" data-volume="1"></audio>
+  <audio id="nx-a2-s16" src="audio/a2-s16.wav" data-start="562.138" data-duration="7.109" data-volume="1"></audio>
+  <audio id="nx-a2-s17" src="audio/a2-s17.wav" data-start="577.698" data-duration="3.761" data-volume="1"></audio>
+  <audio id="nx-a2-s18" src="audio/a2-s18.wav" data-start="581.759" data-duration="10.742" data-volume="1"></audio>
+  <audio id="nx-a2-s19" src="audio/a2-s19.wav" data-start="592.801" data-duration="16.906" data-volume="1"></audio>
+  <audio id="nx-a2-s20" src="audio/a2-s20.wav" data-start="610.007" data-duration="7.847" data-volume="1"></audio>
+  <audio id="nx-a2-s21" src="audio/a2-s21.wav" data-start="618.154" data-duration="11.378" data-volume="1"></audio>
+  <audio id="nx-a3-s1" src="audio/a3-s1.wav" data-start="630.632" data-duration="22.232" data-volume="1"></audio>
+  <audio id="nx-a3-s2" src="audio/a3-s2.wav" data-start="653.164" data-duration="14.506" data-volume="1"></audio>
+  <audio id="nx-a3-s3" src="audio/a3-s3.wav" data-start="667.97" data-duration="16.905" data-volume="1"></audio>
+  <audio id="nx-a3-s4" src="audio/a3-s4.wav" data-start="685.175" data-duration="10.045" data-volume="1"></audio>
+  <audio id="nx-a3-s5" src="audio/a3-s5.wav" data-start="695.52" data-duration="8.983" data-volume="1"></audio>
+  <audio id="nx-a3-s7" src="audio/a3-s7.wav" data-start="739.871" data-duration="16.193" data-volume="1"></audio>
+  <audio id="nx-a3-s8" src="audio/a3-s8.wav" data-start="756.364" data-duration="18.771" data-volume="1"></audio>
+  <audio id="nx-a3-s9" src="audio/a3-s9.wav" data-start="775.435" data-duration="20.263" data-volume="1"></audio>
+  <audio id="nx-a3-s10" src="audio/a3-s10.wav" data-start="795.998" data-duration="14.759" data-volume="1"></audio>
+  <audio id="nx-a3-s11" src="audio/a3-s11.wav" data-start="811.057" data-duration="30.869" data-volume="1"></audio>
+  <audio id="nx-a3-s12" src="audio/a3-s12.wav" data-start="842.226" data-duration="17.61" data-volume="1"></audio>
+  <audio id="nx-a3-s13" src="audio/a3-s13.wav" data-start="860.136" data-duration="21.638" data-volume="1"></audio>
+  <!-- ins-paul-6 (A3-S13b, 24 Oct 26, owner's go "you can go for running Camille 6"): his last word ends 7.44 s into the clip, then a 0.35 s look; track 6 so the a3 list graphic (which spans the insert, held) sits under him; pip-w08, pip-ring-w08 and sx-bed-a3b split around him. Every time from 881.774 moved +7.8 (one-shot content-blind transform, not committed); g-a3-list cues more/eight and END moved +7.8. -->
+  <video id="ins-paul-6" src="media/paul/ins-paul-6/ins-paul-6-vc.mp4" data-start="881.774" data-duration="7.8" data-track-index="6" data-volume="1" data-has-audio="true" data-srt-label="Same station wagon, same night. The Raines family got their little girl back. The Woods never got Donna Fay or Gary back."></video>
+  <audio id="nx-a3-s14" src="audio/a3-s14.wav" data-start="889.874" data-duration="16.413" data-volume="1"></audio>
+  <audio id="nx-a4-s1" src="audio/a4-s1.wav" data-start="909.787" data-duration="23.153" data-volume="1"></audio>
+  <audio id="nx-a4-s2" src="audio/a4-s2.wav" data-start="933.24" data-duration="26.523" data-volume="1"></audio>
+  <audio id="nx-a4-s3" src="audio/a4-s3.wav" data-start="960.063" data-duration="12.403" data-volume="1"></audio>
+  <audio id="nx-a4-s4" src="audio/a4-s4.wav" data-start="972.766" data-duration="16.312" data-volume="1"></audio>
+  <audio id="nx-a4-s5" src="audio/a4-s5-v2.wav" data-start="989.378" data-duration="13.391" data-volume="1"></audio>
+  <audio id="nx-a4-s6" src="audio/a4-s6.wav" data-start="1003.439" data-duration="14.345" data-volume="1"></audio>
+  <audio id="nx-a4-s7" src="audio/a4-s7.wav" data-start="1018.084" data-duration="11.967" data-volume="1"></audio>
+  <audio id="nx-a4-s8" src="audio/a4-s8.wav" data-start="1030.351" data-duration="12.347" data-volume="1"></audio>
+  <audio id="nx-a4-s9" src="audio/a4-s9.wav" data-start="1042.998" data-duration="12.405" data-volume="1"></audio>
+  <audio id="nx-a4-s10" src="audio/a4-s10.wav" data-start="1055.703" data-duration="10.573" data-volume="1"></audio>
+  <audio id="nx-a4-s11" src="audio/a4-s11.wav" data-start="1066.576" data-duration="35.435" data-volume="1"></audio>
+  <audio id="nx-a4-s12" src="audio/a4-s12.wav" data-start="1102.311" data-duration="14.07" data-volume="1"></audio>
+  <audio id="nx-a4-s13" src="audio/a4-s13.wav" data-start="1116.681" data-duration="11.298" data-volume="1"></audio>
+  <audio id="nx-a4-s15" src="audio/a4-s15.wav" data-start="1137.452" data-duration="7.667" data-volume="1"></audio>
+  <audio id="nx-a4-s16" src="audio/a4-s16.wav" data-start="1145.419" data-duration="5.555" data-volume="1"></audio>
+  <audio id="nx-z1-s1" src="audio/z1-s1.wav" data-start="1151.274" data-duration="17.823" data-volume="1"></audio>
+  <audio id="nx-z1-s2" src="audio/z1-s2.wav" data-start="1169.397" data-duration="6.89" data-volume="1"></audio>
+  <audio id="nx-z1-s3" src="audio/z1-s3.wav" data-start="1192.387" data-duration="9.69" data-volume="1"></audio>
+
+  <!-- ============ CTA (config channel.cta: paul-storm-ready-v10-oct23.mp4, 24.042 s, md5 bba0b9f3..., staged unchanged in media/cta/).
+       Hinge: after a3-s6 (Paul: "...Watch what that number does next.") and before a3-s7's payoff ("The missing fell.").
+       Start 712.182 = a3-s6 end 711.182 + dip_in 1.0. 712.182 / 1192.925 = 0.5970 of runtime, inside [0.40, 0.60]. ============ -->
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v10-oct23.mp4" data-start="714.829" data-duration="24.042" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+
+  <!-- ============ STRUCTURE: act markers (track 0), chapter blackouts and CTA dips (track 1), declared holds (track 8) ============ -->
+  <section class="clip act" id="act-hook" data-start="0" data-duration="20.148" data-track-index="0"></section>
+  <section class="clip act" id="act-intro" data-start="20.148" data-duration="69.38" data-track-index="0"></section>
+  <section class="clip act" id="act-a1" data-start="90.228" data-duration="269.294" data-track-index="0"></section>
+  <section class="clip act" id="act-a2" data-start="360.322" data-duration="269.21" data-track-index="0"></section>
+  <section class="clip act" id="act-a3" data-start="630.432" data-duration="278.355" data-track-index="0"></section>
+  <section class="clip act" id="act-a4" data-start="909.587" data-duration="241.687" data-track-index="0"></section>
+  <section class="clip act" id="act-z1" data-start="1151.274" data-duration="53.803" data-track-index="0"></section>
+  <section class="clip blackout" id="bo-1" data-start="89.528" data-duration="0.7" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-2" data-start="359.522" data-duration="0.8" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-3" data-start="629.532" data-duration="0.9" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-cta-in" data-start="713.829" data-duration="1" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-cta-out" data-start="738.871" data-duration="1" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-4" data-start="908.787" data-duration="0.8" data-track-index="1"></section>
+  <!-- hold-a1-s19: the g-a1-letgo card read after "water." (a1-s19 end 355.433), 3.5 s, rain bed only (lint: <= 4 s of bed alone) -->
+  <section class="clip hold" id="hold-a1-s19" data-start="356.522" data-duration="3" data-track-index="8"></section>
+  <!-- hold-a2-harvey: a2-s16 end 567.895 to a2-s17 start 576.346. Bed alone 567.895-569.986 (2.09 s, the muted face beat), then her bite 6.06 s, then 0.30 s -->
+  <section class="clip hold" id="hold-a2-harvey" data-start="569.247" data-duration="8.451" data-track-index="8"></section>
+  <!-- hold-a3-s14: 2.5 s on the list after "names?" (a3-s14 end 895.84), then bo-4 -->
+  <section class="clip hold" id="hold-a3-s14" data-start="906.287" data-duration="2.5" data-track-index="8"></section>
+
+  <!-- ============ HOOK · H1 / T1 (0-20.331) ============ -->
+  <!-- ins-paul-1 (h1-s1): his last word ends 8.44 s into the clip, then a 0.35 s look; his line: You'd think every person a 1969 hurricane took has been identified by now, right? Virginia's still asking for help putting names to eight of them. -->
+  <video id="ins-paul-1" src="media/paul/ins-paul-1-retake/ins-paul-1-vc.mp4" data-start="0" data-duration="8.508" data-media-start="0.28" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="You'd think every person a 1969 hurricane took has been identified by now, right? Virginia's still asking for help putting names to eight of them."></video>
+  <!-- T1-S1 (8.691, slot 3.607): LVA Massies Mill flooding, hard cut on the first word, under g-t1-33 ("33" @0.16) -->
+  <!-- recut 24 Oct 26: was still Massies_Mill_Flooding_(7797529874).jpg; now M02 "A Lady Called Camille" (Office of Civil Defense, PD) @718.6 s, flooded yard and house in driving rain -->
+  <video id="v-t1-s1-m02" src="media/src/cuts/cut-t1-s1-v1.mp4" data-start="8.508" data-duration="3.607" data-media-start="0" data-track-index="1" muted></video>
+  <div id="host-t1-33" data-composition-id="g-t1-33" data-composition-src="compositions/g-t1-33.html" data-start="8.508" data-duration="3.31" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- T1-S2 (12.298, slot 8.033): Camille's track (comp END 7.73, holds its end frame for the seam) -->
+  <div id="host-t1-track" data-composition-id="g-t1-track" data-composition-src="compositions/g-t1-track.html" data-start="12.115" data-duration="8.033" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- ============ INTRO · I1 (20.331-89.711) ============ -->
+  <!-- I1-S1: g-i1-track-a to the end of the first sentence ("19th." ends, "A" @6.24), then NARA 111-LC-55088 debris street (source 1.0 s, muted) under g-i1-gulf -->
+  <div id="host-i1-track-a" data-composition-id="g-i1-track-a" data-composition-src="compositions/g-i1-track-a.html" data-start="20.148" data-duration="6.24" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <video id="v-i1-s1-nara" src="media/src/M01/111-lc-55088-a.mp4" data-start="26.388" data-duration="3.27" data-media-start="0.5" data-track-index="1" muted></video>
+  <div id="host-i1-gulf" data-composition-id="g-i1-gulf" data-composition-src="compositions/g-i1-gulf.html" data-start="26.388" data-duration="3.27" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- I1-S2 (29.841, slot 10.401) -->
+  <div id="host-i1-track-b" data-composition-id="g-i1-track-b" data-composition-src="compositions/g-i1-track-b.html" data-start="29.658" data-duration="10.401" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- I1-S3 + I1-S4 (40.242 to i1-s5 54.914 = 14.672): rain counter on the NOAA rain map, OFR 70-51 table row -->
+  <div id="host-i1-rain" data-composition-id="g-i1-rain" data-composition-src="compositions/g-i1-rain.html" data-start="40.059" data-duration="14.672" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- I1-S5 (54.914, slot 6.213) -->
+  <div id="host-i1-pmp" data-composition-id="g-i1-pmp" data-composition-src="compositions/g-i1-pmp.html" data-start="54.731" data-duration="6.213" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- I1-S6 (61.127, slot 4.634): LVA West of Rockfish under the PP 804 glass quote -->
+  <!-- recut 24 Oct 26: was still West_of_Rockfish_(7797546944).jpg; now M02 "A Lady Called Camille" (Office of Civil Defense, PD) @779.4 s, aerial, mountain hollows scoured by debris avalanches -->
+  <video id="v-i1-s6-m02" src="media/src/cuts/cut-i1-s6-v1.mp4" data-start="60.944" data-duration="4.634" data-media-start="0" data-track-index="1" muted></video>
+  <div id="host-i1-blunt" data-composition-id="g-i1-blunt" data-composition-src="compositions/g-i1-blunt.html" data-start="60.944" data-duration="4.634" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- I1-S7 (65.761, slot 5.832): slope comp over the whole slot, cued to the real words (let go @3.16, down @4.70); the PP 804 Fig. 12 scar crop that closed the slot returns as g-a2-scar's photo -->
+  <div id="host-i1-slope" data-composition-id="g-i1-slope" data-composition-src="compositions/g-i1-slope.html" data-start="65.578" data-duration="5.832" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- I1-S8 (71.593, slot 5.142) -->
+  <div id="host-i1-hundred" data-composition-id="g-i1-hundred" data-composition-src="compositions/g-i1-hundred.html" data-start="71.41" data-duration="5.142" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- I1-S9 (76.735, slot 3.789) -->
+  <div id="host-i1-eight" data-composition-id="g-i1-eight" data-composition-src="compositions/g-i1-eight.html" data-start="76.552" data-duration="3.789" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- I1-S10 (80.524): push to the Tye (comp DUR 4.6, settles on "With" @4.04), then LVA View of Massies Mill to the wav end 89.711, bo-1 -->
+  <div id="host-i1-tye" data-composition-id="g-i1-tye" data-composition-src="compositions/g-i1-tye.html" data-start="80.341" data-duration="4.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <section class="clip still-wrap" id="c-i1-s10" data-start="84.941" data-duration="4.587" data-track-index="1"><img id="kb-i1-s10" src="media/stills/View_of_Massies_Mill_(7797543848).jpg" alt=""></section>
+
+  <!-- ============ A1 · THE NIGHT: MASSIES MILL AND THE TYE (90.411-358.933) ============ -->
+  <!-- A1-S1: opened at the bo-1 end 90.411 (act opener), to a1-s2 101.625 -->
+  <div id="host-a1-river" data-composition-id="g-a1-river" data-composition-src="compositions/g-a1-river.html" data-start="90.228" data-duration="11.214" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-home" data-composition-id="g-a1-home" data-composition-src="compositions/g-a1-home.html" data-start="101.442" data-duration="17.693" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-forecast" data-composition-id="g-a1-forecast" data-composition-src="compositions/g-a1-forecast.html" data-start="119.135" data-duration="12.239" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-hardrain" data-composition-id="g-a1-hardrain" data-composition-src="compositions/g-a1-hardrain.html" data-start="131.374" data-duration="25.654" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-synoptic" data-composition-id="g-a1-synoptic" data-composition-src="compositions/g-a1-synoptic.html" data-start="157.028" data-duration="30.002" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-gauges" data-composition-id="g-a1-gauges" data-composition-src="compositions/g-a1-gauges.html" data-start="187.03" data-duration="30.076" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-phone" data-composition-id="g-a1-phone" data-composition-src="compositions/g-a1-phone.html" data-start="217.106" data-duration="14.095" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-wagon" data-composition-id="g-a1-wagon" data-composition-src="compositions/g-a1-wagon.html" data-start="231.201" data-duration="16.731" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A1-S9 (248.115, slot 7.419): Paul -->
+  <!-- ins-paul-2 (a1-s9): his last word ends 8.34 s into the clip, then a 0.35 s look; his line: I keep coming back to that choice. Stay in a house beside a rising river, or get everybody in the car and go. They went. -->
+  <video id="ins-paul-2" src="media/paul/ins-paul-2/ins-paul-2-vc.mp4" data-start="247.932" data-duration="8.691" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I keep coming back to that choice. Stay in a house beside a rising river, or get everybody in the car and go. They went."></video>
+  <!-- A1-S10 (255.534): flee-a to "So" @4.74, then V03 Tyro aerial 3.6 s and LVA Along Rt. 56 to a1-s11 (two stills: the slot is 7.3 s, over the 6 s cap), under g-a1-cattle -->
+  <div id="host-a1-flee-a" data-composition-id="g-a1-flee-a" data-composition-src="compositions/g-a1-flee-a.html" data-start="256.623" data-duration="4.74" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- recut 24 Oct 26: was still Aerial_View_of_Tyro_(7797534024).jpg; now M02 "A Lady Called Camille" (Office of Civil Defense, PD) @698.6 s, night, rain on floodwater under a light, then dark with distant lights -->
+  <video id="v-a1-s10-a-m02" src="media/src/cuts/cut-a1-s10-a-v1.mp4" data-start="261.363" data-duration="3.6" data-media-start="0" data-track-index="1" muted></video>
+  <!-- recut 24 Oct 26: was still Along_Rt._56_(7797536992).jpg; now M02 "A Lady Called Camille" (Office of Civil Defense, PD) @709.8 s, storm cloud over the Blue Ridge, then lightning -->
+  <video id="v-a1-s10-b-m02" src="media/src/cuts/cut-a1-s10-b-v1.mp4" data-start="264.963" data-duration="3.708" data-media-start="0" data-track-index="1" muted></video>
+  <div id="host-a1-cattle" data-composition-id="g-a1-cattle" data-composition-src="compositions/g-a1-cattle.html" data-start="261.363" data-duration="7.308" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-flee-b" data-composition-id="g-a1-flee-b" data-composition-src="compositions/g-a1-flee-b.html" data-start="268.671" data-duration="14.44" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-davis" data-composition-id="g-a1-davis" data-composition-src="compositions/g-a1-davis.html" data-start="283.111" data-duration="13.285" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-peak" data-composition-id="g-a1-peak" data-composition-src="compositions/g-a1-peak.html" data-start="296.396" data-duration="13.63" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-hydro" data-composition-id="g-a1-hydro" data-composition-src="compositions/g-a1-hydro.html" data-start="310.026" data-duration="10.262" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-staff" data-composition-id="g-a1-staff" data-composition-src="compositions/g-a1-staff.html" data-start="320.288" data-duration="7.392" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a1-eight" data-composition-id="g-a1-eight" data-composition-src="compositions/g-a1-eight.html" data-start="327.68" data-duration="4.212" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A1-S17 (330.803) + A1-S18 (343.31): daybreak. V01 6.0, V02 6.0, then LVA Rt. 56 over the Tye 4.2 and LVA East of Massies Mill to a1-s19 (each still <= 6 s) -->
+  <section class="clip still-wrap" id="c-a1-s17-a" data-start="331.892" data-duration="6" data-track-index="1"><img id="kb-a1-s17-a" src="media/stills/Massies_Mill_(7797544864).jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a1-s17-b" data-start="337.892" data-duration="6" data-track-index="1"><img id="kb-a1-s17-b" src="media/stills/Church_in_Massies_Mill_(7797536534).jpg" alt=""></section>
+  <!-- recut 24 Oct 26: was still Rt._56_over_Tye_River_(7797538158).jpg; now M02 "A Lady Called Camille" (Office of Civil Defense, PD) @866.2 s, tree standing in a raging brown flood, then the river -->
+  <video id="v-a1-s18-a-m02" src="media/src/cuts/cut-a1-s18-a-v1.mp4" data-start="343.892" data-duration="4.2" data-media-start="0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-a1-s18-b" data-start="348.092" data-duration="4.206" data-track-index="1"><img id="kb-a1-s18-b" src="media/stills/East_of_Massies_Mill_(7797543206).jpg" alt=""></section>
+  <!-- A1-S19 (351.209): V04 Tye at Norwood 2.4 s, then the full-frame Warren Raines card through hold-a1-s19 to bo-2 358.933 -->
+  <section class="clip still-wrap" id="c-a1-s19" data-start="352.298" data-duration="2.4" data-track-index="1"><img id="kb-a1-s19" src="media/stills/Tye_River_at_Norwood_(7797540690).jpg" style="filter: brightness(0.7)" alt=""></section>
+  <div id="host-a1-letgo" data-composition-id="g-a1-letgo" data-composition-src="compositions/g-a1-letgo.html" data-start="354.698" data-duration="4.824" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- ============ A2 · THE MOUNTAINSIDES CAME DOWN: DAVIS CREEK (359.733-628.18) ============ -->
+  <!-- A2-S1: g-a2-davis from the bo-2 end to "That" @7.70, then V06 mudslides on "That night, the ground" to a2-s2 -->
+  <div id="host-a2-davis" data-composition-id="g-a2-davis" data-composition-src="compositions/g-a2-davis.html" data-start="360.322" data-duration="7.9" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- recut 24 Oct 26: was still Mudslides_in_Nelson_(7797546600).jpg; now M02 "A Lady Called Camille" (Office of Civil Defense, PD) @774.8 s, aerial tilt over hillsides striped with slide scars -->
+  <video id="v-a2-s1-m02" src="media/src/cuts/cut-a2-s1-v1.mp4" data-start="368.222" data-duration="3.437" data-media-start="0" data-track-index="1" muted></video>
+  <div id="host-a2-hollows" data-composition-id="g-a2-hollows" data-composition-src="compositions/g-a2-hollows.html" data-start="371.659" data-duration="5.39" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a2-mawyer" data-composition-id="g-a2-mawyer" data-composition-src="compositions/g-a2-mawyer.html" data-start="377.049" data-duration="19.456" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A2-S4 (395.916, slot 7.32): Paul -->
+  <!-- ins-paul-3 (a2-s4): his last word ends 8.42 s into the clip, then a 0.35 s look; his line: I'd always pictured a flood as water rising. On Davis Creek, the hillside above the houses came down, and it brought the creek with it. -->
+  <video id="ins-paul-3" src="media/paul/ins-paul-3/ins-paul-3-vc.mp4" data-start="396.505" data-duration="8.083" data-media-start="0.69" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I'd always pictured a flood as water rising. On Davis Creek, the hillside above the houses came down, and it brought the creek with it."></video>
+  <div id="host-a2-roar" data-composition-id="g-a2-roar" data-composition-src="compositions/g-a2-roar.html" data-start="404.588" data-duration="15.754" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a2-clock" data-composition-id="g-a2-clock" data-composition-src="compositions/g-a2-clock.html" data-start="420.342" data-duration="14.602" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a2-anatomy" data-composition-id="g-a2-anatomy" data-composition-src="compositions/g-a2-anatomy.html" data-start="434.944" data-duration="27.693" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a2-scar" data-composition-id="g-a2-scar" data-composition-src="compositions/g-a2-scar.html" data-start="462.637" data-duration="25.294" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A2-S9 + A2-S10 from 486.579; S10 offset 13.977 (500.556 - 486.579), comp retimed to it with DUR 24.177 (orchestrator 22 Oct 26):
+       it runs 0.45 s past the a2-s11 start (510.306) over the first still's head -->
+  <div id="host-a2-surge" data-composition-id="g-a2-surge" data-composition-src="compositions/g-a2-surge.html" data-start="487.931" data-duration="24.177" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A2-S11 (510.306, slot 14.694): three stills of 4.898 s under the Gamble glass quote; no place label over the second -->
+  <section class="clip still-wrap" id="c-a2-s11-a" data-start="511.658" data-duration="4.898" data-track-index="1"><img id="kb-a2-s11-a" src="media/stills/Lovingston_Damages_(7797544338).jpg" alt=""></section>
+  <!-- recut 24 Oct 26: was still Home_Collapsed_in_Howardsville_(7797528336).jpg; now M02 "A Lady Called Camille" (Office of Civil Defense, PD) @870.4 s, raging brown river carrying debris -->
+  <video id="v-a2-s11-b-m02" src="media/src/cuts/cut-a2-s11-b-v1.mp4" data-start="516.556" data-duration="4.898" data-media-start="0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-a2-s11-c" data-start="521.454" data-duration="4.898" data-track-index="1"><img id="kb-a2-s11-c" src="media/stills/Damaged_Farmhouse_in_Nelson_(7797530398).jpg" alt=""></section>
+  <div id="host-a2-gamble" data-composition-id="g-a2-gamble" data-composition-src="compositions/g-a2-gamble.html" data-start="511.658" data-duration="14.694" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- A2-S12 (525, slot 16.705): three stills of 5.568 s under the Raynor glass quote; no faces, no bodies -->
+  <section class="clip still-wrap" id="c-a2-s12-a" data-start="526.352" data-duration="5.568" data-track-index="1"><img id="kb-a2-s12-a" src="media/stills/Debris_and_Damages_in_Nelson_(7797538826).jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a2-s12-b" data-start="531.92" data-duration="5.568" data-track-index="1"><img id="kb-a2-s12-b" src="media/stills/Damaged_Belongings_in_Howardsville_(7797528010).jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a2-s12-c" data-start="537.489" data-duration="5.568" data-track-index="1"><img id="kb-a2-s12-c" src="media/stills/Damaged_Home_near_Rockfish_River_(7797550654).jpg" alt=""></section>
+  <div id="host-a2-raynor" data-composition-id="g-a2-raynor" data-composition-src="compositions/g-a2-raynor.html" data-start="526.352" data-duration="16.705" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- A2-S13 to A2-S15 (541.705 to a2-s16 560.786 = 19.081) -->
+  <div id="host-a2-houses" data-composition-id="g-a2-houses" data-composition-src="compositions/g-a2-houses.html" data-start="543.057" data-duration="19.081" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A2-S16 + Harvey + A2-S17 exit (comp 0 = a2-s16 560.786, DUR 16.3). WDBJ7, Aug 19, 2019 (owner yes 22 Oct 26, Content ID claim expected).
+       Pieces in the comp's open panel: one muted piece 0-9.20 from source 75.6, so source 83.0 (her face) lands on the comp's 7.40 face beat
+       (75.6-83.0 is the 1969 Davis Creek archive with the museum's courtesy line; one piece, not two, keeps the file at 3 uses, lint max),
+       her bite 9.20-15.26 (source 102.98-109.04, cut on "gone."), then the A2-S17 full-frame road b-roll (source 44.0) from 15.26 to a2-s18. All graded. -->
+  <video id="v-a2-s16-wdbj" class="graded panel-wdbj" src="media/src/V30_WDBJ/wdbj-davis-creek-2019-a.mp4" data-start="562.138" data-duration="9.2" data-media-start="1.5" data-track-index="1" muted></video>
+  <video id="ins-a2-harvey" class="graded panel-wdbj" src="media/src/V30_WDBJ/wdbj-davis-creek-2019-b.mp4" data-start="571.338" data-duration="6.06" data-media-start="1.5" data-callback="same WDBJ report, her bite (source 102.98-109.04; v3-bite = that span +1.5 s each side, audio +7.6 dB), not the b-roll range" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[DEBORAH HARVEY] You started realizing that all these people that rode the school bus with you, went to church with you, were gone."></video>
+  <video id="v-a2-s17-wdbj" class="graded" src="media/src/V30_WDBJ/wdbj-davis-creek-2019-c.mp4" data-start="577.398" data-duration="4.361" data-media-start="1.5" data-callback="same WDBJ report, road b-roll (source 44.0-48.4) under A2-S17" data-track-index="1" muted></video>
+  <div id="host-a2-harvey" data-composition-id="g-a2-harvey" data-composition-src="compositions/g-a2-harvey.html" data-start="562.138" data-duration="16.3" data-track-index="2" data-width="1920" data-height="1080" data-caption-for="ins-a2-harvey"></div>
+  <div id="host-a2-sissy" data-composition-id="g-a2-sissy" data-composition-src="compositions/g-a2-sissy.html" data-start="581.759" data-duration="11.042" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A2-S19 (591.449, slot 17.206): three hold stills of 5.735 s, no place labels; A2-S20 (608.655, slot 8.147): PP 804 Figs. 22 and 23; g-a2-oakhill across both (25.353) -->
+  <!-- recut 24 Oct 26: was still Along_Rt._29_(7797534372).jpg; now M02 "A Lady Called Camille" (Office of Civil Defense, PD) @769.0 s, aerial, scoured channels meeting in a hollow -->
+  <video id="v-a2-s19-a-m02" src="media/src/cuts/cut-a2-s19-a-v1.mp4" data-start="592.801" data-duration="5.735" data-media-start="0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-a2-s19-b" data-start="598.536" data-duration="5.735" data-track-index="1"><img id="kb-a2-s19-b" src="media/stills/West_of_Rockfish,_II_(7797547244).jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a2-s19-c" data-start="604.272" data-duration="5.735" data-track-index="1"><img id="kb-a2-s19-c" src="media/stills/Overturned_Home_in_Nelson_(7797538480).jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a2-s20-a" data-start="610.007" data-duration="4.073" data-track-index="1"><img id="kb-a2-s20-a" src="media/stills/pp804-p42-fig22.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a2-s20-b" data-start="614.08" data-duration="4.074" data-track-index="1"><img id="kb-a2-s20-b" src="media/stills/pp804-p43-fig23.jpg" alt=""></section>
+  <div id="host-a2-oakhill" data-composition-id="g-a2-oakhill" data-composition-src="compositions/g-a2-oakhill.html" data-start="592.801" data-duration="25.353" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- A2-S21 (616.802 to bo-3 628.18): two stills of 5.689 s, no text, the second fades toward black -->
+  <section class="clip still-wrap" id="c-a2-s21-a" data-start="618.154" data-duration="5.689" data-track-index="1"><img id="kb-a2-s21-a" src="media/stills/Damaged_Homes_along_the_Rockfish_River_(7797551880).jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a2-s21-b" data-start="623.843" data-duration="5.689" data-track-index="1"><img id="kb-a2-s21-b" src="media/stills/Home_near_Rockfish_River_(7797527672).jpg" alt=""></section>
+
+  <!-- ============ A3 · THE COUNT THAT WOULD NOT CLOSE (629.08-898.34), CTA inside ============ -->
+  <!-- A3-S1: LVA Debris along Rt. 29 from the bo-3 end, hard in, to a3-s1 + 4.6 (g-a3-cutoff comp 0), then the cutoff map to a3-s2 -->
+  <!-- recut 24 Oct 26: was still Debris_along_Rt._29_(7797546164).jpg; now M02 "A Lady Called Camille" (Office of Civil Defense, PD) @837.5 s, aerial of a flood-stripped valley floor, then a river with a broken bridge -->
+  <video id="v-a3-s1-m02" src="media/src/cuts/cut-a3-s1-v1.mp4" data-start="630.432" data-duration="4.8" data-media-start="0" data-track-index="1" muted></video>
+  <div id="host-a3-cutoff" data-composition-id="g-a3-cutoff" data-composition-src="compositions/g-a3-cutoff.html" data-start="635.232" data-duration="17.932" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A3-S2 (651.812, slot 14.806): three bridges-out stills of 4.935 s under the Tinsley glass quote -->
+  <section class="clip still-wrap" id="c-a3-s2-a" data-start="653.164" data-duration="4.935" data-track-index="1"><img id="kb-a3-s2-a" src="media/stills/Bridge_Out_in_Amherst_(7797517316).jpg" alt=""></section>
+  <!-- recut 24 Oct 26: was still Black_Creek_Washed_Out_Bridge_(7797535922).jpg; now M02 "A Lady Called Camille" (Office of Civil Defense, PD) @747.0 s, truck ploughing through a flooded road -->
+  <video id="v-a3-s2-b-m02" src="media/src/cuts/cut-a3-s2-b-v1.mp4" data-start="658.099" data-duration="4.936" data-media-start="0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-a3-s2-c" data-start="663.035" data-duration="4.935" data-track-index="1"><img id="kb-a3-s2-c" src="media/stills/Buffalo_River_Bridge_Out_(7797517610).jpg" alt=""></section>
+  <div id="host-a3-tinsley" data-composition-id="g-a3-tinsley" data-composition-src="compositions/g-a3-tinsley.html" data-start="653.164" data-duration="14.806" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- A3-S3 (666.618, slot 17.205): three stills of 5.735 s under the Whitehead glass quote -->
+  <section class="clip still-wrap" id="c-a3-s3-a" data-start="667.97" data-duration="5.735" data-track-index="1"><img id="kb-a3-s3-a" src="media/stills/Bridge_Out_to_Rural_Home_(7797551428).jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a3-s3-b" data-start="673.705" data-duration="5.735" data-track-index="1"><img id="kb-a3-s3-b" src="media/stills/Rescue_Mission_Planning_(7797540124).jpg" alt=""></section>
+  <!-- recut 24 Oct 26: was still Army_Assists_in_Flooded_Areas_(7797520978).jpg; now M02 "A Lady Called Camille" (Office of Civil Defense, PD) @762.1 s, radio operator, then helmeted Guardsmen at night -->
+  <video id="v-a3-s3-c-m02" src="media/src/cuts/cut-a3-s3-c-v1.mp4" data-start="679.44" data-duration="5.735" data-media-start="0" data-track-index="1" muted></video>
+  <div id="host-a3-whitehead" data-composition-id="g-a3-whitehead" data-composition-src="compositions/g-a3-whitehead.html" data-start="667.97" data-duration="17.205" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- A3-S4 (683.823): V01 callback 1.8 s (g-a3-ginger-a comp 0 = a3-s4 + 1.8), then the waiting marker to a3-s5 -->
+  <section class="clip still-wrap" id="c-a3-s4" data-start="685.175" data-duration="1.8" data-track-index="1" data-callback="return to Massies Mill, first shown A1-S17 (330.8), about 5.9 min apart, tighter crop"><img id="kb-a3-s4" src="media/stills/Massies_Mill_(7797544864).jpg" style="object-position: 50% 70%" alt=""></section>
+  <div id="host-a3-ginger-a" data-composition-id="g-a3-ginger-a" data-composition-src="compositions/g-a3-ginger-a.html" data-start="686.975" data-duration="8.545" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a3-missing-a" data-composition-id="g-a3-missing-a" data-composition-src="compositions/g-a3-missing-a.html" data-start="695.52" data-duration="9.283" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A3-S6 (703.451 to bo-cta-in 711.182): Paul, the CTA tease ("insert within 60s of the CTA" WARN expected, DESIGN.md exception) -->
+  <!-- ins-paul-4 (a3-s6): his last word ends 8.68 s into the clip, then a 0.35 s look; his line: By Saturday, August twenty-third, more than a hundred and ten people were listed as missing in Virginia. Watch what that number does next. -->
+  <video id="ins-paul-4" src="media/paul/ins-paul-4/ins-paul-4-vc.mp4" data-start="704.803" data-duration="9.026" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="By Saturday, August twenty-third, more than a hundred and ten people were listed as missing in Virginia. Watch what that number does next."></video>
+  <!-- A3-S7 (737.224): payoff opens on real picture after the dip: V10 Rescue Mission Briefing 2.5 s, then the counter -->
+  <section class="clip still-wrap" id="c-a3-s7" data-start="739.871" data-duration="2.5" data-track-index="1"><img id="kb-a3-s7" src="media/stills/Rescue_Mission_Briefing_(7797539862).jpg" alt=""></section>
+  <div id="host-a3-missing-b" data-composition-id="g-a3-missing-b" data-composition-src="compositions/g-a3-missing-b.html" data-start="742.371" data-duration="13.993" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A3-S8 (753.717): LVA Flood Damage East of Schuyler to "helicopter" @4.26, then g-a3-heli to a3-s9 -->
+  <!-- recut 24 Oct 26: was still Flood_Damage_East_of_Schuyler_(7797526964).jpg; now M02 "A Lady Called Camille" (Office of Civil Defense, PD) @466.0 s, Navy helicopter banking overhead -->
+  <video id="v-a3-s8-m02" src="media/src/cuts/cut-a3-s8-v1.mp4" data-start="756.364" data-duration="4.26" data-media-start="0" data-track-index="1" muted></video>
+  <div id="host-a3-heli" data-composition-id="g-a3-heli" data-composition-src="compositions/g-a3-heli.html" data-start="760.624" data-duration="14.811" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A3-S9 (772.788): the marker runs down the Tye (comp 15.4 s), then V12 Raging Waters of the James (no place label) to a3-s10 -->
+  <div id="host-a3-ginger-b" data-composition-id="g-a3-ginger-b" data-composition-src="compositions/g-a3-ginger-b.html" data-start="775.435" data-duration="15.4" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- recut 24 Oct 26: was still Raging_Waters_of_the_James_(7797523300).jpg; now M02 "A Lady Called Camille" (Office of Civil Defense, PD) @907.7 s, the river in flood from the bank, then churning brown water -->
+  <video id="v-a3-s9-m02" src="media/src/cuts/cut-a3-s9-v1.mp4" data-start="790.835" data-duration="5.163" data-media-start="0" data-track-index="1" muted></video>
+  <div id="host-a3-nov13" data-composition-id="g-a3-nov13" data-composition-src="compositions/g-a3-nov13.html" data-start="795.998" data-duration="15.059" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a3-counts" data-composition-id="g-a3-counts" data-composition-src="compositions/g-a3-counts.html" data-start="811.057" data-duration="31.169" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A3-S12 to A3-S14 + hold (839.579 to bo-4 898.34 = 58.761). Real offsets: S13 +17.91, S14 +39.848 (comp estimates 17.3 / 39.3) -->
+  <div id="host-a3-list" data-composition-id="g-a3-list" data-composition-src="compositions/g-a3-list.html" data-start="842.226" data-duration="66.561" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- ============ A4 · THE EIGHT (899.14-1139.122) ============ -->
+  <div id="host-a4-vdh" data-composition-id="g-a4-vdh" data-composition-src="compositions/g-a4-vdh.html" data-start="909.587" data-duration="23.653" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4-screens" data-composition-id="g-a4-screens" data-composition-src="compositions/g-a4-screens.html" data-start="933.24" data-duration="26.823" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4-stacks" data-composition-id="g-a4-stacks" data-composition-src="compositions/g-a4-stacks.html" data-start="960.063" data-duration="12.703" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4-list" data-composition-id="g-a4-list" data-composition-src="compositions/g-a4-list.html" data-start="972.766" data-duration="16.612" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A4-S5 to A4-S10 (978.931 to a4-s11 1056.129 = 77.198); offsets S6 14.061, S7 28.706, S8 40.973, S9 53.62, S10 66.325 match the comp's -->
+  <div id="host-a4-eight" data-composition-id="g-a4-eight" data-composition-src="compositions/g-a4-eight.html" data-start="989.378" data-duration="77.198" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4-files" data-composition-id="g-a4-files" data-composition-src="compositions/g-a4-files.html" data-start="1066.576" data-duration="35.735" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A4-S12 (1091.864, slot 14.37): three stills of 4.79 s under the Newell quote lower third; no place labels -->
+  <section class="clip still-wrap" id="c-a4-s12-a" data-start="1102.311" data-duration="4.79" data-track-index="1"><img id="kb-a4-s12-a" src="media/stills/Scottsville_Aerial_View_(7797532376).jpg" alt=""></section>
+  <!-- recut 24 Oct 26: was still Rt._603_Flooding_(7797532996).jpg; now M02 "A Lady Called Camille" (Office of Civil Defense, PD) @898.7 s, people at a railing watching the river in flood -->
+  <video id="v-a4-s12-b-m02" src="media/src/cuts/cut-a4-s12-b-v1.mp4" data-start="1107.101" data-duration="4.79" data-media-start="0" data-track-index="1" muted></video>
+  <!-- recut 24 Oct 26: was still Traffic_on_I-95_after_Camille_(7797524116).jpg; now M02 "A Lady Called Camille" (Office of Civil Defense, PD) @879.1 s, crews sandbagging -->
+  <video id="v-a4-s12-c-m02" src="media/src/cuts/cut-a4-s12-c-v1.mp4" data-start="1111.891" data-duration="4.79" data-media-start="0" data-track-index="1" muted></video>
+  <div id="host-a4-newell" data-composition-id="g-a4-newell" data-composition-src="compositions/g-a4-newell.html" data-start="1102.311" data-duration="14.37" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- A4-S13 (1106.234, slot 11.598): two stills of 5.799 s -->
+  <section class="clip still-wrap" id="c-a4-s13-a" data-start="1116.681" data-duration="5.799" data-track-index="1"><img id="kb-a4-s13-a" src="media/stills/Woods_Mill_Aerial_View_(7797532016).jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s13-b" data-start="1122.48" data-duration="5.799" data-track-index="1"><img id="kb-a4-s13-b" src="media/stills/Debris_on_Rockfish_River_(7797550188).jpg" alt=""></section>
+  <!-- A4-S14 (1117.832, slot 7.468): Paul -->
+  <!-- ins-paul-5 (a4-s14): his last word ends 8.82 s into the clip, then a 0.35 s look; his line: Every one of those eight had a name in August 1969. Somebody, somewhere, may still remember it, and the state is asking them to say it. -->
+  <video id="ins-paul-5" src="media/paul/ins-paul-5/ins-paul-5-vc.mp4" data-start="1128.279" data-duration="9.173" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Every one of those eight had a name in August 1969. Somebody, somewhere, may still remember it, and the state is asking them to say it."></video>
+  <div id="host-a4-contact" data-composition-id="g-a4-contact" data-composition-src="compositions/g-a4-contact.html" data-start="1137.452" data-duration="7.967" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-a4-open" data-composition-id="g-a4-open" data-composition-src="compositions/g-a4-open.html" data-start="1145.419" data-duration="5.855" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- ============ Z1 · CLOSE (1139.122-1192.925) ============ -->
+  <div id="host-z1-night" data-composition-id="g-z1-night" data-composition-src="compositions/g-z1-night.html" data-start="1151.274" data-duration="18.123" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- Z1-S2 (1157.245): the James and Rockfish confluence 3.0 s, then the headings card to the end ask (e1 1164.435) -->
+  <section class="clip still-wrap" id="c-z1-s2" data-start="1169.397" data-duration="3" data-track-index="1"><img id="kb-z1-s2" src="media/stills/The_James_and_Rockfish_Rivers_(7797547848).jpg" alt=""></section>
+  <div id="host-z1-headings" data-composition-id="g-z1-headings" data-composition-src="compositions/g-z1-headings.html" data-start="1172.397" data-duration="4.19" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- End ask (config channel.end_ask, staged unchanged in media/end-ask/): z1-s2 end 1164.135 + 0.30 seam; e1 9.083 then e2 6.417 back to back -->
+  <video id="ins-paul-e1" src="media/end-ask/paul-end-ask-v1-oct19-a.mp4" data-start="1176.587" data-duration="9.083" data-media-start="0" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I genuinely appreciate you watching the video till the end. Please like and subscribe and share your suggestions via comments."></video>
+  <video id="ins-paul-e2" src="media/end-ask/paul-end-ask-v1-oct19-b.mp4" data-start="1185.67" data-duration="6.417" data-media-start="0" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I read them all. And if you want the checklist, it's the first link in the description."></video>
+  <!-- Z1-S3: the close card opens on the e2 end (0.30 s before the first word, closing the seam) and ends 3.0 s after the last word -->
+  <div id="host-z1-close" data-composition-id="g-z1-close" data-composition-src="compositions/g-z1-close.html" data-start="1192.087" data-duration="12.99" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- ============ SOUND. Beds cut per act from DeAPI score files (claim-free) into media/beds/ with 1 s in / 0.8 s out fades, looped where the act
+       outruns the file (bed-a1 from the 60 s test-dark-ambient, bed-a2a, bed-a3b). Each bed ends on its act's last voice or at its blackout;
+       out under Paul's clips only where the plan says (a4-s14), the CTA and its dips, and the Harvey bite.
+       Not yet volumedetect-compensated: audio_levels.py and the owner's ear decide. ============ -->
+  <audio id="sx-bed-intro" src="media/beds/bed-intro.mp3" data-bed="" data-start="8.508" data-duration="81.02" data-volume="0.13"></audio>
+  <audio id="sx-bed-a1" src="media/beds/bed-a1.mp3" data-bed="" data-start="90.228" data-duration="269.294" data-volume="0.13"></audio>
+  <audio id="sx-bed-a2a" src="media/beds/bed-a2a.mp3" data-bed="" data-start="360.322" data-duration="208.925" data-volume="0.13"></audio>
+  <audio id="sx-bed-a2b" src="media/beds/bed-a2b.mp3" data-bed="" data-start="577.698" data-duration="15.103" data-volume="0.13"></audio>
+  <audio id="sx-bed-a3a" src="media/beds/bed-a3a-v3.mp3" data-bed="" data-start="630.432" data-duration="82.102" data-volume="0.13"></audio>
+  <audio id="sx-bed-a3b" src="media/beds/bed-a3b-v3.mp3" data-bed="" data-start="739.871" data-duration="141.903" data-volume="0.13"></audio>
+  <audio id="sx-bed-a3b-b" data-media-start="141.903" src="media/beds/bed-a3b-v3.mp3" data-bed="" data-start="889.574" data-duration="19.213" data-volume="0.13"></audio>
+  <audio id="sx-bed-a4a" src="media/beds/bed-a4a.mp3" data-bed="" data-start="909.587" data-duration="218.692" data-volume="0.13"></audio>
+  <audio id="sx-bed-a4b" src="media/beds/bed-a4b.mp3" data-bed="" data-start="1137.452" data-duration="38.835" data-volume="0.13"></audio>
+  <audio id="sx-bed-close" src="media/beds/bed-close.mp3" data-bed="" data-start="1176.587" data-duration="28.49" data-volume="0.13"></audio>
+  <!-- Ambience (<= 0.20): tin-roof rain under the hook, cut dead on Paul's last word; street rain through the A1 night (out under ins-paul-2);
+       creek ambience under the A2-S19 to A2-S21 hold stills (bed out there) -->
+  <!-- sx-amb-tinroof removed 25 Oct 26: owner heard it as "static grey noise" under Paul's opening clip; nothing plays under him (Moore and Mayfield match) -->
+  <audio id="sx-amb-rain-a" src="media/beds/amb-rain-a.mp3" data-bed="" data-start="90.228" data-duration="157.704" data-volume="0.2"></audio>
+  <audio id="sx-amb-rain-b" src="media/beds/amb-rain-b.mp3" data-bed="" data-start="256.623" data-duration="95.675" data-volume="0.2"></audio>
+  <audio id="sx-amb-creek" src="media/sfx/sfx-creek-ambience-60s.wav" data-bed="" data-start="592.801" data-duration="36.731" data-volume="0.2"></audio>
+  <audio id="sx-rumble-a2-s5" src="media/beds/rumble-a2-s5-v2.mp3" data-bed="" data-start="404.588" data-duration="15.454" data-volume="0.2"></audio>
+  <!-- Hits at 0.4: thunder on "lightning" (a1-s4 141.657), one ring on "phone" (a1-s7 218.989), boom on "eight" people (a4-s1 909.98) -->
+  <audio id="sx-thunder-a1-s4" src="media/beds/thunder-a1-s4-v2.mp3" data-bed="" data-start="141.474" data-duration="6" data-volume="0.4"></audio>
+  <audio id="sx-ring-a1-s7" src="media/sfx/sfx-phone-ring-2x.wav" data-bed="" data-start="218.806" data-duration="3" data-volume="0.4"></audio>
+  <audio id="sx-boom-a4-s1" src="media/sfx/boom.wav" data-bed="" data-start="920.427" data-duration="3" data-volume="0.4"></audio>
+  <!-- Swells (assets/sfx/sfx-swell.wav, 5 s riser) end ON the plan's word: start = word end - 5.0 (words.json). None in the CTA, A1-S19, A4-S14. -->
+  <audio id="sx-swell-01" src="media/sfx/swell.wav" data-bed="" data-start="3.988" data-duration="5" data-volume="0.4"></audio>      <!-- t1-s1 "33" -->
+  <audio id="sx-swell-02" src="media/sfx/swell.wav" data-bed="" data-start="64.058" data-duration="5" data-volume="0.4"></audio>     <!-- i1-s7 "go" -->
+  <audio id="sx-swell-03" src="media/sfx/swell.wav" data-bed="" data-start="74.872" data-duration="5" data-volume="0.4"></audio>     <!-- i1-s9 "name" -->
+  <audio id="sx-swell-04" src="media/sfx/swell.wav" data-bed="" data-start="238.001" data-duration="5" data-volume="0.4"></audio>    <!-- a1-s8 "people" -->
+  <audio id="sx-swell-05" src="media/sfx/swell.wav" data-bed="" data-start="255.903" data-duration="5" data-volume="0.4"></audio>    <!-- a1-s10 "flooded" -->
+  <audio id="sx-swell-06" src="media/sfx/swell.wav" data-bed="" data-start="314.126" data-duration="5" data-volume="0.4"></audio>    <!-- a1-s14 "times" -->
+  <audio id="sx-swell-07" src="media/sfx/swell.wav" data-bed="" data-start="389.929" data-duration="5" data-volume="0.4"></audio>     <!-- a2-s3 "fast" -->
+  <audio id="sx-swell-08" src="media/sfx/swell.wav" data-bed="" data-start="475.877" data-duration="5" data-volume="0.4"></audio>    <!-- a2-s8 "across" -->
+  <audio id="sx-swell-09" src="media/sfx/swell.wav" data-bed="" data-start="496.351" data-duration="5" data-volume="0.4"></audio>    <!-- a2-s9 "minutes" -->
+  <audio id="sx-swell-10" src="media/sfx/swell.wav" data-bed="" data-start="543.177" data-duration="5" data-volume="0.4"></audio>    <!-- a2-s13 "two" -->
+  <audio id="sx-swell-11" src="media/sfx/swell.wav" data-bed="" data-start="627.672" data-duration="5" data-volume="0.4"></audio>     <!-- a3-s1 "off" -->
+  <audio id="sx-swell-12" src="media/sfx/swell.wav" data-bed="" data-start="743.611" data-duration="5" data-volume="0.4"></audio>    <!-- a3-s7 "89" -->
+  <audio id="sx-swell-13" src="media/sfx/swell.wav" data-bed="" data-start="785.175" data-duration="5" data-volume="0.4"></audio>    <!-- a3-s9 "away" -->
+  <audio id="sx-swell-14" src="media/sfx/swell.wav" data-bed="" data-start="809.917" data-duration="5" data-volume="0.4"></audio>     <!-- a3-s11 "agree" -->
+  <audio id="sx-swell-15" src="media/sfx/swell.wav" data-bed="" data-start="865.356" data-duration="5" data-volume="0.4"></audio>    <!-- a3-s13 "found" -->
+  <audio id="sx-swell-16" src="media/sfx/swell.wav" data-bed="" data-start="1093.676" data-duration="5" data-volume="0.4"></audio>   <!-- a4-s11 "possible" -->
+  <audio id="sx-swell-17" src="media/sfx/swell.wav" data-bed="" data-start="1163.914" data-duration="5" data-volume="0.4"></audio>   <!-- z1-s1 "4" -->
+
+  <!-- CAMILLE V2 (owner 25 Oct 26 16:22 and 18:00): i1-s1, a1-s8, a2-s3, a2-s6, a2-s11, a4-s5 re-voiced as -v2 (a digit year garbled; initials and abbreviation periods split into pauses), spliced into the shipped master by ffmpeg, no re-render. Paul's circle face for just those six lines was regenerated and overlaid on the master; the pip windows here still mount the original face clips. -->
+  <!-- ============ PRESENTER CIRCLE (plan 1.6; FlashHead passes made on the ZBook, cut per window into media/pip/pip-wNN.mp4).
+       Pass 1: 20.331 (i1-s1) to 712.182 (CTA start); pass 2: 736.224 (CTA end) to 1164.135 (z1-s2 end).
+       Off: H1/T1, Paul's full-frame clips, CTA and dips, Harvey insert, end ask, blackouts, holds, Z1-S3 and the close card.
+       Each window ends with its last voiced line. Track 7 face, track 9 ring. ============ -->
+  <video id="pip-w01" class="pip" src="media/pip/face-w01.mp4" data-start="20.148" data-duration="69.38" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w01" data-start="20.148" data-duration="69.38" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w02" class="pip" src="media/pip/face-w02.mp4" data-start="90.428" data-duration="157.204" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w02" data-start="90.428" data-duration="157.204" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w03" class="pip" src="media/pip/face-w03.mp4" data-start="256.623" data-duration="99.899" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w03" data-start="256.623" data-duration="99.899" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w04" class="pip" src="media/pip/face-w04.mp4" data-start="360.522" data-duration="35.683" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w04" data-start="360.522" data-duration="35.683" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w05" class="pip" src="media/pip/face-w05.mp4" data-start="404.588" data-duration="164.659" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w05" data-start="404.588" data-duration="164.659" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w06" class="pip" src="media/pip/face-w06.mp4" data-start="577.698" data-duration="51.834" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w06" data-start="577.698" data-duration="51.834" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w07" class="pip" src="media/pip/face-w07.mp4" data-start="630.632" data-duration="73.871" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w07" data-start="630.632" data-duration="73.871" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w08" class="pip" src="media/pip/face-w08.mp4" data-start="739.871" data-duration="141.903" data-track-index="7" muted></video>
+  <video id="pip-w08-b" class="pip" src="media/pip/face-w08-b.mp4" data-start="889.574" data-duration="16.713" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w08" data-start="739.871" data-duration="141.903" data-track-index="9"><div class="pipring"></div></section>
+  <section class="clip" id="pip-ring-w08-b" data-start="889.574" data-duration="16.713" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w09" class="pip" src="media/pip/face-w09.mp4" data-start="909.787" data-duration="218.192" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w09" data-start="909.787" data-duration="218.192" data-track-index="9"><div class="pipring"></div></section>
+  <video id="pip-w10" class="pip" src="media/pip/face-w10.mp4" data-start="1137.452" data-duration="38.835" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w10" data-start="1137.452" data-duration="38.835" data-track-index="9"><div class="pipring"></div></section>
+</div>
+
+<script>
+window.__timelines = window.__timelines || {};
+window.__timelines["ep-camille-1969"] = gsap.timeline({ paused: true });
+const tl = window.__timelines["ep-camille-1969"];
+// Slow drift on every still (owner 24 Oct 26, Moore draft: the punch zooms "are dog shit ... Ken Burns was better"):
+// a 6% push over the still's own window, in on even stills and out on odd, linear so nothing snaps. Replaces 43 punch() calls.
+tl.to("#kb-a2-s21-b", { opacity: 0.15, duration: 4.5, ease: "power1.in" }, 625.032);
+document.querySelectorAll(".still-wrap").forEach((sec, i) => {
+  const img = sec.querySelector("img"), t = +sec.dataset.start, d = +sec.dataset.duration;
+  const from = i % 2 ? 1.06 : 1.0, to = i % 2 ? 1.0 : 1.06;
+  tl.fromTo(img, { scale: from }, { scale: to, duration: d, ease: "none" }, t);
+});
+</script>
+</body>
+</html>

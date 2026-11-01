@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-i1-blunt: I1-S6 (audio 4.06 s of speech; segment 5 s on the plan), glass quote over LVA/West_of_Rockfish_(7797546944).jpg
+     (the host mounts the still beneath). Comp time 0 = first word of I1-S6. Cues from audio/i1-s6.words.json:
+     "broken" @1.84, "bones" @2.12, "and" @2.56, "blunt" @3.02, "force" @3.34, "injuries" @3.60.
+     Host should run at least 4.7 s (exit lands in the last 0.6 s). Presenter corner x >= 1600, y >= 680 stays empty (card right edge x 1560). */
+  #g-i1-blunt-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8; }
+  .ib-wrap { position:absolute; inset:auto; left:160px; bottom:150px; width:1400px; display:flex; flex-direction:column; align-items:flex-start; gap:22px; }
+  .ib-chip { box-sizing:border-box; padding:14px 34px; border-radius:22px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:40px; line-height:48px; letter-spacing:3px; color:#d8a13a; white-space:nowrap; }
+  .ib-card { position:relative; box-sizing:border-box; width:1400px; padding:40px 64px 36px 150px; border-radius:28px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:inset 0 1px 0 rgba(255,255,255,0.10); }
+  .ib-mark { position:absolute; left:42px; top:14px; font-family:'AbrilFig', Georgia, serif; font-size:150px; line-height:150px; color:#d8a13a; }
+  .ib-q { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:52px; line-height:68px; color:#f2f5f8; }
+  .ib-q span { display:inline-block; }
+  .ib-rule { width:220px; height:3px; margin-top:24px; background:#d8a13a; }
+  .ib-who { margin-top:16px; font-weight:700; font-size:22px; line-height:30px; letter-spacing:2px; color:#d8a13a; }
+</style>
+<div id="g-i1-blunt-root" data-composition-id="g-i1-blunt" data-width="1920" data-height="1080" data-duration="4.7">
+  <div class="ib-wrap" id="ib-wrap">
+    <div class="ib-chip" id="ib-chip">BLUNT-FORCE INJURIES</div>
+    <div class="ib-card" id="ib-card">
+      <div class="ib-mark" id="ib-mark">&ldquo;</div>
+      <div class="ib-q" id="ib-q"><span id="ib-p1">died from broken bones</span> <span id="ib-p2">and other blunt-force injuries,</span> <span id="ib-p3">rather than by drowning&rdquo;</span></div>
+      <div class="ib-rule" id="ib-rule"></div>
+      <div class="ib-who" id="ib-who">USGS Professional Paper 804, 1973</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#ib-chip", "#ib-card", "#ib-mark", "#ib-who", "#ib-p1", "#ib-p2", "#ib-p3"], { autoAlpha: 0 }, 0);
+  tl.set("#ib-rule", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* card on "broken" @1.84 */
+  tl.fromTo("#ib-card", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.84);
+  tl.fromTo("#ib-mark", { autoAlpha: 0, scale: 1.6, y: -20 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, 2.0);
+  tl.to("#ib-rule", { scaleX: 1, duration: 0.7, ease: "power2.out" }, 2.1);
+  tl.fromTo("#ib-who", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 2.3);
+  /* phrases: "broken" @1.84 -> p1 · "and" @2.56 -> p2 · "injuries" @3.60 ends, p3 follows @3.70 */
+  tl.fromTo("#ib-p1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 1.95);
+  tl.fromTo("#ib-p2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2.56);
+  tl.fromTo("#ib-p3", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 3.5);
+  /* chip on "blunt" @3.02 */
+  tl.fromTo("#ib-chip", { autoAlpha: 0, scale: 0.8, transformOrigin: "0% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(1.7)" }, 3.02);
+  /* float so the hold keeps moving */
+  tl.fromTo("#ib-card", { y: 0 }, { y: -8, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.4);
+  /* exit, last 0.6 s */
+  tl.to(["#ib-card", "#ib-chip"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 4.1);
+  window.__timelines["g-i1-blunt"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
