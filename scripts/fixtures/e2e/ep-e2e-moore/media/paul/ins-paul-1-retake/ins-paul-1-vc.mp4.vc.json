@@ -1,0 +1,18 @@
+{
+ "voice_ref_md5": "ff03c38fefe26dc0b7adb08ea165f167",
+ "source": "ins-paul-1-v3.mp4",
+ "source_db": -18.2,
+ "target_db": -16.1,
+ "gain_db": 4.7,
+ "eq": "equalizer=f=2000:t=o:w=2:g=-2.36,equalizer=f=5657:t=o:w=1:g=-1.59,equalizer=f=2000:t=o:w=2:g=-0.58,equalizer=f=5657:t=o:w=1:g=-0.00",
+ "out_db": -15.9,
+ "out_colour_db": [
+  -15.0,
+  -14.62
+ ],
+ "narration_colour_db": [
+  -15.13,
+  -14.55
+ ],
+ "duration_s": 10.0
+}
