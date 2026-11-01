@@ -6,6 +6,7 @@
  "g-a1-4-erie-fetch-map": 29.5,
  "g-a1-5-watch-timeline": 35.4,
  "g-a1-6-warning-card": 24.6,
+ "g-a1-7-travel-line": 5.6,
  "g-a1-8-afd-rare": 14.2,
  "g-a1-9-update-card": 19.4,
  "g-a2-1-log-724": 8.6,
@@ -44,6 +45,7 @@
  "g-a4-8-waldman-card": 10.4,
  "g-a4-9-guard-tally": 18.2,
  "g-a5-1-dark-chips": 18.75,
+ "g-a5-10-close": 14.39,
  "g-a5-2-hotel-card": 7.9,
  "g-a5-3-lockport-map": 9.5,
  "g-a5-4-tally-final": 21.7,
@@ -58,7 +60,5 @@
  "g-intro-4-morning-map": 19.6,
  "g-intro-5-wind-chips": 16.2,
  "g-intro-6-count-tally": 12,
- "g-intro-7-afd-card": 15.6,
- "g-a5-10-close": 14.39,
- "g-a1-7-travel-line": 5.6
+ "g-intro-7-afd-card": 15.6
 }
