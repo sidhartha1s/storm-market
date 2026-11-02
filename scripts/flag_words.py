@@ -117,7 +117,7 @@ def scan_episode(ep_dir, terms):
     if script_md.is_file():
         scan_narration(script_md, terms, hits)
 
-    metadata_md = ep_dir / "metadata.md"
+    metadata_md = next(iter(sorted(ep_dir.glob("*metadata.md"))), ep_dir / "metadata.md")  # metadata.md or E<nn>-<topic>-metadata.md
     if metadata_md.is_file():
         lines = metadata_md.read_text(encoding="utf-8", errors="replace").split("\n")
         scan_text_lines(metadata_md, lines, terms, hits)
