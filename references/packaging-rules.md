@@ -46,8 +46,9 @@ prompt fixes everything except its slots, so every video looks like the last.
   Chris's top video. Risk: an AI presenter inside a real disaster photograph reads fake when the blend is off; judge
   this one hardest by eye.
 - Which of the two a video uses is the editor's call (the agent's reading: he kept both and named no rule for choosing).
-- **Every Paul thumbnail is tested against a no-face version** (owner tick 8 Oct 26): the same words over a real
-  photograph, run in YouTube's Test and Compare, so the channel learns which wins.
+- **Every documentary thumbnail shows Paul, made by ChatGPT from his character sheet** (owner 2 Nov 26: "I want Paul's face with the
+  correct character sheet on the thumbnail ... Everything is created by ChatGPT"). No no-face variant, no HTML card: that 8 Oct
+  test idea is withdrawn.
 - In both systems: the headline is 2 lines and never the title's words; the second image is real (photograph, frame or
   official map), never an AI storm scene, a CSS mock-up or a landing-page image; its licence is checked first (a CC BY
   photograph needs its credit in the description).

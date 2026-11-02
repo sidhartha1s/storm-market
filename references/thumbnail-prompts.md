@@ -1,6 +1,6 @@
 # thumbnail-prompts.md — fill-in prompts for a thumbnail with Paul on it
 
-Rules and the no-face test: `references/packaging-rules.md` "Paul on the thumbnail". This
+Rules: `references/packaging-rules.md` "Paul on the thumbnail". This
 file holds only the prompt text, and it is the one home of each system's colours, typefaces and positions. The
 news lane's no-face prompts of 16 Sep 26 are a separate set: `ops/wave2/thumbnail-prompts-16sep.md`. Fill every `<SLOT>`, change nothing else: the fixed wording is what kept Paul on
 his sheet and every word spelled right in the demos of 8 Oct 26. A slot's "e.g." shows what filled it in a demo;
