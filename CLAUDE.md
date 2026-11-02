@@ -155,7 +155,7 @@ Per episode in `episodes/<slug>/`. The skill's phase map points at these step nu
    `.srt` (owner 1 Nov 26: "E01 or E02 then the topic name and then the final master, keep it simple"; E09 = Galveston,
    new slugs start `e10-`), on both laptops, md5 checked after every copy. The moment the final master exists: move the master and SRT (both
    gitignored) into the MAIN checkout's `episodes/<slug>/renders/` and delete every other render (drafts, the
-   pre-master final, previews). Never delete the master. The metadata and thumbnails carry the same prefix (`E<nn>-<topic>-metadata.md`, `thumbs/E<nn>-<topic>-thumb-<name>`, owner 2 Nov 26) and stay tracked in the episode folder. After
+   pre-master final, previews). Never delete the master. The metadata and thumbnails carry the same prefix (`E<nn>-<topic>-metadata.md`, `thumbs/E<nn>-<topic>-thumb-<name>`, owner 2 Nov 26) and stay tracked in the episode folder; a copy of the metadata sits beside the master in `renders/` on both laptops, because that folder is what he opens (owner 2 Nov 26: "I still don't see the metadata"). After
    publish, commit, PR and merge the episode branch, then remove the worktree. The metadata file at publish: first URL
    is `channel.cta.first_link`, then the "book mentioned at mm:ss" line, no chapter marker at the CTA, category Education, type Overview.
 - Render by act (owner 26 Oct 26, sk_4): `python3 scripts/render_acts.py <slug> <draft|full> <basename> [--reuse <older-basename>]`,
