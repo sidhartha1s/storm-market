@@ -140,12 +140,13 @@ const MEASURE = `((t) => {
     const r = el.getBoundingClientRect();
     if (r.width < 1 || r.height < 1) continue;
     const cs = getComputedStyle(el);
+    let clip = null;   // computed once per element, only when it has text
     /* glyph-level ink boxes, not element boxes: line-height padding and block width
        make element rects overlap constantly without any visible garbling */
     for (const node of el.childNodes) {
       if (node.nodeType !== 3 || !node.textContent.trim()) continue;
       const rng = document.createRange(); rng.selectNodeContents(node);
-      const clip = clipBox(el, cs);
+      clip ??= clipBox(el, cs);
       for (const ir of rng.getClientRects()) {
         if (ir.width < MINBOX || ir.height < MINBOX) continue;
         /* the collision pass takes the painted part of the box, or nothing when too little is painted */
