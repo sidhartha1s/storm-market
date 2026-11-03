@@ -29,20 +29,14 @@ def check(name, ok):
         FAILS.append(name)
 
 
-check("Camille launch (full, 2 workers, 71.5 GB free) is refused", stream_gate.launch_refusal("full", 2, 71.5) is not None)
-check("full at 1 worker on the same disk launches", stream_gate.launch_refusal("full", 1, 71.5) is None)
-check("a draft at 3 workers launches", stream_gate.launch_refusal("draft", 3, 71.5) is None)
-check("the owner's STREAM_GATE_OVERRIDE skips only the launch refusal",
-      stream_gate.launch_refusal("full", 2, 67.0, "owner 30 Oct 26") is None)
 check("Camille's multi_worker gate line stops the render", "multi_worker" in stream_gate.log_verdict(camille_bad, 60))
 check("Camille's 1-worker rerun line passes", stream_gate.log_verdict(camille_ok, 60) == "ok")
 check("Moore's 2-worker parallel_forced line passes", stream_gate.log_verdict(moore, 60) == "ok")
 check("no gate line yet is pending", stream_gate.log_verdict("Checking browser", 60) == "pending")
 check("no gate line after the watch window stops the render", stream_gate.log_verdict("Checking browser", 600) != "pending")
-launch, watch, npx = (render_cmd.find('stream_gate.py" launch'), render_cmd.find('stream_gate.py" watch'),
-                      render_cmd.find("call npx hyperframes"))
-check("render.cmd runs launch, then watch, after the worker count is final and before npx",
-      render_cmd.find("render_%MODE%.workers\" set /p") < launch < watch < npx)
+watch, npx = render_cmd.find('stream_gate.py" watch'), render_cmd.find("call npx hyperframes")
+check("render.cmd runs watch after the worker count is final and before npx, and no disk-size launch refusal",
+      render_cmd.find("render_%MODE%.workers\" set /p") < watch < npx and 'stream_gate.py" launch' not in render_cmd)
 
 # Used vs asked (Oct 26): the ZBook's driver 595.95 is too old for ffmpeg 8.1.2's NVENC; every ZBook render printed
 # "[gpuEncoder] nvenc probe failed" and hyperframes encoded on Intel QSV. Real excerpts: the ZBook bench render

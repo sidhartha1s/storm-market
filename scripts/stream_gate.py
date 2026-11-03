@@ -4,9 +4,8 @@
 Camille's full render (25 Oct 26, 1205 s, RENDER_WORKERS=2) logged `streaming-encode gate {"enabled":false,
 "reason":"multi_worker"}` and asked for 75.0 GB of frame storage with 71.5 GB free. Moore at 2 workers streamed
 (`parallel_forced`): whether hyperframes takes the parallel streaming route depends on the composition, so the
-worker count alone does not tell. render.cmd passed `--experimental-fast-capture=true` until 26 Oct 26; on the Joplin slice that flag turned streaming off at 2 workers, but Moore and the ZBook bench streamed with it, so for Camille it is a suspected cause, not a proven one. learnings/render.md (25 Oct 26): under 100 GB free, full renders run at 1 worker.
+worker count alone does not tell. render.cmd passed `--experimental-fast-capture=true` until 26 Oct 26; on the Joplin slice that flag turned streaming off at 2 workers, but Moore and the ZBook bench streamed with it, so for Camille it is a suspected cause, not a proven one. The disk-size launch refusal is gone (owner 30 Oct 26, removed 4 Nov 26): the watch below stops any render whose frames go to disk.
 
-  stream_gate.py launch <draft|full> <workers> <episode dir>   exit 1 = refuse before launch (render.cmd)
   stream_gate.py watch <render log> <done marker> <preflight log>  runs beside the render; kills it when the
       gate line says enabled:false, is missing WATCH_S after launch, or the render already runs on something
       other than what it asked for (used_vs_asked)
@@ -19,30 +18,15 @@ render and hyperframes encoded on Intel QSV instead without saying so. Six episo
 import json
 import os
 import re
-import shutil
 import subprocess
 import sys
 import time
 from pathlib import Path
 
-MIN_FREE_GB_MULTI = 100  # learnings/render.md 25 Oct 26: Camille needed 75.0 GB at 2 workers
 WATCH_S = 480  # the gate line printed within the first 4 min of every measured full render; twice that
 GATE = re.compile(r"streaming-encode gate (\{.*?\})")
 ASKED = re.compile(r"GPU: (.+)")  # hyperframes' plan line: "encoder GPU" = --gpu, "browser GPU" = --browser-gpu
 BROWSER = re.compile(r"browserGpuMode probe .*")  # names the WebGL renderer; one or more per render
-
-
-def launch_refusal(mode, workers, free_gb, override=None):
-    """Reason to refuse before launch, or None. `override` (env STREAM_GATE_OVERRIDE, the owner's words and date)
-    skips only this pre-launch refusal; the watch still stops a render whose gate line says frames go to disk
-    (owner 30 Oct 26: "2 fucking workers" on the ASUS with 67 GB free; render by act caps disk capture to one act)."""
-    if override:
-        print(f"[OVERRIDE] stream_gate launch refusal skipped: {override}")
-        return None
-    if mode == "full" and workers > 1 and free_gb < MIN_FREE_GB_MULTI:
-        return (f"full render at {workers} workers with {free_gb:.1f} GB free: hyperframes may skip streaming "
-                f"(multi_worker) and capture to disk (Camille needed 75.0 GB). Set RENDER_WORKERS=1 or free "
-                f"{MIN_FREE_GB_MULTI} GB")
 
 
 def log_verdict(text, waited_s):
@@ -134,10 +118,6 @@ def watch(log, marker, out):
 
 if __name__ == "__main__":
     a = sys.argv[1:]
-    if a[:1] == ["launch"] and len(a) == 4:
-        why = launch_refusal(a[1], int(a[2]), shutil.disk_usage(a[3]).free / 1e9, os.environ.get("STREAM_GATE_OVERRIDE"))
-        print(f"[stream_gate] REFUSING TO RENDER: {why}" if why else "[stream_gate] OK before launch")
-        sys.exit(1 if why else 0)
     if a[:1] == ["watch"] and len(a) == 4:
         sys.exit(watch(*map(Path, a[1:])))
     if a[:1] == ["check"] and len(a) in (2, 3):

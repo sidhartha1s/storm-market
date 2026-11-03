@@ -14,7 +14,7 @@ Newest first. New entries go at the top, under this line. Superseded lines point
    Appalachian's gates after they had passed (4 min lost) and print a stray empty batch start/end pair at the end.
    Write a new file and launch that instead.
 4. The 100 GB / 1-worker stream gate: this box has no `enabled:false` line in any of its 100 render logs. The owner
-   overrode it (`STREAM_GATE_OVERRIDE`); 2 workers streamed (`parallel_forced`) on the one act that ran at 2.
+   overrode it; 2 workers streamed (`parallel_forced`) on the one act that ran at 2. The floor was deleted 4 Nov 26.
 5. graphics_qc's empty-container rule looked inside an <img> for an image; Galveston's 20 `<img id="g-...-img">` page
    scans were "empty" for two days of QC rounds (commit 812f99ae fixes it, with the wireframe test now needing text).
 6. A monitor's nested schtasks quoting (`cmd.exe /c ""x.cmd" arg"`) reports SUCCESS and runs nothing; a one-line
@@ -37,7 +37,7 @@ Newest first. New entries go at the top, under this line. Superseded lines point
    does not turn streaming off by itself.
    Without the flag, 2 workers went from 5.56 to 3.68 s per output second and streamed (`parallel_forced`).
 2. Removed from `scripts/render.cmd`, `scripts/pin_ritual.py` (RENDER_FLAGS mirrors it) and `config.yaml`. `--gpu`,
-   workers, crf and fps are unchanged. The 100 GB / 1-worker rule stays until a full render without the flag is measured.
+   workers, crf and fps are unchanged. The 100 GB / 1-worker rule was deleted 4 Nov 26 (owner 30 Oct 26).
 3. Item 3 of the entry below is history: no render asks for fast capture any more.
 
 ## 26 Oct 26: the ZBook encoded on Intel QSV, unseen, for six episodes
