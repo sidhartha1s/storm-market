@@ -4,10 +4,13 @@ Runtime 18:37 (1117.3 s). CTA (Paul, ad v10) at 462.63 s = 7:42, inside A2, no c
 Master: `renders/ep-moore-1999-final-master.mp4` (-14.4 LUFS, TP -1.04 dBTP, 25 Oct 26) + `renders/ep-moore-1999-final.srt` (447 cues).
 Timestamps below come from the act sections in `index.html` (f108c5aa, the timeline of draft v3 the owner approved 25 Oct 26 00:00).
 
-## Titles (candidates, `scripts/title_fre.py` 21 Oct 26; the owner picks at the packaging gate)
-1. Moore 1999: The Warning Worked. The Homes Did Not. (109.8, 50 ch)
-2. Moore 1999: 35 in One Cellar. All Lived. (109.0, 40 ch)
-3. Moore 1999: An Hour of Warning Was Not Enough (94.3, 45 ch; under 100, rewrite or drop)
+## Title
+TBD by owner (he picks later, owner 3 Nov 26). Candidates 3 Nov 26, written from the locked angle, not from a score:
+1. Moore 1999: The Warning Worked. It Wasn't Enough. (49)
+2. Moore 1999: 35 People, One Storm Cellar, All Alive (50)
+3. Moore 1999: The First Tornado Emergency Ever Issued (51)
+4. Moore 1999: An Hour of Warning, and Where People Hid (52)
+The confirmed line goes here as `user confirmed "<title>" on DDMMYY`.
 
 ## Thumbnail
 School A (Name + Year documentary card): the Bridge Creek mud swath (William Lerner, NWS Service Assessment photo, public domain)
