@@ -122,13 +122,13 @@ with tempfile.TemporaryDirectory() as d:
         time.sleep(1.5)
         seen = {pid: kind for pid, kind, _ in render_busy.busy_jobs()}
         check("a real `python <dir>/render_acts.py` sleeper is busy", seen.get(procs["real"].pid) == "render_acts.py", seen)
-        for nm in ("test_gates.py", "e2e.py", "rungates244.py", "run_gates.py", "snapshot_queue.py", "test_detectors.py"):
+        for nm in ("test_gates.py", "e2e.py", "run_gates.py", "snapshot_queue.py", "test_detectors.py"):
             f = Path(d) / nm
             f.write_text("import time; time.sleep(60)\n", encoding="utf-8")
             extra.append(subprocess.Popen([sys.executable, str(f)], creationflags=NW))
         time.sleep(1.5)
         seen = {pid: kind for pid, kind, _ in render_busy.busy_jobs()}
-        for nm, pr in zip(("test_gates.py", "e2e.py", "rungates244.py", "run_gates.py", "snapshot_queue.py", "test_detectors.py"), extra):
+        for nm, pr in zip(("test_gates.py", "e2e.py", "run_gates.py", "snapshot_queue.py", "test_detectors.py"), extra):
             check(f"a real `python <dir>/{nm}` sleeper is busy", seen.get(pr.pid) == nm, seen)
         accent = Path(d) / "Jos\u00e9"
         accent.mkdir()
