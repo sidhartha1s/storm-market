@@ -12,6 +12,10 @@ TBD by owner. Round 1 (29 Oct): "all sucks". Round 3 (29 Oct, six options): no p
 4. Galveston 1900: "An Absurd Delusion" (36)
 Pick on the DEVQ page (key title_r4_galveston), or write the line. The confirmed line goes here as `user confirmed "<title>" on DDMMYY`.
 
+## Thumbnail
+Not locked; the owner picks later (3 Nov 26). Candidates in `thumbs/`, Paul from his character sheet, made by ChatGPT, prompt beside each:
+- `thumbs/E09-galveston-1900-thumb-fieldnotes-gen.png`
+
 ## Description
 https://www.paulraymond.online/yt/?src=desc
 

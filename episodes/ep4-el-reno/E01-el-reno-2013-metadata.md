@@ -8,7 +8,7 @@ El Reno 2013: The Safest Place Was Home
 
 ## Thumbnail
 The owner liked two of round 8 (9 Oct 26: "I like 1,8"), so both go into Studio Test and Compare:
-`thumbs/t1-fieldnotes-21-lost.jpg` and `thumbs/t8-onground-everyone-outside.jpg`.
+`thumbs/E01-el-reno-2013-thumb-t1-fieldnotes-21-lost.jpg` and `thumbs/E01-el-reno-2013-thumb-t8-onground-everyone-outside.jpg`.
 
 ## Description
 https://www.paulraymond.online/yt/?src=desc

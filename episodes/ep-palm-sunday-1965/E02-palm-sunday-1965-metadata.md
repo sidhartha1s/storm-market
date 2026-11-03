@@ -5,6 +5,12 @@
 ## Title (owner, locked)
 Who Stopped the Palm Sunday 1965 Tornado Warning?
 
+## Thumbnail
+Not locked; the owner picks later (3 Nov 26). Candidates in `thumbs/`, Paul from his character sheet, made by ChatGPT, prompt beside each:
+- `thumbs/E02-palm-sunday-1965-thumb-t1-onground-poles-gen.jpg`
+- `thumbs/E02-palm-sunday-1965-thumb-t2-fieldnotes-chain-gen.jpg`
+- `thumbs/E02-palm-sunday-1965-thumb-t4-critlat-layout-gen.jpg`
+
 ## Description
 https://www.paulraymond.online/yt/?src=desc
 

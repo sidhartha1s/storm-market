@@ -1,7 +1,7 @@
 # ep-mayfield-2021 · publish metadata
 
 Runtime 19:14 (1154.6 s). CTA (Paul, ad v10) at 605.74 s = 10:05, inside A3, no chapter marker there (DESIGN.md CTA contract).
-Master: final master 25 Oct 26 19:14 (`renders/ep-mayfield-2021-final-master.mp4` + EN SRT, in the main checkout).
+Master: final master 25 Oct 26 19:14 (`renders/E06-mayfield-2021-final-master.mp4` + EN SRT, in the main checkout).
 Timestamps below come from the chapter blackouts in `index.html` (a chapter starts where its blackout ends).
 
 ## Title
@@ -11,6 +11,10 @@ TBD by owner (he picks later, owner 3 Nov 26). Candidates 3 Nov 26, written from
 3. Mayfield 2021: A Night Shift Under a Tornado Warning (52)
 4. Mayfield 2021: No One Told Big Workplaces What to Do (52)
 The confirmed line goes here as `user confirmed "<title>" on DDMMYY`.
+
+## Thumbnail
+Not locked; the owner picks later (3 Nov 26). Candidates in `thumbs/`, Paul from his character sheet, made by ChatGPT, prompt beside each:
+- `thumbs/E06-mayfield-2021-thumb-fieldnotes-gen.png`
 
 ## Description
 https://www.paulraymond.online/yt/?src=desc
