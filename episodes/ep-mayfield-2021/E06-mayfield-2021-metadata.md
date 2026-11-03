@@ -4,8 +4,13 @@ Runtime 19:14 (1154.6 s). CTA (Paul, ad v10) at 605.74 s = 10:05, inside A3, no 
 Master: final master 25 Oct 26 19:14 (`renders/ep-mayfield-2021-final-master.mp4` + EN SRT, in the main checkout).
 Timestamps below come from the chapter blackouts in `index.html` (a chapter starts where its blackout ends).
 
-## Titles
-TBD by owner (decided later, owner 25 Oct 26).
+## Title
+TBD by owner (he picks later, owner 3 Nov 26). Candidates 3 Nov 26, written from the locked angle, not from a score:
+1. Mayfield 2021: The Forecast Was Right. Work Had No Plan. (56)
+2. Mayfield 2021: Warned Four Days Out, Caught at Work (51)
+3. Mayfield 2021: A Night Shift Under a Tornado Warning (52)
+4. Mayfield 2021: No One Told Big Workplaces What to Do (52)
+The confirmed line goes here as `user confirmed "<title>" on DDMMYY`.
 
 ## Description
 https://www.paulraymond.online/yt/?src=desc

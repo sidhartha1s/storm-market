@@ -3,8 +3,13 @@
 Runtime 20:05 (1205.1 s). CTA (Paul, ad v10) at 714.83 s = 11:54, inside A3, no chapter marker there (DESIGN.md CTA contract).
 Master: `renders/ep-camille-1969-final-master.mp4` (final master 25 Oct 26 20:05). Timestamps below come from the act sections and chapter blackouts in `index.html`.
 
-## Titles
-TBD by owner (decided later, owner 25 Oct 26).
+## Title
+TBD by owner (he picks later, owner 3 Nov 26). Candidates 3 Nov 26, written from the locked angle, not from a score:
+1. Camille 1969: 33 Never Found in the Virginia Flood (50)
+2. Camille 1969: The Flood Virginia Never Closed (45)
+3. Camille 1969: Eight Still Unnamed, 33 Never Found (49)
+4. Hurricane Camille 1969: Virginia Still Counts Its Lost (54)
+The confirmed line goes here as `user confirmed "<title>" on DDMMYY`.
 
 ## Must-ship checklist (owner 22 Oct 26, answers-eps-acts.json 11:37:27)
 - [x] Library of Virginia credit is in the description (camille_lva = "use", owner note: "ENSURE THAT this aint missed on your
