@@ -122,16 +122,8 @@ set PRODUCER_PAGE_NAVIGATION_TIMEOUT_MS=120000
 set PRODUCER_PUPPETEER_PROTOCOL_TIMEOUT_MS=900000
 REM RENDER_BUSY_OK=1 skips render_busy, so no .workers file: the request stands.
 if exist "render_%MODE%.workers" set /p RENDER_WORKERS=<"render_%MODE%.workers"
-REM Streaming gate (Camille full, 25 Oct 26: 2 workers, multi_worker, 75 GB disk capture): refuse a full multi-worker
-REM render on a short disk, then watch the log and stop the render if the gate line says enabled:false.
-"C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0stream_gate.py" launch %MODE% %RENDER_WORKERS% "%EP%" >> "%PREFLIGHT_LOG%" 2>&1
-if errorlevel 1 (
-  echo STREAM GATE REFUSED — see %CD%\%PREFLIGHT_LOG%
-  type "%PREFLIGHT_LOG%"
-  %RELEASE%
-  echo 1 > "render_%MODE%_done.marker"
-  exit /b 1
-)
+REM Streaming gate (Camille full, 25 Oct 26: 2 workers, multi_worker, 75 GB disk capture): watch the log and stop the
+REM render if the gate line says enabled:false. No disk-size refusal before launch (owner 30 Oct 26, removed 4 Nov 26).
 del /q "render_%MODE%.log" 2>nul
 start "" /b "C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0stream_gate.py" watch "%CD%\render_%MODE%.log" "%CD%\render_%MODE%_done.marker" "%CD%\%PREFLIGHT_LOG%"
 echo %_FPS% > "render_%MODE%.fps"
