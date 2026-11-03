@@ -1,7 +1,7 @@
 # ep-moore-1999 · publish metadata
 
 Runtime 18:37 (1117.3 s). CTA (Paul, ad v10) at 462.63 s = 7:42, inside A2, no chapter marker there (DESIGN.md CTA contract).
-Master: `renders/ep-moore-1999-final-master.mp4` (-14.4 LUFS, TP -1.04 dBTP, 25 Oct 26) + `renders/ep-moore-1999-final.srt` (447 cues).
+Master: `renders/E04-moore-1999-final-master.mp4` (-14.4 LUFS, TP -1.04 dBTP, 25 Oct 26) + `renders/E04-moore-1999-final-master.srt` (447 cues).
 Timestamps below come from the act sections in `index.html` (f108c5aa, the timeline of draft v3 the owner approved 25 Oct 26 00:00).
 
 ## Title
@@ -13,8 +13,8 @@ TBD by owner (he picks later, owner 3 Nov 26). Candidates 3 Nov 26, written from
 The confirmed line goes here as `user confirmed "<title>" on DDMMYY`.
 
 ## Thumbnail
-School A (Name + Year documentary card): the Bridge Creek mud swath (William Lerner, NWS Service Assessment photo, public domain)
-with "35 IN ONE CELLAR" or "THE WARNING WORKED". Not made yet.
+Not locked; the owner picks later (3 Nov 26). Candidate in `thumbs/`, Paul from his character sheet, made by ChatGPT, prompt beside it:
+- `thumbs/E04-moore-1999-thumb-fieldnotes-gen.png`
 
 ## Description
 https://www.paulraymond.online/yt/?src=desc

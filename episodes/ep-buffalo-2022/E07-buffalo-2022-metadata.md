@@ -9,6 +9,10 @@ Publish window (owner 26 Oct 26): near Christmas, the anniversary 23 to 27 Dec. 
 user confirmed "Buffalo Blizzard 2022: The Road Ban Came After the Whiteout" on 301026
 (his own wording in the DEVQ note on title_r3_buffalo, saved 30 Oct 26 14:37; 58 characters, "Buffalo Blizzard 2022" ends at 21)
 
+## Thumbnail
+Not locked; the owner picks later (3 Nov 26). Candidates in `thumbs/`, Paul from his character sheet, made by ChatGPT, prompt beside each:
+- `thumbs/E07-buffalo-2022-thumb-fieldnotes-gen.png`
+
 ## Description
 https://www.paulraymond.online/yt/?src=desc
 

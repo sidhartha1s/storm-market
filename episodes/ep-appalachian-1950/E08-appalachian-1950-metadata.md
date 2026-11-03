@@ -13,6 +13,10 @@ TBD by owner. Round 1 (29 Oct): "these suck ... still referring from the scoring
 4. The 1950 Storm That Was Two Storms at Once (42)
 Pick on the DEVQ page (key title_r4_appalachian), or write the line. The confirmed line goes here as `user confirmed "<title>" on DDMMYY`.
 
+## Thumbnail
+Not locked; the owner picks later (3 Nov 26). Candidates in `thumbs/`, Paul from his character sheet, made by ChatGPT, prompt beside each:
+- `thumbs/E08-appalachian-1950-thumb-fieldnotes-gen.png`
+
 ## Description
 https://www.paulraymond.online/yt/?src=desc
 

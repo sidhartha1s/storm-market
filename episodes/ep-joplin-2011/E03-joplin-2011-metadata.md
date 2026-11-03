@@ -11,10 +11,9 @@ User confirmed "Joplin 2011: The Sirens Did Not Lie" on 151026.
 
 ## Thumbnail
 Not locked. Three candidates are in `thumbs/`; the owner picks (the angle lock asks for the NIST slab one beside the others):
-- P1 `P1-onground-slab-navy.png` (On the Ground): "135 INDOORS / FOUND NO SIGN", red tag "JOPLIN 2011", Paul pointing at a bare slab.
-- P2 `P2-fieldnotes-135-navy.png` (Field Notes): "135 DIED / INDOORS", slab sketch labelled "NO BASEMENT", circled "FOUND NO SIGN".
-- P3 `P3-fieldnotes-sirens-navy.png` (Field Notes): "SIRENS / ONCE A YEAR", timeline 5:11 siren, 5:34 tornado, 5:38 siren. Gives away a reveal from the first act, so the weakest fit for no-spoiler packaging.
-Per packaging-rules.md every Paul thumbnail also runs a no-face version in Studio Test and Compare.
+- P1 `E03-joplin-2011-thumb-P1-onground-slab-navy.png` (On the Ground): "135 INDOORS / FOUND NO SIGN", red tag "JOPLIN 2011", Paul pointing at a bare slab.
+- P2 `E03-joplin-2011-thumb-P2-fieldnotes-135-navy.png` (Field Notes): "135 DIED / INDOORS", slab sketch labelled "NO BASEMENT", circled "FOUND NO SIGN".
+- P3 `E03-joplin-2011-thumb-P3-fieldnotes-sirens-navy.png` (Field Notes): "SIRENS / ONCE A YEAR", timeline 5:11 siren, 5:34 tornado, 5:38 siren. Gives away a reveal from the first act, so the weakest fit for no-spoiler packaging.
 
 ## Description
 
