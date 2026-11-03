@@ -81,3 +81,6 @@ _act_tmp.html*
 # the pinned e2e fixture (scripts/e2e.py FIXTURE) carries its shrunk media, mp4s included
 !scripts/fixtures/e2e/**/*.mp4
 scripts/fixtures/e2e/**/.luma-cache.json
+
+# upload folders the owner opens: hard links to finals plus metadata and thumbnail copies (CLAUDE.md step 7)
+/uploads/
