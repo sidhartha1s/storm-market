@@ -85,7 +85,7 @@ def ps(cmd):
 # below; the checker's own pid and its whole parent chain are never a job. This is the one owner of the scan:
 # wait scripts call `render_busy.py --jobs` (exit 0 idle, 1 busy, 2 unreadable: never idle) instead of their own regex.
 PY_JOBS = {"render_acts.py", "snapshot_queue.py", "run_gates.py", "test_detectors.py",
-           "test_gates.py", "e2e.py", "rungates244.py"}  # python.exe, argv[1] script (rungates244.py: the ad-hoc gate runner)
+           "test_gates.py", "e2e.py"}  # python.exe, argv[1] script
 NODE_JOBS = {"graphics_qc.mjs", "blank_scan.mjs"}  # node.exe, script arg
 _CODE_FLAGS = {"-c", "-m", "-e", "-p", "--eval", "--print"}  # the next arg is code, not a script path
 
@@ -125,12 +125,12 @@ def script_arg(args):
 def job_kind(name, cmdline):
     """Label of the heavy job this process IS (exact exe name + argv), else None."""
     name, args = (name or "").lower(), split_args(cmdline)[1:] if cmdline else []
-    if name in ("python.exe", "pythonw.exe") and (s := script_arg(args)) and os.path.basename(s.replace("\\", "/")) in PY_JOBS:
-        return os.path.basename(s.replace("\\", "/"))
+    base = os.path.basename((script_arg(args) or "").replace("\\", "/"))
+    if name in ("python.exe", "pythonw.exe") and base in PY_JOBS:
+        return base
     if name == "node.exe":
-        s = script_arg(args)
-        if s and os.path.basename(s.replace("\\", "/")) in NODE_JOBS:
-            return os.path.basename(s.replace("\\", "/"))
+        if base in NODE_JOBS:
+            return base
         code = next((i for i, a in enumerate(args) if a in _CODE_FLAGS), len(args))
         scan = args[:code]  # a hyperframes CLI path (or npx's hyperframes@x) followed by a separate `render` arg
         if any("hyperframes" in a.lower() and not a.startswith("-") and "render" in scan[i + 1:] for i, a in enumerate(scan)):
