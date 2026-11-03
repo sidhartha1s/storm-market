@@ -104,7 +104,7 @@ BG_MP4_BYTES = _BG_MP4.read_bytes()
 
 
 def make_ep(d, comp_html=None, nx_dur=1.0, nx_wav_secs=1.0, words_last_end=None,
-            words_mtime_before_wav=False, unparsed_tween=False, comp_window=2.0):
+            words_mtime_before_wav=False, unparsed_tween=False, comp_window=2.0, extra=""):
     # Track 1 carries a plain background video spanning the WHOLE episode (picture coverage);
     # the composition mounts on track 3, same as real episodes ("overlay comps ride tracks
     # 3-4") — mounting a graphic directly on track 1 makes an unrelated check (5, "media files
@@ -135,6 +135,7 @@ def make_ep(d, comp_html=None, nx_dur=1.0, nx_wav_secs=1.0, words_last_end=None,
 <video data-start="0" data-duration="{total}" data-track-index="1" src="media/bg.mp4" muted></video>
 <div data-composition-id="g1" data-start="0" data-duration="{comp_window}" data-track-index="3"></div>
 <audio id="nx-a1s1" src="audio/a1-s1.wav" data-start="0" data-duration="{nx_dur}"></audio>
+{extra}
 </section>'''
     (ep / "index.html").write_text(html, encoding="utf-8")
     (ep / "media" / "bg.mp4").write_bytes(BG_MP4_BYTES)

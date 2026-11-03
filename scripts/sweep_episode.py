@@ -53,7 +53,7 @@ for m in re.finditer(r'<(section|video|div)\b([^>]*)>', h):
         inner = h[m.end():m.end() + (close.start() if close else 900)]
         s2 = re.search(r'src="([^"]+)"', inner)
         src = s2
-    wins.append(dict(at=float(st.group(1)), dur=float(du.group(1)), tr=int(tr.group(1)), cut_by=cut_by_ok(a),
+    wins.append(dict(at=float(st.group(1)), dur=float(du.group(1)), tr=int(tr.group(1)), cut_by=cut_by_ok(a), tag=a,
                      name="[blackout]" if is_black else
                           (cid.group(1) if cid else (src.group(1) if src else
                                                      "[" + ((re.search(r'\bid="([^"]+)"', a) or [None, "?"])[1]) + "]"))))
