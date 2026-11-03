@@ -678,6 +678,13 @@ def close_ep(root, slug, comp_html, start=0.5, dur=2.0, track=2):
     return ep
 
 
+# every shipped ep- episode: the exempt two SKIP, every other close PASSes (review 3 Nov 26: E02 and E05 failed unseen)
+for slug, want in (("ep-palm-sunday-1965", "SKIP"), ("ep-camille-1969", "SKIP"), ("ep-joplin-2011", "PASS"),
+                   ("ep-moore-1999", "PASS"), ("ep-mayfield-2021", "PASS"), ("ep-buffalo-2022", "PASS"),
+                   ("ep-appalachian-1950", "PASS"), ("ep-galveston-1900", "PASS")):
+    code, out = run("sweep_episode.py", S.parent / "episodes" / slug)
+    check(f"sweep_episode close card: shipped {slug} {want}s", close_line(out).startswith(want), close_line(out) or out[-400:])
+
 for slug in ("ep-1974-super-outbreak", "ep-enderlin-2025", "ep-nepal-floods-2026"):
     with tempfile.TemporaryDirectory() as d:
         comp = (S.parent / "episodes" / slug / "compositions" / "g-outro.html").read_text(encoding="utf-8")

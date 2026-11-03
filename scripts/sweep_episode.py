@@ -220,10 +220,15 @@ elif ask:
 # 5d-3. the close card carries the channel brand lockup (owner order 29 Oct 26: batch A hand-built three different closes).
 # The close = the comp host on track 2/3 that ends at the episode end. It must hold library/inhouse/outro-brand.html's
 # lockup: THE <amber>WARNING</amber> HOUR. Class names may be renamed (ou-, cl-, g-outro-); the structure may not. Applies to
-# `ep-` episodes only; every older slug (ep3-, ms-, br-) predates the lockup and no shipped ep- close fails it, so no exempt list.
+# `ep-` episodes only; every older slug (ep3-, ms-, br-) predates the lockup. Two ep- episodes shipped before the 29 Oct
+# order with another close (Palm Sunday 14 Oct: plain WARNING span; Camille 25 Oct: zc-w spans) and a shipped episode is
+# never edited, so they are exempt by name.
+_CLOSE_EXEMPT = {"ep-palm-sunday-1965", "ep-camille-1969"}
 _LOCKUP = re.compile(r'\bthe\b\s*(?:</[a-z]+>)?\s*<[^>]*amber[^>]*>\s*warning\s*</[a-z]+>\s*(?:<[^>]+>)?\s*hour\b', re.I)
 if not re.match(r"ep-", _slug):
     print(f"SKIP close card carries the brand lockup — {_slug} is not an ep- episode")
+elif _slug in _CLOSE_EXEMPT:
+    print(f"SKIP close card carries the brand lockup — {_slug} shipped before the 29 Oct 26 order")
 else:
     _closes = [w for w in wins if w["tr"] in (2, 3) and "data-composition-src=" in w["tag"]
                and abs(w["at"] + w["dur"] - total) <= 0.05]
