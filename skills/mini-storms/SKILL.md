@@ -1,7 +1,7 @@
 ---
 name: mini-storms
 description: >-
-  Lane of storm-episode: read storm-episode first. Fast 8-12 min storm-market videos (quick, breaking, seasonal, outlier, news-style), shipped in 3 h. NOT for weekly documentary episodes (use storm-episode).
+  Lane of storm-episode: read storm-episode first. Fast 8-12 min storm-market videos (quick, breaking, seasonal, outlier, news-style; e.g. "Krakatoa video", "El Niño Texas warning", "/mini-storms"), shipped in 3 h. NOT for weekly documentary episodes (use storm-episode).
 ---
 
 # mini-storms — the fast lane of The Warning Hour
@@ -67,7 +67,7 @@ Total ≈ 3 h 20 of work. The waits at the two owner gates sit outside the clock
 - **Title → hook carry (owner rule):** the hook (3–5 s, one sentence) pays off the title;
   the thumbnail phrase is said aloud inside the intro. Slightly dramatic, never false: every
   claim in title/hook must be in the script with a source.
-- **Thumbnail:** owner makes it. You deliver 3 candidates built from real render frames or our own map graphics (no AI-composite look, owner rule 2026-10-01) + the ≤4-word top-of-frame phrase + a red kicker word ("BREAKING NEWS",
+- **Thumbnail:** owner makes it. You deliver 3 candidates built from real render frames or our own map graphics (thumbnail rules: `references/packaging-rules.md`) + the ≤4-word top-of-frame phrase + a red kicker word ("BREAKING NEWS",
   "WARNING", "IT'S HAPPENING"). Text lives in the TOP 25 % of the frame (TV impressions).
 - **Instant ROI:** the 8–12 ideas are each a viewer-actionable or viewer-relevant fact
   ("if you live in…", "by Thursday…", "this number changed"). Open loops: name the biggest one in
