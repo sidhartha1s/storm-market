@@ -7,8 +7,8 @@ mix. Both defects are three numbers per element; a human ear catches them only
 after a full listen. Mechanical, repeated, must never be forgotten -> code.
 
 Checks (effective dB = file mean_volume + 20*log10(data-volume)):
-  1. Narration (nx-*): reference = median; any segment >3 dB off median = FAIL.
-  2. Inserts (ins-*): effective level within +/-2.5 dB of narration ref = FAIL
+  1. Narration (nx-*, not nx-ins*: timeline.is_narration): reference = median; any segment >3 dB off median = FAIL.
+  2. Inserts (ins-* and nx-ins*: timeline.is_insert): effective level within +/-2.5 dB of narration ref = FAIL
      otherwise ("dispatch must be as audible as narration" — owner 2026-08-17).
   3. Beds (any <audio data-bed>, regardless of id prefix — bgm-/sfx-/sx-/hf- all carry
      it): FAIL if within 6 dB of the narration ref (a bed that close competes with voice,
