@@ -81,7 +81,7 @@ An owner correction or a measured surprise lands in its single home (`references
 - **Grading:** one subtle grade on all broadcast, news and private clips; stock and public domain exempt. Doubt about a grade or a claim risk: stop and ask.
 - **Sound:** one bed across the episode plus swells at script peaks (about every 45 to 60 s) is the default. WHICH
   sounds is the editor's choice per episode; nothing is auto-wired into future episodes. Sources: `assets/sfx/`,
-  `assets/sfx/owner-2026-08-13/`, DeAPI tracks (`assets/sfx/deapi/README.md`, keys in the repo `.env`), or ffmpeg-made.
+  `assets/sfx/owner-2026-08-13/`, DeAPI tracks already made (`assets/sfx/deapi/README.md`; both accounts suspended since 10 Oct 26), or ffmpeg-made.
   Never ripped or unlicensed audio: a claimed bed poisons the whole video. Volumedetect the source, compensate gain,
   verify before the mixdown and after the render.
 - **Risers land with the narration:** a riser ends where the line ends. Hits under speech mount near 0.4 (0.6 stacks to 0 dBFS).
