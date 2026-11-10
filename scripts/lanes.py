@@ -71,7 +71,7 @@ MIN_FREE_GB = 4     # a lane never starts on a host with this much free memory o
 LIMIT = re.compile(r"hit your (\w+ )?limit|session limit|usage limit reached", re.I)
 LOCK_MIN = 10      # a ledger lock older than this is a dead holder's
 LOCK_WAIT_S = 120  # a ledger write waits this long for the lock before it gives up
-NO_LOG = "[lanes: no log]"  # read_log's answer for a log that does not exist; the launch redirect creates it at once
+NO_LOG = "[lanes: no log]"  # read_lane's answer for a log that does not exist; the launch redirect creates it at once
 NO_WINDOW = getattr(subprocess, "CREATE_NO_WINDOW", 0)  # no console window for the stop hook's children
 NO_LOG_MIN = 5     # a RUNNING lane with no log this many minutes after its start never ran (an unconfirmed launch)
 
