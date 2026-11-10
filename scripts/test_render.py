@@ -729,6 +729,28 @@ check("pin-review2 NEW: --baseline prints old vs new version, demo and workers",
 check("pin-review2 NEW: --baseline prints Commit only after the summary line",
       "Commit" in _out and _out.index("Commit") > _out.index("re-recorded"), _out)
 
+# audit R3 (11 Nov 26): --check-only is one npm query, yet __main__ booked the heavy lock first, so the episode-kickoff
+# check waited behind a render (up to 75 min). Hold a temp lock under this live process, put an npm stub first on
+# PATH, and run the real script: it must answer without waiting and leave the lock as it was.
+import render_busy  # noqa: E402
+with tempfile.TemporaryDirectory() as d:
+    lock = Path(d) / "heavy.lock"
+    held = {"pid": os.getpid(), "created": render_busy.created(os.getpid()), "job": "render ep-x full", "token": "test-held"}
+    lock.write_text(json.dumps(held), encoding="utf-8")
+    (Path(d) / "npm.cmd").write_text("@echo 0.0.1\n", encoding="ascii")
+    env = {k: v for k, v in os.environ.items() if k != "HEAVY_LOCK_TOKEN"}
+    env.update(HEAVY_LOCK_FILE=str(lock), PATH=d + os.pathsep + os.environ["PATH"])
+    try:
+        r = subprocess.run([sys.executable, str(S / "pin_ritual.py"), "--check-only"], capture_output=True, text=True,
+                           env=env, timeout=30)
+        out = r.stdout + r.stderr
+        check("R3: --check-only answers while another job holds the heavy lock, without waiting for it",
+              r.returncode == 0 and "is current" in out and "heavy-lock" not in out, f"rc={r.returncode} {out[-400:]}")
+    except subprocess.TimeoutExpired as e:
+        check("R3: --check-only answers while another job holds the heavy lock, without waiting for it",
+              False, f"still blocked after 30 s: {(e.stdout or b'')[-300:]!r}")
+    check("R3: --check-only leaves the held lock untouched", json.loads(lock.read_text(encoding="utf-8")) == held)
+
 print()
 if FAILS:
     print(f"{len(FAILS)} FAILED: {FAILS}")
