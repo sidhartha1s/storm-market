@@ -231,6 +231,8 @@ def main(argv=None):
         return 0
     if argv:
         ep = Path(argv[0]).resolve()
+        if not ep.is_dir():
+            sys.exit(f"[stage] FAIL: no episode folder {ep}")
         r = read_episode(ep, checkouts()[0][0])
         print(f"{r['label']}  {r['slug']}  ({ep})\nstage:      {r['stage']}\nwaiting on: {r['waiting']}")
         for g in GATES:
