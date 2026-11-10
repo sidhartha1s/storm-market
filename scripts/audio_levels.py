@@ -66,28 +66,20 @@ def tail_burst(p, tail_s=0.6, win_s=0.01):
 
 
 els = []
-for m in re.finditer(r"<(audio|video)\b([^>]*)>", html):
-    kind, attrs = m.group(1), m.group(2)
-    src = re.search(r'src="([^"]+)"', attrs)
-    # `\s` before id= — hyperframes stamps `data-hf-id="hf-xxxx"` on most elements, and an
-    # unanchored `id="..."` search matches INSIDE that attribute name ("...hf-id=") before it
-    # ever reaches the real `id="nx-..."` attribute, misreading every classified element as an
-    # unclassified "hf-xxxx" one. Root cause of the reported "hf- (164), bgm-, sfx- all take
-    # the warn-only path" — those elements were never actually being read by their real id.
-    eid = re.search(r'\sid="([^"]+)"', attrs)
-    vol = re.search(r'data-volume="([\d.]+)"', attrs)
-    if not (src and eid):
+# Attributes as a dict (timeline.mounts): `id` is the real id, never the tail of hyperframes' `data-hf-id`.
+for kind, a in timeline.mounts(html):
+    if "src" not in a:
         continue
     # A video is silent only when it says so: the `muted` attribute (repo convention) or
     # data-volume 0. hyperframes plays every other video's track at data-volume, default 1.0;
     # the old "no data-volume = muted" assumption let El Reno v3 ship audible stock footage.
-    if kind == "video" and re.search(r"\smuted(?=[\s>/=]|$)", attrs):
+    if kind == "video" and "muted" in a:
         continue
-    v = float(vol.group(1)) if vol else 1.0
+    v = float(a.get("data-volume") or 1.0)
     if v <= 0:
         continue
-    is_bed = bool(re.search(r'\sdata-bed(?=[\s>/=]|$)', attrs))
-    els.append((kind, eid.group(1), src.group(1), v, is_bed))
+    # an element with no id is still audible: it reaches check 5 (unclassified), it is never skipped
+    els.append((kind, a.get("id") or f"<no id: {a['src']}>", a["src"], v, "data-bed" in a))
 
 cache, rows = {}, []
 for kind, eid, src, v, is_bed in els:
