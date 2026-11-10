@@ -285,12 +285,13 @@ def run(host):
     pin = parse_pin(SCRIPTS.parent)
     if not pin:
         sys.exit("[snapq] FAIL: config.yaml has no hyperframes_version")
-    if host == "zbook":
+    remote = not is_local(host)   # on the ZBook, zbook is this machine: snapshot here, no ssh to itself, no mirror copy
+    if remote:
         try:
             kill_remote()   # a worker that died mid-job leaves its Chrome behind
         except subprocess.TimeoutExpired:
             print("[snapq] ZBook did not answer the cleanup call in 120 s; jobs will report their own ssh errors")
-    snap = snap_zbook if host == "zbook" else snap_local
+    snap = snap_zbook if remote else snap_local
     while sorted((SPOOL / "pending").glob("*.json")):
         time.sleep(SETTLE)
         pending = sorted((SPOOL / "pending").glob("*.json"))
