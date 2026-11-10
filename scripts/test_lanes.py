@@ -208,27 +208,28 @@ LIMIT_LOG = '{"type":"result","is_error":true,"result":"You\'ve hit your session
 def lane_episode(tmp):
     ep = Path(tmp) / "ep"
     touch(ep / "edit_script.md", SCRIPT)
-    lanes.ACCOUNTS = Path(tmp) / "accounts"
-    for p in ("claude1", "claude2", "claude5", "design"):  # design is no claude* profile: never probed
-        (lanes.ACCOUNTS / p).mkdir(parents=True)
+    lanes.profiles = lambda host: ["claude1", "claude2", "claude5"]  # the profiles that can run on the host (test_l1 reads real ones)
     return ep
 
 
-def fakes(answering, free=16.0, log=""):
+def fakes(answering, free=16.0, log="", running=True):
     calls = {"probe": [], "spawn": []}
     lanes.probe = lambda host, p: calls["probe"].append(p) or p in answering
     lanes.spawn = lambda host, cmd, log_path, cwd: calls["spawn"].append((host, cmd, log_path, cwd))
     lanes.free_gb = lambda host: free
-    lanes.read_log = lambda host, path: log
+    lanes.read_lane = lambda host, path: (running, log)
     return calls
 
 
-def real_probe_replying(replies):
-    """The real probe parser, fed the captured reply of the profile named in its script (exit 0 even on a limit)."""
+def real_probe_replying(replies, listing=None):
+    """The real probe parser, fed the captured reply of the profile whose wrapper its script runs (exit 0 even on a
+    limit). A script that is no probe (the profile listing) runs for real on this machine when listing allows it."""
     asked = []
 
     def ps(host, script, timeout=90):
-        p = next(p for p in replies if f"claude-accounts\\{p}" in script)
+        if "reply with the single word ok" not in script:
+            return REAL_PS("local", script) if listing else never(script)
+        p = next(p for p in replies if f"& {p} -p " in script)
         asked.append(p)
         return 0, replies[p] + "\n"
     lanes.probe, lanes.ps = REAL_PROBE, ps
