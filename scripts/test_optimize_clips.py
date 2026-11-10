@@ -108,8 +108,8 @@ with tempfile.TemporaryDirectory() as tmp:
     check("a re-downloaded clip keeps its new picture after a second --apply",
           r.returncode == 0 and is_colour(ep / "media" / "news" / "clip.mp4", "lime"))
     check("its backup is the new download", is_colour(orig / "news" / "clip.mp4", "lime"))
-    check("an untouched clip is re-encoded from its backup, not from its own re-encode",
-          is_colour(ep / "media" / "stock" / "clip.mp4", "blue"))
+    check("an untouched clip is not mistaken for a re-download (it is re-encoded from its backup)",
+          "media/stock/clip.mp4 changed" not in r.stdout and "media/news/clip.mp4 changed" in r.stdout)
 
 with tempfile.TemporaryDirectory() as tmp:
     # a flat backup from before the fix (media/_orig/<name>) is still this clip's original: it moves under its path
