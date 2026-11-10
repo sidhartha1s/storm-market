@@ -12,7 +12,7 @@ flow). The global file only fills what this repo leaves open. Read `ops/decision
 of an episode (a map with the tornado path moving, zoom-ins and zoom-outs, multi-layer explainers), are built, retimed,
 fixed and redesigned by Opus 5.5 at high effort or above. Every other graphic (a stat card, a ringing doorbell, a label
 over footage) goes to Sonnet 5.5 at high effort with a full brief on `references/mg-brief-template.md`; a brief that
-leaves the builder guessing is the defect, since Nepal's thin Sonnet graphics came from thin briefs. The plan lists
+leaves the builder guessing is the defect. The plan lists
 each graphic with its model. The builder never verifies its own work: the orchestrator reads a settled frame of every
 new or changed graphic over the footage it will sit on before any render. A Sonnet graphic that fails the read twice
 goes to Opus. Gates passing is not verification. Subagents and side sessions in this repo start without the owner's
