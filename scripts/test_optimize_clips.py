@@ -151,7 +151,7 @@ with tempfile.TemporaryDirectory() as tmp:
     (ep / "index.html").write_text('<div id="root" data-width="1080" data-height="1920" data-duration="60">\n'
                                    '<video id="v0" src="media/tall.mp4" data-start="0" data-duration="2" '
                                    'data-media-start="3" muted></video>\n</div>\n', encoding="utf-8")
-    clip(ep / "media" / "tall.mp4", "red", 10)
+    (ep / "media").mkdir()
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", "color=c=red:s=1080x1920:r=15", "-t", "10",
                     "-pix_fmt", "yuv420p", str(ep / "media" / "tall.mp4")], check=True)
     r = apply(ep)
