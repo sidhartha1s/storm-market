@@ -237,8 +237,7 @@ The gate list and its order live in `scripts/run_gates.py`. Minis also run `node
 - Launch hidden through a scheduled task, deleted in the same command: `schtasks /create /tn <T> /tr "wscript.exe
   <abs>\scripts\run_hidden.vbs cmd.exe /c <abs>\scripts\<task>.cmd" /sc once /st 23:59 /f && schtasks /run /i /tn <T> &&
   schtasks /delete /tn <T> /f`. A one-time trigger stays armed after `/run` and fires a second copy at its `/st` time; the
-  started job survives the delete. `/i` ignores the on-battery constraint, which would otherwise leave the run queued
-  and then deleted unstarted. The `schtasks-once` hook in `~/.claude/hooks` blocks a create without the delete.
+  started job survives the delete. `/i` ignores the on-battery constraint (else the run stays queued and is deleted unstarted). The `schtasks-once` hook in `~/.claude/hooks` blocks a create without the delete.
   A harness background job is reaped at low RAM, and `Start-Process` dies with its tool call.
 - `streaming-encode gate ... enabled:true` must be in the log. Without it a long composition captures to disk and fills it (Camille: 75 GB; learnings/render.md 26 Oct 26). `scripts/stream_gate.py`, called by render.cmd, stops a render whose gate line says enabled:false or is missing 8 min in (test `python3 scripts/test_stream_gate.py`).
 - A render runs on what it asked for or it fails: `stream_gate.py check` (render.cmd after the render, verify_render.sh) prints a `[FALLBACK]` line and exits 1 when `--gpu` did not encode on nvenc (the mp4's encoder tag, or a failed nvenc probe: render.cmd sets `HYPERFRAMES_DEBUG_GPU_PROBE=1`), a capture worker was not on NVIDIA, or frames went to disk. The watch stops such a render at the gate line. Cause on record: the ZBook's driver 595.95 was too old for ffmpeg 8.1.2's NVENC, so hyperframes encoded six episodes on Intel QSV without a word.
