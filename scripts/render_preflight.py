@@ -259,8 +259,8 @@ LAYERS = (
 
 
 def missing_layers(slug, html, episode=None):
-    """(layer, finding, rule) for every owner-asked layer the timeline lacks; [] outside documentaries."""
-    if not slug.startswith(DOC_SLUG):
+    """(layer, finding, rule) for every owner-asked layer the timeline lacks; [] outside current documentaries."""
+    if not episode_kind.is_current_documentary(slug):
         return []
     mounts = _mounts(html)
     return [(name, gap, rule) for name, check, rule in LAYERS if (gap := check(mounts, episode))]
