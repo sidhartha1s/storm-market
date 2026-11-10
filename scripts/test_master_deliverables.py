@@ -12,6 +12,8 @@ import tempfile
 from pathlib import Path
 
 S = Path(__file__).resolve().parent
+sys.path.insert(0, str(S))
+import master_deliverables as md  # noqa: E402
 
 FAILS = []
 
