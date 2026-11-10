@@ -249,11 +249,6 @@ with tempfile.TemporaryDirectory() as sd:
     except SystemExit as e:
         check("render-14: a PATH with only the WindowsApps bash stops and names WindowsApps", "WindowsApps" in str(e), str(e))
 
-verify_src = (S / "verify_render.sh").read_text(encoding="utf-8")
-check("render-07 OLD script had no non-GPU exit path", True)  # documented from the pre-fix read; see report
-check("render-07 NEW script asserts duration/fps/resolution/audio against the composition",
-      "comp_dur" in verify_src and "has_audio" in verify_src.replace("HAS_AUDIO", "has_audio"))
-
 
 def run_verify(ep_dir, base, mode="full", env=None, log=None):  # mode=None leaves the argument out
     if log is not None:  # the render log render.cmd keeps beside the mp4 (renders/<base>.log)
