@@ -306,11 +306,13 @@ if HAVE_FFMPEG:
             '<div id="root" data-composition-id="x" data-start="0" data-width="320" '
             'data-height="240" data-duration="2.00" data-fps="25"></div>', encoding="utf-8")
         # the synthetic clips are libx264, so this log asks only for the browser GPU (stream_gate.used_vs_asked)
-        (ep / "render_full.log").write_text(
-            "   GPU: browser GPU (forced)\n"
-            "browserGpuMode probe worker0 NVIDIA GeForce GTX 1650\n"
-            "browserGpuMode probe worker1 NVIDIA GeForce GTX 1650\n"
-            'streaming-encode gate {"enabled":true,"reason":"parallel_forced"}\n', encoding="utf-8")
+        LOG07 = ("   GPU: browser GPU (forced)\n"
+                 "browserGpuMode probe worker0 NVIDIA GeForce GTX 1650\n"
+                 "browserGpuMode probe worker1 NVIDIA GeForce GTX 1650\n"
+                 'streaming-encode gate {"enabled":true,"reason":"parallel_forced"}\n')
+
+        def v07(base, **k):
+            return run_verify(ep, base, log=LOG07, **k)
         mp4 = ep / "renders" / "clean-final.mp4"
         subprocess.run(["ffmpeg", "-y", "-v", "error",
                         "-f", "lavfi", "-i", "color=c=gray:s=320x240:r=25:d=2",
