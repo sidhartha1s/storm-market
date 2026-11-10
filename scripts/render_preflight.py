@@ -25,6 +25,7 @@ import sys
 from pathlib import Path
 
 import episode as episode_kind  # `episode` is the folder argument everywhere below
+import timeline
 import render_busy  # the busy check below reuses this, not a second process/name list
 
 
@@ -113,11 +114,11 @@ def _bed_gap(mounts, _episode=None):
     # A bed is how the shipped episodes mount it: data-bed plus "bed" or "mus" in the id (Palm Sunday
     # sx-bed-a1, El Reno sx-mus-bed-a, 1974 sx-mus-a1). Swells and hits also carry data-bed, so the
     # attribute alone is not a bed.
-    beds = sorted(_window(a) for t, a in mounts
+    beds = sorted(timeline.window(a) for t, a in mounts
                   if t == "audio" and "data-bed" in a and {"bed", "mus"} & set(a.get("id", "").split("-")))
     if not beds:
         return "0 bed <audio> mounts (data-bed with 'bed' or 'mus' in the id)"
-    narration = [_window(a) for t, a in mounts if t == "audio" and re.match(r"nx-(?!ins)", a.get("id", ""))]  # same narration rule as lint_timeline / circle_audio
+    narration = [timeline.window(a) for t, a in mounts if t == "audio" and re.match(r"nx-(?!ins)", a.get("id", ""))]  # same narration rule as lint_timeline / circle_audio
     if not narration:
         return "no nx- narration to measure the bed against"
     lo, hi = min(s for s, _ in narration), max(e for _, e in narration)
@@ -251,7 +252,7 @@ def missing_layers(slug, html, episode=None):
     """(layer, finding, rule) for every owner-asked layer the timeline lacks; [] outside current documentaries."""
     if not episode_kind.is_current_documentary(slug):
         return []
-    mounts = _mounts(html)
+    mounts = timeline.mounts(html)
     return [(name, gap, rule) for name, check, rule in LAYERS if (gap := check(mounts, episode))]
 
 
