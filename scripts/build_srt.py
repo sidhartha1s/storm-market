@@ -124,15 +124,15 @@ def main():
             errors.append(f"missing script text for caption alignment: {txt_path}")
         if not (wj.exists() and txt_path.exists()):
             continue
-        start, end = timeline.window(a)
         media_start = float(a.get("data-media-start") or 0)
-        off = start - media_start  # word times are wav-relative; the mount plays the wav from data-media-start
+        played = float(a.get("data-duration") or "inf")  # no data-duration: the wav plays to its end
+        off = float(a["data-start"]) - media_start  # word times are wav-relative; the mount plays the wav from data-media-start
         words = json.loads(wj.read_text(encoding="utf-8"))
         if isinstance(words, dict):
             words = words.get("words", [])
         words = align_captions(words, txt_path.read_text(encoding="utf-8"))
         # only the played part is heard: a cut-by mount hands the rest of the line to Paul's clip (its own label cue)
-        words = [w for w in words if media_start <= w["start"] < media_start + end - start]
+        words = [w for w in words if media_start <= w["start"] < media_start + played]
         if not words:
             errors.append(f"narration {nid} yields no caption cue: no word of {wj.name} falls inside its played window")
             continue
