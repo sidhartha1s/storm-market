@@ -54,10 +54,15 @@ An owner correction or a measured surprise lands in its single home (`references
 - Shorts: one demo built (`episodes/sh-hawaii-lowell-1`, 16 Sep 26), three Joplin shorts unrendered in open PR #179; no pilot go on record. No skill until about ten shorts stabilise.
 
 ## Owner gates: rules inherited from the owner's other channels (never claim or infer approval)
-- His gates per documentary, in this order and no others: the angle; the title and thumbnail (`references/angle.md`);
+- His gates per documentary, in this order and no others: the angle; the title and thumbnail (`references/packaging-rules.md`);
   the hook+intro; the draft preview; any paid retake. Acts are never his gate (`references/script-scaling.md` "Section
   lock"); a plan or ETA that waits on him for anything else is wrong (owner 28 Oct 26: "why I sign off the scripts
-  because I don't read it", and the titles of 3 videos never reached him).
+  because I don't read it", and the titles of 3 videos never reached him). `stage.py` lets the title and thumbnail
+  block only the publish; whether it must close before the hook+intro, and whether the per-insert yes/no and the voice
+  pick are gates, are open (`ops/tasks.md` "Waiting on the owner").
+- Every approval or deferral is recorded the turn his words arrive: `python3 scripts/stage.py record episodes/<slug>
+  <gate> --words "<his words, verbatim>" --shown "<file or URL>"` (`defer:<gate>` for "picks later" leaves the gate
+  open). Nothing else counts as approval. `python3 scripts/stage.py` shows what every episode waits on.
 - Paid spend and bulk sourcing ride on the hook+intro gate (Paul's Flow clips with their credit total, skill phase 3);
   a retake is the paid-retake gate. Paid API railguards per the global CLAUDE.md. Free candidate sourcing
   (public domain and stock downloads, no spend, nothing licensed) is not bulk sourcing: it starts from each act's Picture
