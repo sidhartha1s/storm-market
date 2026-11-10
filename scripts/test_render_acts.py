@@ -234,7 +234,7 @@ with tempfile.TemporaryDirectory() as d:
         check("R5: the lock is free once the run ends", not lock.exists())
         h = seen[0]["hold"]
         check("R5: render.cmd's --hold passes through on the run's token and its --release leaves the run's lock",
-              h[0] == 0 and "WAITING" not in h[1] and h[2])
+              h[0].strip() == "HOLD 0" and h[1], h)
         check("R6: each act renders its own slice, staged while the run holds the lock",
               [r["staged"] for r in acts_seen] == [ra.slice_html(COMP, fa, fb, 15) for fa, fb in acts15])
         check("R12: no render_acts done marker while acts render; 0 once the concat is checked",
