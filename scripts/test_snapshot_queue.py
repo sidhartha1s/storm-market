@@ -200,4 +200,19 @@ with tempfile.TemporaryDirectory() as d:
     q.subprocess.run = real_run
     assert rc == 1 and "killed after 0.05 s" in log and calls[-1] == q.KILL_REMOTE, (rc, log, calls)
 
+    # L3 (11 Nov 26): on the ZBook, `zbook` is this machine: the worker snapshots here, with no ssh and no mirror copy
+    import socket
+    real_name = socket.gethostname
+    socket.gethostname = lambda: "SIDHARTHA"
+    q.ssh = lambda cmd, timeout: (_ for _ in ()).throw(AssertionError(f"ssh from the ZBook to itself: {cmd}"))
+    q.snap_local = fake_snap
+    q.submit(str(ep2), "3", "on-self")
+    runs.clear()
+    try:
+        q.run("zbook")
+    finally:
+        socket.gethostname = real_name
+    rec = json.loads(next((q.SPOOL / "done").glob("*-on-self.json")).read_text())
+    assert runs == [("ep-y", [3.0])] and rec["rc"] == 0, (runs, rec)
+
 print("snapshot_queue self-check PASS (no-browser submit, one run at a time, per-episode batches with each job's own frames, lock, empty-PNG fail, bad and raising jobs recorded, a bad time sinks only its own job, no per-job rerun of a hung batch, seek-order jobs alone and in order, a bad out dir is one job's rc 1, referenced-only delta ship, ZBook command, scp and timeout kill)")

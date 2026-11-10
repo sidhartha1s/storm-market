@@ -18,8 +18,9 @@ and every other pending job for the same episode folder, captures the union of t
 each job its own frames. The union is sorted, so every frame is still reached by forward seeks from a fresh page.
 A job whose times go backwards or repeat (the seek-order check: forward, then seek 0, past it, back) runs alone, in its
 own order, on a fresh page.
-With --host zbook the worker copies the files the timeline references (changed ones only) to
-`.snapq/mirror/<slug>/` in the ZBook's main checkout, snapshots there and copies the PNGs back.
+With --host zbook from the ASUS the worker copies the files the timeline references (changed ones only) to
+`.snapq/mirror/<slug>/` in the ZBook's main checkout, snapshots there and copies the PNGs back. On the ZBook itself
+zbook is this machine (`lanes.is_local`), so it snapshots in place, as with --host local.
 """
 import argparse
 import json
@@ -37,6 +38,7 @@ from pathlib import Path
 
 SCRIPTS = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPTS))
+from lanes import is_local  # noqa: E402  the one owner of which host alias is this machine
 from render_preflight import parse_pin  # noqa: E402
 
 ZBOOK_REPO = r"C:\Users\Sidhartha\Automation Projects\storm-market"
@@ -284,12 +286,13 @@ def run(host):
     pin = parse_pin(SCRIPTS.parent)
     if not pin:
         sys.exit("[snapq] FAIL: config.yaml has no hyperframes_version")
-    if host == "zbook":
+    remote = not is_local(host)   # on the ZBook, zbook is this machine: snapshot here, no ssh to itself, no mirror copy
+    if remote:
         try:
             kill_remote()   # a worker that died mid-job leaves its Chrome behind
         except subprocess.TimeoutExpired:
             print("[snapq] ZBook did not answer the cleanup call in 120 s; jobs will report their own ssh errors")
-    snap = snap_zbook if host == "zbook" else snap_local
+    snap = snap_zbook if remote else snap_local
     while sorted((SPOOL / "pending").glob("*.json")):
         time.sleep(SETTLE)
         pending = sorted((SPOOL / "pending").glob("*.json"))
