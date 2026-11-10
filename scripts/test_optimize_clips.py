@@ -42,6 +42,8 @@ def pixel(path):
 
 
 def is_colour(path, want):
+    if not path.exists():
+        return False
     r, g, b = pixel(path)
     return {"red": r > 180 and g < 80 and b < 80, "blue": b > 180 and r < 80 and g < 80,
             "lime": g > 180 and r < 80 and b < 80, "yellow": r > 180 and g > 180 and b < 80}[want]
