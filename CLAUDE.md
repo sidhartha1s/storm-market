@@ -145,9 +145,8 @@ Script method and hook wording live in `references/script-os.md` and `script-fra
 ## Pipeline
 Per episode in `episodes/<slug>/`. The skill's phase map points at these step numbers. Never edit a shipped episode.
 1. `edit_script.md`: started only once `episodes/<slug>/angle.md` holds the owner's locked angle (`references/angle.md`). Typed segment list plus per-beat visual intent, written on `references/script-scaling.md`. A
-   section goes to TTS only once LOCKED (hook+intro locks and moves first; the one lock definition is
-   `references/script-scaling.md` "Section lock — the ONE definition" — never restated here) — never the whole
-   script waiting on the last act. The CTA hinge is named (segment before, segment after, estimated time). Owner
+   section goes to TTS only once LOCKED (`references/script-scaling.md` "Section lock"; hook+intro first), never the
+   whole script waiting on the last act. The CTA hinge is named (segment before, segment after, estimated time). Owner
    signs off on story/register in parallel with the fact-check fan-out, not serially after it.
 2. TTS: `python3 scripts/tts_episode.py episodes/<slug>` makes per-segment wavs at the lane tempo plus words.json (faster-whisper) in one pass.
 3. Sourcing: runs beside the script from the first Picture lines (lanes and roles: skill phase 5). The owner confirms only `insert` clips.
