@@ -104,13 +104,13 @@ Newest first. New entries go at the top, under this line. Superseded lines point
    named `ep-palm-sunday-1965-preview-v1` was also checked against `render_full.log` (the log was picked by "draft" in
    the basename) and failed the GPU probe for a log that was not its own.
 2. Fix: `verify_render.sh <episode-dir> <basename> <draft|full>` takes the mode you gave `render.cmd`, and it is
-   required (missing or unknown: usage line, exit 1; the name guess is gone). The mode picks `render_<mode>.log` and the
-   frame rate. `render.cmd` now writes the rate it launched with (`RENDER_FPS` included) to `render_<mode>.fps`; a draft
-   must have exactly that rate, and a draft with no `render_draft.fps` (it predates this check, or never reached the
-   render step) exits 1 with one FAIL line naming the file. A full render is still held to the composition's `data-fps`,
+   required (missing or unknown: usage line, exit 1; the name guess is gone). `render.cmd` writes the rate it launched
+   with (`RENDER_FPS` included) to `renders/<basename>.fps` and its log to `renders/<basename>.log`; a draft must have
+   exactly that rate, and a draft with no `.fps` file of its own (it predates this check, or never reached the render
+   step) exits 1 with one FAIL line naming the file. A full render is still held to the composition's `data-fps`,
    so a 15 fps file checked as `full` FAILs and a draft shipped as the final is still caught.
-   The recorded rate is per mode, not per output name: two drafts of one episode at different rates share
-   `render_draft.fps`, the same limit as `render_draft.log`, so verify a draft before rendering the next.
+   The log and rate are per output name (11 Nov 26; they were per mode), so an older draft is never judged on a newer
+   render's log.
 3. Rule: pass the mode every time, and read the rate from what the render recorded, never from a constant typed in the
    checker (a draft rendered with `RENDER_FPS` set would fail it). The file name says neither.
 
