@@ -451,7 +451,7 @@ def test_l4_a_lane_whose_process_died_is_not_running(tmp_path):
     fakes(answering=set())
     lanes.read_lane = REAL_READ_LANE
     scripts = []
-    run = {"started": time.time() - 10 * 60, "host": "asus", "minutes": 60, "log": r"C:\x\lane.log", "profile": "claude1"}
+    run = {"started": time.time() - 60, "host": "asus", "minutes": 60, "log": r"C:\x\lane.log", "profile": "claude1"}
     for answer, state, note in (((0, "0\nTraceback: boom\n"), "READY", "exited"),
                                 ((0, "1\nworking\n"), "RUNNING", "on asus"),
                                 ((255, "ssh: connect to host asus port 22: Connection timed out"), "RUNNING", "unreadable"),
