@@ -100,6 +100,30 @@ finally:
     OLD_MAIN_NPC.unlink()
 print('narration_picture_check self-check PASS (empty-archival loud warn, archival-only count)')
 
+# G4: a src-less designed <section> is named from its own body, never from the next element (the 1925 photo after it).
+# A modern year spoken over the designed card is not an era contradiction; clip_report names the card "?", not the photo.
+LOOKAHEAD_FILES = {
+    'index.html': '<div data-composition-id="root" data-duration="20">\n'
+                  '<section id="designed" class="clip ground" data-start="0" data-duration="5" data-track-index="1">'
+                  '<div class="t">a designed card</div></section>\n'
+                  '<img src="media/photos/1925-wreck.jpg" data-start="5" data-duration="5" data-track-index="1">\n'
+                  '<audio id="nx-a1-s1" src="audio/a1-s1.wav" data-start="0" data-duration="2"></audio>\n</div>',
+    'audio/a1-s1.words.json': json.dumps([{"text": "In", "start": 0.0, "end": 0.2}, {"text": "2011", "start": 0.3, "end": 0.8}]),
+}
+code, out = npc(LOOKAHEAD_FILES)
+assert code == 0 and 'says "2011"' not in out, f'G4: the designed card borrowed the next element\'s file: {out}'
+with tempfile.TemporaryDirectory() as d:
+    _mk(Path(d), LOOKAHEAD_FILES)
+    r = subprocess.run([sys.executable, str(S / 'clip_report.py'), d], capture_output=True, text=True)
+    assert '| 0:00.00 | 5.00s | 1 | still | ? |' in r.stdout, f'G4 clip_report: {r.stdout}'
+
+# G9: an nx-ins insert is another voice; it has no words.json and must not be demanded one
+INSERT_FILES = dict(ERA_FILES, **{'index.html': ERA_FILES['index.html'] +
+                                  '<audio id="nx-ins-911" src="audio/911.wav" data-start="2" data-duration="2"></audio>\n'})
+code, out = npc(INSERT_FILES)
+assert 'nx-ins-911' not in out and 'segments checked: 1/1' in out, f'G9: nx-ins counted as narration: {out}'
+print('narration_picture_check self-check PASS (G4 own-body window names, G9 nx-ins is an insert)')
+
 GSAP = (S / '..' / 'library' / 'gallery' / 'gsap.min.js').resolve()
 
 
