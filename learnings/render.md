@@ -2,6 +2,13 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 11 Nov 26: ZBook driver and NVENC, measured
+1. ZBook (hostname SIDHARTHA): `nvidia-smi` shows RTX A2000 8GB, driver 616.92. `ffmpeg -f lavfi -i
+   testsrc=size=1920x1080:rate=30 -t 1 -c:v h264_nvenc -f null -` succeeded on ffmpeg 8.1.1. The 26 Oct 26 QSV entry's
+   cause (driver 595.95) is gone; no real render has run on this driver yet, so the first must pass `stream_gate.py check`.
+2. Why heavy jobs go to the ZBook (kept from CLAUDE.md): on Joplin one act's transcription ran 28 min+ unfinished on
+   the ASUS while all 8 acts cut and converted on the ZBook in 19 min.
+
 ## 30 Oct 26: batch A finals on the ASUS (Buffalo, Appalachian, Galveston), what broke and what held
 1. Measured rate, full by act, 2 workers asked (render_busy cut to 1 under 3.2 GB free RAM): 3.1 wall s per output s
    (Buffalo act 2, 208.6 s in 10.7 min; act 3, 199.7 s in 10.4 min). Gates 4 to 8 min per episode, verify 4 min,
