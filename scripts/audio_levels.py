@@ -112,7 +112,7 @@ for kind, eid, src, v, is_bed, mean, eff in rows:
         if burst:
             fails.append(f"{eid}: ends in a {burst[0]:.0f} dB burst after {burst[1]:.2f} s of silence ({src}); "
                          f"write a -v2 copy with the burst silenced, same length")
-    elif eid.startswith("ins-"):
+    elif timeline.is_insert(eid):
         if abs(d) > 2.5:
             fails.append(f"{eid}: insert {d:+.1f} dB vs narration (fix the FILE gain, attr vol is {v})")
     elif is_bed:
