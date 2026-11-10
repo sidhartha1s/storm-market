@@ -114,7 +114,7 @@ Priority order, per clip:
 1. Pool reuse: `library/mini-storms/<topic>/` (provenance.csv rows travel with the file).
 2. Public domain / govt: USGS, NOAA, NASA, FEMA, Coast Guard, national agencies of the event
    country, Wikimedia Commons (check licence per file).
-3. Stock: Pexels / Pixabay (owner rule: ≤10 picks ⇒ thumbs on localhost, owner picks fast).
+3. Stock: Pixabay; the Pexels keys are dead (DESIGN.md "Sourcing") (owner rule: ≤10 picks ⇒ thumbs on localhost, owner picks fast).
 4. **Eyeball every pool cutter before wiring it:** one labelled contact grid (mid-frame per clip, PIL tile) read by a
    Sonnet subagent, classified ERUPTION / AIRPORT / OFFICIALS / OTHER. provenance.csv carries the source, not the
    picture; five "2026 plume" picks by file name were departure boards (Krakatau #4, 2026-09-11).
