@@ -22,7 +22,8 @@ while IFS= read -r c; do case "$c" in *[Ww]indows[Aa]pps*) ;; *) PY="$c"; break 
 [ -n "$PY" ] || { echo "FAIL: no Python on PATH outside WindowsApps (the Microsoft Store stub); put the Python install folder ahead of it"; exit 3; }
 
 echo "=== used vs asked (owner 2026-09-15: dedicated GPU only; Oct 26: the ZBook encoded on Intel QSV unseen) ==="
-LOG="$EP/render_$MODE.log"
+LOG="$EP/renders/$BASE.log"
+[ -f "$LOG" ] || { echo "FAIL: $LOG is missing — this render predates 11 Nov 26 or did not come from render.cmd / render_acts.py, so the GPU and capture path it ran on cannot be verified"; exit 1; }
 # stream_gate.py owns this check: nvenc encoder (output tag), NVIDIA capture on every worker, streaming capture
 if ! "$PY" "$(dirname "$0")/stream_gate.py" check "$LOG" "$MP4"; then
   echo "FAIL: the render ran on something other than it asked for (re-render through scripts/render.cmd once the [FALLBACK] cause is fixed)"; exit 2
