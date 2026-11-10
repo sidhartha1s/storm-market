@@ -78,7 +78,7 @@ def is_insert(eid):
 
 def muted(tag):
     """The bare `muted` attribute on a tag string; a class or attribute that merely contains "muted" is not it."""
-    return bool(re.search(r"\smuted(?=[\s>/=]|$)", tag))
+    return bool(re.search(r"\smuted(?=[\s>/=]|$)", re.sub(r'"[^"]*"', '""', tag)))
 
 
 def voiced(attrs):
