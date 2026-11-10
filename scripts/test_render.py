@@ -277,7 +277,9 @@ check("render-07 NEW script asserts duration/fps/resolution/audio against the co
       "comp_dur" in verify_src and "has_audio" in verify_src.replace("HAS_AUDIO", "has_audio"))
 
 
-def run_verify(ep_dir, base, mode="full", env=None):  # mode=None leaves the argument out
+def run_verify(ep_dir, base, mode="full", env=None, log=None):  # mode=None leaves the argument out
+    if log is not None:  # the render log render.cmd keeps beside the mp4 (renders/<base>.log)
+        (Path(ep_dir) / "renders" / f"{base}.log").write_text(log, encoding="utf-8")
     return subprocess.run([winbin.real("bash"), str(S / "verify_render.sh"), str(ep_dir), base, *([mode] if mode else [])],
                           capture_output=True, text=True, env=env)
 
