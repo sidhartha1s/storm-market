@@ -493,7 +493,8 @@ if __name__ == "__main__":
             try:
                 t(Path(d))
                 check(t.__name__, True)
-            except AssertionError:
+            except Exception as e:  # a crash is a FAIL too, never an abort that hides the tests after it
+                print(f"     {type(e).__name__}: {str(e)[:300]}")
                 check(t.__name__, False)
 
 if FAILS:
