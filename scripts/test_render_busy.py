@@ -125,7 +125,7 @@ end = next(i for i, l in enumerate(render_cmd) if "set /p RENDER_WORKERS" in l)
 with tempfile.TemporaryDirectory() as d:
     stub = Path(d) / "busy_stub.py"
     stub.write_text(f"import sys\nsys.path.insert(0, {str(S)!r})\nimport render_busy\n"
-                    "render_busy.free_gb = lambda: 3.3\nrender_busy.live_renders = lambda: []\n"
+                    "render_busy.free_gb = lambda: 3.3\nrender_busy.live_renders = lambda: []\nrender_busy.running_jobs = lambda: []\n"
                     "render_busy.pin_chrome_to_dedicated_gpu = lambda: None\nrender_busy.main()\n", encoding="utf-8")
     block = "\n".join(render_cmd[start:end + 1]).replace('"%~dp0render_busy.py"', f'"{stub}"')
     dry = Path(d) / "dry.cmd"
