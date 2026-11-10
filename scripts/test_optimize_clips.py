@@ -135,6 +135,18 @@ with tempfile.TemporaryDirectory() as tmp:
           r.returncode == 1 and is_colour(ep / "media" / "a" / "dup.mp4", "red")
           and is_colour(ep / "media" / "b" / "dup.mp4", "blue") and (ep / "media" / "_orig" / "dup.mp4").exists())
 
+with tempfile.TemporaryDirectory() as tmp:
+    # the flat backup belongs to a clip that is no longer mounted: the mounted clip of the same name is not rebuilt from it
+    ep = episode(tmp, ["media/news/dup.mp4"])
+    clip(ep / "media" / "_orig" / "dup.mp4", "yellow")
+    clip(ep / "media" / "stock" / "dup.mp4", "red")   # optimized by an earlier pass, unmounted since
+    clip(ep / "media" / "news" / "dup.mp4", "blue")
+    r = apply(ep)
+    out.append(r)
+    check("a flat backup with two same-named clips on disk refuses, even when only one is mounted",
+          r.returncode == 1 and is_colour(ep / "media" / "news" / "dup.mp4", "blue")
+          and (ep / "media" / "_orig" / "dup.mp4").exists())
+
 def size(path):
     out = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height:format=duration",
                           "-of", "csv=p=0", str(path)], capture_output=True, text=True).stdout.split()
