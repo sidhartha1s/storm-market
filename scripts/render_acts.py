@@ -345,7 +345,9 @@ def render_all(slug, mode, ep, fps, html, acts, old_by_key, pieces, out):
         plan["acts"].append({"frames": [fa, fb], "fingerprint": fp, "file": path})
         (pieces / "plan.json").write_text(json.dumps(plan, indent=1))
     run_render(slug, mode, f"acts/{base}/audio", "index.html", {"RENDER_FPS": str(AUDIO_FPS)})
-    (ep / f"render_{mode}.fps").write_text(f"{fps}\n")  # verify_render.sh checks the output against this, not the 1 fps pass
+    # verify_render.sh reads these beside the output: the act fps, not the 1 fps pass's; the audio pass's log, as before
+    (renders / f"{base}.fps").write_text(f"{fps}\n")
+    (renders / f"{base}.log").write_bytes((pieces / "audio.log").read_bytes())
     listing = pieces / "concat.txt"
     listing.write_text("".join(f"file '{Path(x['file']).as_posix()}'\n" for x in plan["acts"]))
     total = acts[-1][1]
