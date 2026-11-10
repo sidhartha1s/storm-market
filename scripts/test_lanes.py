@@ -29,6 +29,7 @@ REAL_PROBE, REAL_SPAWN, REAL_PS = lanes.probe, lanes.spawn, lanes.ps
 REAL_PROFILES, REAL_READ_LANE = lanes.profiles, lanes.read_lane
 lanes.probe = lanes.spawn = lanes.read_lane = lanes.ps = never
 lanes.free_gb = lambda host: 64.0
+socket.gethostname = lambda: "TESTBOX"  # neither laptop: zbook and asus are remote hosts in every test that does not say otherwise
 FAILS = []
 SCRIPT = """# fixture
 ### H1-S1 · narration
