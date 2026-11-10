@@ -13,6 +13,10 @@ Each act lands in renders/acts/<out-basename>/actNN.mp4 with a fingerprint of ev
 (staged slice, the sub-compositions it mounts, render.cmd, mode, fps). With --reuse, an act whose fingerprint matches
 the older run's is taken from there instead of rendered. Output: renders/<out-basename>.mp4. Nothing is overwritten.
 --plan prints the seams and exits.
+The whole run holds the heavy lock (render_busy.heavy_lock), so no TTS, e2e or other render runs between two acts and
+no other run restages the act file while this one waits; each act's render.cmd passes through on HEAVY_LOCK_TOKEN.
+render.cmd writes render_<mode>_done.marker after EVERY act and the audio pass: poll render_acts_<out-basename>_done.marker
+instead, which holds this run's exit code (0 only once the concat is checked) and is deleted when the run starts.
 """
 import hashlib
 import html as html_lib
@@ -26,6 +30,9 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 SCRIPTS = Path(__file__).resolve().parent
+sys.path.insert(0, str(SCRIPTS))
+import render_busy  # noqa: E402
+
 RENDER_CMD = SCRIPTS / "render.cmd"
 STAGE_NAME = "_act_tmp.html"  # the next plain render.cmd run sweeps _*_tmp.html
 AUDIO_FPS = 1
@@ -303,7 +310,20 @@ def main(argv):
         raise SystemExit(f"render_acts: {out.name} or acts/{base} exists; never overwritten, pick a new basename")
     old = json.loads((renders / "acts" / reuse / "plan.json").read_text()) if reuse else {"acts": []}
     old_by_key = {(x["frames"][0], x["frames"][1], x["fingerprint"]): x["file"] for x in old["acts"]}
-    pieces.mkdir(parents=True)
+    pieces.mkdir(parents=True)  # claims the basename before the wait for the lock
+    marker = ep / f"render_acts_{base}_done.marker"
+    marker.unlink(missing_ok=True)
+    try:
+        with render_busy.heavy_lock(f"render_acts {slug} {mode} {base}"):
+            render_all(slug, mode, ep, fps, html, acts, old_by_key, pieces, out)
+    except BaseException:
+        marker.write_text("1\n")
+        raise
+    marker.write_text("0\n")
+
+
+def render_all(slug, mode, ep, fps, html, acts, old_by_key, pieces, out):
+    base = pieces.name
     plan = {"mode": mode, "fps": fps, "acts": []}
     for i, (fa, fb) in enumerate(acts, 1):
         staged = slice_html(html, fa, fb, fps)
