@@ -45,9 +45,12 @@ Comments of every reference video (both lanes): analysed into `references/commen
 | 6. Compose | 40 min | `index.html` from the breaking template set; red popfigs on every number/place/date, every overlay start resolved from `audio/*.words.json` cues (never estimated seconds; build fails on an unmatched cue) |
 | 7. Static QC | 15 min | `python3 scripts/run_gates.py episodes/ms-<slug>` + `node scripts/freeze_scan.mjs episodes/ms-<slug>`, then the settle-frame pass in `references/mg-quickref.md` "Verify" (new/changed comps only, one subagent reader, two fix rounds max) |
 | 8. Render | 25 min | `scripts\render.cmd ms-<slug> draft` hidden via run_hidden.vbs → owner preview → `full` |
-| 9. Deliverables | 10 min | `master_deliverables.py` (finals to main, other renders deleted; CLAUDE.md step 7), `E<nn>-<topic>-metadata.md`, thumbnail still candidates, private upload |
+| 9. Deliverables | 10 min | `master_deliverables.py`, then finals to the main checkout and other renders deleted by hand per CLAUDE.md step 7 (`ship.py` refuses a slug with no E number), the metadata file, thumbnail still candidates, private upload |
 
-**The tracker moves with the work.** Every phase change (script, TTS, checks, preview launched/done, full render launched/done, master in the main checkout, upload) runs `python3 ops/build_tracker.py set <slug> <phase> <status> "note"` in the same turn (a new video first gets `python3 ops/build_tracker.py add <slug> <lane> "<DD Mon YY>" "<title>"`), then commit + push. A status reply naming a phase the tracker page does not show is wrong (owner 2026-09-15: three full renders and masters shipped while `ops/tracker.html` still showed 06:28 previews).
+**Status replies come from disk, never from memory** (owner 2026-09-15: three full renders and masters shipped while
+`ops/tracker.html` still showed 06:28 previews). `ops/tracker.json` was last updated 19 Oct 26 and nobody keeps it;
+retire or revive is an owner question (`ops/tasks.md` "Waiting on the owner"). Until he answers, state comes from
+`python3 scripts/stage.py` and the episode folder.
 
 Total ≈ 3 h 20 of work. The waits at the two owner gates sit outside the clock. Step 0's 15 min is the agent's figure (9 Oct 26), not the owner's: before the angle gate the total was 3 h 05. If any step overruns 2×, ship what exists and list what was cut; never widen scope.
 
