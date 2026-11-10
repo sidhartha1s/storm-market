@@ -5,9 +5,9 @@ REM Example: scripts\render.cmd ep2-2011-super-outbreak full ep2-final
 REM Launch DETACHED (harness bg tasks get killed):
 REM   powershell Start-Process cmd.exe -ArgumentList '/c','"<ABS path>\scripts\render.cmd" <slug> <mode>' -WindowStyle Hidden
 REM Writes episodes\<slug>\render_<mode>.log, render_<mode>_preflight.log (gate output, so a
-REM hidden/schtasks launch still leaves a refusal reason on disk), render_<mode>.fps (the frame rate
-REM this render was launched with, RENDER_FPS included; verify_render.sh checks a draft against it)
-REM and render_<mode>_done.marker
+REM hidden/schtasks launch still leaves a refusal reason on disk), renders\<out-basename>.log and .fps beside
+REM the mp4 (this render's log, and the frame rate it was launched with, RENDER_FPS included; verify_render.sh
+REM reads both) and render_<mode>_done.marker
 REM (contains the exit code; deleted at the start of every run so a poller never reads a stale one).
 REM Version pin must match config.yaml hyperframes_version — pin_ritual.py bumps both together.
 setlocal
@@ -126,7 +126,6 @@ REM Streaming gate (Camille full, 25 Oct 26: 2 workers, multi_worker, 75 GB disk
 REM render if the gate line says enabled:false. No disk-size refusal before launch (owner 30 Oct 26, removed 4 Nov 26).
 del /q "render_%MODE%.log" 2>nul
 start "" /b "C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0stream_gate.py" watch "%CD%\render_%MODE%.log" "%CD%\render_%MODE%_done.marker" "%CD%\%PREFLIGHT_LOG%"
-echo %_FPS% > "render_%MODE%.fps"
 call npx hyperframes@0.8.211 render . -c %RENDER_COMPOSITION% --gpu --browser-gpu %QFLAGS% --workers %RENDER_WORKERS% -o "renders/%OUTBASE%.mp4" > "render_%MODE%.log" 2>&1
 set RC=%ERRORLEVEL%
 REM A render that ran on another encoder, an iGPU or a disk capture fails here, not in a viewer's eyes.
@@ -137,6 +136,12 @@ if "%RC%"=="0" (
     type "%PREFLIGHT_LOG%"
     set RC=1
   )
+)
+REM This render's log and frame rate beside its mp4: verify_render.sh judges renders\<basename>.mp4 by these, never by
+REM render_%MODE%.log, which the next render of this mode rewrites (audit R11: an older draft passed on a newer GPU log).
+if exist "renders\%OUTBASE%.mp4" (
+  type "render_%MODE%.log" > "renders\%OUTBASE%.log"
+  echo %_FPS% > "renders\%OUTBASE%.fps"
 )
 %RELEASE%
 echo %RC% > "render_%MODE%_done.marker"

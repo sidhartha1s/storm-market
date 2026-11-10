@@ -178,5 +178,87 @@ check("act 2: an element over before the act can never paint (display none, its 
                     ra.slice_html(COMP.replace('id="kb-1"', 'id="kb-1" style=opacity:.5'), 300, 600, 30))
       and "display: none" not in re.search(r'<section[^>]*id="kb-1"[^>]*>', ra.slice_html(COMP, 0, 300, 30)).group(0))
 
+# main() with render.cmd, ffmpeg and ffprobe stubbed (no render): audit R5 (the run held no heavy lock, so TTS, e2e or
+# another render took the machine between acts), R6 (a second run restaged _act_tmp.html while the first waited) and
+# R12 (a poller read render.cmd's per-act "done 0" after act 1). Temp heavy lock; e2e's token is dropped.
+import os  # noqa: E402
+import types  # noqa: E402
+import render_busy  # noqa: E402
+
+with tempfile.TemporaryDirectory() as d:
+    root = Path(d)
+    ep = root / "episodes" / "ep-t"
+    (ep / "renders").mkdir(parents=True)
+    (ep / "index.html").write_text(COMP, encoding="utf-8")
+    lock = root / "heavy.lock"
+    saved = (ra.SCRIPTS, ra.run_render, ra.video_frames, ra.subprocess, dict(os.environ))
+    os.environ["HEAVY_LOCK_FILE"] = str(lock)
+    os.environ.pop("HEAVY_LOCK_TOKEN", None)
+    ra.SCRIPTS = root / "scripts"
+    acts15 = ra.plan_acts(COMP, 15)[0]
+    frames = {f"act{i:02d}.mp4": fb - fa for i, (fa, fb) in enumerate(acts15, 1)} | {"v1.mp4": acts15[-1][1]}
+    seen, fail_on = [], None
+
+    def fake_render(slug, mode, base, composition, extra_env=None):
+        rec = {"base": base, "lock": render_busy.read_lock(lock), "staged": None, "hold": None,
+               "marker": (ep / f"render_acts_{Path(base).parts[1]}_done.marker").exists()}
+        if composition != "index.html":
+            rec["staged"] = (ep / composition).read_text(encoding="utf-8")
+        if not seen:  # render.cmd's own lock lines, from a cmd.exe: --hold must pass through, --release must not free it
+            busy = f'"{sys.executable}" "{S / "render_busy.py"}"'
+            bat = root / "hold.cmd"
+            bat.write_text(f'@echo off\n{busy} --hold "render {slug} {mode}"\necho HOLD %ERRORLEVEL%\n{busy} --release\n',
+                           encoding="utf-8")
+            h = subprocess.run(["cmd", "/c", str(bat)], capture_output=True, text=True, timeout=30)
+            rec["hold"] = (h.stdout, render_busy.read_lock(lock) == rec["lock"])
+        seen.append(rec)
+        if fail_on and base.endswith(fail_on):
+            raise SystemExit("render.cmd failed (stub)")
+        (ep / "renders" / f"{base}.mp4").write_bytes(b"")
+        for log in (ep / f"render_{mode}.log", ep / "renders" / f"{base}.log"):  # render.cmd keeps a copy beside the mp4
+            log.write_text(f"browserGpuMode probe worker0 NVIDIA {base}\n", encoding="utf-8")
+        (ep / f"render_{mode}_done.marker").write_text("0\n")  # render.cmd writes this after every act
+
+    def fake_subprocess_run(cmd, **k):
+        if cmd[0] == "ffmpeg":
+            Path(cmd[-1]).write_bytes(b"")
+        return types.SimpleNamespace(returncode=0, stdout="20.0\n")
+
+    ra.run_render, ra.subprocess = fake_render, types.SimpleNamespace(run=fake_subprocess_run)
+    ra.video_frames = lambda path: frames[Path(path).name]
+    try:
+        ra.main(["ep-t", "draft", "v1"])
+        acts_seen = [r for r in seen if "/act" in r["base"]]
+        check("R5: every act and the audio pass render while this run holds the heavy lock",
+              len(seen) == len(acts15) + 1 and all(r["lock"] and r["lock"]["pid"] == os.getpid()
+                                                   and r["lock"]["job"] == "render_acts ep-t draft v1" for r in seen))
+        check("R5: the lock is free once the run ends", not lock.exists())
+        h = seen[0]["hold"]
+        check("R5: render.cmd's --hold passes through on the run's token and its --release leaves the run's lock",
+              h[0].strip() == "HOLD 0" and h[1])
+        check("R6: each act renders its own slice, staged while the run holds the lock",
+              [r["staged"] for r in acts_seen] == [ra.slice_html(COMP, fa, fb, 15) for fa, fb in acts15]
+              and all(r["lock"] and r["lock"]["pid"] == os.getpid() for r in acts_seen))
+        done = ep / "render_acts_v1_done.marker"
+        check("R12: no render_acts done marker while acts render; 0 once the concat is checked",
+              not any(r["marker"] for r in seen) and done.exists() and done.read_text() == "0\n")
+        check("R11: the output's own fps (the act rate) and log sit beside it for verify_render.sh",
+              (ep / "renders" / "v1.fps").read_text() == "15\n"
+              and "acts/v1/audio" in (ep / "renders" / "v1.log").read_text(encoding="utf-8"))
+        seen.clear()
+        fail_on = "act02"
+        try:
+            ra.main(["ep-t", "draft", "v2"])
+        except SystemExit:
+            pass
+        check("R12: a run that fails on act 2 leaves 1 in its marker (render.cmd's per-act marker said 0 after act 1)",
+              (ep / "render_acts_v2_done.marker").exists() and (ep / "render_acts_v2_done.marker").read_text() == "1\n"
+              and (ep / "render_draft_done.marker").read_text() == "0\n")
+        check("R5: the lock is free after a failed run", not lock.exists())
+    finally:
+        ra.SCRIPTS, ra.run_render, ra.video_frames, ra.subprocess, env = saved
+        os.environ.clear()
+        os.environ.update(env)
+
 print(f"\n{'ALL PASS' if not FAILS else str(len(FAILS)) + ' FAILED'}")
 sys.exit(1 if FAILS else 0)

@@ -79,6 +79,7 @@ def main():
     if not src.exists():
         sys.exit(f"no such render: {src}")
     master = ep / "renders" / f"{base}-master.mp4"
+    tmp = master.with_suffix(".tmp.mp4")  # verified before it takes the shipping name (audit R9)
 
     print(f"[1/4] measuring {src.name} ...")
     m = measure(src)
@@ -110,23 +111,27 @@ def main():
         ["ffmpeg", "-hide_banner", "-y", "-i", str(src), "-c:v", "copy",
          "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709",
          "-color_range", "tv",
-         "-af", af, "-c:a", "aac", "-b:a", "256k", str(master)],
+         "-af", af, "-c:a", "aac", "-b:a", "256k", str(tmp)],
         capture_output=True, text=True)
     if r.returncode != 0:
+        tmp.unlink(missing_ok=True)
         sys.exit(f"master encode failed:\n{r.stderr[-800:]}")
 
     print("[3/4] verifying master loudness ...")
-    v = measure(master)
+    v = measure(tmp)
     out_i, out_tp = float(v["input_i"]), float(v["input_tp"])
     expected_i = in_i + (loud_gain if limited else gain)
     print(f"      master {out_i} LUFS / TP {out_tp} dBTP (expected ~{expected_i:.2f})")
     if abs(out_i - expected_i) > TOL_I or out_tp > -0.9:
+        tmp.unlink()
         sys.exit(f"FAIL: master out of tolerance (I {out_i} vs {expected_i:.2f} "
                  f"+/-{TOL_I}, TP {out_tp} must be <= -0.9)")
     if abs(out_i - TARGET_I) > 1.0:
+        tmp.unlink()
         sys.exit(f"FAIL: master landed {out_i} LUFS, > 1.0 LU from the {TARGET_I} target — "
                  "mix is peak-limited (TP ceiling capped the gain). Fix the mix or add a "
                  "limiter pass upstream; do not ship this master.")
+    tmp.replace(master)
 
     print("[4/4] building SRT ...")
     r = subprocess.run([sys.executable, str(Path(__file__).parent / "build_srt.py"),

@@ -126,46 +126,14 @@ IN_POINT_HTML = ('<div id="root" data-width="1920" data-height="1080" data-durat
                   '<video src="media/vx-warmend.mp4" data-duration="13.1" data-media-start="8">')
 
 
-def old_window(html):
-    used = {}
-    for m in re.finditer(r'<video\b([^>]*)>', html):
-        src = re.search(r'src="([^"]+)"', m.group(1))
-        dur = re.search(r'data-duration="([\d.]+)"', m.group(1))
-        if src and dur:
-            used[src.group(1)] = max(used.get(src.group(1), 0.0), float(dur.group(1)))
-    return used["media/vx-warmend.mp4"]
-
-
-def new_window(html):
-    used = {}
-    for m in re.finditer(r'<video\b([^>]*)>', html):
-        attrs = m.group(1)
-        src = re.search(r'src="([^"]+)"', attrs)
-        dur = re.search(r'data-duration="([\d.]+)"', attrs)
-        if not (src and dur):
-            continue
-        start = re.search(r'data-media-start="([\d.]+)"', attrs)
-        need = (float(start.group(1)) if start else 0.0) + float(dur.group(1))
-        used[src.group(1)] = max(used.get(src.group(1), 0.0), need)
-    return used["media/vx-warmend.mp4"]
-
-
-check("render-05 OLD: window ignores the 8s in-point (13.1s, too short)", old_window(IN_POINT_HTML) == 13.1)
-check("render-05 NEW: window includes the in-point (21.1s)", new_window(IN_POINT_HTML) == 21.1)
-
-optimize_src = (S / "optimize_clips.py").read_text(encoding="utf-8")
-check("render-05 optimize_clips.py: parses data-media-start", "data-media-start" in optimize_src)
-media_budget_src = (S / "media_budget.py").read_text(encoding="utf-8")
-check("render-05 media_budget.py: parses data-media-start", "data-media-start" in media_budget_src)
-
-# ---------------------------------------------------------------------------
-# render-06: optimize_clips hard-capped height at 1080 regardless of the real composition
-# (a 1080x1920 short got shrunk to 608x1080 on --apply).
-# ---------------------------------------------------------------------------
-check("render-06 OLD filter hardcoded a 1080 cap", "min(1080,ih)" not in optimize_src,
-      "(should be GONE from the new source)")
-check("render-06 NEW filter fits the real composition box (COMP_W/COMP_H, force_original_aspect_ratio=decrease)",
-      "force_original_aspect_ratio=decrease" in optimize_src and "COMP_W" in optimize_src and "COMP_H" in optimize_src)
+# media_budget.clip_windows owns the rule; optimize_clips.py imports it (audit R24). The trim it drives and the
+# composition-box cap (render-06) are exercised by --apply in test_optimize_clips.py.
+import media_budget  # noqa: E402
+check("render-05: the clip window includes the 8 s in-point (21.1 s, not 13.1 s)",
+      media_budget.clip_windows(IN_POINT_HTML) == {"media/vx-warmend.mp4": 21.1})
+check("render-05: a src mounted twice needs its longest window",
+      media_budget.clip_windows(IN_POINT_HTML + '<video src="media/vx-warmend.mp4" data-duration="30">')
+      == {"media/vx-warmend.mp4": 30.0})
 
 # ---------------------------------------------------------------------------
 # render-01 / docs-drift: render.cmd never called render_busy.py --launch (GPU pin + RAM
@@ -198,20 +166,30 @@ check("render-08 NEW: the done marker is deleted before any gate runs",
 check("render-08 NEW: the missing-index.html and :usage paths write a marker",
       render_cmd.count("render_last_error.marker") == 2)
 
-# render-12: verify_render.sh judges a draft by render_draft.fps, which only this line writes. Delete
-# or move it and render-11 (a fixture file) stays green while every real draft exits 1.
-FPS_LINE = 'echo %_FPS% > "render_%MODE%.fps"'
-
-
-def fps_line_in_place(text):
-    i = text.find(FPS_LINE)
-    return 0 <= text.find('cd /d "%EP%"') < i < text.find("call npx hyperframes")
-
-
-check("render-12 NEW: render.cmd records the effective fps after cd into the episode and before the render",
-      fps_line_in_place(render_cmd))
-check("render-12 NEW: the position check fails on a render.cmd without that line",
-      not fps_line_in_place(render_cmd.replace(FPS_LINE, "")))
+# render-12 / audit R11: verify_render.sh judges renders/<base>.mp4 by renders/<base>.log and .fps, which only
+# render.cmd's post-render lines write. Run those real lines (cut from render.cmd) in a temp episode dir, for a plain
+# basename and for the acts/<base>/actNN form render_acts.py passes (forward slashes in a cmd path).
+_lines = render_cmd.splitlines()
+_a = next(i for i, l in enumerate(_lines) if l.startswith('if exist "renders\\%OUTBASE%.mp4"'))
+_b = next(i for i in range(_a, len(_lines)) if _lines[i] == ")")
+with tempfile.TemporaryDirectory() as d:
+    dd = Path(d)
+    (dd / "renders" / "acts" / "v1").mkdir(parents=True)
+    (dd / "render_draft.log").write_text("browserGpuMode probe worker0 NVIDIA this run\n", encoding="utf-8")
+    for base, has_mp4 in (("ep-x-draft-v2", True), ("acts/v1/act01", True), ("never-rendered", False)):
+        if has_mp4:
+            (dd / "renders" / f"{base}.mp4").write_bytes(b"")
+        bat = dd / "post.cmd"
+        bat.write_text("@echo off\nset MODE=draft\nset _FPS=15\n" + f"set OUTBASE={base}\n" + "\n".join(_lines[_a:_b + 1])
+                       + "\n", encoding="utf-8")
+        r = subprocess.run(["cmd", "/c", str(bat)], cwd=d, capture_output=True, text=True)
+        log, fps = dd / "renders" / f"{base}.log", dd / "renders" / f"{base}.fps"
+        if has_mp4:
+            check(f"render-12/R11: render.cmd leaves this render's log and fps beside renders/{base}.mp4",
+                  log.exists() and "NVIDIA this run" in log.read_text(encoding="utf-8")
+                  and fps.exists() and fps.read_text().strip() == "15", f"rc={r.returncode} {r.stdout} {r.stderr}")
+        else:
+            check("render-12/R11: no log or fps for a render that left no mp4", not log.exists() and not fps.exists())
 
 # Dry harness: exercise render.cmd's error path for real (no render reached — it exits
 # before preflight/render_busy/npx). Cleans up the marker it writes.
@@ -271,13 +249,10 @@ with tempfile.TemporaryDirectory() as sd:
     except SystemExit as e:
         check("render-14: a PATH with only the WindowsApps bash stops and names WindowsApps", "WindowsApps" in str(e), str(e))
 
-verify_src = (S / "verify_render.sh").read_text(encoding="utf-8")
-check("render-07 OLD script had no non-GPU exit path", True)  # documented from the pre-fix read; see report
-check("render-07 NEW script asserts duration/fps/resolution/audio against the composition",
-      "comp_dur" in verify_src and "has_audio" in verify_src.replace("HAS_AUDIO", "has_audio"))
 
-
-def run_verify(ep_dir, base, mode="full", env=None):  # mode=None leaves the argument out
+def run_verify(ep_dir, base, mode="full", env=None, log=None):  # mode=None leaves the argument out
+    if log is not None:  # the render log render.cmd keeps beside the mp4 (renders/<base>.log)
+        (Path(ep_dir) / "renders" / f"{base}.log").write_text(log, encoding="utf-8")
     return subprocess.run([winbin.real("bash"), str(S / "verify_render.sh"), str(ep_dir), base, *([mode] if mode else [])],
                           capture_output=True, text=True, env=env)
 
@@ -304,18 +279,20 @@ if HAVE_FFMPEG:
             '<div id="root" data-composition-id="x" data-start="0" data-width="320" '
             'data-height="240" data-duration="2.00" data-fps="25"></div>', encoding="utf-8")
         # the synthetic clips are libx264, so this log asks only for the browser GPU (stream_gate.used_vs_asked)
-        (ep / "render_full.log").write_text(
-            "   GPU: browser GPU (forced)\n"
-            "browserGpuMode probe worker0 NVIDIA GeForce GTX 1650\n"
-            "browserGpuMode probe worker1 NVIDIA GeForce GTX 1650\n"
-            'streaming-encode gate {"enabled":true,"reason":"parallel_forced"}\n', encoding="utf-8")
+        LOG07 = ("   GPU: browser GPU (forced)\n"
+                 "browserGpuMode probe worker0 NVIDIA GeForce GTX 1650\n"
+                 "browserGpuMode probe worker1 NVIDIA GeForce GTX 1650\n"
+                 'streaming-encode gate {"enabled":true,"reason":"parallel_forced"}\n')
+
+        def v07(base, **k):
+            return run_verify(ep, base, log=LOG07, **k)
         mp4 = ep / "renders" / "clean-final.mp4"
         subprocess.run(["ffmpeg", "-y", "-v", "error",
                         "-f", "lavfi", "-i", "color=c=gray:s=320x240:r=25:d=2",
                         "-f", "lavfi", "-i", "sine=frequency=440:duration=2",
                         "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", str(mp4)],
                        capture_output=True)
-        r = run_verify(ep, "clean-final")
+        r = v07("clean-final")
         check("render-07 NEW: a clean synthetic clip (matches comp, has audio, no dead air) passes",
               r.returncode == 0, f"rc={r.returncode}\n{r.stdout[-800:]}")
 
@@ -325,8 +302,7 @@ if HAVE_FFMPEG:
                         "-f", "lavfi", "-i", "sine=frequency=440:duration=2",
                         "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", str(mp4b)],
                        capture_output=True)
-        r2 = run_verify(ep, "wrong-res-final")
-        check("render-07 OLD would have exited 0 here (only the GPU probe was a hard gate)", True)
+        r2 = v07("wrong-res-final")
         check("render-07 NEW: wrong resolution vs the composition fails the gate",
               r2.returncode != 0 and "FAIL: resolution" in r2.stdout, f"rc={r2.returncode}\n{r2.stdout[-800:]}")
 
@@ -335,18 +311,18 @@ if HAVE_FFMPEG:
                         "-f", "lavfi", "-i", "color=c=gray:s=320x240:r=25:d=2",
                         "-c:v", "libx264", "-pix_fmt", "yuv420p", "-an", str(mp4c)],
                        capture_output=True)
-        r3 = run_verify(ep, "no-audio-final")
+        r3 = v07("no-audio-final")
         check("render-07 NEW: a muted render fails the gate", r3.returncode != 0 and "FAIL: no audio stream" in r3.stdout,
               f"rc={r3.returncode}\n{r3.stdout[-800:]}")
 
         # render-13: under schtasks/run_hidden, python3 on PATH can be the Microsoft Store stub (exit 9009).
         # verify_render.sh skips it for the real interpreter, and fails loudly when only stubs are left.
         with tempfile.TemporaryDirectory() as sd:
-            r13 = run_verify(ep, "clean-final", env=store_stub_env(sd, real_python=True))
+            r13 = v07("clean-final", env=store_stub_env(sd, real_python=True))
             check("render-13: WindowsApps store stubs first on PATH do not fail a clean render",
                   r13.returncode == 0, f"rc={r13.returncode}\n{r13.stdout[-800:]}")
         with tempfile.TemporaryDirectory() as sd:
-            r13b = run_verify(ep, "clean-final", env=store_stub_env(sd, real_python=False))
+            r13b = v07("clean-final", env=store_stub_env(sd, real_python=False))
             check("render-13: only store stubs on PATH exits 3 and names WindowsApps",
                   r13b.returncode == 3 and "WindowsApps" in r13b.stdout, f"rc={r13b.returncode}\n{r13b.stdout[-800:]}")
 
@@ -369,7 +345,7 @@ if HAVE_FFMPEG:
             '<section class="clip hold" id="hold-1" data-start="2" data-duration="3" data-track-index="8"></section>'
             '</div>')
         (ep / "index.html").write_text(held_index, encoding="utf-8")
-        r4 = run_verify(ep, "held-final")
+        r4 = v07("held-final")
         check("render-07 NEW: a 3s silent span INSIDE a declared hold passes",
               r4.returncode == 0, f"rc={r4.returncode}\n{r4.stdout[-800:]}")
 
@@ -378,7 +354,7 @@ if HAVE_FFMPEG:
         # not actually remove the sanctioned window.
         unheld_index = re.sub(r'<section class="clip hold".*?</section>', "", held_index)
         (ep / "index.html").write_text(unheld_index, encoding="utf-8")
-        r5 = run_verify(ep, "held-final")
+        r5 = v07("held-final")
         check("render-07 NEW: the SAME 3s silent span with no declared hold fails",
               r5.returncode != 0 and "FAIL:" in r5.stdout and "silence span" in r5.stdout,
               f"rc={r5.returncode}\n{r5.stdout[-800:]}")
@@ -395,9 +371,9 @@ if HAVE_FFMPEG:
             root = (f'<div id="root" data-composition-id="x" data-start="0" data-width="320" '
                     f'data-height="240" data-duration="{dur}.00" data-fps="25">')
             (ep / "index.html").write_text(root + section + '</div>', encoding="utf-8")
-            ok = run_verify(ep, f"{name}-final")
+            ok = v07(f"{name}-final")
             (ep / "index.html").write_text(root + '</div>', encoding="utf-8")
-            bad = run_verify(ep, f"{name}-final")
+            bad = v07(f"{name}-final")
             check(f"render-07 NEW: a {kind} span inside a declared window passes",
                   ok.returncode == 0, f"rc={ok.returncode}\n{ok.stdout[-800:]}")
             check(f"render-07 NEW: the same {kind} span with nothing declared fails",
@@ -419,13 +395,13 @@ if HAVE_FFMPEG:
                   'data-height="240" data-duration="11.00" data-fps="25">')
         (ep / "index.html").write_text(root11 + '<section class="clip hold" id="hold-3" data-start="2" '
                                        'data-duration="7"></section></div>', encoding="utf-8")
-        r6 = run_verify(ep, "frozen-final")
+        r6 = v07("frozen-final")
         check("render-07 NEW: a 7s freeze inside a declared hold still fails",
               r6.returncode != 0 and "FAIL: 1 freeze span" in r6.stdout, f"rc={r6.returncode}\n{r6.stdout[-800:]}")
         (ep / "index.html").write_text(root11.replace('11.00', '8.00') + '<video id="ins-cta-paul" '
                                        'src="media/cta/x.mp4" data-start="2" data-duration="3"></video></div>',
                                        encoding="utf-8")
-        r7 = run_verify(ep, "black-final")
+        r7 = v07("black-final")
         check("render-07 NEW: a black span over the CTA body still fails",
               r7.returncode != 0 and "FAIL: 1 black span" in r7.stdout, f"rc={r7.returncode}\n{r7.stdout[-800:]}")
 
@@ -453,27 +429,51 @@ if HAVE_FFMPEG:
         NVIDIA = ASK + "browserGpuMode probe worker0 NVIDIA GeForce GTX 1650\n" + GATE_OK
         INTEL = ASK + "browserGpuMode probe worker0 Intel(R) UHD Graphics\n" + GATE_OK
 
-        # (label, clip, mode arg, recorded draft fps, expected exit code, text that must be in stdout).
-        # The log of the mode under test is NVIDIA and the other one Intel, so a wrong log pick fails too.
+        # (label, clip, mode arg, recorded fps, expected exit code, text that must be in stdout).
+        # The clip's own log (renders/<clip>.log) is NVIDIA and the episode-level ones Intel, so a wrong log pick fails.
         cases = [
             ("a draft at the recorded 15 fps passes with no 'draft' in its name", "pal-preview-v1", "draft", "15", 0, "OK: 320x240 @ 15/1"),
             ("a draft at a recorded rate other than 15 (RENDER_FPS=24) passes", "pal-24", "draft", "24", 0, "OK: 320x240 @ 24/1"),
             ("a draft whose rate differs from the recorded one fails", "pal-24", "draft", "15", 4, "FAIL: fps 24 != expected 15fps"),
-            ("a draft with no render_draft.fps fails and names the file", "pal-preview-v1", "draft", None, 1, "render_draft.fps"),
+            ("a draft with no recorded fps fails and names the file", "pal-preview-v1", "draft", None, 1, "pal-preview-v1.fps"),
             ("a 15 fps file checked as a final fails against the composition's 25", "pal-preview-v1", "full", "15", 4, "FAIL: fps 15 != expected 25fps"),
             ("no mode argument is a usage error", "pal-preview-v1", None, "15", 1, "usage:"),
             ("an unknown mode is a usage error", "pal-preview-v1", "mastered", "15", 1, "usage:"),
         ]
         for label, clip, mode, rec_fps, want_rc, text in cases:
-            (ep / "render_draft.log").write_text(NVIDIA if mode != "full" else INTEL, encoding="utf-8")
-            (ep / "render_full.log").write_text(NVIDIA if mode == "full" else INTEL, encoding="utf-8")
+            for m in ("draft", "full"):
+                (ep / f"render_{m}.log").write_text(INTEL, encoding="utf-8")
+                (ep / f"render_{m}.fps").write_text("25\n", encoding="utf-8")
+            fps_file = ep / "renders" / f"{clip}.fps"
             if rec_fps is None:
-                (ep / "render_draft.fps").unlink(missing_ok=True)
+                fps_file.unlink(missing_ok=True)
             else:
-                (ep / "render_draft.fps").write_text(f"{rec_fps} \r\n", encoding="utf-8")
-            r = run_verify(ep, clip, mode)
+                fps_file.write_text(f"{rec_fps} \r\n", encoding="utf-8")
+            r = run_verify(ep, clip, mode, log=NVIDIA)
             check(f"render-11 NEW: {label}", r.returncode == want_rc and text in r.stdout,
                   f"rc={r.returncode} (want {want_rc})\n{r.stdout[-800:]}")
+
+        # audit R11 (11 Nov 26): verify judged ANY basename by the newest render_<mode>.log and .fps, so an older draft
+        # passed on a newer render's GPU log. v3 ran on Intel at 15 fps; v4 then rendered on NVIDIA at 24 and rewrote
+        # the episode-level files, as render.cmd does. Verifying v3 must read v3's own files and fail.
+        mk_clip(ep / "renders" / "pal-v3.mp4", 15)
+        mk_clip(ep / "renders" / "pal-v4.mp4", 24)
+        for base, log, fps in (("pal-v3", INTEL, "15"), ("pal-v4", NVIDIA, "24")):
+            (ep / "renders" / f"{base}.log").write_text(log, encoding="utf-8")
+            (ep / "renders" / f"{base}.fps").write_text(fps + "\n", encoding="utf-8")
+            (ep / "render_draft.log").write_text(log, encoding="utf-8")
+            (ep / "render_draft.fps").write_text(fps + "\n", encoding="utf-8")
+        r = run_verify(ep, "pal-v3", "draft")
+        check("R11: an older draft is judged by its own render log after a newer draft (Intel capture fails)",
+              r.returncode == 2 and "[FALLBACK]" in r.stdout, f"rc={r.returncode}\n{r.stdout[-800:]}")
+        (ep / "renders" / "pal-v3.log").write_text(NVIDIA, encoding="utf-8")
+        r = run_verify(ep, "pal-v3", "draft")
+        check("R11: ... and by its own recorded fps (15, not the newer draft's 24)",
+              r.returncode == 0 and "OK: 320x240 @ 15/1" in r.stdout, f"rc={r.returncode}\n{r.stdout[-800:]}")
+        (ep / "renders" / "pal-v3.log").unlink()
+        r = run_verify(ep, "pal-v3", "draft")
+        check("R11: a render with no log of its own fails and names the file, never borrows render_draft.log",
+              r.returncode == 1 and "pal-v3.log" in r.stdout, f"rc={r.returncode}\n{r.stdout[-800:]}")
 else:
     print("SKIP render-07 synthetic-clip checks: ffmpeg not on PATH")
 
@@ -728,6 +728,28 @@ check("pin-review2 NEW: --baseline prints old vs new version, demo and workers",
                               "workers None -> 2")), _out)
 check("pin-review2 NEW: --baseline prints Commit only after the summary line",
       "Commit" in _out and _out.index("Commit") > _out.index("re-recorded"), _out)
+
+# audit R3 (11 Nov 26): --check-only is one npm query, yet __main__ booked the heavy lock first, so the episode-kickoff
+# check waited behind a render (up to 75 min). Hold a temp lock under this live process, put an npm stub first on
+# PATH, and run the real script: it must answer without waiting and leave the lock as it was.
+import render_busy  # noqa: E402
+with tempfile.TemporaryDirectory() as d:
+    lock = Path(d) / "heavy.lock"
+    held = {"pid": os.getpid(), "created": render_busy.created(os.getpid()), "job": "render ep-x full", "token": "test-held"}
+    lock.write_text(json.dumps(held), encoding="utf-8")
+    (Path(d) / "npm.cmd").write_text("@echo 0.0.1\n", encoding="ascii")
+    env = {k: v for k, v in os.environ.items() if k != "HEAVY_LOCK_TOKEN"}
+    env.update(HEAVY_LOCK_FILE=str(lock), PATH=d + os.pathsep + os.environ["PATH"])
+    try:
+        r = subprocess.run([sys.executable, str(S / "pin_ritual.py"), "--check-only"], capture_output=True, text=True,
+                           env=env, timeout=30)
+        out = r.stdout + r.stderr
+        check("R3: --check-only answers while another job holds the heavy lock, without waiting for it",
+              r.returncode == 0 and "is current" in out and "heavy-lock" not in out, f"rc={r.returncode} {out[-400:]}")
+    except subprocess.TimeoutExpired as e:
+        check("R3: --check-only answers while another job holds the heavy lock, without waiting for it",
+              False, f"still blocked after 30 s: {(e.stdout or b'')[-300:]!r}")
+    check("R3: --check-only leaves the held lock untouched", json.loads(lock.read_text(encoding="utf-8")) == held)
 
 print()
 if FAILS:

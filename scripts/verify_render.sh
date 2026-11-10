@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # Post-render verification. Usage: verify_render.sh <episode-dir> <render-basename> <draft|full>
-# The mode is the one passed to render.cmd and is required: it picks the log (render_<mode>.log)
-# and the frame rate the file must have. The file name says neither.
+# The mode is the one passed to render.cmd and is required: it picks the frame rate the file must have (the
+# composition's for a final, the recorded one for a draft). The file name says neither. The render's own log and
+# recorded fps sit beside it (renders/<basename>.log and .fps, written by render.cmd and render_acts.py), never the
+# episode's render_<mode>.log, which the next render of that mode rewrites (audit R11).
 # Everything here reads the finished mp4 — the checks that do not need pixels already ran
 # before the render (sweep_episode.py, blank_scan.mjs, beat_density.py, graphics_qc.mjs).
 set -u
@@ -20,7 +22,8 @@ while IFS= read -r c; do case "$c" in *[Ww]indows[Aa]pps*) ;; *) PY="$c"; break 
 [ -n "$PY" ] || { echo "FAIL: no Python on PATH outside WindowsApps (the Microsoft Store stub); put the Python install folder ahead of it"; exit 3; }
 
 echo "=== used vs asked (owner 2026-09-15: dedicated GPU only; Oct 26: the ZBook encoded on Intel QSV unseen) ==="
-LOG="$EP/render_$MODE.log"
+LOG="$EP/renders/$BASE.log"
+[ -f "$LOG" ] || { echo "FAIL: $LOG is missing — this render predates 11 Nov 26 or did not come from render.cmd / render_acts.py, so the GPU and capture path it ran on cannot be verified"; exit 1; }
 # stream_gate.py owns this check: nvenc encoder (output tag), NVIDIA capture on every worker, streaming capture
 if ! "$PY" "$(dirname "$0")/stream_gate.py" check "$LOG" "$MP4"; then
   echo "FAIL: the render ran on something other than it asked for (re-render through scripts/render.cmd once the [FALLBACK] cause is fixed)"; exit 2
@@ -53,12 +56,13 @@ else
 fi
 
 # The frame rate this render must have. A final matches the composition. A draft is a proxy
-# rendered at the rate render.cmd launched it with (RENDER_FPS included) and recorded in render_draft.fps.
+# rendered at the rate render.cmd launched it with (RENDER_FPS included) and recorded in renders/<basename>.fps.
 EXPECT_FPS="$COMP_FPS"
 if [ "$MODE" = draft ]; then
-  EXPECT_FPS=""; [ -f "$EP/render_draft.fps" ] && EXPECT_FPS=$(tr -d ' \t\r\n' < "$EP/render_draft.fps")
+  FPSF="$EP/renders/$BASE.fps"
+  EXPECT_FPS=""; [ -f "$FPSF" ] && EXPECT_FPS=$(tr -d ' \t\r\n' < "$FPSF")
   if [ -z "$EXPECT_FPS" ]; then
-    echo "FAIL: $EP/render_draft.fps is missing or empty — this draft predates the check or never reached the render step, so its frame rate cannot be verified"
+    echo "FAIL: $FPSF is missing or empty — this draft predates the check or never reached the render step, so its frame rate cannot be verified"
     exit 1
   fi
 fi

@@ -34,21 +34,28 @@ render_busy.live_renders = lambda: []
 render_busy.pin_chrome_to_dedicated_gpu = lambda: None
 
 
-def launch(free, requested):
-    """Run main() --launch as render.cmd does; return (exit code, stdout, workers file text or None)."""
+def launch(free, requested, table=(), sleeps=None):
+    """Run main() --launch as render.cmd does, against a fake process table of other jobs; return (exit code, stdout,
+    workers file text or None). A sleep (a wait for a job) is recorded in `sleeps` and empties the table."""
     render_busy.free_gb = lambda: free
     os.environ["RENDER_WORKERS"] = str(requested)
     os.environ.pop("RENDER_BUSY_OK", None)
-    with tempfile.TemporaryDirectory() as d:
-        out_file = Path(d) / "render_draft.workers"
-        sys.argv = ["render_busy.py", "--launch", str(out_file)]
-        buf, code = io.StringIO(), 0
-        with contextlib.redirect_stdout(buf):
-            try:
-                render_busy.main()
-            except SystemExit as e:
-                code = e.code
-        return code, buf.getvalue(), out_file.read_text() if out_file.exists() else None
+    cur, real = list(table), (render_busy.process_table, render_busy.time.sleep)
+    render_busy.process_table = lambda: cur
+    render_busy.time.sleep = lambda s: ((sleeps if sleeps is not None else []).append(s), cur.clear())
+    try:
+        with tempfile.TemporaryDirectory() as d:
+            out_file = Path(d) / "render_draft.workers"
+            sys.argv = ["render_busy.py", "--launch", str(out_file)]
+            buf, code = io.StringIO(), 0
+            with contextlib.redirect_stdout(buf):
+                try:
+                    render_busy.main()
+                except SystemExit as e:
+                    code = e.code
+            return code, buf.getvalue(), out_file.read_text() if out_file.exists() else None
+    finally:
+        render_busy.process_table, render_busy.time.sleep = real
 
 
 code, out, n = launch(4.2, 2)
@@ -82,6 +89,34 @@ check("RENDER_MIN_FREE_GB=4.5 override is the floor for any launch: 4.0 GB, requ
       (code, n) == (3, None), f"code={code} n={n} out={out!r}")
 render_busy.MIN_FREE_GB = render_busy.need_gb(1)
 
+# audit R4 (11 Nov 26): --launch looked only for live renders, so a render started on top of a running gate (the 11 Sep
+# OOM case) and render.cmd then deleted that gate's staged _*_tmp.html. A job that is itself waiting for the heavy lock
+# render.cmd already holds must not be waited for, or neither ever runs: e2e.py and render_acts.py book the lock, and a
+# gate parked in its render_busy.py check (playwright_env.mjs) waits in wait_free().
+def row(pid, parent, name, cmd):
+    return {"ProcessId": pid, "ParentProcessId": parent, "Name": name, "CommandLine": cmd}
+
+
+QC = row(501, 1, "node.exe", r'node.exe C:\r\scripts\graphics_qc.mjs episodes\ep-y')
+PARKED = row(502, 501, "python.exe", r'python.exe C:\r\scripts\render_busy.py')
+GATES = row(503, 1, "python.exe", r'python.exe C:\r\scripts\run_gates.py episodes\ep-y')
+GATES_PARKED = [GATES, row(504, 503, "node.exe", r'node.exe C:\r\scripts\blank_scan.mjs episodes\ep-y'),
+                row(505, 504, "python.exe", r'python.exe C:\r\scripts\render_busy.py')]
+for label, table, want_wait in (
+        ("waits for a running graphics_qc.mjs", [QC], True),
+        ("waits for a running run_gates.py", [GATES], True),
+        ("does not wait for a graphics_qc.mjs parked in its render_busy check", [QC, PARKED], False),
+        ("does not wait for a run_gates.py whose gate is parked in its render_busy check", GATES_PARKED, False),
+        ("does not wait for an e2e.py (it books the heavy lock: beside this render it waits)",
+         [row(506, 1, "python.exe", r'python.exe C:\r\scripts\e2e.py')], False),
+        ("does not wait for a render_acts.py (it books the heavy lock)",
+         [row(507, 1, "python.exe", r'python.exe C:\r\scripts\render_acts.py ep-y draft v1')], False)):
+    sleeps = []
+    code, out, n = launch(6.0, 2, table, sleeps)
+    check(f"R4: --launch {label}", (code, n, bool(sleeps)) == (0, "2", want_wait), f"code={code} n={n} sleeps={sleeps} out={out!r}")
+code, out, n = launch(6.0, 2, [QC])
+check("R4: a waiting --launch names the job it waits for", "WAITING" in out and "501 graphics_qc.mjs" in out, out)
+
 # render.cmd plumbing: run its own lines from the RENDER_WORKERS default through `set /p`, with
 # render_busy.py swapped for a stub that runs the real main() at 3.3 GB free, and echo what npx would get.
 render_cmd = (S / "render.cmd").read_text(encoding="utf-8").splitlines()
@@ -90,7 +125,7 @@ end = next(i for i, l in enumerate(render_cmd) if "set /p RENDER_WORKERS" in l)
 with tempfile.TemporaryDirectory() as d:
     stub = Path(d) / "busy_stub.py"
     stub.write_text(f"import sys\nsys.path.insert(0, {str(S)!r})\nimport render_busy\n"
-                    "render_busy.free_gb = lambda: 3.3\nrender_busy.live_renders = lambda: []\n"
+                    "render_busy.free_gb = lambda: 3.3\nrender_busy.live_renders = lambda: []\nrender_busy.running_jobs = lambda: []\n"
                     "render_busy.pin_chrome_to_dedicated_gpu = lambda: None\nrender_busy.main()\n", encoding="utf-8")
     block = "\n".join(render_cmd[start:end + 1]).replace('"%~dp0render_busy.py"', f'"{stub}"')
     dry = Path(d) / "dry.cmd"

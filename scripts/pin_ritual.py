@@ -449,6 +449,8 @@ def main():
 
 
 if __name__ == "__main__":
+    if "--check-only" in sys.argv:  # one npm query: reads only, so kickoff never waits behind a render (audit R3)
+        sys.exit(main())
     import render_busy  # the heavy lock: the ritual renders wait their turn like render.cmd (owner 26 Oct 26)
     with render_busy.heavy_lock("pin ritual"):
         rc = main()

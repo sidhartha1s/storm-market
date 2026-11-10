@@ -9,7 +9,9 @@ playwright_env.mjs), optimize_clips.py, and the slice/draft launchers.
 Owner rule (2026-09-11): keep ≥1 GB free for the whole render, no compromise. --launch <file>
 picks the most capture workers (RENDER_WORKERS down to 1) whose need_gb() fits free RAM and writes
 that number to <file> for render.cmd; fewer workers beats waiting (owner 18 Oct 26). It refuses only
-when even 1 worker does not fit (MIN_FREE_GB; RENDER_MIN_FREE_GB overrides that 1-worker floor).
+when even 1 worker does not fit (MIN_FREE_GB; RENDER_MIN_FREE_GB overrides that 1-worker floor). Before that it
+waits while a --jobs job runs (a gate suite, a Playwright gate, the snapshot worker), skipping one that waits for the
+heavy lock the render already holds (running_jobs()), so render.cmd never starts on a gate nor sweeps its _*_tmp.html.
 
 --launch also pins every headless Chrome hyperframes can launch to the dedicated GPU
 (HKCU DirectX GpuPreference=2). Owner 2026-09-15: every render before that day captured on the
@@ -157,6 +159,24 @@ def busy_jobs(table=None, self_pid=None, kinds=None):
 
 def live_renders():
     return [f"{pid} {cmd}" for pid, _, cmd in busy_jobs(kinds={"hyperframes render"})]
+
+
+LOCK_JOBS = {"e2e.py", "render_acts.py"}  # they book the heavy lock: alive beside a render that holds it = waiting for it
+_MODES = {"--launch", "--hold", "--release", "--jobs"}
+
+
+def running_jobs():
+    """Heavy jobs a render must not start beside (audit R4: the 11 Sep OOM): every busy_jobs() job outside this
+    process's chain, except one that waits for the heavy lock render.cmd holds (a LOCK_JOBS kind, or a job with a
+    render_busy.py gate check below it, which waits in wait_free()). Waiting on those would deadlock."""
+    table = process_table()
+    parked = set()
+    for r in table:
+        args = split_args(r["CommandLine"])[1:] if r["CommandLine"] else []
+        if ((r["Name"] or "").lower() in ("python.exe", "pythonw.exe") and not _MODES & set(args)
+                and os.path.basename((script_arg(args) or "").replace("\\", "/")) == "render_busy.py"):
+            parked |= ancestors(table, r["ProcessId"])
+    return [j for j in busy_jobs(table) if j[1] not in LOCK_JOBS and j[0] not in parked]
 
 
 def pin_chrome_to_dedicated_gpu():
@@ -359,6 +379,15 @@ def main():
         sys.exit(3)
     if "--launch" not in sys.argv and "--light" not in sys.argv:  # --light may run beside a heavy job; render.cmd already holds the lock (--hold) when it gets to --launch
         wait_free()
+    if "--launch" in sys.argv:  # no render beside a running gate, Playwright browser or snapshot worker (CLAUDE.md)
+        shown = None
+        while jobs := running_jobs():
+            if {j[0] for j in jobs} != shown:
+                print(f"[render_busy] WAITING — {len(jobs)} heavy job(s) running; the render starts when they end:", flush=True)
+                for pid, kind, cmd in jobs:
+                    print(f"    {pid} {kind}: {cmd[:160]}", flush=True)
+                shown = {j[0] for j in jobs}
+            time.sleep(POLL_S)
     # the RAM floor protects a RENDER about to start (--launch); a gate's single headless Chromium (~300 MB) only needs 'no render alive'
     free = free_gb()
     if "--launch" in sys.argv:
