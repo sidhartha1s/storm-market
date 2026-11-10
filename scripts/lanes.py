@@ -291,7 +291,8 @@ def job_table(ep):
     for root in (ep / "media" / "candidates", ep / "briefs"):
         for d in sorted(p for p in root.iterdir() if p.is_dir()) if root.is_dir() else []:
             if d.name not in groups:
-                table.append((f"orphan:{root.name}/{d.name}", False, True, "folder matches no segment group: move it or hold this"))
+                # BLOCKED, not READY: nothing can run it (a shared pool or cta folder is legitimate), so it shows but never blocks
+                table.append((f"orphan:{root.name}/{d.name}", False, False, "folder matches no segment group: move it if it belongs to one"))
     return table
 
 
