@@ -167,7 +167,7 @@ def spawn(host, cmd, log, cwd):
     # code 0: the host answered and refused it. Local has no ssh to drop, and its query would find this lanes.py, whose
     # own command line holds the log. Else ssh dropped mid-call and the Create may have run: ask the host
     # shortcut: a Create still in flight when the host answers reads as not running; a ~1 s window, rare enough here
-    up = False if code == 0 or host == "local" else alive(host, log)
+    up = False if code == 0 or is_local(host) else alive(host, log)
     if up is False:
         sys.exit(f"[lanes] FAIL: launch on {host} failed: {out.strip()[-300:]}")
     if up is None:
