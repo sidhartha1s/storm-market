@@ -1,9 +1,8 @@
-"""Self-check for scripts/master_deliverables.py's BT.709 tv-range tagging:
-python3 scripts/test_master_deliverables.py
+"""Self-check for scripts/master_deliverables.py: python3 scripts/test_master_deliverables.py
 Builds a 3s synthetic source render (ffmpeg lavfi, no color tags — matches a real capture, which
 carries no color metadata) in a temp episode dir, runs the real master step end to end, and reads
-the master back with ffprobe. Loudness/SRT logic is untouched by this PR and already exercised by
-the real pipeline; this test is scoped to the one thing that changed.
+the master back: BT.709 tv-range tags and the -14 LUFS / TP target. Then the failure path: a master
+that misses the loudness verify never lands under the shipping name (audit R9).
 """
 import json
 import subprocess
