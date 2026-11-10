@@ -92,7 +92,7 @@ for kind, eid, src, v, is_bed in els:
         continue
     rows.append((kind, eid, src, v, is_bed, mean, mean + 20 * math.log10(v)))
 
-narr = [eff for kind, eid, _, _, _, _, eff in rows if eid.startswith("nx-") and eff is not None]
+narr = [eff for kind, eid, _, _, _, _, eff in rows if timeline.is_narration(eid) and eff is not None]
 if not narr:
     print("[audio_levels] FAIL — no nx-* narration elements found")
     raise SystemExit(1)
