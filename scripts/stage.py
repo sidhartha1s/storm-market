@@ -176,7 +176,7 @@ def board_rows():
     for i, (path, _, _) in enumerate(cos):
         eps = path / "episodes"
         for ep in sorted(eps.iterdir()) if eps.is_dir() else []:
-            if (ep / "edit_script.md").exists() or (ep / "angle.md").exists():
+            if (ep / "angle.md").exists() or (ep / "gates.md").exists():
                 where.setdefault(ep.name, []).append(i)
     touches = [{}] + [branch_touches(p, main_head) for p, _, _ in cos[1:]]
     rows = []
