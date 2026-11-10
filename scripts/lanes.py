@@ -99,11 +99,22 @@ def quote(s):
 
 
 def probe(host, profile):
-    """Rule 1: True only if the profile replies "ok"; a limit, a logged-out profile or an error is False."""
-    code, out = ps(host, f'$env:CLAUDE_CONFIG_DIR = "$HOME\\.claude-accounts\\{profile}"; '
-                         '& "$HOME\\.local\\bin\\claude.exe" -p \'reply with the single word ok\' --model haiku',
+    """Rule 1: True only if the profile replies "ok"; a limit, a logged-out profile or an error is False.
+    It runs the profile's wrapper by name, as the lane's {cli} does, so the probe tests the credential the lane uses."""
+    code, out = ps(host, f"& {profile} -p 'reply with the single word ok' --model haiku",
                    timeout=30)  # a relaunch may probe several profiles in a row
     return code == 0 and out.strip().strip(".").lower() == "ok"
+
+
+def profiles(host):
+    """The profiles that can run on host: each %USERPROFILE%\\bin\\claude*.cmd wrapper with a credential, a token in
+    ~/.claude-tokens (claude1-5, 7) or a login folder's .credentials.json (claude6, claudemax). The probe still decides."""
+    code, out = ps(host, "Get-ChildItem \"$env:USERPROFILE\\bin\\claude*.cmd\" | ForEach-Object BaseName | Where-Object { "
+                         "(Test-Path \"$env:USERPROFILE\\.claude-tokens\\$_\") -or "
+                         "(Test-Path \"$env:USERPROFILE\\.claude-accounts\\$_\\.credentials.json\") }", timeout=30)
+    if code:
+        sys.exit(f"[lanes] FAIL: cannot list the claude profiles on {host}: {out.strip()[-200:]}")
+    return sorted(out.split())
 
 
 def free_gb(host):
