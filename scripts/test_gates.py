@@ -910,6 +910,19 @@ for label, middle in (
         code, out = run("lint_timeline.py", lint_order_ep(d, middle))
         check(f"G5 lint_timeline: {label} with data-duration before data-start fills the pause", "narration gap" not in out, out[-400:])
 
+# G10: one coverage rule (timeline.picture_holes): a 0.04 s hole between two picture windows gets one verdict from
+# every gate that reports coverage (sweep used 0.05 s and passed it while lint failed it)
+with tempfile.TemporaryDirectory() as d:
+    ep = Path(d)
+    (ep / "index.html").write_text(
+        '<div data-composition-id="root" data-duration="10">\n'
+        '<section class="clip" id="a" data-start="0" data-duration="5" data-track-index="1"></section>\n'
+        '<section class="clip" id="b" data-start="5.04" data-duration="4.96" data-track-index="1"></section>\n</div>', encoding="utf-8")
+    verdicts = {"sweep_episode.py": "FAIL picture coverage" in run("sweep_episode.py", ep)[1],
+                "lint_timeline.py": "picture gap" in run("lint_timeline.py", ep)[1],
+                "clip_report.py": "uncovered picture gaps (tracks [1, 2]): 1" in run("clip_report.py", ep)[1]}
+    check("G10: sweep, lint and clip_report all report a 0.04 s picture hole", all(verdicts.values()), str(verdicts))
+
 # ===================================================================================
 # R2: a documentary named e10-<topic> (CLAUDE.md step 7) is checked exactly like an ep- one (scripts/episode.py)
 # ===================================================================================
