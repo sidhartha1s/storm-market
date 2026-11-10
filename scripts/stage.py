@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Every episode's stage and what it waits on, plus the record of the owner's approvals.
 
-  python3 scripts/stage.py                       # the board: one row per episode folder with edit_script.md or angle.md
+  python3 scripts/stage.py                       # the board: one row per episode folder with angle.md or gates.md
   python3 scripts/stage.py episodes/<slug>       # one episode in detail, every gates.md line verbatim
   python3 scripts/stage.py record episodes/<slug> <gate> --words "<his words, verbatim>" --shown "<file or URL>" [--where chat|devq]
 
