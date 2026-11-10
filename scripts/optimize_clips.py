@@ -95,7 +95,6 @@ def md5(p):
     return hashlib.md5(p.read_bytes()).hexdigest()
 
 
-names = [Path(src).name for src, *_ in plan]
 backups = {}
 for src, *_ in plan:
     p, rel = ep / src, Path(src)
