@@ -98,20 +98,8 @@ def busy_refusal():
 # The Joplin draft (18 Oct 26) went to render with 0 corner-circle mounts and no music bed while
 # both shipped documentaries had them. Owner: "it should be fucking checked before you fucking fire render".
 
-TAG = re.compile(r'<(audio|video)\b((?:[^>"]|"[^"]*")*)>', re.I)
-ATTR = re.compile(r'([\w-]+)(?:="([^"]*)")?')
 BED_COVER_MIN = 0.80
 PAUL_CLIPS = 6
-
-
-def _mounts(html):
-    live = re.sub(r"<!--.*?-->", "", html, flags=re.S)  # a commented-out mount is not mounted
-    return [(tag.lower(), dict(ATTR.findall(attrs))) for tag, attrs in TAG.findall(live)]
-
-
-def _window(attrs):
-    start = float(attrs["data-start"])
-    return start, start + float(attrs["data-duration"])
 
 
 def _circle_gap(mounts, _episode=None):
