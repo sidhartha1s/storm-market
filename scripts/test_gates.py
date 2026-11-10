@@ -868,6 +868,30 @@ with tempfile.TemporaryDirectory() as d:
     code, out = run("lint_timeline.py", lint_nx_ep(d, 1.0, ' data-cut-by="ins-paul-9"', paul_at=1.5))
     check("lint_timeline: a data-cut-by whose clip starts 0.5 s late still FAILs", "narration window shorter" in out, out[-500:])
 
+# G5: a voiced Paul clip or a hold written with data-duration before data-start still counts (attribute order is free)
+def lint_order_ep(d, middle):
+    ep = Path(d)
+    (ep / "audio").mkdir(parents=True)
+    for n in ("a1-s1", "a1-s2"):
+        write_wav(ep / "audio" / f"{n}.wav", 4.0)
+    (ep / "p.mp4").write_bytes(b"0")
+    (ep / "index.html").write_text(
+        '<div data-composition-id="root" data-duration="12">\n'
+        '<section class="clip" id="bg" data-start="0" data-duration="12" data-track-index="1"></section>\n'
+        '<audio id="nx-a1-s1" src="audio/a1-s1.wav" data-start="0" data-duration="4"></audio>\n'
+        f'{middle}\n'
+        '<audio id="nx-a1-s2" src="audio/a1-s2.wav" data-start="8" data-duration="4"></audio>\n</div>', encoding="utf-8")
+    return ep
+
+
+for label, middle in (
+        ("a voiced Paul clip", '<video id="ins-paul-1" src="p.mp4" data-duration="4" data-start="4" data-track-index="5" '
+                               'data-volume="1" data-has-audio="true"></video>'),
+        ("a declared hold", '<section class="clip hold" id="h1" data-duration="4" data-start="4" data-track-index="2"></section>')):
+    with tempfile.TemporaryDirectory() as d:
+        code, out = run("lint_timeline.py", lint_order_ep(d, middle))
+        check(f"G5 lint_timeline: {label} with data-duration before data-start fills the pause", "narration gap" not in out, out[-400:])
+
 # ===================================================================================
 # R2: a documentary named e10-<topic> (CLAUDE.md step 7) is checked exactly like an ep- one (scripts/episode.py)
 # ===================================================================================
