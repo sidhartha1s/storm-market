@@ -80,7 +80,7 @@ code, out, n = launch(4.2, 3)
 check("4.2 GB free, request 3 -> 2 workers with [FALLBACK] 3 -> 2",
       (code, n) == (0, "2") and "[FALLBACK] fewer workers: 3 -> 2, 4.2 GB free" in out, f"code={code} n={n} out={out!r}")
 
-render_busy.MIN_FREE_GB = 1.5  # what RENDER_MIN_FREE_GB=1.5 sets (scripts/nepal_full_task.cmd)
+render_busy.MIN_FREE_GB = 1.5  # what RENDER_MIN_FREE_GB=1.5 sets
 code, out, n = launch(2.0, 1)
 check("RENDER_MIN_FREE_GB=1.5 override: 2.0 GB free, request 1 -> 1 worker", (code, n) == (0, "1"), f"code={code} n={n} out={out!r}")
 render_busy.MIN_FREE_GB = 4.5
