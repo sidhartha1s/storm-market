@@ -174,14 +174,13 @@ def main():
     dip_out = float(_cta_cfg.get("dip_out", 0.8))
     # Voice is the narrator's segments plus Paul's own on-camera lines (<video id="ins-paul-N" data-volume="1">,
     # mg-quickref "Paul on screen", owner 7 Oct 26): a line he speaks on camera is not a hole in the narration.
-    # A silent ins-paul- clip is not voice (same data-volume test as build_srt.py and sweep_episode.py).
-    paul_lines = [m.groups() for m in re.finditer(
-        r'<video\b[^>]*id="ins-paul-[^"]*"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"[^>]*>', html)
-        if re.search(r'data-volume="1(?:\.0+)?"', m.group(0))]
-    voice = sorted((s, s + d) for s, d in ((float(a), float(b)) for a, b in paul_lines +
-                   re.findall(r'<audio\b[^>]*id="nx-(?!ins)[^"]*"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', html)))
-    structure = [(float(a), float(a) + float(b)) for a, b in re.findall(
-        r'<section\b[^>]*class="[^"]*\b(?:blackout|hold)\b[^"]*"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', html)]
+    # A silent ins-paul- clip is not voice (timeline.voiced). Attributes in any order (timeline.mounts).
+    timed = [(t, a) for t, a in timeline.mounts(html, "audio|video|section") if "data-start" in a and "data-duration" in a]
+    voice = sorted(timeline.window(a) for t, a in timed
+                   if (t == "audio" and timeline.is_narration(a.get("id", "")))
+                   or (t == "video" and a.get("id", "").startswith("ins-paul-") and timeline.voiced(a)))
+    structure = [timeline.window(a) for t, a in timed
+                 if t == "section" and re.search(r"\b(?:blackout|hold)\b", a.get("class", ""))]
 
     # OUTSIDE VOICES and DEAD AIR: checks 7 and 8 in the docstring, documentaries not yet shipped.
     slug = ep.resolve().name
