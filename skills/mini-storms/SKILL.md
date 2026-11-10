@@ -134,9 +134,9 @@ Priority order, per clip:
   clip, our overlay layer, no clip >5 s unmodified, no single source >15 % of runtime.
 
 ### 6. Compose (fast, from templates, hand-retuned)
-`library/mini-storms/` holds the template compositions (create on the first run, then reuse):
-`clip-hold`, `still-kenburns`, `vertical-embed-credit`, `popfig-red`, `breaking-bug`
-(lower-third kicker), `overlay-vignette-grain`, `stat-card`. Copy → retune per cut. Music: one
+`library/mini-storms/` holds `breaking-bug.html` (lower-third kicker) and `stat-card.html`; popfig, data chip,
+still punch zoom, vertical embed with credit and vignette are inline CSS and JS to copy from
+`episodes/br-elnino-california/index.html` (list: `library/mini-storms/README.md`; no grain). Copy → retune per cut. Music: one
 tense bed from `assets/sfx/` (score-act1.mp3 exists) level per CLAUDE.md "Narration sits above every bed" (Two lanes section), duck 6 dB on
 popfigs. Cut cadence from FORMAT.md: median shot 3.5–4.5 s, hook ≤4.2 s, plus one labelled
 real data-feed hold (USGS/NOAA/NASA loop, 20–40 s) every 2–3 min as a credibility anchor.
