@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # Post-render verification. Usage: verify_render.sh <episode-dir> <render-basename> <draft|full>
-# The mode is the one passed to render.cmd and is required: it picks the log (render_<mode>.log)
-# and the frame rate the file must have. The file name says neither.
+# The mode is the one passed to render.cmd and is required: it picks the frame rate the file must have (the
+# composition's for a final, the recorded one for a draft). The file name says neither. The render's own log and
+# recorded fps sit beside it (renders/<basename>.log and .fps, written by render.cmd and render_acts.py), never the
+# episode's render_<mode>.log, which the next render of that mode rewrites (audit R11).
 # Everything here reads the finished mp4 — the checks that do not need pixels already ran
 # before the render (sweep_episode.py, blank_scan.mjs, beat_density.py, graphics_qc.mjs).
 set -u
