@@ -133,7 +133,8 @@ with tempfile.TemporaryDirectory() as tmp:
         touch(ep / "compositions" / "g-a1-map.html")
         check("build DONE once the comp exists", states(ep)["build:g-a1-map"] == "DONE")
         (ep / "briefs" / "zz").mkdir()
-        check("a folder matching no group is reported", states(ep).get("orphan:briefs/zz") == "READY")
+        # L8: a shared pool (cta, shared) can never be "run": it shows, but never blocks the Stop gate
+        check("a folder matching no group is reported, BLOCKED (never READY)", states(ep).get("orphan:briefs/zz") == "BLOCKED")
         (ep / "briefs" / "zz").rmdir()
 
         now = time.time()
