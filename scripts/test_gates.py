@@ -376,6 +376,24 @@ with tempfile.TemporaryDirectory() as d:
     check("audio_levels: a narration wav that fades to silence is not flagged as a burst",
           "nx-a1-s1: ends in a" not in out, out)
 
+# G7: an audible <audio> with no id FAILs as unclassified (it was skipped). G9: an nx-ins element is an insert
+# (2.5 dB rule), not narration (3 dB rule, joins the median).
+with tempfile.TemporaryDirectory() as d:
+    ep = Path(d)
+    (ep / "audio").mkdir()
+    for name, vol in (("nx", 0.1), ("ins", 0.138), ("loud", 1.0)):  # 0.138 = 0.1 + 2.8 dB
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", f"sine=f=220:r=24000:d=2.0,volume={vol}",
+                        "-ac", "1", str(ep / "audio" / f"{name}.wav")], check=True)
+    nx = "".join(f'<audio id="nx-a1-s{i}" src="audio/nx.wav" data-start="{3 * i}" data-duration="2"></audio>\n' for i in range(3))
+    (ep / "index.html").write_text(nx + '<audio src="audio/loud.wav" data-start="10" data-duration="2" data-volume="1"></audio>\n',
+                                   encoding="utf-8")
+    code, out = run("audio_levels.py", ep)
+    check("G7 audio_levels: an audible <audio> with no id FAILs as unclassified", code == 1 and "unclassified" in out, out)
+    (ep / "index.html").write_text(nx + '<audio id="nx-ins-911" src="audio/ins.wav" data-start="10" data-duration="2"></audio>\n',
+                                   encoding="utf-8")
+    code, out = run("audio_levels.py", ep)
+    check("G9 audio_levels: an nx-ins element 2.8 dB off narration FAILs as an insert", code == 1 and "nx-ins-911: insert" in out, out)
+
 # ===================================================================================
 # 6. lint_timeline.py — unmuted b-roll gate, narration-vs-wav gate, bounded CTA gap
 # ===================================================================================
