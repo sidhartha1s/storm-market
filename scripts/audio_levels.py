@@ -105,7 +105,7 @@ for kind, eid, src, v, is_bed, mean, eff in rows:
         fails.append(f"{eid}: no audio stream / unreadable ({src})")
         continue
     d = eff - ref
-    if eid.startswith("nx-"):
+    if timeline.is_narration(eid):
         if abs(d) > 3.0:
             fails.append(f"{eid}: narration {d:+.1f} dB off reference")
         burst = tail_burst(ep / src)
