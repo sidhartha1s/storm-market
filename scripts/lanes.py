@@ -314,13 +314,17 @@ def job_states(ep, ledger, now=None):
             stale = now - run["started"] >= run.get("minutes", DEFAULT_MIN) * 60
             state = "STALE" if stale else "RUNNING"
             note = f"on {run.get('host', '?')} since {time.strftime('%H:%M', time.localtime(run['started']))}"
-            log = read_log(run["host"], run["log"]) if run.get("log") else ""
-            if log is None:
-                note += " (its log is unreadable)"
+            got = read_lane(run["host"], run["log"]) if run.get("log") else (True, "")
+            up, log = got or (True, "")  # an unreadable host is unknown, never dead
+            if got is None:
+                note += " (its host is unreadable: process and log unknown)"
             elif LIMIT.search(log):
                 state, note = "FAILED", f"{run.get('profile')} hit its limit on {run['host']}: run `lanes.py relaunch`"
-            elif log == NO_LOG and now - run["started"] >= NO_LOG_MIN * 60:
-                state, note = "FAILED", f"its log never appeared on {run['host']}: the launch did not run; run `lanes.py relaunch`"
+            elif log == NO_LOG:  # no log yet: the launch may still be starting, so only NO_LOG_MIN decides
+                if now - run["started"] >= NO_LOG_MIN * 60:
+                    state, note = "FAILED", f"its log never appeared on {run['host']}: the launch did not run; run `lanes.py relaunch`"
+            elif not up:  # same as an ended lane: its output may sit unsynced on its host, so never FAILED (relaunch would redo it)
+                state, note = "READY", f"its process exited on {run['host']} and its output is not here: relaunch it, or sync its output back"
         else:
             state = "READY"
             if run.get("ended"):
