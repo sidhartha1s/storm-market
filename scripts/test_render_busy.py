@@ -34,21 +34,28 @@ render_busy.live_renders = lambda: []
 render_busy.pin_chrome_to_dedicated_gpu = lambda: None
 
 
-def launch(free, requested):
-    """Run main() --launch as render.cmd does; return (exit code, stdout, workers file text or None)."""
+def launch(free, requested, table=(), sleeps=None):
+    """Run main() --launch as render.cmd does, against a fake process table of other jobs; return (exit code, stdout,
+    workers file text or None). A sleep (a wait for a job) is recorded in `sleeps` and empties the table."""
     render_busy.free_gb = lambda: free
     os.environ["RENDER_WORKERS"] = str(requested)
     os.environ.pop("RENDER_BUSY_OK", None)
-    with tempfile.TemporaryDirectory() as d:
-        out_file = Path(d) / "render_draft.workers"
-        sys.argv = ["render_busy.py", "--launch", str(out_file)]
-        buf, code = io.StringIO(), 0
-        with contextlib.redirect_stdout(buf):
-            try:
-                render_busy.main()
-            except SystemExit as e:
-                code = e.code
-        return code, buf.getvalue(), out_file.read_text() if out_file.exists() else None
+    cur, real = list(table), (render_busy.process_table, render_busy.time.sleep)
+    render_busy.process_table = lambda: cur
+    render_busy.time.sleep = lambda s: ((sleeps if sleeps is not None else []).append(s), cur.clear())
+    try:
+        with tempfile.TemporaryDirectory() as d:
+            out_file = Path(d) / "render_draft.workers"
+            sys.argv = ["render_busy.py", "--launch", str(out_file)]
+            buf, code = io.StringIO(), 0
+            with contextlib.redirect_stdout(buf):
+                try:
+                    render_busy.main()
+                except SystemExit as e:
+                    code = e.code
+            return code, buf.getvalue(), out_file.read_text() if out_file.exists() else None
+    finally:
+        render_busy.process_table, render_busy.time.sleep = real
 
 
 code, out, n = launch(4.2, 2)
