@@ -511,6 +511,11 @@ check("build_srt: a leading insert spans 0.0 to the first whisper word's start",
       well["start"] == 0.0 and well["end"] == 0.5, well)
 check("build_srt: a leading insert is not zero-duration",
       well["end"] - well["start"] > 0, well)
+# G15: milliseconds round on the total, so 1.9996 s is 00:00:02,000, never the invalid 00:00:01,1000
+check("build_srt: ts rounds to a valid SRT time (no ,1000)",
+      [build_srt.ts(t) for t in (1.9996, 59.9999, 3599.9996, 0.0, 61.25)]
+      == ["00:00:02,000", "00:01:00,000", "01:00:00,000", "00:00:00,000", "00:01:01,250"],
+      [build_srt.ts(t) for t in (1.9996, 59.9999, 3599.9996, 0.0, 61.25)])
 
 # ---------------------------------------------------------------------------
 # 10. word_budget: BOTH real script formats present on main, counted correctly, read-only
