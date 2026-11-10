@@ -127,9 +127,11 @@ def main():
         sys.exit(f"FAIL: master out of tolerance (I {out_i} vs {expected_i:.2f} "
                  f"+/-{TOL_I}, TP {out_tp} must be <= -0.9)")
     if abs(out_i - TARGET_I) > 1.0:
+        tmp.unlink()
         sys.exit(f"FAIL: master landed {out_i} LUFS, > 1.0 LU from the {TARGET_I} target — "
                  "mix is peak-limited (TP ceiling capped the gain). Fix the mix or add a "
                  "limiter pass upstream; do not ship this master.")
+    tmp.replace(master)
 
     print("[4/4] building SRT ...")
     r = subprocess.run([sys.executable, str(Path(__file__).parent / "build_srt.py"),
