@@ -164,8 +164,8 @@ def branch_touches(path, main_head):
 
 
 def pick_checkout(have, newest):
-    """Index of the checkout a slug is read from. have: indexes holding it (0 = main); newest: [{slug-free time}] per
-    index. The newest branch-only commit wins; with none, the lowest index (main if it has the slug)."""
+    """Index of the checkout a slug is read from. have: indexes holding it (0 = main); newest: per index, the time of
+    its newest branch-only commit on the slug (0 = none). The newest wins; with none, the lowest index (main first)."""
     return -max((newest[i], -i) for i in have)[1]
 
 
