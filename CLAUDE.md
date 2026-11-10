@@ -206,7 +206,7 @@ and `git status`. Before the first write: `git worktree add .worktrees/<task> -b
 ## HARD RULE: the pin stays current
 The owner runs the latest hyperframes (upstream ships fixes daily). Episode kickoff runs `python3 scripts/pin_ritual.py
 --check-only`; stale means run the ritual (A/B on `episodes/demo-pin`) and PR the bump before the first render, never mid-episode.
-The pin is locked: `config.yaml hyperframes_version` and every `npx hyperframes@X` in `scripts/*.cmd` agree, and only the
+The pin is locked: `config.yaml render.hyperframes_version` and every `npx hyperframes@X` in `scripts/*.cmd` agree, and only the
 ritual changes them. `render_preflight.py` fails on drift, never on currency. Read the changelog on every bump.
 
 ## HARD RULE: do not write code for what reasoning already does
