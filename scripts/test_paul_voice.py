@@ -18,6 +18,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import render_preflight as rp  # noqa: E402
+import timeline  # noqa: E402
 
 VOICE = "anoisesrc=color=pink:seed=7:duration=4,volume=-20dB"  # one fixed spectrum the narration wavs and the clips share
 
