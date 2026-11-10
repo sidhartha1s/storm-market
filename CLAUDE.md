@@ -26,7 +26,7 @@ approval (owner 28 Oct 26: "you dont need my approval for subagents, inside stro
 | Channel palette, fonts, type-tier px values, TV-readability floor, CSS custom properties | `library/inhouse/snippets/tokens.md` (swatch: `library/inhouse/snippets/brand-swatch.html`) |
 | The angle: what it is, how candidates are found and tested, the owner lock. Comes before any title, thumbnail, hook or script line | `references/angle.md` |
 | Script method, hook wording, humanise pass, scaling | `references/script-os.md`, `script-framework.md`, `script-scaling.md`, `humanise-rules.md` |
-| The one condensed brief a script writer opens (wins for writers) | `references/script-quickref.md` |
+| The one condensed brief a script writer opens (a copy: on conflict its source file wins) | `references/script-quickref.md` |
 | Violence/death words that trip YouTube's transcript scan, with alternatives; gate `scripts/flag_words.py episodes/<slug>` | `references/flag-words.md` |
 | Hook shapes menu and the rule that a hook never repeats the last 2 episodes' shape; gate `scripts/hook_shape.py episodes/<slug>` | `references/script-quickref.md` "The hook" |
 | Heteronyms (word, both senses, a hint) that pocket-TTS can mispronounce by guessing the wrong sense; gate `scripts/homograph_scan.py episodes/<slug>` (WARN-only, reports for a probe, never fails) | `references/homographs.md` |
