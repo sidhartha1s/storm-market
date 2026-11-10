@@ -162,6 +162,17 @@ with tempfile.TemporaryDirectory() as tmp:
         lanes.SCRIPTS = real
         check("claim records the session", lanes.main(["claim", e, "--session", "S1"]) == 0
               and json.loads((ep / "lanes.json").read_text())["orchestrator"] == "S1")
+        said = io.StringIO()
+        with contextlib.redirect_stdout(said):
+            lanes.main(["claim", e, "--session", "S1"])
+        check("L12: a re-claim by the same session says nothing about a takeover", "S1" not in said.getvalue().split("session")[0]
+              and "takes over" not in said.getvalue())
+        said = io.StringIO()
+        with contextlib.redirect_stdout(said):
+            lanes.main(["claim", e, "--session", "S9"])
+        check("L12: a second session's claim names the session it took the episode from",
+              "takes over from session S1" in said.getvalue())
+        lanes.main(["claim", e, "--session", "S1"])
         check("start rejects an unknown job", raises(lambda: lanes.main(["start", e, "brief:nope", "--session", "S1"])))
         check("start rejects --minutes past HOLD_H (a lane cannot read RUNNING for days)",
               raises(lambda: lanes.main(["start", e, "source:intro", "--minutes", str(lanes.HOLD_H * 60 + 1), "--session", "S1"])))
