@@ -229,7 +229,7 @@ The gate list and its order live in `scripts/run_gates.py`. Minis also run `node
 - One heavy job per machine at a time: render.cmd, `render_acts.py`, the pin ritual (not `--check-only`), TTS (`tts_episode.py`, `tts_clone.py`), the face pass (`circle_face.py`) and `e2e.py`
   book the heavy lock (`~/.storm-heavy.lock`) and wait their turn, also when started over ssh; a dead holder's lock is taken over.
   `paul_voice.py` and `transcribe_episode.py` do not book it yet (`ops/tasks.md`).
-  A waiting e2e can sit behind a 75 min render: launch long waits detached, not in a 10 min tool call.
+  Launch long waits detached, never in a 10 min tool call (an e2e can wait behind a 75 min render).
   How it works and how a new heavy job books it: the `scripts/render_busy.py` docstring (test `python3 scripts/test_render_busy.py`).
   No gates, Playwright or subagent browsers beside a render, except one `freeze_scan.mjs` page (`render_busy.py --light`).
 - Render only with `scripts\render.cmd <slug> <draft|full> [out-basename]`; it keeps each render's own `renders\<basename>.log` and `.fps`, the only ones `verify_render.sh` reads. The dojo-ops dashboard starts a draft only through `scripts\dojo_draft.cmd` (how: its header; test `python3 scripts/test_dojo_draft.py`). Default 3 workers; `render_busy.py` lowers
