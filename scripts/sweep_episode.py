@@ -186,8 +186,8 @@ if _cta_applies:
 
 # 5d-2. Paul's end ask (owner 19 Oct 26): the config channel.end_ask clips, staged unchanged, back to back, near the end.
 ask = (_cfg.get("channel") or {}).get("end_ask") or {}
-if ask and not (re.match(r"ep\d*-", _slug) and _slug not in (ask.get("exempt") or [])):
-    print(f"SKIP End ask present + placed — {_slug} is exempt (built before 19 Oct 26) or not an epN documentary")
+if ask and not (episode.is_documentary(_slug) and _slug not in (ask.get("exempt") or [])):
+    print(f"SKIP End ask present + placed — {_slug} is exempt (built before 19 Oct 26) or not a documentary")
 elif ask:
     ask_bad, prev_end = [], None
     for i, f in enumerate(ask["files"]):
