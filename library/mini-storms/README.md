@@ -5,7 +5,7 @@ never script-generate episode HTML):
 
 | file | what | mount |
 |---|---|---|
-| `chapter-card.html` | 1.6 s caps chapter card on black, glitch in, hard cut out | track 2 over a 1.6 s track-1 blackout |
+| `chapter-card.html` | 1.6 s caps chapter card on black, glitch in, hard cut out. Minis use no chapter cards (CLAUDE.md "Two lanes"); kept from the first runs | track 2 over a 1.6 s track-1 blackout |
 | `breaking-bug.html` | lower-third red kicker + channel wordmark + rotating headline strip | track 3, whole chapter or whole video |
 | `stat-card.html` | left glass list, 4 numbered rows revealed on spoken cues | track 2 over footage |
 
