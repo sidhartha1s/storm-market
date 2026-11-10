@@ -76,6 +76,11 @@ def is_insert(eid):
     return bool(re.match(r"(?:nx-)?ins", eid))
 
 
+def muted(tag):
+    """The bare `muted` attribute on a tag string; a class or attribute that merely contains "muted" is not it."""
+    return bool(re.search(r"\smuted(?=[\s>/=]|$)", tag))
+
+
 def voiced(attrs):
     """A clip whose own sound plays at full level (data-volume="1"): Paul's lines, the CTA, voiced inserts."""
     return bool(re.fullmatch(r"1(?:\.0+)?", attrs.get("data-volume", "")))
