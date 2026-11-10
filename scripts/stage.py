@@ -171,7 +171,7 @@ def pick_checkout(have, newest):
 
 
 def board_rows():
-    cos = checkouts()
+    cos = [c for c in checkouts() if c[0].is_dir()]  # a worktree folder removed without `git worktree prune` stays listed
     main_root, main_head = cos[0][0], cos[0][2]
     where = {}
     for i, (path, _, _) in enumerate(cos):
