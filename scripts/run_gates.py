@@ -25,7 +25,7 @@ if not ep.is_dir():
 ep_abs = str(ep.resolve())
 scripts = Path(__file__).resolve().parent
 
-# order per CLAUDE.md "the render is the LAST step" code block
+# the gate list and its order: this list is the only copy
 GATES = [
     ("layer parity",        [sys.executable, str(scripts / "render_preflight.py"), str(ep), "--layers"], None),
     ("paul_start_frame.py", [sys.executable, str(scripts / "paul_start_frame.py"), str(ep)], None),
