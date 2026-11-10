@@ -14,6 +14,7 @@ from collections import Counter
 from pathlib import Path
 from comp_consts import fold
 import episode
+import timeline
 
 ep = Path(sys.argv[1])
 h = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
