@@ -65,7 +65,7 @@ def outside_voice(tag):
         return None
     # audible as audio_levels.py reads it: data-volume defaults to 1.0; a video is silent only when muted
     vol = _num(tag, "data-volume")
-    if (vol is not None and vol <= 0) or (tag.startswith("<video") and re.search(r"\smuted(?=[\s>/=]|$)", tag)):
+    if (vol is not None and vol <= 0) or (tag.startswith("<video") and timeline.muted(tag)):
         return None
     return vid, s, s + d
 
@@ -148,7 +148,7 @@ def main():
         # b-roll is muted by default; a clip with its own sound declares data-has-audio
         # (FORMAT.md:57, owner 15 Sep 26: a stranded-passenger interview played under Paul and
         # a quote card with neither muted nor data-has-audio set).
-        if kind == "video" and 'data-track-index="1"' in attrs and "muted" not in attrs and "data-has-audio" not in attrs:
+        if kind == "video" and 'data-track-index="1"' in attrs and not timeline.muted(attrs) and "data-has-audio" not in attrs:
             findings.append(f"unmuted b-roll without data-has-audio: {src.group(1) if src else '?'}")
 
     audio_windows.sort()
