@@ -57,9 +57,10 @@ def _row_year(row):
 
 
 def load_asset_years(ep):
-    """basename -> declared year, from every media/**/provenance.csv row that names a file."""
+    """basename -> declared year, from every media/**/provenance.csv and the episode-root provenance.csv
+    (Palm Sunday, El Reno, Enderlin and Nepal keep it there) row that names a file."""
     years = {}
-    for csv_path in ep.glob("media/**/provenance.csv"):
+    for csv_path in [*ep.glob("media/**/provenance.csv"), *ep.glob("provenance.csv")]:
         with csv_path.open(encoding="utf-8", newline="") as f:
             for row in csv.DictReader(f):
                 fname = (row.get("file") or "").strip()
