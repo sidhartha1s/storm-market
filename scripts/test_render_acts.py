@@ -248,7 +248,8 @@ with tempfile.TemporaryDirectory() as d:
         except SystemExit:
             pass
         check("R12: a run that fails on act 2 leaves 1 in its marker (render.cmd's per-act marker said 0 after act 1)",
-              (ep / "render_acts_v2_done.marker").read_text() == "1\n" and (ep / "render_draft_done.marker").read_text() == "0\n")
+              (ep / "render_acts_v2_done.marker").exists() and (ep / "render_acts_v2_done.marker").read_text() == "1\n"
+              and (ep / "render_draft_done.marker").read_text() == "0\n")
         check("R5: the lock is free after a failed run", not lock.exists())
     finally:
         ra.SCRIPTS, ra.run_render, ra.video_frames, ra.subprocess, env = saved
