@@ -189,7 +189,7 @@ def board_rows():
 
 
 def render_board(rows):
-    head = ["label", "slug", "stage", *GATES, "waiting on", "from"]
+    head = ["label", "slug", "next step", *GATES, "waiting on", "from"]
     table = [head] + [[r["label"], r["slug"], r["stage"], *(r["states"][g] for g in GATES), r["waiting"], r["from"]]
                       for r in rows]
     widths = [max(len(t[c]) for t in table) for c in range(len(head))]
