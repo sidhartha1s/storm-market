@@ -143,7 +143,7 @@ _cta_window = (cta.get("window_by_slug") or {}).get(_slug) or (cta["window_ms"] 
 cm = re.search(r'<video\b[^>]*src="([^"]*' + re.escape(cta_name) + r')"[^>]*>', h)
 if not _cta_applies:
     # episodes shipped before the contract (config channel.cta.exempt) and demo-* dirs are not re-wired
-    print(f"SKIP CTA present + placed — {_slug} is exempt (shipped pre-contract) or not an epN / ms- episode")
+    print(f"SKIP CTA present + placed — {_slug} is exempt (shipped pre-contract) or not a documentary / ms- episode")
 elif not cm:
     cta_bad.append(f"no <video> whose src ends in {cta_name} (config channel.cta.file)")
 else:
