@@ -126,46 +126,14 @@ IN_POINT_HTML = ('<div id="root" data-width="1920" data-height="1080" data-durat
                   '<video src="media/vx-warmend.mp4" data-duration="13.1" data-media-start="8">')
 
 
-def old_window(html):
-    used = {}
-    for m in re.finditer(r'<video\b([^>]*)>', html):
-        src = re.search(r'src="([^"]+)"', m.group(1))
-        dur = re.search(r'data-duration="([\d.]+)"', m.group(1))
-        if src and dur:
-            used[src.group(1)] = max(used.get(src.group(1), 0.0), float(dur.group(1)))
-    return used["media/vx-warmend.mp4"]
-
-
-def new_window(html):
-    used = {}
-    for m in re.finditer(r'<video\b([^>]*)>', html):
-        attrs = m.group(1)
-        src = re.search(r'src="([^"]+)"', attrs)
-        dur = re.search(r'data-duration="([\d.]+)"', attrs)
-        if not (src and dur):
-            continue
-        start = re.search(r'data-media-start="([\d.]+)"', attrs)
-        need = (float(start.group(1)) if start else 0.0) + float(dur.group(1))
-        used[src.group(1)] = max(used.get(src.group(1), 0.0), need)
-    return used["media/vx-warmend.mp4"]
-
-
-check("render-05 OLD: window ignores the 8s in-point (13.1s, too short)", old_window(IN_POINT_HTML) == 13.1)
-check("render-05 NEW: window includes the in-point (21.1s)", new_window(IN_POINT_HTML) == 21.1)
-
-optimize_src = (S / "optimize_clips.py").read_text(encoding="utf-8")
-check("render-05 optimize_clips.py: parses data-media-start", "data-media-start" in optimize_src)
-media_budget_src = (S / "media_budget.py").read_text(encoding="utf-8")
-check("render-05 media_budget.py: parses data-media-start", "data-media-start" in media_budget_src)
-
-# ---------------------------------------------------------------------------
-# render-06: optimize_clips hard-capped height at 1080 regardless of the real composition
-# (a 1080x1920 short got shrunk to 608x1080 on --apply).
-# ---------------------------------------------------------------------------
-check("render-06 OLD filter hardcoded a 1080 cap", "min(1080,ih)" not in optimize_src,
-      "(should be GONE from the new source)")
-check("render-06 NEW filter fits the real composition box (COMP_W/COMP_H, force_original_aspect_ratio=decrease)",
-      "force_original_aspect_ratio=decrease" in optimize_src and "COMP_W" in optimize_src and "COMP_H" in optimize_src)
+# media_budget.clip_windows owns the rule; optimize_clips.py imports it (audit R24). The trim it drives and the
+# composition-box cap (render-06) are exercised by --apply in test_optimize_clips.py.
+import media_budget  # noqa: E402
+check("render-05: the clip window includes the 8 s in-point (21.1 s, not 13.1 s)",
+      media_budget.clip_windows(IN_POINT_HTML) == {"media/vx-warmend.mp4": 21.1})
+check("render-05: a src mounted twice needs its longest window",
+      media_budget.clip_windows(IN_POINT_HTML + '<video src="media/vx-warmend.mp4" data-duration="30">')
+      == {"media/vx-warmend.mp4": 30.0})
 
 # ---------------------------------------------------------------------------
 # render-01 / docs-drift: render.cmd never called render_busy.py --launch (GPU pin + RAM
