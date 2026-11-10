@@ -24,6 +24,7 @@ import subprocess
 import sys
 from pathlib import Path
 
+import episode as episode_kind  # `episode` is the folder argument everywhere below
 import render_busy  # the busy check below reuses this, not a second process/name list
 
 
