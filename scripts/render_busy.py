@@ -159,6 +159,24 @@ def live_renders():
     return [f"{pid} {cmd}" for pid, _, cmd in busy_jobs(kinds={"hyperframes render"})]
 
 
+LOCK_JOBS = {"e2e.py", "render_acts.py"}  # they book the heavy lock: alive beside a render that holds it = waiting for it
+_MODES = {"--launch", "--hold", "--release", "--jobs"}
+
+
+def running_jobs():
+    """Heavy jobs a render must not start beside (audit R4: the 11 Sep OOM): every busy_jobs() job outside this
+    process's chain, except one that waits for the heavy lock render.cmd holds (a LOCK_JOBS kind, or a job with a
+    render_busy.py gate check below it, which waits in wait_free()). Waiting on those would deadlock."""
+    table = process_table()
+    parked = set()
+    for r in table:
+        args = split_args(r["CommandLine"])[1:] if r["CommandLine"] else []
+        if ((r["Name"] or "").lower() in ("python.exe", "pythonw.exe") and not _MODES & set(args)
+                and os.path.basename((script_arg(args) or "").replace("\\", "/")) == "render_busy.py"):
+            parked |= ancestors(table, r["ProcessId"])
+    return [j for j in busy_jobs(table) if j[1] not in LOCK_JOBS and j[0] not in parked]
+
+
 def pin_chrome_to_dedicated_gpu():
     """Set GpuPreference=2 (high performance) for every headless Chrome hyperframes may launch."""
     home = os.path.expanduser("~")
