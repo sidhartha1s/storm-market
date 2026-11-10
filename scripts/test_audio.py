@@ -520,7 +520,7 @@ check("build_srt: a leading insert is not zero-duration",
 #     in a temp dir from the REAL probe text, stands in just for the pace measurement; the
 #     narration COUNT itself still comes from the real, unmodified edit_script.md on disk).
 import subprocess
-MAIN = Path(r"C:\Users\Sidhartha\Automation Projects\storm-market\episodes")
+MAIN = S.parent / "episodes"   # this checkout's tracked episodes, never a hardcoded main-checkout path
 
 r = subprocess.run([sys.executable, str(S / "word_budget.py"), str(MAIN / "ep3-tristate"),
                     "--target", "26", "--probe", "audio/probe1.wav", "audio/probe2.wav"],
