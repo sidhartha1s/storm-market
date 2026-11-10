@@ -762,6 +762,38 @@ with tempfile.TemporaryDirectory() as d:
     code, out = run("build_srt.py", ep, "--check")
     check("build_srt --check: names both the missing -v2.txt and the unlabeled insert",
           code == 1 and "a1-v2.txt" in out and "no data-srt-label" in out, out)
+
+# G1: narration tags in any attribute order, data-media-start honoured, words past a cut-by window dropped,
+# and --check FAILs a narration tag that yields no cue (it used to pass on any cue at all).
+def srt_ep(d, tags, words):
+    ep = Path(d)
+    (ep / "audio").mkdir()
+    (ep / "renders").mkdir()
+    (ep / "index.html").write_text("\n".join(tags), encoding="utf-8")
+    for stem, ws in words.items():
+        (ep / "audio" / f"{stem}.words.json").write_text(json.dumps([{"word": w, "start": s, "end": s + 0.3} for w, s in ws]), encoding="utf-8")
+        (ep / "audio" / f"{stem}.txt").write_text(" ".join(w for w, _ in ws), encoding="utf-8")
+    return ep
+
+
+_srt_tags = ['<audio id="nx-a1" src="audio/a1.wav" data-start="0" data-duration="1"></audio>',
+             '<audio id="nx-a2" data-cut-by="ins-paul-1" src="audio/a2.wav" data-start="10" data-duration="1"></audio>',
+             '<audio data-start="20" data-duration="2" data-media-start="2" src="audio/a3.wav" id="nx-a3"></audio>']
+_srt_words = {"a1": [("First", 0.1)], "a2": [("Second", 0.1), ("Paulsays", 1.5)], "a3": [("Unplayed", 0.5), ("Third", 2.3)]}
+with tempfile.TemporaryDirectory() as d:
+    ep = srt_ep(d, _srt_tags, _srt_words)
+    code, out = run("build_srt.py", ep, "t")
+    srt = (ep / "renders" / "t.srt").read_text(encoding="utf-8") if (ep / "renders" / "t.srt").exists() else out
+    check("G1 build_srt: a data-cut-by mount (cut-by before src) is captioned", "00:00:10,100 --> " in srt and "Second" in srt, srt)
+    check("G1 build_srt: words after a cut-by window are left to Paul's clip", "Paulsays" not in srt, srt)
+    check("G1 build_srt: data-media-start offsets the words and drops the unplayed head",
+          "00:00:20,300 --> " in srt and "Third" in srt and "Unplayed" not in srt, srt)
+with tempfile.TemporaryDirectory() as d:
+    ep = srt_ep(d, _srt_tags + ['<audio id="nx-a4" src="audio/a4.wav" data-start="30" data-duration="1"></audio>'],
+                dict(_srt_words, a4=[("Late", 4.0)]))
+    code, out = run("build_srt.py", ep, "--check")
+    check("G1 build_srt --check: a narration tag that yields no cue FAILs", code == 1 and "nx-a4" in out, out)
+
 _rg = (S / "run_gates.py").read_text(encoding="utf-8")
 check("run_gates: build_srt.py --check runs right after lint_timeline.py",
       _rg.index('"lint_timeline.py",') < _rg.index('"build_srt.py --check"') < _rg.index('"narration_picture_check.py"'))
