@@ -117,8 +117,7 @@ with tempfile.TemporaryDirectory() as t:
 rows = s.board_rows()
 assert {"ep-galveston-1900", "ep4-el-reno", "ep-enderlin-2025"} <= {r["slug"] for r in rows}
 gal = next(r for r in rows if r["slug"] == "ep-galveston-1900")
-assert gal["label"] == "E09-galveston-1900" and gal["states"]["packaging"] in ("no record", "OPEN") or \
-    gal["states"]["packaging"].startswith(("ok", "deferred")), gal
+assert gal["label"] == "E09-galveston-1900" and gal["states"]["angle"] == "ok 2026-10-26", gal
 assert all(len(l) <= 160 for l in s.render_board(rows).splitlines())
 
 print("[test_stage] PASS")
