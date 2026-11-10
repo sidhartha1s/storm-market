@@ -117,7 +117,10 @@ with tempfile.TemporaryDirectory() as t:
 
 # the real board runs and reads every checkout
 rows = s.board_rows()
-assert {"ep-galveston-1900", "ep4-el-reno", "ep-enderlin-2025"} <= {r["slug"] for r in rows}
+slugs = {r["slug"] for r in rows}
+assert {"ep-galveston-1900", "ep4-el-reno"} <= slugs, slugs
+# videos made before the angle-first rule have no angle.md and stay off the board
+assert not {"ep-enderlin-2025", "ep1-joplin", "ms-krakatoa-1883"} & slugs, slugs
 gal = next(r for r in rows if r["slug"] == "ep-galveston-1900")
 assert gal["label"] == "E09-galveston-1900" and gal["states"]["angle"] == "ok 2026-10-26", gal
 assert all(len(l) <= 160 for l in s.render_board(rows).splitlines())
