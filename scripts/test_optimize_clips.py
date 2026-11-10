@@ -135,6 +135,31 @@ with tempfile.TemporaryDirectory() as tmp:
           r.returncode == 1 and is_colour(ep / "media" / "a" / "dup.mp4", "red")
           and is_colour(ep / "media" / "b" / "dup.mp4", "blue") and (ep / "media" / "_orig" / "dup.mp4").exists())
 
+def size(path):
+    out = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height:format=duration",
+                          "-of", "csv=p=0", str(path)], capture_output=True, text=True).stdout.split()
+    w, h = out[0].split(",")[:2]
+    return int(w), int(h), float(out[-1])
+
+
+with tempfile.TemporaryDirectory() as tmp:
+    # render-05 / render-06 (moved from test_render.py's copies of the logic, audit R24/R34): the trim keeps the clip's
+    # in-point plus its window (media_budget.clip_windows) plus MARGIN, and the cap is the composition's own box, not
+    # a hardcoded 1080 height (a 1080x1920 short was shrunk to 608x1080)
+    ep = Path(tmp) / "ep-x"
+    ep.mkdir()
+    (ep / "index.html").write_text('<div id="root" data-width="1080" data-height="1920" data-duration="60">\n'
+                                   '<video id="v0" src="media/tall.mp4" data-start="0" data-duration="2" '
+                                   'data-media-start="3" muted></video>\n</div>\n', encoding="utf-8")
+    clip(ep / "media" / "tall.mp4", "red", 10)
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", "color=c=red:s=1080x1920:r=15", "-t", "10",
+                    "-pix_fmt", "yuv420p", str(ep / "media" / "tall.mp4")], check=True)
+    r = apply(ep)
+    out.append(r)
+    w, h, dur = size(ep / "media" / "tall.mp4")
+    check("a clip in a 1080x1920 composition keeps 1080x1920 (render-06)", (w, h) == (1080, 1920))
+    check("the trim keeps in-point 3 s + window 2 s + 1.5 s margin = 6.5 s (render-05)", abs(dur - 6.5) < 0.15)
+
 with tempfile.TemporaryDirectory() as tmp:
     # R14: nothing to optimize
     r = apply(episode(tmp, []))
