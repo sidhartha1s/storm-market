@@ -42,7 +42,7 @@ def identity(ep_dir):
     m = _NUMBERED.fullmatch(ep_dir.name)
     if m:
         return int(m.group(1)), m.group(2)
-    found = sorted(mm for f in ep_dir.glob("E*-metadata.md") if (mm := _METADATA.fullmatch(f.name)))
+    found = [mm for f in ep_dir.glob("E*-metadata.md") if (mm := _METADATA.fullmatch(f.name))]
     if len(found) > 1:
         sys.exit(f"[episode] FAIL: {ep_dir.name} has {len(found)} E<nn>-*-metadata.md files; one episode, one number")
     return (int(found[0].group(1)), found[0].group(2)) if found else None
