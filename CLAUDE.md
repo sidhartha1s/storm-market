@@ -72,7 +72,7 @@ An owner correction or a measured surprise lands in its single home (`references
 - Studio preview cannot play 15 min media-heavy compositions in real time. Do not offer it for review.
 - When he calls the remaining defects minor, the open work is the items he named. Anything else is a note in the summary.
 - When his named items are done, hand over the file and stop.
-- The ebook CTA is must-keep in every episode, mounted from `config.yaml channel.cta`. Where it goes is DESIGN.md "CTA contract";
+- The ebook CTA is must-keep in every episode outside `channel.cta.exempt`, mounted from `config.yaml channel.cta`. Where it goes is DESIGN.md "CTA contract";
   its position is the config window (`window`, `window_ms`, `window_by_slug`). Only the owner moves it. `sweep_episode.py` fails a missing or misplaced CTA.
 - His phrases are verbatim. Never paraphrase a line he wrote.
 - The defects he names are a sample of that KIND of defect. Find the rest of that kind. This is not licence to invent new kinds.
