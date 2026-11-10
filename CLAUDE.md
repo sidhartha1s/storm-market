@@ -153,8 +153,7 @@ Per episode in `episodes/<slug>/`. The skill's phase map points at these step nu
    `references/mg-quickref.md` (worked example: `library/inhouse/examples/joplin-stat-panel.html`). Assets in `media/`, CTA staged into `media/cta/`.
 5. Render: see "the render is the LAST step".
 6. QC, in order: (a) walk every graphic, card and clip as a viewer and fix what idles; (b) `run_gates.py` all green
-   (clip reuse: DESIGN.md "Cadence + sync rules"); checker output is a list to eyeball against the frames, not a work
-   order; (c) verify changed compositions per `references/mg-quickref.md` "Verify"; (d) after the render only,
+   (clip reuse: DESIGN.md "Cadence + sync rules"); checker output is a list to eyeball, not a work order; (c) verify changed compositions per `references/mg-quickref.md` "Verify"; (d) after the render only,
    `scripts/verify_render.sh <episode-dir> <basename> <draft|full>` (required: the mode you gave `render.cmd`). Never call a rule fixed from your shot map: re-run the gates on the final `index.html`.
 7. Deliverables: `python3 scripts/master_deliverables.py episodes/<slug> <basename>` makes the 1080p master at
    -14 LUFS and the EN SRT (needs the `nx-*` id on narration audio; English only, YouTube translates). No HEVC archive (owner 28 Sep 26: disk). The 1080p
