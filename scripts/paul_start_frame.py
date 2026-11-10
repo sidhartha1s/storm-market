@@ -14,7 +14,7 @@ import re
 import sys
 from pathlib import Path
 
-MOUNT = re.compile(r'<video\b[^>]*\bid="(ins-paul-\d+)"[^>]*\bsrc="([^"]+)"')
+import timeline
 
 
 def _jobs(path):
