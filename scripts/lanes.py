@@ -241,6 +241,13 @@ def load_ledger(ep):
 def save_ledger(ep, ledger):
     tmp = ep / "lanes.json.tmp"
     tmp.write_text(json.dumps(ledger, indent=1), encoding="utf-8")
+    # a status run reads lanes.json lock-free, and while it has the file open Windows refuses the replace (WinError 5);
+    # its read lasts ms, so the replace waits up to 5 s for it. The last try raises: a longer hold is no reader
+    for _ in range(50):
+        try:
+            return os.replace(tmp, ep / "lanes.json")
+        except PermissionError:
+            time.sleep(0.1)
     os.replace(tmp, ep / "lanes.json")
 
 
