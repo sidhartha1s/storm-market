@@ -3,8 +3,10 @@
 
 The rule and the shape menu live in references/script-quickref.md "The hook"; the tags are read
 from its "### Hook shapes" list, so this file holds no second copy. Each edit_script.md records
-`Hook shape: <tag> (<YYYY-MM-DD>)` on its own line. "Last 2 episodes" = the 2 most recently dated
-tags of OTHER episodes, dated on or before this hook, across every checkout of the repo (main and every worktree), because the
+`Hook shape: <tag> (<YYYY-MM-DD>)` on its own line. "Last 2 episodes" = the 2 OTHER tagged episodes just before
+this one in ship order: numbered episodes by their E number (scripts/episode.py), then episodes not numbered yet
+after all of them by tag date (a tag date is when the hook was written, not when the episode shipped: E08 and E09
+were tagged a day before E07). Read across every checkout of the repo (main and every worktree), because the
 episodes the owner sees side by side are usually still on unmerged branches. Minis count too: the
 owner watches them in the same feed. An untagged episode is skipped (it predates the rule).
 
@@ -15,6 +17,8 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+
+import episode
 
 TAG_LINE = re.compile(r"^Hook shape: `?([a-z-]+)`? \((\d{4}-\d{2}-\d{2})\)", re.M)
 MENU_LINE = re.compile(r"^- `([a-z-]+)`:", re.M)
@@ -30,25 +34,30 @@ def parse_tag(edit_script_text):
     return (m.group(1), m.group(2)) if m else None
 
 
+def ship_order(tagged):
+    """Sort key of a (tag, date, E number or None): numbered episodes by number, then the rest by tag date."""
+    _, date, number = tagged
+    return (number is None, number or 0, date)
+
+
 def last_two(others):
-    """The 2 most recently dated (slug, (tag, date)); slug breaks a date tie so the order is stable."""
-    return sorted(others.items(), key=lambda kv: (kv[1][1], kv[0]), reverse=True)[:2]
+    """The 2 latest (slug, (tag, date, number)) in ship order; slug breaks a tie so the order is stable."""
+    return sorted(others.items(), key=lambda kv: (ship_order(kv[1]), kv[0]), reverse=True)[:2]
 
 
-def earlier(others, date):
-    """Only hooks written on or before this one count: a later episode is not one of its last 2."""
-    return {s: td for s, td in others.items() if td[1] <= date}
+def earlier(others, own):
+    """Only episodes before this one in ship order count: a later episode is not one of its last 2."""
+    return {s: td for s, td in others.items() if ship_order(td) <= ship_order(own)}
 
 
 def check(own, others, menu):
-    """own = (tag, date) or None; others = {slug: (tag, date)}; returns a list of failures."""
+    """own = (tag, date, number) or None; others = {slug: (tag, date, number)}; returns a list of failures."""
     if own is None:
         return ["no `Hook shape: <tag> (<YYYY-MM-DD>)` line in edit_script.md"]
-    tag, date = own
+    tag = own[0]
     if tag not in menu:
         return [f"hook shape `{tag}` is not on the menu: {', '.join(menu)}"]
-    last2 = last_two(earlier(others, date))
-    return [f"hook shape `{tag}` repeats {slug} ({date})" for slug, (t, date) in last2 if t == tag]
+    return [f"hook shape `{tag}` repeats {slug} ({date})" for slug, (t, date, _) in last_two(earlier(others, own)) if t == tag]
 
 
 def checkouts(ep):
@@ -58,16 +67,25 @@ def checkouts(ep):
     return [Path(line[9:]) for line in out.splitlines() if line.startswith("worktree ")]
 
 
+def number(ep_dir):
+    ident = episode.identity(ep_dir)
+    return ident[0] if ident else None
+
+
 def other_tags(roots, slug):
-    """Latest-dated tag per other episode slug, over the given checkout roots."""
-    found = {}
+    """(tag, date, E number) per other episode slug over the given checkout roots: the latest-dated tag, and the
+    number from whichever checkout has the episode's E<nn>-*-metadata.md (often only main once it shipped)."""
+    found, numbers = {}, {}
     for root in roots:
         for es in root.glob("episodes/*/edit_script.md"):
             other = es.parent.name
             tag = parse_tag(es.read_text(encoding="utf-8", errors="replace"))
-            if other != slug and tag and (other not in found or tag[1] > found[other][1]):
+            if other == slug or not tag:
+                continue
+            if other not in found or tag[1] > found[other][1]:
                 found[other] = tag
-    return found
+            numbers[other] = numbers.get(other) or number(es.parent)
+    return {s: tag + (numbers[s],) for s, tag in found.items()}
 
 
 def main():
@@ -79,14 +97,15 @@ def main():
         sys.exit(f"HOOK_SHAPE FAIL - no edit_script.md in {ep}")
     quickref = Path(__file__).resolve().parent.parent / "references" / "script-quickref.md"
     menu = menu_tags(quickref.read_text(encoding="utf-8"))
-    own = parse_tag(es.read_text(encoding="utf-8"))
+    tag = parse_tag(es.read_text(encoding="utf-8"))
+    own = tag + (number(ep),) if tag else None
     others = other_tags(checkouts(ep), ep.name)
     fails = check(own, others, menu)
     if fails:
         print("HOOK_SHAPE FAIL - " + "; ".join(fails))
         sys.exit(1)
     print(f"HOOK_SHAPE PASS - `{own[0]}`, last 2 episodes: "
-          + (", ".join(f"{s} `{t}`" for s, (t, d) in last_two(earlier(others, own[1]))) or "none tagged yet"))
+          + (", ".join(f"{s} `{t}`" for s, (t, d, n) in last_two(earlier(others, own))) or "none tagged yet"))
 
 
 if __name__ == "__main__":
