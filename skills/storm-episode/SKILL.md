@@ -76,7 +76,8 @@ Only after 1–8: plan the episode.
 - An owner correction lands in its single home the same session (`references/mg-quickref.md`, a gate, or the right `learnings/` file). Docs sweep in the same PR.
 - Every review cut = draft render; owner previews park the pipeline until chat approval.
 - Owner picks are batched (owner 17 Oct 26): one devq page per checkpoint carries every open pick (voice, insert clips,
-  thumbnails). A pick that blocks nothing downstream (thumbnails block only the upload) never stops the line.
+  thumbnails). A pick that blocks nothing downstream (thumbnails block only the upload) never stops the line. Every
+  answer or "picks later" is recorded with `stage.py record` the turn it arrives (CLAUDE.md "Owner gates").
 - Render monitoring: poll with `/loop` every 2–3 min, never a detached background watcher and
   never ScheduleWakeup (its turns are invisible to the owner). Never resume a render from another
   session or a compaction summary: re-derive scene/render state from the run dir, manifests, and
