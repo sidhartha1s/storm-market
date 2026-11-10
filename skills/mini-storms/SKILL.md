@@ -17,7 +17,7 @@ FORMAT.md first.** `python3 scripts/stage.py` shows each episode's stage; `ops/p
 
 Repo: `C:\Users\Sidhartha\Automation Projects\storm-market`
 Format rulebook (measured from teardowns, lives in the repo): `references/mini-storms/FORMAT.md`
-Teardowns + NexLev data: `references/mini-storms/teardowns/README.md`, `references/mini-storms/nexlev-*.md`
+Teardowns + NexLev data: `references/mini-storms/teardowns/README.md`, `references/nexlev-weather.md`
 Comments of every reference video (both lanes): analysed into `references/comment-bank.md`
 
 ## Phase 0 — preflight (same as storm-episode, abbreviated)
