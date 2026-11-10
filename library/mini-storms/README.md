@@ -19,4 +19,4 @@ The rest of the grammar is inline in `index.html` (copy from `episodes/br-elnino
 - **data-feed hold**: a labelled PD loop (`.srclab` "SOURCE: NOAA CPC") held 20–40 s with a slow push; one every 2–3 min.
 - **captions**: burned word-highlight captions are NOT in v1 (needs a words.json → caption comp); add when the owner asks.
 
-Pools: `library/breaking/<event>/` + `provenance.csv` — reused across every angle on that event, reordered, never the same sequence twice.
+Pools: `library/mini-storms/<event>/` + `provenance.csv` — reused across every angle on that event, reordered, never the same sequence twice.
