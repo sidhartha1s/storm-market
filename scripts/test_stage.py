@@ -121,6 +121,11 @@ slugs = {r["slug"] for r in rows}
 assert {"ep-galveston-1900", "ep4-el-reno"} <= slugs, slugs
 # videos made before the angle-first rule have no angle.md and stay off the board
 assert not {"ep-enderlin-2025", "ep1-joplin", "ms-krakatoa-1883"} & slugs, slugs
+# a worktree whose folder was removed without `git worktree prune` is still listed by git: the board skips it
+real_checkouts = s.checkouts
+s.checkouts = lambda: real_checkouts() + [(Path("Z:/no/such/worktree"), "gone", "0" * 40)]
+assert {r["slug"] for r in s.board_rows()} == slugs
+s.checkouts = real_checkouts
 gal = next(r for r in rows if r["slug"] == "ep-galveston-1900")
 assert gal["label"] == "E09-galveston-1900" and gal["states"]["angle"] == "ok 2026-10-26", gal
 assert all(len(l) <= 160 for l in s.render_board(rows).splitlines())
