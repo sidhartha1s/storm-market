@@ -159,13 +159,18 @@ Per episode in `episodes/<slug>/`. The skill's phase map points at these step nu
    order; (c) verify changed compositions per `references/mg-quickref.md` "Verify"; (d) after the render only,
    `scripts/verify_render.sh <episode-dir> <basename> <draft|full>` (required: the mode you gave `render.cmd`). Never call a rule fixed from your shot map: re-run the gates on the final `index.html`.
 7. Deliverables: `python3 scripts/master_deliverables.py episodes/<slug> <basename>` makes the 1080p master at
-   -14 LUFS and the EN SRT (needs the `nx-*` id on narration audio). No HEVC archive (owner 28 Sep 26: disk). The 1080p
-   `-master.mp4` IS the upload file, no upscale. Finals are named in ship order, `E<nn>-<topic>-final-master.mp4` and
-   `.srt` (owner 1 Nov 26: "E01 or E02 then the topic name and then the final master, keep it simple"; E09 = Galveston,
-   new slugs start `e10-`), on both laptops, md5 checked after every copy. The moment the final master exists: move the master and SRT (both
-   gitignored) into the MAIN checkout's `episodes/<slug>/renders/` and delete every other render (drafts, the
-   pre-master final, previews). Never delete the master. The metadata and thumbnails carry the same prefix (`E<nn>-<topic>-metadata.md`, `thumbs/E<nn>-<topic>-thumb-<name>`, owner 2 Nov 26) and stay tracked in the episode folder; a copy of the metadata sits beside the master in `renders/` on both laptops, because that folder is what he opens (owner 2 Nov 26: "I still don't see the metadata"). What he opens to upload and pick is `uploads/E<nn>-<topic>/` at the repo root on both laptops (owner 4 Nov 26: the folders, not only the videos, carry the E<nn> name): hard links to the master and SRT, a copy of the metadata, and every thumbnail candidate. It is gitignored and refreshed in place. After
-   publish, commit, PR and merge the episode branch, then remove the worktree. The metadata file at publish: first URL
+   -14 LUFS and the EN SRT (needs the `nx-*` id on narration audio; English only, YouTube translates). No HEVC archive (owner 28 Sep 26: disk). The 1080p
+   `-master.mp4` IS the upload file, no upscale. Finals are `E<nn>-<topic>-final-master.mp4` and `.srt` (owner 1 Nov 26:
+   "E01 or E02 then the topic name and then the final master, keep it simple"). A new documentary takes its number at
+   kickoff: slug `e<nn>-<topic>`, the next free number `python3 scripts/episode.py` prints. The metadata and thumbnails
+   carry the same prefix (`E<nn>-<topic>-metadata.md`, `thumbs/E<nn>-<topic>-thumb-<name>`, owner 2 Nov 26) and stay
+   tracked in the episode folder. Then `python3 scripts/ship.py episodes/<slug> <basename> [--dry-run]`, in the MAIN
+   checkout: master and SRT move into `episodes/<slug>/renders/` under the final names (md5 checked), the metadata is
+   copied beside them (owner 2 Nov 26: "I still don't see the metadata"), and `uploads/E<nn>-<topic>/` at the repo root
+   (gitignored), what he opens to upload and pick (owner 4 Nov 26), gets hard links to master and SRT, the metadata, every
+   thumbnail and the titles. It never deletes: delete the other renders it lists, never the master. The same finals go to
+   the other laptop, md5 checked after every copy. After publish, `stage.py record ... published`, then commit, PR and
+   merge the episode branch and remove the worktree. The metadata file at publish: first URL
    is `channel.cta.first_link`, then the "book mentioned at mm:ss" line, no chapter marker at the CTA, category Education, type Overview.
 - Render by act (owner 26 Oct 26, sk_4): `python3 scripts/render_acts.py <slug> <draft|full> <basename> [--reuse <older-basename>]`,
   launched hidden like a render. Seams are the middle frames of the chapter blackouts; each act's picture renders
