@@ -11,7 +11,8 @@ Gates (CLAUDE.md "Owner gates"): angle, packaging (title and thumbnail), hook-in
 `published` is not a gate. `defer:<gate>` records a "picks later" and does not close the gate. The angle also counts as
 approved from angle.md's `## Angle (locked by the owner, <d Mon yy>: ...)` heading. Nothing else is ever inferred.
 
-Machine stage, first unmet of: script (edit_script.md) -> build (every lanes.py job DONE) -> draft (renders/*draft*.mp4
+An episode joins the board with its angle.md (the angle comes first, references/angle.md), so videos made before
+that rule are not listed. The `next step` column is the first unmet of: script (edit_script.md) -> build (every lanes.py job DONE) -> draft (renders/*draft*.mp4
 here or in the main checkout) -> master (main renders/<label>-final-master.mp4) -> uploads (main uploads/<label>/ holds
 the master) -> published (a `published` line). A later artifact proves the earlier steps (drafts are deleted at master
 time), so the search runs from the end. Owner gates block: angle always, hook-intro the build, draft the master,
