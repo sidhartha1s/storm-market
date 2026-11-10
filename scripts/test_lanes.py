@@ -387,7 +387,7 @@ def test_stop_all_ends_every_running_lane_by_its_log(tmp_path):
     try:
         lanes.main(["stop", str(ep), "source:intro"])
     finally:
-        lanes.ps = REAL_PS
+        lanes.ps = never
     assert "ended" not in lanes.load_ledger(ep)["jobs"]["source:intro"]
 
 
