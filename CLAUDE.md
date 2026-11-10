@@ -57,9 +57,9 @@ An owner correction or a measured surprise lands in its single home (`references
 - His gates per documentary, in this order and no others: the angle; the title and thumbnail (`references/packaging-rules.md`);
   the hook+intro; the draft preview; any paid retake. Acts are never his gate (`references/script-scaling.md` "Section
   lock"); a plan or ETA that waits on him for anything else is wrong (owner 28 Oct 26: "why I sign off the scripts
-  because I don't read it", and the titles of 3 videos never reached him). `stage.py` lets the title and thumbnail
-  block only the publish; whether it must close before the hook+intro, and whether the per-insert yes/no and the voice
-  pick are gates, are open (`ops/tasks.md` "Waiting on the owner").
+  because I don't read it", and the titles of 3 videos never reached him). `stage.py` lets title and thumbnail block
+  only the publish; whether they close before the hook+intro, and whether insert clips and the voice pick are gates,
+  is open (`ops/tasks.md` "Waiting on the owner").
 - Every approval or deferral is recorded the turn his words arrive: `python3 scripts/stage.py record episodes/<slug>
   <gate> --words "<his words, verbatim>" --shown "<file or URL>"` (`defer:<gate>` for "picks later" leaves the gate
   open). Nothing else counts as approval. `python3 scripts/stage.py` shows what every episode waits on.
