@@ -38,7 +38,7 @@ Comments of every reference video (both lanes): analysed into `references/commen
 |---|---|---|
 | 0. Topic + ANGLE LOCK (OWNER GATE) | 15 min, then his answer | Topic picked first (step details 0). Then candidate angles shown in chat per `references/angle.md` (owner 9 Oct 26: "yes minis too"); park until he locks one in words; write `episodes/ms-<slug>/angle.md`. No title, thumbnail text or hook exists before that file does |
 | 1. Packaging | 25 min | `packaging.md`: 3 titles, thumbnail text (top-of-frame, ≤4 words, BREAKING-style kicker), the 3–5 s hook sentence, intro outline, chapter list with the per-section word/time table |
-| 2. OWNER GATE | — | Owner picks title/hook in chat. The second and last gate. Never infer approval. |
+| 2. OWNER GATE | — | Owner picks title/hook in chat. The second and last gate. Never infer approval; record his words with `python3 scripts/stage.py record episodes/ms-<slug> packaging` (CLAUDE.md "Owner gates"). |
 | 3. Script | 25 min | `edit_script.md` (storm-episode segment format so `tts_episode.py` works unchanged), then the humanise pass (3b) |
 | 4. TTS + words | 10 min | `python3 scripts/voice_tool.py` at kickoff (exit 1 names the missing piece), then `python3 scripts/tts_episode.py episodes/ms-<slug>`: TTS, lane tempo, words.json in one pass |
 | 5. Sourcing | 35 min | `media/` + `provenance.csv`; pool reused from `library/mini-storms/<topic>/` first |
