@@ -8,7 +8,7 @@ so a claim is tested against whatever is actually on screen at the instant it is
 
   ERA   a modern year (>= 1990) spoken while an archival asset is on screen.
         "Archival" is read from the episode's own data, never a hardcoded folder list:
-        every media/**/provenance.csv row names a file and (usually) an `era` column —
+        every media/**/provenance.csv or <ep>/provenance.csv row names a file and (usually) an `era` column —
         the min year found there is authoritative. Rows with no `era` column fall back to
         the oldest year mentioned anywhere else in the row (fetch-date columns excluded,
         so a 2026 scrape date never masks a 1925 photograph). A row that says
