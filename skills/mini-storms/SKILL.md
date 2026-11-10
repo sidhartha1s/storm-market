@@ -28,7 +28,7 @@ Comments of every reference video (both lanes): analysed into `references/commen
    rules), then repo `CLAUDE.md` "Footage rules" + "Voice" + HARD RULEs, `config.yaml`. Skip
    DESIGN.md's documentary editing architecture except: CTA contract, Content ID protocol. Every MG rule
    (on-screen text, popfig, glass card, the presenter circle): `references/mg-quickref.md`.
-4. Pin current before the first render: `python3 scripts/pin_ritual.py --check-only`; exit 3 (stale) ⇒ run `python3 scripts/pin_ritual.py` (hidden schtasks) and PR the bump now, never mid-video; exit 4 (npm unreachable) ⇒ proceed on the current pin and note it in the kickoff summary.
+4. Pin current before the first render: `python3 scripts/pin_ritual.py --check-only`; exit 3 (stale) ⇒ run `python3 scripts/pin_ritual.py` (hidden schtasks) and PR the bump now, never mid-video; that full ritual's own exit 3 is METRIC DRIFT: no bump, read its drift table and tell the owner; exit 4 (npm unreachable) ⇒ proceed on the current pin and note it in the kickoff summary.
 5. Generator tripwire still applies: no script may WRITE episode HTML. The breaking template
    compositions in `library/mini-storms/` are copied and hand-retuned per cut.
 
