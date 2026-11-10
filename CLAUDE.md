@@ -218,7 +218,7 @@ Never use a render as a diagnostic. All green before ANY render, from the worktr
 ```
 python3 scripts/run_gates.py episodes/<slug>   # the whole pre-render suite in order; stops on the first failure
 ```
-The gate list and its order live in `scripts/run_gates.py`. Minis also run `node scripts/freeze_scan.mjs episodes/<slug>` (mini-storms skill).
+The gate list and its order live in `scripts/run_gates.py` (minis add a freeze scan: mini-storms skill).
 - Before any render: listen to the full audio mixdown and watch the hook. A layer known to be below spec means stop and report.
 - Every MG builder's brief carries `references/mg-quickref.md` BEFORE the build, so the draft is never the first place a collision shows up.
 - Do not start a render while any builder is still editing. No live subagent, quiet `git status`, then launch.
