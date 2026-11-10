@@ -323,7 +323,7 @@ def main(argv):
 
 
 def render_all(slug, mode, ep, fps, html, acts, old_by_key, pieces, out):
-    base = pieces.name
+    base, renders = pieces.name, out.parent
     plan = {"mode": mode, "fps": fps, "acts": []}
     for i, (fa, fb) in enumerate(acts, 1):
         staged = slice_html(html, fa, fb, fps)
