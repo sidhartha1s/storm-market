@@ -97,7 +97,6 @@ def busy_refusal():
 # The Joplin draft (18 Oct 26) went to render with 0 corner-circle mounts and no music bed while
 # both shipped documentaries had them. Owner: "it should be fucking checked before you fucking fire render".
 
-DOC_SLUG = "ep-"
 TAG = re.compile(r'<(audio|video)\b((?:[^>"]|"[^"]*")*)>', re.I)
 ATTR = re.compile(r'([\w-]+)(?:="([^"]*)")?')
 BED_COVER_MIN = 0.80
