@@ -204,11 +204,13 @@ with tempfile.TemporaryDirectory() as d:
                "marker": (ep / f"render_acts_{Path(base).parts[1]}_done.marker").exists()}
         if composition != "index.html":
             rec["staged"] = (ep / composition).read_text(encoding="utf-8")
-        if not seen:  # what render.cmd does with the lock: --hold must pass through, --release must not free it
-            busy = [sys.executable, str(S / "render_busy.py")]
-            h = subprocess.run(busy + ["--hold", f"render {slug} {mode}"], capture_output=True, text=True, timeout=30)
-            subprocess.run(busy + ["--release"], capture_output=True, timeout=30)
-            rec["hold"] = (h.returncode, h.stdout, render_busy.read_lock(lock) == rec["lock"])
+        if not seen:  # render.cmd's own lock lines, from a cmd.exe: --hold must pass through, --release must not free it
+            busy = f'"{sys.executable}" "{S / "render_busy.py"}"'
+            bat = root / "hold.cmd"
+            bat.write_text(f'@echo off\n{busy} --hold "render {slug} {mode}"\necho HOLD %ERRORLEVEL%\n{busy} --release\n',
+                           encoding="utf-8")
+            h = subprocess.run(["cmd", "/c", str(bat)], capture_output=True, text=True, timeout=30)
+            rec["hold"] = (h.stdout, render_busy.read_lock(lock) == rec["lock"])
         seen.append(rec)
         if fail_on and base.endswith(fail_on):
             raise SystemExit("render.cmd failed (stub)")
