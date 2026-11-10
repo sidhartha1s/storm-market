@@ -4,7 +4,7 @@ Authoritative window list = every element on a picture track carrying
 data-start + data-duration: <section> stills, <video> clips, and
 sub-composition hosts. Audio elements live on their own tracks and are excluded.
 
-Coverage is computed over PICTURE_TRACKS only. Tracks above those carry
+Coverage is computed over timeline.PICTURE_TRACKS only (timeline.picture_holes). Tracks above those carry
 overlays (date cards, source chips, quote cards, lower-thirds) that sit ON TOP
 of picture; counting them as coverage hides real black gaps underneath.
 """
@@ -14,7 +14,6 @@ from pathlib import Path
 
 import timeline
 
-PICTURE_TRACKS = timeline.PICTURE_TRACKS
 
 ep = Path(sys.argv[1])
 h = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
@@ -50,7 +49,7 @@ print(f"windows: {len(rows)}  median: {lens[len(lens)//2]:.2f}s  "
 # coverage: any moment with no picture-track window is black
 total = float(re.search(r'data-duration="([\d.]+)"', h).group(1))
 holes = timeline.picture_holes(wins, total)
-print(f"uncovered picture gaps (tracks {sorted(PICTURE_TRACKS)}): {len(holes)}")
+print(f"uncovered picture gaps (tracks {list(timeline.PICTURE_TRACKS)}): {len(holes)}")
 for a, b in holes:
     print(f"  {ts(a)} -> {ts(b)}  ({b-a:.2f}s BLACK)")
 
