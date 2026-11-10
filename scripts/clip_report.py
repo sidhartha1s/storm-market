@@ -49,14 +49,7 @@ print(f"windows: {len(rows)}  median: {lens[len(lens)//2]:.2f}s  "
 
 # coverage: any moment with no picture-track window is black
 total = float(re.search(r'data-duration="([\d.]+)"', h).group(1))
-spans = sorted((at, at + dur) for at, dur, tr, *_ in rows if tr in PICTURE_TRACKS)
-cur, holes = 0.0, []
-for a, b in spans:
-    if a > cur + 0.05:
-        holes.append((cur, a))
-    cur = max(cur, b)
-if cur < total - 0.05:
-    holes.append((cur, total))
+holes = timeline.picture_holes(wins, total)
 print(f"uncovered picture gaps (tracks {sorted(PICTURE_TRACKS)}): {len(holes)}")
 for a, b in holes:
     print(f"  {ts(a)} -> {ts(b)}  ({b-a:.2f}s BLACK)")
