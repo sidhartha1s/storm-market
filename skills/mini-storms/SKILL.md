@@ -13,7 +13,7 @@ cut like news (stitched clips + stills with motion, red stat pops, vignette, mus
 and shipped in **≤3 hours wall-clock including render**, with two owner gates: the angle, then the packaging.
 
 **From 2026-09-15 the news lane ships Format C (rolling present-tense update) by default; read that section of
-FORMAT.md first, then the ops slate in `ops/programme-14d.md` and the live cards in `ops/tracker.json`.**
+FORMAT.md first.** `python3 scripts/stage.py` shows each episode's stage; `ops/programme-14d.md` and `ops/tracker.json` are no longer kept current.
 
 Repo: `C:\Users\Sidhartha\Automation Projects\storm-market`
 Format rulebook (measured from teardowns, lives in the repo): `references/mini-storms/FORMAT.md`
