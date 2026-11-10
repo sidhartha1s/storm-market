@@ -444,10 +444,13 @@ def write(a, ep, lock):
                 sys.exit(f"[lanes] FAIL: not starting: {why}")
             run = {"started": now, "host": a.host, "minutes": a.minutes}
             if a.lane_cmd:
-                run = launch(dict(run, cmd=a.lane_cmd, log=a.log, cwd=a.cwd or str(SCRIPTS.parent)), profile_order(a.profile))
+                run = launch(dict(run, cmd=a.lane_cmd, log=a.log, cwd=a.cwd or str(SCRIPTS.parent)), profile_order(a.host, a.profile))
                 if not run:
-                    sys.exit(f"[lanes] FAIL: no profile in {ACCOUNTS} answers on {a.host}")
+                    sys.exit(f"[lanes] FAIL: no claude profile answers on {a.host}")
     if a.cmd == "claim":
+        held = ledger.get("orchestrator")
+        if held and held != a.session:  # said, not refused: the old session may be dead, and only the owner knows
+            print(f"[lanes] claim {ep.name}: takes over from session {held}; its Stop gate no longer covers this episode")
         ledger["orchestrator"] = a.session  # only claim stamps it, so a sibling session's start/end never takes the gate
     for job in a.jobs:
         if a.cmd == "start":
