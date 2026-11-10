@@ -77,9 +77,11 @@ def align_captions(whisper_words, script_text):
 
 
 def ts(t):
-    h, rem = divmod(t, 3600)
-    m, s = divmod(rem, 60)
-    return f"{int(h):02d}:{int(m):02d}:{int(s):02d},{int(round((s % 1) * 1000)):03d}"
+    # round the total first: rounding only the fraction turned 1.9996 s into the invalid 00:00:01,1000
+    h, rem = divmod(round(t * 1000), 3_600_000)
+    m, rem = divmod(rem, 60_000)
+    s, ms = divmod(rem, 1000)
+    return f"{h:02d}:{m:02d}:{s:02d},{ms:03d}"
 
 
 def main():
