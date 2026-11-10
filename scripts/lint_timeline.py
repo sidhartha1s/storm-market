@@ -182,9 +182,9 @@ def main():
     structure = [(float(a), float(a) + float(b)) for a, b in re.findall(
         r'<section\b[^>]*class="[^"]*\b(?:blackout|hold)\b[^"]*"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', html)]
 
-    # OUTSIDE VOICES and DEAD AIR: checks 7 and 8 in the docstring, epN documentaries not yet shipped.
+    # OUTSIDE VOICES and DEAD AIR: checks 7 and 8 in the docstring, documentaries not yet shipped.
     slug = ep.resolve().name
-    voice_rules = bool(re.match(r"ep\d*-", slug)) and slug not in (
+    voice_rules = episode.is_documentary(slug) and slug not in (
         ((_cfg.get("channel") or {}).get("voice_captions") or {}).get("exempt") or [])
     live = re.sub(r"<!--.*?-->", "", html, flags=re.S)   # a commented-out tag is not mounted
     sounds = [(m.group(0), outside_voice(m.group(0))) for m in re.finditer(r"<(?:audio|video)\b[^>]*>", live)]
