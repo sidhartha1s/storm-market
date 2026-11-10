@@ -14,13 +14,15 @@ import subprocess
 import sys
 from pathlib import Path
 
+import timeline
+
 
 def narration(html, lo, hi):
     """(start_s, duration_s, src) of every narration element starting in [lo, hi), in timeline order."""
     segs = []
     for tag in re.findall(r"<audio\b[^>]*>", html):
         a = dict(re.findall(r'([\w-]+)="([^"]*)"', tag))
-        if re.match(r"nx-(?!ins)", a.get("id", "")) and lo <= float(a["data-start"]) < hi:
+        if timeline.is_narration(a.get("id", "")) and lo <= float(a["data-start"]) < hi:
             segs.append((float(a["data-start"]), float(a["data-duration"]), a["src"]))
     return sorted(segs)
 

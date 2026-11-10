@@ -118,7 +118,7 @@ def _bed_gap(mounts, _episode=None):
                   if t == "audio" and "data-bed" in a and {"bed", "mus"} & set(a.get("id", "").split("-")))
     if not beds:
         return "0 bed <audio> mounts (data-bed with 'bed' or 'mus' in the id)"
-    narration = [timeline.window(a) for t, a in mounts if t == "audio" and re.match(r"nx-(?!ins)", a.get("id", ""))]  # same narration rule as lint_timeline / circle_audio
+    narration = [timeline.window(a) for t, a in mounts if t == "audio" and timeline.is_narration(a.get("id", ""))]
     if not narration:
         return "no nx- narration to measure the bed against"
     lo, hi = min(s for s, _ in narration), max(e for _, e in narration)

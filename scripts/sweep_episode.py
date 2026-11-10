@@ -138,12 +138,16 @@ else:
         lo, hi = _cta_window
         if not (lo <= s / total <= hi):
             cta_bad.append(f"starts at {s}s = {s / total:.0%} of {total}s — outside {lo:.0%}-{hi:.0%}")
-        for n in re.finditer(r'<audio\b[^>]*id="(nx-(?!ins)[^"]*)"[^>]*>', h):
+        for n in re.finditer(r'<audio\b[^>]*\sid="([^"]*)"[^>]*>', h):
+            if not timeline.is_narration(n.group(1)):
+                continue
             ns, nd = (re.search(r'data-start="([\d.]+)"', n.group(0)),
                       re.search(r'data-duration="([\d.]+)"', n.group(0)))
             if ns and nd and float(ns.group(1)) < s + d and float(ns.group(1)) + float(nd.group(1)) > s:
                 cta_bad.append(f"narration {n.group(1)} overlaps the CTA (must be silent under it)")
-        for o in re.finditer(r'<(?:audio|video)\b[^>]*id="(?:nx-)?ins[^"]*"[^>]*>', h):
+        for o in re.finditer(r'<(?:audio|video)\b[^>]*\sid="([^"]*)"[^>]*>', h):
+            if not timeline.is_insert(o.group(1)):
+                continue
             os_ = re.search(r'data-start="([\d.]+)"', o.group(0))
             muted = o.group(0).startswith("<video") and not re.search(r'data-volume="1(?:\.0+)?"', o.group(0))
             if cta_name not in o.group(0) and not muted and os_ and -60 < float(os_.group(1)) - s < d + 60:
@@ -442,8 +446,10 @@ def _wav_duration(p):
         return None
 
 stale = []
-for m in re.finditer(r'<audio\b[^>]*id="(nx-(?!ins)[^"]*)"[^>]*>', h):
+for m in re.finditer(r'<audio\b[^>]*\sid="([^"]*)"[^>]*>', h):
     a, eid = m.group(0), m.group(1)
+    if not timeline.is_narration(eid):
+        continue
     src = re.search(r'src="([^"]+)"', a)
     du = re.search(r'data-duration="([\d.]+)"', a)
     if not (src and du):

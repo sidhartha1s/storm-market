@@ -59,8 +59,8 @@ def outside_voice(tag):
     idm = re.search(r'\sid="([^"]+)"', tag)   # \s: hyperframes stamps data-hf-id="hf-..." before the real id
     vid = idm.group(1) if idm else ""
     s, d = _num(tag, "data-start"), _num(tag, "data-duration")
-    # narration is nx- but not nx-ins (circle_audio.py, build_srt.py, sweep_episode.py); every sx- bed carries data-bed
-    if (re.match(r"nx-(?!ins)", vid) or vid.startswith(("ins-paul", "ins-cta")) or "data-bed" in tag
+    # narration is nx- but not nx-ins (timeline.is_narration); every sx- bed carries data-bed
+    if (timeline.is_narration(vid) or vid.startswith(("ins-paul", "ins-cta")) or "data-bed" in tag
             or re.search(r'src="[^"]*cta/', tag) or s is None or d is None):
         return None
     # audible as audio_levels.py reads it: data-volume defaults to 1.0; a video is silent only when muted
