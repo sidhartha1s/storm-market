@@ -377,6 +377,15 @@ def main():
         sys.exit(3)
     if "--launch" not in sys.argv and "--light" not in sys.argv:  # --light may run beside a heavy job; render.cmd already holds the lock (--hold) when it gets to --launch
         wait_free()
+    if "--launch" in sys.argv:  # no render beside a running gate, Playwright browser or snapshot worker (CLAUDE.md)
+        shown = None
+        while jobs := running_jobs():
+            if {j[0] for j in jobs} != shown:
+                print(f"[render_busy] WAITING — {len(jobs)} heavy job(s) running; the render starts when they end:", flush=True)
+                for pid, kind, cmd in jobs:
+                    print(f"    {pid} {kind}: {cmd[:160]}", flush=True)
+                shown = {j[0] for j in jobs}
+            time.sleep(POLL_S)
     # the RAM floor protects a RENDER about to start (--launch); a gate's single headless Chromium (~300 MB) only needs 'no render alive'
     free = free_gb()
     if "--launch" in sys.argv:
