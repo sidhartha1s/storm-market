@@ -433,7 +433,7 @@ def write(a, ep, lock):
         if a.cmd == "hold" and not a.reason.strip():
             sys.exit("[lanes] FAIL: hold needs --reason; it shows in every status")
         if a.lane_cmd and (a.cmd != "start" or len(a.jobs) != 1 or not a.log or "{cli}" not in a.lane_cmd
-                           or not (a.cwd or a.host == "local")):
+                           or not (a.cwd or is_local(a.host))):
             sys.exit("[lanes] FAIL: --cmd is for start with one job, a --log, {cli} where the profile goes, and --cwd off local")
         busy = [s["job"] for s in states if s["job"] in a.jobs and s["state"] in ("RUNNING", "DONE")]
         if a.lane_cmd and busy:
