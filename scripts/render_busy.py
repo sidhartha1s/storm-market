@@ -9,7 +9,9 @@ playwright_env.mjs), optimize_clips.py, and the slice/draft launchers.
 Owner rule (2026-09-11): keep ≥1 GB free for the whole render, no compromise. --launch <file>
 picks the most capture workers (RENDER_WORKERS down to 1) whose need_gb() fits free RAM and writes
 that number to <file> for render.cmd; fewer workers beats waiting (owner 18 Oct 26). It refuses only
-when even 1 worker does not fit (MIN_FREE_GB; RENDER_MIN_FREE_GB overrides that 1-worker floor).
+when even 1 worker does not fit (MIN_FREE_GB; RENDER_MIN_FREE_GB overrides that 1-worker floor). Before that it
+waits while a --jobs job runs (a gate suite, a Playwright gate, the snapshot worker), skipping one that waits for the
+heavy lock the render already holds (running_jobs()), so render.cmd never starts on a gate nor sweeps its _*_tmp.html.
 
 --launch also pins every headless Chrome hyperframes can launch to the dedicated GPU
 (HKCU DirectX GpuPreference=2). Owner 2026-09-15: every render before that day captured on the
