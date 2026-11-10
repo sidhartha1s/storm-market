@@ -20,17 +20,21 @@ which jobs were launched and when they ended, and which are held.
   python3 scripts/lanes.py stop   episodes/<slug> all|<job>  # stop-all: end each RUNNING, STALE or FAILED lane's tree; ended only once stopped
 
 Launching (why: lanes sat dead for hours on an exhausted profile or a full ZBook). `start --cmd` runs one job's command
-itself, hidden and detached, on host local or zbook, with {cli} replaced by the profile (claudeN, the wrapper that sets
-CLAUDE_CONFIG_DIR), started in --cwd (default: this checkout; required on zbook) and all output sent to --log.
+itself, hidden and detached, on host local, zbook or asus (MACHINES; the alias of the laptop this runs on is local, so
+from the ZBook `zbook` needs no ssh), with {cli} replaced by the profile (claudeN, the %USERPROFILE%\\bin\\claudeN.cmd
+wrapper: a token from ~/.claude-tokens, or a login folder under ~/.claude-accounts for claude6 and claudemax),
+started in --cwd (default: this checkout; required off this machine) and all output sent to --log.
 It refuses a job already RUNNING or DONE, and an ssh drop during the launch is never a reason to launch again:
 the host is asked whether the lane's process runs, and one that cannot be read is recorded as RUNNING. The three rules:
-  1. it first probes the profile (`claude -p 'reply with the single word ok' --model haiku` under its
-     CLAUDE_CONFIG_DIR); any reply but "ok" (a limit, a logged-out profile, an error) moves it to the next
-     ~/.claude-accounts/claude* profile. It never waits for a reset.
+  1. it first probes the profile by running its wrapper (`claudeN -p 'reply with the single word ok' --model haiku`,
+     the same command the lane runs); any reply but "ok" (a limit, a logged-out profile, an error) moves it to the
+     next profile that can run on that host (a wrapper there with a token or a login). It never waits for a reset.
   2. every start refuses while the host has MIN_FREE_GB or less free (a RAM floor, not a lane cap: lanes run on the API)
   3. a running lane whose log tail says it hit a limit is FAILED (blocking). `status` only reports it, since the Stop
      hook calls status; `relaunch` moves it to the next profile that answers, and backs off if another lanes.py
      holds the lock
+A running lane whose process is gone reads READY, like an ended one ("relaunch it, or sync its output back"); a host
+that cannot be read leaves it RUNNING (unknown is not dead). `claim` over another session's claim says whose it was.
 Every command but status reads and writes the ledger only while holding <ep>/lanes.json.lock (created exclusively; a
 write waits up to LOCK_WAIT_S for it; one older than LOCK_MIN minutes belongs to a dead holder and is taken over).
 
