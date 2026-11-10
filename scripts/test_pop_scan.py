@@ -88,8 +88,8 @@ if HAVE_FFMPEG:
         (ep / "index.html").write_text(
             '<div id="root" data-composition-id="x" data-start="0" data-width="320" '
             'data-height="240" data-duration="2.00" data-fps="25"></div>', encoding="utf-8")
-        # libx264 clip, so the log asks only for the browser GPU (stream_gate.used_vs_asked)
-        (ep / "render_full.log").write_text(
+        # libx264 clip, so the log asks only for the browser GPU (stream_gate.used_vs_asked); render.cmd keeps it beside the mp4
+        (ep / "renders" / "clean-final.log").write_text(
             "   GPU: browser GPU (forced)\n"
             "browserGpuMode probe worker0 NVIDIA GeForce GTX 1650\n"
             'streaming-encode gate {"enabled":true,"reason":"single_worker"}\n', encoding="utf-8")
