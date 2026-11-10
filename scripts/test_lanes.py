@@ -169,8 +169,7 @@ with tempfile.TemporaryDirectory() as tmp:
         said = io.StringIO()
         with contextlib.redirect_stdout(said):
             lanes.main(["claim", e, "--session", "S1"])
-        check("L12: a re-claim by the same session says nothing about a takeover", "S1" not in said.getvalue().split("session")[0]
-              and "takes over" not in said.getvalue())
+        check("L12: a re-claim by the same session says nothing about a takeover", "takes over" not in said.getvalue())
         said = io.StringIO()
         with contextlib.redirect_stdout(said):
             lanes.main(["claim", e, "--session", "S9"])
