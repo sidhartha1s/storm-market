@@ -63,7 +63,7 @@ def plan(ep, basename, main_root):
     if not meta.exists():
         fail(f"{meta} is missing: write and commit the metadata before shipping")
     d = stage.deliverables(main_root, ep.name, label)
-    steps = []
+    steps, source = [], {}
     for kind, incoming_name in (("master", f"{basename}-master.mp4"), ("srt", f"{basename}.srt")):
         final = d[kind]
         incoming = [p for p in dict.fromkeys((ep / "renders" / incoming_name, d["renders"] / incoming_name)) if p.exists()]
@@ -72,16 +72,18 @@ def plan(ep, basename, main_root):
                 if md5(p) != md5(final):
                     fail(f"{final} exists and differs (md5) from the incoming {p}; nothing was overwritten")
             steps.append(("keep", None, final))
+            source[kind] = final
         elif incoming:
             steps.append(("move", incoming[0], final))
+            source[kind] = incoming[0]
         else:
             fail(f"no {final.name} and no {incoming_name} in {ep / 'renders'} or {d['renders']}")
     meta_bytes = meta.read_bytes()
     want = [("write", meta_bytes, d["metadata"])]
     for kind in ("master", "srt"):
         dst = d[f"up_{kind}"]
-        if dst.exists() and not same_content(d[kind], dst) and d[kind].exists():
-            fail(f"{dst} differs (md5) from {d[kind]}; nothing was overwritten")
+        if dst.exists() and not same_content(source[kind], dst):
+            fail(f"{dst} differs (md5) from {source[kind]}; nothing was overwritten")
         steps.append(("keep" if dst.exists() else "link", d[kind], dst))
     want.append(("write", meta_bytes, d["up_metadata"]))
     for t in sorted((ep / "thumbs").glob(f"{label}-thumb-*")):
