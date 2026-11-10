@@ -124,6 +124,13 @@ code, out = npc(INSERT_FILES)
 assert 'nx-ins-911' not in out and 'segments checked: 1/1' in out, f'G9: nx-ins counted as narration: {out}'
 print('narration_picture_check self-check PASS (G4 own-body window names, G9 nx-ins is an insert)')
 
+# G2: four episodes keep provenance.csv at the episode root, not under media/; the era check must read it there too
+ROOT_PROV_FILES = {k: v for k, v in ERA_FILES.items() if k != 'media/act1/provenance.csv'}
+ROOT_PROV_FILES['provenance.csv'] = ERA_FILES['media/act1/provenance.csv']
+code, out = npc(ROOT_PROV_FILES)
+assert code == 1 and 'says "2025"' in out, f'G2: a root provenance.csv was not read: {out}'
+print('narration_picture_check self-check PASS (G2 root provenance.csv)')
+
 GSAP = (S / '..' / 'library' / 'gallery' / 'gsap.min.js').resolve()
 
 
