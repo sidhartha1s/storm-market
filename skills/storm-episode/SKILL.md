@@ -44,9 +44,11 @@ Repo: `C:\Users\Sidhartha\Automation Projects\storm-market`
    script, voice reference, model login) before scripting toward TTS, and tell the owner if it is the login.
    A FAIL that ends "the next narration run downloads them" needs nothing.
 
-8. **Claim the episode:** `python3 scripts/lanes.py claim episodes/<slug>` (once per session, again after a resume).
-   The Stop hook `lane-gate.py` then refuses to end a turn while any of the episode's jobs is READY, STALE or FAILED;
-   launch each claude lane with `lanes.py start --cmd` (the launch rules are in its docstring), run `lanes.py relaunch` for a FAILED lane (it hit a limit), record any other launch with `lanes.py start`, its end with `lanes.py end`, and an owner or machine wait with `lanes.py hold --reason`.
+8. **Board and claim:** `python3 scripts/stage.py` shows every episode's next step and open owner gates. Then
+   `python3 scripts/lanes.py claim episodes/<slug>` for each episode you work on (once per session, again after a resume).
+   Where the Stop hook `lane-gate.py` is installed it refuses to end a turn while any of the episode's jobs is READY,
+   STALE or FAILED; it is not installed on the ZBook, so there run `python3 scripts/lanes.py status episodes/<slug>`
+   before ending a turn. Launch each claude lane with `lanes.py start --cmd` (the launch rules are in its docstring), run `lanes.py relaunch` for a FAILED lane (it hit a limit), record any other launch with `lanes.py start`, its end with `lanes.py end`, and an owner or machine wait with `lanes.py hold --reason`.
 
 Only after 1–8: plan the episode.
 
