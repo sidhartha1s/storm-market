@@ -210,9 +210,10 @@ def record(ep, gate, words, shown, where, today=None):
         sys.exit(f"[stage] FAIL: no episode folder {ep}")
     line = format_line(gate, today or datetime.date.today().isoformat(), words, where, shown)
     rec = ep / "gates.md"
-    prefix = "" if not rec.exists() else ("" if rec.read_bytes().endswith(b"\n") else "\n")
+    # a hand-saved file without a final newline would otherwise get this line glued onto its last one
+    prefix = HEADER if not rec.exists() else "" if rec.read_bytes().endswith(b"\n") else "\n"
     with open(rec, "a", encoding="utf-8", newline="\n") as f:
-        f.write((HEADER if not rec.exists() or rec.stat().st_size == 0 else prefix) + line + "\n")
+        f.write(prefix + line + "\n")
     return line
 
 
