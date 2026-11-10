@@ -52,10 +52,10 @@ with tempfile.TemporaryDirectory() as t:
     with contextlib.redirect_stdout(out):
         ship.main([str(ep), "test-final", "--dry-run"])
     assert snapshot(Path(t)) == before, "dry run changed files"
-    assert out.getvalue().count("[dry-run] ") == 9 and "move" in out.getvalue(), out.getvalue()
+    assert out.getvalue().count("[dry-run] ") == 8 and "move" in out.getvalue(), out.getvalue()
 
     steps, others = ship.plan(ep, "test-final", main)
-    assert [op for op, _, _ in steps] == ["move", "move", "link", "link", "write", "write", "write", "write", "write"], steps
+    assert [op for op, _, _ in steps] == ["move", "move", "link", "link", "write", "write", "write", "write"], steps
     assert {p.name for p in others} == {"test-final.mp4", "test-draft.mp4"}, others
     ship.apply(steps)
 
