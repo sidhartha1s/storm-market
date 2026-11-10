@@ -236,9 +236,11 @@ with tempfile.TemporaryDirectory() as d:
         check("R5: render.cmd's --hold passes through on the run's token and its --release leaves the run's lock",
               h[0].strip() == "HOLD 0" and h[1])
         check("R6: each act renders its own slice, staged while the run holds the lock",
-              [r["staged"] for r in acts_seen] == [ra.slice_html(COMP, fa, fb, 15) for fa, fb in acts15])
+              [r["staged"] for r in acts_seen] == [ra.slice_html(COMP, fa, fb, 15) for fa, fb in acts15]
+              and all(r["lock"] and r["lock"]["pid"] == os.getpid() for r in acts_seen))
+        done = ep / "render_acts_v1_done.marker"
         check("R12: no render_acts done marker while acts render; 0 once the concat is checked",
-              not any(r["marker"] for r in seen) and (ep / "render_acts_v1_done.marker").read_text() == "0\n")
+              not any(r["marker"] for r in seen) and done.exists() and done.read_text() == "0\n")
         seen.clear()
         fail_on = "act02"
         try:
