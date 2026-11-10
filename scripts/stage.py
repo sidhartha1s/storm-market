@@ -234,7 +234,7 @@ def main(argv=None):
         if not ep.is_dir():
             sys.exit(f"[stage] FAIL: no episode folder {ep}")
         r = read_episode(ep, checkouts()[0][0])
-        print(f"{r['label']}  {r['slug']}  ({ep})\nstage:      {r['stage']}\nwaiting on: {r['waiting']}")
+        print(f"{r['label']}  {r['slug']}  ({ep})\nnext step:  {r['stage']}\nwaiting on: {r['waiting']}")
         for g in GATES:
             print(f"  {g:<11}{r['states'][g]}")
         rec = ep / "gates.md"
