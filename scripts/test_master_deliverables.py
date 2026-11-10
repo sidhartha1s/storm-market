@@ -64,6 +64,34 @@ else:
             tags = json.loads(probe.stdout)["streams"][0]
             check("master-03 master carries color_space=bt709", tags.get("color_space") == "bt709", tags)
             check("master-04 master carries color_range=tv", tags.get("color_range") == "tv", tags)
+            v = md.measure(master)
+            check("master-05 the master measures -14 LUFS +/-0.5 and TP <= -0.9 dBTP",
+                  abs(float(v["input_i"]) - md.TARGET_I) <= md.TOL_I and float(v["input_tp"]) <= -0.9, v)
+            check("master-06 no temp master is left beside it", not list((ep / "renders").glob("*.tmp.mp4")))
+
+        # audit R9 (11 Nov 26): a master that failed the loudness verify stayed on disk under the shipping name, and a
+        # re-run overwrote a good master before verifying. The verify pass is stubbed to miss tolerance (the real
+        # encode runs); an earlier good master must survive and no file may be left under either name.
+        master.write_bytes(b"an earlier verified master")
+        real_measure, calls = md.measure, []
+
+        def bad_verify(path):
+            calls.append(path)
+            m = real_measure(path)
+            return m if len(calls) == 1 else {**m, "input_i": str(float(m["input_i"]) + 3)}
+        md.measure, sys.argv = bad_verify, ["master_deliverables.py", str(ep), "test-final"]
+        try:
+            md.main()
+            code = 0
+        except SystemExit as e:
+            code = e.code
+        finally:
+            md.measure = real_measure
+        check("master-07 a master out of loudness tolerance fails (exit message)", isinstance(code, str) and "FAIL" in code, code)
+        check("master-08 the failed master is not left under the shipping name; the earlier master is untouched",
+              master.read_bytes() == b"an earlier verified master", master.stat().st_size)
+        check("master-09 the failed temp master is removed", not list((ep / "renders").glob("*.tmp.mp4")),
+              list((ep / "renders").iterdir()))
 
 print()
 if FAILS:
