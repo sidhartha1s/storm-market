@@ -37,6 +37,7 @@ from pathlib import Path
 
 SCRIPTS = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPTS))
+from lanes import is_local  # noqa: E402  the one owner of which host alias is this machine
 from render_preflight import parse_pin  # noqa: E402
 
 ZBOOK_REPO = r"C:\Users\Sidhartha\Automation Projects\storm-market"
