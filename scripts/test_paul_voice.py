@@ -57,7 +57,7 @@ def main():
         def gap(src, sidecar=None):
             if sidecar is not None:
                 (paul / (Path(src).name + ".vc.json")).write_text(json.dumps(sidecar), encoding="utf-8")
-            return rp._voice_gap(rp._mounts(mount(src)), ep)
+            return rp._voice_gap(timeline.mounts(mount(src)), ep)
 
         cases = [
             ("unconverted -v3 mount", gap("media/paul/ins-paul-1-v3.mp4"), "not a -vc file"),
