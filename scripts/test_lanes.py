@@ -3,9 +3,13 @@
 Builds throwaway episode fixtures in a temp dir. Each case proves a job reaches the state the gate relies on;
 a READY job that reads DONE, or a dead lane that reads RUNNING, is exactly the idle-lane failure this guards.
 """
+import contextlib
+import io
 import json
 import os
+import socket
 import subprocess
+import threading
 import sys
 import tempfile
 import time
