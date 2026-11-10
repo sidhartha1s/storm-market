@@ -31,6 +31,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+from media_budget import clip_windows
+
 ep = Path(sys.argv[1])
 apply = "--apply" in sys.argv
 if apply and subprocess.run([sys.executable, str(Path(__file__).with_name('render_busy.py'))]).returncode:
