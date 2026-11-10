@@ -198,20 +198,30 @@ check("render-08 NEW: the done marker is deleted before any gate runs",
 check("render-08 NEW: the missing-index.html and :usage paths write a marker",
       render_cmd.count("render_last_error.marker") == 2)
 
-# render-12: verify_render.sh judges a draft by render_draft.fps, which only this line writes. Delete
-# or move it and render-11 (a fixture file) stays green while every real draft exits 1.
-FPS_LINE = 'echo %_FPS% > "render_%MODE%.fps"'
-
-
-def fps_line_in_place(text):
-    i = text.find(FPS_LINE)
-    return 0 <= text.find('cd /d "%EP%"') < i < text.find("call npx hyperframes")
-
-
-check("render-12 NEW: render.cmd records the effective fps after cd into the episode and before the render",
-      fps_line_in_place(render_cmd))
-check("render-12 NEW: the position check fails on a render.cmd without that line",
-      not fps_line_in_place(render_cmd.replace(FPS_LINE, "")))
+# render-12 / audit R11: verify_render.sh judges renders/<base>.mp4 by renders/<base>.log and .fps, which only
+# render.cmd's post-render lines write. Run those real lines (cut from render.cmd) in a temp episode dir, for a plain
+# basename and for the acts/<base>/actNN form render_acts.py passes (forward slashes in a cmd path).
+_lines = render_cmd.splitlines()
+_a = next(i for i, l in enumerate(_lines) if l.startswith('if exist "renders\\%OUTBASE%.mp4"'))
+_b = next(i for i in range(_a, len(_lines)) if _lines[i] == ")")
+with tempfile.TemporaryDirectory() as d:
+    dd = Path(d)
+    (dd / "renders" / "acts" / "v1").mkdir(parents=True)
+    (dd / "render_draft.log").write_text("browserGpuMode probe worker0 NVIDIA this run\n", encoding="utf-8")
+    for base, has_mp4 in (("ep-x-draft-v2", True), ("acts/v1/act01", True), ("never-rendered", False)):
+        if has_mp4:
+            (dd / "renders" / f"{base}.mp4").write_bytes(b"")
+        bat = dd / "post.cmd"
+        bat.write_text("@echo off\nset MODE=draft\nset _FPS=15\n" + f"set OUTBASE={base}\n" + "\n".join(_lines[_a:_b + 1])
+                       + "\n", encoding="utf-8")
+        r = subprocess.run(["cmd", "/c", str(bat)], cwd=d, capture_output=True, text=True)
+        log, fps = dd / "renders" / f"{base}.log", dd / "renders" / f"{base}.fps"
+        if has_mp4:
+            check(f"render-12/R11: render.cmd leaves this render's log and fps beside renders/{base}.mp4",
+                  log.exists() and "NVIDIA this run" in log.read_text(encoding="utf-8")
+                  and fps.exists() and fps.read_text().strip() == "15", f"rc={r.returncode} {r.stdout} {r.stderr}")
+        else:
+            check("render-12/R11: no log or fps for a render that left no mp4", not log.exists() and not fps.exists())
 
 # Dry harness: exercise render.cmd's error path for real (no render reached — it exits
 # before preflight/render_busy/npx). Cleans up the marker it writes.
