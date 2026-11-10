@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Every episode's stage and what it waits on, plus the record of the owner's approvals.
 
-  python3 scripts/stage.py                       # the board: one row per episode folder with edit_script.md or angle.md
+  python3 scripts/stage.py                       # the board: one row per episode folder with angle.md or gates.md
   python3 scripts/stage.py episodes/<slug>       # one episode in detail, every gates.md line verbatim
   python3 scripts/stage.py record episodes/<slug> <gate> --words "<his words, verbatim>" --shown "<file or URL>" [--where chat|devq]
 
@@ -11,7 +11,8 @@ Gates (CLAUDE.md "Owner gates"): angle, packaging (title and thumbnail), hook-in
 `published` is not a gate. `defer:<gate>` records a "picks later" and does not close the gate. The angle also counts as
 approved from angle.md's `## Angle (locked by the owner, <d Mon yy>: ...)` heading. Nothing else is ever inferred.
 
-Machine stage, first unmet of: script (edit_script.md) -> build (every lanes.py job DONE) -> draft (renders/*draft*.mp4
+An episode joins the board with its angle.md (the angle comes first, references/angle.md), so videos made before
+that rule are not listed. The `next step` column is the first unmet of: script (edit_script.md) -> build (every lanes.py job DONE) -> draft (renders/*draft*.mp4
 here or in the main checkout) -> master (main renders/<label>-final-master.mp4) -> uploads (main uploads/<label>/ holds
 the master) -> published (a `published` line). A later artifact proves the earlier steps (drafts are deleted at master
 time), so the search runs from the end. Owner gates block: angle always, hook-intro the build, draft the master,
@@ -176,7 +177,7 @@ def board_rows():
     for i, (path, _, _) in enumerate(cos):
         eps = path / "episodes"
         for ep in sorted(eps.iterdir()) if eps.is_dir() else []:
-            if (ep / "edit_script.md").exists() or (ep / "angle.md").exists():
+            if (ep / "angle.md").exists() or (ep / "gates.md").exists():
                 where.setdefault(ep.name, []).append(i)
     touches = [{}] + [branch_touches(p, main_head) for p, _, _ in cos[1:]]
     rows = []
@@ -189,7 +190,7 @@ def board_rows():
 
 
 def render_board(rows):
-    head = ["label", "slug", "stage", *GATES, "waiting on", "from"]
+    head = ["label", "slug", "next step", *GATES, "waiting on", "from"]
     table = [head] + [[r["label"], r["slug"], r["stage"], *(r["states"][g] for g in GATES), r["waiting"], r["from"]]
                       for r in rows]
     widths = [max(len(t[c]) for t in table) for c in range(len(head))]
@@ -234,7 +235,7 @@ def main(argv=None):
         if not ep.is_dir():
             sys.exit(f"[stage] FAIL: no episode folder {ep}")
         r = read_episode(ep, checkouts()[0][0])
-        print(f"{r['label']}  {r['slug']}  ({ep})\nstage:      {r['stage']}\nwaiting on: {r['waiting']}")
+        print(f"{r['label']}  {r['slug']}  ({ep})\nnext step:  {r['stage']}\nwaiting on: {r['waiting']}")
         for g in GATES:
             print(f"  {g:<11}{r['states'][g]}")
         rec = ep / "gates.md"
