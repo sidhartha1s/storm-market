@@ -56,12 +56,13 @@ else
 fi
 
 # The frame rate this render must have. A final matches the composition. A draft is a proxy
-# rendered at the rate render.cmd launched it with (RENDER_FPS included) and recorded in render_draft.fps.
+# rendered at the rate render.cmd launched it with (RENDER_FPS included) and recorded in renders/<basename>.fps.
 EXPECT_FPS="$COMP_FPS"
 if [ "$MODE" = draft ]; then
-  EXPECT_FPS=""; [ -f "$EP/render_draft.fps" ] && EXPECT_FPS=$(tr -d ' \t\r\n' < "$EP/render_draft.fps")
+  FPSF="$EP/renders/$BASE.fps"
+  EXPECT_FPS=""; [ -f "$FPSF" ] && EXPECT_FPS=$(tr -d ' \t\r\n' < "$FPSF")
   if [ -z "$EXPECT_FPS" ]; then
-    echo "FAIL: $EP/render_draft.fps is missing or empty — this draft predates the check or never reached the render step, so its frame rate cannot be verified"
+    echo "FAIL: $FPSF is missing or empty — this draft predates the check or never reached the render step, so its frame rate cannot be verified"
     exit 1
   fi
 fi
