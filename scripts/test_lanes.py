@@ -306,6 +306,7 @@ def test_alive_finds_the_lane_root_never_a_command_that_mentions_its_log(tmp_pat
         assert all(d.poll() is None for d in decoys)
     finally:
         lanes.kill("local", real)
+        lanes.ps, lanes.spawn = never, never  # the tests after this one never reach a real host
         for d in decoys:
             d.kill()
 
