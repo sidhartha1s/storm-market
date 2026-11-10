@@ -79,6 +79,7 @@ def main():
     if not src.exists():
         sys.exit(f"no such render: {src}")
     master = ep / "renders" / f"{base}-master.mp4"
+    tmp = master.with_suffix(".tmp.mp4")  # verified before it takes the shipping name (audit R9)
 
     print(f"[1/4] measuring {src.name} ...")
     m = measure(src)
