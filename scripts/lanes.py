@@ -175,16 +175,20 @@ def spawn(host, cmd, log, cwd):
               f"so it is never launched twice; `status` calls it FAILED if its log never appears ({out.strip()[-120:]})")
 
 
-def read_log(host, log):
-    """The last lines of a lane's log, NO_LOG when it does not exist, or None when the host cannot be read."""
-    code, out = ps(host, f"$p = {quote(log)}; if (Test-Path -LiteralPath $p) {{ Get-Content -Tail 5 -LiteralPath $p }} else {{ '{NO_LOG}' }}",
-                   timeout=20)  # status runs under the Stop hook's 120 s
-    return out.strip() if code == 0 else None
+def read_lane(host, log):
+    """(running, last lines of its log): running is whether the lane's root cmd.exe still runs (alive()'s match), the
+    lines NO_LOG when the log does not exist. None when the host cannot be read. One call, as status runs under the
+    Stop hook's 120 s and an offline host costs one ssh ConnectTimeout per lane."""
+    code, out = ps(host, f"@(Get-CimInstance Win32_Process | Where-Object {{ {root_filter(log)} }}).Count; $p = {quote(log)}; "
+                         f"if (Test-Path -LiteralPath $p) {{ Get-Content -Tail 5 -LiteralPath $p }} else {{ '{NO_LOG}' }}",
+                   timeout=20)
+    n, _, tail = out.strip().partition("\n")
+    return (int(n) > 0, tail.strip()) if code == 0 and n.strip().isdigit() else None
 
 
-def profile_order(first=None, skip=None):
-    """~/.claude-accounts/claude* names, starting at first, without skip."""
-    names = sorted(p.name for p in ACCOUNTS.glob("claude*") if p.is_dir())
+def profile_order(host, first=None, skip=None):
+    """The profiles that can run on host, starting at first, without skip."""
+    names = profiles(host)
     i = names.index(first) if first in names else 0
     return [n for n in names[i:] + names[:i] if n != skip]
 
