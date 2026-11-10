@@ -109,7 +109,7 @@ Script method and hook wording live in `references/script-os.md` and `script-fra
 - Kyutai pocket-TTS cloned from on-camera Paul: `config.yaml external.voice_ref` (file and md5), so the narrator and the presenter are one voice.
   The whole voice tool sits inside this repo folder (venv, clone script, model files, Hugging Face login: `scripts/voice_tool.py`
   lists the pieces, and `python3 scripts/voice_tool.py` checks them). Run `<external.pocket_venv_python> scripts/tts_clone.py --text-file ... --out ... --voice <external.voice_ref>`
-  for one probe; `tts_episode.py` passes every stale segment in one `--batch <tsv>` call so the model loads once per run (about 19 s saved per segment, measured 1 Oct 26).
+  for one probe; `tts_episode.py` passes every stale segment in one `--batch <tsv>` call so the model loads once per run.
 - Pace is measured, never assumed. Probe-TTS two segments AT THE SHIPPING TEMPO, then
   `python3 scripts/word_budget.py episodes/<slug> --target <min> --probe <wav> <wav>` sizes the script from that
   pace and the real non-voice seconds. It fails outside target +/- 1 min; a script is not locked while it fails.
