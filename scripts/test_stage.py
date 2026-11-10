@@ -19,6 +19,8 @@ def refused(fn, *args):
 words, shown = 'he said "go" | then "no | wait"', "https://x.test/a?b=1|2"
 line = s.format_line("hook-intro", "2026-11-11", words, "devq", shown)
 assert s.parse_lines("# header\n" + line + "\nprose\n") == [("hook-intro", "2026-11-11", words, "devq", shown)]
+tricky = 'quote me: "x" | chat | shown: y'  # words that look like the line's own tail
+assert s.parse_lines(s.format_line("draft", "2026-11-11", tricky, "chat", "renders/d.mp4"))[0][2] == tricky
 
 # the angle heading as the shipped episodes really write it, including a lock block that is not the first heading
 assert s.angle_lock('## Angle (locked by the owner, 9 Oct 26: "Do a mix")\n') == "2026-10-09"
