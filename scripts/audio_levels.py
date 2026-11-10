@@ -34,6 +34,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+import timeline
+
 ep = Path(sys.argv[1])
 html = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
 
