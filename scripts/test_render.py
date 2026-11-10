@@ -303,7 +303,6 @@ if HAVE_FFMPEG:
                         "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", str(mp4b)],
                        capture_output=True)
         r2 = v07("wrong-res-final")
-        check("render-07 OLD would have exited 0 here (only the GPU probe was a hard gate)", True)
         check("render-07 NEW: wrong resolution vs the composition fails the gate",
               r2.returncode != 0 and "FAIL: resolution" in r2.stdout, f"rc={r2.returncode}\n{r2.stdout[-800:]}")
 
