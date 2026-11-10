@@ -247,26 +247,11 @@ def main():
     # a pixel blackdetect: a pixel scan false-positives on dark graphics in motion (three of
     # v3's flagged spans were exactly that), while a coverage gap is a real hole that always
     # renders black. Every instant in (0, comp_dur) must sit inside at least one picture window.
-    pic = []
-    for e in re.finditer(r'<(video|section|div)\b([^>]*)>', html):
-        a = e.group(2)
-        tr = re.search(r'data-track-index="(\d+)"', a)
-        st = re.search(r'data-start="([\d.]+)"', a)
-        du = re.search(r'data-duration="([\d.]+)"', a)
-        if tr and st and du and tr.group(1) in ("1", "2"):
-            s = float(st.group(1))
-            pic.append((s, s + float(du.group(1))))
-    pic.sort()
-    if pic:
-        cursor = 0.0
-        for s, e in pic:
-            if s > cursor + 0.03:                 # a hole before this window opens
-                findings.append(f"picture gap: nothing on tracks 1/2 from {cursor:.2f}s to {s:.2f}s "
-                                f"({s - cursor:.2f}s of black)")
-            cursor = max(cursor, e)
-        if cursor < comp_dur - 0.03:
-            findings.append(f"picture gap: nothing on tracks 1/2 from {cursor:.2f}s to end "
-                            f"{comp_dur:.2f}s ({comp_dur - cursor:.2f}s of black)")
+    wins = timeline.windows(html)   # the one window reader and coverage rule, shared with sweep_episode and clip_report
+    if any(w["tr"] in timeline.PICTURE_TRACKS for w in wins):
+        for s, e in timeline.picture_holes(wins, comp_dur):
+            findings.append(f"picture gap: nothing on tracks 1/2 from {s:.2f}s to {'end ' if e == comp_dur else ''}"
+                            f"{e:.2f}s ({e - s:.2f}s of black)")
 
     # 4+5: no-repeat + cadence on VISUAL windows.
     # Collect (src, start, dur, has_callback, has_holdok) for videos and timed <section><img>.
