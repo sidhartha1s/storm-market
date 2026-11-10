@@ -38,8 +38,10 @@ approval (owner 28 Oct 26: "you dont need my approval for subagents, inside stro
 | What viewers say under every reference video: the rule, the pull commands, the entries | `references/comment-bank.md` |
 | Measured gotchas, newest first | `learnings/` (`README.md` says which file serves which job): read yours before building |
 | Pins, paths, CTA file and window | `config.yaml` |
-| Open tooling and pipeline work; dated decisions (read both at session start, update the same session) | `ops/tasks.md`, `ops/decisions.md` |
-| Which episode jobs are ready, running, held or done, the Stop gate that blocks an idle ready job, and the lane launcher (profile probe, free-memory gate (no lane-count cap), `relaunch` of a lane that hit a limit, `stop <ep> all` to end every running lane) | `scripts/lanes.py` (job model in its docstring), hook `~/.claude/hooks/lane-gate.py` |
+| Open tooling and pipeline work, questions waiting on the owner; dated decisions (read both at session start, update the same session) | `ops/tasks.md`, `ops/decisions.md` |
+| Every episode's E number and the next free one | `python3 scripts/episode.py` |
+| Every episode's stage, what it waits on, and the record of the owner's approvals (`episodes/<slug>/gates.md`) | `python3 scripts/stage.py` (usage in its docstring) |
+| Which episode jobs are ready, running, held or done, and the lane launcher (profile probe, free-memory gate (no lane-count cap), `relaunch` of a lane that hit a limit, `stop <ep> all` to end every running lane) | `scripts/lanes.py` (job model in its docstring); its Stop hook `~/.claude/hooks/lane-gate.py` is not installed on the ZBook |
 
 An owner correction or a measured surprise lands in its single home (`references/mg-quickref.md`, a gate, or the right
 `learnings/` file) the same session.
