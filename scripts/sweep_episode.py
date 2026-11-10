@@ -226,8 +226,8 @@ elif ask:
 # never edited, so they are exempt by name.
 _CLOSE_EXEMPT = {"ep-palm-sunday-1965", "ep-camille-1969"}
 _LOCKUP = re.compile(r'\bthe\b\s*(?:</[a-z]+>)?\s*<[^>]*amber[^>]*>\s*warning\s*</[a-z]+>\s*(?:<[^>]+>)?\s*hour\b', re.I)
-if not re.match(r"ep-", _slug):
-    print(f"SKIP close card carries the brand lockup — {_slug} is not an ep- episode")
+if not episode.is_current_documentary(_slug):
+    print(f"SKIP close card carries the brand lockup — {_slug} is not a current documentary")
 elif _slug in _CLOSE_EXEMPT:
     print(f"SKIP close card carries the brand lockup — {_slug} shipped before the 29 Oct 26 order")
 else:
