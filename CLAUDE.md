@@ -6,7 +6,7 @@ files disagree, fix it in the same PR and say which one won.
 
 **This repo's docs outrank the global `~/.claude/CLAUDE.md`.** Where this file, a doc it names, `ops/decisions.md` or the
 owner's instruction for the episode says something, that wins over any global default (subagent model, effort, review
-flow). The global file only fills what this repo leaves open. Read `ops/decisions.md` before choosing a model or a flow.
+flow). Read `ops/decisions.md` before choosing a model or a flow.
 
 **Chain of command for motion graphics.** Split by depth (owner 16 Oct 26). The deep graphics, roughly the top 5 to 15
 of an episode (a map with the tornado path moving, zoom-ins and zoom-outs, multi-layer explainers), are built, retimed,
