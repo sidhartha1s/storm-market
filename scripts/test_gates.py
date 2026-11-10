@@ -916,6 +916,8 @@ check("G9 timeline: nx-a1-s1 is narration, nx-ins-911 / ins-paul-1 are inserts, 
       [(timeline.is_narration(i), timeline.is_insert(i)) for i in ("nx-a1-s1", "nx-ins-911", "ins-paul-1", "sx-bed")]
       == [(True, False), (False, True), (False, True), (False, False)])
 
+check("G13 timeline.muted: the bare attribute mutes, a class token named muted does not",
+      [timeline.muted(t) for t in ('<video muted src="a.mp4">', '<video class="clip muted big" src="a.mp4">')] == [True, False])
 # G13: a class or attribute that merely contains "muted" does not mute a b-roll clip
 with tempfile.TemporaryDirectory() as d:
     v = '<video class="not-muted-really" data-muted-ok="x" src="media/broll.mp4" data-start="0" data-duration="2" data-track-index="1"></video>'
