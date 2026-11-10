@@ -137,6 +137,12 @@ if "%RC%"=="0" (
     set RC=1
   )
 )
+REM This render's log and frame rate beside its mp4: verify_render.sh judges renders\<basename>.mp4 by these, never by
+REM render_%MODE%.log, which the next render of this mode rewrites (audit R11: an older draft passed on a newer GPU log).
+if exist "renders\%OUTBASE%.mp4" (
+  type "render_%MODE%.log" > "renders\%OUTBASE%.log"
+  echo %_FPS% > "renders\%OUTBASE%.fps"
+)
 %RELEASE%
 echo %RC% > "render_%MODE%_done.marker"
 exit /b %RC%
