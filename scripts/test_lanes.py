@@ -376,7 +376,7 @@ def test_stop_all_ends_every_running_lane_by_its_log(tmp_path):
     try:
         assert lanes.main(["stop", str(ep), "all"]) == 0
     finally:
-        lanes.ps = REAL_PS
+        lanes.ps = never
     assert len(killed) == 1 and killed[0][0] == "zbook" and "taskkill /T /F" in killed[0][1]
     assert """'> "C:\\x\\lane.log" 2>&1"'""" in killed[0][1] and "StartsWith('cmd /s /c" in killed[0][1] and "$_.Name -eq 'cmd.exe'" in killed[0][1]  # only the lane's root
     jobs = lanes.load_ledger(ep)["jobs"]
