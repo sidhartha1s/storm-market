@@ -32,7 +32,7 @@ approval (owner 28 Oct 26: "you dont need my approval for subagents, inside stro
 | Heteronyms (word, both senses, a hint) that pocket-TTS can mispronounce by guessing the wrong sense; gate `scripts/homograph_scan.py episodes/<slug>` (WARN-only, reports for a probe, never fails) | `references/homographs.md` |
 | Titles and thumbnails; fill-in prompts for a thumbnail with Paul on it | `references/packaging-rules.md`; `references/thumbnail-prompts.md` |
 | News-lane rulebook, templates, clip pools | `references/mini-storms/FORMAT.md`, `library/mini-storms/`, `library/mini-storms/<event>/` (pools are reused across angles) |
-| Shorts spec, slugs `sh-<parent>-<n>`, weekly scan | `references/shorts/PLAN.md`, `references/shorts/competitors-2026-09-15.md`, templates `library/shorts/` (not created yet), `scripts/shorts_scan.py`, gate `node scripts/shorts_lint.mjs episodes/<slug>` |
+| Shorts spec, slugs `sh-<parent>-<n>`, weekly scan | `references/shorts/PLAN.md`, `references/shorts/competitors-2026-09-15.md`, `scripts/shorts_scan.py`, gate `node scripts/shorts_lint.mjs episodes/<slug>` |
 | Other platforms the videos can go to, their payout programs, and the posting tool (a first check, nothing built) | `references/distribution.md` |
 | Niche proof, teardowns | `references/script-teardown.md`, `references/teardowns/` |
 | What viewers say under every reference video: the rule, the pull commands, the entries | `references/comment-bank.md` |
