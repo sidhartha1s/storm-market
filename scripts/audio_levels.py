@@ -16,7 +16,7 @@ Checks (effective dB = file mean_volume + 20*log10(data-volume)):
      (id sx-mus-*) is inaudible (<ref-30 dB). WARN if near-inaudible otherwise.
   4. Audible video clips (any <video> not `muted`, data-volume default 1.0):
      WARN if above narration ref (clip audio shouting over voice).
-  5. Any other audible <audio> (no nx-/ins- id and no data-bed attribute) is an
+  5. Any other audible <audio> (no id, or no nx-/ins- id, and no data-bed attribute) is an
      unclassified element = FAIL — tag it data-bed or use the nx-/ins- convention.
   6. Narration (nx-*) ending in a burst: a loud run (> -40 dB) in the file's last
      0.6 s that follows 0.1 s or more of silence (< -55 dB) = FAIL. TTS sometimes
