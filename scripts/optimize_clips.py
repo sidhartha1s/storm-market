@@ -45,19 +45,7 @@ h = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
 root = re.search(r'id="root"[^>]*data-width="(\d+)"[^>]*data-height="(\d+)"', h)
 COMP_W, COMP_H = (int(root.group(1)), int(root.group(2))) if root else (1920, 1080)
 
-used = {}
-for m in re.finditer(r'<video\b([^>]*)>', h):
-    attrs = m.group(1)
-    src = re.search(r'src="([^"]+)"', attrs)
-    dur = re.search(r'data-duration="([\d.]+)"', attrs)
-    if not (src and dur):
-        continue
-    # data-media-start is the clip's in-point: the source must supply media_start + duration
-    # seconds, or the trim below cuts off before the in-point plays (render-05: ep1/ep6
-    # vx-warmend needs 8s + 13.1s = 21.1s, not 13.1s — --apply then wrote a 14.6s file).
-    start = re.search(r'data-media-start="([\d.]+)"', attrs)
-    need = (float(start.group(1)) if start else 0.0) + float(dur.group(1))
-    used[src.group(1)] = max(used.get(src.group(1), 0.0), need)
+used = clip_windows(h)  # media_budget.py owns the window rule (in-point + duration, longest per src)
 
 # The CTA insert and the end ask are provenance contracts (config.yaml channel.cta and channel.end_ask, md5-checked
 # by sweep_episode): re-encoding broke the md5 silently (CTA: jma-vs-nhc, 17 Sep 26; end ask: Camille and Mayfield,
