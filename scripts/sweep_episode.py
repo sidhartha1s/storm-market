@@ -36,41 +36,19 @@ def cut_by_ok(tag):
 
 
 wins = []
-for m in re.finditer(r'<(section|video|div)\b([^>]*)>', h):
-    a = m.group(2)
-    st, du, tr = (re.search(r'data-start="([\d.]+)"', a),
-                  re.search(r'data-duration="([\d.]+)"', a),
-                  re.search(r'data-track-index="(\d+)"', a))
-    if not (st and du and tr):
-        continue
-    cid = re.search(r'data-composition-id="([^"]+)"', a)
-    src = re.search(r'src="([^"]+)"', a)
-    cls = re.search(r'class="([^"]*)"', a)
-    is_black = bool(cls and "blackout" in cls.group(1))
-    if not src and not cid and not is_black:
-        # its own body only: the 900-char look-ahead used to read the NEXT element's src, so a designed
-        # <section class="clip ground"> was reported as a duplicate of the film cut after it (Galveston A5, 30 Oct 26)
-        close = re.search(r"</%s>" % re.escape(m.group(1)), h[m.end():m.end() + 900])
-        inner = h[m.end():m.end() + (close.start() if close else 900)]
-        s2 = re.search(r'src="([^"]+)"', inner)
-        src = s2
-    wins.append(dict(at=float(st.group(1)), dur=float(du.group(1)), tr=int(tr.group(1)), cut_by=cut_by_ok(a), tag=a,
+for w in timeline.windows(h):   # the one window reader: attributes in any order, a src-less element reads its own body
+    a = w["attrs"]
+    is_black = "blackout" in a.get("class", "")
+    wins.append(dict(at=w["at"], dur=w["dur"], tr=w["tr"], cut_by=cut_by_ok(w["tag"]), tag=w["tag"],
                      name="[blackout]" if is_black else
-                          (cid.group(1) if cid else (src.group(1) if src else
-                                                     "[" + ((re.search(r'\bid="([^"]+)"', a) or [None, "?"])[1]) + "]"))))
+                          (a.get("data-composition-id") or w["src"] or "[" + a.get("id", "?") + "]")))
 
-pic = sorted([w for w in wins if w["tr"] in (1, 2)], key=lambda w: w["at"])
+pic = sorted([w for w in wins if w["tr"] in timeline.PICTURE_TRACKS], key=lambda w: w["at"])
 
 
 # 1. picture coverage
 total = float(re.search(r'data-duration="([\d.]+)"', h).group(1))   # not rounded: 1050.9 rounded to 1051 invented a 0.1 s hole past the end
-cur, holes = 0.0, []
-for w in sorted(pic, key=lambda w: w["at"]):
-    if w["at"] > cur + 0.05:
-        holes.append((round(cur, 2), round(w["at"], 2)))
-    cur = max(cur, w["at"] + w["dur"])
-if cur < total - 0.05:
-    holes.append((round(cur, 2), total))
+holes = [(round(s, 2), round(e, 2) if e != total else total) for s, e in timeline.picture_holes(wins, total)]
 report("picture coverage (no black)", holes, lambda x: f"{x[0]}s -> {x[1]}s")
 
 # 2. same-track overlap
