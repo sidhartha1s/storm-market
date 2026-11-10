@@ -242,6 +242,9 @@ with tempfile.TemporaryDirectory() as d:
         done = ep / "render_acts_v1_done.marker"
         check("R12: no render_acts done marker while acts render; 0 once the concat is checked",
               not any(r["marker"] for r in seen) and done.exists() and done.read_text() == "0\n")
+        check("R11: the output's own fps (the act rate) and log sit beside it for verify_render.sh",
+              (ep / "renders" / "v1.fps").read_text() == "15\n"
+              and "acts/v1/audio" in (ep / "renders" / "v1.log").read_text(encoding="utf-8"))
         seen.clear()
         fail_on = "act02"
         try:
