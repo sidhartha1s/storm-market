@@ -102,9 +102,11 @@ for src, *_ in plan:
     stamp = backup.with_name(backup.name + ".out.md5")
     flat = orig_dir / rel.name
     if not backup.exists() and flat.exists():
-        if names.count(rel.name) > 1:
-            sys.exit(f"FAIL: media/_orig/{rel.name} is a flat backup from before 11 Nov 26 and {names.count(rel.name)} "
-                     f"mounted clips are named {rel.name}; move it to media/_orig/<its folder>/{rel.name} by hand")
+        # counted on disk, not among mounted clips: the backup may belong to a clip that is no longer mounted
+        same = [f for f in (ep / "media").rglob(rel.name) if orig_dir not in f.parents]
+        if len(same) > 1:
+            sys.exit(f"FAIL: media/_orig/{rel.name} is a flat backup from before 11 Nov 26 and {len(same)} "
+                     f"clips under media/ are named {rel.name}; move it to media/_orig/<its folder>/{rel.name} by hand")
         backup.parent.mkdir(parents=True, exist_ok=True)
         flat.replace(backup)
         print(f"moved pre-11-Nov flat backup {rel.name} -> {backup.relative_to(ep).as_posix()}")
