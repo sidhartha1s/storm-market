@@ -111,9 +111,10 @@ def main():
         ["ffmpeg", "-hide_banner", "-y", "-i", str(src), "-c:v", "copy",
          "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709",
          "-color_range", "tv",
-         "-af", af, "-c:a", "aac", "-b:a", "256k", str(master)],
+         "-af", af, "-c:a", "aac", "-b:a", "256k", str(tmp)],
         capture_output=True, text=True)
     if r.returncode != 0:
+        tmp.unlink(missing_ok=True)
         sys.exit(f"master encode failed:\n{r.stderr[-800:]}")
 
     print("[3/4] verifying master loudness ...")
