@@ -910,6 +910,12 @@ for label, middle in (
         code, out = run("lint_timeline.py", lint_order_ep(d, middle))
         check(f"G5 lint_timeline: {label} with data-duration before data-start fills the pause", "narration gap" not in out, out[-400:])
 
+# G9: one narration/insert classification (scripts/timeline.py), used by sweep, build_srt, lint, npc, audio_levels
+import timeline  # noqa: E402
+check("G9 timeline: nx-a1-s1 is narration, nx-ins-911 / ins-paul-1 are inserts, sx-bed is neither",
+      [(timeline.is_narration(i), timeline.is_insert(i)) for i in ("nx-a1-s1", "nx-ins-911", "ins-paul-1", "sx-bed")]
+      == [(True, False), (False, True), (False, True), (False, False)])
+
 # G10: one coverage rule (timeline.picture_holes): a 0.04 s hole between two picture windows gets one verdict from
 # every gate that reports coverage (sweep used 0.05 s and passed it while lint failed it)
 with tempfile.TemporaryDirectory() as d:
