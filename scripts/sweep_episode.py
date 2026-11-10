@@ -138,8 +138,8 @@ if not cta.get("voice_ref_md5") or cta.get("voice_ref_md5") != _voice_md5:
     cta_bad.append(f"CTA voice_ref_md5 {cta.get('voice_ref_md5')} != external.voice_ref_md5 {_voice_md5}: "
                    "the CTA is in another voice; re-voice it as a new versioned asset (assets/cta/README.md)")
 _slug = ep.resolve().name
-_cta_applies = bool(re.match(r"(ep\d*-|ms-)", _slug)) and _slug not in (cta.get("exempt") or [])
-_cta_window = (cta.get("window_by_slug") or {}).get(_slug) or (cta["window_ms"] if _slug.startswith("ms-") else cta["window"])   # news lane ~90 % (owner 17 Sep 26); per-episode owner placements in window_by_slug
+_cta_applies = (episode.is_documentary(_slug) or episode.is_mini(_slug)) and _slug not in (cta.get("exempt") or [])
+_cta_window = (cta.get("window_by_slug") or {}).get(_slug) or (cta["window_ms"] if episode.is_mini(_slug) else cta["window"])   # news lane ~90 % (owner 17 Sep 26); per-episode owner placements in window_by_slug
 cm = re.search(r'<video\b[^>]*src="([^"]*' + re.escape(cta_name) + r')"[^>]*>', h)
 if not _cta_applies:
     # episodes shipped before the contract (config channel.cta.exempt) and demo-* dirs are not re-wired
