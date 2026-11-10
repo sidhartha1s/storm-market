@@ -3,8 +3,8 @@
 
 Usage: python3 scripts/master_deliverables.py episodes/<slug> <render-basename> [--hevc]
 
-e.g.:  python3 scripts/master_deliverables.py episodes/ep2-2011-super-outbreak ep2-final
-       python3 scripts/master_deliverables.py episodes/ep3-tristate ep3-final --hevc
+e.g.:  python3 scripts/master_deliverables.py episodes/ep-galveston-1900 galveston-full
+       (then scripts/ship.py gives the finals their E<nn> names; --hevc is not used: no HEVC archive, CLAUDE.md step 7)
 
 Reads  episodes/<slug>/renders/<basename>.mp4 and writes:
   renders/<basename>-master.mp4        (video stream copied, single measured gain,
