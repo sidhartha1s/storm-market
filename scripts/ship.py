@@ -56,6 +56,8 @@ def same_content(a, b):
 
 def plan(ep, basename, main_root):
     """[(op, src, dst)] with op in keep | move | link | copy | write (src is bytes for write), plus the non-final renders."""
+    if not ep.is_dir():
+        fail(f"no episode folder {ep}")
     label = episode.label(ep)
     if not label:
         fail(f"{ep.name} has no E number: name the slug e<nn>-<topic> or add the tracked E<nn>-<topic>-metadata.md")
