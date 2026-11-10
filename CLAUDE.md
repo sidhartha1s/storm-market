@@ -222,7 +222,7 @@ The gate list and its order live in `scripts/run_gates.py` (minis add a freeze s
 - Before any render: listen to the full audio mixdown and watch the hook. A layer known to be below spec means stop and report.
 - Every MG builder's brief carries `references/mg-quickref.md` BEFORE the build, so the draft is never the first place a collision shows up.
 - Do not start a render while any builder is still editing. No live subagent, quiet `git status`, then launch.
-- `render_preflight.py` refuses an `ep-` documentary missing a layer the owner already asked for (circle, bed, Paul's
+- `render_preflight.py` refuses a current documentary (`episode.py`) missing a layer the owner already asked for (circle, bed, Paul's
   clips; owner 18 Oct 26) or whose circle clip is a still stand-in, not a moving face (test
   `python3 scripts/test_frozen_circle.py`). Its `LAYERS` table is the list and holds the thresholds; `run_gates.py` runs it too.
 - One heavy job per machine at a time: render.cmd, `render_acts.py`, the pin ritual (not `--check-only`), TTS (`tts_episode.py`, `tts_clone.py`), the face pass (`circle_face.py`) and `e2e.py`
