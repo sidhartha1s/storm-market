@@ -27,6 +27,45 @@ def window(attrs):
     return start, start + float(attrs["data-duration"])
 
 
+def windows(html):
+    """Every element on a track (data-start, data-duration, data-track-index), outside comments, in page order:
+    dict(kind, attrs, tag, at, dur, tr, src). `src` is the element's own src or, for a src-less element that is not a
+    composition host, the first src inside its OWN body: reading ahead 900 chars took the next element's file, so a
+    designed <section> was reported as the film cut after it (Galveston A5, 30 Oct 26)."""
+    page = live(html)
+    out = []
+    for m in re.finditer(r'<(section|video|div|img)\b((?:[^>"]|"[^"]*")*)>', page, re.I):
+        kind, a = m.group(1).lower(), dict(ATTR.findall(m.group(2)))
+        if not ("data-start" in a and "data-duration" in a and "data-track-index" in a):
+            continue
+        src = a.get("src")
+        if not src and not a.get("data-composition-id"):
+            close = re.search(rf"</{kind}>", page[m.end():m.end() + 900])
+            inner = re.search(r'src="([^"]+)"', page[m.end():m.end() + (close.start() if close else 900)])
+            src = inner.group(1) if inner else None
+        out.append(dict(kind=kind, attrs=a, tag=m.group(0), at=float(a["data-start"]), dur=float(a["data-duration"]),
+                        tr=int(a["data-track-index"]), src=src))
+    return out
+
+
+PICTURE_TRACKS = (1, 2)  # 1 = stills and clips, 2 = full-frame graphics; tracks above are overlays, not picture
+# One frame at the 30 fps render (config.yaml render.fps) is 0.033 s: a hole wider than this can render a black frame.
+# Narrower than a frame is float noise. Lint used 0.03, sweep and clip_report 0.05 (a 0.04 s hole passed sweep, R7).
+COVER_TOLERANCE = 0.03
+
+
+def picture_holes(wins, total):
+    """(start, end) of every stretch of [0, total] that no picture-track window covers (windows() dicts)."""
+    cur, holes = 0.0, []
+    for w in sorted((w for w in wins if w["tr"] in PICTURE_TRACKS), key=lambda w: w["at"]):
+        if w["at"] > cur + COVER_TOLERANCE:
+            holes.append((cur, w["at"]))
+        cur = max(cur, w["at"] + w["dur"])
+    if cur < total - COVER_TOLERANCE:
+        holes.append((cur, total))
+    return holes
+
+
 def is_narration(eid):
     """The narrator's segments are `nx-*`; `nx-ins*` is an insert (another voice) that kept the nx- prefix."""
     return bool(re.match(r"nx-(?!ins)", eid))
