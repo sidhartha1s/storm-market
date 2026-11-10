@@ -18,8 +18,9 @@ and every other pending job for the same episode folder, captures the union of t
 each job its own frames. The union is sorted, so every frame is still reached by forward seeks from a fresh page.
 A job whose times go backwards or repeat (the seek-order check: forward, then seek 0, past it, back) runs alone, in its
 own order, on a fresh page.
-With --host zbook the worker copies the files the timeline references (changed ones only) to
-`.snapq/mirror/<slug>/` in the ZBook's main checkout, snapshots there and copies the PNGs back.
+With --host zbook from the ASUS the worker copies the files the timeline references (changed ones only) to
+`.snapq/mirror/<slug>/` in the ZBook's main checkout, snapshots there and copies the PNGs back. On the ZBook itself
+zbook is this machine (`lanes.is_local`), so it snapshots in place, as with --host local.
 """
 import argparse
 import json
