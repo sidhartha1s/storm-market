@@ -1,4 +1,4 @@
-# library/breaking — templates for the fast lane (`/storm-breaking`)
+# library/mini-storms — templates for the fast lane (`/mini-storms`)
 
 Sub-compositions (copy into `episodes/<slug>/compositions/`, re-prefix ids, hand-retune per cut;
 never script-generate episode HTML):
