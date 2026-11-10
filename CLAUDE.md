@@ -41,7 +41,7 @@ approval (owner 28 Oct 26: "you dont need my approval for subagents, inside stro
 | Open tooling and pipeline work, questions waiting on the owner; dated decisions (read both at session start, update the same session) | `ops/tasks.md`, `ops/decisions.md` |
 | Every episode's E number and the next free one | `python3 scripts/episode.py` |
 | Every episode's stage, what it waits on, and the record of the owner's approvals (`episodes/<slug>/gates.md`) | `python3 scripts/stage.py` (usage in its docstring) |
-| Which episode jobs are ready, running, held or done, and the lane launcher (profile probe, free-memory gate (no lane-count cap), `relaunch` of a lane that hit a limit, `stop <ep> all` to end every running lane) | `scripts/lanes.py` (job model in its docstring); its Stop hook `~/.claude/hooks/lane-gate.py` is not installed on the ZBook |
+| Which episode jobs are ready, running, held or done, and the lane launcher (profile probe, free-memory gate, no lane-count cap, `relaunch`, `stop <ep> all`) | `scripts/lanes.py` (job model in its docstring); its Stop hook `~/.claude/hooks/lane-gate.py` is not installed on the ZBook |
 
 An owner correction or a measured surprise lands in its single home (`references/mg-quickref.md`, a gate, or the right
 `learnings/` file) the same session.
