@@ -58,8 +58,7 @@ Total ≈ 3 h 20 of work. The waits at the two owner gates sit outside the clock
 
 ### 0. Topic + angle (`episodes/ms-<slug>/angle.md`)
 - **Angle:** the rule, the candidate tests and the lock are `references/angle.md`; this step applies it to the topic picked here.
-- **Topic source:** owner gives one, or you propose 3 from this week's outliers (NexLev via the
-  claude7 profile, ≤6 outlier calls/day: see memory `reference-nexlev-via-claude7`; plus
+- **Topic source:** owner gives one, or you propose 3 from this week's outliers (NexLev, `references/nexlev-weather.md`; plus
   `yt-dlp --flat-playlist` on the tracked breaking channels listed in FORMAT.md). Pick
   high-demand / low-supply: an event blowing up now with few 8–15 min explainers under a week old.
 - **One event, many angles, one asset pool.** Krakatoa ⇒ "what just happened", "who is at risk",
