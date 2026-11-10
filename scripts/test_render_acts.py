@@ -215,7 +215,8 @@ with tempfile.TemporaryDirectory() as d:
         if fail_on and base.endswith(fail_on):
             raise SystemExit("render.cmd failed (stub)")
         (ep / "renders" / f"{base}.mp4").write_bytes(b"")
-        (ep / f"render_{mode}.log").write_text("browserGpuMode probe worker0 NVIDIA\n", encoding="utf-8")
+        for log in (ep / f"render_{mode}.log", ep / "renders" / f"{base}.log"):  # render.cmd keeps a copy beside the mp4
+            log.write_text(f"browserGpuMode probe worker0 NVIDIA {base}\n", encoding="utf-8")
         (ep / f"render_{mode}_done.marker").write_text("0\n")  # render.cmd writes this after every act
 
     def fake_subprocess_run(cmd, **k):
