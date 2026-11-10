@@ -1,5 +1,8 @@
 # Roadmap · The Warning Hour · from 2026-09-14 (owner decisions 2026-09-14 folded in)
 
+**Superseded (marked 11 Nov 26).** The documentary slate of 20 Sep 26 (`ops/slate-tornado-docs.md`) replaced it; rules live in `CLAUDE.md` and
+`ops/decisions.md` (the value stack stays: decisions 27 Oct 26; subagents need no approval: decisions 28 Oct 26).
+
 ## Ground truth (YouTube Studio export 2026-08-17 → 09-14; 4 subscribers)
 | video | len | impressions | CTR | views | AVD | AVD share | note |
 |---|---|---|---|---|---|---|---|

@@ -3,7 +3,7 @@
 Source: `teardowns/README.md` (10 videos, contact sheets + scene-cut detection + comments,
 2026-09-08). Numbers below are measured, not guessed; re-measure before changing them.
 Owner brief (2026-09-08): 8–12 min, stitched clips + stills with motion, narration, red emphasis
-text, BREAKING-style packaging, ≤3 h to ship, one owner gate, clip pool reused across angles. (Two owner gates since 9 Oct 26: angle, then packaging; `references/angle.md`.)
+text, BREAKING-style packaging, ≤3 h to ship, clip pool reused across angles. Owner gates: angle, then packaging (since 9 Oct 26; `references/angle.md`).
 
 ## The two formats that win (pick per topic)
 
@@ -163,7 +163,7 @@ Measured against a 14-minute cut that scored 5.5/10 on stakes-per-90-seconds bef
   Stefan Burns' TikTok uncredited; we credit every small creator, always (owner rule: credit ≠
   licence, so still no chaser / independent videographer footage without a licence).
 - Broadcaster logos stay burned in; pulls 3–5 s each, never the same cut twice.
-- Stills: 3–6 % pan / push over the hold, ≤4 s static ever.
+- Stills: a quick punch zoom or overlay on the narration beat, no slow drift (DESIGN.md "Footage motion"); ≤4 s static. The gate fails only past 6 s (`references/mg-quickref.md` "Gate-readable authoring" check 9).
 - Pool: `library/mini-storms/<event>/` + provenance.csv; second and later angles reorder and retrim
   the same pool, never the same sequence.
 

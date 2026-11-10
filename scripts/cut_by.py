@@ -1,7 +1,7 @@
 """The cut-by mount: one rule for sweep_episode.py and lint_timeline.py.
 
 A narration or graphic mounted with data-cut-by="<id>" was built for the whole line and is cut where the voiced
-Paul clip <id> takes it over (DESIGN.md "Editing grammar"). Its data-duration is shorter than the wav or the
+Paul clip <id> takes it over (references/mg-quickref.md "Gate-readable authoring"). Its data-duration is shorter than the wav or the
 graphic's timeline by design, so the freshness, last-words and graphic-window checks exempt it, and only it.
 """
 import re

@@ -5,7 +5,7 @@
 - Hooks, CTA, script loop, owner gates, agent and session process: `script-process.md`. An owner correction lands in its single home the same session.
 
 ## Cross-cutting rules (read always)
-The promoted one-line rules from the old `LEARNINGS.md` index, verbatim (one stale row dropped: the 1440p HEVC upload file, superseded 9 Sep 26). Each `§"..."` names a journal section header; search `learnings/` for it.
+The promoted one-line rules from the old `LEARNINGS.md` index (one stale row dropped: the 1440p HEVC upload file, superseded 9 Sep 26). A copy: where a line here and the rule's home (CLAUDE.md, DESIGN.md, mg-quickref, a script) differ, the home wins. Each `§"..."` names a journal section header; search `learnings/` for it.
 - The ebook CTA is a must-keep contract, positioned by the `config.yaml channel.cta` window (rule: DESIGN.md "CTA contract"). → §"the ebook CTA is a channel asset + a must-keep contract"
 - mp4 surgery on a finished render uses h264_nvenc first, never libx264 — the quality gap doesn't survive YouTube's transcode at consumer-master bitrates. → §"1440p upload tier + NVENC-first for mp4 surgery"
 - Convert GIFs before mounting (single-frame → PNG, animated → mp4); every mounted video needs an audio stream — mux silence into mute clips. → §"ep6 render-failure ledger"
@@ -26,7 +26,7 @@ The promoted one-line rules from the old `LEARNINGS.md` index, verbatim (one sta
 - Shipping while another session holds `.git/index.lock`: work from a `git worktree add`, never touch the main checkout. → §"ep2 hook rebuild + ship"
 - Insert/AV cuts land on sentence boundaries via transcript, always — never mid-sentence. → §"ep2 v1 owner review"
 - Verify each CUT, not just the source video — extract a frame from the cut itself and check chyrons/landmarks against the claimed event. → §"ep2 v1 owner review"
-- The draft-proxy render (`--quality draft --crf 32 --fps 15 --workers 3`) is the mandatory review path; full-quality renders only after the owner approves the draft. → §"draft-proxy render validated"
+- The draft render (settings in `scripts/render.cmd`) is the mandatory review path; full-quality renders only after the owner approves the draft. → §"draft-proxy render validated"
 - Cadence is reasoned per clip, never defaulted — any hold over ~8s needs a written reason; no visual repeats within an episode outside a flagged callback. → §"owner review of ep1 v1"
 - The sync rule: the frame on screen must never contradict the narration (named entity / time-of-day / timestamp ⇒ a matching or neutral visual). → §"owner review of ep1 v1"
 - Never claim an editorial rule "fixed" from memory — re-run the lint/checks on the actual final file before claiming it. → §"RCA: "repeats fixed" claim was FALSE"
@@ -35,12 +35,12 @@ The promoted one-line rules from the old `LEARNINGS.md` index, verbatim (one sta
 - `grep -o ' id="[^"]*"' index.html | sort | uniq -d` must print nothing before every render — duplicate element ids render black with no gate catching it. → §"Duplicate element ids render BLACK"
 - `optimize_clips.py` must preserve audio and mux silence for mute clips; ffprobe every insert clip for an audio stream before rendering. → §"optimize_clips.py strips audio and ignores bitrate"
 - Long renders launch via schtasks (or `run_hidden.vbs`), never harness background Bash — the reaped child tree dies silently mid-capture. → §"Harness background tasks get reaped"
-- Stills run 3–6s max, always with motion; video beats may run up to 12–15s when the clip genuinely matches the narration. → §"Owner pivot 2026-08-12"
+- Stills always move and have a length limit (`references/mg-quickref.md` "Gate-readable authoring" check 9); video beats may run up to 12–15s when the clip genuinely matches the narration. → §"Owner pivot 2026-08-12"
 - The doctor rule: a known-below-spec deliverable means STOP before the render, state exactly what's broken, and wait — never render on a known defect. → §"The doctor rule"
 - Count SOURCES, not cuts, when sourcing — assertion assets (broadcast pulls, official audio, survivor clips) beat another angle of the same b-roll. → §"Sourcing doctrine for future episodes"
 - The full audio-mixdown scan (volumedetect on 30s windows) is a mandatory pre-render gate, not optional. → §"Audio mixdown as a pre-render gate"
 - `scripts/audio_levels.py` is the gate for insert/narration/bed levels — run it before every mixdown build. → §"Audio levels + media budget hardening"
 - No visible windows, ever — every scheduled/background command runs through `scripts/run_hidden.vbs`. → §"No visible windows, ever"
 - The on-screen text rules (zone occupancy, one fact one instance, eyebrows only when they name the thing, glass under text over footage) live in references/mg-quickref.md — `overlap_check.mjs` v2 enforces them. → §"ep6 draft v2 review — text collisions were a CHECKER false negative"
-- hyperframes 0.8.6–0.8.10 opened visible console windows on this box; 0.8.41 does not (its mixer is a flat ~1.5 dB quieter, corrected by the master step). The current pin is `config.yaml hyperframes_version` (never restated here), checked at episode kickoff, never by preflight. → §"ep6 ship", §"16 Sep 26 — pin bumped to 0.8.41", §"26 Sep 26: pin 0.8.41 to 0.8.78", §"10 Oct 26: pin 0.8.114 to 0.8.143", §"12 Oct 26: pin 0.8.143 to 0.8.149", §"22 Oct 26: pin 0.8.149 to 0.8.185"
+- hyperframes 0.8.6–0.8.10 opened visible console windows on this box; 0.8.41 does not (its mixer is a flat ~1.5 dB quieter, corrected by the master step). The current pin is `config.yaml render.hyperframes_version` (never restated here), checked at episode kickoff, never by preflight. → §"ep6 ship", §"16 Sep 26 — pin bumped to 0.8.41", §"26 Sep 26: pin 0.8.41 to 0.8.78", §"10 Oct 26: pin 0.8.114 to 0.8.143", §"12 Oct 26: pin 0.8.143 to 0.8.149", §"22 Oct 26: pin 0.8.149 to 0.8.185"
 - Search `library/catalog-index.json` / `npx hyperframes catalog --query` before hand-authoring any graphic — MG library-first. → §"ep6 ship"

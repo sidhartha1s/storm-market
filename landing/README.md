@@ -81,6 +81,12 @@ Not yet proven with a real sale: that Gumroad attributes a purchase made through
 
 ## Verify
 
+Before the owner sees any page: run the `impeccable` skill (critique and polish, plus `npx impeccable detect --json <file>`)
+and fix what it finds; measure the buy button's bottom edge against a 390x664 viewport (a phone with browser bars),
+the headline's line count, and the edge alignment of header, sheet and footer in px, at 390, 768 and 1280. An
+owner-approved preview is the spec: before a build, restate it as "approved page + these N edits"; anything not on
+that list is out, and content gates check facts (no lorem, no invented figures), never that old copy survived.
+
 ```bash
 node widthcheck.mjs index.html            # must exit 0 — checks 390 / 768 / 1280
 node shot.mjs index.html ./out 390 1280   # full-page PNGs to eyeball
@@ -252,4 +258,7 @@ Check after shipping: `node buycheck.mjs` (the buy button resolves to a live che
 `node gumroad/pagecheck.mjs https://paulraymond.gumroad.com/l/ebook product`, and the free-packet
 button reaching `/l/packet`.
 
-**Live since 2026-08-14 at https://paulraymond.pages.dev.**
+Live at https://www.paulraymond.online (since 2026-08-14). After the owner OKs a change and it is merged, the session
+deploys from the MAIN checkout itself (first: `git status -- landing` clean, HEAD equal to origin/main), never hands him
+the command, and reports the live page as https://www.paulraymond.online, backed by a fetch of that domain. The
+per-deployment `*.pages.dev` address wrangler prints is never the link given.

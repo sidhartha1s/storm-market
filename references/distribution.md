@@ -61,6 +61,9 @@ My reading for when that gate is passed: our own script, YouTube and Facebook fi
 list grows past four platforms.
 
 ## Needed from the owner before any build
+Reading Facebook through his signed-in account (Paul Raymond's, new): human pace with 3 to 6 s pauses, read only, a few
+profiles per session; never follow, like, comment or message. Accounts worth following go in a list for him (owner
+18 Oct 26: "dont act like a bot. dont follow new accounts. list them if u want. facebook could get u banned").
 
 - The hand-upload week from the shorts plan comes first; no posting tool is built before its numbers exist.
 - The Facebook Page and the Instagram account (`references/shorts/PLAN.md` open item 2), and a Meta developer app.

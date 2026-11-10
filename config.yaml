@@ -1,4 +1,5 @@
-# storm-market config — external tools + render settings (single source of truth)
+# storm-market config: pins, paths, tempo and CTA read by scripts. Render settings live in scripts/render.cmd;
+# keys marked "not read" below are documentation only, and editing them changes nothing.
 
 external:
   # The voice tool lives inside this repo (owner 7 Oct 26); `python3 scripts/voice_tool.py` checks every piece.
@@ -16,6 +17,7 @@ render:
   # `python3 scripts/pin_ritual.py` A/B-renders episodes/demo-pin against scripts/pin_baseline.json
   # and bumps this pin (plus every live scripts/*.cmd) only on identical metrics. History in learnings/render.md.
   # The 30s ffprobe deadline (Date.now() + 3e4, since 0.7.81) is why media_budget.py exists.
+  # fps, quality, crf, gpu, resolution: not read by any script (render.cmd hardcodes its own; check before relying on them)
   fps: 30
   quality: standard               # "high" silently picks libx265 CPU on this box (JP measured)
   crf: 16
@@ -24,8 +26,10 @@ render:
 
 channel:
   name: The Warning Hour   # owner-locked 2026-07-22
+  # YouTube: https://www.youtube.com/channel/UC1MKCIvtxImjo_-RFV10PBQ/ , Google account paulraymondtwh@gmail.com (owner 27 Sep 26).
+  # The site's Search Console and Gemini key sit under sidclashes2much@gmail.com; never mix either with another project's Google login.
   niche: US weather/disaster documentaries
-  target_minutes: [13, 23]
+  target_minutes: [13, 23]       # not read by any script; length is set per episode (CLAUDE.md "Two lanes")
   tempo: 0.94                     # ffmpeg atempo, applied to every segment by tts_episode.py — CLAUDE.md
                                    # Voice + references/script-os.md "tempo BEFORE timing": docs and minis share it,
                                    # applied BEFORE transcription (tempo, then re-transcribe the sped wav).

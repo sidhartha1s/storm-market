@@ -1,5 +1,9 @@
 # Shorts lane · The Warning Hour · plan v1 (15 Sep 26)
 
+State on 11 Nov 26: S1 was built as a demo (`episodes/sh-hawaii-lowell-1`, 16 Sep 26); three Joplin shorts sit
+unrendered in open PR #179 (17 Oct 26); `library/shorts/` was never built; no pilot go is on record. Sections 7
+and 8 are the plan as written; whether the lane goes on is an owner question (`ops/tasks.md` "Waiting on the owner").
+
 Owner brief 15 Sep 26: ship multiple 14–40 s vertical shorts a day on YouTube, Instagram, X (and the other
 platforms), two intents (widen the audience; funnel into the minis and documentaries), for US seniors 45+,
 never attention-max. Director's plan below; the measured basis is `competitors-2026-09-15.md` (same folder).
@@ -106,7 +110,7 @@ The existing stack already does everything except the frame size. Composition si
 6. `scripts\render.cmd sh-… full` — a 30 s 1080×1920 comp renders in about a minute on this box (measure on
    the pilot and record here). One heavy job at a time still holds: shorts render between mini renders.
 7. `master_deliverables.py` for the −14 LUFS master; no SRT needed (captions are burned in).
-   `metadata.md`: title ≤40 chars with the place name, description first URL = channel first_link, related
+   the metadata file: title ≤40 chars with the place name, description first URL = channel first_link, related
    video = the parent, pinned comment text, and the per-platform caption lines (section 4).
 
 Cost per short after the pilot: ~25 min of agent time, ~2 min render, $0 media.
@@ -169,8 +173,8 @@ platform APIs) is a week-2 decision once the per-platform numbers exist. Not bui
 ## 7. Pilot (the next thing that happens)
 
 Three shorts, one per format, from material already on disk, so the templates get built against real cuts:
-1. **S1** from `ms-hawaii-lowell-outages` (the outage number + Hawaiian Electric quote + tracking line).
-2. **S2** from the El Niño pool: "Why El Niño makes a Texas winter deadly" (the jet-stream MG from the ep8 brief).
+1. **S1** (built as `episodes/sh-hawaii-lowell-1`; its parent mini has no folder in the repo) (the outage number + Hawaiian Electric quote + tracking line).
+2. **S2** from the El Niño pool: "Why El Niño makes a Texas winter deadly" (the jet-stream MG from the "ep8" brief, September numbering, not E08).
 3. **S3** from the Children's Blizzard of 1888 (Minnie Freeman, the teacher who roped 13 children; the
    Global Buzz Tv short on her did 175k on a 1.7k-sub channel) as the proof that a story card with a
    public-domain photograph carries a US-senior audience; it funnels to the tornado docs via the pinned comment

@@ -1,5 +1,8 @@
 # The Warning Hour — 14-Day Programme (2026-09-15 → 2026-09-28)
 
+**Superseded (marked 11 Nov 26).** Its window ended 28 Sep 26; the documentary slate of 20 Sep 26 (`ops/slate-tornado-docs.md`) replaced it, and
+episode state is `python3 scripts/stage.py`.
+
 Director's note 2026-09-14: slate generated from the four-channel data, then corrected by hand: weekend documentary slots are the
 BANKED TORNADO DOCS (owner decision), not new foreign docs; the CPC signal is an El Niño advisory (>90 % odds), not La Niña;
 every row fixes bucket + angle + named source only, the literal title/number is locked by the 06:00 radar scan that day.

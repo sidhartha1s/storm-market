@@ -2,7 +2,8 @@
 
 Reusable AI-generated score tracks (claim-free — generated, not licensed) plus the exact
 recipe to make more. First used on ep5 (California 2018). Keys: repo-root `.env`
-(`DEAPI_KEY_1` / `DEAPI_KEY_2`, gitignored). Docs: https://docs.deapi.ai · full endpoint
+(gitignored). Both accounts there answered 403 "Client account is suspended" on 10 Oct 26 (`ops/tasks.md`): no
+generation until the owner reinstates one. Docs: https://docs.deapi.ai · full endpoint
 reference: https://deapi.ai/llms.txt
 
 ## Tracks in this folder
@@ -41,6 +42,15 @@ Price check first: same endpoint + /price  (~$0.0009 per 60s)
 Poll:  GET /api/v2/jobs/{request_id}   — NOT /requests/{id} (that 404s)
        status "done" -> download data.result_url
 ```
+
+## Account rules and limits (read 3 Oct 26)
+- deAPI's terms forbid creating or controlling more than one account and call stacking welcome bonuses fraud; a breach
+  forfeits all credits. The suspensions fit that clause. The fix is one paid account with prepaid credits, never key
+  rotation; tell the owner this before any rotation.
+- Free tier: 1 submit per minute, 15 per day per account, 3 per day per model. Price and quote calls are a separate
+  50 per minute bucket.
+- Liveness at no cost: an empty POST to `/api/v2/audio/music` answers 403 when suspended, 422 when live.
+- Cloudflare error 1010 blocks Python's default User-Agent: send a browser-like one.
 
 ## Gotchas
 - Generated tracks pad **~3s of silence at the tail** — trim or fade before mounting.

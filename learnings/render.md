@@ -213,6 +213,16 @@ ep4-el-reno draft, 1333.38 s, 20001 frames at 15 fps, 3 workers: compile 20.2 s,
    window: min 0.995305, median 0.999786, none under 0.98. From the first captured frame to the written compare: 156 s.
    It reads stills only: audio and seeks during playback are still first seen in the draft render.
 
+## 6 Oct 26: book ad v2, cut with raw ffmpeg, came out of sync (ads and CTAs)
+1. ffmpeg `zoompan` snaps its crop to whole pixels, so the picture centre wobbled about 1 px every frame (std 0.95 px;
+   a hyperframes transform scale: 0.008 px). Ads and CTAs are composed in hyperframes; ffmpeg only trims, probes and
+   normalises loudness.
+2. A clip start written 33 microseconds after a frame boundary (4-decimal rounding) renders the whole clip one frame
+   behind its sound. Snap to the frame grid: starts rounded down, durations rounded up.
+3. Separate AAC encodes joined by concat put the sound about 50 ms late on the talking shots.
+4. Cards laid out to fill a still frame, then pushed in 10.7 %, left the frame by the end of the move. A push-in scales
+   an inner wrapper and ends at the designed layout. Look at the first and last frame of every move.
+
 ## 26 Sep 26: pin 0.8.41 to 0.8.78; currency moves to episode kickoff; the ritual demo is demo-pin
 
 1. **Owner: "I always prefer the latest version because they will be adding fixes on the go".** The pin LOCK stays

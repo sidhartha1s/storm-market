@@ -41,6 +41,10 @@ Newest first. New entries go at the top, under this line. Superseded lines point
   wav (F1 peak about 877 Hz, vowel about 0.16 s; the short-i signature is F1 under about 500 Hz and about 60 ms).
 - **Open:** the conversion script still sits in an El Reno scratch folder outside the tracked repo (`ops/tasks.md` "Housekeeping").
 
+## 2 Oct 26 - SFX demo: a "faint" heartbeat
+The heartbeat's energy sat near 50 to 65 Hz, which laptop and TV speakers cannot reproduce. Fix: soft saturation plus a
+lift around 130 Hz.
+
 ## 2026-09-27 - ep-enderlin: the "lyvz" respelling voiced "livs"; plain "lives" is correct; gate shipped 2026-09-28
 
 - **Owner:** "lives" (lost their lives) came out /lɪvz/, must be /laɪvz/. The TTS copy had respelled it "lyvz".

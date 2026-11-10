@@ -1,5 +1,8 @@
 # Content operations roadmap · The Warning Hour · from 2026-09-14
 
+**Superseded (marked 11 Nov 26).** The documentary slate of 20 Sep 26 (`ops/slate-tornado-docs.md`) replaced this plan's lanes; rules now live in
+`CLAUDE.md` and `ops/decisions.md`, and episode state in `python3 scripts/stage.py`. `ops/tracker.json` stopped on 19 Oct 26.
+
 Owner handed content operations to the director session on 2026-09-14 ("you are my director of content operations
 and creative head; I am still the CEO"). This file is the director's plan; `ops/tracker.json` is the live state and
 `ops/tracker.html` is the one-look page (`python3 ops/build_tracker.py`).
