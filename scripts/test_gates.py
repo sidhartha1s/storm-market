@@ -836,6 +836,38 @@ with tempfile.TemporaryDirectory() as d:
     code, out = run("lint_timeline.py", lint_nx_ep(d, 1.0, ' data-cut-by="ins-paul-9"', paul_at=1.5))
     check("lint_timeline: a data-cut-by whose clip starts 0.5 s late still FAILs", "narration window shorter" in out, out[-500:])
 
+# ===================================================================================
+# R2: a documentary named e10-<topic> (CLAUDE.md step 7) is checked exactly like an ep- one (scripts/episode.py)
+# ===================================================================================
+def _verdicts(out, slug):
+    """Each sweep check's verdict word and name, slug and counts stripped."""
+    return [re.sub(r":\s*\d+$", "", l.replace(slug, "<slug>")) for l in out.splitlines()
+            if l.startswith(("PASS ", "FAIL ", "SKIP "))]
+
+
+_radio = '<audio id="ins-radio" src="audio/a1-s1.wav" data-start="0.2" data-duration="0.5"></audio>'
+with tempfile.TemporaryDirectory() as d:
+    res = {}
+    for slug in ("ep-foo", "e10-foo", "ep4-foo"):
+        ep = make_ep(Path(d) / slug, extra=_radio)
+        res[slug] = (_verdicts(run("sweep_episode.py", ep)[1], slug), run("lint_timeline.py", ep)[1])
+    check("R2 sweep: an e10- episode gets every check an ep- episode gets (CTA, end ask, close card)",
+          res["e10-foo"][0] == res["ep-foo"][0] and not any(l.startswith("SKIP") for l in res["e10-foo"][0]),
+          f"\n ep-:  {res['ep-foo'][0]}\n e10-: {res['e10-foo'][0]}")
+    check("R2 sweep: a legacy ep4- episode still skips only the close card",
+          [l for l in res["ep4-foo"][0] if l.startswith("SKIP")] == ["SKIP close card carries the brand lockup — <slug> is not a current documentary"],
+          str(res["ep4-foo"][0]))
+    check("R2 lint: an e10- episode gets the outside-voice caption check like an ep- one",
+          all("outside voice without a caption" in res[s][1] for s in ("ep-foo", "e10-foo", "ep4-foo")),
+          res["e10-foo"][1][-400:])
+
+import render_preflight  # noqa: E402
+_bare = '<section data-duration="10"><audio id="nx-a1" src="a.wav" data-start="0" data-duration="5"></audio></section>'
+check("R2 layers: an e10- documentary must carry the layers an ep- one must",
+      render_preflight.missing_layers("e10-foo", _bare) == render_preflight.missing_layers("ep-foo", _bare) != [])
+check("R2 layers: legacy ep4- and ms- slugs keep skipping the layer gate",
+      render_preflight.missing_layers("ep4-foo", _bare) == render_preflight.missing_layers("ms-foo", _bare) == [])
+
 print()
 if FAILS:
     print(f"test_gates: {len(FAILS)} FAILED: {FAILS}")
