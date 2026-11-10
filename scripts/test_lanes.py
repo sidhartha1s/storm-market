@@ -391,8 +391,96 @@ def test_stop_all_ends_every_running_lane_by_its_log(tmp_path):
     assert "ended" not in lanes.load_ledger(ep)["jobs"]["source:intro"]
 
 
+def test_l1_a_profile_is_probed_on_its_wrapper_and_only_profiles_with_a_credential_are_tried(tmp_path):
+    """L1 (11 Nov 26): the rotation listed ~/.claude-accounts and probed claude.exe under CLAUDE_CONFIG_DIR, while the
+    lane ran the claudeN wrapper on its token, so claude3 (a token, no accounts folder) was never tried. The listing
+    runs for real (PowerShell on this machine) over a fake %USERPROFILE%; only the probe replies are fakes."""
+    ep = lane_episode(tmp_path)
+    lanes.profiles = REAL_PROFILES
+    home = tmp_path / "home"
+    for p in ("claude1", "claude3", "claude4", "claude6", "claude-token"):  # the wrappers in %USERPROFILE%\bin
+        touch(home / "bin" / f"{p}.cmd")
+    touch(home / ".claude-tokens" / "claude1")
+    touch(home / ".claude-tokens" / "claude3")  # a token and no accounts folder: probed and used
+    touch(home / ".claude-accounts" / "claude6" / ".credentials.json")  # a wrapper run on a login folder
+    (home / ".claude-accounts" / "claude2").mkdir(parents=True)  # a folder, no wrapper, no credential
+    # claude4: a wrapper with neither a token nor a login folder; claude-token is a helper: neither is ever probed
+    calls = fakes(answering=set())
+    asked = real_probe_replying({"claude1": CLAUDE1_REPLY, "claude3": CLAUDE2_REPLY, "claude6": CLAUDE2_REPLY}, listing=True)
+    old, os.environ["USERPROFILE"] = os.environ["USERPROFILE"], str(home)
+    try:
+        assert lanes.main(["start", str(ep), "source:a1", *LANE]) == 0
+        assert lanes.profiles("zbook") == ["claude1", "claude3", "claude6"]
+    finally:
+        os.environ["USERPROFILE"] = old
+    assert asked == ["claude1", "claude3"], asked  # claude1 at its limit, claude3 answers
+    assert calls["spawn"] == [("zbook", "type b.md | claude3 -p --model opus", r"C:\x\lane.log", r"C:\wt")]
+    assert lanes.load_ledger(ep)["jobs"]["source:a1"]["profile"] == "claude3"
+
+
+def test_l3_a_host_alias_that_names_this_machine_is_local(tmp_path):
+    """L3: on the ZBook, `zbook` is this machine (no ssh to itself) and the ASUS is `asus`; on the ASUS the reverse."""
+    argv, real_run, real_name = [], subprocess.run, socket.gethostname
+    subprocess.run = lambda a, **k: argv.append(a) or subprocess.CompletedProcess(a, 0, "1", "")
+    try:
+        for me, mine, other in (("Sidhartha", "zbook", "asus"), ("SPTL-184", "asus", "zbook")):
+            socket.gethostname = lambda: me
+            argv.clear()
+            for h in ("local", mine, other):
+                REAL_PS(h, "1")
+            assert [a[0] for a in argv] == ["powershell", "powershell", "ssh"] and other in argv[2], (me, argv)
+    finally:
+        subprocess.run, socket.gethostname = real_run, real_name
+    ep = lane_episode(tmp_path)
+    assert lanes.main(["status", str(ep), "--host", "asus"]) == 2  # the other laptop is a host name argparse accepts
+    socket.gethostname = lambda: "SIDHARTHA"
+    calls = fakes(answering={"claude1"})
+    try:  # a lane on zbook from the ZBook is local: no --cwd needed, it starts in this checkout
+        assert lanes.main(["start", str(ep), "source:a1", "--host", "zbook", "--cmd", "{cli} -p", "--log", r"C:\x\l.log"]) == 0
+    finally:
+        socket.gethostname = real_name
+    assert calls["spawn"] == [("zbook", "claude1 -p", r"C:\x\l.log", str(lanes.SCRIPTS.parent))]
+
+
+def test_l4_a_lane_whose_process_died_is_not_running(tmp_path):
+    """L4: status read only the log tail, so a crashed lane read RUNNING until its minutes ran out. One call per lane
+    reads the root process and the tail (the Stop hook's 120 s); an unreadable host is unknown, never dead."""
+    ep = lane_episode(tmp_path)
+    fakes(answering=set())
+    lanes.read_lane = REAL_READ_LANE
+    scripts = []
+    run = {"started": time.time() - 10 * 60, "host": "asus", "minutes": 60, "log": r"C:\x\lane.log", "profile": "claude1"}
+    for answer, state, note in (((0, "0\nTraceback: boom\n"), "READY", "exited"),
+                                ((0, "1\nworking\n"), "RUNNING", "on asus"),
+                                ((255, "ssh: connect to host asus port 22: Connection timed out"), "RUNNING", "unreadable"),
+                                ((0, f"0\n{lanes.NO_LOG}\n"), "RUNNING", "on asus")):  # no log yet: the NO_LOG_MIN grace rules
+        lanes.ps = lambda host, script, timeout=90: scripts.append((script, timeout)) or answer
+        s = next(s for s in lanes.job_states(ep, {"jobs": {"source:a1": dict(run)}}) if s["job"] == "source:a1")
+        assert s["state"] == state and note in s["note"], (answer, s)
+    lanes.ps = never
+    assert all("Get-CimInstance Win32_Process" in sc and "Get-Content -Tail" in sc and t <= 20 for sc, t in scripts), scripts
+
+
+def test_l5_a_ledger_save_waits_out_a_reader_holding_the_file(tmp_path):
+    """L5: os.replace fails (WinError 5) while a status run has lanes.json open, and `start --cmd` saves after the lane
+    is already running, so the lane went unrecorded. A reader holds it for ms; here one holds it 1 s."""
+    ep = lane_episode(tmp_path)
+    lanes.save_ledger(ep, {"jobs": {}})
+    f = open(ep / "lanes.json", encoding="utf-8")
+    threading.Timer(1.0, f.close).start()
+    try:
+        lanes.save_ledger(ep, {"jobs": {"source:a1": {"started": 1}}})
+    finally:
+        time.sleep(1.2)  # the timer has closed it either way
+    assert lanes.load_ledger(ep)["jobs"] == {"source:a1": {"started": 1}}
+
+
 if __name__ == "__main__":
-    for t in (test_stop_all_ends_every_running_lane_by_its_log,
+    for t in (test_l1_a_profile_is_probed_on_its_wrapper_and_only_profiles_with_a_credential_are_tried,
+              test_l3_a_host_alias_that_names_this_machine_is_local,
+              test_l4_a_lane_whose_process_died_is_not_running,
+              test_l5_a_ledger_save_waits_out_a_reader_holding_the_file,
+              test_stop_all_ends_every_running_lane_by_its_log,
               test_rule1_start_skips_a_profile_that_does_not_answer,
               test_an_ssh_drop_after_a_good_launch_never_launches_twice,
               test_a_recorded_launch_whose_log_never_appears_fails,
