@@ -163,6 +163,7 @@ def main():
         return
     cues.sort()
     out = ep / "renders" / f"{out_base}.srt"
+    out.parent.mkdir(exist_ok=True)  # a fresh worktree has no renders/ (gitignored)
     with out.open("w", encoding="utf-8") as f:
         for i, (s, e, txt) in enumerate(cues, 1):
             f.write(f"{i}\n{ts(s)} --> {ts(max(e, s + 0.8))}\n{txt}\n\n")
