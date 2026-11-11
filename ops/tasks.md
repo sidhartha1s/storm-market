@@ -4,7 +4,7 @@ Open work on the tooling, gates and pipeline, and the questions only the owner c
 `python3 scripts/stage.py`. Decisions behind these tasks go in `ops/decisions.md`. Update a row the same session its state changes.
 
 Status: `todo` · `doing` · `review` (PR open, waiting on Opus review, e2e or the owner) · `done` (merged, main green) · `parked`.
-Every task number is used once; new rows take the next free number (now 49).
+Every task number is used once; new rows take the next free number (now 60).
 
 ## Waiting on the owner
 Each item: the question, the options, what is blocked meanwhile, and the reply that settles it. The session records
