@@ -1,0 +1,3 @@
+img2: C:\Users\Sidhartha\Automation Projects\storm-market\episodes\ep-moore-1999\media\stills\thumb-img2-okc-damage-fema3819.jpg (md5 d137b2154ad0cb0c2c5d44c9962d6f60, 1833x1244)
+Source: https://commons.wikimedia.org/wiki/File:FEMA_-_3819_-_Photograph_by_Andrea_Booher_taken_on_05-01-1999_in_Oklahoma.jpg ; US Government work, public domain. Credit: Andrea Booher/FEMA News Photo. FEMA's caption says Oklahoma City, not Moore. Row stills/thumb-img2-okc-damage-fema3819.jpg in media/provenance.csv.
+img1: C:\Users\Sidhartha\Automation Projects\storm-market\assets\paul\paul-sheet-c.png
