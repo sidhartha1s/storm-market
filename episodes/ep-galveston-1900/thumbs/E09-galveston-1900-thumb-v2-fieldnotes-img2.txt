@@ -1,0 +1,2 @@
+NONE: no qualifying img2. C:\Users\Sidhartha\Automation Projects\storm-market\episodes\ep-galveston-1900\ has no media\ folder and no provenance.csv on this laptop (main checkout or worktree).
+Candidate outside the allowed folder, no provenance row found: C:\Users\Sidhartha\Automation Projects\storm-market\.snapq\mirror\ep-galveston-1900\media\a1\A1-S1_c1_galveston-daily-news-1891-07-16.jpg (1891 newspaper page, public domain by age if the row confirms it; angle.md cites the Portal to Texas History scan).
