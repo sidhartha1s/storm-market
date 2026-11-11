@@ -1,0 +1,2 @@
+NONE: no qualifying img2. C:\Users\Sidhartha\Automation Projects\storm-market\episodes\ep-galveston-1900\ has no media\ folder and no provenance.csv on this laptop (main checkout or worktree).
+Candidate outside the allowed folder, no provenance row found: C:\Users\Sidhartha\Automation Projects\storm-market\.snapq\mirror\ep-galveston-1900\media\a2\noaa-map-1900-09-04-gulf.jpg (US Weather Bureau map, US Government work, public domain if the row confirms it).
