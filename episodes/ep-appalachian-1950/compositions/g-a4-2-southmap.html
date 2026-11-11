@@ -231,7 +231,9 @@ window.__timelines = window.__timelines || {};
       const u = p2((t - S5) / 1.8);
       return [lerp(P4D[0], P0[0], u), lerp(P4D[1], P0[1], u), lerp(P4D[2], P0[2], u)];
     }
-    const s = P0[0] * (1 + 0.02 * clamp((t - T_PU0) / (T_PU1 - T_PU0)));        /* 2 % push about screen PUSH_C */
+    /* slow push about screen PUSH_C from landing to 13.40: 4 % over 11.6 s (brief: 2 % from 8.30; S5 2 to 9 read static
+       in freeze_scan with the brief's hold, so the push starts at landing at a similar rate) */
+    const s = P0[0] * (1 + 0.04 * clamp((t - T_MV1) / (T_PU1 - T_MV1)));
     return [s, PM[0] - (PUSH_C[0] - 960) / s, PM[1] - (PUSH_C[1] - 540) / s];
   }
   /* cold fill edge latitude per cue (brief §5) */
