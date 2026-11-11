@@ -38,6 +38,14 @@ if "%MODE%"=="draft" (
 ) else (
   goto :usage
 )
+REM The refusal marker is keyed by slug and out-basename (a second episode must not overwrite the first one's failure;
+REM "/" of an acts\<base>\actNN basename becomes "_"). After the mode block, so OUTBASE holds its default.
+set ERRMARK=%~dp0render_last_error_%SLUG%_%OUTBASE:/=_%.marker
+if not exist "%EP%\index.html" (
+  echo ERROR: no index.html in %EP%
+  echo 1 no-index-html %SLUG% %MODE% > "%ERRMARK%"
+  exit /b 1
+)
 if defined RENDER_CRF set _CRF=%RENDER_CRF%
 if defined RENDER_FPS set _FPS=%RENDER_FPS%
 REM RENDER_COMPOSITION: the composition file to render (default index.html); render_acts.py sets it per act.
