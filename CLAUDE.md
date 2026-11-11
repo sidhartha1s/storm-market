@@ -225,9 +225,8 @@ The gate list and its order live in `scripts/run_gates.py` (minis add a freeze s
 - `render_preflight.py` refuses a current documentary (`episode.py`) missing a layer the owner already asked for (circle, bed, Paul's
   clips; owner 18 Oct 26) or whose circle clip is a still stand-in, not a moving face (test
   `python3 scripts/test_frozen_circle.py`). Its `LAYERS` table is the list and holds the thresholds; `run_gates.py` runs it too.
-- One heavy job per machine at a time: render.cmd, `render_acts.py`, the pin ritual (not `--check-only`), TTS (`tts_episode.py`, `tts_clone.py`), the face pass (`circle_face.py`) and `e2e.py`
+- One heavy job per machine at a time: render.cmd, `render_acts.py`, the pin ritual (not `--check-only`), TTS (`tts_episode.py`, `tts_clone.py`), the face pass (`circle_face.py`), `paul_voice.py`, `transcribe_episode.py` and `e2e.py`
   book the heavy lock (`~/.storm-heavy.lock`) and wait their turn, also when started over ssh; a dead holder's lock is taken over.
-  `paul_voice.py` and `transcribe_episode.py` do not book it yet (`ops/tasks.md`).
   Launch long waits detached, never in a 10 min tool call (an e2e can wait behind a 75 min render).
   How it works and how a new heavy job books it: the `scripts/render_busy.py` docstring (test `python3 scripts/test_render_busy.py`).
   No gates, Playwright or subagent browsers beside a render, except one `freeze_scan.mjs` page (`render_busy.py --light`).
