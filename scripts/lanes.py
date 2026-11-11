@@ -469,7 +469,7 @@ def write(a, ep, lock):
                 sys.exit(f"[lanes] FAIL: not starting: {why}")
             run = {"started": now, "host": a.host, "minutes": a.minutes}
             if a.lane_cmd:
-                run = launch(dict(run, cmd=a.lane_cmd, log=a.log, cwd=a.cwd or str(SCRIPTS.parent)), profile_order(a.host, a.profile))
+                run = launch(dict(run, cmd=a.lane_cmd, log=a.log, cwd=a.cwd or str(SCRIPTS.parent)), profile_order(a.host, running_load(ep, now), a.profile))
                 if not run:
                     sys.exit(f"[lanes] FAIL: no claude profile answers on {a.host}")
     if a.cmd == "claim":
