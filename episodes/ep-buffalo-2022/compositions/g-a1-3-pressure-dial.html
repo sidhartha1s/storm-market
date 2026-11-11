@@ -102,7 +102,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#pd-face", { autoAlpha: 0, scale: 0.9, svgOrigin: O, smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: O, smoothOrigin: false, duration: 0.6, ease: "power3.out" }, 0.05);
   tl.fromTo("#pd-shimmer", { rotation: 0, svgOrigin: O, smoothOrigin: false }, { rotation: 375, svgOrigin: O, smoothOrigin: false, duration: 18.75, ease: "none" }, 0.05);
 
-  /* whole-dial float (quickref "Motion and exits"): the 18 deg/s shimmer alone is too faint for freeze_scan, which read 5.5 to 15.0 s as a hold. 15 legs x 1.25 s = 18.75 s */
+  /* whole-dial float (quickref "Motion and exits"): the 20 deg/s shimmer alone is too faint for freeze_scan, which read 5.5 to 15.0 s as a hold. 15 legs x 1.25 s = 18.75 s */
   tl.fromTo("#pd-stage", { y: 0 }, { y: -6, duration: 1.25, ease: "sine.inOut", yoyo: true, repeat: 14 }, 0.05);
 
   /* "that wind" @0.30 to 0.54, from 0.60: ticks draw in clockwise (0.04 apart), tick labels fade up with every second tick */
@@ -150,11 +150,12 @@ window.__timelines = window.__timelines || {};
   /* "deeper" @14.76: wind ring in, turning counterclockwise */
   tl.fromTo("#pd-wind", { autoAlpha: 0, rotation: 0, svgOrigin: O, smoothOrigin: false }, { autoAlpha: 1, rotation: -40, svgOrigin: O, smoothOrigin: false, duration: 0.6, ease: "power2.out" }, 14.76);
   /* "harder the wind blows around it." @16.20 to 17.62: ring keeps turning counterclockwise, accelerating, 16.20 to 18.20 */
-  tl.fromTo("#pd-wind", { rotation: -40, svgOrigin: O, smoothOrigin: false }, { rotation: -400, svgOrigin: O, smoothOrigin: false, duration: 2.0, ease: "power2.in" }, 16.20);
+  tl.fromTo("#pd-wind", { rotation: -40, svgOrigin: O, smoothOrigin: false }, { rotation: -400, svgOrigin: O, smoothOrigin: false, duration: 2.3, ease: "power2.in" }, 16.20);
 
-  /* tail: everything fades through (ground stays) */
-  tl.to("#pd-stage", { scale: 1.04, autoAlpha: 0, svgOrigin: O, smoothOrigin: false, duration: 0.6, ease: "power2.in" }, 18.20);
-  tl.to(["#pd-chip", "#pd-src"], { scale: 1.04, autoAlpha: 0, transformOrigin: "left center", duration: 0.6, ease: "power2.in" }, 18.20);
+  /* tail: everything fades through (ground stays). The brief says 18.20 to 18.80 and a 18.8 s comp, but the mounted host is 18.496 s
+     and sweep fails a beat cut by more than 0.30 s, so the 0.6 s exit is anchored to the host's last 0.6 s (17.9 to 18.5) and the ring turn runs to 18.5 with it. */
+  tl.to("#pd-stage", { scale: 1.04, autoAlpha: 0, svgOrigin: O, smoothOrigin: false, duration: 0.6, ease: "power2.in" }, 17.90);
+  tl.to(["#pd-chip", "#pd-src"], { scale: 1.04, autoAlpha: 0, transformOrigin: "left center", duration: 0.6, ease: "power2.in" }, 17.90);
 
   window.__timelines["g-a1-3-pressure-dial"] = tl;
 })();
