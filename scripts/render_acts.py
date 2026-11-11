@@ -308,6 +308,8 @@ def main(argv):
     pieces = renders / "acts" / base
     if out.exists() or pieces.exists():
         raise SystemExit(f"render_acts: {out.name} or acts/{base} exists; never overwritten, pick a new basename")
+    if render_preflight.stamp_refusal(ep):  # before the basename is claimed; each act's render.cmd checks it again
+        raise SystemExit(7)
     old = json.loads((renders / "acts" / reuse / "plan.json").read_text()) if reuse else {"acts": []}
     old_by_key = {(x["frames"][0], x["frames"][1], x["fingerprint"]): x["file"] for x in old["acts"]}
     pieces.mkdir(parents=True)  # claims the basename before the wait for the lock
