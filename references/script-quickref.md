@@ -1,6 +1,8 @@
 # script-quickref.md — the script writer's brief (owner rules through 26 Oct 26)
 
-A script writer reads this file, `references/flag-words.md` and the episode research, nothing else. It condenses
+A script writer reads this file, `references/flag-words.md`, the grader's checks in `references/grader-calibration.md`
+(the grader fails a section on exactly those, so clear them before handing over: 31 of 140 later-round fixes on the
+last three episodes were TTS-unsafe text, a banned shape or a fact spent twice) and the episode research, nothing else. It condenses
 the source file named in each section header; if a rule here and its source disagree, fix the source in the same
 PR and say which one won.
 
