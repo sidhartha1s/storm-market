@@ -64,11 +64,6 @@ def index_with(*hosts):
 
 # ---- shared readers: stage_comp.mjs compSize and media_budget.comp_size give the same answer
 PORTRAIT_ROOT = '<div id="root" data-width="1080" data-height="1920" data-duration="8"></div><div id="host-x" data-width="1920" data-height="1080">'
-code, out = subprocess.run(
-    ["node", "--input-type=module", "-e",
-     f"import {{ compSize }} from '{(S / 'stage_comp.mjs').as_uri()}';"
-     f"console.log(JSON.stringify([compSize({json.dumps(PORTRAIT_ROOT)}), compSize('<div id=\"root\"></div>')]))"],
-    capture_output=True, text=True).returncode, ""
 r = subprocess.run(["node", "--input-type=module", "-e",
                     f"import {{ compSize }} from '{(S / 'stage_comp.mjs').as_uri()}';"
                     f"console.log(JSON.stringify([compSize({json.dumps(PORTRAIT_ROOT)}), compSize('<div id=\"root\"></div>')]))"],
