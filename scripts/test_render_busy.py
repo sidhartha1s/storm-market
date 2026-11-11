@@ -279,9 +279,15 @@ with tempfile.TemporaryDirectory() as d:
     buf, t0 = io.StringIO(), time.time()
     with contextlib.redirect_stdout(buf):
         with render_busy.heavy_lock("tts ep-test"):
-            waited, holder_done = time.time() - t0, holder.poll() is not None
+            waited = time.time() - t0
             mine = render_busy.read_lock(lock)
     out = buf.getvalue()
+    # the holder frees the lock a moment before its process ends, so "already exited" at the instant we book it
+    # was a race (failed once in e2e, 11 Nov 26, waited=2.4s): it must have ended its 2.5 s block cleanly by now
+    try:
+        holder_done = holder.wait(timeout=5) == 0
+    except subprocess.TimeoutExpired:
+        holder_done = False
     check("second heavy job waits while the first holds the lock, then runs",
           holder_done and waited > 1.0 and mine["job"] == "tts ep-test", f"waited={waited:.1f}s done={holder_done} out={out!r}")
     check("the waiting job prints who holds the lock",
