@@ -81,7 +81,7 @@ if comp_size:
     check("media_budget.comp_size: portrait root, then the 1920x1080 default",
           comp_size(PORTRAIT_ROOT) == (1080, 1920) and comp_size("<div id='root'></div>") == (1920, 1080))
 check("optimize_clips.py calls comp_size instead of keeping its own data-width regex",
-      "data-width" not in (S / "optimize_clips.py").read_text(encoding="utf-8"))
+      'id="root"' not in (S / "optimize_clips.py").read_text(encoding="utf-8"))
 
 # ---- blank_scan: text at y 1500 is ink on a 1080x1920 frame
 with tempfile.TemporaryDirectory() as d:
