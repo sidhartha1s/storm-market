@@ -105,6 +105,13 @@ Acts need no owner sign-off (owner 22 Oct 26: "i dont thinks its highly necessar
 acts' gate anymore. i thought you were gonna share the preview"). His next look after the hook+intro is the
 draft preview, with Paul's Flow clips in it.
 
+**Rounds are capped and shrink** (owner 11 Nov 26: "a maximum number of two to three turns maximum each time. The
+turns should be shorter than the last one"; the last three episodes ran 3.5 to 4 grade rounds a section, up to 7).
+At most 3 grade rounds per section. Round 1 reads the whole section. Rounds 2 and 3 get the previous round's fix list
+and read only the lines it changed, on the file as it stands now (Galveston A1 round 3 graded text older than round
+2's fixes). After round 3 the section locks with what is still open listed for the draft preview. A `[verify]` marker
+is not a round: it still resolves or its line is cut (rule a).
+
 A locked section goes to TTS/compose immediately — it does not wait for later acts' fan-out to
 finish. A locked section never reopens for a later section's fact-check; a cross-section
 contradiction found late is a new `[verify]` on the LATER section.
