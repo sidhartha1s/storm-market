@@ -138,7 +138,7 @@ Measured against a 14-minute cut that scored 5.5/10 on stakes-per-90-seconds bef
   Same for card rows. Pick cue words that whisper spells stably (avoid spelled-out numbers; whisper writes digits).
 - **CTA first frame:** the clip starts 0.1 s BEFORE the 1.0 s dip-in black lifts (blackouts on their own track above
   the clip) and every audio/CTA start is frame-aligned (ceil to 1/30 s); otherwise the first syllable ("Mo…st people")
-  is clipped. Dip-out after the CTA is 0.5 s.
+  is clipped. Dip-out after the CTA is `config.yaml channel.cta.dip_out` (1.0 s).
 - **TTS sentences over 24 words split and can repeat a fragment** ("drifting west, drifting west") or mangle a word
   ("affected" → "lifted", "not a wave" → "not if if"): read every transcript for repeated bigrams and nonsense before
   the timeline, re-synthesise the segment with the sentence split.
