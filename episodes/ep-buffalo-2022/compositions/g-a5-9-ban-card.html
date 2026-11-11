@@ -145,7 +145,7 @@ window.__timelines = window.__timelines || {};
   tl.set(P + "fill", { scaleX: 0, transformOrigin: "0% 50%" }, 0);
 
   /* whole window: ground breath, finite yoyo (8 x 2.79 s = 22.32 s) */
-  tl.fromTo(P + "breath", { autoAlpha: 0 }, { autoAlpha: 1, duration: 2.79, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0);
+  tl.fromTo(P + "breath", { autoAlpha: 0.45 }, { autoAlpha: 1, duration: 2.79, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0);
   /* "Many were out there" @0.00: 46 coloured blocks fill in place (45 x 0.015 + 0.125 = 0.8 s) */
   tl.fromTo(B, { autoAlpha: 0, scaleY: 0 }, { autoAlpha: 1, scaleY: 1, duration: 0.125, ease: "power2.out", stagger: 0.015 }, 0);
   /* "out there" @0.38: chip; sub-label @0.80 */
