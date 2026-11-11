@@ -26,7 +26,8 @@ render:
 
 channel:
   name: The Warning Hour   # owner-locked 2026-07-22
-  # YouTube: https://www.youtube.com/channel/UC1MKCIvtxImjo_-RFV10PBQ/ , Google account paulraymondtwh@gmail.com (owner 27 Sep 26).
+  # YouTube, Paul's documentaries (E01 on): https://www.youtube.com/channel/UCBM-Hk07cy7IqU4cIH64_nw (@TheWarningHour-i1c, "The Warning Hour by Paul Raymond"; E01 public 2 Nov 26).
+  # YouTube, the earlier videos: https://www.youtube.com/channel/UC1MKCIvtxImjo_-RFV10PBQ/ , Google account paulraymondtwh@gmail.com (owner 27 Sep 26).
   # The site's Search Console and Gemini key sit under sidclashes2much@gmail.com; never mix either with another project's Google login.
   niche: US weather/disaster documentaries
   target_minutes: [13, 23]       # not read by any script; length is set per episode (CLAUDE.md "Two lanes")
