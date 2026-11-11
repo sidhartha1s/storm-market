@@ -193,7 +193,7 @@ Owner 7 Oct 26: "i want all stuff related to storm market within the repo. excep
   tool in `~/Automation Projects/webgen` (a separate project). What is still to move in: `ops/tasks.md`.
 
 ## HARD RULE: worktree isolation
-Never build or edit in the main checkout; parallel sessions share it. First action of any session: `git worktree list`
+Never edit tracked files in the main checkout; parallel sessions share it. Gitignored outputs (masters, `uploads/`, media, venv, models) live there by design. First action of any session: `git worktree list`
 and `git status`. Before the first write: `git worktree add .worktrees/<task> -b <branch> origin/main`.
 
 ## HARD RULE: the pin stays current
