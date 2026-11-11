@@ -7,6 +7,8 @@
 > Frame 1080x1920. Voice only, no Paul on screen. Captions burned in as phrases. The date and the state are on
 > screen from frame 1 (the narration does not say them). Close: the landing line, then the film's title card.
 
+Hook shape: clock (2026-11-11)
+
 ### S1-S1 — narration (hook)
 > Two words went out from the weather service in Norman at six fifty-seven.
 
