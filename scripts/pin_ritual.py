@@ -176,7 +176,6 @@ def render(version, out_mp4):
     npx = shutil.which("npx")
     if not npx:
         sys.exit("[ritual] npx not on PATH")
-    stamp_refusal(DEMO, unchecked="the pin ritual's A/B of hyperframes versions on demo-pin, not an episode")
     log = DEMO / f"pin-ritual-{version}.log"
     if WORKERS < 2:
         print(FALLBACK_1W)
