@@ -98,7 +98,7 @@ if failed:
     sys.exit(1)
 
 if waiting:
-    print(f"RUN_GATES WAIT - file-only gates green; {len(waiting)} browser gates waiting for the render, not run: "
+    print(f"RUN_GATES WAIT - file-only gates green; {len(waiting)} browser and timed gates waiting for the render, not run: "
           f"{', '.join(waiting)}. Not a pass: re-run when the render ends.")
     sys.exit(3)
 
