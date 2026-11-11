@@ -130,7 +130,9 @@ mechanism/analysis pair) and plants+pays a loop.
 - One named researcher + institution per mechanism chapter; agencies named on screen; "nobody knows" in a source's mouth.
 - Flat declaratives for record/mechanism; the future in three sourced paths, never the narrator's guess.
 - A US state/region in the first 60 s; every foreign distance restated in feet/miles/°F/dollars + a US landmark.
-- Seams are time-stamps or place-stamps, never "to understand X you have to understand Y."
+- Seams are time-stamps or place-stamps, never "to understand X you have to understand Y." Every section ends on an
+  open loop (owner 11 Nov 26): a real open question or an unresolved fact a later section pays. A real open question may
+  end a section; its answer does not follow in the next line (`script-os.md` rule 9).
 - Technical terms per the Register line above; reuse them 3+ times. Every superlative gets a comparator and unit.
 - One object per segment; one named victim (age, job, sourced quote) per tragedy.
 - Close: fact + dated forward window, then the one signature line (DESIGN.md "Signature closing footnote", owner 4 Oct 26). No other aphorism, no mirrored callback.
