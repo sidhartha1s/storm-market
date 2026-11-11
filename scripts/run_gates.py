@@ -48,6 +48,8 @@ GATES = [
     ("occlusion_check.mjs", ["node", str(scripts / "occlusion_check.mjs"), ep_abs], None),
     ("graphics_qc.mjs",     ["node", str(scripts / "graphics_qc.mjs"), "."], ep.resolve()),
 ]
+if ep.resolve().name.startswith("sh-"):  # a 9:16 short: the runtime text lint for its frame and the Shorts UI safe zone
+    GATES.append(("shorts_lint.mjs", ["node", str(scripts / "shorts_lint.mjs"), ep_abs], None))
 
 failed = []
 for name, cmd, cwd in GATES:
