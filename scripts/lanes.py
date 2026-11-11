@@ -423,7 +423,7 @@ def write(a, ep, lock):
         for s in (s for s in states if s["state"] == "FAILED"):
             run = ledger["jobs"][s["job"]]
             why = gate(run["host"])
-            new = None if why else launch(dict(run, started=now), profile_order(run["host"], run.get("profile"), skip=run.get("profile")))
+            new = None if why else launch(dict(run, started=now), profile_order(run["host"], running_load(ep, now), skip=run.get("profile")))
             os.utime(lock)  # still alive: a long relaunch is never taken over
             if new:
                 ledger["jobs"][s["job"]] = new
