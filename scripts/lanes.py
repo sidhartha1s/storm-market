@@ -30,6 +30,8 @@ the host is asked whether the lane's process runs, and one that cannot be read i
   1. it first probes the profile by running its wrapper (`claudeN -p 'reply with the single word ok' --model haiku`,
      the same command the lane runs); any reply but "ok" (a limit, a logged-out profile, an error) moves it to the
      next profile that can run on that host (a wrapper there with a token or a login). It never waits for a reset.
+     The order is --profile first, then least loaded first: the lanes the ledgers of every episode of this repo track
+     as running (running_load), so concurrent episodes spread over the accounts instead of piling onto claude1.
   2. every start refuses while the host has MIN_FREE_GB or less free (a RAM floor, not a lane cap: lanes run on the API)
   3. a running lane whose log tail says it hit a limit is FAILED (blocking). `status` only reports it, since the Stop
      hook calls status; `relaunch` moves it to the next profile that answers, and backs off if another lanes.py
