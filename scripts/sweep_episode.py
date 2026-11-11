@@ -211,7 +211,7 @@ _close_exempt = ((_cfg.get("channel") or {}).get("close_lockup") or {}).get("exe
 _LOCKUP = re.compile(r'\bthe\b\s*(?:</[a-z]+>)?\s*<[^>]*amber[^>]*>\s*warning\s*</[a-z]+>\s*(?:<[^>]+>)?\s*hour\b', re.I)
 if not episode.is_current_documentary(_slug):
     print(f"SKIP close card carries the brand lockup — {_slug} is not a current documentary")
-elif _slug in _CLOSE_EXEMPT:
+elif _slug in _close_exempt:
     print(f"SKIP close card carries the brand lockup — {_slug} shipped before the 29 Oct 26 order")
 else:
     _closes = [w for w in wins if w["tr"] in (2, 3) and "data-composition-src=" in w["tag"]
