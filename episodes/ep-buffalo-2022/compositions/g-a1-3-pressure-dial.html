@@ -100,7 +100,7 @@ window.__timelines = window.__timelines || {};
 
   /* "Behind" @0.00: ground is on from frame 0 (CSS). Face from 0.05; shimmer 20 deg/s for the whole comp (0.05 to 18.8) */
   tl.fromTo("#pd-face", { autoAlpha: 0, scale: 0.9, svgOrigin: O, smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: O, smoothOrigin: false, duration: 0.6, ease: "power3.out" }, 0.05);
-  tl.fromTo("#pd-shimmer", { rotation: 0, svgOrigin: O, smoothOrigin: false }, { rotation: 375, svgOrigin: O, smoothOrigin: false, duration: 18.75, ease: "none" }, 0.05);
+  tl.fromTo("#pd-shimmer", { rotation: 0, svgOrigin: O, smoothOrigin: false }, { rotation: 369, svgOrigin: O, smoothOrigin: false, duration: 18.45, ease: "none" }, 0.05);
 
   /* whole-dial float (quickref "Motion and exits"): the 20 deg/s shimmer alone is too faint for freeze_scan, which read 5.5 to 15.0 s as a hold. 15 legs x 1.25 s = 18.75 s */
   tl.fromTo("#pd-stage", { y: 0 }, { y: -6, duration: 1.25, ease: "sine.inOut", yoyo: true, repeat: 14 }, 0.05);
