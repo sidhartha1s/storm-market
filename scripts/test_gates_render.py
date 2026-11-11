@@ -80,7 +80,6 @@ def hold(job):
 
 
 stub_all()
-stamps = list(ep.glob("*.marker"))
 
 # --- A: the stamp ---
 code, out = preflight()
@@ -90,16 +89,17 @@ code, out, ran = gates()
 stamp = [p.name for p in ep.glob("*.marker")]
 check("A run_gates all green writes the stamp", code == 0 and len(ran) == 16 and stamp, f"exit {code} ran {len(ran)} stamp {stamp}")
 code, out = preflight()
-check("A preflight passes the stamp on the timeline the gates checked", code != 7 and "[stamp]" not in out, f"exit {code}\n{out[-400:]}")
+check("A preflight passes the stamp on the timeline the gates checked", stamp and code != 7 and "[stamp] OK" in out, f"exit {code}\n{out[-400:]}")
 
 (ep / "compositions" / "g-a.html").write_text("<div>b</div>", encoding="utf-8")
 code, out = preflight()
 check("A preflight refuses once a composition changed after the gates", code == 7 and "run_gates.py" in out, f"exit {code}\n{out[-400:]}")
 
-code, out, ran = gates()  # re-stamp the edited timeline, then let a gate fail: the old stamp must go
+gates()  # re-stamp the edited timeline, then let a gate fail: the old stamp must go
+had = list(ep.glob("*.marker"))
 stub_all(fail="lint_timeline.py")
 code, out, ran = gates()
-check("A a failing gate removes the stamp", code == 1 and not list(ep.glob("*.marker")), f"exit {code} {list(ep.glob('*.marker'))}")
+check("A a failing gate removes the stamp", had and code == 1 and not list(ep.glob("*.marker")), f"exit {code} {list(ep.glob('*.marker'))}")
 
 buf = io.StringIO()
 with contextlib.redirect_stdout(buf):
