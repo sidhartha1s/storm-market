@@ -367,7 +367,11 @@ await browser.close();
 const publish = (p, got) => {
   const old = ONLY.length && existsSync(p) ? JSON.parse(readFileSync(p, 'utf8')) : {};
   for (const id of ONLY) delete old[id];   // a scoped comp that now fails before measuring leaves no stale entry
-  writeFileSync(p, JSON.stringify({ ...old, ...got }, null, 1), 'utf8');
+  const next = { ...old, ...got };
+  /* a tracked copy that differs only in line endings or spacing (autocrlf checkout) is not a change:
+     rewriting it left the fixture modified after every e2e run */
+  if (existsSync(p) && JSON.stringify(JSON.parse(readFileSync(p, 'utf8'))) === JSON.stringify(next)) return;
+  writeFileSync(p, JSON.stringify(next, null, 1), 'utf8');
 };
 publish(join(compDir, '_durations.json'), DURS);
 /* settle-frame times per composition, comp-local seconds; the pre-render snapshot step reads them (mg-quickref "Verify") */
