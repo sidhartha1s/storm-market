@@ -216,7 +216,7 @@ check("render.cmd dry-run: two episodes' refusals leave two markers, an acts/ ba
 last_err.unlink(missing_ok=True)
 other.unlink(missing_ok=True)
 
-usage_err = S / "render_last_error__.marker"
+usage_err = S / "render_last_error__none.marker"
 usage_err.unlink(missing_ok=True)
 r2 = subprocess.run(["cmd", "/c", str(S / "render.cmd")], capture_output=True, text=True, cwd=str(S))
 check("render.cmd dry-run: no args -> :usage exits 1", r2.returncode == 1)
