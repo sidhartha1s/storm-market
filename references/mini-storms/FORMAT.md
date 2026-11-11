@@ -139,9 +139,10 @@ Measured against a 14-minute cut that scored 5.5/10 on stakes-per-90-seconds bef
 - **CTA first frame:** the clip starts 0.1 s BEFORE the 1.0 s dip-in black lifts (blackouts on their own track above
   the clip) and every audio/CTA start is frame-aligned (ceil to 1/30 s); otherwise the first syllable ("Mo…st people")
   is clipped. Dip-out after the CTA is `config.yaml channel.cta.dip_out` (1.0 s).
-- **TTS sentences over 24 words split and can repeat a fragment** ("drifting west, drifting west") or mangle a word
-  ("affected" → "lifted", "not a wave" → "not if if"): read every transcript for repeated bigrams and nonsense before
-  the timeline, re-synthesise the segment with the sentence split.
+- **TTS sentences over 24 words can repeat a fragment** ("drifting west, drifting west") or mangle a word
+  ("affected" → "lifted", "not a wave" → "not if if"): the writer keeps every sentence under 24 words
+  (`script-os.md` rule 2); read every transcript for repeated bigrams and nonsense before the timeline, and fix a hit
+  by splitting the sentence in the script, then re-synthesise the segment.
 - Numbers: red popfig (Abril, text-shadow, ≤3 words) synced to the spoken word, PLUS a bottom-left
   data chip for the running stat ("50,000 feet", "6 airports"). Never a colour-block card.
 - **Text width caps (measured on the Krakatau #4 slices, 2026-09-11):** popfig big line ≤ 16 characters (150 px
