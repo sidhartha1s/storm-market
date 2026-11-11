@@ -112,8 +112,8 @@ Scale runtime by ADDING acts, never stretching beats. Each new act needs new mat
 mechanism/analysis pair) and plants+pays a loop.
 
 ## Voice (45–75 US viewer) — `script-os.md` Voice rules; the TTS-safe rules below are their one home
-- Median sentence 12–18 words; 10–15% run 25–35 words as fact-chains (and/then/which); one ≤4-word kicker per 150
-  words. Write the long sentence — TTS splits it at commas, don't pre-shorten for that reason.
+- Median sentence 12–18 words; every narration sentence under 24 words (owner 11 Nov 26): a longer fact-chain is two
+  sentences, the voice step does not split it; one ≤4-word kicker per 150 words.
 - Sentence one of the script is the hook in its chosen shape (above), never a bare date or place: the popfig carries those.
 - **Register (owner 15 Oct 26): an old friend you have not seen in years, telling you what happened.** Paul speaks in
   first person, talks to "you" and puts the viewer in the place. A first-person line earns its place with what he
