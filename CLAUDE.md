@@ -89,7 +89,7 @@ An owner correction or a measured surprise lands in its single home (`references
   failure-thin. Source audio like clips: 911 calls, presser sound, survivor voice, sirens, ambience, per-act music with character.
 - **"Siren"** means the tornado or civil-defence siren (`soundreality-civil-defense-siren-128262.mp3`). **"Weewoo"** means an emergency-vehicle siren.
 - **The script never refers to its own structure.** No "in this video", no recap, no outro summary.
-- **Chapter blackout is mandatory** between acts and hand-placed (DESIGN.md "Editing grammar").
+- **Chapter blackout is mandatory** between a documentary's acts and hand-placed (DESIGN.md "Editing grammar"); minis butt-cut.
 - **Sourcing bar:** find 3 to 4 times more candidates than needed. "Short of clips" means stop and source better.
   Split long sources with PySceneDetect (validate the install first). Spread cuts across the episode, never back to back.
 - **No visible windows, ever.** Every scheduled or background command runs through `scripts/run_hidden.vbs`. A run that
