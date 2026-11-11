@@ -477,8 +477,34 @@ def test_l5_a_ledger_save_waits_out_a_reader_holding_the_file(tmp_path):
     assert lanes.load_ledger(ep)["jobs"] == {"source:a1": {"started": 1}}
 
 
+def test_l6_a_shipped_episode_has_no_jobs_and_exits_0(tmp_path):
+    """L6: a shipped episode read from a checkout without its audio listed READY voice and source jobs and exited 2.
+    Shipped is stage.shipped: an E number plus the final master in the main checkout (a worktree's own copy is no proof)."""
+    import stage
+    ep = lane_episode(tmp_path)
+    main = tmp_path / "main"
+    real, stage.checkouts = stage.checkouts, lambda: [(main, "main", "")]
+    try:
+        assert lanes.main(["status", str(ep)]) == 2  # no E number yet: its jobs are READY
+        touch(ep / "E10-fixture-metadata.md")
+        assert lanes.main(["status", str(ep)]) == 2  # numbered, not shipped
+        touch(ep / "renders" / "E10-fixture-final-master.mp4")
+        assert lanes.main(["status", str(ep)]) == 2  # a master only in this worktree is not the shipped one
+        touch(main / "episodes" / ep.name / "renders" / "E10-fixture-final-master.mp4")
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out):
+            assert lanes.main(["status", str(ep)]) == 0
+        assert out.getvalue().count("\n") == 1 and "shipped" in out.getvalue() and "READY" not in out.getvalue()
+        with contextlib.redirect_stdout(out := io.StringIO()):
+            assert lanes.main(["status", str(ep), "--json"]) == 0
+        assert json.loads(out.getvalue())["blocking"] == []
+    finally:
+        stage.checkouts = real
+
+
 if __name__ == "__main__":
-    for t in (test_l1_a_profile_is_probed_on_its_wrapper_and_only_profiles_with_a_credential_are_tried,
+    for t in (test_l6_a_shipped_episode_has_no_jobs_and_exits_0,
+              test_l1_a_profile_is_probed_on_its_wrapper_and_only_profiles_with_a_credential_are_tried,
               test_l3_a_host_alias_that_names_this_machine_is_local,
               test_l4_a_lane_whose_process_died_is_not_running,
               test_l5_a_ledger_save_waits_out_a_reader_holding_the_file,
