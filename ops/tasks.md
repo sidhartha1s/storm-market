@@ -74,7 +74,7 @@ his answer in `ops/decisions.md` (and with `stage.py record` when it is a gate) 
 ## Owner asks of 11 Nov 26 (his list; the report with the evidence is the devq page `storm-nov11.html`)
 | # | ask (his words) | state | what is left |
 |---|---|---|---|
-| 49 | "Ensure that at least the candidate should be there" (titles) | done: four candidates each in the metadata files of E04, E05, E06, E08, E09 | his pick (item 4) |
+| 49 | "Ensure that at least the candidate should be there" (titles) | done: four candidates each in the metadata files of E04, E05, E06, E08, E09 | his pick (item 4), on candidates that first pass the option check (`references/packaging-rules.md` "Options reach the owner finished") |
 | 50 | "create the thumbnails ... show me the variance on devq" | blocked: both ChatGPT logins of the thumbnail tool on the ZBook are logged out, and the ASUS was off. 12 new prompts are written (two per episode, E04 to E09), the runner is ready | he logs in once: `node genimg.mjs login chatgpt-sid` in `~/Automation Projects/webgen/scripts`; then the 12 images take about 40 min |
 | 51 | "Which of the nine are public" | done (item 5) | |
 | 52 | "Rebuild SRT" | done (item 6) | |
