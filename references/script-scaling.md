@@ -121,7 +121,7 @@ and read only the lines it changed, on the file as it stands now (Galveston A1 r
 2's fixes). After round 3 the section locks with what is still open listed for the draft preview. A `[verify]` marker
 is not a round: it still resolves or its line is cut (rule a).
 
-A locked section goes to TTS/compose immediately — it does not wait for later acts' fan-out to
+A locked section goes to TTS/compose immediately (an act only after the owner's hook+intro yes, above) — it does not wait for later acts' fan-out to
 finish. A locked section never reopens for a later section's fact-check; a cross-section
 contradiction found late is a new `[verify]` on the LATER section.
 
