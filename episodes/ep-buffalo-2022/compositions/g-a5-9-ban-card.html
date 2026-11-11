@@ -1,0 +1,197 @@
+<!--
+  g-a5-9-ban-card · A5-S8 · standard · 22.393 s (host window; the brief's 25.90 s timeline is compressed after 11.34 s to fit, see RETIME).
+  Claim: (1) 22 of 46 returns; (2) 13 Jan 2024 full travel ban, all of Erie County, 9 p.m. Saturday; (3) NOV TO MAR lake snow season.
+  Source: research/deaths.md s1, s3 (WIVB); governor.ny.gov 13 Jan 2024 (PRIMARY); NWS Buffalo climate pages.
+  Geometry (px, root coordinates): mini tally block i = 0..45 at x = 411 + 24 i (411, 915 (i 21), 939 (i 22), 1491 (i 45)), w 18, y 520, h 80, r 4;
+    lit run i 0-21 ends x 933 (411 + 24*21 + 18); halfway line x 960 between block 22 (939-957) and block 23 (963-981).
+    Chip 22 OF 46 centred 960, top 390; sub-label top 630. Card x 420-1500, y 250-760. Calendar chip top 470; strip x 660-1260, y 600.
+  Corner x >= 1600, y >= 680 empty: snow dots live in x 80-1560 only.
+  RETIME: host is 22.393 s, brief cues run to 25.9 s. Scene 1 and the card entry/date keep the brief cues (0 to 11.34 s).
+    After that: FULL TRAVEL BAN 13.00 (brief 13.82), ALL OF ERIE COUNTY 14.00 (14.96), 9 PM SAT 15.00 (16.42), snow thickens 16.00 (18.68),
+    card out 17.60 (20.12), calendar chip 18.20 (20.82), strip 18.70 (21.36), glow 20.40 (23.94), final fade 21.50-22.30 (25.10-25.90).
+  Prefix bn-.
+-->
+<template>
+<style>
+  #g-a5-9-ban-card-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    font-family: Arial, sans-serif; color:#f2f5f8; }
+  #bn-ground { position:absolute; inset:0; background: radial-gradient(ellipse at 50% 45%, #14202c, #05080c 78%); }
+  .bn-fill { position:absolute; inset:0; }
+  .bn-hide { opacity:0; visibility:hidden; }
+  .bn-t { position:absolute; white-space:nowrap; }
+  /* scene 1: mini tally */
+  .bn-b { position:absolute; left:411px; top:520px; width:18px; height:80px; border-radius:4px; opacity:0; visibility:hidden; }
+  .bn-w { background:#f2f5f8; }
+  .bn-a { background:#d8a13a; }
+  .bn-d { background:#2a3644; }
+  #bn-sheenclip { position:absolute; left:411px; top:520px; width:522px; height:80px; overflow:hidden; }
+  #bn-sheen { position:absolute; left:-120px; top:0; width:120px; height:80px;
+    background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.45), rgba(255,255,255,0)); }
+  #bn-half { position:absolute; left:959px; top:500px; width:2px; height:120px;
+    background:repeating-linear-gradient(180deg, rgba(231,76,60,.6) 0 8px, transparent 8px 14px); }
+  .bn-row { position:absolute; left:0; width:1920px; text-align:center; pointer-events:none; }
+  #bn-chip-row { top:390px; }
+  .bn-panel { background:rgba(21,32,43,.92); border:1px solid rgba(255,255,255,.14); box-sizing:border-box; }
+  #bn-chip { display:inline-block; border-radius:20px; padding:14px 28px; white-space:pre;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; }
+  #bn-chip-a { color:#f2f5f8; }
+  #bn-chip-b { color:#93a3b2; }
+  #bn-sub { left:0; top:630px; width:1920px; text-align:center; padding-left:6px; box-sizing:border-box;
+    font-size:22px; line-height:26px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  /* scene 2: release card; children placed relative to the card (root y - 250) */
+  #bn-drift { position:absolute; inset:0; }
+  .bn-dot { position:absolute; border-radius:50%; background:#dfe7ee; }
+  #bn-card { position:absolute; left:420px; top:250px; width:1080px; height:510px; border-radius:24px;
+    background:rgba(21,32,43,.94); border:1px solid rgba(255,255,255,.14); box-sizing:border-box; }
+  .bn-c { position:absolute; left:0; width:1080px; text-align:center; box-sizing:border-box; white-space:nowrap; }
+  #bn-eyebrow { top:50px; padding-left:6px; font-size:22px; line-height:26px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  #bn-date { top:90px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:38px; line-height:44px; color:#d8a13a; }
+  #bn-rule { position:absolute; left:140px; top:160px; width:800px; height:2px; background:rgba(255,255,255,.14); }
+  #bn-ban { top:190px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:84px; line-height:96px; color:#f2f5f8; }
+  #bn-all { top:300px; padding-left:4px; font-size:38px; line-height:44px; font-weight:700; letter-spacing:4px; color:#dfe7ee; }
+  #bn-nine { top:370px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; line-height:66px; color:#e8c56a; }
+  /* sources: same zone, swapped */
+  .bn-src { left:96px; bottom:54px; font-size:19px; line-height:24px; font-weight:400; color:#c8d3e0; }
+  /* scene 3: calendar chip */
+  #bn-cal-row { top:470px; }
+  #bn-cal { display:inline-block; border-radius:20px; padding:20px 32px; white-space:pre; }
+  #bn-cal-a { font-size:30px; line-height:60px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  #bn-cal-b { font-size:30px; line-height:60px; font-weight:700; color:#93a3b2; }
+  #bn-cal-c { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; }
+  #bn-track { position:absolute; left:660px; top:600px; width:600px; height:8px; border-radius:4px; background:rgba(255,255,255,.14); }
+  #bn-fill { position:absolute; left:660px; top:600px; width:600px; height:8px; border-radius:4px; background:#7fb2e5; }
+  #bn-glow { position:absolute; left:660px; top:600px; width:600px; height:8px; border-radius:4px;
+    box-shadow:0 0 18px 4px rgba(127,178,229,.85); }
+</style>
+<div id="g-a5-9-ban-card-root" data-composition-id="g-a5-9-ban-card" data-width="1920" data-height="1080">
+  <div id="bn-ground"></div>
+
+  <div id="bn-s1" class="bn-fill">
+    <div id="bn-dim" class="bn-fill">
+      <div id="bn-b22" class="bn-b bn-d"></div><div id="bn-b23" class="bn-b bn-d"></div><div id="bn-b24" class="bn-b bn-d"></div><div id="bn-b25" class="bn-b bn-d"></div>
+      <div id="bn-b26" class="bn-b bn-d"></div><div id="bn-b27" class="bn-b bn-d"></div><div id="bn-b28" class="bn-b bn-d"></div><div id="bn-b29" class="bn-b bn-d"></div>
+      <div id="bn-b30" class="bn-b bn-d"></div><div id="bn-b31" class="bn-b bn-d"></div><div id="bn-b32" class="bn-b bn-d"></div><div id="bn-b33" class="bn-b bn-d"></div>
+      <div id="bn-b34" class="bn-b bn-d"></div><div id="bn-b35" class="bn-b bn-d"></div><div id="bn-b36" class="bn-b bn-d"></div><div id="bn-b37" class="bn-b bn-d"></div>
+      <div id="bn-b38" class="bn-b bn-d"></div><div id="bn-b39" class="bn-b bn-d"></div><div id="bn-b40" class="bn-b bn-d"></div><div id="bn-b41" class="bn-b bn-d"></div>
+      <div id="bn-b42" class="bn-b bn-d"></div><div id="bn-b43" class="bn-b bn-d"></div><div id="bn-b44" class="bn-b bn-d"></div><div id="bn-b45" class="bn-b bn-d"></div>
+    </div>
+    <div id="bn-lit" class="bn-fill">
+      <div id="bn-b0" class="bn-b bn-w"></div><div id="bn-b1" class="bn-b bn-w"></div><div id="bn-b2" class="bn-b bn-w"></div><div id="bn-b3" class="bn-b bn-w"></div>
+      <div id="bn-b4" class="bn-b bn-w"></div><div id="bn-b5" class="bn-b bn-w"></div><div id="bn-b6" class="bn-b bn-w"></div><div id="bn-b7" class="bn-b bn-w"></div>
+      <div id="bn-b8" class="bn-b bn-w"></div><div id="bn-b9" class="bn-b bn-w"></div><div id="bn-b10" class="bn-b bn-w"></div><div id="bn-b11" class="bn-b bn-w"></div>
+      <div id="bn-b12" class="bn-b bn-w"></div><div id="bn-b13" class="bn-b bn-w"></div><div id="bn-b14" class="bn-b bn-w"></div><div id="bn-b15" class="bn-b bn-w"></div>
+      <div id="bn-b16" class="bn-b bn-w"></div><div id="bn-b17" class="bn-b bn-w"></div>
+      <div id="bn-b18" class="bn-b bn-a"></div><div id="bn-b19" class="bn-b bn-a"></div><div id="bn-b20" class="bn-b bn-a"></div><div id="bn-b21" class="bn-b bn-a"></div>
+      <div id="bn-sheenclip"><div id="bn-sheen"></div></div>
+    </div>
+    <div id="bn-half" class="bn-hide"></div>
+    <div id="bn-chip-row" class="bn-row"><div id="bn-chip" class="bn-panel bn-hide"><span id="bn-chip-a">22</span><span id="bn-chip-b"> OF 46</span></div></div>
+    <div id="bn-sub" class="bn-t bn-hide">FOUND OUTSIDE OR IN THEIR CARS</div>
+  </div>
+
+  <div id="bn-s2" class="bn-fill">
+    <div id="bn-drift" class="bn-hide"></div>
+    <div id="bn-card" class="bn-hide">
+      <div id="bn-eyebrow" class="bn-c bn-hide">THE NEXT WINTER</div>
+      <div id="bn-date" class="bn-c bn-hide">JAN 13, 2024</div>
+      <div id="bn-rule" class="bn-hide"></div>
+      <div id="bn-ban" class="bn-c bn-hide">FULL TRAVEL BAN</div>
+      <div id="bn-all" class="bn-c bn-hide">ALL OF ERIE COUNTY</div>
+      <div id="bn-nine" class="bn-c bn-hide">9 PM SAT</div>
+    </div>
+    <div id="bn-src-a" class="bn-t bn-src bn-hide">Office of the Governor, 13 Jan 2024</div>
+  </div>
+
+  <div id="bn-s3" class="bn-fill">
+    <div id="bn-cal-row" class="bn-row"><div id="bn-cal" class="bn-panel bn-hide"><span id="bn-cal-a">THIS WINTER</span><span id="bn-cal-b"> · </span><span id="bn-cal-c">NOV TO MAR</span></div></div>
+    <div id="bn-track" class="bn-hide"></div>
+    <div id="bn-fill" class="bn-hide"></div>
+    <div id="bn-glow" class="bn-hide"></div>
+    <div id="bn-src-b" class="bn-t bn-src bn-hide">NWS Buffalo climate pages</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#bn-";
+  const N = 46, PITCH = 24;
+  const B = [];
+  for (let i = 0; i < N; i++) B.push(P + "b" + i);
+  const LIT = B.slice(0, 22);
+  /* seeded, fixed snow dots [x, y, size]; x 80-1560 keeps the presenter corner empty */
+  const DOTS = [[495,170,6],[1310,864,3],[341,727,3],[1479,1026,4],[1381,629,4],[917,163,3],[1445,205,4],[345,193,6],[876,496,4],[1276,-187,3],[681,863,3],[1123,-161,3],[1030,979,5],[733,617,6],[1499,161,3],[593,154,6],[956,993,4],[200,-47,3],[337,866,3],[176,583,4],[837,970,3],[1193,419,3],[914,-158,6],[1526,686,3],[162,471,3],[1463,240,3],[353,316,5],[1319,643,5],[1147,711,6],[1536,-184,3],[391,912,3],[1150,-22,6],[148,941,4],[1331,-181,3],[959,-151,5],[956,85,3],[677,95,3],[216,996,3],[122,616,3],[646,754,5]];
+  const drift = document.getElementById("bn-drift");
+  DOTS.forEach(function (d) {
+    const e = document.createElement("div");
+    e.className = "bn-dot";
+    e.style.cssText = "left:" + d[0] + "px;top:" + d[1] + "px;width:" + d[2] + "px;height:" + d[2] + "px";
+    drift.appendChild(e);
+  });
+  const float = (t, at, d, reps) => tl.to(t, { y: -3, duration: d, ease: "sine.inOut", yoyo: true, repeat: reps }, at);
+
+  /* frame 0: ground only; blocks placed by the formula x = 411 + 24 i (CSS left 411 + x offset), grown from the bottom */
+  for (let i = 0; i < N; i++) tl.set(B[i], { x: PITCH * i, scaleY: 0, transformOrigin: "50% 100%" }, 0);
+  tl.set(P + "half", { scaleY: 0, transformOrigin: "50% 0%" }, 0);
+  tl.set(P + "chip", { transformOrigin: "50% 50%" }, 0);
+  tl.set(P + "ban", { transformOrigin: "50% 50%" }, 0);
+  tl.set(P + "nine", { transformOrigin: "50% 50%" }, 0);
+  tl.set(P + "rule", { scaleX: 0, transformOrigin: "0% 50%" }, 0);
+  tl.set(P + "fill", { scaleX: 0, transformOrigin: "0% 50%" }, 0);
+
+  /* "Many were out there" @0.00: 46 coloured blocks fill in place (45 x 0.015 + 0.125 = 0.8 s) */
+  tl.fromTo(B, { autoAlpha: 0, scaleY: 0 }, { autoAlpha: 1, scaleY: 1, duration: 0.125, ease: "power2.out", stagger: 0.015 }, 0);
+  /* "out there" @0.38: chip; sub-label @0.80 */
+  tl.fromTo(P + "chip", { autoAlpha: 0, scale: 1.15 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power4.out" }, 0.38);
+  tl.fromTo(P + "sub", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.80);
+  /* "before" @2.38: halfway line draws */
+  tl.set(P + "half", { autoAlpha: 1 }, 2.38);
+  tl.to(P + "half", { scaleY: 1, duration: 0.4, ease: "power2.out" }, 2.38);
+  /* "stuck" @6.60: sheen across the lit run */
+  tl.fromTo(P + "sheen", { x: 0 }, { x: 642, duration: 0.6, ease: "power2.inOut" }, 6.60);
+  /* 0.8 to 7.74: lit run and chip float (6.94 s = 4 x 1.735) */
+  float(P + "lit", 0.8, 1.735, 3);
+  float(P + "chip", 0.8, 1.735, 3);
+  /* 7.80: scene 1 out */
+  tl.to(P + "s1", { autoAlpha: 0, y: -14, duration: 0.5, ease: "power2.in" }, 7.80);
+
+  /* "The next winter," @8.36: empty card in; eyebrow @8.54 */
+  tl.fromTo(P + "card", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 8.36);
+  tl.fromTo(P + "eyebrow", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.54);
+  /* "January 2024," @9.30: date; rule @9.70; source @9.70 */
+  tl.fromTo(P + "date", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.30);
+  tl.set(P + "rule", { autoAlpha: 1 }, 9.70);
+  tl.to(P + "rule", { scaleX: 1, duration: 0.5, ease: "power2.out" }, 9.70);
+  tl.fromTo(P + "src-a", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.70);
+  /* "lake storm" @11.34: card floats until its exit (6.26 s = 4 x 1.565); snow drift fades in behind, 30 px/s then 60 px/s */
+  float(P + "card", 11.34, 1.565, 3);
+  tl.fromTo(P + "drift", { autoAlpha: 0 }, { autoAlpha: 0.3, duration: 0.8, ease: "power1.out" }, 11.34);
+  tl.to(P + "drift", { y: 30 * 4.66, duration: 4.66, ease: "none" }, 11.34);
+  tl.to(P + "drift", { y: 30 * 4.66 + 60 * 1.6, duration: 1.6, ease: "none" }, 16.00);
+  /* retimed: ban 13.00, county 14.00, 9 PM SAT 15.00 */
+  tl.fromTo(P + "ban", { autoAlpha: 0, scale: 1.15 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power4.out" }, 13.00);
+  tl.fromTo(P + "all", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 14.00);
+  tl.fromTo(P + "nine", { autoAlpha: 0, scale: 1.25 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 15.00);
+  /* 16.00: snow thickens after the ban line has landed (30 % -> 60 %) */
+  tl.to(P + "drift", { autoAlpha: 0.6, duration: 1.0, ease: "power1.inOut" }, 16.00);
+  /* 17.60: card, drift and source A out */
+  tl.to(P + "s2", { autoAlpha: 0, y: -16, duration: 0.5, ease: "power2.in" }, 17.60);
+
+  /* 18.20: calendar chip in; source B swaps in; strip fills 18.70 -> 19.90 (read 1.6 s before the fade) */
+  tl.fromTo(P + "cal", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 18.20);
+  tl.fromTo(P + "src-b", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 18.20);
+  tl.fromTo(P + "track", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 18.30);
+  tl.set(P + "fill", { autoAlpha: 1 }, 18.70);
+  tl.to(P + "fill", { scaleX: 1, duration: 1.2, ease: "power1.inOut" }, 18.70);
+  float(P + "cal", 18.65, 0.95, 2);
+  /* 20.40: strip glow pulses once */
+  tl.fromTo(P + "glow", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35, ease: "power2.out", yoyo: true, repeat: 1 }, 20.40);
+  /* 21.50 -> 22.30: everything fades to the bare ground */
+  tl.to([P + "s3"], { autoAlpha: 0, duration: 0.8, ease: "power1.in" }, 21.50);
+  /* hold the timeline to the host window */
+  tl.set(P + "ground", { opacity: 1 }, 22.393);
+
+  window.__timelines["g-a5-9-ban-card"] = tl;
+})();
+</script>
+</template>
