@@ -206,8 +206,8 @@ elif ask:
 # lockup: THE <amber>WARNING</amber> HOUR. Class names may be renamed (ou-, cl-, g-outro-); the structure may not. Applies to
 # current documentaries (`ep-`, `e10-` on: episode.is_current_documentary); every older slug (ep3-, ms-, br-) predates the lockup. Two ep- episodes shipped before the 29 Oct
 # order with another close (Palm Sunday 14 Oct: plain WARNING span; Camille 25 Oct: zc-w spans) and a shipped episode is
-# never edited, so they are exempt by name.
-_CLOSE_EXEMPT = {"ep-palm-sunday-1965", "ep-camille-1969"}
+# never edited, so they are exempt by name (config channel.close_lockup.exempt).
+_close_exempt = ((_cfg.get("channel") or {}).get("close_lockup") or {}).get("exempt") or []
 _LOCKUP = re.compile(r'\bthe\b\s*(?:</[a-z]+>)?\s*<[^>]*amber[^>]*>\s*warning\s*</[a-z]+>\s*(?:<[^>]+>)?\s*hour\b', re.I)
 if not episode.is_current_documentary(_slug):
     print(f"SKIP close card carries the brand lockup — {_slug} is not a current documentary")
