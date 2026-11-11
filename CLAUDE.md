@@ -69,6 +69,12 @@ An owner correction or a measured surprise lands in its single home (`references
   lines without waiting for that gate (owner 17 Oct 26, flow page f1). A paid or licensed buy still waits for it.
 - Every review cut is a DRAFT render at 98 % production quality: a full-quality cut at draft encode settings, never a
   placeholder. Post the absolute path in one line and PARK. His chat approval resumes. Full render only after that.
+  While a draft waits (owner 11 Nov 26, `park_prep`: yes) the free prep runs: captions, the description, the
+  thumbnails and the upload folder. Only the full render and anything paid wait for his approval.
+- Every hook, title and thumbnail option reaches him checked and graded, so he picks among finished options
+  (owner 11 Nov 26, `hooks_all`): `references/packaging-rules.md` "Options reach the owner finished".
+- While the hook+intro waits, the acts are drafted, fact-checked and graded; no act goes to TTS and nothing paid starts
+  before his yes (owner 11 Nov 26, `acts_ahead`): `references/script-scaling.md` "Section lock".
 - Studio preview cannot play 15 min media-heavy compositions in real time. Do not offer it for review.
 - When he calls the remaining defects minor, the open work is the items he named. Anything else is a note in the summary.
 - When his named items are done, hand over the file and stop.
