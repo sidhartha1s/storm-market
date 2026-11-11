@@ -85,10 +85,12 @@ materially changes every 60–90 s (new evidence, place, number, person, mechani
 8. **Place anchoring.** A US state or region in the first 60 s of every script (supersedes FORMAT rule 8's "second
    minute"); every foreign distance / height restated in a US landmark and in feet, miles, °F, dollars; ≤3 unfamiliar
    foreign place names per script. Ray: "Lituya is the one time you gave me feet, and that's the one part I remember."
-9. **Transitions.** Seams are time-stamps or place-stamps ("At half past two that afternoon, in Mississippi"), never
-   "to understand X you have to understand Y". Chapter-exit questions only when the answer is an open fact, ≤3 per
-   documentary; minis end every chapter this way (mini FORMAT.md rule 3); the engine's "question" is usually implied by a stamp or an unresolved fact. Preferred form (owner 4 Oct 26):
-   a real open question, then one affirming line that re-hooks it: "But why didn't the siren sound? Nobody in town knew until the next morning." The question opens a curiosity gap the viewer stays for; the affirming line concretes it.
+9. **Transitions and section ends.** Seams are time-stamps or place-stamps ("At half past two that afternoon, in
+   Mississippi"), never "to understand X you have to understand Y". **Every section ends on an open loop** (owner 11 Nov 26,
+   `sq`: "open loops are must"): a real open question, or an unresolved fact that a later section pays off, with its row
+   in the loop table (`script-scaling.md` "open-loop registry"). A real open question may end a section; its answer
+   must not follow in the next line, the later section pays it ("But why didn't the siren sound?" then a new stamp).
+   No cap on how many sections end this way. Minis end every chapter this way (mini FORMAT.md rule 3).
 10. **Debunk block.** Live-hazard videos carry a 60–90 s sourced debunk at 60–75 % ("The problem with that story
     is…", then the measurement).
 11. **Vocabulary.** Keep the term, define it in ≤12 words, reuse it 3+ times; one plain-terms translation per
