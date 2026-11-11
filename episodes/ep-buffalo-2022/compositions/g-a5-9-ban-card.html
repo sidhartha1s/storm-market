@@ -149,50 +149,50 @@ window.__timelines = window.__timelines || {};
   /* "out there" @0.38: chip; sub-label @0.80 */
   tl.fromTo(P + "chip", { autoAlpha: 0, scale: 1.15 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power4.out" }, 0.38);
   tl.fromTo(P + "sub", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.80);
-  /* "before" @2.38: halfway line draws */
-  tl.set(P + "half", { autoAlpha: 1 }, 2.38);
-  tl.to(P + "half", { scaleY: 1, duration: 0.4, ease: "power2.out" }, 2.38);
-  /* "stuck" @6.60: sheen across the lit run */
-  tl.fromTo(P + "sheen", { x: 0 }, { x: 642, duration: 0.6, ease: "power2.inOut" }, 6.60);
-  /* 0.8 to 7.74: lit run and chip float (6.94 s = 4 x 1.735) */
-  float(P + "lit", 0.8, 1.735, 3);
-  float(P + "chip", 0.8, 1.735, 3);
-  /* 7.80: scene 1 out */
-  tl.to(P + "s1", { autoAlpha: 0, y: -14, duration: 0.5, ease: "power2.in" }, 7.80);
+  /* halfway line draws once the chip has landed (its words, "before the ban", sit in the cut head of the audio) */
+  tl.set(P + "half", { autoAlpha: 1 }, 1.60);
+  tl.to(P + "half", { scaleY: 1, duration: 0.4, ease: "power2.out" }, 1.60);
+  /* "stuck" @6.60 - 3.296 = 3.30: sheen across the lit run */
+  tl.fromTo(P + "sheen", { x: 0 }, { x: 642, duration: 0.6, ease: "power2.inOut" }, 3.30);
+  /* 0.8 to 4.44: lit run and chip float (3.64 s = 4 x 0.91) */
+  float(P + "lit", 0.8, 0.91, 3);
+  float(P + "chip", 0.8, 0.91, 3);
+  /* 4.50: scene 1 out (brief 7.80) */
+  tl.to(P + "s1", { autoAlpha: 0, y: -14, duration: 0.5, ease: "power2.in" }, 4.50);
 
-  /* "The next winter," @8.36: empty card in; eyebrow @8.54 */
-  tl.fromTo(P + "card", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 8.36);
-  tl.fromTo(P + "eyebrow", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.54);
-  /* "January 2024," @9.30: date; rule @9.70; source @9.70 */
-  tl.fromTo(P + "date", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.30);
-  tl.set(P + "rule", { autoAlpha: 1 }, 9.70);
-  tl.to(P + "rule", { scaleX: 1, duration: 0.5, ease: "power2.out" }, 9.70);
-  tl.fromTo(P + "src-a", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.70);
-  /* "lake storm" @11.34: card floats until its exit (6.26 s = 4 x 1.565); snow drift fades in behind, 30 px/s then 60 px/s */
-  float(P + "card", 11.34, 1.565, 3);
-  tl.fromTo(P + "drift", { autoAlpha: 0 }, { autoAlpha: 0.3, duration: 0.8, ease: "power1.out" }, 11.34);
-  tl.to(P + "drift", { y: 30 * 4.66, duration: 4.66, ease: "none" }, 11.34);
-  tl.to(P + "drift", { y: 30 * 4.66 + 60 * 1.6, duration: 1.6, ease: "none" }, 16.00);
-  /* retimed: ban 13.00, county 14.00, 9 PM SAT 15.00 */
-  tl.fromTo(P + "ban", { autoAlpha: 0, scale: 1.15 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power4.out" }, 13.00);
-  tl.fromTo(P + "all", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 14.00);
-  tl.fromTo(P + "nine", { autoAlpha: 0, scale: 1.25 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 15.00);
-  /* 16.00: snow thickens after the ban line has landed (30 % -> 60 %) */
-  tl.to(P + "drift", { autoAlpha: 0.6, duration: 1.0, ease: "power1.inOut" }, 16.00);
-  /* 17.60: card, drift and source A out */
-  tl.to(P + "s2", { autoAlpha: 0, y: -16, duration: 0.5, ease: "power2.in" }, 17.60);
+  /* "The next winter," 8.36 - 3.296 = 5.06: empty card in; eyebrow 5.24 */
+  tl.fromTo(P + "card", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 5.06);
+  tl.fromTo(P + "eyebrow", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.24);
+  /* "January 2024," 6.00: date; rule 6.40; source 6.40 */
+  tl.fromTo(P + "date", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.00);
+  tl.set(P + "rule", { autoAlpha: 1 }, 6.40);
+  tl.to(P + "rule", { scaleX: 1, duration: 0.5, ease: "power2.out" }, 6.40);
+  tl.fromTo(P + "src-a", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.40);
+  /* "lake storm" 8.04: card floats until its exit (8.78 s = 4 x 2.195); snow drift fades in behind, 30 px/s then 60 px/s */
+  float(P + "card", 8.04, 2.195, 3);
+  tl.fromTo(P + "drift", { autoAlpha: 0 }, { autoAlpha: 0.3, duration: 0.8, ease: "power1.out" }, 8.04);
+  tl.to(P + "drift", { y: 30 * 7.34, duration: 7.34, ease: "none" }, 8.04);
+  tl.to(P + "drift", { y: 30 * 7.34 + 60 * 1.44, duration: 1.44, ease: "none" }, 15.38);
+  /* "full travel ban" 10.52, "all of Erie County" 11.66, "9 on a Saturday night" 13.12 */
+  tl.fromTo(P + "ban", { autoAlpha: 0, scale: 1.15 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power4.out" }, 10.52);
+  tl.fromTo(P + "all", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.66);
+  tl.fromTo(P + "nine", { autoAlpha: 0, scale: 1.25 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 13.12);
+  /* 15.38: snow thickens after the ban line has landed (30 % -> 60 %) */
+  tl.to(P + "drift", { autoAlpha: 0.6, duration: 1.0, ease: "power1.inOut" }, 15.38);
+  /* 16.82: card, drift and source A out */
+  tl.to(P + "s2", { autoAlpha: 0, y: -16, duration: 0.5, ease: "power2.in" }, 16.82);
 
-  /* 18.20: calendar chip in; source B swaps in; strip fills 18.70 -> 19.90 (read 1.6 s before the fade) */
-  tl.fromTo(P + "cal", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 18.20);
-  tl.fromTo(P + "src-b", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 18.20);
-  tl.fromTo(P + "track", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 18.30);
-  tl.set(P + "fill", { autoAlpha: 1 }, 18.70);
-  tl.to(P + "fill", { scaleX: 1, duration: 1.2, ease: "power1.inOut" }, 18.70);
-  float(P + "cal", 18.65, 0.95, 2);
-  /* 20.40: strip glow pulses once */
-  tl.fromTo(P + "glow", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35, ease: "power2.out", yoyo: true, repeat: 1 }, 20.40);
-  /* 21.50 -> 22.30: everything fades to the bare ground */
-  tl.to([P + "s3"], { autoAlpha: 0, duration: 0.8, ease: "power1.in" }, 21.50);
+  /* 17.52: calendar chip in; source B swaps in; strip fills 18.06 -> 19.26 */
+  tl.fromTo(P + "cal", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 17.52);
+  tl.fromTo(P + "src-b", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 17.52);
+  tl.fromTo(P + "track", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 17.60);
+  tl.set(P + "fill", { autoAlpha: 1 }, 18.06);
+  tl.to(P + "fill", { scaleX: 1, duration: 1.2, ease: "power1.inOut" }, 18.06);
+  float(P + "cal", 17.97, 1.79, 1);
+  /* "snow season" 20.64: strip glow pulses once */
+  tl.fromTo(P + "glow", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35, ease: "power2.out", yoyo: true, repeat: 1 }, 20.64);
+  /* 21.55 -> 22.35: everything fades to the bare ground (brief 25.10-25.90, shifted, trimmed to the host) */
+  tl.to([P + "s3"], { autoAlpha: 0, duration: 0.8, ease: "power1.in" }, 21.55);
   /* hold the timeline to the host window */
   tl.set(P + "ground", { opacity: 1 }, 22.393);
 
