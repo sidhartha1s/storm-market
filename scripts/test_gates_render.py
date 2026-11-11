@@ -48,19 +48,22 @@ ep = d / "episodes" / "ms-stamp-test"  # ms-: no documentary layers, so prefligh
 os.environ["HEAVY_LOCK_FILE"] = str(d / "heavy.lock")
 
 
-def stub_all(fail=None):
-    for n in FILE_ONLY + BROWSER[:1]:
-        (stubs / n).write_text(f'import sys\nopen(r"{log}", "a").write("{n}\\n")\nsys.exit({int(n == fail)})\n', encoding="utf-8")
-    for n in BROWSER[1:]:
-        (stubs / n).write_text(f'import {{ appendFileSync }} from "fs"; appendFileSync(String.raw`{log}`, "{n}\\n");', encoding="utf-8")
+def stub_all(fail=None, edit=None):
+    """Every gate a stub logging its name; `fail` exits 1, `edit` appends to index.html (an edit mid-run)."""
+    for n in FILE_ONLY + WAITS:
+        if n.endswith(".py"):
+            touch = f'open(r"{ep / "index.html"}", "a").write("<p>edit</p>")\n' if n == edit else ""
+            (stubs / n).write_text(f'import sys\nopen(r"{log}", "a").write("{n}\\n")\n{touch}sys.exit({int(n == fail)})\n', encoding="utf-8")
+        else:
+            (stubs / n).write_text(f'import {{ appendFileSync }} from "fs"; appendFileSync(String.raw`{log}`, "{n}\\n");', encoding="utf-8")
 
 
-def gates(free=(8.0,)):
+def gates(free=(8.0,), run_all=False):
     """run_gates.py in-process on ep with free_gb() reading `free` in turn (the last value repeats)."""
     log.unlink(missing_ok=True)
     seq = list(free)
     render_busy.free_gb = lambda: seq.pop(0) if len(seq) > 1 else seq[0]
-    sys.argv, buf, code = [str(stubs / "run_gates.py"), str(ep)], io.StringIO(), 0
+    sys.argv, buf, code = [str(stubs / "run_gates.py"), str(ep), *(["--all"] if run_all else [])], io.StringIO(), 0
     with contextlib.redirect_stdout(buf):
         try:
             runpy.run_path(str(stubs / "run_gates.py"), run_name="__main__")
