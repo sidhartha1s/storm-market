@@ -643,6 +643,32 @@ with tempfile.TemporaryDirectory() as d:
           and "2 of 16 gates failed" in summary and "lint_timeline.py exited 1" in summary and "media_budget.py exited 1" in summary
           and summary.count("exited") == 2, f"ran={ran}\n{r.stdout[-500:]}{r.stderr}")
 
+# run_gates: a 9:16 short (slug sh-*) also runs shorts_lint.mjs, last; any other slug does not
+with tempfile.TemporaryDirectory() as d:
+    stub_dir = Path(d) / "scripts"
+    stub_dir.mkdir()
+    order_log = Path(d) / "order.log"
+    for name in ["render_preflight.py", "paul_start_frame.py", "sweep_episode.py", "lint_timeline.py", "build_srt.py",
+                 "narration_picture_check.py", "flag_words.py", "hook_shape.py", "homograph_scan.py", "beat_density.py",
+                 "media_budget.py", "audio_levels.py"]:
+        (stub_dir / name).write_text(f'open(r"{order_log}", "a").write("{name}\\n")\n', encoding="utf-8")
+    for name in ["blank_scan.mjs", "overlap_check.mjs", "occlusion_check.mjs", "graphics_qc.mjs", "shorts_lint.mjs"]:
+        (stub_dir / name).write_text(f'import {{ appendFileSync }} from "fs"; appendFileSync(String.raw`{order_log}`, "{name}\\n");', encoding="utf-8")
+    (stub_dir / "run_gates.py").write_text((S / "run_gates.py").read_text(encoding="utf-8"), encoding="utf-8")
+    ran_by = {}
+    for slug in ("sh-demo-1", "ep-demo", "e10-sh-demo"):
+        ep = Path(d) / slug
+        ep.mkdir()
+        order_log.unlink(missing_ok=True)
+        r = subprocess.run([sys.executable, str(stub_dir / "run_gates.py"), str(ep)], capture_output=True, text=True)
+        ran_by[slug] = (r.returncode, order_log.read_text(encoding="utf-8").splitlines())
+    check("run_gates: an sh- short runs shorts_lint.mjs once, after graphics_qc.mjs, and passes",
+          ran_by["sh-demo-1"][0] == 0 and ran_by["sh-demo-1"][1][-2:] == ["graphics_qc.mjs", "shorts_lint.mjs"]
+          and ran_by["sh-demo-1"][1].count("shorts_lint.mjs") == 1, str(ran_by["sh-demo-1"]))
+    check("run_gates: ep- and non-prefix slugs never run shorts_lint.mjs",
+          all(ran_by[s][0] == 0 and "shorts_lint.mjs" not in ran_by[s][1] and len(ran_by[s][1]) == 16 for s in ("ep-demo", "e10-sh-demo")),
+          str(ran_by))
+
 # ===================================================================================
 # 9. sweep_episode.py's motion-gate _frame() helper: PID-scoped temp paths (no cross-process
 # collision) + any raised exception (locked file, timeout) reports loudly via probe_failed
