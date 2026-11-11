@@ -6,6 +6,7 @@ comparison quoted in the fixer report was done separately with `git show HEAD:<p
 before these edits were committed.
 """
 import json
+import os
 import re
 import subprocess
 import sys
@@ -619,7 +620,7 @@ with tempfile.TemporaryDirectory() as d:
     ep = Path(d) / "ep"
     ep.mkdir()
     # run_gates imports render_busy and timeline from the real scripts; no render holds this temp heavy lock
-    rg_env = dict(__import__("os").environ, PYTHONPATH=str(S), HEAVY_LOCK_FILE=str(Path(d) / "heavy.lock"))
+    rg_env = dict(os.environ, PYTHONPATH=str(S), HEAVY_LOCK_FILE=str(Path(d) / "heavy.lock"))
     code, out = run(str(Path(d) / "scripts" / "run_gates.py"), ep) if False else (None, None)
     r = subprocess.run([sys.executable, str(stub_dir / "run_gates.py"), str(ep)],
                        capture_output=True, text=True, env=rg_env)
