@@ -17,8 +17,9 @@ one fix cycle for a many-gate episode instead of one per gate. e2e.py runs witho
 All green writes the stamp render_preflight.py checks before any render: timeline.digest() of the timeline checked,
 in <episode>/gates_passed.marker (gitignored). A failing gate deletes it; a timeline edited mid-run gets none.
 Beside a render (it holds the heavy lock: render_busy.render_holder()) only the "file" gates run, each only while
-free memory is at or above config.yaml render.gates_beside_render_min_free_gb; the "browser" gates are listed as
-waiting for the render. Exit 3 = no verdict because a render is running; no stamp.
+free memory is at or above config.yaml render.gates_beside_render_min_free_gb; the "browser" and "timed" gates are
+listed as waiting for the render. Exit 3 = no verdict because a render is running; no stamp. With --all, a gate that
+already failed still ends the run with its list and exit 1.
 """
 import subprocess
 import sys
