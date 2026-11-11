@@ -234,7 +234,7 @@ with tempfile.TemporaryDirectory() as d:
         except SystemExit as e:
             code = e.code
         check("stamp: render_acts refuses an episode run_gates never stamped: exit 7, nothing rendered, basename unclaimed",
-              code == 7 and not seen and not (ep / "renders" / "acts" / "v0").exists(), f"exit {code} rendered {len(seen)}")
+              code == 7 and not seen and not (ep / "renders" / "acts" / "v0").exists())
         (ep / timeline.STAMP).write_text(timeline.digest(ep), encoding="ascii")  # as run_gates.py stamps an all-green run
         ra.main(["ep-t", "draft", "v1"])
         acts_seen = [r for r in seen if "/act" in r["base"]]
