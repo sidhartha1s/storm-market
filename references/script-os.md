@@ -65,10 +65,10 @@ materially changes every 60–90 s (new evidence, place, number, person, mechani
 
 ## Voice rules for the 45–75 US viewer (audience audit 2026-09-14; evidence in references/teardowns/2026-09-14-audience-audit/)
 1. **Pace is measured, never assumed** (CLAUDE.md Voice, `scripts/word_budget.py`). Slow only for numbers; pause after a death count, never before a reveal.
-2. **Rhythm.** Median sentence 12–18 words; 10–15 % of sentences run 25–35 words as fact-chains joined by and / then /
-   which; one kicker of ≤4 words per 150 words, never a flip. The 24-word cap is a TTS constraint, not a writing rule:
-   write the long sentence, let the TTS layer split it at commas without changing a word (pocket-TTS mangles long
-   single chunks, measured on Krakatau #4).
+2. **Rhythm.** Median sentence 12–18 words; every narration sentence is under 24 words, written that short by the
+   writer (owner 11 Nov 26, `s24`: the voice tool repeats or mangles fragments of long ones, measured on Krakatau #4,
+   so the voice step never splits a sentence). A fact-chain that would run longer is two sentences joined by
+   and / then / which across the full stop; one kicker of ≤4 words per 150 words, never a flip.
 3. **Opening.** Sentence one is a number or a date. Inside 45 s one direct-address fact promise ("Inside twenty minutes
    you will know what a very strong El Niño did to your state the last two times"). No teaser, no "will history
    repeat", no comment ask before the closing CTA.
