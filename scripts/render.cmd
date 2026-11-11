@@ -152,5 +152,7 @@ exit /b %RC%
 
 :usage
 echo usage: render.cmd ^<episode-slug^> ^<draft^|full^> [out-basename]
+REM An undefined variable with a substitution does not expand to empty in a batch file, so give OUTBASE a value.
+if not defined OUTBASE set OUTBASE=none
 echo 1 usage %SLUG% %MODE% > "%~dp0render_last_error_%SLUG%_%OUTBASE:/=_%.marker"
 exit /b 1
