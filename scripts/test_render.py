@@ -164,7 +164,7 @@ check("heavy lock: render.cmd books it (--hold) before the preflight, into the s
 check("render-08 NEW: the done marker is deleted before any gate runs",
       'del /q "%EP%\\render_%MODE%_done.marker" 2>nul' in render_cmd)
 check("render-08 NEW: the missing-index.html and :usage paths write a marker, each keyed by slug and basename",
-      render_cmd.count("render_last_error_%SLUG%_%OUTBASE:/=_%.marker") == 1
+      render_cmd.count("render_last_error_%SLUG%_%OUTBASE:/=_%.marker") == 2
       and render_cmd.count('"%ERRMARK%"') == 1 and "render_last_error.marker" not in render_cmd)
 
 # render-12 / audit R11: verify_render.sh judges renders/<base>.mp4 by renders/<base>.log and .fps, which only
