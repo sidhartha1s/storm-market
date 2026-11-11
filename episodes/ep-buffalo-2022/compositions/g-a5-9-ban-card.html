@@ -1,0 +1,270 @@
+<!--
+  g-a5-9-ban-card · A5-S8 · standard · full frame, three scenes one at a time, host 22.393 s (comp timeline 22.40 s).
+  Claim: (1) 22 of 46 found outside or in cars returns as the episode's answer; (2) 13 Jan 2024, full travel ban for all of Erie County
+  from 9 p.m. Saturday, before the worst of the snow (spoken only); (3) this winter, November to March, Buffalo is inside its lake snow season again.
+  Source: g-a5-4-tally-final s1 (research/deaths.md s1, s3; WIVB, SECONDARY); governor.ny.gov 13 Jan 2024 (PRIMARY, factcheck/a5-r1.md rows 22-25);
+  NWS Buffalo climate pages (BUFclifo, factcheck/a5-r1.md row 30). No new fact.
+  Cues: the brief's cue table is seconds on audio/a5-s8.wav. index.html mounts this host at Paul's last word (1023.436) and says its cues are
+  the TTS time - 3.296 (nx-a5-s8 data-media-start 3.6, start 1023.74). Every cue below is brief time - 3.296, written as a literal, with the
+  brief time in the comment. The first sentence (wav 0 to 3.40) is Paul's clip before this host, so its beats (blocks, chip, sub-label, halfway
+  line: wav 0.00 / 0.38 / 0.80 / 2.38) are compressed into local 0.00 to 1.70 while the narrator resumes ("and help struggled" = local 0.40).
+  Last fade: the brief's 0.8 s from wav 25.10 would end at local 22.604, past the host 22.393; it is 0.5 s here (21.804 to 22.304).
+  Geometry (printed by script): block i = 0..45 at x = 411 + 24 i, w 18, y 520, h 80, r 4; lit run (i 0-21) ends x 933; halfway line x 960.
+  Prefix bn-. Corner x >= 1600, y >= 680 empty in every scene.
+-->
+<template>
+<style>
+  #g-a5-9-ban-card-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8; }
+  #bn-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .bn-hide { opacity:0; visibility:hidden; }
+  .bn-t { position:absolute; white-space:pre; text-align:center; }
+  /* scene 1: mini tally */
+  .bn-b { position:absolute; left:411px; top:520px; width:18px; height:80px; border-radius:4px; }
+  .bn-cw { background:#f2f5f8; }
+  .bn-ca { background:#d8a13a; }
+  .bn-cd { background:#2a3644; }
+  #bn-sheenclip { position:absolute; left:411px; top:520px; width:522px; height:80px; overflow:hidden; }
+  #bn-sheen { position:absolute; left:-90px; top:0; width:90px; height:80px;
+    background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.45), rgba(255,255,255,0)); }
+  #bn-half { position:absolute; left:959px; top:500px; width:2px; height:120px;
+    background:repeating-linear-gradient(180deg, #e74c3c 0 8px, transparent 8px 14px); }
+  #bn-chip { position:absolute; left:0; top:390px; width:1920px; height:80px; display:flex; justify-content:center; }
+  #bn-chipbox { display:flex; align-items:baseline; box-sizing:border-box; height:80px; padding:14px 28px; white-space:pre;
+    background:rgba(21,32,43,.92); border:1px solid rgba(255,255,255,.14); border-radius:20px; }
+  .bn-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:52px; }
+  #bn-n22 { color:#f2f5f8; }
+  #bn-of46 { color:#93a3b2; }
+  #bn-sub { left:0; top:630px; width:1920px; padding-left:6px; box-sizing:border-box; font-size:22px; line-height:26px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  /* scene 2: release card */
+  #bn-s2 { position:absolute; inset:0; }
+  #bn-card { position:absolute; left:420px; top:250px; width:1080px; height:510px; box-sizing:border-box; border-radius:24px;
+    background:rgba(21,32,43,.94); border:1px solid rgba(255,255,255,.14); }
+  .bn-c2 { left:420px; width:1080px; }
+  #bn-eyebrow { top:300px; padding-left:6px; box-sizing:border-box; font-size:22px; line-height:26px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  #bn-jan { top:340px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:38px; line-height:44px; color:#d8a13a; }
+  #bn-rule { position:absolute; left:560px; top:410px; width:800px; height:2px; background:rgba(255,255,255,.14); }
+  #bn-ban { top:440px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:84px; line-height:84px; color:#f2f5f8; }
+  #bn-all { top:550px; padding-left:4px; box-sizing:border-box; font-size:38px; line-height:44px; font-weight:700; letter-spacing:4px; color:#dfe7ee; }
+  #bn-pm { top:620px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; line-height:64px; color:#e8c56a; }
+  /* snow drift behind the card: 40 fixed dots, container drifts down */
+  #bn-snow { position:absolute; inset:0; }
+  .bn-dot { position:absolute; border-radius:50%; background:#dfe7ee; }
+  /* source zone, one text at a time */
+  .bn-src { left:96px; bottom:54px; font-size:19px; line-height:24px; font-weight:400; color:#c8d3e0; text-align:left; }
+  /* scene 3: calendar chip */
+  #bn-chip3 { position:absolute; left:0; top:470px; width:1920px; height:92px; display:flex; justify-content:center; }
+  #bn-chip3box { display:flex; align-items:baseline; box-sizing:border-box; height:92px; padding:20px 32px; white-space:pre;
+    background:rgba(21,32,43,.92); border:1px solid rgba(255,255,255,.14); border-radius:20px; }
+  #bn-thisw { font-size:30px; line-height:52px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  #bn-dotsep { font-size:30px; line-height:52px; font-weight:700; color:#93a3b2; }
+  #bn-nov { color:#f2f5f8; }
+  #bn-track { position:absolute; left:660px; top:600px; width:600px; height:8px; border-radius:4px; background:rgba(255,255,255,.14); }
+  #bn-fill { position:absolute; left:660px; top:600px; width:600px; height:8px; border-radius:4px; background:#7fb2e5;
+    box-shadow:0 0 0 0 rgba(127,178,229,0); }
+</style>
+<div id="g-a5-9-ban-card-root" data-composition-id="g-a5-9-ban-card" data-width="1920" data-height="1080">
+  <div id="bn-ground"></div>
+  <div id="bn-snow" class="bn-hide">
+    <div class="bn-dot" id="bn-d0" style="left:1503px;top:-190px;width:4px;height:4px"></div>
+    <div class="bn-dot" id="bn-d1" style="left:148px;top:-216px;width:5px;height:5px"></div>
+    <div class="bn-dot" id="bn-d2" style="left:407px;top:511px;width:5px;height:5px"></div>
+    <div class="bn-dot" id="bn-d3" style="left:718px;top:-57px;width:4px;height:4px"></div>
+    <div class="bn-dot" id="bn-d4" style="left:846px;top:712px;width:3px;height:3px"></div>
+    <div class="bn-dot" id="bn-d5" style="left:794px;top:-264px;width:5px;height:5px"></div>
+    <div class="bn-dot" id="bn-d6" style="left:744px;top:434px;width:4px;height:4px"></div>
+    <div class="bn-dot" id="bn-d7" style="left:472px;top:268px;width:5px;height:5px"></div>
+    <div class="bn-dot" id="bn-d8" style="left:465px;top:189px;width:4px;height:4px"></div>
+    <div class="bn-dot" id="bn-d9" style="left:732px;top:405px;width:3px;height:3px"></div>
+    <div class="bn-dot" id="bn-d10" style="left:478px;top:276px;width:6px;height:6px"></div>
+    <div class="bn-dot" id="bn-d11" style="left:755px;top:597px;width:5px;height:5px"></div>
+    <div class="bn-dot" id="bn-d12" style="left:1275px;top:-237px;width:4px;height:4px"></div>
+    <div class="bn-dot" id="bn-d13" style="left:413px;top:524px;width:3px;height:3px"></div>
+    <div class="bn-dot" id="bn-d14" style="left:642px;top:529px;width:4px;height:4px"></div>
+    <div class="bn-dot" id="bn-d15" style="left:176px;top:552px;width:5px;height:5px"></div>
+    <div class="bn-dot" id="bn-d16" style="left:124px;top:230px;width:5px;height:5px"></div>
+    <div class="bn-dot" id="bn-d17" style="left:1530px;top:9px;width:6px;height:6px"></div>
+    <div class="bn-dot" id="bn-d18" style="left:537px;top:174px;width:3px;height:3px"></div>
+    <div class="bn-dot" id="bn-d19" style="left:1361px;top:42px;width:5px;height:5px"></div>
+    <div class="bn-dot" id="bn-d20" style="left:1506px;top:592px;width:3px;height:3px"></div>
+    <div class="bn-dot" id="bn-d21" style="left:999px;top:27px;width:4px;height:4px"></div>
+    <div class="bn-dot" id="bn-d22" style="left:302px;top:-171px;width:5px;height:5px"></div>
+    <div class="bn-dot" id="bn-d23" style="left:888px;top:638px;width:4px;height:4px"></div>
+    <div class="bn-dot" id="bn-d24" style="left:649px;top:667px;width:5px;height:5px"></div>
+    <div class="bn-dot" id="bn-d25" style="left:575px;top:420px;width:3px;height:3px"></div>
+    <div class="bn-dot" id="bn-d26" style="left:883px;top:-216px;width:5px;height:5px"></div>
+    <div class="bn-dot" id="bn-d27" style="left:816px;top:477px;width:4px;height:4px"></div>
+    <div class="bn-dot" id="bn-d28" style="left:652px;top:41px;width:4px;height:4px"></div>
+    <div class="bn-dot" id="bn-d29" style="left:646px;top:-289px;width:5px;height:5px"></div>
+    <div class="bn-dot" id="bn-d30" style="left:368px;top:-157px;width:6px;height:6px"></div>
+    <div class="bn-dot" id="bn-d31" style="left:1360px;top:168px;width:6px;height:6px"></div>
+    <div class="bn-dot" id="bn-d32" style="left:353px;top:-2px;width:3px;height:3px"></div>
+    <div class="bn-dot" id="bn-d33" style="left:754px;top:340px;width:4px;height:4px"></div>
+    <div class="bn-dot" id="bn-d34" style="left:764px;top:73px;width:5px;height:5px"></div>
+    <div class="bn-dot" id="bn-d35" style="left:1216px;top:212px;width:4px;height:4px"></div>
+    <div class="bn-dot" id="bn-d36" style="left:1220px;top:28px;width:3px;height:3px"></div>
+    <div class="bn-dot" id="bn-d37" style="left:1304px;top:438px;width:6px;height:6px"></div>
+    <div class="bn-dot" id="bn-d38" style="left:1157px;top:60px;width:6px;height:6px"></div>
+    <div class="bn-dot" id="bn-d39" style="left:1071px;top:128px;width:5px;height:5px"></div>
+  </div>
+
+  <div id="bn-s1" style="position:absolute;inset:0">
+    <div id="bn-bar" style="position:absolute;inset:0">
+      <div id="bn-b0" class="bn-b bn-cw bn-hide"></div>
+      <div id="bn-b1" class="bn-b bn-cw bn-hide"></div>
+      <div id="bn-b2" class="bn-b bn-cw bn-hide"></div>
+      <div id="bn-b3" class="bn-b bn-cw bn-hide"></div>
+      <div id="bn-b4" class="bn-b bn-cw bn-hide"></div>
+      <div id="bn-b5" class="bn-b bn-cw bn-hide"></div>
+      <div id="bn-b6" class="bn-b bn-cw bn-hide"></div>
+      <div id="bn-b7" class="bn-b bn-cw bn-hide"></div>
+      <div id="bn-b8" class="bn-b bn-cw bn-hide"></div>
+      <div id="bn-b9" class="bn-b bn-cw bn-hide"></div>
+      <div id="bn-b10" class="bn-b bn-cw bn-hide"></div>
+      <div id="bn-b11" class="bn-b bn-cw bn-hide"></div>
+      <div id="bn-b12" class="bn-b bn-cw bn-hide"></div>
+      <div id="bn-b13" class="bn-b bn-cw bn-hide"></div>
+      <div id="bn-b14" class="bn-b bn-cw bn-hide"></div>
+      <div id="bn-b15" class="bn-b bn-cw bn-hide"></div>
+      <div id="bn-b16" class="bn-b bn-cw bn-hide"></div>
+      <div id="bn-b17" class="bn-b bn-cw bn-hide"></div>
+      <div id="bn-b18" class="bn-b bn-ca bn-hide"></div>
+      <div id="bn-b19" class="bn-b bn-ca bn-hide"></div>
+      <div id="bn-b20" class="bn-b bn-ca bn-hide"></div>
+      <div id="bn-b21" class="bn-b bn-ca bn-hide"></div>
+      <div id="bn-b22" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-b23" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-b24" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-b25" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-b26" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-b27" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-b28" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-b29" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-b30" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-b31" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-b32" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-b33" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-b34" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-b35" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-b36" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-b37" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-b38" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-b39" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-b40" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-b41" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-b42" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-b43" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-b44" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-b45" class="bn-b bn-cd bn-hide"></div>
+      <div id="bn-sheenclip"><div id="bn-sheen"></div></div>
+    </div>
+    <div id="bn-half" class="bn-hide"></div>
+    <div id="bn-chip" class="bn-hide"><div id="bn-chipbox"><span id="bn-n22" class="bn-big">22</span><span id="bn-of46" class="bn-big"> OF 46</span></div></div>
+    <div id="bn-sub" class="bn-t bn-hide">FOUND OUTSIDE OR IN THEIR CARS</div>
+  </div>
+
+  <div id="bn-s2" class="bn-hide">
+    <div id="bn-card"></div>
+    <div id="bn-eyebrow" class="bn-t bn-c2 bn-hide">THE NEXT WINTER</div>
+    <div id="bn-jan" class="bn-t bn-c2 bn-hide">JAN 13, 2024</div>
+    <div id="bn-rule" class="bn-hide"></div>
+    <div id="bn-ban" class="bn-t bn-c2 bn-hide">FULL TRAVEL BAN</div>
+    <div id="bn-all" class="bn-t bn-c2 bn-hide">ALL OF ERIE COUNTY</div>
+    <div id="bn-pm" class="bn-t bn-c2 bn-hide">9 PM SAT</div>
+  </div>
+
+  <div id="bn-chip3" class="bn-hide"><div id="bn-chip3box"><span id="bn-thisw">THIS WINTER</span><span id="bn-dotsep"> · </span><span id="bn-nov" class="bn-big">NOV TO MAR</span></div></div>
+  <div id="bn-track" class="bn-hide"></div>
+  <div id="bn-fill" class="bn-hide"></div>
+
+  <div id="bn-src1" class="bn-t bn-src bn-hide">Office of the Governor, 13 Jan 2024</div>
+  <div id="bn-src2" class="bn-t bn-src bn-hide">NWS Buffalo climate pages</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#bn-";
+  const N = 46, PITCH = 24;
+  const B = [];
+  for (let i = 0; i < N; i++) B.push(P + "b" + i);
+  const LIT = B.slice(0, 22);
+  const DOTS = []; for (let i = 0; i < 40; i++) DOTS.push(P + "d" + i);
+
+  /* frame 0: ground only. Blocks placed by the formula x = 411 + 24 i (CSS left 411, x = 24 i), scaleY 0 so nothing shows yet. */
+  for (let i = 0; i < N; i++) tl.set(B[i], { x: PITCH * i, scaleY: 0, autoAlpha: 1, transformOrigin: "50% 100%" }, 0);
+  tl.set(P + "half", { scaleY: 0, transformOrigin: "50% 0%" }, 0);
+  tl.set(P + "chip", { scale: 1.15, transformOrigin: "50% 50%" }, 0);
+  tl.set(P + "rule", { scaleX: 0, transformOrigin: "50% 50%" }, 0);
+  tl.set(P + "ban", { scale: 1.15, transformOrigin: "50% 50%" }, 0);
+  tl.set(P + "pm", { scale: 1.25, transformOrigin: "50% 50%" }, 0);
+  tl.set(P + "chip3", { y: 20 }, 0);
+  tl.set([P + "fill", P + "track"], { y: 20 }, 0);
+  tl.set(P + "fill", { scaleX: 0, transformOrigin: "0% 50%" }, 0);
+  tl.set(P + "s2", { y: 30 }, 0);
+  tl.set([P + "eyebrow", P + "all", P + "src1", P + "src2", P + "sub"], { y: 10 }, 0);
+  tl.set(P + "jan", { y: 10 }, 0);
+
+  /* SCENE 1. brief wav 0.00 "Many were out there" (Paul's clip, before this host): 46 blocks fill in place, 0.00-0.80 */
+  tl.to(B, { scaleY: 1, duration: 0.125, ease: "power2.out", stagger: 0.015 }, 0);
+  /* brief 0.38 -> chip "22 OF 46" (compressed to local 0.38) */
+  tl.set(P + "chip", { autoAlpha: 1 }, 0.38);
+  tl.to(P + "chip", { scale: 1, duration: 0.45, ease: "power4.out" }, 0.38);
+  /* brief 0.80 -> sub-label (local 0.80) */
+  tl.to(P + "sub", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.8);
+  /* brief 2.38 "before" -> halfway line draws, compressed to local 1.30 */
+  tl.set(P + "half", { autoAlpha: 0.6 }, 1.3);
+  tl.to(P + "half", { scaleY: 1, duration: 0.4, ease: "power2.out" }, 1.3);
+  /* brief 0.8 to 7.74 -> blocks 0-21 and the chip float y 0 -> -3 (local 0.8 to 4.40, finite, ends at rest) */
+  tl.to(LIT, { y: -3, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.8);
+  tl.to(P + "chip", { y: -3, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.8);
+  /* brief 6.60 "stuck" -> sheen along the lit run x 411 -> 933 (3.304) */
+  tl.to(P + "sheen", { x: 612, duration: 0.6, ease: "power2.inOut" }, 3.304);
+  /* brief 7.80 after "snow." @7.74 -> scene 1 out (4.504) */
+  tl.to(P + "s1", { autoAlpha: 0, y: -14, duration: 0.5, ease: "power2.in" }, 4.504);
+
+  /* SCENE 2. brief 8.36 "The next winter," -> card in, empty (5.064); eyebrow 8.54 (5.244) */
+  tl.set(P + "s2", { autoAlpha: 1 }, 5.064);
+  tl.to(P + "s2", { y: 0, duration: 0.6, ease: "power3.out" }, 5.064);
+  tl.fromTo(P + "card", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 5.064);
+  tl.to(P + "eyebrow", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.244);
+  /* brief 9.30 "January 2024," -> date (6.004); rule 9.70 (6.404); source 9.70 (6.404) */
+  tl.to(P + "jan", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.004);
+  tl.set(P + "rule", { autoAlpha: 1 }, 6.404);
+  tl.to(P + "rule", { scaleX: 1, duration: 0.4, ease: "power2.out" }, 6.404);
+  tl.to(P + "src1", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.404);
+  /* brief 11.34 "lake storm came back" -> card floats, snow drift fades in behind it (8.044), 30 px/s */
+  tl.to(P + "s2", { y: -3, duration: 1.075, ease: "sine.inOut", yoyo: true, repeat: 7 }, 8.044);
+  tl.to(P + "snow", { autoAlpha: 0.3, duration: 0.6, ease: "power1.out" }, 8.044);
+  tl.to(P + "snow", { y: 220.2, duration: 7.34, ease: "none" }, 8.044);
+  /* brief 13.82 "full travel ban" -> (10.524) */
+  tl.to(P + "ban", { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power4.out" }, 10.524);
+  /* brief 14.96 "all of Erie County" -> (11.664) */
+  tl.to(P + "all", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.664);
+  /* brief 16.42 "9 on a Saturday night." -> (13.124) */
+  tl.to(P + "pm", { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 13.124);
+  /* brief 18.68 "before the worst of the snow." -> drift thickens after the ban line has landed: 30 -> 60 px/s, 30 -> 60 % (15.384) */
+  tl.to(P + "snow", { autoAlpha: 0.6, duration: 0.6, ease: "power1.out" }, 15.384);
+  tl.to(P + "snow", { y: 306.6, duration: 1.44, ease: "none" }, 15.384);
+  /* brief 20.12 "Between now" -> card and drift out (16.824); source swaps at brief 20.62 (17.324) */
+  tl.to(P + "s2", { autoAlpha: 0, y: -16, duration: 0.5, ease: "power2.in" }, 16.824);
+  tl.to(P + "snow", { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 16.824);
+  tl.to(P + "src1", { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 16.824);
+  tl.to(P + "src2", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 17.324);
+
+  /* SCENE 3. brief 20.82 "now and the end of March," -> calendar chip + track in (17.524) */
+  tl.to([P + "chip3", P + "track", P + "fill"], { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 17.524);
+  /* brief 21.36 "end of March" -> strip fills 0 -> 1 over 1.2 s, done at 19.264 (brief 22.56) */
+  tl.to(P + "fill", { scaleX: 1, duration: 1.2, ease: "power1.inOut" }, 18.064);
+  /* brief 22.64 "Buffalo is inside" -> chip floats (19.344, ends at rest before the fade) */
+  tl.to(P + "chip3", { y: -3, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 19.344);
+  /* brief 23.94 "snow season" -> strip glow pulses once (20.644) */
+  tl.to(P + "fill", { boxShadow: "0 0 26px 8px rgba(127,178,229,.85)", scaleY: 2, duration: 0.35, ease: "power2.out", yoyo: true, repeat: 1 }, 20.644);
+  /* brief 25.10 after "again." @24.98 -> everything fades toward the bare ground (21.804), 0.5 s so it ends inside the host (22.393) */
+  tl.to([P + "chip3", P + "track", P + "fill", P + "src2"], { autoAlpha: 0, duration: 0.5, ease: "power1.in" }, 21.804);
+  /* timeline length = host window (22.393) rounded up */
+  tl.set(P + "ground", { opacity: 1 }, 22.4);
+
+  window.__timelines["g-a5-9-ban-card"] = tl;
+})();
+</script>
+</template>
