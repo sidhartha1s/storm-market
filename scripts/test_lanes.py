@@ -502,8 +502,34 @@ def test_l6_a_shipped_episode_has_no_jobs_and_exits_0(tmp_path):
         stage.checkouts = real
 
 
+def test_l11_a_launch_starts_on_the_least_loaded_profile_across_episodes(tmp_path):
+    """L11: every lane of every episode started on the first profile, so concurrent episodes piled onto claude1.
+    Two worktrees: ep1 runs two lanes on claude1 and one on claude2 (an ended lane, a lapsed lane and a lane with no
+    profile count nothing); a launch from ep2 must probe claude5 first, then claude2, then claude1; --profile still leads."""
+    now = time.time()
+    root = tmp_path / "repo"
+    ep1, ep2 = (root / ".worktrees" / w / "episodes" / "ep" for w in ("wt1", "wt2"))
+    for ep in (ep1, ep2):
+        touch(ep / "edit_script.md", SCRIPT)
+    run = lambda p, **k: {"started": now - 60, "host": "zbook", "minutes": 60, "profile": p, **k}  # noqa: E731
+    lanes.save_ledger(ep1, {"jobs": {"source:a1": run("claude1"), "source:intro": run("claude1"), "words:a1": run("claude2"),
+                                     "voice:a1": run("claude5", ended=now), "voice:intro": run("claude5", started=now - 7200),
+                                     "brief:a1": {"started": now - 60, "host": "asus"}}})
+    lanes.profiles = lambda host: ["claude1", "claude2", "claude5"]
+    assert lanes.running_load(ep2, now) == {"claude1": 2, "claude2": 1}
+    calls = fakes(answering={"claude1", "claude2", "claude5"})
+    assert lanes.main(["start", str(ep2), "source:a1", *LANE]) == 0
+    assert calls["probe"] == ["claude5"] and lanes.load_ledger(ep2)["jobs"]["source:a1"]["profile"] == "claude5"
+    calls = fakes(answering={"claude1"})  # the ledger now holds claude5 once: claude2 and claude5 tie at 1, name order breaks it
+    assert lanes.main(["start", str(ep2), "words:a1", *LANE[:-2], "--cwd", r"C:\wt"]) == 0
+    assert calls["probe"] == ["claude2", "claude5", "claude1"], calls["probe"]
+    calls = fakes(answering={"claude1", "claude2", "claude5"})
+    assert lanes.main(["start", str(ep2), "voice:a1", "--profile", "claude1", *LANE]) == 0 and calls["probe"] == ["claude1"]
+
+
 if __name__ == "__main__":
-    for t in (test_l6_a_shipped_episode_has_no_jobs_and_exits_0,
+    for t in (test_l11_a_launch_starts_on_the_least_loaded_profile_across_episodes,
+              test_l6_a_shipped_episode_has_no_jobs_and_exits_0,
               test_l1_a_profile_is_probed_on_its_wrapper_and_only_profiles_with_a_credential_are_tried,
               test_l3_a_host_alias_that_names_this_machine_is_local,
               test_l4_a_lane_whose_process_died_is_not_running,
