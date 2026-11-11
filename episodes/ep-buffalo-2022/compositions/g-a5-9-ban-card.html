@@ -222,9 +222,7 @@ window.__timelines = window.__timelines || {};
   tl.to(P + "s1", { autoAlpha: 0, y: -14, duration: 0.5, ease: "power2.in" }, 4.504);
 
   /* SCENE 2. brief 8.36 "The next winter," -> card in, empty (5.064); eyebrow 8.54 (5.244) */
-  tl.set(P + "s2", { autoAlpha: 1 }, 5.064);
-  tl.to(P + "s2", { y: 0, duration: 0.6, ease: "power3.out" }, 5.064);
-  tl.fromTo(P + "card", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 5.064);
+  tl.to(P + "s2", { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 5.064);
   tl.to(P + "eyebrow", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.244);
   /* brief 9.30 "January 2024," -> date (6.004); rule 9.70 (6.404); source 9.70 (6.404) */
   tl.to(P + "jan", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.004);
