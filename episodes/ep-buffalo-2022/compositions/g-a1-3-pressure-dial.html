@@ -1,0 +1,183 @@
+<!--
+  g-a1-3-pressure-dial · A1-S3 · forecast pressure fall 1000 -> 968 mb, built to host 18.496 s.
+  Formula (all dial numbers computed in the script, none placed by eye):
+    angle(p) = -135 + (1008 - p) * 5.625 deg (clockwise from 12 o'clock); point(a, r) = (960 + r sin a, 580 - r cos a).
+    Needle rotation = angle(1000) .. angle(968) = -90 .. +90. Ticks every 4 mb (13), labels every 8 mb, 24 mb bar at angle(1000-24) = 45.
+    Arc fill is tied to the needle: both use power2.inOut; amber ends where the eased needle angle = 45 deg (solved by bisection), red takes the rest.
+  Deviations from brief (builder notes): tick labels sit OUTSIDE the ring at r 372 (at r 228 the needle runs over the 1000 and 968 labels);
+    THU/FRI EVENING tags at right edge 500 / left 1410 and the 24 MB label at left 1320 (the r 420 wind ring crosses the brief's x 630 / 1290 / 1240);
+    exit starts 17.90 (host ends 18.496, brief assumed 18.8).
+-->
+<template>
+<style>
+  #g-a1-3-pressure-dial-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    font-family: Arial, sans-serif; color:#f2f5f8; }
+  .pd-fill { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #pd-ground { background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .pd-hide { opacity:0; visibility:hidden; }
+  .pd-t { position:absolute; white-space:pre; }
+  #pd-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .pd-lbl { position:absolute; width:100px; height:30px; text-align:center; font-weight:700; font-size:26px; line-height:30px; color:#dfe7ee; }
+  #pd-unit { left:760px; top:689px; width:400px; text-align:center; font-weight:700; font-size:22px; line-height:22px; letter-spacing:3px; color:#93a3b2; }
+  .pd-tag { top:568px; width:200px; font-weight:700; font-size:22px; line-height:26px; letter-spacing:3px; color:#93a3b2; }
+  #pd-thu { left:300px; text-align:right; }
+  #pd-fri { left:1410px; }
+  #pd-24lbl { left:1320px; top:290px; font-weight:700; font-size:26px; line-height:30px; color:#e74c3c; }
+  #pd-chip { left:200px; top:110px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:56px; color:#e8c56a; }
+  #pd-source { left:96px; bottom:54px; font-size:19px; line-height:24px; font-weight:400; color:#c8d3e0; }
+</style>
+<div id="g-a1-3-pressure-dial-root" data-composition-id="g-a1-3-pressure-dial" data-width="1920" data-height="1080">
+  <div id="pd-ground" class="pd-fill"></div>
+  <div id="pd-all" class="pd-fill">
+    <svg id="pd-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="pd-face" class="pd-hide"><circle cx="960" cy="580" r="300" fill="#0b1016" stroke="rgba(255,255,255,.14)" stroke-width="2"/></g>
+      <g id="pd-shim" class="pd-hide"><path id="pd-shimp" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="4"/></g>
+      <line id="pd-k0" class="pd-hide pd-tk" stroke="#93a3b2" stroke-width="3"/><line id="pd-k1" class="pd-hide pd-tk" stroke="#93a3b2" stroke-width="3"/>
+      <line id="pd-k2" class="pd-hide pd-tk" stroke="#93a3b2" stroke-width="3"/><line id="pd-k3" class="pd-hide pd-tk" stroke="#93a3b2" stroke-width="3"/>
+      <line id="pd-k4" class="pd-hide pd-tk" stroke="#93a3b2" stroke-width="3"/><line id="pd-k5" class="pd-hide pd-tk" stroke="#93a3b2" stroke-width="3"/>
+      <line id="pd-k6" class="pd-hide pd-tk" stroke="#93a3b2" stroke-width="3"/><line id="pd-k7" class="pd-hide pd-tk" stroke="#93a3b2" stroke-width="3"/>
+      <line id="pd-k8" class="pd-hide pd-tk" stroke="#93a3b2" stroke-width="3"/><line id="pd-k9" class="pd-hide pd-tk" stroke="#93a3b2" stroke-width="3"/>
+      <line id="pd-k10" class="pd-hide pd-tk" stroke="#93a3b2" stroke-width="3"/><line id="pd-k11" class="pd-hide pd-tk" stroke="#93a3b2" stroke-width="3"/>
+      <line id="pd-k12" class="pd-hide pd-tk" stroke="#93a3b2" stroke-width="3"/>
+      <path id="pd-amber" class="pd-hide" fill="none" stroke="#d8a13a" stroke-width="14"/>
+      <path id="pd-red" class="pd-hide" fill="none" stroke="#e74c3c" stroke-width="14"/>
+      <line id="pd-bar" class="pd-hide" stroke="#c0392b" stroke-width="10"/>
+      <g id="pd-nd" class="pd-hide"><line x1="960" y1="580" x2="960" y2="310" stroke="#f2f5f8" stroke-width="6" stroke-linecap="round"/></g>
+      <circle id="pd-hub" class="pd-hide" cx="960" cy="580" r="16" fill="#f2f5f8"/>
+      <g id="pd-ring" class="pd-hide">
+        <path id="pd-rg0" fill="none" stroke="#7fb2e5" stroke-width="4" stroke-linecap="round"/><polygon id="pd-rh0" fill="#7fb2e5"/>
+        <path id="pd-rg1" fill="none" stroke="#7fb2e5" stroke-width="4" stroke-linecap="round"/><polygon id="pd-rh1" fill="#7fb2e5"/>
+        <path id="pd-rg2" fill="none" stroke="#7fb2e5" stroke-width="4" stroke-linecap="round"/><polygon id="pd-rh2" fill="#7fb2e5"/>
+      </g>
+    </svg>
+    <div id="pd-l0" class="pd-lbl pd-hide">1008</div><div id="pd-l1" class="pd-lbl pd-hide">1000</div>
+    <div id="pd-l2" class="pd-lbl pd-hide">992</div><div id="pd-l3" class="pd-lbl pd-hide">984</div>
+    <div id="pd-l4" class="pd-lbl pd-hide">976</div><div id="pd-l5" class="pd-lbl pd-hide">968</div>
+    <div id="pd-l6" class="pd-lbl pd-hide">960</div>
+    <div id="pd-unit" class="pd-t pd-hide">PRESSURE · MB</div>
+    <div id="pd-thu" class="pd-t pd-tag pd-hide">THU EVENING</div>
+    <div id="pd-fri" class="pd-t pd-tag pd-hide">FRI EVENING</div>
+    <div id="pd-24lbl" class="pd-t pd-hide">24 MB IN 24 HRS</div>
+    <div id="pd-chip" class="pd-t pd-hide">32 MB IN ~24 HRS</div>
+    <div id="pd-source" class="pd-t pd-hide">NWS Buffalo forecast discussion, 20 Dec 2022 (forecast)</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const $ = (id) => "#pd-" + id;
+  const RAD = Math.PI / 180;
+  const A = (p) => -135 + (1008 - p) * 5.625;
+  const pt = (a, r) => [960 + r * Math.sin(a * RAD), 580 - r * Math.cos(a * RAD)];
+  const f = (n) => n.toFixed(2);
+  const arc = (a0, a1, r, sweep) => {
+    const [x0, y0] = pt(a0, r), [x1, y1] = pt(a1, r);
+    return "M" + f(x0) + " " + f(y0) + " A" + r + " " + r + " 0 " + (Math.abs(a1 - a0) > 180 ? 1 : 0) + " " + sweep + " " + f(x1) + " " + f(y1);
+  };
+  const el = (id) => document.querySelector($(id));
+  const attrs = (id, o) => { const e = el(id); for (const k in o) e.setAttribute(k, o[k]); return e; };
+  const hideDash = (id, len) => { const L = Math.ceil(len) + 1; attrs(id, { "stroke-dasharray": L, "stroke-dashoffset": L }); return L; };
+
+  /* ticks: 13 every 4 mb, r 262..300; major at 1000, 976, 968 */
+  const TK = 38, TKL = Math.ceil(TK) + 1;
+  for (let i = 0; i < 13; i++) {
+    const p = 1008 - 4 * i, a = A(p), [x1, y1] = pt(a, 262), [x2, y2] = pt(a, 300);
+    const major = p === 1000 || p === 976 || p === 968;
+    attrs("k" + i, { x1: f(x1), y1: f(y1), x2: f(x2), y2: f(y2), "stroke-dasharray": TKL, "stroke-dashoffset": TKL });
+    if (major) attrs("k" + i, { stroke: "#f2f5f8", "stroke-width": 5 });
+  }
+  /* labels: every 8 mb, centred outside the ring at r 372 */
+  for (let i = 0; i < 7; i++) {
+    const [cx, cy] = pt(A(1008 - 8 * i), 372), e = el("l" + i);
+    e.style.left = f(cx - 50) + "px"; e.style.top = f(cy - 15) + "px";
+  }
+  /* fall arcs: amber 1000 -> 976, red 976 -> 968 (clockwise, r 300) */
+  const aAmber = A(1000), aMark = A(1000 - 24), aEnd = A(968);
+  attrs("amber", { d: arc(aAmber, aMark, 300, 1) });
+  const LA = hideDash("amber", 300 * (aMark - aAmber) * RAD);
+  attrs("red", { d: arc(aMark, aEnd, 300, 1) });
+  const LR = hideDash("red", 300 * (aEnd - aMark) * RAD);
+  /* 24 mb bar on 976, r 250..330 */
+  const [bx1, by1] = pt(aMark, 250), [bx2, by2] = pt(aMark, 330);
+  attrs("bar", { x1: f(bx1), y1: f(by1), x2: f(bx2), y2: f(by2) });
+  const LB = hideDash("bar", 80);
+  /* shimmer: 30 deg arc r 300 */
+  attrs("shimp", { d: arc(0, 30, 300, 1) });
+  /* wind ring: 3 arcs of 80 deg, r 420, 120 deg apart; head at the counterclockwise end */
+  for (let k = 0; k < 3; k++) {
+    const a0 = k * 120, [px, py] = pt(a0 + 80, 420);
+    attrs("rg" + k, { d: arc(a0 + 80, a0, 420, 0) });
+    const [hx, hy] = pt(a0, 420), s = Math.sin(a0 * RAD), c = Math.cos(a0 * RAD);
+    const tip = [hx - 18 * c, hy - 18 * s], b1 = [hx + 9 * s, hy - 9 * c], b2 = [hx - 9 * s, hy + 9 * c];
+    attrs("rh" + k, { points: [b1, tip, b2].map((q) => f(q[0]) + "," + f(q[1])).join(" ") });
+  }
+
+  /* needle and arc share one ease: needle angle = -90 + 180 * P(x); amber covers P 0..0.75 (angle 45), red the rest */
+  const P = gsap.parseEase("power2.inOut");
+  const frac = (aMark - aAmber) / (aEnd - aAmber);
+  let lo = 0, hi = 1;
+  for (let i = 0; i < 40; i++) { const m = (lo + hi) / 2; if (P(m) < frac) lo = m; else hi = m; }
+  const xs = (lo + hi) / 2, T0 = 3.96, D = 6.04 - 3.96;
+  const amberEase = (x) => P(x * xs) / frac;
+  const redEase = (x) => (P(xs + x * (1 - xs)) - frac) / (1 - frac);
+
+  const ORG = { svgOrigin: "960 580", smoothOrigin: false };
+  /* time-0 states */
+  tl.set($("face"), { autoAlpha: 0, scale: 0.9, ...ORG }, 0);
+  tl.set($("shim"), { autoAlpha: 0, rotation: 0, ...ORG }, 0);
+  tl.set($("nd"), { autoAlpha: 0, scale: 0.6, rotation: aAmber, ...ORG }, 0);
+  tl.set($("hub"), { autoAlpha: 0, scale: 0.6, ...ORG }, 0);
+  tl.set($("ring"), { autoAlpha: 0, rotation: 0, ...ORG }, 0);
+  tl.set($("chip"), { autoAlpha: 0, scale: 1, transformOrigin: "left center" }, 0);
+
+  /* 0.05 face in; shimmer runs for the whole comp at 20 deg/s */
+  tl.fromTo($("face"), { autoAlpha: 0, scale: 0.9, ...ORG }, { autoAlpha: 1, scale: 1, duration: 0.6, ease: "power3.out", ...ORG }, 0.05);
+  tl.fromTo($("shim"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 0.05);
+  tl.fromTo($("shim"), { rotation: 0, ...ORG }, { rotation: 20 * 18.446, duration: 18.446, ease: "none", ...ORG }, 0.05);
+  tl.fromTo($("source"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.3);
+
+  /* 0.60 ticks draw clockwise (stagger 0.04), tick labels fade up with their ticks */
+  for (let i = 0; i < 13; i++) {
+    tl.fromTo($("k" + i), { autoAlpha: 0, strokeDashoffset: TKL }, { autoAlpha: 1, strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 0.6 + 0.04 * i);
+  }
+  for (let i = 0; i < 7; i++) {
+    tl.fromTo($("l" + i), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.6 + 0.08 * i);
+  }
+  /* 1.26 unit */
+  tl.fromTo($("unit"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.26);
+  /* 2.68 needle + hub on 1000, THU EVENING */
+  tl.fromTo($("nd"), { autoAlpha: 0, scale: 0.6, rotation: aAmber, ...ORG }, { autoAlpha: 1, scale: 1, rotation: aAmber, duration: 0.4, ease: "back.out(1.7)", ...ORG }, 2.68);
+  tl.fromTo($("hub"), { autoAlpha: 0, scale: 0.6, ...ORG }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(1.7)", ...ORG }, 2.68);
+  tl.fromTo($("thu"), { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 2.68);
+  /* 3.96 to 6.04 needle -90 -> +90, arcs follow on the same ease */
+  tl.fromTo($("nd"), { rotation: aAmber, ...ORG }, { rotation: aEnd, duration: D, ease: "power2.inOut", ...ORG }, T0);
+  tl.fromTo($("amber"), { autoAlpha: 1, strokeDashoffset: LA }, { autoAlpha: 1, strokeDashoffset: 0, duration: D * xs, ease: amberEase }, T0);
+  tl.fromTo($("red"), { autoAlpha: 1, strokeDashoffset: LR }, { autoAlpha: 1, strokeDashoffset: 0, duration: D * (1 - xs), ease: redEase }, T0 + D * xs);
+  /* 4.14 chip */
+  tl.fromTo($("chip"), { autoAlpha: 0, scale: 1.2, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.out", transformOrigin: "left center" }, 4.14);
+  /* 6.04 FRI EVENING, hub pulse */
+  tl.fromTo($("fri"), { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 6.04);
+  tl.to($("hub"), { scale: 1.3, duration: 0.15, ease: "sine.out", ...ORG }, 6.04);
+  tl.to($("hub"), { scale: 1, duration: 0.25, ease: "sine.in", ...ORG }, 6.19);
+  /* 6.86 24 mb bar grows outward from r 250 */
+  tl.fromTo($("bar"), { autoAlpha: 0, strokeDashoffset: LB }, { autoAlpha: 1, strokeDashoffset: 0, duration: 0.5, ease: "power3.out" }, 6.86);
+  /* 9.62 label */
+  tl.fromTo($("24lbl"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 9.62);
+  /* 11.40 amber arc brightens and settles */
+  tl.to($("amber"), { stroke: "#f5c35a", duration: 0.3, ease: "power2.out" }, 11.4);
+  tl.to($("amber"), { stroke: "#d8a13a", duration: 0.5, ease: "power2.in" }, 11.7);
+  /* 13.46 red arc glows (stroke 14 -> 22 -> 14), 968 label turns red */
+  tl.to($("red"), { strokeWidth: 22, duration: 0.3, ease: "sine.out" }, 13.46);
+  tl.to($("red"), { strokeWidth: 14, duration: 0.3, ease: "sine.in" }, 13.76);
+  tl.to($("l5"), { color: "#e74c3c", duration: 0.3 }, 13.46);
+  /* 14.76 wind ring in, turning counterclockwise; 16.20 it speeds up */
+  tl.fromTo($("ring"), { autoAlpha: 0, rotation: 0, ...ORG }, { autoAlpha: 1, rotation: -40, duration: 0.6, ease: "power2.out", ...ORG }, 14.76);
+  tl.fromTo($("ring"), { rotation: -40, ...ORG }, { rotation: -400, duration: 2.0, ease: "power2.in", ...ORG }, 16.2);
+  /* exit: fade-through, anchored to the host end 18.496 */
+  tl.to($("all"), { scale: 1.04, autoAlpha: 0, duration: 0.55, ease: "power2.in" }, 17.9);
+
+  window.__timelines["g-a1-3-pressure-dial"] = tl;
+})();
+</script>
+</template>
