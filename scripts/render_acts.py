@@ -32,6 +32,7 @@ from pathlib import Path
 SCRIPTS = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPTS))
 import render_busy  # noqa: E402
+import render_preflight  # noqa: E402
 
 RENDER_CMD = SCRIPTS / "render.cmd"
 STAGE_NAME = "_act_tmp.html"  # the next plain render.cmd run sweeps _*_tmp.html
