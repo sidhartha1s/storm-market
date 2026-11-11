@@ -10,6 +10,7 @@ import re
 
 ATTR = re.compile(r'([\w-]+)(?:="([^"]*)")?')
 STAMP = "gates_passed.marker"  # run_gates.py writes digest() here when every gate is green; gitignored (*.marker)
+MEDIA = {".mp4", ".mov", ".webm", ".mkv", ".wav", ".mp3", ".m4a", ".aac", ".ogg", ".png", ".jpg", ".jpeg", ".webp", ".gif"}
 
 
 def digest(ep):
