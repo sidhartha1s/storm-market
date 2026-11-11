@@ -18,13 +18,7 @@ const findings = [];
 
 for (const f of readdirSync(join(ep, 'compositions')).filter(f => f.endsWith('.html'))) {
   const name = f.replace('.html', '');
-  const raw = readFileSync(join(ep, 'compositions', f), 'utf8');
-  const inner = raw.slice(raw.indexOf('<template>') + 10, raw.lastIndexOf('</template>'));
-  writeFileSync(tmp, `<!doctype html><html><head><meta charset="utf-8">
-<style>${HOST_CSS}</style>
-<style>html,body{margin:0;background:#000;width:1920px;height:1080px;overflow:hidden}</style>
-<script>${gsap}</script></head><body>${inner}</body></html>`, 'utf8');
-  await page.goto('file:///' + tmp.replace(/\\/g, '/'), { waitUntil: 'load' });
+  await page.goto('file:///' + stageComp(ep, join(ep, 'compositions', f), HOST_CSS).replace(/\\/g, '/'), { waitUntil: 'load' });
   await page.waitForTimeout(120);
 
   const res = await page.evaluate(async (step) => {
