@@ -32,9 +32,9 @@ def check(name, cond, detail=""):
 
 
 FILE_ONLY = ["render_preflight.py", "paul_start_frame.py", "sweep_episode.py", "lint_timeline.py", "build_srt.py",
-             "narration_picture_check.py", "flag_words.py", "hook_shape.py", "homograph_scan.py", "media_budget.py",
-             "audio_levels.py"]
-BROWSER = ["beat_density.py", "blank_scan.mjs", "overlap_check.mjs", "occlusion_check.mjs", "graphics_qc.mjs"]
+             "narration_picture_check.py", "flag_words.py", "hook_shape.py", "homograph_scan.py", "audio_levels.py"]
+# wait for the render: the browser gates, and media_budget.py (it times ffprobe spawns, so beside a render it measures load)
+WAITS = ["beat_density.py", "media_budget.py", "blank_scan.mjs", "overlap_check.mjs", "occlusion_check.mjs", "graphics_qc.mjs"]
 
 d = Path(tempfile.mkdtemp())
 stubs, log = d / "scripts", d / "order.log"
