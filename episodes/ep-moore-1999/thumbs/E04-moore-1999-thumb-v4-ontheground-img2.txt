@@ -1,0 +1,3 @@
+img2: C:\Users\Sidhartha\Automation Projects\storm-market\episodes\ep-moore-1999\media\stills\thumb-img2-moore-tornado-nssl.jpg (md5 3c89c38c88609dbd00ae99b4463da61b, 2076x1440)
+Source: https://commons.wikimedia.org/wiki/File:May_3,_1999_Moore_F5_tornado.jpg ; US Government work, public domain. Credit: Mike Eilts, NOAA National Severe Storms Laboratory. Row stills/thumb-img2-moore-tornado-nssl.jpg in media/provenance.csv.
+img1: C:\Users\Sidhartha\Automation Projects\storm-market\assets\paul\paul-sheet-c.png
