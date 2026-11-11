@@ -1,6 +1,6 @@
 <!-- g-path-map · S1-S2 "aimed at Moore" to S1-S3 "up the road" · a schematic vertical path map: the track drawn bottom to top,
      Moore and south Oklahoma City lit ahead, Bridge Creek marked behind, an arrow up the road to Moore. Three place labels only;
-     no other geography, no claimed track shape. Host 4.488 -> 12.437 (7.949 s); times host-local (episode - 4.488). -->
+     no other geography, no claimed track shape. Host 4.488 -> 12.037 (7.549 s); times host-local (episode - 4.488). -->
 <template>
 <style>
   #g-path-map-root { position:absolute; left:0; top:0; width:1080px; height:1920px; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
@@ -35,7 +35,10 @@
       <!-- the statement, aimed up the road -->
       <path id="g-path-map-arrow" class="g-path-map-hide" d="M 606 868 L 752 623" stroke="#f2f5f8" stroke-width="10" stroke-linecap="round" fill="none"/>
       <path id="g-path-map-arrowhead" class="g-path-map-hide" d="M 768 596 L 727 618 L 760 640 Z" fill="#f2f5f8"/>
+      <!-- north mark: the map reads north-up -->
+      <path d="M 960 282 L 976 326 L 960 316 L 944 326 Z" fill="#93a3b2"/>
     </svg>
+    <div id="g-path-map-north" style="position:absolute; left:952px; top:332px; font-weight:700; font-size:22px; line-height:26px; color:#93a3b2;">N</div>
     <div class="g-path-map-lab" id="g-path-map-lab-okc" style="left:330px; top:380px; font-size:40px; line-height:44px;">SOUTH<br>OKLAHOMA CITY</div>
     <div class="g-path-map-lab" id="g-path-map-lab-moore" style="left:820px; top:548px; font-size:56px; line-height:64px;">MOORE</div>
     <div class="g-path-map-lab" id="g-path-map-lab-bc" style="left:452px; top:1170px; font-size:40px; line-height:44px;">BRIDGE CREEK</div>
@@ -52,7 +55,7 @@ window.__timelines = window.__timelines || {};
   tl.set(arw, { strokeDasharray: AL, strokeDashoffset: AL }, 0);
   /* AIMED @0 (ep 4.488): map in, track drawn bottom to top */
   tl.fromTo(P + "stage", { autoAlpha: 0, scale: 1.06 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power2.out" }, 0);
-  tl.to(P + "stage", { scale: 1.035, y: 30, duration: 7.149, ease: "none" }, 0.4);
+  tl.to(P + "stage", { scale: 1.035, y: 30, duration: 6.749, ease: "none" }, 0.4);
   tl.to(trk, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, 0);
   tl.fromTo(P + "head", { autoAlpha: 0, scale: 0, svgOrigin: "583 906", smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: "583 906", smoothOrigin: false, duration: 0.25, ease: "back.out(2)" }, 0.7);
   tl.fromTo(P + "head-ring", { autoAlpha: 0.9, scale: 1, svgOrigin: "583 906", smoothOrigin: false }, { autoAlpha: 0, scale: 2.6, svgOrigin: "583 906", smoothOrigin: false, duration: 1.2, ease: "power1.out", repeat: 5 }, 0.8);
@@ -71,8 +74,8 @@ window.__timelines = window.__timelines || {};
   tl.set(arw, { autoAlpha: 1 }, 6.601);
   tl.to(arw, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 6.601);
   tl.fromTo(P + "arrowhead", { autoAlpha: 0, scale: 0.4, svgOrigin: "760 615", smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: "760 615", smoothOrigin: false, duration: 0.2, ease: "back.out(2)" }, 7.051);
-  /* exit on "If" (ep 12.037), the host's last 0.4 s */
-  tl.to(P + "stage", { autoAlpha: 0, scale: 1.12, duration: 0.4, ease: "power2.in" }, 7.549);
+  /* exit ends on "If" (ep 12.037), the host's last 0.4 s */
+  tl.to(P + "stage", { autoAlpha: 0, scale: 1.12, duration: 0.4, ease: "power2.in" }, 7.149);
 
   window.__timelines["g-path-map"] = tl;
 })();
