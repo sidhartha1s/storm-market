@@ -618,9 +618,11 @@ with tempfile.TemporaryDirectory() as d:
     (stub_dir / "run_gates.py").write_text(real_run_gates, encoding="utf-8")
     ep = Path(d) / "ep"
     ep.mkdir()
+    # run_gates imports render_busy and timeline from the real scripts; no render holds this temp heavy lock
+    rg_env = dict(__import__("os").environ, PYTHONPATH=str(S), HEAVY_LOCK_FILE=str(Path(d) / "heavy.lock"))
     code, out = run(str(Path(d) / "scripts" / "run_gates.py"), ep) if False else (None, None)
     r = subprocess.run([sys.executable, str(stub_dir / "run_gates.py"), str(ep)],
-                       capture_output=True, text=True)
+                       capture_output=True, text=True, env=rg_env)
     ran = order_log.read_text(encoding="utf-8").splitlines() if order_log.exists() else []
     check("run_gates: stops at the first failing gate (lint_timeline.py), never reaches later gates",
           ran == ["render_preflight.py", "paul_start_frame.py", "sweep_episode.py", "lint_timeline.py"], f"ran={ran}\n{r.stdout}{r.stderr}")
