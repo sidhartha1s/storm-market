@@ -267,11 +267,30 @@ def layer_refusal(episode):
     return 6
 
 
+def stamp_refusal(episode, unchecked=None):
+    """None if run_gates.py passed on this exact timeline (timeline.digest), else the exit code preflight should use.
+    unchecked: the only way to render without the suite, a reason from a caller whose render is not an episode
+    (pin_ritual.py's A/B on demo-pin); it is printed every time."""
+    if unchecked:
+        print(f"[stamp] unchecked render of {episode.name}, no gate stamp asked: {unchecked}")
+        return None
+    stamp = episode / timeline.STAMP
+    seen = stamp.read_text(encoding="ascii").strip() if stamp.is_file() else None
+    if seen == timeline.digest(episode):
+        print("[stamp] OK: run_gates.py passed on this exact timeline.")
+        return None
+    why = "run_gates.py never passed on it" if seen is None else "the timeline changed since run_gates.py passed"
+    print(f"[stamp] REFUSING TO RENDER {episode.name}: {why}. Run: python3 scripts/run_gates.py episodes/{episode.name}",
+          file=sys.stderr)
+    return 7
+
+
 def main():
     episode = Path(sys.argv[1]) if len(sys.argv) > 1 else Path.cwd()
     rc = layer_refusal(episode)
     if "--layers" in sys.argv[2:]:  # run_gates.py runs only this check, so a missing layer shows before render.cmd
         sys.exit(rc or 0)
+    rc = rc or stamp_refusal(episode)
     if rc:
         print("[preflight] REFUSING TO RENDER: a layer the owner already asked for is missing.",
               file=sys.stderr)
