@@ -106,6 +106,14 @@ Acts need no owner sign-off (owner 22 Oct 26: "i dont thinks its highly necessar
 acts' gate anymore. i thought you were gonna share the preview"). His next look after the hook+intro is the
 draft preview, with Paul's Flow clips in it.
 
+**Acts go ahead while the hook+intro waits** (owner 11 Nov 26, `acts_ahead`: yes). From the moment the hook+intro is
+with the owner, the acts are drafted, fact-checked and graded, and an act locks on (a) and (b) alone. If he rejects the
+hook, only the seams that touch it are rewritten (the hook+intro, the lines where act 1 picks it up, any later line that
+calls it back); the acts are not redrafted. The stricter TTS rule stays explicit: **no act goes to TTS before his yes
+on the hook+intro** (the `hook-intro` line in `gates.md`), and nothing paid starts before it either (CLAUDE.md "Owner
+gates"). The hook+intro goes to TTS first, then every act that already locked, each as it locks after that. Before
+11 Nov 26 this file let an act go to TTS the moment it locked; that is withdrawn.
+
 **Rounds are capped and shrink** (owner 11 Nov 26: "a maximum number of two to three turns maximum each time. The
 turns should be shorter than the last one"; the last three episodes ran 3.5 to 4 grade rounds a section, up to 7).
 At most 3 grade rounds per section. Round 1 reads the whole section. Rounds 2 and 3 get the previous round's fix list
