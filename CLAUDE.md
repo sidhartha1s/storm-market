@@ -229,7 +229,10 @@ The gate list and its order live in `scripts/run_gates.py` (minis add a freeze s
   book the heavy lock (`~/.storm-heavy.lock`) and wait their turn, also when started over ssh; a dead holder's lock is taken over.
   Launch long waits detached, never in a 10 min tool call (an e2e can wait behind a 75 min render).
   How it works and how a new heavy job books it: the `scripts/render_busy.py` docstring (test `python3 scripts/test_render_busy.py`).
-  No gates, Playwright or subagent browsers beside a render, except one `freeze_scan.mjs` page (`render_busy.py --light`).
+  No browser gates, Playwright or subagent browsers beside a render, except one `freeze_scan.mjs` page (`render_busy.py --light`).
+  `run_gates.py` beside a render runs only its "file" gates, above `config.yaml render.gates_beside_render_min_free_gb`, and exits 3 (no verdict).
+- A render refuses unless `run_gates.py` passed on that exact timeline: all green stamps `timeline.digest()` into
+  `<episode>/gates_passed.marker`, `render_preflight.py` compares it (test `python3 scripts/test_gates_render.py`).
 - Render only with `scripts\render.cmd <slug> <draft|full> [out-basename]`; it keeps each render's own `renders\<basename>.log` and `.fps`, the only ones `verify_render.sh` reads. The dojo-ops dashboard starts a draft only through `scripts\dojo_draft.cmd` (how: its header; test `python3 scripts/test_dojo_draft.py`). Default 3 workers; `render_busy.py` lowers
   `RENDER_WORKERS` to what fits free RAM. No free-disk floor (owner 30 Oct 26: "2 fucking workers"; removed 4 Nov 26). `RENDER_CRF=20` gives a smaller single pass. Planning numbers: a 17 min draft took 36 min, a 28 min full took about 75 min at 2 workers.
 - Launch hidden through a scheduled task, deleted in the same command: `schtasks /create /tn <T> /tr "wscript.exe
