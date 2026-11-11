@@ -22,6 +22,8 @@ new exe path, so the pin is re-asserted on every launch, never once by hand.
 --light (freeze_scan.mjs via QC_LIGHT=1): ONE half-resolution Chromium page may run beside a live
 render when at least LIGHT_MIN_FREE_GB (default 2) is free, so composers can test a fix without
 queueing behind a 15-minute draft (owner 17 Sep 26). The full browser gates stay exclusive.
+run_gates.py runs its file-only gates (no browser) beside a render holding the heavy lock (render_holder()) while
+free_gb() stays at or above config.yaml render.gates_beside_render_min_free_gb (owner 11 Nov 26: "dont let it OOM").
 
 --jobs: print every heavy job alive (render, render_acts, snapshot_queue, run_gates, test_detectors, graphics_qc,
 blank_scan), exit 0 idle / 1 busy / 2 process table unreadable. For wait scripts; matches by exe + argv and skips its own parent chain.
