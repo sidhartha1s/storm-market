@@ -636,7 +636,7 @@ with tempfile.TemporaryDirectory() as d:
     ran = order_log.read_text(encoding="utf-8").splitlines() if order_log.exists() else []
     summary = r.stdout.split("RUN_GATES FAIL", 1)[-1]
     check("run_gates --all: runs every gate after a failure, exits 1, lists every failed gate once at the end",
-          len(ran) == 15 and ran[-1] == "graphics_qc.mjs" and r.returncode == 1
+          len(ran) == 16 and ran[-1] == "graphics_qc.mjs" and r.returncode == 1
           and "2 of 16 gates failed" in summary and "lint_timeline.py exited 1" in summary and "media_budget.py exited 1" in summary
           and summary.count("exited") == 2, f"ran={ran}\n{r.stdout[-500:]}{r.stderr}")
 
