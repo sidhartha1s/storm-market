@@ -267,13 +267,8 @@ def layer_refusal(episode):
     return 6
 
 
-def stamp_refusal(episode, unchecked=None):
-    """None if run_gates.py passed on this exact timeline (timeline.digest), else the exit code preflight should use.
-    unchecked: the only way to render without the suite, a reason from a caller whose render is not an episode
-    (pin_ritual.py's A/B on demo-pin); it is printed every time."""
-    if unchecked:
-        print(f"[stamp] unchecked render of {episode.name}, no gate stamp asked: {unchecked}")
-        return None
+def stamp_refusal(episode):
+    """None if run_gates.py passed on this exact timeline (timeline.digest), else the exit code preflight should use."""
     stamp = episode / timeline.STAMP
     seen = stamp.read_text(encoding="ascii").strip() if stamp.is_file() else None
     if seen == timeline.digest(episode):
