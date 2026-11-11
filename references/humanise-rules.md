@@ -50,9 +50,9 @@
 - Rule 7 kills two of our reflexes: the reveal-flip ("The warning was not late. It was built for the wrong kind of
   event.") and the mirrored callback ending ("The physics did not change. The slope did."). Both sat in the #5 draft.
   Rewrite each as one plain statement or a concrete detail.
-- Retention devices survive as facts, not as announcements: a chapter ends on a question the next chapter answers
-  (script-os rule 9) is allowed only when the question is a real open fact ("Then where did the rock go?"), never a
-  rhetorical one to the viewer.
+- Retention devices survive as facts, not as announcements: a section ends on an open loop (script-os rule 9), a real
+  open question or an unresolved fact ("Then where did the rock go?"), never a rhetorical one to the viewer, and the
+  answer comes in a later section, not the next line.
 - The humanise pass is a gate before a section locks (revised 27 Sep 26, `references/script-scaling.md` "Section
   lock — the ONE definition"): run on that section's prose as it's written, not held for the whole finished script,
   with a line-by-line diff kept in the episode folder.
