@@ -23,6 +23,10 @@ render:
   crf: 16
   gpu: true                       # --gpu --browser-gpu
   resolution: landscape           # 1920x1080
+  # run_gates.py beside a render (it holds the heavy lock): the file-only gates run only while this much RAM is free,
+  # read before each gate; browser gates never run beside it (owner 11 Nov 26: "dont let it OOM"). 2 = render_busy's
+  # LIGHT_MIN_FREE_GB for one Chromium page; not yet measured beside a live render.
+  gates_beside_render_min_free_gb: 2
 
 channel:
   name: The Warning Hour   # owner-locked 2026-07-22
