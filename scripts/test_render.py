@@ -239,7 +239,7 @@ try:
     check("render.cmd dry-run: a stale success marker is deleted even on the missing-index path",
           not stale_marker.exists(), f"marker still reads: {stale_marker.read_text() if stale_marker.exists() else ''!r}")
 finally:
-    last_err.unlink(missing_ok=True)
+    (S / "render_last_error__test-stale-marker-xyz__test-stale-marker-xyz-draft.marker").unlink(missing_ok=True)
     if stale_ep.exists():
         for f in stale_ep.iterdir():
             f.unlink()
