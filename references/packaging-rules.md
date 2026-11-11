@@ -56,6 +56,30 @@ prompt fixes everything except its slots, so every video looks like the last.
   the words laid over the untouched photograph. Field Notes has no photograph and does not have the problem. Open
   work: `ops/tasks.md` row 15.
 
+## Options reach the owner finished (owner 11 Nov 26, `hooks_all`)
+Owner: "absolutely. same goes for the title and thumbs as well. i want something solid in this gate. scope". Before he
+sees them, every hook option, every title option and every thumbnail option is checked and graded as below, so he
+picks among finished options. An option that fails is fixed and re-checked or dropped; it is never shown as "to fix".
+His gates stay as listed in CLAUDE.md "Owner gates". The one home of this rule is this section.
+
+**"Checked" means** (a worker who is not the writer, one per option kind, all kinds at once; an option passes only if
+every line holds):
+1. Facts. List every number, name, place, date and claim in the option. Each one has a source line in `research/` or
+   the script (a hook's `[verify]` markers resolved as in `script-scaling.md` "Script fact-QC layer"). A claim with
+   no source line is cut from the option, never softened to "reportedly".
+2. Angle. The option states or pays the locked angle (`episodes/<slug>/angle.md`), not the subject's default line.
+3. Script. A title or thumbnail has no number, name or claim the script does not support, and the hook and intro say
+   aloud what they promised (`references/script-quickref.md` "Title/thumbnail match").
+4. No spoiler. A title or thumbnail gives away nothing the film pays later (CLAUDE.md "The formula", no-spoiler metadata).
+5. Thumbnail only. Its words and its image claim each pass lines 1 to 4, and the image passes the Thumbnail and
+   Paul sections of this file (place name, no AI storm scene, real second image with its licence checked, spelling
+   at 300 px).
+6. Grade. Run the `references/grader-calibration.md` checks that apply to the kind (hook, title, thumb).
+
+**The owner is shown, per option:** the option as written; its grade, as "N of M applicable checks PASS" with every
+failing check ID named (no 0-10 number, `grader-calibration.md` "How the grader uses it"); the one fact it rests on,
+with its source line (file and line in `research/` or the script).
+
 ## What the Studio export says (2026-09-14)
 YouTube tested every US-topic upload with 2–11k impressions; CTR decided the rest: 6.65 % kept going (ep2), 3.5 %
 half-lived (Joplin), 1.8 % died (Tri-State). Krakatau never got a test (55–60 impressions). Packaging is the gate.
