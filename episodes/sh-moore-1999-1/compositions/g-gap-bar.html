@@ -1,5 +1,5 @@
 <!-- g-gap-bar · S1-S5 "Twenty-five minutes later, the tornado crossed into Moore." · a vertical bar from 6:57 PM (top) to
-     7:22 PM (bottom) filling on "Twenty-five minutes", label 25 MIN; Moore on "Moore". Host 14.430 -> 19.590 (5.16 s); times host-local (episode - 14.43). -->
+     7:22 PM (bottom) filling on "Twenty-five minutes", label 25 MIN; Moore on "Moore". Host 14.430 -> 19.190 (4.76 s); times host-local (episode - 14.43). -->
 <template>
 <style>
   #g-gap-bar-root { position:absolute; left:0; top:0; width:1080px; height:1920px; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
@@ -23,6 +23,7 @@
       <circle id="g-gap-bar-end" class="g-gap-bar-hide" cx="498" cy="1010" r="16" fill="#f2f5f8"/>
     </svg>
     <div class="g-gap-bar-time" id="g-gap-bar-657" style="top:398px;">6:57 PM</div>
+    <div id="g-gap-bar-te">TORNADO EMERGENCY</div>
     <div class="g-gap-bar-time g-gap-bar-hide" id="g-gap-bar-722" style="top:978px;">7:22 PM</div>
     <div id="g-gap-bar-moore">MOORE</div>
     <div id="g-gap-bar-25">25 MIN</div>
@@ -38,13 +39,13 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "stage", { autoAlpha: 0, x: 200 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0);
   tl.to(P + "fill", { scaleY: 1, svgOrigin: "498 430", smoothOrigin: false, duration: 1.2, ease: "power2.inOut" }, 0.16);
   tl.fromTo(P + "25", { scale: 0.6, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.32, ease: "back.out(2.2)" }, 0.48);
-  tl.to(P + "25", { y: -14, duration: 3.96, ease: "none" }, 0.8);
+  tl.to(P + "25", { y: -14, duration: 3.56, ease: "none" }, 0.8);
   /* THE (tornado crossed) @1.36 (ep 15.79): 7:22 PM at the bottom as the fill lands */
   tl.fromTo([P + "end", P + "722"], { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 1.36);
   /* MOORE @2.44 (ep 16.87) */
   tl.fromTo(P + "moore", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2.44);
-  /* exit on "phrase" (ep 19.19), the host's last 0.4 s */
-  tl.to(P + "stage", { x: -980, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 4.76);
+  /* exit ends on "phrase" (ep 19.19), the host's last 0.4 s */
+  tl.to(P + "stage", { x: -980, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 4.36);
 
   window.__timelines["g-gap-bar"] = tl;
 })();
