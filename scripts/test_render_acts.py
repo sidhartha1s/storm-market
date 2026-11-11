@@ -228,6 +228,14 @@ with tempfile.TemporaryDirectory() as d:
     ra.run_render, ra.subprocess = fake_render, types.SimpleNamespace(run=fake_subprocess_run)
     ra.video_frames = lambda path: frames[Path(path).name]
     try:
+        try:
+            ra.main(["ep-t", "draft", "v0"])
+            code = 0
+        except SystemExit as e:
+            code = e.code
+        check("stamp: render_acts refuses an episode run_gates never stamped: exit 7, nothing rendered, basename unclaimed",
+              code == 7 and not seen and not (ep / "renders" / "acts" / "v0").exists(), f"exit {code} rendered {len(seen)}")
+        (ep / timeline.STAMP).write_text(timeline.digest(ep), encoding="ascii")  # as run_gates.py stamps an all-green run
         ra.main(["ep-t", "draft", "v1"])
         acts_seen = [r for r in seen if "/act" in r["base"]]
         check("R5: every act and the audio pass render while this run holds the heavy lock",
