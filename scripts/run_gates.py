@@ -68,7 +68,7 @@ beside = render_busy.render_holder()
 if beside:
     floor = float(yaml.safe_load((scripts.parent / "config.yaml").read_text(encoding="utf-8"))["render"]["gates_beside_render_min_free_gb"])
     print(f"[run_gates] a render holds the heavy lock: {render_busy.describe(beside)}. File-only gates run while free "
-          f"memory stays >= {floor:g} GB (config.yaml render.gates_beside_render_min_free_gb); browser gates wait.")
+          f"memory stays >= {floor:g} GB (config.yaml render.gates_beside_render_min_free_gb); browser and timed gates wait.")
 stamp, checked = ep / timeline.STAMP, timeline.digest(ep)
 
 failed, waiting = [], []
