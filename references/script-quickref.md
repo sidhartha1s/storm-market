@@ -139,9 +139,8 @@ mechanism/analysis pair) and plants+pays a loop.
 - TTS-safe: spell out ALL dates/times/numbers in narration, years and dollars included (nineteen sixty-nine; the
   digits 1969 voiced as "nineteenth" and stopped, Camille 25 Oct 26). Write abbreviations and initials as words
   (Doctor, Missus, Jay Aitch, You Ess): every period splits the sentence and leaves a pause. `tts_episode.py` refuses
-  a line that breaks this. No paired dashes, sentences
-  under 24 words per TTS chunk (write the long fact-chain; the TTS layer splits it at commas), probe homographs
-  before respelling (`references/homographs.md`).
+  a line that breaks this. No paired dashes, every sentence under 24 words (the writer splits a long fact-chain; the
+  voice step never does), probe homographs before respelling (`references/homographs.md`).
 
 ## Humanise pass — zero AI tells (run rules 2–14 line by line before TTS) — `humanise-rules.md`
 - No painting the picture ("picture this", personified mountains/companies). No borrowed metaphors (icebergs,
