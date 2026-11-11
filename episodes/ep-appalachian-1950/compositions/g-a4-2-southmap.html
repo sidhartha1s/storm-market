@@ -314,7 +314,7 @@ window.__timelines = window.__timelines || {};
       const p = pins[i][1];
       pins[i][0].setAttribute("transform", "translate(" + (960 + (p[0] - cx) * s).toFixed(2) + "," + (540 + (p[1] - cy) * s).toFixed(2) + ")");
     }
-    const ey = latY(edgeLat(t)), f = 60 / s, w = 2 / s;                      /* 60 px feather, 2 px front line */
+    const ey = latY(edgeLat(t)), f = featherPx(t) / s, w = 2 / s;            /* feather px, 2 px front line */
     solid.setAttribute("height", (ey - f + 20000).toFixed(1));
     feather.setAttribute("y", (ey - f).toFixed(1));
     feather.setAttribute("height", f.toFixed(2));
