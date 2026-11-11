@@ -75,7 +75,7 @@ his answer in `ops/decisions.md` (and with `stage.py record` when it is a gate) 
 | # | ask (his words) | state | what is left |
 |---|---|---|---|
 | 49 | "Ensure that at least the candidate should be there" (titles) | done: four candidates each in the metadata files of E04, E05, E06, E08, E09 | his pick (item 4), on candidates that first pass the option check (`references/packaging-rules.md` "Options reach the owner finished") |
-| 50 | "create the thumbnails ... show me the variance on devq" | blocked: both ChatGPT logins of the thumbnail tool on the ZBook are logged out, and the ASUS was off. 12 new prompts are written (two per episode, E04 to E09), the runner is ready | he logs in once: `node genimg.mjs login chatgpt-sid` in `~/Automation Projects/webgen/scripts`; then the 12 images take about 40 min |
+| 50 | "create the thumbnails ... show me the variance on devq" | blocked: both ChatGPT logins of the thumbnail tool on the ZBook are logged out, and the ASUS was off. 12 new prompts are written (two per episode, E04 to E09), the runner is ready | he logs in once: `node genimg.mjs login chatgpt-sid` in `~/Automation Projects/webgen/scripts`; then the 12 images take about 40 min; each thumbnail option then passes the option check before it goes to his page |
 | 51 | "Which of the nine are public" | done (item 5) | |
 | 52 | "Rebuild SRT" | done (item 6) | |
 | 53 | "check Camille" | done: main carries the 25 Oct hook fix (`sx-amb-tinroof` removed, 11 face clips mounted) and is newer than the branch (six re-voiced lines) | the stale branch `claude/ep-camille-1969-rebased` can go (item 24) |
