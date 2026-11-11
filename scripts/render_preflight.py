@@ -290,10 +290,12 @@ def main():
     rc = layer_refusal(episode)
     if "--layers" in sys.argv[2:]:  # run_gates.py runs only this check, so a missing layer shows before render.cmd
         sys.exit(rc or 0)
-    rc = rc or stamp_refusal(episode)
     if rc:
         print("[preflight] REFUSING TO RENDER: a layer the owner already asked for is missing.",
               file=sys.stderr)
+        sys.exit(rc)
+    rc = stamp_refusal(episode)  # render.cmd and render_acts.py: no render on a timeline the gate suite did not pass
+    if rc:
         sys.exit(rc)
 
     rc = busy_refusal()
