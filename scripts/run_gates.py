@@ -7,7 +7,7 @@ lint_timeline.py, beat_density.py, audio_levels.py, media_budget.py, blank_scan.
 rest), but nothing chained them — a FAIL sitting in scrollback reads as success to anything
 that only checks the LAST exit code (a wrapper, a subagent, `&&`). This runs the whole suite in
 order, stops at the first non-zero exit, and names the gate that failed instead of letting a
-later PASS bury it.
+later PASS bury it. A slug starting `sh-` (a 9:16 short) also runs shorts_lint.mjs, last.
 
 Usage: python3 scripts/run_gates.py episodes/<slug> [--all]
 Exit 0 = every gate passed, safe to render. Exit 1 = a gate failed (its name is printed).
