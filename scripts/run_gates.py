@@ -49,13 +49,22 @@ GATES = [
     ("graphics_qc.mjs",     ["node", str(scripts / "graphics_qc.mjs"), "."], ep.resolve()),
 ]
 
+failed = []
 for name, cmd, cwd in GATES:
     print(f"\n=== {name} ===", flush=True)  # header before the gate's own output (e2e.gate_results reads it)
     r = subprocess.run(cmd, cwd=cwd)
     if r.returncode != 0:
-        print(f"\nRUN_GATES FAIL - {name} exited {r.returncode}. Fix it, do not render.")
-        sys.exit(1)
+        if not run_all:
+            print(f"\nRUN_GATES FAIL - {name} exited {r.returncode}. Fix it, do not render.")
+            sys.exit(1)
+        failed.append(f"{name} exited {r.returncode}")
     print()
+
+if failed:
+    print(f"RUN_GATES FAIL - {len(failed)} of {len(GATES)} gates failed. Fix them all, do not render:")
+    for f in failed:
+        print(f"  - {f}")
+    sys.exit(1)
 
 print("RUN_GATES PASS - all gates green, safe to render.")
 sys.exit(0)
