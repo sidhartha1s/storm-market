@@ -1,0 +1,371 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a4-2-southmap · A4-S4, A4-S5 · ep-appalachian-1950 · DEEP (Opus) · brief: briefs/a4/g-a4-2-southmap.md
+  Claim: the cold crossed the Appalachians and reached the Gulf (Asheville 1°F, Atlanta 3°F, Birmingham 5°F,
+  Pensacola 22°F), crops damaged in Georgia and South Carolina, while Buffalo sat in the 40s.
+  BASEMAP: the a41- basemap of g-a4-1-kymap.html copied verbatim, ids renamed a42- (Natural Earth 50m admin-1 north of
+    the seam y 64905, US Census TIGER south of it incl. TX, NE 50m OK; Mexico block under Texas). GA and SC crop clips
+    are subpaths 6 and 1 of that south path (TIGER order SC AR MS LA NC GA ...).
+  PROJECTION: X = 3841 * (lon + 97.576), Y = -5585 * (lat - 46.6213); screen = (map - top-left) * s.
+  CAMERA: P2s s 0.075 TL (35150.0, 43938.6) -> P4 s 0.015 TL (-5316.0, 12192.7) logZoom expo.inOut 0 to 1.9 about the
+    fixed point; S4 11.46 to 16.1 drift up 20 px; S5 0 to 1.8 P4 -> P0 s 0.012 TL (-15129.9, 11692.7) linear power2.inOut;
+    S5 8.30 to 13.40 2 % push about screen (760, 820), then held. camAt(t) is a pure function of comp time.
+  HUD pins and labels are screen-size; camAt translates each *-at group to its projected point.
+-->
+<template>
+<style>
+  #g-a4-2-southmap-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 45% 50%, #0b1016 0%, #030507 78%); }
+  .a42-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .a42-lab { font-family:Arial, sans-serif; font-weight:700; font-size:26px; fill:#dfe7ee; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .a42-val { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; fill:#7fb2e5; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .a42-warmval { fill:#d8a13a; }
+  .a42-scan { position:absolute; left:370px; top:0; width:1180px; height:2px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
+  .a42-chip { position:absolute; box-sizing:border-box; padding:10px 18px; border-radius:14px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  /* crop chip: left 1060, top 600. One line of WIDESPREAD CROP DAMAGE at 34 px is 544 px (fontTools, ariblk.ttf): with
+     36 px padding the box would end at 1640 (> 1584 and in the corner), so line 1 wraps after CROP: box about 431 x 124 */
+  #a42-cropchip { left:1060px; top:600px; }
+  #a42-crop1 { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:34px; line-height:1.05; color:#f2f5f8; }
+  #a42-crop2 { display:block; margin-top:10px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:1; letter-spacing:3px; color:#93a3b2; }
+  .a42-src { position:absolute; left:110px; bottom:92px; font-family:Arial, sans-serif; font-weight:700; font-size:20px; letter-spacing:1px; color:#c8d3e0; }
+  .a42-credit { position:absolute; left:110px; bottom:60px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; color:#93a3b2; }
+  /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
+  .a42-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-2-southmap-root" data-composition-id="g-a4-2-southmap" data-width="1920" data-height="1080" data-duration="35.178">
+  <svg class="a42-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="a42-landgrad" gradientUnits="userSpaceOnUse" x1="0" y1="14000" x2="0" y2="60000">
+        <stop offset="0" stop-color="#15202b"/><stop offset="1" stop-color="#0b1016"/>
+      </linearGradient>
+      <linearGradient id="a42-feathergrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#5a768f" stop-opacity="0.38"/><stop offset="1" stop-color="#5a768f" stop-opacity="0"/>
+      </linearGradient>
+      <radialGradient id="a42-bufglowgrad">
+        <stop offset="0" stop-color="#d8a13a" stop-opacity="1"/><stop offset="1" stop-color="#d8a13a" stop-opacity="0"/>
+      </radialGradient>
+      <path id="a42-south" vector-effect="non-scaling-stroke" stroke-linejoin="round" d="@@SOUTH_D@@"/>
+      <path id="a42-g-ga" d="@@GA_D@@"/>
+      <path id="a42-g-sc" d="@@SC_D@@"/>
+      <!-- the cold fill is land-clipped: Natural Earth land plus the TIGER south, so it stops at the Gulf coast -->
+      <clipPath id="a42-landclip"><use href="#a42-us"/><use href="#a42-ca"/><use href="#a42-south"/></clipPath>
+      <!-- east boundary as g-a4-1 (verbatim): Buffalo, New York and the New Jersey coast stay outside -->
+      <clipPath id="a42-coldclip"><polygon points="-40000,-20000 63668.4,-20000 63668.4,3470.0 69045.8,24134.5 75191.4,32512.0 79032.4,42565.0 73270.9,56527.5 75959.6,70490.0 64436.6,81660.0 62132.0,92830.0 62132.0,130000 -40000,130000"/></clipPath>
+      <clipPath id="a42-southclip" clipPathUnits="userSpaceOnUse"><rect x="-20000" y="64805" width="160000" height="80000"/></clipPath>
+      <clipPath id="a42-gaclip"><use href="#a42-g-ga"/></clipPath>
+      <clipPath id="a42-scclip"><use href="#a42-g-sc"/></clipPath>
+      <!-- frost sweep, north (lat 35.3) to south (lat 30.3), map units -->
+      <clipPath id="a42-frostsweep" clipPathUnits="userSpaceOnUse"><rect id="a42-frostsweep-r" x="40000" y="63110" width="40000" height="0"/></clipPath>
+      <!-- crop rows (SCHEMATIC): 2 px lines 9 px apart at P0 (s 0.012: 167 and 750 map units), -18 deg -->
+      <pattern id="a42-warmpat" patternUnits="userSpaceOnUse" width="750" height="750" patternTransform="rotate(-18)">
+        <rect x="0" y="0" width="750" height="167" fill="#d8a13a" fill-opacity="0.35"/>
+      </pattern>
+      <pattern id="a42-frostpat" patternUnits="userSpaceOnUse" width="750" height="750" patternTransform="rotate(-18)">
+        <rect x="0" y="0" width="750" height="167" fill="#f2f5f8" fill-opacity="0.85"/>
+      </pattern>
+      <!-- pin fill sweeps: a clip rect grows top to bottom over the core dot (screen px) -->
+      <clipPath id="a42-ashclip" clipPathUnits="userSpaceOnUse"><rect id="a42-ashclip-r" x="-9" y="-9" width="18" height="0"/></clipPath>
+      <clipPath id="a42-atlclip" clipPathUnits="userSpaceOnUse"><rect id="a42-atlclip-r" x="-9" y="-9" width="18" height="0"/></clipPath>
+      <clipPath id="a42-birclip" clipPathUnits="userSpaceOnUse"><rect id="a42-birclip-r" x="-9" y="-9" width="18" height="0"/></clipPath>
+      <clipPath id="a42-penclip" clipPathUnits="userSpaceOnUse"><rect id="a42-penclip-r" x="-9" y="-9" width="18" height="0"/></clipPath>
+    </defs>
+    <!-- camera layer: map units -->
+    <g id="a42-cam">
+      <!--@@BASEMAP@@-->
+      <g id="a42-southg" clip-path="url(#a42-southclip)">
+        <use href="#a42-south" fill="none" stroke="#4a5560" stroke-width="3.2"/>
+        <rect x="-47721" y="87244" width="46100" height="39096" fill="#0e1620"/>
+        <use href="#a42-south" fill="#0b1016" stroke="#2a3644" stroke-width="1.2"/>
+      </g>
+      <!-- cold-blue fill: camAt sizes the rects from edgeLat(t) -->
+      <g clip-path="url(#a42-landclip)"><g clip-path="url(#a42-coldclip)">
+        <rect id="a42-cold-solid" x="-40000" y="-20000" width="160000" height="76355" fill="#5a768f" fill-opacity="0.38"/>
+        <rect id="a42-cold-feather" x="-40000" y="56355" width="160000" height="800" fill="url(#a42-feathergrad)"/>
+        <rect id="a42-front" x="-40000" y="57155" width="160000" height="26.7" fill="#7fb2e5" opacity="0.6"/>
+      </g></g>
+      <!-- crop rows over Georgia and South Carolina only -->
+      <g id="a42-rows-ga" clip-path="url(#a42-gaclip)" opacity="0"><rect x="40000" y="60000" width="40000" height="34000" fill="url(#a42-warmpat)"/></g>
+      <g id="a42-rows-sc" clip-path="url(#a42-scclip)" opacity="0"><rect x="40000" y="60000" width="40000" height="34000" fill="url(#a42-warmpat)"/></g>
+      <g clip-path="url(#a42-frostsweep)">
+        <g clip-path="url(#a42-gaclip)"><rect x="40000" y="60000" width="40000" height="34000" fill="url(#a42-frostpat)"/></g>
+        <g clip-path="url(#a42-scclip)"><rect x="40000" y="60000" width="40000" height="34000" fill="url(#a42-frostpat)"/></g>
+      </g>
+      <!-- frost glints: 20 dots, 3 px at P0 (r 123 map units), placed from lon/lat by proj() in the script -->
+      <g id="a42-glints" fill="#f2f5f8">
+        <circle r="123" opacity="0"/><circle r="123" opacity="0"/><circle r="123" opacity="0"/><circle r="123" opacity="0"/>
+        <circle r="123" opacity="0"/><circle r="123" opacity="0"/><circle r="123" opacity="0"/><circle r="123" opacity="0"/>
+        <circle r="123" opacity="0"/><circle r="123" opacity="0"/><circle r="123" opacity="0"/><circle r="123" opacity="0"/>
+        <circle r="123" opacity="0"/><circle r="123" opacity="0"/><circle r="123" opacity="0"/><circle r="123" opacity="0"/>
+        <circle r="123" opacity="0"/><circle r="123" opacity="0"/><circle r="123" opacity="0"/><circle r="123" opacity="0"/>
+      </g>
+    </g>
+    <!-- screen-size pins and labels -->
+    <g id="a42-pins">
+      <!-- Kentucky pins as g-a4-1 ends them; rings fade and cores shrink to 12 px dots at 0.6 during the pull-out -->
+      <g id="a42-bg-at"><g id="a42-bg" class="a42-ky">
+        <circle class="a42-kring" r="15" fill="#04070c" fill-opacity="0.6" stroke="#7fb2e5" stroke-width="3"/>
+        <circle class="a42-kcore" r="8" fill="#5a768f"/></g></g>
+      <g id="a42-lou-at"><g id="a42-lou" class="a42-ky">
+        <circle class="a42-kring" r="15" fill="#04070c" fill-opacity="0.6" stroke="#dfe7ee" stroke-width="3"/>
+        <circle class="a42-kcore" r="8" fill="#7fb2e5"/></g></g>
+      <g id="a42-lex-at"><g id="a42-lex" class="a42-ky">
+        <circle class="a42-kring" r="15" fill="#04070c" fill-opacity="0.6" stroke="#dfe7ee" stroke-width="3"/>
+        <circle class="a42-kcore" r="8" fill="#7fb2e5"/></g></g>
+      <g id="a42-mid-at"><g id="a42-mid" class="a42-ky">
+        <circle class="a42-kring" r="15" fill="#04070c" fill-opacity="0.6" stroke="#dfe7ee" stroke-width="3"/>
+        <circle class="a42-kcore" r="6" fill="#7fb2e5"/></g></g>
+      <g id="a42-wil-at"><g id="a42-wil" class="a42-ky">
+        <circle class="a42-kring" r="15" fill="#04070c" fill-opacity="0.6" stroke="#dfe7ee" stroke-width="3"/>
+        <circle class="a42-kcore" r="6" fill="#7fb2e5"/></g></g>
+      <g id="a42-som-at"><g id="a42-som" class="a42-ky">
+        <circle class="a42-kring" r="15" fill="#04070c" fill-opacity="0.6" stroke="#dfe7ee" stroke-width="3"/>
+        <circle class="a42-kcore" r="6" fill="#7fb2e5"/></g></g>
+      <g id="a42-far-at"><g id="a42-far" class="a42-ky">
+        <circle class="a42-kring" r="15" fill="#04070c" fill-opacity="0.6" stroke="#4a5560" stroke-width="3"/>
+        <circle class="a42-kcore" r="6" fill="#4a5560"/></g></g>
+      <g id="a42-chi-at"><circle id="a42-chi" class="a42-hide" r="6" fill="#7fb2e5"/></g>
+      <g id="a42-buf-at">
+        <circle id="a42-bufglow" r="24" fill="url(#a42-bufglowgrad)" opacity="0.5"/>
+        <circle id="a42-bufpulse" r="15" fill="none" stroke="#d8a13a" stroke-width="3" opacity="0"/>
+        <circle r="15" fill="#04070c" fill-opacity="0.6" stroke="#d8a13a" stroke-width="3"/>
+        <circle r="6" fill="#d8a13a"/>
+        <text id="a42-buflab" class="a42-lab a42-hide" x="24" y="9">BUFFALO</text>
+        <text id="a42-bufval" class="a42-val a42-warmval a42-hide" x="162" y="19">40s</text>
+      </g>
+      <!-- label and value offsets: brief anchors minus the P4 / P0 pin; value x = label edge + label width + 14
+           (fontTools: ASHEVILLE 145.9, ATLANTA 122.8, BIRMINGHAM 171.9, BUFFALO 124.2, PENSACOLA 163.2 at Arial Bold 26) -->
+      <g id="a42-ash-at">
+        <g id="a42-ash" class="a42-hide">
+          <circle id="a42-ash-ring" r="15" fill="#04070c" fill-opacity="0.6" stroke="#93a3b2" stroke-width="3"/>
+          <circle r="8" fill="#7fb2e5" clip-path="url(#a42-ashclip)"/>
+        </g>
+        <text id="a42-ashlab" class="a42-lab a42-hide" x="24" y="9">ASHEVILLE</text>
+        <text id="a42-ashval" class="a42-val a42-hide" x="184" y="19">1°F</text>
+      </g>
+      <g id="a42-atl-at">
+        <g id="a42-atl" class="a42-hide">
+          <circle id="a42-atl-ring" r="15" fill="#04070c" fill-opacity="0.6" stroke="#93a3b2" stroke-width="3"/>
+          <circle r="8" fill="#7fb2e5" clip-path="url(#a42-atlclip)"/>
+        </g>
+        <text id="a42-atllab" class="a42-lab a42-hide" x="24" y="9">ATLANTA</text>
+        <text id="a42-atlval" class="a42-val a42-hide" x="161" y="19">3°F</text>
+      </g>
+      <g id="a42-bir-at">
+        <g id="a42-bir" class="a42-hide">
+          <circle id="a42-bir-ring" r="15" fill="#04070c" fill-opacity="0.6" stroke="#93a3b2" stroke-width="3"/>
+          <circle r="8" fill="#7fb2e5" clip-path="url(#a42-birclip)"/>
+        </g>
+        <text id="a42-birlab" class="a42-lab a42-hide" x="-24" y="9" text-anchor="end">BIRMINGHAM</text>
+        <text id="a42-birval" class="a42-val a42-hide" x="-210" y="19" text-anchor="end">5°F</text>
+      </g>
+      <g id="a42-pen-at">
+        <circle id="a42-penpulse" r="15" fill="none" stroke="#b9d6f2" stroke-width="3" opacity="0"/>
+        <g id="a42-pen" class="a42-hide">
+          <circle id="a42-pen-ring" r="15" fill="#04070c" fill-opacity="0.6" stroke="#93a3b2" stroke-width="3"/>
+          <circle r="8" fill="#b9d6f2" clip-path="url(#a42-penclip)"/>
+        </g>
+        <text id="a42-penlab" class="a42-lab a42-hide" x="24" y="9">PENSACOLA</text>
+        <text id="a42-penval" class="a42-val a42-hide" x="201" y="19">22°F</text>
+      </g>
+    </g>
+  </svg>
+  <div class="a42-scan" id="a42-scan"></div>
+  <div class="a42-chip a42-hide" id="a42-cropchip">
+    <span id="a42-crop1">WIDESPREAD CROP<br>DAMAGE</span>
+    <span class="a42-hide" id="a42-crop2">GEORGIA · SOUTH CAROLINA</span>
+  </div>
+  <div class="a42-src" id="a42-src4">Source: NOAA NCEI · NWS Jackson, KY</div>
+  <div class="a42-src a42-hide" id="a42-src5">Source: NOAA NCEI</div>
+  <div class="a42-credit" id="a42-credit">Basemap: Natural Earth, US Census</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#a42-";
+  const $ = function (n) { return document.getElementById("a42-" + n); };
+  /* the one projection (as g-a4-1 / _list.md) */
+  const proj = function (lon, lat) { return [3841 * (lon + 97.576), -5585 * (lat - 46.6213)]; };
+  const latY = function (lat) { return -5585 * (lat - 46.6213); };
+  const ASH = proj(-82.5515, 35.5951), ATL = proj(-84.3880, 33.7490), BIR = proj(-86.8025, 33.5207);
+  const PEN = proj(-87.2169, 30.4213), BUF = proj(-78.8784, 42.8864), CHI = proj(-87.6298, 41.8781);
+  const LOU = proj(-85.7585, 38.2527), LEX = proj(-84.5037, 38.0406), BG = proj(-86.4808, 36.9685);
+  const FAR = proj(-83.5352, 38.1468), SOM = proj(-84.6041, 37.0920), WIL = proj(-84.1597, 36.7434), MID = proj(-83.7166, 36.6084);
+
+  /* segment offsets (comp-local s), 0.40 s gaps assumed; cue = segment offset + words.json time */
+  const S4 = 0.000;
+  const S5 = 16.505;
+  const DUR = 35.178;                                                          /* S5 + 18.273 + 0.40 */
+
+  /* camera frames [s, top-left x, top-left y] -> centre form [s, cx, cy] */
+  const fr = function (s, tx, ty) { return [s, tx + 960 / s, ty + 540 / s]; };
+  const P2S = fr(0.075, 35150.0, 43938.6), P4 = fr(0.015, -5316.0, 12192.7), P0 = fr(0.012, -15129.9, 11692.7);
+  const P4D = [P4[0], P4[1], P4[2] - 20 / 0.015];                              /* drift: map moves 20 px down */
+  /* pull-out fixed point: the map point at the same screen spot in P2s and P4 */
+  const FX = [(35150.0 * 0.075 + 5316.0 * 0.015) / 0.060, (43938.6 * 0.075 - 12192.7 * 0.015) / 0.060];
+  const FS = [(FX[0] - 35150.0) * 0.075, (FX[1] - 43938.6) * 0.075];
+  const PUSH_C = [760, 820], PM = [P0[1] + (PUSH_C[0] - 960) / P0[0], P0[2] + (PUSH_C[1] - 540) / P0[0]];
+  const T_OUT1 = S4 + 1.9, T_DR0 = S4 + 11.46, T_DR1 = S4 + 16.1, T_MV1 = S5 + 1.8, T_PU0 = S5 + 8.30, T_PU1 = S5 + 13.40;
+
+  const expo = gsap.parseEase("expo.inOut"), p2 = gsap.parseEase("power2.inOut"), p1 = gsap.parseEase("power1.inOut");
+  const lerp = function (a, b, u) { return a + (b - a) * u; };
+  const clamp = function (u) { return Math.min(1, Math.max(0, u)); };
+  function logLerpScale(fromScale, toScale, t) {                              /* helpers.js logZoom */
+    return Math.exp(Math.log(fromScale) + (Math.log(toScale) - Math.log(fromScale)) * t);
+  }
+  function state(t) {
+    if (t < T_OUT1) {                                                          /* 5x pull-out, log scale, fixed point FX */
+      const s = logLerpScale(P2S[0], P4[0], expo(clamp(t / 1.9)));
+      return [s, FX[0] + (960 - FS[0]) / s, FX[1] + (540 - FS[1]) / s];
+    }
+    if (t < T_DR0) return P4;
+    if (t < S5) return [P4[0], P4[1], lerp(P4[2], P4D[2], clamp((t - T_DR0) / (T_DR1 - T_DR0)))];
+    if (t < T_MV1) {
+      const u = p2((t - S5) / 1.8);
+      return [lerp(P4D[0], P0[0], u), lerp(P4D[1], P0[1], u), lerp(P4D[2], P0[2], u)];
+    }
+    const s = P0[0] * (1 + 0.02 * clamp((t - T_PU0) / (T_PU1 - T_PU0)));        /* 2 % push about screen PUSH_C */
+    return [s, PM[0] - (PUSH_C[0] - 960) / s, PM[1] - (PUSH_C[1] - 540) / s];
+  }
+  /* cold fill edge latitude per cue (brief §5) */
+  function edgeLat(t) {
+    if (t < S4 + 2.40) return lerp(36.4, 35.4, p2(clamp(t / 2.40)));
+    if (t < S4 + 4.60) return 35.4;
+    if (t < S4 + 5.80) return lerp(35.4, 33.3, p1((t - 4.60) / 1.20));
+    if (t < S5 + 0.30) return 33.3;
+    return lerp(33.3, 30.2, p1(clamp((t - S5 - 0.30) / 1.52)));
+  }
+  const camEl = $("cam"), solid = $("cold-solid"), feather = $("cold-feather"), front = $("front");
+  const pins = [[$("bg-at"), BG], [$("lou-at"), LOU], [$("lex-at"), LEX], [$("mid-at"), MID], [$("wil-at"), WIL],
+    [$("som-at"), SOM], [$("far-at"), FAR], [$("chi-at"), CHI], [$("buf-at"), BUF], [$("ash-at"), ASH],
+    [$("atl-at"), ATL], [$("bir-at"), BIR], [$("pen-at"), PEN]];
+  function camAt(t) {
+    const c = state(t), s = c[0], cx = c[1], cy = c[2];
+    camEl.setAttribute("transform", "translate(" + (960 - cx * s).toFixed(2) + "," + (540 - cy * s).toFixed(2) + ") scale(" + s.toFixed(6) + ")");
+    for (let i = 0; i < pins.length; i++) {
+      const p = pins[i][1];
+      pins[i][0].setAttribute("transform", "translate(" + (960 + (p[0] - cx) * s).toFixed(2) + "," + (540 + (p[1] - cy) * s).toFixed(2) + ")");
+    }
+    const ey = latY(edgeLat(t)), f = 60 / s, w = 2 / s;                      /* 60 px feather, 2 px front line */
+    solid.setAttribute("height", (ey - f + 20000).toFixed(1));
+    feather.setAttribute("y", (ey - f).toFixed(1));
+    feather.setAttribute("height", f.toFixed(2));
+    front.setAttribute("y", (ey - w / 2).toFixed(2));
+    front.setAttribute("height", w.toFixed(3));
+  }
+  camAt(0);
+
+  /* basemap paint order: coast under-stroke (half hidden by the fills), then fills with state lines (as g-a4-1) */
+  [$("ca"), $("us")].forEach(function (el) {
+    const coast = el.cloneNode(false);
+    coast.removeAttribute("id");
+    coast.setAttribute("fill", "none"); coast.setAttribute("stroke", "#4a5560"); coast.setAttribute("stroke-width", "3.2");
+    camEl.insertBefore(coast, camEl.firstChild);
+  });
+
+  /* glints: inside Georgia (11) and South Carolina (9), lon/lat through proj() */
+  const GL = [[-84.4, 33.0], [-81.0, 34.0], [-83.6, 32.4], [-80.0, 33.2], [-82.9, 31.6], [-82.4, 34.8], [-84.2, 31.5],
+    [-79.9, 34.2], [-83.2, 33.6], [-81.6, 33.5], [-82.3, 32.9], [-80.6, 32.9], [-84.8, 34.2], [-81.0, 34.8],
+    [-82.0, 31.3], [-80.5, 33.8], [-84.6, 31.0], [-81.9, 34.4], [-81.9, 32.4], [-83.6, 32.9]];
+  const glints = Array.prototype.slice.call($("glints").querySelectorAll("circle"));
+  glints.forEach(function (c, i) { const p = proj(GL[i][0], GL[i][1]); c.setAttribute("cx", p[0].toFixed(0)); c.setAttribute("cy", p[1].toFixed(0)); });
+
+  const tl = gsap.timeline({ paused: true });
+  tl.to({ t: 0 }, { t: 1, duration: DUR, ease: "none", onUpdate: function () { camAt(this.time()); } }, 0);
+
+  /* transforms start in set() at 0 (file contract) */
+  const VALS = [P + "ashval", P + "atlval", P + "birval"];
+  tl.set([P + "ashlab", P + "atllab", P + "birlab", P + "buflab", P + "penlab", P + "bufval", P + "penval", P + "cropchip", P + "crop2"], { x: 0, y: 0 }, 0);
+  tl.set([P + "ashval", P + "atlval", P + "penval"], { scale: 1, transformOrigin: "0% 50%", smoothOrigin: false }, 0);
+  tl.set(P + "birval", { scale: 1, transformOrigin: "100% 50%", smoothOrigin: false }, 0);
+  tl.set([P + "ash", P + "atl", P + "bir", P + "pen"], { scale: 1, transformOrigin: "50% 50%", smoothOrigin: false }, 0);
+
+  /* ambient: scan line top to bottom, three passes (about 94 px/s); Buffalo glow breathes 0.5-0.7, 2 s period */
+  tl.fromTo(P + "scan", { y: -10 }, { y: 1090, duration: DUR / 3, ease: "none", repeat: 2 }, 0);
+  tl.fromTo(P + "bufglow", { opacity: 0.5 }, { opacity: 0.7, duration: 1.0, ease: "sine.inOut", repeat: 34, yoyo: true }, 0);
+
+  /* CROSSED THE MOUNTAINS @0.00: pull-out P2s -> P4 (camAt), fill edge 36.4 -> 35.4 by 2.40 (edgeLat);
+     Kentucky pins become 12 px dots at 0.6, Chicago dot arrives, the three Southeast rings land */
+  tl.to(".a42-kring", { opacity: 0, duration: 1.2, ease: "power2.inOut" }, S4 + 0.30);
+  tl.to(".a42-kcore", { attr: { r: 6 }, duration: 1.2, ease: "power2.inOut" }, S4 + 0.30);
+  tl.to(".a42-ky", { opacity: 0.6, duration: 1.2, ease: "power2.inOut" }, S4 + 0.30);
+  tl.fromTo(P + "chi", { autoAlpha: 0 }, { autoAlpha: 0.6, duration: 0.6, ease: "power1.out" }, S4 + 0.90);
+  [P + "ash", P + "atl", P + "bir"].forEach(function (id, i) {
+    tl.fromTo(id, { autoAlpha: 0, scale: 0.3, transformOrigin: "50% 50%", smoothOrigin: false },
+      { autoAlpha: 1, scale: 1, transformOrigin: "50% 50%", smoothOrigin: false, duration: 0.4, ease: "back.out(2)" }, S4 + 1.50 + 0.10 * i);
+  });
+
+  function turnBlue(n, at) {                                                   /* core sweeps top to bottom, ring to white, label in */
+    tl.to(P + n + "clip-r", { attr: { height: 18 }, duration: 0.5, ease: "power2.inOut" }, at);
+    tl.to(P + n + "-ring", { attr: { stroke: "#dfe7ee" }, duration: 0.5, ease: "power2.inOut" }, at);
+    tl.fromTo(P + n + "lab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, at);
+  }
+  function valueIn(id, origin, at) {
+    tl.fromTo(id, { autoAlpha: 0, scale: 0.9, transformOrigin: origin, smoothOrigin: false },
+      { autoAlpha: 1, scale: 1, transformOrigin: origin, smoothOrigin: false, duration: 0.4, ease: "back.out(1.4)" }, at);
+  }
+  /* ASHEVILLE @2.64 */
+  turnBlue("ash", S4 + 2.64);
+  /* ONE ABOVE @4.54 */
+  valueIn(P + "ashval", "0% 50%", S4 + 4.54);
+  /* fill edge 35.4 -> 33.3, 4.60 to 5.80 (edgeLat). ATLANTA @5.88 */
+  turnBlue("atl", S4 + 5.88);
+  /* THREE ABOVE @6.62: Asheville dims (one reading target) */
+  valueIn(P + "atlval", "0% 50%", S4 + 6.62);
+  tl.to([P + "ashlab", P + "ashval"], { opacity: 0.6, duration: 0.3, ease: "power2.out" }, S4 + 6.62);
+  /* BIRMINGHAM @8.42 */
+  turnBlue("bir", S4 + 8.42);
+  /* FIVE ABOVE @10.40: Atlanta dims */
+  valueIn(P + "birval", "100% 50%", S4 + 10.40);
+  tl.to([P + "atllab", P + "atlval"], { opacity: 0.6, duration: 0.3, ease: "power2.out" }, S4 + 10.40);
+  /* SAME WEEKEND @11.46: every Southeast label and value at 0.6; drift up 20 px to 16.1 (camAt) */
+  tl.to([P + "birlab", P + "birval"], { opacity: 0.6, duration: 0.3, ease: "power2.out" }, S4 + 11.46);
+  /* BUFFALO @12.72: one strong pulse (ring 30 -> 70 px), label in */
+  tl.fromTo(P + "bufpulse", { opacity: 0.9, attr: { r: 15 } }, { opacity: 0, attr: { r: 35 }, duration: 1.0, ease: "power1.out", immediateRender: false }, S4 + 12.72);
+  tl.fromTo(P + "buflab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, S4 + 12.72);
+  /* 40S @15.58 */
+  tl.fromTo(P + "bufval", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, S4 + 15.58);
+
+  /* DIDNT STOP @0.00 (S5): every label and value out; P4 -> P0 (camAt); fill edge 33.3 -> 30.2 from 0.30 to 1.82, front bright */
+  tl.to([P + "ashlab", P + "ashval", P + "atllab", P + "atlval", P + "birlab", P + "birval", P + "buflab", P + "bufval"],
+    { autoAlpha: 0, duration: 0.4, ease: "power3.in" }, S5 + 0.00);
+  tl.to(P + "src4", { autoAlpha: 0, duration: 0.3, ease: "power1.inOut" }, S5 + 0.00);
+  tl.fromTo(P + "src5", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power1.inOut" }, S5 + 0.00);
+  tl.to(P + "front", { opacity: 1, duration: 0.3, ease: "power1.out" }, S5 + 0.30);
+  /* GULF @1.82: front flashes once and fades to 0; Pensacola ring lands */
+  tl.to(P + "front", { attr: { fill: "#f2f5f8" }, duration: 0.12, ease: "power1.out" }, S5 + 1.82);
+  tl.to(P + "front", { opacity: 0, duration: 0.8, ease: "power2.in" }, S5 + 1.94);
+  tl.fromTo(P + "pen", { autoAlpha: 0, scale: 0.3, transformOrigin: "50% 50%", smoothOrigin: false },
+    { autoAlpha: 1, scale: 1, transformOrigin: "50% 50%", smoothOrigin: false, duration: 0.4, ease: "back.out(2)" }, S5 + 1.82);
+  /* PENSACOLA @2.98: pale blue */
+  turnBlue("pen", S5 + 2.98);
+  /* 22 DEGREES @6.80 */
+  valueIn(P + "penval", "0% 50%", S5 + 6.80);
+  /* S5 8.30 to 13.4: hold, ring pulse every 1.4 s (4 pulses), 2 % push (camAt) */
+  tl.fromTo(P + "penpulse", { opacity: 0.8, attr: { r: 15 } }, { opacity: 0, attr: { r: 35 }, duration: 1.0, ease: "power1.out", repeat: 3, repeatDelay: 0.4, immediateRender: false }, S5 + 8.30);
+  /* GEORGIA @13.50: Pensacola dims; rows fade in over GA then SC */
+  tl.to([P + "penlab", P + "penval"], { opacity: 0.6, duration: 0.3, ease: "power2.out" }, S5 + 13.50);
+  tl.to(P + "rows-ga", { opacity: 1, duration: 0.4, ease: "power1.out" }, S5 + 13.50);
+  tl.to(P + "rows-sc", { opacity: 1, duration: 0.4, ease: "power1.out" }, S5 + 13.75);
+  /* RECORD COLD @15.58: frost sweeps north to south (lat 35.3 -> 30.3); glints start, 0.13 s apart, each a 0.4 s blink */
+  tl.to(P + "frostsweep-r", { attr: { height: latY(30.3) - latY(35.3) }, duration: 1.2, ease: "power1.in" }, S5 + 15.58);
+  glints.forEach(function (c, i) {
+    tl.fromTo(c, { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, S5 + 15.70 + 0.13 * i);
+  });
+  /* WIDESPREAD @16.74: crop chip in (0.4 s, so line 1 reads 1.5 s before the end); line 2 at 16.90, 0.26 s before
+     "crop" (17.16), so it is fully on 1.52 s before the end (the brief's 17.16 would leave 1.16 s) */
+  tl.fromTo(P + "cropchip", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, S5 + 16.74);
+  tl.fromTo(P + "crop2", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, S5 + 16.90);
+  /* to the end: glints and scan line keep moving; no exit (the edit cuts to Paul's clip 5 on frame P0) */
+
+  window.__timelines["g-a4-2-southmap"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
