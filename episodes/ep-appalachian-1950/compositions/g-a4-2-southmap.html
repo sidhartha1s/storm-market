@@ -12,7 +12,7 @@
   PROJECTION: X = 3841 * (lon + 97.576), Y = -5585 * (lat - 46.6213); screen = (map - top-left) * s.
   CAMERA: P2s s 0.075 TL (35150.0, 43938.6) -> P4 s 0.015 TL (-5316.0, 12192.7) logZoom expo.inOut 0 to 1.9 about the
     fixed point; S4 11.46 to 16.1 drift up 20 px; S5 0 to 1.8 P4 -> P0 s 0.012 TL (-15129.9, 11692.7) linear power2.inOut;
-    S5 8.30 to 13.40 2 % push about screen (760, 820), then held. camAt(t) is a pure function of comp time.
+    S5 1.80 to 13.40 4 % push about screen (760, 820), then held. camAt(t) is a pure function of comp time.
   HUD pins and labels are screen-size; camAt translates each *-at group to its projected point.
 -->
 <template>
@@ -212,7 +212,7 @@ window.__timelines = window.__timelines || {};
   const FX = [(35150.0 * 0.075 + 5316.0 * 0.015) / 0.060, (43938.6 * 0.075 - 12192.7 * 0.015) / 0.060];
   const FS = [(FX[0] - 35150.0) * 0.075, (FX[1] - 43938.6) * 0.075];
   const PUSH_C = [760, 820], PM = [P0[1] + (PUSH_C[0] - 960) / P0[0], P0[2] + (PUSH_C[1] - 540) / P0[0]];
-  const T_OUT1 = S4 + 1.9, T_DR0 = S4 + 11.46, T_DR1 = S4 + 16.1, T_MV1 = S5 + 1.8, T_PU0 = S5 + 8.30, T_PU1 = S5 + 13.40;
+  const T_OUT1 = S4 + 1.9, T_DR0 = S4 + 11.46, T_DR1 = S4 + 16.1, T_MV1 = S5 + 1.8, T_PU1 = S5 + 13.40;
 
   const expo = gsap.parseEase("expo.inOut"), p2 = gsap.parseEase("power2.inOut"), p1 = gsap.parseEase("power1.inOut");
   const lerp = function (a, b, u) { return a + (b - a) * u; };
@@ -231,9 +231,10 @@ window.__timelines = window.__timelines || {};
       const u = p2((t - S5) / 1.8);
       return [lerp(P4D[0], P0[0], u), lerp(P4D[1], P0[1], u), lerp(P4D[2], P0[2], u)];
     }
-    /* slow push about screen PUSH_C from landing to 13.40: 4 % over 11.6 s (brief: 2 % from 8.30; S5 2 to 9 read static
-       in freeze_scan with the brief's hold, so the push starts at landing at a similar rate) */
-    const s = P0[0] * (1 + 0.04 * clamp((t - T_MV1) / (T_PU1 - T_MV1)));
+    /* slow push about screen PUSH_C from landing, peak 2 %, eased back so the camera sits exactly on P0 for the last
+       second (brief §4 truths 1 and 7); sin^2 keeps zero velocity at both ends and motion through the long hold */
+    const k = Math.sin(Math.PI * clamp((t - T_MV1) / (T_PU1 - T_MV1)));
+    const s = P0[0] * (1 + 0.02 * k * k);
     return [s, PM[0] - (PUSH_C[0] - 960) / s, PM[1] - (PUSH_C[1] - 540) / s];
   }
   /* cold fill edge latitude per cue (brief §5) */
@@ -350,7 +351,7 @@ window.__timelines = window.__timelines || {};
   turnBlue("pen", S5 + 2.98);
   /* 22 DEGREES @6.80 */
   valueIn(P + "penval", "0% 50%", S5 + 6.80);
-  /* S5 8.30 to 13.4: hold, ring pulse every 1.4 s (4 pulses), 2 % push (camAt) */
+  /* S5 8.30 to 13.4: ring pulse every 1.4 s (4 pulses); slow push runs 1.80 to 13.40 (camAt) */
   tl.fromTo(P + "penpulse", { opacity: 0.8, attr: { r: 15 } }, { opacity: 0, attr: { r: 35 }, duration: 1.0, ease: "power1.out", repeat: 3, repeatDelay: 0.4, immediateRender: false }, S5 + 8.30);
   /* GEORGIA @13.50: Pensacola dims; rows fade in over GA then SC */
   tl.to([P + "penlab", P + "penval"], { opacity: 0.6, duration: 0.3, ease: "power2.out" }, S5 + 13.50);
