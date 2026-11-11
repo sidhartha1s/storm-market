@@ -194,20 +194,34 @@ with tempfile.TemporaryDirectory() as d:
 
 # Dry harness: exercise render.cmd's error path for real (no render reached — it exits
 # before preflight/render_busy/npx). Cleans up the marker it writes.
-last_err = S / "render_last_error.marker"
+last_err = S / "render_last_error_no-such-episode-xyz_no-such-episode-xyz-draft.marker"
 last_err.unlink(missing_ok=True)
 r = subprocess.run(["cmd", "/c", str(S / "render.cmd"), "no-such-episode-xyz", "draft"],
                    capture_output=True, text=True, cwd=str(S))
 check("render.cmd dry-run: nonexistent episode exits 1", r.returncode == 1, f"rc={r.returncode} out={r.stdout!r}")
-check("render.cmd dry-run: writes render_last_error.marker on the missing-index path", last_err.exists())
+check("render.cmd dry-run: writes its refusal marker keyed by slug and default basename on the missing-index path",
+      last_err.exists())
 if last_err.exists():
     print("  marker:", last_err.read_text().strip())
     last_err.unlink()
 
+# audit R6 / sweep-2 item 1: a second episode's refusal must not overwrite the first one's (one shared file did).
+other = S / "render_last_error_other-ep_acts_v1_act01.marker"  # acts/v1/act01: "/" becomes "_"
+other.unlink(missing_ok=True)
+subprocess.run(["cmd", "/c", str(S / "render.cmd"), "no-such-episode-xyz", "draft"], capture_output=True, text=True, cwd=str(S))
+subprocess.run(["cmd", "/c", str(S / "render.cmd"), "other-ep", "draft", "acts/v1/act01"], capture_output=True, text=True, cwd=str(S))
+check("render.cmd dry-run: two episodes' refusals leave two markers, an acts/ basename flattened",
+      last_err.exists() and other.exists() and "no-such-episode-xyz" in last_err.read_text()
+      and "other-ep" in other.read_text())
+last_err.unlink(missing_ok=True)
+other.unlink(missing_ok=True)
+
+usage_err = S / "render_last_error__.marker"
+usage_err.unlink(missing_ok=True)
 r2 = subprocess.run(["cmd", "/c", str(S / "render.cmd")], capture_output=True, text=True, cwd=str(S))
 check("render.cmd dry-run: no args -> :usage exits 1", r2.returncode == 1)
-check("render.cmd dry-run: :usage writes render_last_error.marker", last_err.exists())
-last_err.unlink(missing_ok=True)
+check("render.cmd dry-run: :usage writes its keyed marker", usage_err.exists())
+usage_err.unlink(missing_ok=True)
 
 # Review finding (23 Sep 26): a STALE marker from a previous successful run must not survive
 # a later run that fails immediately on a missing index.html — a poller must not read the old
