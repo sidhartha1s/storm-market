@@ -71,10 +71,9 @@ An owner correction or a measured surprise lands in its single home (`references
   placeholder. Post the absolute path in one line and PARK. His chat approval resumes. Full render only after that.
   While a draft waits (owner 11 Nov 26, `park_prep`: yes) the free prep runs: captions, the description, the
   thumbnails and the upload folder. Only the full render and anything paid wait for his approval.
-- Every hook, title and thumbnail option reaches him checked and graded, so he picks among finished options
-  (owner 11 Nov 26, `hooks_all`): `references/packaging-rules.md` "Options reach the owner finished".
-- While the hook+intro waits, the acts are drafted, fact-checked and graded; no act goes to TTS and nothing paid starts
-  before his yes (owner 11 Nov 26, `acts_ahead`): `references/script-scaling.md` "Section lock".
+- What reaches him before each gate, and what runs while the hook+intro waits (owner 11 Nov 26, `hooks_all` and
+  `acts_ahead`): `references/packaging-rules.md` "Options reach the owner finished"; `references/script-scaling.md`
+  "Section lock" (acts go ahead, no act to TTS before his yes).
 - Studio preview cannot play 15 min media-heavy compositions in real time. Do not offer it for review.
 - When he calls the remaining defects minor, the open work is the items he named. Anything else is a note in the summary.
 - When his named items are done, hand over the file and stop.
