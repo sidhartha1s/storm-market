@@ -63,7 +63,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from render_preflight import parse_pin
+from render_preflight import parse_pin, stamp_refusal
 
 REPO = Path(__file__).resolve().parent.parent
 DEMO = REPO / "episodes" / "demo-pin"
