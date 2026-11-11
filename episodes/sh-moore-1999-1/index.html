@@ -34,11 +34,11 @@
       text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 50px rgba(120,0,0,0.5), 0 6px 22px rgba(0,0,0,0.9); }
 
     /* small credit on the photo */
-    .lab.credit { position: absolute; inset: auto; left: 60px; top: 1200px; z-index: 6; font-family: Arial, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 1px; color: #c8d3e0;
+    .lab { position: absolute; white-space: nowrap; inset: auto; left: 60px; top: 1200px; z-index: 6; font-family: Arial, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 1px; color: #c8d3e0;
       text-shadow: 0 1px 6px #000, 0 0 10px rgba(0,0,0,0.9); }
 
     /* the two words */
-    .popfig { position: absolute; inset: auto; left: 60px; right: 60px; top: 660px; z-index: 6; text-align: center; }
+    .popfig { position: absolute; inset: auto; left: 60px; right: 60px; top: 640px; z-index: 6; text-align: center; }
     .popfig .te { display: block; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 112px; line-height: 1.02; color: #fff;
       background: #d0121f; border-radius: 14px; padding: 18px 20px 22px; box-shadow: 0 16px 50px rgba(0,0,0,0.6); }
 
@@ -94,16 +94,16 @@
   <section class="clip" id="p-qground" data-start="19.190" data-duration="3.938" data-track-index="1"><div class="ground"></div></section>
   <!-- ============ CHIPS (track 4) ============ -->
   <section class="clip" id="p-chip-date" data-start="0.0" data-duration="4.888" data-track-index="4"><div class="chip" id="chip-date">MAY 3, 1999 · OKLAHOMA</div></section>
-  <section class="clip" id="p-chip-657" data-start="2.220" data-duration="10.117" data-track-index="4"><div class="chip h0" id="chip-657">6:57 PM</div></section>
+  <section class="clip" id="p-chip-657" data-start="2.220" data-duration="10.117" data-track-index="6"><div class="chip h0" id="chip-657">6:57 PM</div></section>
 
   <!-- ============ HOOK + CREDIT (track 5; on screen at frame 1, no fade from black) ============ -->
   <section class="clip" id="p-head" data-start="0.0" data-duration="3.800" data-track-index="5">
     <div class="head" id="head"><span class="h1">TWO WORDS.</span><span class="h2">25 MINUTES.</span></div>
   </section>
-  <section class="clip" id="p-credit" data-start="0.0" data-duration="4.888" data-track-index="5"><div class="credit lab" id="credit">Photo: Mike Eilts, NOAA NSSL</div></section>
+  <section class="clip" id="p-credit" data-start="0.0" data-duration="4.888" data-track-index="7"><div class="lab" id="credit">Photo: Mike Eilts, NOAA NSSL</div></section>
 
   <!-- ============ THE TWO WORDS (track 5, on "tornado" @3.448) ============ -->
-  <section class="clip" id="p-te" data-start="3.448" data-duration="1.440" data-track-index="5">
+  <section class="clip" id="p-te" data-start="3.448" data-duration="1.440" data-track-index="9">
     <div class="popfig h0" id="te"><span class="te">TORNADO<br>EMERGENCY</span></div>
   </section>
 
@@ -144,7 +144,7 @@
   <section class="clip" id="p-cap-23" data-start="22.350" data-duration="0.778" data-track-index="8"><div class="cap" id="cap-23">to action.</div></section>
 
   <!-- ============ CLOSING TITLE CARD (last 1.5 s, from the last narration end; no loop-back) ============ -->
-  <section class="clip" id="p-close" data-start="23.128" data-duration="1.500" data-track-index="6">
+  <section class="clip" id="p-close" data-start="23.128" data-duration="1.500" data-track-index="1">
     <div class="ground"></div>
     <div class="closecard" id="close"><div class="c1">MOORE 1999</div><div class="c0"></div><div class="c2">The full film is on The Warning Hour</div></div>
   </section>
@@ -169,6 +169,7 @@ window.__timelines = window.__timelines || {};
   tl.to("#te", { scale: 1.04, duration: 0.74, ease: "none" }, 3.748);
   tl.to("#te", { y: -60, autoAlpha: 0, duration: 0.25, ease: "power3.in" }, 4.488);
   tl.to(["#chip-date", "#credit"], { x: -60, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, 4.488);
+  tl.to("#chip-657", { x: -60, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, 12.037);         /* out with the map on "If" @12.037 */
 
   // the report's words: card on "phrase" @19.19, lines on "prompted" @21.19, "numerous" @21.47, "to" @22.35
   tl.fromTo("#quote", { y: 60, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 19.19);
