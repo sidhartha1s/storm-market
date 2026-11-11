@@ -12,7 +12,7 @@
   PROJECTION: X = 3841 * (lon + 97.576), Y = -5585 * (lat - 46.6213); screen = (map - top-left) * s.
   CAMERA: P2s s 0.075 TL (35150.0, 43938.6) -> P4 s 0.015 TL (-5316.0, 12192.7) logZoom expo.inOut 0 to 1.9 about the
     fixed point; S4 11.46 to 16.1 drift up 20 px; S5 0 to 1.8 P4 -> P0 s 0.012 TL (-15129.9, 11692.7) linear power2.inOut;
-    S5 1.80 to 13.40 4 % push about screen (760, 820), then held. camAt(t) is a pure function of comp time.
+    S5 1.80 to end - 1 s push about screen (760, 820), peak 2 % (sin^2), back on P0 for the last second. camAt(t) is a pure function of comp time.
   HUD pins and labels are screen-size; camAt translates each *-at group to its projected point.
 -->
 <template>
