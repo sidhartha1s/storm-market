@@ -207,8 +207,7 @@ window.__timelines = window.__timelines || {};
   /* SCENE 1. brief wav 0.00 "Many were out there" (Paul's clip, before this host): 46 blocks fill in place, 0.00-0.80 */
   tl.to(B, { scaleY: 1, duration: 0.125, ease: "power2.out", stagger: 0.015 }, 0);
   /* brief 0.38 -> chip "22 OF 46" (compressed to local 0.38) */
-  tl.set(P + "chip", { autoAlpha: 1 }, 0.38);
-  tl.to(P + "chip", { scale: 1, duration: 0.45, ease: "power4.out" }, 0.38);
+  tl.to(P + "chip", { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power4.out" }, 0.38);
   /* brief 0.80 -> sub-label (local 0.80) */
   tl.to(P + "sub", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.8);
   /* brief 2.38 "before" -> halfway line draws, compressed to local 1.30 */
