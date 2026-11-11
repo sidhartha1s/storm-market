@@ -9,6 +9,8 @@ REM hidden/schtasks launch still leaves a refusal reason on disk), renders\<out-
 REM the mp4 (this render's log, and the frame rate it was launched with, RENDER_FPS included; verify_render.sh
 REM reads both) and render_<mode>_done.marker
 REM (contains the exit code; deleted at the start of every run so a poller never reads a stale one).
+REM A refusal before any render (no index.html, bad usage) leaves scripts\render_last_error_<slug>_<basename>.marker,
+REM one per episode and basename ("/" in an acts basename becomes "_").
 REM Version pin must match config.yaml hyperframes_version — pin_ritual.py bumps both together.
 setlocal
 set SLUG=%~1
