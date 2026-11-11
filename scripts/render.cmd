@@ -20,11 +20,6 @@ REM Delete BEFORE the index.html check, not after (review 23 Sep 26): a run agai
 REM whose index.html is missing must still clear a stale marker from a PREVIOUS successful
 REM run of the same slug+mode, or a poller reads that old "0" as this run's result.
 del /q "%EP%\render_%MODE%_done.marker" 2>nul
-if not exist "%EP%\index.html" (
-  echo ERROR: no index.html in %EP%
-  echo 1 no-index-html %SLUG% %MODE% > "%~dp0render_last_error.marker"
-  exit /b 1
-)
 
 REM CRF/FPS are tunable per render. Defaults reproduce the tested recipe (full crf16/30fps,
 REM draft crf32/15fps). For a smaller single-pass full render, author at 24fps and set
