@@ -631,6 +631,9 @@ with tempfile.TemporaryDirectory() as d:
     for name in ("build_srt.py", "media_budget.py"):
         (stub_dir / name).write_text(
             f'import sys\nopen(r"{order_log}", "a").write("{name}\\n")\nsys.exit({1 if name == "media_budget.py" else 0})\n', encoding="utf-8")
+    for name in ("blank_scan.mjs", "overlap_check.mjs", "occlusion_check.mjs", "graphics_qc.mjs"):   # ESM stubs: `require` is undefined in .mjs
+        (stub_dir / name).write_text(
+            f'import {{ appendFileSync }} from "fs"; appendFileSync(String.raw`{order_log}`, "{name}\\n");', encoding="utf-8")
     order_log.unlink()
     r = subprocess.run([sys.executable, str(stub_dir / "run_gates.py"), str(ep), "--all"], capture_output=True, text=True)
     ran = order_log.read_text(encoding="utf-8").splitlines() if order_log.exists() else []
