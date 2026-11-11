@@ -1,0 +1,2 @@
+NONE: no qualifying img2. C:\Users\Sidhartha\Automation Projects\storm-market\episodes\ep-mayfield-2021\ has no media\ folder and no provenance.csv on this laptop (main checkout or worktree).
+Candidate outside the allowed folder, no provenance row found: C:\Users\Sidhartha\Automation Projects\storm-market\.snapq\mirror\ep-mayfield-2021\media\stills\a4-s11-sa-p33-aar.png (NWS Service Assessment page, US Government work, public domain; Finding 6 itself is on p34 per edit_script.md:507).
