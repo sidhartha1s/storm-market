@@ -3,7 +3,7 @@
 A: run_gates.py, all green, stamps the timeline it checked (timeline.digest); render_preflight.py refuses a render
    whose stamp is missing or whose timeline changed since; a failing gate removes an old stamp.
 B: while a render holds the heavy lock, run_gates.py runs only the file-only gates, and only above
-   config.yaml render.gates_beside_render_min_free_gb; browser gates are reported waiting, exit 3, no stamp.
+   config.yaml render.gates_beside_render_min_free_gb; browser and timing gates are reported waiting, exit 3, no stamp.
 Every gate is a stub that logs its name; the lock holder is a fake record (this process's own pid, so it reads as
 alive) in a temp HEAVY_LOCK_FILE; free memory is injected (render_busy.free_gb replaced). No render, no browser."""
 import contextlib
