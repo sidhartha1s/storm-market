@@ -14,11 +14,13 @@ STAMP = "gates_passed.marker"  # run_gates.py writes digest() here when every ga
 
 def digest(ep):
     """The one hash of the timeline the gates check (run_gates.py stamps it, render_preflight.py compares it): index.html,
-    compositions/*.html and audio/*.words.json, as bytes with their names. words.json is in because the gates time
-    against it and every TTS run rewrites it with its wav; wav and media bytes are out (GBs per episode, and
-    render_preflight.py runs media_budget.py on the media itself)."""
+    the *.js and *.css beside it, every file under compositions/ (graphics load compositions/data/*.geojson and *.json)
+    and audio/*.words.json, as bytes with their names. words.json is in because the gates time against it and every
+    TTS run rewrites it with its wav; wav and media bytes are out (GBs per episode, and render_preflight.py runs
+    media_budget.py on the media itself)."""
     h = hashlib.sha256()
-    for p in sorted([*ep.glob("index.html"), *ep.glob("compositions/*.html"), *ep.glob("audio/*.words.json")]):
+    comps = [p for p in ep.glob("compositions/**/*") if p.is_file() and p.suffix.lower() not in MEDIA]
+    for p in sorted([*ep.glob("index.html"), *ep.glob("*.js"), *ep.glob("*.css"), *comps, *ep.glob("audio/*.words.json")]):
         h.update(p.relative_to(ep).as_posix().encode() + b"\0" + hashlib.sha256(p.read_bytes()).digest())
     return h.hexdigest()
 
