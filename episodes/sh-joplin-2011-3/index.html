@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>14 of 18 Warnings. The Warning Hour short (sh-joplin-2011-3, 17 Oct 26)</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #04070c; }
+    video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .clip { position: absolute; inset: 0; }
+    .still { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+
+    /* one card at a time, top zone above the picture band: one big line, one small support line */
+    .quotecard { position: absolute; left: 60px; width: 840px; top: 250px; z-index: 6; box-sizing: border-box; padding: 38px 44px 40px;
+      background: rgba(10,16,24,0.62); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+      border: 1px solid rgba(255,255,255,0.14); border-left: 8px solid #d0121f; border-radius: 26px; box-shadow: 0 14px 48px rgba(0,0,0,0.45); }
+    .quotecard .q { font-family: 'Arial Black', Arial, sans-serif; font-size: 76px; line-height: 1.06; color: #f4f0e8; }
+    .quotecard .q.num { font-family: 'AbrilFig', Georgia, serif; font-size: 132px; line-height: 1; color: #e2202e; letter-spacing: 0.02em; }
+    .quotecard .lab { margin-top: 18px; font-family: Georgia, serif; font-style: italic; font-size: 40px; line-height: 1.2; color: #e6d8bf; }
+    .hid { opacity: 0; visibility: hidden; }
+
+    /* warning grid: 18 warnings, oldest first; hollow = no tornado confirmed, red = confirmed */
+    .gridcard { position: absolute; left: 60px; width: 840px; top: 720px; z-index: 5; box-sizing: border-box; padding: 44px 60px;
+      background: rgba(10,16,24,0.7); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.14); border-radius: 26px; box-shadow: 0 14px 48px rgba(0,0,0,0.45);
+      display: grid; grid-template-columns: repeat(6, 100px); grid-gap: 24px; justify-content: center; }
+    .gridcard .sq { position: relative; width: 100px; height: 100px; box-sizing: border-box; border: 4px solid rgba(214,224,234,0.75); border-radius: 12px; opacity: 0; }
+    .gridcard .f { position: absolute; inset: 6px; border-radius: 6px; background: rgba(214,224,234,0.6); }
+    .gridcard .r { position: absolute; inset: 6px; border-radius: 6px; background: #e2202e; box-shadow: 0 0 16px rgba(226,32,46,0.75); opacity: 0; }
+
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 48%, transparent 58%, rgba(0,0,0,0.5) 100%); }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="sh-joplin-2011-3" data-start="0.0" data-width="1080" data-height="1920" data-duration="26.2" data-fps="30">
+
+  <!-- ============ NARRATION: parent ep-joplin-2011 wavs (s3-s1 = a1-s7 2.52 to 16.9 s, s3-s2 = a1-s8 to 10.25 s) ============ -->
+  <audio id="nx-s3s1" src="audio/s3-s1.wav" data-start="0.0" data-duration="14.38" data-volume="1"></audio>
+  <audio id="nx-s3s2" src="audio/s3-s2.wav" data-start="14.6" data-duration="10.25" data-volume="1"></audio>
+
+  <!-- ============ BED ============ -->
+  <audio id="sx-bed" src="media/bed-rumble.mp3" data-bed="" data-start="0.0" data-duration="26.2" data-volume="0.13"></audio>
+
+  <!-- ============ TRACK 1: pictures (pre-framed 1080x1920: blurred fill + the picture as a centred band) ============ -->
+  <section class="clip" id="c-1-radar" data-start="0.0" data-duration="3.64" data-track-index="1"><img class="still" id="kb-1" src="media/nws-radar.jpg" alt=""></section>
+  <video id="vx-2-complexes" src="media/aerial-complexes.mp4" data-start="3.64" data-duration="5.46" data-media-start="0" data-track-index="1" muted></video>
+  <video id="vx-3-rangeline" src="media/aerial-rangeline.mp4" data-start="9.1" data-duration="5.5" data-media-start="6" data-track-index="1" muted></video>
+  <video id="vx-4-tarp" src="media/aerial-tarp.mp4" data-start="14.6" data-duration="4.76" data-media-start="0" data-track-index="1" muted></video>
+  <section class="clip" id="c-5-tape" data-start="19.36" data-duration="3.22" data-track-index="1"><img class="still" id="kb-5" src="media/usace-tape.jpg" alt=""></section>
+  <video id="vx-6-path" src="media/aerial-path-wide.mp4" data-start="22.58" data-duration="3.62" data-media-start="10" data-track-index="1" muted></video>
+
+  <!-- ============ CARDS (track 3; each start = the spoken word in the cut words.json) ============ -->
+  <!-- hook, frame 1 is the thumbnail; holds through "18" and "no tornado" (facts S10) to "that's about" @9.1 -->
+  <section class="clip" id="p-c0" data-start="0.0" data-duration="9.1" data-track-index="3">
+    <div class="quotecard" id="c0"><div class="q" id="c0-q">14 OF 18 WARNINGS: NO TORNADO</div><div class="lab" id="c0-l">Joplin, Missouri, 2005 to 2011</div></div>
+  </section>
+  <!-- "about the national average" @9.1 to "11" @12.82 (facts S10: 78 percent against 74.7) -->
+  <section class="clip" id="p-c1" data-start="9.1" data-duration="3.72" data-track-index="3">
+    <div class="quotecard hid" id="c1"><div class="q" id="c1-q">THE NATIONAL AVERAGE</div><div class="lab" id="c1-l">Joplin 78%, the US about 75%</div></div>
+  </section>
+  <!-- "11" @12.82 to the seam 14.6 (facts S11, S13) -->
+  <section class="clip" id="p-c2" data-start="12.82" data-duration="1.78" data-track-index="3">
+    <div class="quotecard hid" id="c2"><div class="q num" id="c2-q">11 OF 12</div><div class="lab" id="c2-l">the five years before the storm</div></div>
+  </section>
+  <!-- "emergency" 14.6 + 1.0 = 15.6 to "but people" 14.6 + 7.98 = 22.58 -->
+  <section class="clip" id="p-c3" data-start="15.6" data-duration="6.98" data-track-index="3">
+    <div class="quotecard hid" id="c3"><div class="q" id="c3-q">A WARNING IS NOT A SIREN</div><div class="lab" id="c3-l">not every warning sounded the sirens</div></div>
+  </section>
+  <!-- "people" @22.58 to the voice end 24.85 -->
+  <section class="clip" id="p-c4" data-start="22.58" data-duration="2.27" data-track-index="3">
+    <div class="quotecard hid" id="c4"><div class="q" id="c4-q">BOTH CRYING WOLF</div><div class="lab" id="c4-l">what people believed anyway</div></div>
+  </section>
+  <!-- loop-safe close: the hook again, held to the last frame -->
+  <section class="clip" id="p-c5" data-start="24.85" data-duration="1.35" data-track-index="3">
+    <div class="quotecard hid" id="c5"><div class="q" id="c5-q">14 OF 18 WARNINGS: NO TORNADO</div><div class="lab" id="c5-l">Joplin, Missouri, 2005 to 2011</div></div>
+  </section>
+
+  <!-- ============ WARNING GRID (track 4, over the band): "18" @3.64 to the seam 14.6 ============ -->
+  <!-- 18 warnings oldest first (facts S12): the first 6 predate the five-year window, holding 3 of the 4 confirmed; the last 12 hold 1 (facts S13, 10 May 2008) -->
+  <section class="clip" id="p-grid" data-start="3.64" data-duration="10.96" data-track-index="4">
+    <div class="gridcard hid" id="grid">
+      <i class="sq old" id="w01"><b class="f"></b></i><i class="sq old v" id="w02"><b class="f"></b><b class="r"></b></i><i class="sq old" id="w03"><b class="f"></b></i>
+      <i class="sq old v" id="w04"><b class="f"></b><b class="r"></b></i><i class="sq old v" id="w05"><b class="f"></b><b class="r"></b></i><i class="sq old" id="w06"><b class="f"></b></i>
+      <i class="sq" id="w07"><b class="f"></b></i><i class="sq v" id="w08"><b class="f"></b><b class="r"></b></i><i class="sq" id="w09"><b class="f"></b></i>
+      <i class="sq" id="w10"><b class="f"></b></i><i class="sq" id="w11"><b class="f"></b></i><i class="sq" id="w12"><b class="f"></b></i>
+      <i class="sq" id="w13"><b class="f"></b></i><i class="sq" id="w14"><b class="f"></b></i><i class="sq" id="w15"><b class="f"></b></i>
+      <i class="sq" id="w16"><b class="f"></b></i><i class="sq" id="w17"><b class="f"></b></i><i class="sq" id="w18"><b class="f"></b></i>
+    </div>
+  </section>
+
+  <div id="vignette"></div>
+</div>
+
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+
+  // stills: slow push for the whole window
+  for (const [id, at, dur] of [["#kb-1", 0.0, 3.64], ["#kb-5", 19.36, 3.22]]) {
+    tl.to(id, { scale: 1.05, duration: dur, ease: "none" }, at);
+  }
+
+  // hook card: on screen at frame 1, drifts, leaves on "that's about"
+  tl.to("#c0", { y: -10, duration: 8.5, ease: "none" }, 0);
+  tl.to("#c0", { y: -22, autoAlpha: 0, duration: 0.25, ease: "power2.in" }, 8.85);
+
+  const cards = [["#c1", 9.1, 3.72], ["#c2", 12.82, 1.78], ["#c3", 15.6, 6.98], ["#c4", 22.58, 2.27]];
+  for (const [id, at, dur] of cards) {
+    tl.fromTo(id, { y: 40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, at);
+    tl.fromTo(id + "-l", { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.35, ease: "power2.out" }, at + 0.18);
+    tl.to(id, { y: -8, duration: dur - 0.65, ease: "none" }, at + 0.4);
+    tl.to(id, { y: -22, autoAlpha: 0, duration: 0.25, ease: "power2.in" }, at + dur - 0.25);
+  }
+  tl.fromTo("#c2-q", { scale: 0.7 }, { scale: 1, duration: 0.35, ease: "back.out(2)", transformOrigin: "left center" }, 12.82);
+
+  // grid: in on "18" @3.64, all 18 warnings pop in
+  tl.fromTo("#grid", { y: 60, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 3.64);
+  tl.fromTo("#grid .sq", { scale: 0.4, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.05 }, 3.8);
+  // "no tornado" @6.44: the 14 empty out, the 4 confirmed turn red
+  tl.to("#grid .sq:not(.v) .f", { autoAlpha: 0, duration: 0.3, stagger: 0.04 }, 6.44);
+  tl.to("#grid .v .f", { autoAlpha: 0, duration: 0.2 }, 6.44);
+  tl.fromTo("#grid .v .r", { scale: 0.5, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.35, ease: "back.out(2.4)", stagger: 0.12 }, 6.6);
+  tl.to("#grid", { y: -10, duration: 7.0, ease: "none" }, 4.04);
+  // "five years" 10.48 .. "11" @12.82: the six older warnings step back, leaving the last 12
+  tl.to("#grid .old", { autoAlpha: 0.18, scale: 0.9, duration: 0.45, ease: "power2.out" }, 12.82);
+  tl.to("#grid", { y: 80, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 14.2);
+
+  // close: the hook returns and holds
+  tl.fromTo("#c5", { y: 30, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 24.85);
+  tl.to("#c5", { y: -4, duration: 1.0, ease: "none" }, 25.2);
+
+  window.__timelines["sh-joplin-2011-3"] = tl;
+})();
+</script>
+</body>
+</html>
