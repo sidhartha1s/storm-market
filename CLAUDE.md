@@ -176,7 +176,7 @@ Per episode in `episodes/<slug>/`. The skill's phase map points at these step nu
   holds the heavy lock; poll `render_acts_<basename>_done.marker`, never `render_<mode>_done.marker` (written after every act).
 - Heavy local jobs run on the ZBook by default (owner 17 Oct 26): transcription, voice conversion, clip downloads and
   frame extraction for sourcing, captures, gates and renders. The ZBook's driver is 616.92 and an ffmpeg `h264_nvenc`
-  test passed on it (11 Nov 26); no real render has run on it since, so the first one must pass `stream_gate.py check`. Sourcing lanes on the rendering machine pause while it renders (one heavy job per machine). The ASUS GPU runs the owner's live dictation and its RAM is shared with his work (learnings/render.md 11 Nov 26).
+  test passed on it (11 Nov 26); the 24 s `demo-pin` full render then passed `stream_gate.py check` on `h264_nvenc` there (11 Nov 26). No episode-length render has run on it since. Sourcing lanes on the rendering machine pause while it renders (one heavy job per machine). The ASUS GPU runs the owner's live dictation and its RAM is shared with his work (learnings/render.md 11 Nov 26).
 
 ## HARD RULE: everything lives in this folder
 Owner 7 Oct 26: "i want all stuff related to storm market within the repo. exceptions, u gotta let me know."
