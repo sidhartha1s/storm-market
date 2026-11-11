@@ -191,11 +191,24 @@ def read_lane(host, log):
     return (int(n) > 0, tail.strip()) if code == 0 and n.strip().isdigit() else None
 
 
-def profile_order(host, first=None, skip=None):
-    """The profiles that can run on host, starting at first, without skip."""
-    names = profiles(host)
-    i = names.index(first) if first in names else 0
-    return [n for n in names[i:] + names[:i] if n != skip]
+def running_load(ep, now):
+    """{profile: lanes the ledgers track as running}, over every episode of this repo's checkouts (the main one and each
+    worktree). A profile is an account: a lane on another host or in another episode loads it all the same. A lane whose
+    minutes lapsed is STALE, not running."""
+    root = next((p.parent for p in ep.parents if p.name == ".worktrees"), ep.parent.parent)
+    load = {}
+    for f in [*root.glob("episodes/*/lanes.json"), *root.glob(".worktrees/*/episodes/*/lanes.json")]:
+        for run in json.loads(f.read_text(encoding="utf-8")).get("jobs", {}).values():
+            if run.get("profile") and run.get("started") and not run.get("ended") \
+                    and now - run["started"] < run.get("minutes", DEFAULT_MIN) * 60:
+                load[run["profile"]] = load.get(run["profile"], 0) + 1
+    return load
+
+
+def profile_order(host, load, first=None, skip=None):
+    """The profiles that can run on host, without skip: first (an explicit --profile) leads, the rest least loaded
+    first, ties in name order (sorted is stable over the sorted names)."""
+    return [n for n in sorted(profiles(host), key=lambda n: (n != first, load.get(n, 0))) if n != skip]
 
 
 def gate(host):
