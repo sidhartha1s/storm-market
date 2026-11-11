@@ -104,13 +104,32 @@ stub_all(fail="lint_timeline.py")
 code, out, ran = gates()
 check("A a failing gate removes the stamp", had and code == 1 and not list(ep.glob("*.marker")), f"exit {code} {list(ep.glob('*.marker'))}")
 
-buf = io.StringIO()
-with contextlib.redirect_stdout(buf):
-    try:
-        r = render_preflight.stamp_refusal(ep, unchecked="pin ritual A/B of demo-pin")
-    except AttributeError as e:
-        r = e
-check("A unchecked=<reason> lets a non-episode render pass unstamped and says so", r is None and "unchecked" in buf.getvalue(), f"{r!r} {buf.getvalue()}")
+stub_all(edit="lint_timeline.py")
+code, out, ran = gates()
+check("A the timeline changes while the gates run: exit 1, says so, no stamp",
+      code == 1 and "changed while the gates ran" in out and not list(ep.glob("*.marker")), f"exit {code}\n{out[-400:]}")
+stub_all()
+
+try:
+    r = render_preflight.stamp_refusal(ep, unchecked="any reason")
+except TypeError as e:
+    r = e
+check("A stamp_refusal has no unchecked= bypass", isinstance(r, TypeError), f"{r!r}")
+
+import timeline  # noqa: E402
+before = timeline.digest(ep)
+(ep / "compositions" / "data").mkdir()
+(ep / "compositions" / "data" / "track.geojson").write_text('{"type": "LineString"}', encoding="utf-8")
+check("A a file under compositions/data/ is in the digest", timeline.digest(ep) != before)
+for name in ("grain.js", "page.css"):
+    before = timeline.digest(ep)
+    (ep / name).write_text("/* x */", encoding="utf-8")
+    check(f"A an episode-root {name} is in the digest", timeline.digest(ep) != before)
+before = timeline.digest(ep)
+(ep / "media").mkdir()
+(ep / "media" / "still.png").write_bytes(b"\x89PNG")
+(ep / "compositions" / "data" / "clip.mp4").write_bytes(b"\0")
+check("A media stays out of the digest", timeline.digest(ep) == before)
 
 # --- B: beside a render ---
 stub_all()
