@@ -132,7 +132,7 @@ def read_episode(ep, main_root):
     facts = {"script": (ep / "edit_script.md").exists(),
              "draft": any(any((root / "episodes" / ep.name / "renders").glob("*draft*.mp4"))
                           for root in (ep.parent.parent, Path(main_root))),
-             "master": bool(d and d["master"].exists()),
+             "master": shipped(ep, main_root),
              "uploads": bool(d and d["up_master"].exists()),
              "published": any(e[0] == "published" for e in events), "jobs": []}
     if facts["script"] and not any(facts[k] for k in ("draft", "master", "uploads", "published")):
