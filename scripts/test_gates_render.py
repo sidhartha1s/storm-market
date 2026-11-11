@@ -146,6 +146,12 @@ check("B below the floor nothing runs and it says why", ran == [] and code == 3 
 code, out, ran = gates(free=(8.0, 8.0, 8.0, 1.0))
 check("B memory falls below the floor mid-run: the run stops there", ran == FILE_ONLY[:3] and code == 3, f"exit {code} ran={ran}")
 
+stub_all(fail="sweep_episode.py")
+code, out, ran = gates(free=(8.0, 8.0, 8.0, 1.0), run_all=True)
+check("B --all: a gate failed before memory fell below the floor: exit 1 and the failure is listed",
+      ran == FILE_ONLY[:3] and code == 1 and "sweep_episode.py exited 1" in out, f"exit {code} ran={ran}\n{out[-400:]}")
+stub_all()
+
 (d / "heavy.lock").unlink()
 print(f"\n{'ALL PASS' if not FAILS else f'{len(FAILS)} FAILED: ' + ', '.join(FAILS)}")
 sys.exit(1 if FAILS else 0)
