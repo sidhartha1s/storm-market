@@ -334,6 +334,18 @@ def release(ours):
     print(f"[heavy-lock] could not delete {p}; the next job takes it over once this process exits", flush=True)
 
 
+RENDER_LOCK_JOBS = ("render ", "render_acts ", "pin ritual")  # the job names render.cmd, render_acts.py, pin_ritual.py book
+
+
+def render_holder():
+    """The lock record when a live render holds this machine's heavy lock (not our own holder), else None."""
+    cur = read_lock(lock_path())
+    if (cur and cur.get("token") != os.environ.get("HEAVY_LOCK_TOKEN")
+            and str(cur.get("job", "")).startswith(RENDER_LOCK_JOBS) and holder_alive(cur)):
+        return cur
+    return None
+
+
 def wait_free():
     """Gate mode: wait while another job holds the lock, without booking it."""
     p, mine, shown = lock_path(), os.environ.get("HEAVY_LOCK_TOKEN"), None
