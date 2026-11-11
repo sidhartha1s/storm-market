@@ -83,7 +83,7 @@ Total ≈ 3 h 20 of work. The waits at the two owner gates sit outside the clock
 - Structure (owner 2026-09-08): **HOOK is 3–5 s** (owner 27 Sep 26), one present-tense sentence that pays off the
   title (spoken + red popfig) → **INTRO to ~1:10** (base the point: stakes numbers, open loops,
   promise of the payoff/checklist) → **CHAPTERS** (8–12 × 45–75 s, one red-stat pop minimum each,
-  a "but/and/however" connective into the next, each opening on a 1–2 s caps card on black) →
+  a "but/and/however" connective into the next, butt-cut: no chapter card, see "No chapter cards" below) →
   PAYOFF (open loop closed) → WARM CLOSE (preparedness, never fearmongering) → subscribe line.
 - **Retention architecture is a hard rule from #4 on (FORMAT.md "Retention architecture", owner 2026-09-11):** the
   voice never narrates what the MG shows (dates, clock times, counts go on screen, the voice says the human line);
