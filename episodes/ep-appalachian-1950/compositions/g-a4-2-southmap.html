@@ -212,7 +212,7 @@ window.__timelines = window.__timelines || {};
   const FX = [(35150.0 * 0.075 + 5316.0 * 0.015) / 0.060, (43938.6 * 0.075 - 12192.7 * 0.015) / 0.060];
   const FS = [(FX[0] - 35150.0) * 0.075, (FX[1] - 43938.6) * 0.075];
   const PUSH_C = [760, 820], PM = [P0[1] + (PUSH_C[0] - 960) / P0[0], P0[2] + (PUSH_C[1] - 540) / P0[0]];
-  const T_OUT1 = S4 + 1.9, T_DR0 = S4 + 11.46, T_DR1 = S4 + 16.1, T_MV1 = S5 + 1.8, T_PU1 = S5 + 13.40;
+  const T_OUT1 = S4 + 1.9, T_DR0 = S4 + 11.46, T_DR1 = S4 + 16.1, T_MV1 = S5 + 1.8, T_PU1 = DUR - 1;
 
   const expo = gsap.parseEase("expo.inOut"), p2 = gsap.parseEase("power2.inOut"), p1 = gsap.parseEase("power1.inOut");
   const lerp = function (a, b, u) { return a + (b - a) * u; };
