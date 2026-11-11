@@ -50,8 +50,10 @@ def comp_size(h):
     """(width, height) of the composition: the root element's data-width / data-height, 1920x1080 when it
     declares none. The one owner of this rule (optimize_clips and this gate call it; stage_comp.mjs compSize
     is the same rule for the browser gates)."""
-    root = re.search(r'id="root"[^>]*data-width="(\d+)"[^>]*data-height="(\d+)"', h)
-    return (int(root.group(1)), int(root.group(2))) if root else (1920, 1080)
+    tag = re.search(r"""<[^>]*\bid=["']root["'][^>]*>""", h)  # any attribute order
+    w = tag and re.search(r"""\bdata-width=["'](\d+)""", tag.group())
+    ht = tag and re.search(r"""\bdata-height=["'](\d+)""", tag.group())
+    return (int(w.group(1)), int(ht.group(1))) if w and ht else (1920, 1080)
 
 
 def clip_windows(h):
