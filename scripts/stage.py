@@ -115,6 +115,12 @@ def deliverables(main_root, slug, label):
             "up_metadata": up / f"{label}-metadata.md", "up_titles": up / f"{label}-titles.txt"}
 
 
+def shipped(ep, main_root):
+    """True when the episode has an E number and its final master sits in the main checkout (stage `uploads` or later)."""
+    label = episode.label(ep)
+    return bool(label and deliverables(main_root, ep.name, label)["master"].exists())
+
+
 def read_episode(ep, main_root):
     """Everything the board shows for one episode folder: plain values."""
     rec = ep / "gates.md"
@@ -126,7 +132,7 @@ def read_episode(ep, main_root):
     facts = {"script": (ep / "edit_script.md").exists(),
              "draft": any(any((root / "episodes" / ep.name / "renders").glob("*draft*.mp4"))
                           for root in (ep.parent.parent, Path(main_root))),
-             "master": bool(d and d["master"].exists()),
+             "master": shipped(ep, main_root),
              "uploads": bool(d and d["up_master"].exists()),
              "published": any(e[0] == "published" for e in events), "jobs": []}
     if facts["script"] and not any(facts[k] for k in ("draft", "master", "uploads", "published")):

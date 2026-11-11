@@ -15,7 +15,8 @@ which jobs were launched and when they ended, and which are held.
   python3 scripts/lanes.py end    episodes/<slug> verify:a4   # the lane stopped (its output may still need syncing back)
   python3 scripts/lanes.py hold   episodes/<slug> source:z1|all --reason "z1 media sits in the a6 folder"
   python3 scripts/lanes.py unhold episodes/<slug> source:z1
-  python3 scripts/lanes.py status episodes/<slug> [--json]   # exit 2 while any job is READY, STALE or FAILED; read-only
+  python3 scripts/lanes.py status episodes/<slug> [--json]   # exit 2 while any job is READY, STALE or FAILED; read-only;
+                                                             # a shipped episode (stage.shipped) prints one line and exits 0
   python3 scripts/lanes.py relaunch episodes/<slug>          # put every FAILED lane on the next profile that answers
   python3 scripts/lanes.py stop   episodes/<slug> all|<job>  # stop-all: end each RUNNING, STALE or FAILED lane's tree; ended only once stopped
 
@@ -29,6 +30,8 @@ the host is asked whether the lane's process runs, and one that cannot be read i
   1. it first probes the profile by running its wrapper (`claudeN -p 'reply with the single word ok' --model haiku`,
      the same command the lane runs); any reply but "ok" (a limit, a logged-out profile, an error) moves it to the
      next profile that can run on that host (a wrapper there with a token or a login). It never waits for a reset.
+     The order is --profile first, then least loaded first: the lanes the ledgers of every episode of this repo track
+     as running (running_load), so concurrent episodes spread over the accounts instead of piling onto claude1.
   2. every start refuses while the host has MIN_FREE_GB or less free (a RAM floor, not a lane cap: lanes run on the API)
   3. a running lane whose log tail says it hit a limit is FAILED (blocking). `status` only reports it, since the Stop
      hook calls status; `relaunch` moves it to the next profile that answers, and backs off if another lanes.py
@@ -190,11 +193,24 @@ def read_lane(host, log):
     return (int(n) > 0, tail.strip()) if code == 0 and n.strip().isdigit() else None
 
 
-def profile_order(host, first=None, skip=None):
-    """The profiles that can run on host, starting at first, without skip."""
-    names = profiles(host)
-    i = names.index(first) if first in names else 0
-    return [n for n in names[i:] + names[:i] if n != skip]
+def running_load(ep, now):
+    """{profile: lanes the ledgers track as running}, over every episode of this repo's checkouts (the main one and each
+    worktree). A profile is an account: a lane on another host or in another episode loads it all the same. A lane whose
+    minutes lapsed is STALE, not running."""
+    root = next((p.parent for p in ep.parents if p.name == ".worktrees"), ep.parent.parent)
+    load = {}
+    for f in [*root.glob("episodes/*/lanes.json"), *root.glob(".worktrees/*/episodes/*/lanes.json")]:
+        for run in json.loads(f.read_text(encoding="utf-8")).get("jobs", {}).values():
+            if run.get("profile") and run.get("started") and not run.get("ended") \
+                    and now - run["started"] < run.get("minutes", DEFAULT_MIN) * 60:
+                load[run["profile"]] = load.get(run["profile"], 0) + 1
+    return load
+
+
+def profile_order(host, load, first=None, skip=None):
+    """The profiles that can run on host, without skip: first (an explicit --profile) leads, the rest least loaded
+    first, ties in name order (sorted is stable over the sorted names)."""
+    return [n for n in sorted(profiles(host), key=lambda n: (n != first, load.get(n, 0))) if n != skip]
 
 
 def gate(host):
@@ -366,6 +382,13 @@ def main(argv=None):
     if not (ep / "edit_script.md").exists():
         sys.exit(f"[lanes] FAIL: {ep / 'edit_script.md'} not found")
     if a.cmd == "status":  # read-only and lock-free: the Stop hook calls it
+        import stage  # here, not at the top: stage imports lanes, and stage owns the one rule for "shipped"
+        if stage.shipped(ep, stage.checkouts()[0][0]):  # its audio and candidates are gone from a fresh checkout: no jobs left to read
+            if a.json:
+                print(json.dumps({"orchestrator": None, "jobs": [], "blocking": [], "shipped": True}))
+            else:
+                print(f"shipped: {ep.name} has its final master in the main checkout; no jobs")
+            return 0
         ledger = load_ledger(ep)
         states = job_states(ep, ledger, time.time())
         if a.json:
@@ -402,7 +425,7 @@ def write(a, ep, lock):
         for s in (s for s in states if s["state"] == "FAILED"):
             run = ledger["jobs"][s["job"]]
             why = gate(run["host"])
-            new = None if why else launch(dict(run, started=now), profile_order(run["host"], run.get("profile"), skip=run.get("profile")))
+            new = None if why else launch(dict(run, started=now), profile_order(run["host"], running_load(ep, now), skip=run.get("profile")))
             os.utime(lock)  # still alive: a long relaunch is never taken over
             if new:
                 ledger["jobs"][s["job"]] = new
@@ -448,7 +471,7 @@ def write(a, ep, lock):
                 sys.exit(f"[lanes] FAIL: not starting: {why}")
             run = {"started": now, "host": a.host, "minutes": a.minutes}
             if a.lane_cmd:
-                run = launch(dict(run, cmd=a.lane_cmd, log=a.log, cwd=a.cwd or str(SCRIPTS.parent)), profile_order(a.host, a.profile))
+                run = launch(dict(run, cmd=a.lane_cmd, log=a.log, cwd=a.cwd or str(SCRIPTS.parent)), profile_order(a.host, running_load(ep, now), a.profile))
                 if not run:
                     sys.exit(f"[lanes] FAIL: no claude profile answers on {a.host}")
     if a.cmd == "claim":

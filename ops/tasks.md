@@ -133,10 +133,10 @@ his answer in `ops/decisions.md` (and with `stage.py record` when it is a gate) 
 | 40 | `blank_scan.mjs` still carries its own staging copy instead of `stage_comp.mjs` (audit G12) | todo |
 | 41 | `graphics_qc.mjs` rewrites the tracked `compositions/_durations.json` on every run, so e2e leaves the fixture's copy modified (audit G17); until fixed, restore it with `git checkout` | todo |
 | 42 | `sweep_episode.py` close-card exemptions are names in code, not config (audit G16) | todo |
-| 43 | Every lane of every episode still starts on claude1 (audit L11) | todo |
-| 44 | `paul_voice.py` and `transcribe_episode.py` do not book the heavy lock (audit L10) | todo |
-| 45 | `paul_voice.py` cannot import on the ZBook: the OpenVoice weights are missing from `hf_home` (audit L14) | todo |
-| 46 | `lanes.py status` on a shipped episode lists READY jobs and exits 2: lanes has no shipped state (audit L6) | todo |
+| 43 | Every lane of every episode still starts on claude1 (audit L11): a launch now tries `--profile`, then the least loaded profile by the lanes every episode's ledger tracks as running (`lanes.running_load`) | review |
+| 44 | `paul_voice.py` and `transcribe_episode.py` do not book the heavy lock (audit L10) | review |
+| 45 | `paul_voice.py` cannot import on the ZBook (audit L14): two pieces are missing in the main checkout, the OpenVoice weights (`.models/hf/hub/models--myshell-ai--OpenVoiceV2`, 131 MB) and the OpenVoice source (`.models/openvoice/src`, not fetched by any command in the repo; upstream `myshell-ai/OpenVoice`, MIT). Nothing downloaded yet | todo |
+| 46 | `lanes.py status` on a shipped episode lists READY jobs and exits 2: lanes has no shipped state (audit L6): `stage.shipped` (E number plus the final master in the main checkout) now prints one line and exits 0 | review |
 | 47 | Everything-in-the-repo rule (owner 7 Oct 26): still outside are the book ad editing project and Paul source clips (`C:\Users\Sidhartha\Videos\paul-v2-test`, 778 MB), the stock-fetch keys (`~/.claude/.env`), the narration voice-conversion script (`.worktrees/ep-el-reno-v4b/episodes/ep4-el-reno/.qc-tmp/voice-sid/convert_one.py`) and the Flow clip driver (`~/.claude/scratch/flowdrv/`, PR #213 closed unmerged). Rebuilding `.venv-pocket` from `scripts/voice_requirements.txt` has never been run | todo ("Waiting on the owner" 23) |
 | 48 | `npx` without `--yes` may wait on "Ok to proceed?" on a hidden console after a pin bump (`pin_ritual.py` records a 40 min hang from this prompt); not proven for render.cmd | todo |
 
