@@ -6,9 +6,11 @@
     lit run i 0-21 ends x 933 (411 + 24*21 + 18); halfway line x 960 between block 22 (939-957) and block 23 (963-981).
     Chip 22 OF 46 centred 960, top 390; sub-label top 630. Card x 420-1500, y 250-760. Calendar chip top 470; strip x 660-1260, y 600.
   Corner x >= 1600, y >= 680 empty: snow dots live in x 80-1560 only.
-  RETIME: host is 22.393 s, brief cues run to 25.9 s. Scene 1 and the card entry/date keep the brief cues (0 to 11.34 s).
-    After that: FULL TRAVEL BAN 13.00 (brief 13.82), ALL OF ERIE COUNTY 14.00 (14.96), 9 PM SAT 15.00 (16.42), snow thickens 16.00 (18.68),
-    card out 17.60 (20.12), calendar chip 18.20 (20.82), strip 18.70 (21.36), glow 20.40 (23.94), final fade 21.50-22.30 (25.10-25.90).
+  CUE OFFSET (disk: index.html audio nx-a5-s8 data-media-start 3.6, data-start 1023.74, host data-start 1023.436): comp t = brief cue - 3.296.
+    The brief's 25.90 s comp is the audio's own clock; the host window starts 3.296 s into it. Every brief cue from 3.296 on is shifted by -3.296
+    (brief 7.80 -> 4.50, 8.36 -> 5.06, 13.82 -> 10.52, 20.12 -> 16.82, 21.36 -> 18.06, 23.94 -> 20.64); the fade 25.10-25.90 -> 21.80-22.60 is
+    trimmed to 21.55-22.35. Scene-1 cues before 3.296 ("Many were out there", "before the ban") sit in the cut head, so they play at comp start:
+    blocks 0-0.8, chip 0.38, sub-label 0.80, halfway line 1.60 (brief 2.38).
   Prefix bn-.
 -->
 <template>
