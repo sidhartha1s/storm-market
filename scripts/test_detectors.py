@@ -578,3 +578,26 @@ r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep), 'nope'], captur
 assert r.returncode == 1 and 'no compositions/<id>.html for: nope' in r.stderr, r.stdout + r.stderr
 shutil.rmtree(ep, ignore_errors=True)
 print('graphics_qc self-check PASS (comp-id scope keeps other comps\' entries; a timeline-less comp is its own no-timeline, not a crash)')
+
+# G17 (ops/tasks.md 41): graphics_qc rewrote the tracked compositions/_durations.json on every run, so a checkout
+# whose copy differs only in line endings or spacing (autocrlf, a hand edit) was modified by every e2e run.
+# Same content must leave the bytes alone; changed content must still be written. Old code (08b112e92c) rewrites.
+ep = _stage_ep(SETTLE_FILES)
+dj = ep / 'compositions' / '_durations.json'
+subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
+measured = json.loads(dj.read_text(encoding='utf-8'))
+assert list(measured) == ['z'], measured
+same = json.dumps(measured, indent=2).replace('\n', '\r\n').encode()   # same content, CRLF and 2-space indent
+old_gq = old_rev('graphics_qc.mjs', '_old_gqc_durations_tmp.mjs', '08b112e92c')
+dj.write_bytes(same)
+subprocess.run(['node', str(old_gq), str(ep)], capture_output=True, text=True, encoding='utf-8')
+old_gq.unlink()
+assert dj.read_bytes() != same, 'old code should rewrite a file whose content is the same but formatted differently'
+dj.write_bytes(same)
+subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True, encoding='utf-8')
+assert dj.read_bytes() == same, 'same content must not be rewritten'
+dj.write_text(json.dumps({'z': 99}), encoding='utf-8')
+subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True, encoding='utf-8')
+assert json.loads(dj.read_text(encoding='utf-8')) == measured, 'changed content must be written'
+shutil.rmtree(ep, ignore_errors=True)
+print('graphics_qc self-check PASS (_durations.json is rewritten only when its content changes)')

@@ -59,6 +59,8 @@ channel:
     dip_out: 1.0
     srt_label: "[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"
     first_link: https://www.paulraymond.online/yt/?src=desc   # Paul says "the first link in the description" on camera; /yt/ is the page for video viewers, ?src=desc marks the sale as coming from a description
+  close_lockup:                   # the close card carries THE WARNING HOUR lockup (owner order 29 Oct 26; sweep_episode.py 5d-3)
+    exempt: [ep-palm-sunday-1965, ep-camille-1969]   # shipped before the order with another close; never extended
   end_ask:                        # Paul's sign-off ask, every ep- documentary from Joplin on (owner 19 Oct 26: "CTA is looking amazing. wire them to the videos for future") — DESIGN.md "End ask"
     files:                        # mounted back to back, in this order, staged into media/end-ask/; swap = NEW versioned files + bump here, never overwrite
       - {file: assets/end-ask/paul-end-ask-v1-oct19-a.mp4, duration: 9.083}   # md5 632818e077b958f22c719d580af0b41e

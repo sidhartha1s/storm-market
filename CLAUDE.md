@@ -216,7 +216,7 @@ ritual changes them. `render_preflight.py` fails on drift, never on currency. Re
 ## HARD RULE: the render is the LAST step
 Never use a render as a diagnostic. All green before ANY render, from the worktree:
 ```
-python3 scripts/run_gates.py episodes/<slug>   # the whole pre-render suite in order; stops on the first failure
+python3 scripts/run_gates.py episodes/<slug> [--all]   # the pre-render suite in order; stops on the first failure, --all lists every failure in one run
 ```
 The gate list and its order live in `scripts/run_gates.py` (minis add a freeze scan: mini-storms skill).
 - Before any render: listen to the full audio mixdown and watch the hook. A layer known to be below spec means stop and report.

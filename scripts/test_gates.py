@@ -627,6 +627,22 @@ with tempfile.TemporaryDirectory() as d:
     check("run_gates: exits non-zero when a gate fails", r.returncode == 1, f"(exit {r.returncode})")
     check("run_gates: names the failing gate", "lint_timeline.py" in r.stdout, r.stdout[-300:])
 
+    # --all: every gate runs, one summary names every failed gate, exit 1
+    for name in ("build_srt.py", "media_budget.py"):
+        (stub_dir / name).write_text(
+            f'import sys\nopen(r"{order_log}", "a").write("{name}\\n")\nsys.exit({1 if name == "media_budget.py" else 0})\n', encoding="utf-8")
+    for name in ("blank_scan.mjs", "overlap_check.mjs", "occlusion_check.mjs", "graphics_qc.mjs"):   # ESM stubs: `require` is undefined in .mjs
+        (stub_dir / name).write_text(
+            f'import {{ appendFileSync }} from "fs"; appendFileSync(String.raw`{order_log}`, "{name}\\n");', encoding="utf-8")
+    order_log.unlink()
+    r = subprocess.run([sys.executable, str(stub_dir / "run_gates.py"), str(ep), "--all"], capture_output=True, text=True)
+    ran = order_log.read_text(encoding="utf-8").splitlines() if order_log.exists() else []
+    summary = r.stdout.split("RUN_GATES FAIL", 1)[-1]
+    check("run_gates --all: runs every gate after a failure, exits 1, lists every failed gate once at the end",
+          len(ran) == 16 and ran[-1] == "graphics_qc.mjs" and r.returncode == 1
+          and "2 of 16 gates failed" in summary and "lint_timeline.py exited 1" in summary and "media_budget.py exited 1" in summary
+          and summary.count("exited") == 2, f"ran={ran}\n{r.stdout[-500:]}{r.stderr}")
+
 # ===================================================================================
 # 9. sweep_episode.py's motion-gate _frame() helper: PID-scoped temp paths (no cross-process
 # collision) + any raised exception (locked file, timeout) reports loudly via probe_failed
@@ -733,6 +749,24 @@ with tempfile.TemporaryDirectory() as d:
 with tempfile.TemporaryDirectory() as d:
     code, out = run("sweep_episode.py", close_ep(d, "close-not-ep", "<template><div>THE WARNING HOUR</div></template>"))
     check("sweep_episode close card: a non-`ep-` slug is skipped", "SKIP " + CLOSE_LABEL in out, out[-400:])
+
+# the close-card exemption list is config (channel.close_lockup.exempt), not slugs in sweep_episode.py:
+# a copy of sweep beside a config naming a slug skips it, and the same close PASSes under the real config
+with tempfile.TemporaryDirectory() as d:
+    root = Path(d) / "repo"
+    (root / "scripts").mkdir(parents=True)
+    for f in S.glob("*.py"):
+        (root / "scripts" / f.name).write_bytes(f.read_bytes())
+    cfg = (S.parent / "config.yaml").read_text(encoding="utf-8")
+    check("config: channel.close_lockup.exempt holds the two shipped exemptions",
+          yaml.safe_load(cfg)["channel"]["close_lockup"]["exempt"] == ["ep-palm-sunday-1965", "ep-camille-1969"])
+    (root / "config.yaml").write_text(cfg.replace("exempt: [ep-palm-sunday-1965, ep-camille-1969]", "exempt: [ep-close-cfg]", 1), encoding="utf-8")
+    comp = (S.parent / "episodes" / "ep-enderlin-2025" / "compositions" / "g-outro.html").read_text(encoding="utf-8")
+    for slug, want in (("ep-close-cfg", "SKIP"), ("ep-close-other", "PASS")):
+        ep = close_ep(Path(d) / slug, slug, comp)
+        r = subprocess.run([sys.executable, str(root / "scripts" / "sweep_episode.py"), str(ep)], capture_output=True, text=True)
+        check(f"sweep_episode close card: a slug in config close_lockup.exempt {want}s", close_line(r.stdout + r.stderr).startswith(want),
+              close_line(r.stdout + r.stderr) or (r.stdout + r.stderr)[-400:])
 
 # ===================================================================================
 # 10. verify_render.sh silence classifier: the closing end card (last 4 s) may be silent

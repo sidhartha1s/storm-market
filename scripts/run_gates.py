@@ -9,17 +9,21 @@ that only checks the LAST exit code (a wrapper, a subagent, `&&`). This runs the
 order, stops at the first non-zero exit, and names the gate that failed instead of letting a
 later PASS bury it.
 
-Usage: python3 scripts/run_gates.py episodes/<slug>
+Usage: python3 scripts/run_gates.py episodes/<slug> [--all]
 Exit 0 = every gate passed, safe to render. Exit 1 = a gate failed (its name is printed).
+--all runs every gate even after a failure and ends with one list of every failed gate (exit 1 if any):
+one fix cycle for a many-gate episode instead of one per gate. e2e.py runs without it.
 """
 import subprocess
 import sys
 from pathlib import Path
 
-if len(sys.argv) != 2:
-    sys.exit("usage: python3 scripts/run_gates.py episodes/<slug>")
+run_all = "--all" in sys.argv[1:]
+args = [a for a in sys.argv[1:] if a != "--all"]
+if len(args) != 1:
+    sys.exit("usage: python3 scripts/run_gates.py episodes/<slug> [--all]")
 
-ep = Path(sys.argv[1])
+ep = Path(args[0])
 if not ep.is_dir():
     sys.exit(f"not a directory: {ep}")
 ep_abs = str(ep.resolve())
@@ -45,13 +49,22 @@ GATES = [
     ("graphics_qc.mjs",     ["node", str(scripts / "graphics_qc.mjs"), "."], ep.resolve()),
 ]
 
+failed = []
 for name, cmd, cwd in GATES:
     print(f"\n=== {name} ===", flush=True)  # header before the gate's own output (e2e.gate_results reads it)
     r = subprocess.run(cmd, cwd=cwd)
     if r.returncode != 0:
-        print(f"\nRUN_GATES FAIL - {name} exited {r.returncode}. Fix it, do not render.")
-        sys.exit(1)
+        if not run_all:
+            print(f"\nRUN_GATES FAIL - {name} exited {r.returncode}. Fix it, do not render.")
+            sys.exit(1)
+        failed.append(f"{name} exited {r.returncode}")
     print()
+
+if failed:
+    print(f"RUN_GATES FAIL - {len(failed)} of {len(GATES)} gates failed. Fix them all, do not render:")
+    for f in failed:
+        print(f"  - {f}")
+    sys.exit(1)
 
 print("RUN_GATES PASS - all gates green, safe to render.")
 sys.exit(0)
