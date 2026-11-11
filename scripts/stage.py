@@ -115,6 +115,12 @@ def deliverables(main_root, slug, label):
             "up_metadata": up / f"{label}-metadata.md", "up_titles": up / f"{label}-titles.txt"}
 
 
+def shipped(ep, main_root):
+    """True when the episode has an E number and its final master sits in the main checkout (stage `uploads` or later)."""
+    label = episode.label(ep)
+    return bool(label and deliverables(main_root, ep.name, label)["master"].exists())
+
+
 def read_episode(ep, main_root):
     """Everything the board shows for one episode folder: plain values."""
     rec = ep / "gates.md"
