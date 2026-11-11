@@ -53,7 +53,7 @@ GATES = [
     ("hook_shape.py",       [sys.executable, str(scripts / "hook_shape.py"), str(ep)], None, "file"),
     ("homograph_scan.py",   [sys.executable, str(scripts / "homograph_scan.py"), str(ep)], None, "file"),
     ("beat_density.py",     [sys.executable, str(scripts / "beat_density.py"), str(ep)], None, "browser"),  # via beat_probe.mjs
-    ("media_budget.py",     [sys.executable, str(scripts / "media_budget.py"), str(ep)], None, "file"),
+    ("media_budget.py",     [sys.executable, str(scripts / "media_budget.py"), str(ep)], None, "timed"),
     ("audio_levels.py",     [sys.executable, str(scripts / "audio_levels.py"), str(ep)], None, "file"),
     ("blank_scan.mjs",      ["node", str(scripts / "blank_scan.mjs"), ep_abs], None, "browser"),
     ("overlap_check.mjs",   ["node", str(scripts / "overlap_check.mjs"), ep_abs], None, "browser"),
