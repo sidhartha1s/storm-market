@@ -41,7 +41,9 @@ ep_abs = str(ep.resolve())
 scripts = Path(__file__).resolve().parent
 
 # the gate list and its order: this list is the only copy. kind, read from each gate's source (11 Nov 26):
-# "file" = Python, ffmpeg, ffprobe or git on files; "browser" = opens a headless Chromium (playwright_env.mjs)
+# "file" = Python, ffmpeg, ffprobe or git on files; "browser" = opens a headless Chromium (playwright_env.mjs);
+# "timed" = times its own work against a limit (media_budget.py: ffprobe spawns vs 0.4 s), so beside a render it
+# measures the render's load and would fail a valid episode. Browser and timed gates wait for the render.
 GATES = [
     ("layer parity",        [sys.executable, str(scripts / "render_preflight.py"), str(ep), "--layers"], None, "file"),
     ("paul_start_frame.py", [sys.executable, str(scripts / "paul_start_frame.py"), str(ep)], None, "file"),
