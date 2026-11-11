@@ -11,8 +11,9 @@ import { join, basename } from 'path';
 // The frame size of a composition is its root element's data-width / data-height, 1920x1080 when the
 // root declares none. Every gate reads it here (media_budget.comp_size owns the same rule for Python).
 export const compSize = (indexHtml) => {
-  const m = indexHtml.match(/id="root"[^>]*data-width="(\d+)"[^>]*data-height="(\d+)"/);
-  return m ? { w: +m[1], h: +m[2] } : { w: 1920, h: 1080 };
+  const root = indexHtml.match(/<[^>]*\bid=["']root["'][^>]*>/)?.[0] ?? '';   // any attribute order
+  const w = root.match(/\bdata-width=["'](\d+)/)?.[1], h = root.match(/\bdata-height=["'](\d+)/)?.[1];
+  return w && h ? { w: +w, h: +h } : { w: 1920, h: 1080 };
 };
 
 // In-page expression (needs `tl` in scope), shared by graphics_qc and beat_probe: a timeline-level

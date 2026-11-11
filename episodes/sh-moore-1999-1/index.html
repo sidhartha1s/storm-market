@@ -38,8 +38,8 @@
       text-shadow: 0 1px 6px #000, 0 0 10px rgba(0,0,0,0.9); }
 
     /* the two words */
-    .popfig { position: absolute; inset: auto; left: 60px; right: 60px; top: 640px; z-index: 6; text-align: center; }
-    .popfig .te { display: block; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 112px; line-height: 1.02; color: #fff;
+    .popfig { position: absolute; inset: auto; left: 60px; right: 60px; top: 600px; z-index: 6; text-align: center; }
+    .popfig .te { display: block; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 106px; line-height: 1.02; color: #fff;
       background: #d0121f; border-radius: 14px; padding: 18px 20px 22px; box-shadow: 0 16px 50px rgba(0,0,0,0.6); }
 
     /* quote card: the report's words, attributed */
@@ -84,17 +84,17 @@
   </section>
 
   <!-- ============ GRAPHICS (tracks 1/2, full frame; each host starts on its word) ============ -->
-  <!-- S2-S3 path map, in on "aimed" @4.488, out on "If" @12.037 -->
-  <div id="host-g-path-map" data-composition-id="g-path-map" data-composition-src="compositions/g-path-map.html" data-start="4.488" data-duration="7.949" data-track-index="2" data-width="1080" data-height="1920"></div>
-  <!-- S4 weather radio, in on "If" @12.037, out on "Twenty" @14.43 -->
-  <div id="host-g-radio" data-composition-id="g-radio" data-composition-src="compositions/g-radio.html" data-start="12.037" data-duration="2.793" data-track-index="1" data-width="1080" data-height="1920"></div>
-  <!-- S5 the gap bar, in on "Twenty" @14.43, out on "phrase" @19.19 -->
-  <div id="host-g-gap-bar" data-composition-id="g-gap-bar" data-composition-src="compositions/g-gap-bar.html" data-start="14.430" data-duration="5.160" data-track-index="2" data-width="1080" data-height="1920"></div>
+  <!-- S2-S3 path map, in on "aimed" @4.488, out before "If" @12.037 -->
+  <div id="host-g-path-map" data-composition-id="g-path-map" data-composition-src="compositions/g-path-map.html" data-start="4.488" data-duration="7.549" data-track-index="2" data-width="1080" data-height="1920"></div>
+  <!-- S4 weather radio, in on "If" @12.037, out before "Twenty" @14.43 -->
+  <div id="host-g-radio" data-composition-id="g-radio" data-composition-src="compositions/g-radio.html" data-start="12.037" data-duration="2.393" data-track-index="2" data-width="1080" data-height="1920"></div>
+  <!-- S5 the gap bar, in on "Twenty" @14.43, out before "phrase" @19.19 -->
+  <div id="host-g-gap-bar" data-composition-id="g-gap-bar" data-composition-src="compositions/g-gap-bar.html" data-start="14.430" data-duration="4.760" data-track-index="2" data-width="1080" data-height="1920"></div>
   <!-- ground under the quote card, "phrase" @19.19 to the last narration end -->
   <section class="clip" id="p-qground" data-start="19.190" data-duration="3.938" data-track-index="1"><div class="ground"></div></section>
   <!-- ============ CHIPS (track 4) ============ -->
   <section class="clip" id="p-chip-date" data-start="0.0" data-duration="4.888" data-track-index="4"><div class="chip" id="chip-date">MAY 3, 1999 · OKLAHOMA</div></section>
-  <section class="clip" id="p-chip-657" data-start="2.220" data-duration="10.117" data-track-index="6"><div class="chip h0" id="chip-657">6:57 PM</div></section>
+  <section class="clip" id="p-chip-657" data-start="2.220" data-duration="9.817" data-track-index="6"><div class="chip h0" id="chip-657">6:57 PM</div></section>
 
   <!-- ============ HOOK + CREDIT (track 5; on screen at frame 1, no fade from black) ============ -->
   <section class="clip" id="p-head" data-start="0.0" data-duration="3.800" data-track-index="5">
@@ -169,7 +169,7 @@ window.__timelines = window.__timelines || {};
   tl.to("#te", { scale: 1.04, duration: 0.74, ease: "none" }, 3.748);
   tl.to("#te", { y: -60, autoAlpha: 0, duration: 0.25, ease: "power3.in" }, 4.488);
   tl.to(["#chip-date", "#credit"], { x: -60, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, 4.488);
-  tl.to("#chip-657", { x: -60, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, 12.037);         /* out with the map on "If" @12.037 */
+  tl.to("#chip-657", { x: -60, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, 11.737);         // out with the map, before "If" @12.037
 
   // the report's words: card on "phrase" @19.19, lines on "prompted" @21.19, "numerous" @21.47, "to" @22.35
   tl.fromTo("#quote", { y: 60, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 19.19);

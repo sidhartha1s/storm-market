@@ -70,6 +70,12 @@ r = subprocess.run(["node", "--input-type=module", "-e",
                    capture_output=True, text=True)
 check("stage_comp.compSize reads the root's data-width/height (not a host mount's) and defaults to 1920x1080",
       r.stdout.strip() == '[{"w":1080,"h":1920},{"w":1920,"h":1080}]', r.stdout + r.stderr)
+# the root tag is found first, then each attribute is read on its own: any attribute order reads the same
+SHUFFLED_ROOT = '<div data-width="1080" data-height="1920" id="root">'
+r = subprocess.run(["node", "--input-type=module", "-e",
+                    f"import {{ compSize }} from '{(S / 'stage_comp.mjs').as_uri()}';"
+                    f"console.log(JSON.stringify(compSize({json.dumps(SHUFFLED_ROOT)})))"], capture_output=True, text=True)
+check("stage_comp.compSize reads a root written data-width, data-height, id", r.stdout.strip() == '{"w":1080,"h":1920}', r.stdout + r.stderr)
 
 sys.path.insert(0, str(S))
 try:
@@ -80,8 +86,12 @@ except ImportError as e:
 if comp_size:
     check("media_budget.comp_size: portrait root, then the 1920x1080 default",
           comp_size(PORTRAIT_ROOT) == (1080, 1920) and comp_size("<div id='root'></div>") == (1920, 1080))
+    check("media_budget.comp_size reads a root written data-width, data-height, id", comp_size(SHUFFLED_ROOT) == (1080, 1920), str(comp_size(SHUFFLED_ROOT)))
 check("optimize_clips.py calls comp_size instead of keeping its own data-width regex",
       'id="root"' not in (S / "optimize_clips.py").read_text(encoding="utf-8"))
+
+check("shorts_lint.mjs imports compSize instead of keeping its own data-width rule",
+      "compSize" in (S / "shorts_lint.mjs").read_text(encoding="utf-8") and "match(/data-width" not in (S / "shorts_lint.mjs").read_text(encoding="utf-8"))
 
 # ---- blank_scan: text at y 1500 is ink on a 1080x1920 frame
 with tempfile.TemporaryDirectory() as d:
@@ -120,6 +130,21 @@ with tempfile.TemporaryDirectory() as d:
     right = named("g1", f'<div id="a" style="{TXT}left:1200px;top:100px">RIGHT OF THE FRAME</div>')
     code, out = node("graphics_qc.mjs", make_ep(d, {"g1": right}))
     check("graphics_qc: text starting at x 1200 is out-of-frame on a 1080x1920 frame", "out-of-frame" in out, f"(exit {code})\n{out[-700:]}")
+
+# ---- graphics_qc exit threshold (1000 px on 1920x1080) scales with the frame: x by W/1920, y by H/1080
+def exit_line(d, tween):
+    """The 'pre-exit' line graphics_qc writes to frame_times.json for a comp whose only late tween is `tween`."""
+    card = named("g1", f'<div id="a" style="{TXT}left:100px;top:1500px">LOW CARD TEXT</div>',
+                 "tl.to('#a', { duration: 0.5, opacity: 1 }, 0); " + tween)
+    ep = make_ep(d, {"g1": card})
+    node("graphics_qc.mjs", ep)
+    return json.dumps(json.loads((ep / ".qc-tmp" / "frame_times.json").read_text(encoding="utf-8")))
+with tempfile.TemporaryDirectory() as d:
+    out = exit_line(d, "tl.to('#a', { duration: 0.5, x: 900 }, 4);")
+    check("graphics_qc: a card sliding out by x 900 is an exit on a 1080-wide frame", "exit tween at 4.00s" in out, out)
+with tempfile.TemporaryDirectory() as d:
+    out = exit_line(d, "tl.to('#a', { duration: 0.5, y: 1100 }, 4);")
+    check("graphics_qc: a move to y 1100 that stays in a 1920-high frame is not an exit", "no exit tween" in out, out)
 
 # ---- beat_probe: motion of an element low in the frame is motion
 with tempfile.TemporaryDirectory() as d:

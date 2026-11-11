@@ -39,8 +39,8 @@
       <path d="M 960 282 L 976 326 L 960 316 L 944 326 Z" fill="#93a3b2"/>
     </svg>
     <div id="g-path-map-north" style="position:absolute; left:952px; top:332px; font-weight:700; font-size:22px; line-height:26px; color:#93a3b2;">N</div>
-    <div class="g-path-map-lab" id="g-path-map-lab-okc" style="left:330px; top:380px; font-size:40px; line-height:44px;">SOUTH<br>OKLAHOMA CITY</div>
-    <div class="g-path-map-lab" id="g-path-map-lab-moore" style="left:820px; top:548px; font-size:56px; line-height:64px;">MOORE</div>
+    <div class="g-path-map-lab" id="g-path-map-lab-okc" style="left:250px; top:360px; font-size:40px; line-height:44px;">SOUTH<br>OKLAHOMA CITY</div>
+    <div class="g-path-map-lab" id="g-path-map-lab-moore" style="left:680px; top:482px; font-size:56px; line-height:64px;">MOORE</div>
     <div class="g-path-map-lab" id="g-path-map-lab-bc" style="left:452px; top:1170px; font-size:40px; line-height:44px;">BRIDGE CREEK</div>
   </div>
 </div>
@@ -62,7 +62,7 @@ window.__timelines = window.__timelines || {};
   /* MOORE @0.8 (ep 5.288) */
   tl.fromTo(P + "moore", { autoAlpha: 0, scale: 0, svgOrigin: "775 585", smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: "775 585", smoothOrigin: false, duration: 0.3, ease: "back.out(2.4)" }, 0.8);
   tl.fromTo(P + "moore-ring", { autoAlpha: 0.9, scale: 1, svgOrigin: "775 585", smoothOrigin: false }, { autoAlpha: 0, scale: 2.4, svgOrigin: "775 585", smoothOrigin: false, duration: 1.3, ease: "power1.out", repeat: 4 }, 0.8);
-  tl.fromTo(P + "lab-moore", { x: 30, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 0.8);
+  tl.fromTo(P + "lab-moore", { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 0.8);
   /* SOUTH (side of Oklahoma City) @1.78 (ep 6.268) */
   tl.fromTo(P + "okc", { autoAlpha: 0, scale: 0, svgOrigin: "500 500", smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: "500 500", smoothOrigin: false, duration: 0.3, ease: "back.out(2.4)" }, 1.78);
   tl.fromTo(P + "okc-ring", { autoAlpha: 0.9, scale: 1, svgOrigin: "500 500", smoothOrigin: false }, { autoAlpha: 0, scale: 2.4, svgOrigin: "500 500", smoothOrigin: false, duration: 1.3, ease: "power1.out", repeat: 3 }, 1.78);
