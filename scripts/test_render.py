@@ -194,6 +194,12 @@ with tempfile.TemporaryDirectory() as d:
 
 # Dry harness: exercise render.cmd's error path for real (no render reached — it exits
 # before preflight/render_busy/npx). Cleans up the marker it writes.
+# cmd.exe misparses a batch file with bare LF line endings: `goto :label` then fails depending on byte offsets
+# (11 Nov 26: a `sed -i` left render.cmd LF-only and every dry run returned 255 with no output, but only in e2e).
+for _cmd in sorted(S.glob("*.cmd")):
+    _b = _cmd.read_bytes()
+    check(f"{_cmd.name}: every line ends CRLF", _b.count(b"\n") == _b.count(b"\r\n"),
+          "restore it with `git checkout`; .gitattributes keeps *.cmd CRLF")
 last_err = S / "render_last_error_no-such-episode-xyz_no-such-episode-xyz-draft.marker"
 last_err.unlink(missing_ok=True)
 r = subprocess.run(["cmd", "/c", str(S / "render.cmd"), "no-such-episode-xyz", "draft"],
