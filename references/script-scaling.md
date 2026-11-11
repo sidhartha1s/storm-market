@@ -96,7 +96,8 @@ script anywhere. Fixed:
 A section (hook+intro first, then each act) **locks** only when ALL of:
 - (a) its `[verify]` markers are all resolved (CONFIRMED / CORRECTED / cut, none open);
 - (b) its independent grade passed (bar: `learnings/script-process.md` "independent grade on every script");
-- (c) for the hook+intro only, the owner has **explicitly** approved it in chat or on his devq page; silence is
+- (c) for the hook+intro only, the owner has **explicitly** approved it in chat or on his devq page, picking among
+  finished options (`references/packaging-rules.md` "Options reach the owner finished"); silence is
   never approval, and the approval is a `hook-intro` line in `episodes/<slug>/gates.md` (CLAUDE.md "Owner gates");
 - (d) for the hook+intro only, `python3 scripts/hook_shape.py episodes/<slug>` passes (its `Hook shape:` tag is on the
   script-quickref.md menu and is not the shape of either of the last 2 episodes, owner 26 Oct 26).
