@@ -521,7 +521,7 @@ def test_l11_a_launch_starts_on_the_least_loaded_profile_across_episodes(tmp_pat
     assert lanes.main(["start", str(ep2), "source:a1", *LANE]) == 0
     assert calls["probe"] == ["claude5"] and lanes.load_ledger(ep2)["jobs"]["source:a1"]["profile"] == "claude5"
     calls = fakes(answering={"claude1"})  # the ledger now holds claude5 once: claude2 and claude5 tie at 1, name order breaks it
-    assert lanes.main(["start", str(ep2), "words:a1", *LANE[:-2], "--cwd", r"C:\wt"]) == 0
+    assert lanes.main(["start", str(ep2), "words:a1", *LANE]) == 0
     assert calls["probe"] == ["claude2", "claude5", "claude1"], calls["probe"]
     calls = fakes(answering={"claude1", "claude2", "claude5"})
     assert lanes.main(["start", str(ep2), "voice:a1", "--profile", "claude1", *LANE]) == 0 and calls["probe"] == ["claude1"]
