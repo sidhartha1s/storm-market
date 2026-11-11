@@ -102,8 +102,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#pd-face", { autoAlpha: 0, scale: 0.9, svgOrigin: O, smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: O, smoothOrigin: false, duration: 0.6, ease: "power3.out" }, 0.05);
   tl.fromTo("#pd-shimmer", { rotation: 0, svgOrigin: O, smoothOrigin: false }, { rotation: 369, svgOrigin: O, smoothOrigin: false, duration: 18.45, ease: "none" }, 0.05);
 
-  /* whole-dial float (quickref "Motion and exits"): the 20 deg/s shimmer alone is too faint for freeze_scan, which read 5.5 to 15.0 s as a hold. 15 legs x 1.25 s = 18.75 s */
-  tl.fromTo("#pd-stage", { y: 0 }, { y: -6, duration: 1.25, ease: "sine.inOut", yoyo: true, repeat: 14 }, 0.05);
+  /* whole-dial float (quickref "Motion and exits"): the 20 deg/s shimmer alone is too faint for freeze_scan, which read 5.5 to 15.0 s as a hold. 15 legs x 1.2 s = 18.0 s, ending inside the exit */
+  tl.fromTo("#pd-stage", { y: 0 }, { y: -6, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 14 }, 0.05);
 
   /* "that wind" @0.30 to 0.54, from 0.60: ticks draw in clockwise (0.04 apart), tick labels fade up with every second tick */
   tl.fromTo(["#pd-t0", "#pd-t1", "#pd-t2", "#pd-t3", "#pd-t4", "#pd-t5", "#pd-t6", "#pd-t7", "#pd-t8", "#pd-t9", "#pd-t10", "#pd-t11", "#pd-t12"],
