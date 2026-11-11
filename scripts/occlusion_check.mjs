@@ -7,7 +7,7 @@
 import { chromium, chromiumExecutable } from './playwright_env.mjs';
 import { readFileSync, unlinkSync } from 'fs';
 import { join, resolve } from 'path';
-import { hostCss, stageComp } from './stage_comp.mjs';
+import { compSize, hostCss, stageComp } from './stage_comp.mjs';
 
 const ep = resolve(process.argv[2] || '.');   // usage: node scripts/occlusion_check.mjs <episode dir>
 const idx = readFileSync(join(ep, 'index.html'), 'utf-8');
@@ -48,8 +48,9 @@ const RECTS = `(() => {
     }
     return { text, box }; };
 })()`;
-const pageUp = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
-const pageLo = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+const { w: W, h: H } = compSize(idx);
+const pageUp = await browser.newPage({ viewport: { width: W, height: H } });
+const pageLo = await browser.newPage({ viewport: { width: W, height: H } });
 const findings = [];
 const seenPair = new Set();
 for (const p of pairs) {

@@ -5,19 +5,21 @@
 import { chromium, chromiumExecutable } from './playwright_env.mjs';
 import { readFileSync } from 'fs';
 import { join, resolve } from 'path';
-import { hostCss, motionSpans, stageComp } from './stage_comp.mjs';
+import { compSize, hostCss, motionSpans, stageComp } from './stage_comp.mjs';
 
 const ep = resolve(process.argv[2]);
-const HOST_CSS = hostCss(readFileSync(join(ep, 'index.html'), 'utf8'));
+const INDEX_HTML = readFileSync(join(ep, 'index.html'), 'utf8');
+const HOST_CSS = hostCss(INDEX_HTML);
+const SIZE = compSize(INDEX_HTML);
 
 const PROBE = (win) => `(() => {
   const tl = window.__timelines && window.__timelines[Object.keys(window.__timelines)[0]];
   if (!tl) return { error: 'no timeline registered' };
-  return { spans: ${motionSpans(win)} };
+  return { spans: ${motionSpans(win, SIZE)} };
 })()`;
 
 const browser = await chromium.launch({ executablePath: chromiumExecutable(), args: ['--allow-file-access-from-files'] });
-const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+const page = await browser.newPage({ viewport: { width: SIZE.w, height: SIZE.h } });
 const out = {};
 for (const arg of process.argv.slice(3)) {
   const [id, win] = [arg.slice(0, arg.lastIndexOf('=')), +arg.slice(arg.lastIndexOf('=') + 1)];

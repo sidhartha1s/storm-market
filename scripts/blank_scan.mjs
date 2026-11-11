@@ -4,16 +4,18 @@
 import { chromium, chromiumExecutable } from './playwright_env.mjs';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { hostCss, stageComp } from './stage_comp.mjs';
+import { compSize, hostCss, stageComp } from './stage_comp.mjs';
 
 const EXECUTABLE = chromiumExecutable();
 const ep = process.argv[2];
 const STEP = 0.25;
 // staging (host <style> blocks, <base href>, host scripts) is stage_comp.mjs's, shared by every gate
-const HOST_CSS = hostCss(readFileSync(join(ep, 'index.html'), 'utf8'));
+const INDEX_HTML = readFileSync(join(ep, 'index.html'), 'utf8');
+const HOST_CSS = hostCss(INDEX_HTML);
+const { w: W, h: H } = compSize(INDEX_HTML);
 
 const browser = await chromium.launch({ executablePath: EXECUTABLE, args: ['--allow-file-access-from-files'] });
-const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+const page = await browser.newPage({ viewport: { width: W, height: H } });
 const findings = [];
 
 for (const f of readdirSync(join(ep, 'compositions')).filter(f => f.endsWith('.html'))) {
@@ -21,7 +23,7 @@ for (const f of readdirSync(join(ep, 'compositions')).filter(f => f.endsWith('.h
   await page.goto('file:///' + stageComp(ep, join(ep, 'compositions', f), HOST_CSS).replace(/\\/g, '/'), { waitUntil: 'load' });
   await page.waitForTimeout(120);
 
-  const res = await page.evaluate(async (step) => {
+  const res = await page.evaluate(async ({ step, W, H }) => {
     const k = Object.keys(window.__timelines || {})[0];
     if (!k) return { error: 'no timeline' };
     const tl = window.__timelines[k];
@@ -57,20 +59,20 @@ for (const f of readdirSync(join(ep, 'compositions')).filter(f => f.endsWith('.h
         if (op < 0.06) continue;
         const r = e.getBoundingClientRect();
         if (r.width < 1 || r.height < 1) continue;
-        if (r.bottom < 0 || r.top > 1080 || r.right < 0 || r.left > 1920) continue;
+        if (r.bottom < 0 || r.top > H || r.right < 0 || r.left > W) continue;
         /* leaf-ish only: a wrapper double-counts its children's area */
         if (e.children.length && e.textContent.trim() === '') continue;
         /* an <img> that failed to load still has a layout box — it is not ink */
         if (e.tagName === 'IMG' && !e.naturalWidth) continue;
-        ink += Math.min(r.width, 1920) * Math.min(r.height, 1080);
+        ink += Math.min(r.width, W) * Math.min(r.height, H);
       }
       out.push([+t.toFixed(2), Math.round(ink)]);
     }
     return { dur: +dur.toFixed(2), samples: out };
-  }, STEP);
+  }, { step: STEP, W, H });
 
   if (res.error) { findings.push([name, res.error]); continue; }
-  const FLOOR = 1920 * 1080 * 0.004;          // ~0.4% of frame = effectively empty
+  const FLOOR = W * H * 0.004;          // ~0.4% of frame = effectively empty
   let run = null;
   for (const [t, ink] of res.samples) {
     if (ink < FLOOR) { if (run === null) run = t; }

@@ -27,6 +27,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync, rmSync, unlinkSync 
 import { join, resolve } from 'node:path';
 import { tmpdir, freemem } from 'node:os';
 import { spawnSync } from 'node:child_process';
+import { compSize } from './stage_comp.mjs';
 
 const args = process.argv.slice(2);
 const ep = resolve(args[0] || '.');
@@ -57,6 +58,7 @@ process.env.QC_LIGHT = '1';                       // playwright_env -> render_bu
 const { chromium, chromiumExecutable } = await import('./playwright_env.mjs');
 
 let html = readFileSync(join(ep, 'index.html'), 'utf8');
+const { w: W, h: H } = compSize(html);
 const attr = (tag, name) => { const m = new RegExp(`\\b${name}="([^"]*)"`).exec(tag); return m ? m[1] : null; };
 
 /* full-frame footage windows, read BEFORE the media tags are neutralised */
@@ -95,7 +97,7 @@ const staged = join(TMP, '_episode.html');
 writeFileSync(staged, html, 'utf8');
 
 const browser = await chromium.launch({ executablePath: chromiumExecutable(), args: ['--allow-file-access-from-files'] });
-const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 0.5 });
+const page = await browser.newPage({ viewport: { width: W, height: H }, deviceScaleFactor: 0.5 });
 const pageErrors = [];
 page.on('pageerror', e => pageErrors.push(String(e.message).slice(0, 160)));
 await page.goto('file:///' + staged.replace(/\\/g, '/'), { waitUntil: 'load' });
@@ -137,14 +139,14 @@ for (const c of scanned.filter(c => !missing.includes(c.name))) {
     if (n % 20 === 0 && freemem() / 2 ** 30 < ABORT_FREE_GB) { aborted = true; break; }
     await page.evaluate((tt) => new Promise(res => { window.__fzSeek(tt); requestAnimationFrame(() => requestAnimationFrame(res)); }), c.start + t);
     await page.screenshot({ path: join(dir, `f_${String(n).padStart(5, '0')}.jpg`), type: 'jpeg', quality: 72 });
-    hasContent.push(await page.evaluate(() => [...document.querySelectorAll('body *')].some(e => {
+    hasContent.push(await page.evaluate(({ W, H }) => [...document.querySelectorAll('body *')].some(e => {
       if (/^(SCRIPT|STYLE|TEMPLATE|VIDEO|AUDIO)$/.test(e.tagName) || /drift|bgplate|grain/.test(e.id + ' ' + e.className)) return false;
       if (!(e.children.length === 0 && e.textContent.trim()) && !/^(IMG|CANVAS)$/.test(e.tagName) && !e.closest('svg')) return false;
       let o = 1;
       for (let p = e; p; p = p.parentElement) { const cs = getComputedStyle(p); if (cs.display === 'none' || cs.visibility === 'hidden') return false; o *= parseFloat(cs.opacity); }
       const r = e.getBoundingClientRect();
-      return o > 0.06 && r.width > 1 && r.height > 1 && r.bottom > 0 && r.top < 1080 && r.right > 0 && r.left < 1920;
-    })));
+      return o > 0.06 && r.width > 1 && r.height > 1 && r.bottom > 0 && r.top < H && r.right > 0 && r.left < W;
+    }), { W, H }));
     n += 1;
   }
   if (aborted) break;

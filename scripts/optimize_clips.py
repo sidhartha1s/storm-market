@@ -31,7 +31,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from media_budget import clip_windows
+from media_budget import clip_windows, comp_size
 
 ep = Path(sys.argv[1])
 apply = "--apply" in sys.argv
@@ -44,8 +44,7 @@ CRF_LADDER = [23, 27, 31]  # ep6 measured: 51 clips at crf23 = 194 MB, crf27 = 1
 
 h = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
 
-root = re.search(r'id="root"[^>]*data-width="(\d+)"[^>]*data-height="(\d+)"', h)
-COMP_W, COMP_H = (int(root.group(1)), int(root.group(2))) if root else (1920, 1080)
+COMP_W, COMP_H = comp_size(h)
 
 used = clip_windows(h)  # media_budget.py owns the window rule (in-point + duration, longest per src)
 
