@@ -370,7 +370,9 @@ const publish = (p, got) => {
   const next = { ...old, ...got };
   /* a tracked copy that differs only in line endings or spacing (autocrlf checkout) is not a change:
      rewriting it left the fixture modified after every e2e run */
-  if (existsSync(p) && JSON.stringify(JSON.parse(readFileSync(p, 'utf8'))) === JSON.stringify(next)) return;
+  // an unreadable copy (merge markers, a killed run's half file) counts as different and is rewritten, as before
+  const same = () => { try { return JSON.stringify(JSON.parse(readFileSync(p, 'utf8'))) === JSON.stringify(next); } catch { return false; } };
+  if (existsSync(p) && same()) return;
   writeFileSync(p, JSON.stringify(next, null, 1), 'utf8');
 };
 publish(join(compDir, '_durations.json'), DURS);
