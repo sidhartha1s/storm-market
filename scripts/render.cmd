@@ -152,5 +152,5 @@ exit /b %RC%
 
 :usage
 echo usage: render.cmd ^<episode-slug^> ^<draft^|full^> [out-basename]
-echo 1 usage %SLUG% %MODE% > "%~dp0render_last_error.marker"
+echo 1 usage %SLUG% %MODE% > "%~dp0render_last_error_%SLUG%_%OUTBASE:/=_%.marker"
 exit /b 1
