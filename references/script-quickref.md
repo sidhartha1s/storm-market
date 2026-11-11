@@ -155,7 +155,7 @@ mechanism/analysis pair) and plants+pays a loop.
   end of the day, when it comes to, plays a crucial role, stands as a, serves as a, is a reminder that, the quiet
   [anything], what sounds like, what amounts to, in what can only be described as, some say, many experts believe,
   it's been reported (name the source or cut the claim).
-- No em dashes, no rhetorical questions (exception: the chapter-exit question + one affirming line, owner 4 Oct 26; `script-os.md` rule 9), no hedging/filler intensifiers (arguably, kind of, very, really).
+- No em dashes, no rhetorical questions (a real open question may end a section, unanswered in the next line, owner 11 Nov 26; `script-os.md` rule 9), no hedging/filler intensifiers (arguably, kind of, very, really).
 - No banned sentence shapes: reveal-flip ("not X, it's Y"), question-then-answer fragment, anaphora run (3+
   sentences same opener), thesis opener ("this is the story of…"), summary tag ("That's the mechanism.").
 - Specifics over abstractions: exact figures, never rounded, unless the number is a feat not the point (a rail
