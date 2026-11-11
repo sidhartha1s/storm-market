@@ -23,12 +23,12 @@ his answer in `ops/decisions.md` (and with `stage.py record` when it is a gate) 
 4. **Titles and thumbnails of the shipped episodes.** Titles are still "TBD by owner" on E04, E05, E06, E08, E09 and no
    thumbnail is locked on E02 to E09. (A) he names each live title and thumbnail, and the session records them;
    (B) leave as is. Blocks: `stage.py` shows OWNER packaging on all nine. Reply: per episode, "E0n: <title>, thumb <file>".
-5. **Which of the nine are public on YouTube, and when?** Nothing on disk says. Buffalo's window was near Christmas
-   (23 to 27 Dec), Appalachian 24 to 26 Nov, Mayfield before 10 Dec; Enderlin is recorded as published (XxD2MYco8mM).
-   Blocks: the `published` lines in each `gates.md`. Reply: "E0n public on <date>" per episode, or "none yet".
-6. **E07 and E08 captions.** Their shipped SRTs lack narration lines that play (E07: 2 lines, at 14:33 and 17:03; E08:
-   3 lines, at 03:43, 05:24 and 14:59); `build_srt.py` now fails this. (A) rebuild the SRTs and re-upload the captions;
-   (B) leave them. Nothing else is blocked. Reply: "rebuild E07 and E08 captions" or "leave them".
+5. ANSWERED 11 Nov 26 ("the first three are live"): E01, E02 and E03 are public, uploaded 2, 5 and 8 Nov 26, on the
+   channel in `config.yaml channel`; recorded as `published` in their `gates.md`. E04 to E09 are not public. The
+   uploads ran three days apart, so E04 was due 11 Nov and still has no title picked (item 4).
+6. ANSWERED 11 Nov 26 ("I think you can rebuild it"): both SRTs rebuilt in the main checkout's `renders/` and
+   `uploads/` (E07 447 cues, was 434; E08 390, was 374; no cue removed; the old files kept beside them as
+   `*.before-2026-11-11.srt.bak`). Neither episode is uploaded yet, so nothing needs re-uploading.
 7. **A re-render under a default basename overwrites the review cut he was sent.** Options: (A) `render.cmd` refuses an
    existing output; (B) `dojo_draft.cmd` passes a timestamped basename; (C) both; (D) leave. Meanwhile pass a fresh
    basename by hand. Reply: "A", "B", "C" or "D".
