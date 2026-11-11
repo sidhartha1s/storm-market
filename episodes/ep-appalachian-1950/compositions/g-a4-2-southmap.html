@@ -281,7 +281,6 @@ window.__timelines = window.__timelines || {};
   tl.to({ t: 0 }, { t: 1, duration: DUR, ease: "none", onUpdate: function () { camAt(this.time()); } }, 0);
 
   /* transforms start in set() at 0 (file contract) */
-  const VALS = [P + "ashval", P + "atlval", P + "birval"];
   tl.set([P + "ashlab", P + "atllab", P + "birlab", P + "buflab", P + "penlab", P + "bufval", P + "penval", P + "cropchip", P + "crop2"], { x: 0, y: 0 }, 0);
   tl.set([P + "ashval", P + "atlval", P + "penval"], { scale: 1, transformOrigin: "0% 50%", smoothOrigin: false }, 0);
   tl.set(P + "birval", { scale: 1, transformOrigin: "100% 50%", smoothOrigin: false }, 0);
