@@ -19,7 +19,7 @@ his answer in `ops/decisions.md` (and with `stage.py record` when it is a gate) 
 3. **CTA v10 or v9?** E04, E05 and E06 mount `paul-storm-ready-v10-oct23`, which exists only on three unmerged branches;
    main tracks and pins v9 (`config.yaml channel.cta.file`), which sits 3.1 dB under Moore's narration. (A) land v10 on
    main (asset, config, decisions row); (B) keep v9 and fix its level. Meanwhile the next episode mounts v9. Reply: "land v10" or "keep v9".
-4. **Titles and thumbnails of the shipped episodes.** Titles are still "TBD by owner" on E04, E05, E06, E08, E09 and no
+4. **Titles and thumbnails of the shipped episodes.** Titles are still "TBD by owner" on E04, E05 and E06 (E08 and E09 chosen 11 Nov 26, `ops/decisions.md`) and no
    thumbnail is locked on E02 to E09. (A) he names each live title and thumbnail, and the session records them;
    (B) leave as is. Blocks: `stage.py` shows OWNER packaging on all nine. Reply: per episode, "E0n: <title>, thumb <file>".
 5. ANSWERED 11 Nov 26 ("the first three are live"): E01, E02 and E03 are public, uploaded 2, 5 and 8 Nov 26, on the
