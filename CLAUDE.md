@@ -54,12 +54,13 @@ An owner correction or a measured surprise lands in its single home (`references
 - Shorts: one demo built (`episodes/sh-hawaii-lowell-1`, 16 Sep 26), three Joplin shorts unrendered in open PR #179; no pilot go on record. No skill until about ten shorts stabilise.
 
 ## Owner gates: rules inherited from the owner's other channels (never claim or infer approval)
-- His gates per documentary, in this order and no others: the angle; the title and thumbnail (`references/packaging-rules.md`);
-  the hook+intro; the draft preview; any paid retake. Acts are never his gate (`references/script-scaling.md` "Section
+- His gates per documentary, in this order and no others: the angle; the hook+intro; the draft preview; any paid
+  retake; the title and thumbnail (`references/packaging-rules.md`), which block only the upload, never the hook+intro
+  or anything before the publish (owner 11 Nov 26, `pack_upload`: yes, "block only the upload"; `stage.py` follows it).
+  Acts are never his gate (`references/script-scaling.md` "Section
   lock"); a plan or ETA that waits on him for anything else is wrong (owner 28 Oct 26: "why I sign off the scripts
-  because I don't read it", and the titles of 3 videos never reached him). `stage.py` lets title and thumbnail block
-  only the publish; whether they close before the hook+intro, and whether insert clips and the voice pick are gates,
-  is open (`ops/tasks.md` "Waiting on the owner").
+  because I don't read it", and the titles of 3 videos never reached him). Whether insert clips and the voice pick are
+  gates is open (`ops/tasks.md` "Waiting on the owner"). Minis keep their own two gates (angle, then packaging).
 - Every approval or deferral is recorded the turn his words arrive: `python3 scripts/stage.py record episodes/<slug>
   <gate> --words "<his words, verbatim>" --shown "<file or URL>"` (`defer:<gate>` for "picks later" leaves the gate
   open). Nothing else counts as approval. `python3 scripts/stage.py` shows what every episode waits on.
