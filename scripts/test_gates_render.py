@@ -136,8 +136,8 @@ stub_all()
 hold("render ep-other draft")
 code, out, ran = gates(free=(8.0,))
 check("B render holds the lock, 8 GB free: only the file-only gates run, in order", ran == FILE_ONLY, f"ran={ran}")
-check("B browser gates are reported waiting for the render, exit 3, no stamp",
-      code == 3 and all(f"{n}" in out.split("waiting for the render", 1)[-1] for n in ("beat_density.py", "graphics_qc.mjs"))
+check("B browser gates and media_budget.py are reported waiting for the render, exit 3, no stamp",
+      code == 3 and all(f"{n}" in out.split("waiting for the render", 1)[-1] for n in ("beat_density.py", "media_budget.py", "graphics_qc.mjs"))
       and not list(ep.glob("*.marker")), f"exit {code}\n{out[-600:]}")
 
 code, out, ran = gates(free=(1.0,))
