@@ -637,7 +637,7 @@ with tempfile.TemporaryDirectory() as d:
         (stub_dir / name).write_text(
             f'import {{ appendFileSync }} from "fs"; appendFileSync(String.raw`{order_log}`, "{name}\\n");', encoding="utf-8")
     order_log.unlink()
-    r = subprocess.run([sys.executable, str(stub_dir / "run_gates.py"), str(ep), "--all"], capture_output=True, text=True)
+    r = subprocess.run([sys.executable, str(stub_dir / "run_gates.py"), str(ep), "--all"], capture_output=True, text=True, env=rg_env)
     ran = order_log.read_text(encoding="utf-8").splitlines() if order_log.exists() else []
     summary = r.stdout.split("RUN_GATES FAIL", 1)[-1]
     check("run_gates --all: runs every gate after a failure, exits 1, lists every failed gate once at the end",
