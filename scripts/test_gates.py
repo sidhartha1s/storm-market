@@ -734,6 +734,24 @@ with tempfile.TemporaryDirectory() as d:
     code, out = run("sweep_episode.py", close_ep(d, "close-not-ep", "<template><div>THE WARNING HOUR</div></template>"))
     check("sweep_episode close card: a non-`ep-` slug is skipped", "SKIP " + CLOSE_LABEL in out, out[-400:])
 
+# the close-card exemption list is config (channel.close_lockup.exempt), not slugs in sweep_episode.py:
+# a copy of sweep beside a config naming a slug skips it, and the same close PASSes under the real config
+with tempfile.TemporaryDirectory() as d:
+    root = Path(d) / "repo"
+    (root / "scripts").mkdir(parents=True)
+    for f in S.glob("*.py"):
+        (root / "scripts" / f.name).write_bytes(f.read_bytes())
+    cfg = (S.parent / "config.yaml").read_text(encoding="utf-8")
+    check("config: channel.close_lockup.exempt holds the two shipped exemptions",
+          yaml.safe_load(cfg)["channel"]["close_lockup"]["exempt"] == ["ep-palm-sunday-1965", "ep-camille-1969"])
+    (root / "config.yaml").write_text(cfg.replace("\n  end_ask:", "\n  close_lockup:\n    exempt: [ep-close-cfg]\n  end_ask:", 1), encoding="utf-8")
+    comp = (S.parent / "episodes" / "ep-enderlin-2025" / "compositions" / "g-outro.html").read_text(encoding="utf-8")
+    for slug, want in (("ep-close-cfg", "SKIP"), ("ep-close-other", "PASS")):
+        ep = close_ep(Path(d) / slug, slug, comp)
+        r = subprocess.run([sys.executable, str(root / "scripts" / "sweep_episode.py"), str(ep)], capture_output=True, text=True)
+        check(f"sweep_episode close card: a slug in config close_lockup.exempt {want}s", close_line(r.stdout + r.stderr).startswith(want),
+              close_line(r.stdout + r.stderr) or (r.stdout + r.stderr)[-400:])
+
 # ===================================================================================
 # 10. verify_render.sh silence classifier: the closing end card (last 4 s) may be silent
 # (owner 21 Oct 26: Joplin's final failed on silence 1194.33-1196.54 under its 4 s end card).
