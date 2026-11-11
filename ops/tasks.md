@@ -10,9 +10,8 @@ Every task number is used once; new rows take the next free number (now 60).
 Each item: the question, the options, what is blocked meanwhile, and the reply that settles it. The session records
 his answer in `ops/decisions.md` (and with `stage.py record` when it is a gate) the turn it arrives.
 
-1. **Is the title and thumbnail a gate before the hook+intro, or a pick that blocks only the upload?** CLAUDE.md lists it as
-   gate 2 before the hook+intro; the documentary skill says thumbnails block only the upload. (A) a gate: no hook+intro is
-   shown until he picks; (B) a pick: it blocks only publishing. Meanwhile `stage.py` follows B. Reply: "packaging is a gate" or "packaging blocks only the upload".
+1. ANSWERED 11 Nov 26 (devq `pack_upload`, "yes" to "block only the upload"): the title and thumbnail block only the
+   upload; written in CLAUDE.md "Owner gates" and `ops/decisions.md`; `stage.py` already followed it.
 2. **Are the per-insert yes/no and the voice pick owner gates?** CLAUDE.md says five gates "and no others"; DESIGN.md
    asks his yes on every `insert` clip, and the skill's picks page carries voice, inserts and thumbnails. (A) they are
    gates (add them to the list); (B) they are not (insert clips go in on the editor's call). Meanwhile inserts still wait
