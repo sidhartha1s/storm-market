@@ -30,7 +30,7 @@
    Bankruptcy."); the anaphora run (3+ sentences opening on the same word); the balanced-contrast engine beyond one per
    script; the "notice what he didn't do" scaffold; the characterized quote ("what sounded like mercy:"); the aphorism /
    mirrored-callback ending (exception: the one signature sign-off line, DESIGN.md "Signature closing footnote", owner kept it 4 Oct 26); the thesis opener ("this is the story of…"); the summary tag ("That's the mechanism.").
-8. **No rhetorical questions in narration.** Write the statement. Exception: the chapter-exit question + one affirming line (owner 4 Oct 26; script-os.md rule 9).
+8. **No rhetorical questions in narration** (a question the narrator answers himself). Write the statement. A real open question may end a section and is not answered in the next line (owner 11 Nov 26; script-os.md rule 9).
 9. **No em dashes.** Period, comma, or parentheses.
 10. **No hedging or filler intensifiers:** arguably, perhaps, kind of, sort of, somewhat, very, really, truly,
     incredibly, absolutely.
