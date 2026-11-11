@@ -197,7 +197,7 @@ with tempfile.TemporaryDirectory() as d:
     os.environ.pop("HEAVY_LOCK_TOKEN", None)
     ra.SCRIPTS = root / "scripts"
     acts15 = ra.plan_acts(COMP, 15)[0]
-    frames = {f"act{i:02d}.mp4": fb - fa for i, (fa, fb) in enumerate(acts15, 1)} | {"v1.mp4": acts15[-1][1]}
+    frames = {f"act{i:02d}.mp4": fb - fa for i, (fa, fb) in enumerate(acts15, 1)} | {"v0.mp4": acts15[-1][1], "v1.mp4": acts15[-1][1]}  # v0: a run that skips the stamp check completes
     seen, fail_on = [], None
 
     def fake_render(slug, mode, base, composition, extra_env=None):
