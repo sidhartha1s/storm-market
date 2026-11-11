@@ -72,12 +72,14 @@ stamp, checked = ep / timeline.STAMP, timeline.digest(ep)
 
 failed, waiting = [], []
 for name, cmd, cwd, kind in GATES:
-    if beside and kind == "browser":
+    if beside and kind != "file":
         waiting.append(name)
         continue
     if beside and (free := render_busy.free_gb()) < floor:  # read before every gate: the render's memory moves
         print(f"\nRUN_GATES WAIT - {free:.1f} GB free beside the render, below config.yaml "
               f"render.gates_beside_render_min_free_gb {floor:g} GB: {name} and every gate after it not run.")
+        if failed:  # --all: a failure already seen is a verdict, list it rather than exit 3
+            break
         sys.exit(3)
     print(f"\n=== {name} ===", flush=True)  # header before the gate's own output (e2e.gate_results reads it)
     r = subprocess.run(cmd, cwd=cwd)
