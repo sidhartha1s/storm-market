@@ -1,0 +1,52 @@
+<!-- g-gap-bar · S1-S5 "Twenty-five minutes later, the tornado crossed into Moore." · a vertical bar from 6:57 PM (top) to
+     7:22 PM (bottom) filling on "Twenty-five minutes", label 25 MIN; Moore on "Moore". Host 14.430 -> 19.590 (5.16 s); times host-local (episode - 14.43). -->
+<template>
+<style>
+  #g-gap-bar-root { position:absolute; left:0; top:0; width:1080px; height:1920px; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-gap-bar-stage { position:absolute; left:0; top:0; width:1080px; height:1920px; opacity:0; visibility:hidden; }
+  .g-gap-bar-svg { position:absolute; left:0; top:0; width:1080px; height:1920px; }
+  .g-gap-bar-time { position:absolute; left:120px; width:310px; text-align:right; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:56px; line-height:64px; color:#f2f5f8; }
+  #g-gap-bar-moore { position:absolute; left:120px; width:310px; top:1052px; text-align:right; white-space:nowrap; font-weight:700; font-size:34px; line-height:40px;
+    letter-spacing:6px; color:#93a3b2; opacity:0; visibility:hidden; }
+  #g-gap-bar-25 { position:absolute; left:568px; top:650px; white-space:nowrap; font-family:'AbrilFig', Georgia, serif; font-size:112px; line-height:120px; color:#d0121f;
+    text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 50px rgba(120,0,0,0.45); opacity:0; visibility:hidden; }
+  .g-gap-bar-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="g-gap-bar-root" data-composition-id="g-gap-bar" data-width="1080" data-height="1920">
+  <div id="g-gap-bar-stage">
+    <svg class="g-gap-bar-svg" viewBox="0 0 1080 1920">
+      <rect x="470" y="430" width="56" height="580" rx="28" fill="rgba(255,255,255,0.06)" stroke="#93a3b2" stroke-width="3"/>
+      <rect id="g-gap-bar-fill" x="470" y="430" width="56" height="580" rx="28" fill="#d0121f"/>
+      <circle cx="498" cy="430" r="16" fill="#f2f5f8"/>
+      <circle id="g-gap-bar-end" class="g-gap-bar-hide" cx="498" cy="1010" r="16" fill="#f2f5f8"/>
+    </svg>
+    <div class="g-gap-bar-time" id="g-gap-bar-657" style="top:398px;">6:57 PM</div>
+    <div class="g-gap-bar-time g-gap-bar-hide" id="g-gap-bar-722" style="top:978px;">7:22 PM</div>
+    <div id="g-gap-bar-moore">MOORE</div>
+    <div id="g-gap-bar-25">25 MIN</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-gap-bar-";
+  tl.set(P + "fill", { scaleY: 0, svgOrigin: "498 430", smoothOrigin: false }, 0);
+  /* TWENTY @0 (ep 14.43): bar in; -FIVE @0.16 fills; MINUTES @0.48 the label */
+  tl.fromTo(P + "stage", { autoAlpha: 0, x: 200 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0);
+  tl.to(P + "fill", { scaleY: 1, svgOrigin: "498 430", smoothOrigin: false, duration: 1.2, ease: "power2.inOut" }, 0.16);
+  tl.fromTo(P + "25", { scale: 0.6, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.32, ease: "back.out(2.2)" }, 0.48);
+  tl.to(P + "25", { y: -14, duration: 3.96, ease: "none" }, 0.8);
+  /* THE (tornado crossed) @1.36 (ep 15.79): 7:22 PM at the bottom as the fill lands */
+  tl.fromTo([P + "end", P + "722"], { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 1.36);
+  /* MOORE @2.44 (ep 16.87) */
+  tl.fromTo(P + "moore", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2.44);
+  /* exit on "phrase" (ep 19.19), the host's last 0.4 s */
+  tl.to(P + "stage", { x: -980, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 4.76);
+
+  window.__timelines["g-gap-bar"] = tl;
+})();
+</script>
+</template>
