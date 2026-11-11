@@ -132,7 +132,7 @@ his answer in `ops/decisions.md` (and with `stage.py record` when it is a gate) 
 |---|---|---|
 | 40 | `blank_scan.mjs` still carries its own staging copy instead of `stage_comp.mjs` (audit G12) | review (branch `sweep-2-gates`; fixture output identical before and after) |
 | 41 | `graphics_qc.mjs` rewrites the tracked `compositions/_durations.json` on every run, so e2e leaves the fixture's copy modified (audit G17). Cause: the checkout's copy had CRLF line endings (autocrlf) and the script rewrote it with LF though the content was the same; it now writes only when the content changes | review (branch `sweep-2-gates`) |
-| 42 | `sweep_episode.py` close-card exemptions are names in code, not config (audit G16) | todo |
+| 42 | `sweep_episode.py` close-card exemptions are names in code, not config (audit G16); now `config.yaml channel.close_lockup.exempt` | review (branch `sweep-2-gates`; sweep output identical for all 18 `episodes/ep*`) |
 | 43 | Every lane of every episode still starts on claude1 (audit L11) | todo |
 | 44 | `paul_voice.py` and `transcribe_episode.py` do not book the heavy lock (audit L10) | todo |
 | 45 | `paul_voice.py` cannot import on the ZBook: the OpenVoice weights are missing from `hf_home` (audit L14) | todo |
