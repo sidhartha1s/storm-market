@@ -599,5 +599,8 @@ assert dj.read_bytes() == same, 'same content must not be rewritten'
 dj.write_text(json.dumps({'z': 99}), encoding='utf-8')
 subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True, encoding='utf-8')
 assert json.loads(dj.read_text(encoding='utf-8')) == measured, 'changed content must be written'
+dj.write_text('<<<<<<< HEAD\n{"z": 1}\n', encoding='utf-8')   # merge markers or a killed run's half file
+subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True, encoding='utf-8')
+assert json.loads(dj.read_text(encoding='utf-8')) == measured, 'an unreadable copy must be rewritten, not crash the gate'
 shutil.rmtree(ep, ignore_errors=True)
 print('graphics_qc self-check PASS (_durations.json is rewritten only when its content changes)')
