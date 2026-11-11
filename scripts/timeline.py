@@ -5,9 +5,22 @@ in another order (every data-cut-by mount puts the attribute between id and src)
 (audit G1, G5, G6, G7, G11). Gates read tags through here instead: attributes as a dict, any order, and a
 commented-out tag is not mounted.
 """
+import hashlib
 import re
 
 ATTR = re.compile(r'([\w-]+)(?:="([^"]*)")?')
+STAMP = "gates_passed.marker"  # run_gates.py writes digest() here when every gate is green; gitignored (*.marker)
+
+
+def digest(ep):
+    """The one hash of the timeline the gates check (run_gates.py stamps it, render_preflight.py compares it): index.html,
+    compositions/*.html and audio/*.words.json, as bytes with their names. words.json is in because the gates time
+    against it and every TTS run rewrites it with its wav; wav and media bytes are out (GBs per episode, and
+    render_preflight.py runs media_budget.py on the media itself)."""
+    h = hashlib.sha256()
+    for p in sorted([*ep.glob("index.html"), *ep.glob("compositions/*.html"), *ep.glob("audio/*.words.json")]):
+        h.update(p.relative_to(ep).as_posix().encode() + b"\0" + hashlib.sha256(p.read_bytes()).digest())
+    return h.hexdigest()
 
 
 def live(html):
