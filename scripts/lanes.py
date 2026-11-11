@@ -366,6 +366,13 @@ def main(argv=None):
     if not (ep / "edit_script.md").exists():
         sys.exit(f"[lanes] FAIL: {ep / 'edit_script.md'} not found")
     if a.cmd == "status":  # read-only and lock-free: the Stop hook calls it
+        import stage  # here, not at the top: stage imports lanes, and stage owns the one rule for "shipped"
+        if stage.shipped(ep, stage.checkouts()[0][0]):  # its audio and candidates are gone from a fresh checkout: no jobs left to read
+            if a.json:
+                print(json.dumps({"orchestrator": None, "jobs": [], "blocking": [], "shipped": True}))
+            else:
+                print(f"shipped: {ep.name} has its final master in the main checkout; no jobs")
+            return 0
         ledger = load_ledger(ep)
         states = job_states(ep, ledger, time.time())
         if a.json:
