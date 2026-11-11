@@ -744,7 +744,7 @@ with tempfile.TemporaryDirectory() as d:
     cfg = (S.parent / "config.yaml").read_text(encoding="utf-8")
     check("config: channel.close_lockup.exempt holds the two shipped exemptions",
           yaml.safe_load(cfg)["channel"]["close_lockup"]["exempt"] == ["ep-palm-sunday-1965", "ep-camille-1969"])
-    (root / "config.yaml").write_text(cfg.replace("\n  end_ask:", "\n  close_lockup:\n    exempt: [ep-close-cfg]\n  end_ask:", 1), encoding="utf-8")
+    (root / "config.yaml").write_text(cfg.replace("exempt: [ep-palm-sunday-1965, ep-camille-1969]", "exempt: [ep-close-cfg]", 1), encoding="utf-8")
     comp = (S.parent / "episodes" / "ep-enderlin-2025" / "compositions" / "g-outro.html").read_text(encoding="utf-8")
     for slug, want in (("ep-close-cfg", "SKIP"), ("ep-close-other", "PASS")):
         ep = close_ep(Path(d) / slug, slug, comp)
