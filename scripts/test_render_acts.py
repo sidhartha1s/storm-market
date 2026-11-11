@@ -190,6 +190,8 @@ with tempfile.TemporaryDirectory() as d:
     ep = root / "episodes" / "ep-t"
     (ep / "renders").mkdir(parents=True)
     (ep / "index.html").write_text(COMP, encoding="utf-8")
+    import timeline  # noqa: E402
+    (ep / timeline.STAMP).write_text(timeline.digest(ep), encoding="ascii")  # as run_gates.py stamps an all-green run
     lock = root / "heavy.lock"
     saved = (ra.SCRIPTS, ra.run_render, ra.video_frames, ra.subprocess, dict(os.environ))
     os.environ["HEAVY_LOCK_FILE"] = str(lock)
