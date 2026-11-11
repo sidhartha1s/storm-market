@@ -38,9 +38,21 @@ Newest first. New entries go at the top, under this line. Superseded lines point
   A news pull that the script uses to its end is fetched whole and read to its last frame before it is cut.
 - The lint passes a missing hold (it only fails a gap that exists), so no gate can catch this. It is a reading step.
 
+## 27 Sep 26 - channel post-mortem of 11 long uploads (YouTube API)
+- 2011 Super Outbreak: 1,633 of 3,050 channel views (53.5 %), 973 from the Home feed on days 5 to 11; 68 % still
+  watching at 60 s, 56 % at 3 min, average view 11:25.
+- Other documentaries lose 22 to 35 points at 20 to 40 s, exactly where the script pauses, goes black, shows a title
+  card or disclaimer, or jumps to backstory (Tri-State -35, Fire -33).
+- Search works for US minis (Texas El Nino: 197 of 368 views from search); foreign and agency-bulletin minis flopped
+  (177 views across 5).
+- TV is 44.6 % of views with the longest average view; 34 % of viewers are 65+.
+- Hook or title claims walked back within 60 s, fake LIVE or NASA badges and a thumbnail typo cost viewers.
+- Impressions and CTR are not exposed by the API (400).
+
 ## 2026-09-23 - CTA moves late by default; hooks carry zero fluff; the owner edits scripts in a review loop
 - CTA: the owner judged the 30-40 % placement was not converting and only annoyed viewers. The documentary default is
-  now 85-95 % (`config.yaml channel.cta.window`), placed where it does not interrupt a reveal. He may move it again.
+  now 85-95 % (`config.yaml channel.cta.window`), placed where it does not interrupt a reveal. (Superseded 7 Oct 26:
+  `window` is 0.40-0.60, `ops/decisions.md`.) He may move it again.
 - Hooks: straight to the point, no fluff, and matched to the title and thumbnail more than to anything else. He was
   editing fluff out of shipped hooks by hand.
 - Numbers that are a feat, not the point (a rail car's weight, the distance it flew), are said roughly ("about seventy
@@ -86,7 +98,8 @@ beside them are confusing; a 3.5 s hold followed by a blackout is 5 to 7 s of no
 ## 2026-09-20 — plain American, literal clock times, atempo 1.10 on docs, and an independent grade on every script
 Owner on the 1974 hook: "quarter to five" is confusing, say "4:45 PM"; "the day is only half over" is a riddle; "why did
 knowing not save them" is Oxford English; "talk in a way a third grader can make sense of, talk like a human, you are
-overstressing the documentary persona". Also: docs get atempo 1.10 like the minis (probe the hook first).
+overstressing the documentary persona". Also: docs get atempo 1.10 like the minis (probe the hook first). (Superseded 8 Oct 26: tempo is
+`config.yaml channel.tempo`, 0.94; clock times are spelled out, `references/script-quickref.md` "Voice".)
 Rules:
 1. Clock times are literal digits with AM/PM in the on-screen popfig and spoken as "four forty five PM". No "quarter
    to", "half past", "the day is only half over".

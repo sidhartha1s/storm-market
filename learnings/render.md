@@ -2,6 +2,13 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 11 Nov 26: ZBook driver and NVENC, measured
+1. ZBook (hostname SIDHARTHA): `nvidia-smi` shows RTX A2000 8GB, driver 616.92. `ffmpeg -f lavfi -i
+   testsrc=size=1920x1080:rate=30 -t 1 -c:v h264_nvenc -f null -` succeeded on ffmpeg 8.1.1. The 26 Oct 26 QSV entry's
+   cause (driver 595.95) is gone; no real render has run on this driver yet, so the first must pass `stream_gate.py check`.
+2. Why heavy jobs go to the ZBook (kept from CLAUDE.md): on Joplin one act's transcription ran 28 min+ unfinished on
+   the ASUS while all 8 acts cut and converted on the ZBook in 19 min.
+
 ## 30 Oct 26: batch A finals on the ASUS (Buffalo, Appalachian, Galveston), what broke and what held
 1. Measured rate, full by act, 2 workers asked (render_busy cut to 1 under 3.2 GB free RAM): 3.1 wall s per output s
    (Buffalo act 2, 208.6 s in 10.7 min; act 3, 199.7 s in 10.4 min). Gates 4 to 8 min per episode, verify 4 min,
@@ -97,13 +104,13 @@ Newest first. New entries go at the top, under this line. Superseded lines point
    named `ep-palm-sunday-1965-preview-v1` was also checked against `render_full.log` (the log was picked by "draft" in
    the basename) and failed the GPU probe for a log that was not its own.
 2. Fix: `verify_render.sh <episode-dir> <basename> <draft|full>` takes the mode you gave `render.cmd`, and it is
-   required (missing or unknown: usage line, exit 1; the name guess is gone). The mode picks `render_<mode>.log` and the
-   frame rate. `render.cmd` now writes the rate it launched with (`RENDER_FPS` included) to `render_<mode>.fps`; a draft
-   must have exactly that rate, and a draft with no `render_draft.fps` (it predates this check, or never reached the
-   render step) exits 1 with one FAIL line naming the file. A full render is still held to the composition's `data-fps`,
+   required (missing or unknown: usage line, exit 1; the name guess is gone). `render.cmd` writes the rate it launched
+   with (`RENDER_FPS` included) to `renders/<basename>.fps` and its log to `renders/<basename>.log`; a draft must have
+   exactly that rate, and a draft with no `.fps` file of its own (it predates this check, or never reached the render
+   step) exits 1 with one FAIL line naming the file. A full render is still held to the composition's `data-fps`,
    so a 15 fps file checked as `full` FAILs and a draft shipped as the final is still caught.
-   The recorded rate is per mode, not per output name: two drafts of one episode at different rates share
-   `render_draft.fps`, the same limit as `render_draft.log`, so verify a draft before rendering the next.
+   The log and rate are per output name (11 Nov 26; they were per mode), so an older draft is never judged on a newer
+   render's log.
 3. Rule: pass the mode every time, and read the rate from what the render recorded, never from a constant typed in the
    checker (a draft rendered with `RENDER_FPS` set would fail it). The file name says neither.
 
@@ -205,6 +212,16 @@ ep4-el-reno draft, 1333.38 s, 20001 frames at 15 fps, 3 workers: compile 20.2 s,
    same episode at one time per composition host, then ffmpeg `ssim` per pair. ep4-el-reno, 69 hosts at 72 % of each
    window: min 0.995305, median 0.999786, none under 0.98. From the first captured frame to the written compare: 156 s.
    It reads stills only: audio and seeks during playback are still first seen in the draft render.
+
+## 6 Oct 26: book ad v2, cut with raw ffmpeg, came out of sync (ads and CTAs)
+1. ffmpeg `zoompan` snaps its crop to whole pixels, so the picture centre wobbled about 1 px every frame (std 0.95 px;
+   a hyperframes transform scale: 0.008 px). Ads and CTAs are composed in hyperframes; ffmpeg only trims, probes and
+   normalises loudness.
+2. A clip start written 33 microseconds after a frame boundary (4-decimal rounding) renders the whole clip one frame
+   behind its sound. Snap to the frame grid: starts rounded down, durations rounded up.
+3. Separate AAC encodes joined by concat put the sound about 50 ms late on the talking shots.
+4. Cards laid out to fill a still frame, then pushed in 10.7 %, left the frame by the end of the move. A push-in scales
+   an inner wrapper and ends at the designed layout. Look at the first and last frame of every move.
 
 ## 26 Sep 26: pin 0.8.41 to 0.8.78; currency moves to episode kickoff; the ritual demo is demo-pin
 

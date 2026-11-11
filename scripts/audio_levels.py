@@ -7,8 +7,8 @@ mix. Both defects are three numbers per element; a human ear catches them only
 after a full listen. Mechanical, repeated, must never be forgotten -> code.
 
 Checks (effective dB = file mean_volume + 20*log10(data-volume)):
-  1. Narration (nx-*): reference = median; any segment >3 dB off median = FAIL.
-  2. Inserts (ins-*): effective level within +/-2.5 dB of narration ref = FAIL
+  1. Narration (nx-*, not nx-ins*: timeline.is_narration): reference = median; any segment >3 dB off median = FAIL.
+  2. Inserts (ins-* and nx-ins*: timeline.is_insert): effective level within +/-2.5 dB of narration ref = FAIL
      otherwise ("dispatch must be as audible as narration" — owner 2026-08-17).
   3. Beds (any <audio data-bed>, regardless of id prefix — bgm-/sfx-/sx-/hf- all carry
      it): FAIL if within 6 dB of the narration ref (a bed that close competes with voice,
@@ -16,7 +16,7 @@ Checks (effective dB = file mean_volume + 20*log10(data-volume)):
      (id sx-mus-*) is inaudible (<ref-30 dB). WARN if near-inaudible otherwise.
   4. Audible video clips (any <video> not `muted`, data-volume default 1.0):
      WARN if above narration ref (clip audio shouting over voice).
-  5. Any other audible <audio> (no nx-/ins- id and no data-bed attribute) is an
+  5. Any other audible <audio> (no id, or no nx-/ins- id, and no data-bed attribute) is an
      unclassified element = FAIL — tag it data-bed or use the nx-/ins- convention.
   6. Narration (nx-*) ending in a burst: a loud run (> -40 dB) in the file's last
      0.6 s that follows 0.1 s or more of silence (< -55 dB) = FAIL. TTS sometimes
@@ -33,6 +33,8 @@ import statistics
 import subprocess
 import sys
 from pathlib import Path
+
+import timeline
 
 ep = Path(sys.argv[1])
 html = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
@@ -66,28 +68,20 @@ def tail_burst(p, tail_s=0.6, win_s=0.01):
 
 
 els = []
-for m in re.finditer(r"<(audio|video)\b([^>]*)>", html):
-    kind, attrs = m.group(1), m.group(2)
-    src = re.search(r'src="([^"]+)"', attrs)
-    # `\s` before id= — hyperframes stamps `data-hf-id="hf-xxxx"` on most elements, and an
-    # unanchored `id="..."` search matches INSIDE that attribute name ("...hf-id=") before it
-    # ever reaches the real `id="nx-..."` attribute, misreading every classified element as an
-    # unclassified "hf-xxxx" one. Root cause of the reported "hf- (164), bgm-, sfx- all take
-    # the warn-only path" — those elements were never actually being read by their real id.
-    eid = re.search(r'\sid="([^"]+)"', attrs)
-    vol = re.search(r'data-volume="([\d.]+)"', attrs)
-    if not (src and eid):
+# Attributes as a dict (timeline.mounts): `id` is the real id, never the tail of hyperframes' `data-hf-id`.
+for kind, a in timeline.mounts(html):
+    if "src" not in a:
         continue
     # A video is silent only when it says so: the `muted` attribute (repo convention) or
     # data-volume 0. hyperframes plays every other video's track at data-volume, default 1.0;
     # the old "no data-volume = muted" assumption let El Reno v3 ship audible stock footage.
-    if kind == "video" and re.search(r"\smuted(?=[\s>/=]|$)", attrs):
+    if kind == "video" and "muted" in a:
         continue
-    v = float(vol.group(1)) if vol else 1.0
+    v = float(a.get("data-volume") or 1.0)
     if v <= 0:
         continue
-    is_bed = bool(re.search(r'\sdata-bed(?=[\s>/=]|$)', attrs))
-    els.append((kind, eid.group(1), src.group(1), v, is_bed))
+    # an element with no id is still audible: it reaches check 5 (unclassified), it is never skipped
+    els.append((kind, a.get("id") or f"<no id: {a['src']}>", a["src"], v, "data-bed" in a))
 
 cache, rows = {}, []
 for kind, eid, src, v, is_bed in els:
@@ -100,7 +94,7 @@ for kind, eid, src, v, is_bed in els:
         continue
     rows.append((kind, eid, src, v, is_bed, mean, mean + 20 * math.log10(v)))
 
-narr = [eff for kind, eid, _, _, _, _, eff in rows if eid.startswith("nx-") and eff is not None]
+narr = [eff for kind, eid, _, _, _, _, eff in rows if timeline.is_narration(eid) and eff is not None]
 if not narr:
     print("[audio_levels] FAIL — no nx-* narration elements found")
     raise SystemExit(1)
@@ -113,14 +107,14 @@ for kind, eid, src, v, is_bed, mean, eff in rows:
         fails.append(f"{eid}: no audio stream / unreadable ({src})")
         continue
     d = eff - ref
-    if eid.startswith("nx-"):
+    if timeline.is_narration(eid):
         if abs(d) > 3.0:
             fails.append(f"{eid}: narration {d:+.1f} dB off reference")
         burst = tail_burst(ep / src)
         if burst:
             fails.append(f"{eid}: ends in a {burst[0]:.0f} dB burst after {burst[1]:.2f} s of silence ({src}); "
                          f"write a -v2 copy with the burst silenced, same length")
-    elif eid.startswith("ins-"):
+    elif timeline.is_insert(eid):
         if abs(d) > 2.5:
             fails.append(f"{eid}: insert {d:+.1f} dB vs narration (fix the FILE gain, attr vol is {v})")
     elif is_bed:

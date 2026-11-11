@@ -18,6 +18,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import render_preflight as rp  # noqa: E402
+import timeline  # noqa: E402
 
 VOICE = "anoisesrc=color=pink:seed=7:duration=4,volume=-20dB"  # one fixed spectrum the narration wavs and the clips share
 
@@ -57,7 +58,7 @@ def main():
         def gap(src, sidecar=None):
             if sidecar is not None:
                 (paul / (Path(src).name + ".vc.json")).write_text(json.dumps(sidecar), encoding="utf-8")
-            return rp._voice_gap(rp._mounts(mount(src)), ep)
+            return rp._voice_gap(timeline.mounts(mount(src)), ep)
 
         cases = [
             ("unconverted -v3 mount", gap("media/paul/ins-paul-1-v3.mp4"), "not a -vc file"),

@@ -15,10 +15,10 @@ Checks episodes/<slug>/index.html:
      over — they never fail the lint. Graphics sections (id containing -clip) exempt.
   6. PRESENTER CIRCLE (owner 2026-10-19, Joplin): a <video class="pip"> window holding more than
      4.0 s with no voice (narration or a voiced clip) FAILs: Paul's face sits frozen in silence.
-  7. OUTSIDE VOICES (owner 2026-10-20): in an epN documentary every audible non-narrator element
+  7. OUTSIDE VOICES (owner 2026-10-20): in a documentary (episode.is_documentary) every audible non-narrator element
      (radio, 911, broadcast sound) has a data-caption-for host covering its whole window, or
      data-caption-ok="reason" when it has no words. config.yaml channel.voice_captions.exempt lists shipped episodes.
-  8. DEAD AIR (owner 2026-10-21): inside a blackout or declared hold of an epN documentary, at most MAX_QUIET (4 s)
+  8. DEAD AIR (owner 2026-10-21): inside a blackout or declared hold of a documentary, at most MAX_QUIET (4 s)
      may pass with no narration, Paul line or audible outside sound (check 7's test, words or not); a bed alone
      does not count. Same exempt list.
   9. UNCLOSED MEDIA (Camille draft 1, 25 Oct 26): every <video>/<audio> in index.html and compositions/*.html is
@@ -37,6 +37,8 @@ from pathlib import Path
 import yaml
 
 from cut_by import cut_by_ok
+import episode
+import timeline
 
 # owner-banned audio by content hash (a rename cannot dodge it): "<md5>  <name>  <why>" per line
 _banned = Path(__file__).resolve().parent.parent / "assets/sfx/BANNED.md5"
@@ -57,13 +59,13 @@ def outside_voice(tag):
     idm = re.search(r'\sid="([^"]+)"', tag)   # \s: hyperframes stamps data-hf-id="hf-..." before the real id
     vid = idm.group(1) if idm else ""
     s, d = _num(tag, "data-start"), _num(tag, "data-duration")
-    # narration is nx- but not nx-ins (circle_audio.py, build_srt.py, sweep_episode.py); every sx- bed carries data-bed
-    if (re.match(r"nx-(?!ins)", vid) or vid.startswith(("ins-paul", "ins-cta")) or "data-bed" in tag
+    # narration is nx- but not nx-ins (timeline.is_narration); every sx- bed carries data-bed
+    if (timeline.is_narration(vid) or vid.startswith(("ins-paul", "ins-cta")) or "data-bed" in tag
             or re.search(r'src="[^"]*cta/', tag) or s is None or d is None):
         return None
     # audible as audio_levels.py reads it: data-volume defaults to 1.0; a video is silent only when muted
     vol = _num(tag, "data-volume")
-    if (vol is not None and vol <= 0) or (tag.startswith("<video") and re.search(r"\smuted(?=[\s>/=]|$)", tag)):
+    if (vol is not None and vol <= 0) or (tag.startswith("<video") and timeline.muted(tag)):
         return None
     return vid, s, s + d
 
@@ -146,7 +148,7 @@ def main():
         # b-roll is muted by default; a clip with its own sound declares data-has-audio
         # (FORMAT.md:57, owner 15 Sep 26: a stranded-passenger interview played under Paul and
         # a quote card with neither muted nor data-has-audio set).
-        if kind == "video" and 'data-track-index="1"' in attrs and "muted" not in attrs and "data-has-audio" not in attrs:
+        if kind == "video" and 'data-track-index="1"' in attrs and not timeline.muted(attrs) and "data-has-audio" not in attrs:
             findings.append(f"unmuted b-roll without data-has-audio: {src.group(1) if src else '?'}")
 
     audio_windows.sort()
@@ -173,18 +175,17 @@ def main():
     dip_out = float(_cta_cfg.get("dip_out", 0.8))
     # Voice is the narrator's segments plus Paul's own on-camera lines (<video id="ins-paul-N" data-volume="1">,
     # mg-quickref "Paul on screen", owner 7 Oct 26): a line he speaks on camera is not a hole in the narration.
-    # A silent ins-paul- clip is not voice (same data-volume test as build_srt.py and sweep_episode.py).
-    paul_lines = [m.groups() for m in re.finditer(
-        r'<video\b[^>]*id="ins-paul-[^"]*"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"[^>]*>', html)
-        if re.search(r'data-volume="1(?:\.0+)?"', m.group(0))]
-    voice = sorted((s, s + d) for s, d in ((float(a), float(b)) for a, b in paul_lines +
-                   re.findall(r'<audio\b[^>]*id="nx-(?!ins)[^"]*"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', html)))
-    structure = [(float(a), float(a) + float(b)) for a, b in re.findall(
-        r'<section\b[^>]*class="[^"]*\b(?:blackout|hold)\b[^"]*"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', html)]
+    # A silent ins-paul- clip is not voice (timeline.voiced). Attributes in any order (timeline.mounts).
+    timed = [(t, a) for t, a in timeline.mounts(html, "audio|video|section") if "data-start" in a and "data-duration" in a]
+    voice = sorted(timeline.window(a) for t, a in timed
+                   if (t == "audio" and timeline.is_narration(a.get("id", "")))
+                   or (t == "video" and a.get("id", "").startswith("ins-paul-") and timeline.voiced(a)))
+    structure = [timeline.window(a) for t, a in timed
+                 if t == "section" and re.search(r"\b(?:blackout|hold)\b", a.get("class", ""))]
 
-    # OUTSIDE VOICES and DEAD AIR: checks 7 and 8 in the docstring, epN documentaries not yet shipped.
+    # OUTSIDE VOICES and DEAD AIR: checks 7 and 8 in the docstring, documentaries not yet shipped.
     slug = ep.resolve().name
-    voice_rules = bool(re.match(r"ep\d*-", slug)) and slug not in (
+    voice_rules = episode.is_documentary(slug) and slug not in (
         ((_cfg.get("channel") or {}).get("voice_captions") or {}).get("exempt") or [])
     live = re.sub(r"<!--.*?-->", "", html, flags=re.S)   # a commented-out tag is not mounted
     sounds = [(m.group(0), outside_voice(m.group(0))) for m in re.finditer(r"<(?:audio|video)\b[^>]*>", live)]
@@ -246,26 +247,11 @@ def main():
     # a pixel blackdetect: a pixel scan false-positives on dark graphics in motion (three of
     # v3's flagged spans were exactly that), while a coverage gap is a real hole that always
     # renders black. Every instant in (0, comp_dur) must sit inside at least one picture window.
-    pic = []
-    for e in re.finditer(r'<(video|section|div)\b([^>]*)>', html):
-        a = e.group(2)
-        tr = re.search(r'data-track-index="(\d+)"', a)
-        st = re.search(r'data-start="([\d.]+)"', a)
-        du = re.search(r'data-duration="([\d.]+)"', a)
-        if tr and st and du and tr.group(1) in ("1", "2"):
-            s = float(st.group(1))
-            pic.append((s, s + float(du.group(1))))
-    pic.sort()
-    if pic:
-        cursor = 0.0
-        for s, e in pic:
-            if s > cursor + 0.03:                 # a hole before this window opens
-                findings.append(f"picture gap: nothing on tracks 1/2 from {cursor:.2f}s to {s:.2f}s "
-                                f"({s - cursor:.2f}s of black)")
-            cursor = max(cursor, e)
-        if cursor < comp_dur - 0.03:
-            findings.append(f"picture gap: nothing on tracks 1/2 from {cursor:.2f}s to end "
-                            f"{comp_dur:.2f}s ({comp_dur - cursor:.2f}s of black)")
+    wins = timeline.windows(html)   # the one window reader and coverage rule, shared with sweep_episode and clip_report
+    if any(w["tr"] in timeline.PICTURE_TRACKS for w in wins):
+        for s, e in timeline.picture_holes(wins, comp_dur):
+            findings.append(f"picture gap: nothing on tracks 1/2 from {s:.2f}s to {'end ' if e == comp_dur else ''}"
+                            f"{e:.2f}s ({e - s:.2f}s of black)")
 
     # 4+5: no-repeat + cadence on VISUAL windows.
     # Collect (src, start, dur, has_callback, has_holdok) for videos and timed <section><img>.

@@ -1,4 +1,5 @@
-# storm-market config — external tools + render settings (single source of truth)
+# storm-market config: pins, paths, tempo and CTA read by scripts. Render settings live in scripts/render.cmd;
+# keys marked "not read" below are documentation only, and editing them changes nothing.
 
 external:
   # The voice tool lives inside this repo (owner 7 Oct 26); `python3 scripts/voice_tool.py` checks every piece.
@@ -16,6 +17,7 @@ render:
   # `python3 scripts/pin_ritual.py` A/B-renders episodes/demo-pin against scripts/pin_baseline.json
   # and bumps this pin (plus every live scripts/*.cmd) only on identical metrics. History in learnings/render.md.
   # The 30s ffprobe deadline (Date.now() + 3e4, since 0.7.81) is why media_budget.py exists.
+  # fps, quality, crf, gpu, resolution: not read by any script (render.cmd hardcodes its own; check before relying on them)
   fps: 30
   quality: standard               # "high" silently picks libx265 CPU on this box (JP measured)
   crf: 16
@@ -24,8 +26,11 @@ render:
 
 channel:
   name: The Warning Hour   # owner-locked 2026-07-22
+  # YouTube, Paul's documentaries (E01 on): https://www.youtube.com/channel/UCBM-Hk07cy7IqU4cIH64_nw (@TheWarningHour-i1c, "The Warning Hour by Paul Raymond"; E01 public 2 Nov 26).
+  # YouTube, the earlier videos: https://www.youtube.com/channel/UC1MKCIvtxImjo_-RFV10PBQ/ , Google account paulraymondtwh@gmail.com (owner 27 Sep 26).
+  # The site's Search Console and Gemini key sit under sidclashes2much@gmail.com; never mix either with another project's Google login.
   niche: US weather/disaster documentaries
-  target_minutes: [13, 23]
+  target_minutes: [13, 23]       # not read by any script; length is set per episode (CLAUDE.md "Two lanes")
   tempo: 0.94                     # ffmpeg atempo, applied to every segment by tts_episode.py — CLAUDE.md
                                    # Voice + references/script-os.md "tempo BEFORE timing": docs and minis share it,
                                    # applied BEFORE transcription (tempo, then re-transcribe the sped wav).
@@ -54,6 +59,8 @@ channel:
     dip_out: 1.0
     srt_label: "[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"
     first_link: https://www.paulraymond.online/yt/?src=desc   # Paul says "the first link in the description" on camera; /yt/ is the page for video viewers, ?src=desc marks the sale as coming from a description
+  close_lockup:                   # the close card carries THE WARNING HOUR lockup (owner order 29 Oct 26; sweep_episode.py 5d-3)
+    exempt: [ep-palm-sunday-1965, ep-camille-1969]   # shipped before the order with another close; never extended
   end_ask:                        # Paul's sign-off ask, every ep- documentary from Joplin on (owner 19 Oct 26: "CTA is looking amazing. wire them to the videos for future") — DESIGN.md "End ask"
     files:                        # mounted back to back, in this order, staged into media/end-ask/; swap = NEW versioned files + bump here, never overwrite
       - {file: assets/end-ask/paul-end-ask-v1-oct19-a.mp4, duration: 9.083}   # md5 632818e077b958f22c719d580af0b41e

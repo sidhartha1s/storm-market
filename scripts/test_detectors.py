@@ -100,6 +100,37 @@ finally:
     OLD_MAIN_NPC.unlink()
 print('narration_picture_check self-check PASS (empty-archival loud warn, archival-only count)')
 
+# G4: a src-less designed <section> is named from its own body, never from the next element (the 1925 photo after it).
+# A modern year spoken over the designed card is not an era contradiction; clip_report names the card "?", not the photo.
+LOOKAHEAD_FILES = {
+    'index.html': '<div data-composition-id="root" data-duration="20">\n'
+                  '<section id="designed" class="clip ground" data-start="0" data-duration="5" data-track-index="1">'
+                  '<div class="t">a designed card</div></section>\n'
+                  '<img src="media/photos/1925-wreck.jpg" data-start="5" data-duration="5" data-track-index="1">\n'
+                  '<audio id="nx-a1-s1" src="audio/a1-s1.wav" data-start="0" data-duration="2"></audio>\n</div>',
+    'audio/a1-s1.words.json': json.dumps([{"text": "In", "start": 0.0, "end": 0.2}, {"text": "2011", "start": 0.3, "end": 0.8}]),
+}
+code, out = npc(LOOKAHEAD_FILES)
+assert code == 0 and 'says "2011"' not in out, f'G4: the designed card borrowed the next element\'s file: {out}'
+with tempfile.TemporaryDirectory() as d:
+    _mk(Path(d), LOOKAHEAD_FILES)
+    r = subprocess.run([sys.executable, str(S / 'clip_report.py'), d], capture_output=True, text=True)
+    assert '| 0:00.00 | 5.00s | 1 | still | ? |' in r.stdout, f'G4 clip_report: {r.stdout}'
+
+# G9: an nx-ins insert is another voice; it has no words.json and must not be demanded one
+INSERT_FILES = dict(ERA_FILES, **{'index.html': ERA_FILES['index.html'] +
+                                  '<audio id="nx-ins-911" src="audio/911.wav" data-start="2" data-duration="2"></audio>\n'})
+code, out = npc(INSERT_FILES)
+assert 'nx-ins-911' not in out and 'segments checked: 1/1' in out, f'G9: nx-ins counted as narration: {out}'
+print('narration_picture_check self-check PASS (G4 own-body window names, G9 nx-ins is an insert)')
+
+# G2: four episodes keep provenance.csv at the episode root, not under media/; the era check must read it there too
+ROOT_PROV_FILES = {k: v for k, v in ERA_FILES.items() if k != 'media/act1/provenance.csv'}
+ROOT_PROV_FILES['provenance.csv'] = ERA_FILES['media/act1/provenance.csv']
+code, out = npc(ROOT_PROV_FILES)
+assert code == 1 and 'says "2025"' in out, f'G2: a root provenance.csv was not read: {out}'
+print('narration_picture_check self-check PASS (G2 root provenance.csv)')
+
 GSAP = (S / '..' / 'library' / 'gallery' / 'gsap.min.js').resolve()
 
 
@@ -547,3 +578,29 @@ r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep), 'nope'], captur
 assert r.returncode == 1 and 'no compositions/<id>.html for: nope' in r.stderr, r.stdout + r.stderr
 shutil.rmtree(ep, ignore_errors=True)
 print('graphics_qc self-check PASS (comp-id scope keeps other comps\' entries; a timeline-less comp is its own no-timeline, not a crash)')
+
+# G17 (ops/tasks.md 41): graphics_qc rewrote the tracked compositions/_durations.json on every run, so a checkout
+# whose copy differs only in line endings or spacing (autocrlf, a hand edit) was modified by every e2e run.
+# Same content must leave the bytes alone; changed content must still be written. Old code (08b112e92c) rewrites.
+ep = _stage_ep(SETTLE_FILES)
+dj = ep / 'compositions' / '_durations.json'
+subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
+measured = json.loads(dj.read_text(encoding='utf-8'))
+assert list(measured) == ['z'], measured
+same = json.dumps(measured, indent=2).replace('\n', '\r\n').encode()   # same content, CRLF and 2-space indent
+old_gq = old_rev('graphics_qc.mjs', '_old_gqc_durations_tmp.mjs', '08b112e92c')
+dj.write_bytes(same)
+subprocess.run(['node', str(old_gq), str(ep)], capture_output=True, text=True, encoding='utf-8')
+old_gq.unlink()
+assert dj.read_bytes() != same, 'old code should rewrite a file whose content is the same but formatted differently'
+dj.write_bytes(same)
+subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True, encoding='utf-8')
+assert dj.read_bytes() == same, 'same content must not be rewritten'
+dj.write_text(json.dumps({'z': 99}), encoding='utf-8')
+subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True, encoding='utf-8')
+assert json.loads(dj.read_text(encoding='utf-8')) == measured, 'changed content must be written'
+dj.write_text('<<<<<<< HEAD\n{"z": 1}\n', encoding='utf-8')   # merge markers or a killed run's half file
+subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True, encoding='utf-8')
+assert json.loads(dj.read_text(encoding='utf-8')) == measured, 'an unreadable copy must be rewritten, not crash the gate'
+shutil.rmtree(ep, ignore_errors=True)
+print('graphics_qc self-check PASS (_durations.json is rewritten only when its content changes)')

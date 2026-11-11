@@ -2,6 +2,26 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 11 Nov 26 - time-boxed builds against the open-ended process (3 graphics, blind judge)
+Rule now lives in `references/mg-brief-template.md` 7b; this entry keeps what was measured.
+- **Test:** `g-a5-9-ban-card`, `g-a1-3-pressure-dial` (Buffalo, Sonnet) and `g-a4-2-southmap` (Appalachian, Opus) rebuilt
+  from their briefs twice: once on the full quickref and seven-item done line with no clock, once with a 15 minute
+  box, a six-minute whole-file write and a short pre-flight list. An Opus verifier judged both and the shipped
+  originals blind, from full-size frames.
+- **Time and tokens:** open-ended 11.8, 34.8 and 20.5 min (67.2 total, 716,195 tokens); boxed 6.9, 6.2 and 8.7 min
+  (21.8 total, 442,490 tokens). The one boxed FIX took a second turn of 1.3 min against a 10 minute box.
+- **Verdicts:** boxed 2 SHIP, 1 FIX (cleared in turn 2); open-ended 2 SHIP, 1 FIX; the shipped originals 0 SHIP, 3 FIX.
+  The boxed build won the dial and the map, the open-ended one the ban card (the boxed ground was too bright).
+- **Where the open-ended time went:** measuring rigs (own capture pages, pixel counts, both seek orders) for items
+  no verifier then needed, and every done-line gate run singly.
+- **Every hard fail came from the brief, not the builder:** no mounted host length or cue offset (a fade cut
+  mid-way), a push that contradicts "the last frame is P0", holds whose only motion the freeze detector cannot see,
+  a source line never shown, labels placed where the needle sweeps, a chip that cannot fit the safe zone at its size.
+- **Before this:** from first brief to first file took a median 52.7 min across 153 graphics of the three episodes
+  (waves of 19 to 32 builders), and 43 % came back for a second session about 2 hours later; 8 of 33 sampled second
+  sessions were retimes after the narration changed.
+- **Limits:** three full-frame graphics, no overlay over footage (the media is not on the ZBook), one run each.
+
 ## 28 Oct 26 - batch A (ep-buffalo-2022, ep-galveston-1900, ep-appalachian-1950): four kinds the gates passed
 Rules now live in `references/mg-quickref.md`; this entry keeps what happened.
 - **svgOrigin on one side of a tween (6 comps):** Buffalo g-a1-3, g-a1-4, g-a2-2, g-a4-2; Galveston g-a3-9, g-a4-11.

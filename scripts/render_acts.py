@@ -13,6 +13,10 @@ Each act lands in renders/acts/<out-basename>/actNN.mp4 with a fingerprint of ev
 (staged slice, the sub-compositions it mounts, render.cmd, mode, fps). With --reuse, an act whose fingerprint matches
 the older run's is taken from there instead of rendered. Output: renders/<out-basename>.mp4. Nothing is overwritten.
 --plan prints the seams and exits.
+The whole run holds the heavy lock (render_busy.heavy_lock), so no TTS, e2e or other render runs between two acts and
+no other run restages the act file while this one waits; each act's render.cmd passes through on HEAVY_LOCK_TOKEN.
+render.cmd writes render_<mode>_done.marker after EVERY act and the audio pass: poll render_acts_<out-basename>_done.marker
+instead, which holds this run's exit code (0 only once the concat is checked) and is deleted when the run starts.
 """
 import hashlib
 import html as html_lib
@@ -26,6 +30,9 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 SCRIPTS = Path(__file__).resolve().parent
+sys.path.insert(0, str(SCRIPTS))
+import render_busy  # noqa: E402
+
 RENDER_CMD = SCRIPTS / "render.cmd"
 STAGE_NAME = "_act_tmp.html"  # the next plain render.cmd run sweeps _*_tmp.html
 AUDIO_FPS = 1
@@ -303,7 +310,20 @@ def main(argv):
         raise SystemExit(f"render_acts: {out.name} or acts/{base} exists; never overwritten, pick a new basename")
     old = json.loads((renders / "acts" / reuse / "plan.json").read_text()) if reuse else {"acts": []}
     old_by_key = {(x["frames"][0], x["frames"][1], x["fingerprint"]): x["file"] for x in old["acts"]}
-    pieces.mkdir(parents=True)
+    pieces.mkdir(parents=True)  # claims the basename before the wait for the lock
+    marker = ep / f"render_acts_{base}_done.marker"
+    marker.unlink(missing_ok=True)
+    try:
+        with render_busy.heavy_lock(f"render_acts {slug} {mode} {base}"):
+            render_all(slug, mode, ep, fps, html, acts, old_by_key, pieces, out)
+    except BaseException:
+        marker.write_text("1\n")
+        raise
+    marker.write_text("0\n")
+
+
+def render_all(slug, mode, ep, fps, html, acts, old_by_key, pieces, out):
+    base, renders = pieces.name, out.parent
     plan = {"mode": mode, "fps": fps, "acts": []}
     for i, (fa, fb) in enumerate(acts, 1):
         staged = slice_html(html, fa, fb, fps)
@@ -316,8 +336,7 @@ def main(argv):
             (ep / STAGE_NAME).write_text(staged, encoding="utf-8")
             run_render(slug, mode, f"acts/{base}/act{i:02d}", STAGE_NAME)
             path = str(pieces / f"act{i:02d}.mp4")
-            log = (ep / f"render_{mode}.log").read_text(encoding="utf-8", errors="replace")
-            (pieces / f"act{i:02d}.log").write_text(log, encoding="utf-8")  # the next render overwrites the episode log
+            log = (pieces / f"act{i:02d}.log").read_text(encoding="utf-8", errors="replace")  # render.cmd's copy
             if "NVIDIA" not in log:  # verify_render.sh's GPU check, which would otherwise see only the audio pass
                 raise SystemExit(f"render_acts: act{i:02d} did not render on the NVIDIA GPU; see {pieces / f'act{i:02d}.log'}")
         got = video_frames(path)
@@ -326,7 +345,9 @@ def main(argv):
         plan["acts"].append({"frames": [fa, fb], "fingerprint": fp, "file": path})
         (pieces / "plan.json").write_text(json.dumps(plan, indent=1))
     run_render(slug, mode, f"acts/{base}/audio", "index.html", {"RENDER_FPS": str(AUDIO_FPS)})
-    (ep / f"render_{mode}.fps").write_text(f"{fps}\n")  # verify_render.sh checks the output against this, not the 1 fps pass
+    # verify_render.sh reads these beside the output: the act fps, not the 1 fps pass's; the audio pass's log, as before
+    (renders / f"{base}.fps").write_text(f"{fps}\n")
+    (renders / f"{base}.log").write_bytes((pieces / "audio.log").read_bytes())
     listing = pieces / "concat.txt"
     listing.write_text("".join(f"file '{Path(x['file']).as_posix()}'\n" for x in plan["acts"]))
     total = acts[-1][1]

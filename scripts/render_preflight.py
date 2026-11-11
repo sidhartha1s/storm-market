@@ -24,6 +24,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+import episode as episode_kind  # `episode` is the folder argument everywhere below
+import timeline
 import render_busy  # the busy check below reuses this, not a second process/name list
 
 
@@ -97,21 +99,8 @@ def busy_refusal():
 # The Joplin draft (18 Oct 26) went to render with 0 corner-circle mounts and no music bed while
 # both shipped documentaries had them. Owner: "it should be fucking checked before you fucking fire render".
 
-DOC_SLUG = "ep-"
-TAG = re.compile(r'<(audio|video)\b((?:[^>"]|"[^"]*")*)>', re.I)
-ATTR = re.compile(r'([\w-]+)(?:="([^"]*)")?')
 BED_COVER_MIN = 0.80
 PAUL_CLIPS = 6
-
-
-def _mounts(html):
-    live = re.sub(r"<!--.*?-->", "", html, flags=re.S)  # a commented-out mount is not mounted
-    return [(tag.lower(), dict(ATTR.findall(attrs))) for tag, attrs in TAG.findall(live)]
-
-
-def _window(attrs):
-    start = float(attrs["data-start"])
-    return start, start + float(attrs["data-duration"])
 
 
 def _circle_gap(mounts, _episode=None):
@@ -125,11 +114,11 @@ def _bed_gap(mounts, _episode=None):
     # A bed is how the shipped episodes mount it: data-bed plus "bed" or "mus" in the id (Palm Sunday
     # sx-bed-a1, El Reno sx-mus-bed-a, 1974 sx-mus-a1). Swells and hits also carry data-bed, so the
     # attribute alone is not a bed.
-    beds = sorted(_window(a) for t, a in mounts
+    beds = sorted(timeline.window(a) for t, a in mounts
                   if t == "audio" and "data-bed" in a and {"bed", "mus"} & set(a.get("id", "").split("-")))
     if not beds:
         return "0 bed <audio> mounts (data-bed with 'bed' or 'mus' in the id)"
-    narration = [_window(a) for t, a in mounts if t == "audio" and re.match(r"nx-(?!ins)", a.get("id", ""))]  # same narration rule as lint_timeline / circle_audio
+    narration = [timeline.window(a) for t, a in mounts if t == "audio" and timeline.is_narration(a.get("id", ""))]
     if not narration:
         return "no nx- narration to measure the bed against"
     lo, hi = min(s for s, _ in narration), max(e for _, e in narration)
@@ -260,10 +249,10 @@ LAYERS = (
 
 
 def missing_layers(slug, html, episode=None):
-    """(layer, finding, rule) for every owner-asked layer the timeline lacks; [] outside documentaries."""
-    if not slug.startswith(DOC_SLUG):
+    """(layer, finding, rule) for every owner-asked layer the timeline lacks; [] outside current documentaries."""
+    if not episode_kind.is_current_documentary(slug):
         return []
-    mounts = _mounts(html)
+    mounts = timeline.mounts(html)
     return [(name, gap, rule) for name, check, rule in LAYERS if (gap := check(mounts, episode))]
 
 

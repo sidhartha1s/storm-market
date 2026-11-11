@@ -2,18 +2,14 @@
    how much visible ink is on screen. Catches a graphic that renders empty or near-empty
    at some point without waiting 40 minutes for a render to prove it. */
 import { chromium, chromiumExecutable } from './playwright_env.mjs';
-import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { hostCss } from './stage_comp.mjs';
+import { hostCss, stageComp } from './stage_comp.mjs';
 
 const EXECUTABLE = chromiumExecutable();
 const ep = process.argv[2];
 const STEP = 0.25;
-const gsap = readFileSync(join(ep, 'gsap.min.js'), 'utf8');
-const tmp = join(ep, '_blank_tmp.html');
-// Host-style injection: hyperframes mounts comps INSIDE index.html's DOM, so the page stylesheet
-// applies to comp elements (17 Sep 26: host `.chip{bottom:300px}` stretched a comp chip into a 720 px
-// panel; every standalone gate passed). Staging must carry the host <style> blocks.
+// staging (host <style> blocks, <base href>, host scripts) is stage_comp.mjs's, shared by every gate
 const HOST_CSS = hostCss(readFileSync(join(ep, 'index.html'), 'utf8'));
 
 const browser = await chromium.launch({ executablePath: EXECUTABLE, args: ['--allow-file-access-from-files'] });
@@ -22,13 +18,7 @@ const findings = [];
 
 for (const f of readdirSync(join(ep, 'compositions')).filter(f => f.endsWith('.html'))) {
   const name = f.replace('.html', '');
-  const raw = readFileSync(join(ep, 'compositions', f), 'utf8');
-  const inner = raw.slice(raw.indexOf('<template>') + 10, raw.lastIndexOf('</template>'));
-  writeFileSync(tmp, `<!doctype html><html><head><meta charset="utf-8">
-<style>${HOST_CSS}</style>
-<style>html,body{margin:0;background:#000;width:1920px;height:1080px;overflow:hidden}</style>
-<script>${gsap}</script></head><body>${inner}</body></html>`, 'utf8');
-  await page.goto('file:///' + tmp.replace(/\\/g, '/'), { waitUntil: 'load' });
+  await page.goto('file:///' + stageComp(ep, join(ep, 'compositions', f), HOST_CSS).replace(/\\/g, '/'), { waitUntil: 'load' });
   await page.waitForTimeout(120);
 
   const res = await page.evaluate(async (step) => {

@@ -15,22 +15,29 @@ which jobs were launched and when they ended, and which are held.
   python3 scripts/lanes.py end    episodes/<slug> verify:a4   # the lane stopped (its output may still need syncing back)
   python3 scripts/lanes.py hold   episodes/<slug> source:z1|all --reason "z1 media sits in the a6 folder"
   python3 scripts/lanes.py unhold episodes/<slug> source:z1
-  python3 scripts/lanes.py status episodes/<slug> [--json]   # exit 2 while any job is READY, STALE or FAILED; read-only
+  python3 scripts/lanes.py status episodes/<slug> [--json]   # exit 2 while any job is READY, STALE or FAILED; read-only;
+                                                             # a shipped episode (stage.shipped) prints one line and exits 0
   python3 scripts/lanes.py relaunch episodes/<slug>          # put every FAILED lane on the next profile that answers
   python3 scripts/lanes.py stop   episodes/<slug> all|<job>  # stop-all: end each RUNNING, STALE or FAILED lane's tree; ended only once stopped
 
 Launching (why: lanes sat dead for hours on an exhausted profile or a full ZBook). `start --cmd` runs one job's command
-itself, hidden and detached, on host local or zbook, with {cli} replaced by the profile (claudeN, the wrapper that sets
-CLAUDE_CONFIG_DIR), started in --cwd (default: this checkout; required on zbook) and all output sent to --log.
+itself, hidden and detached, on host local, zbook or asus (MACHINES; the alias of the laptop this runs on is local, so
+from the ZBook `zbook` needs no ssh), with {cli} replaced by the profile (claudeN, the %USERPROFILE%\\bin\\claudeN.cmd
+wrapper: a token from ~/.claude-tokens, or a login folder under ~/.claude-accounts for claude6 and claudemax),
+started in --cwd (default: this checkout; required off this machine) and all output sent to --log.
 It refuses a job already RUNNING or DONE, and an ssh drop during the launch is never a reason to launch again:
 the host is asked whether the lane's process runs, and one that cannot be read is recorded as RUNNING. The three rules:
-  1. it first probes the profile (`claude -p 'reply with the single word ok' --model haiku` under its
-     CLAUDE_CONFIG_DIR); any reply but "ok" (a limit, a logged-out profile, an error) moves it to the next
-     ~/.claude-accounts/claude* profile. It never waits for a reset.
+  1. it first probes the profile by running its wrapper (`claudeN -p 'reply with the single word ok' --model haiku`,
+     the same command the lane runs); any reply but "ok" (a limit, a logged-out profile, an error) moves it to the
+     next profile that can run on that host (a wrapper there with a token or a login). It never waits for a reset.
+     The order is --profile first, then least loaded first: the lanes the ledgers of every episode of this repo track
+     as running (running_load), so concurrent episodes spread over the accounts instead of piling onto claude1.
   2. every start refuses while the host has MIN_FREE_GB or less free (a RAM floor, not a lane cap: lanes run on the API)
   3. a running lane whose log tail says it hit a limit is FAILED (blocking). `status` only reports it, since the Stop
      hook calls status; `relaunch` moves it to the next profile that answers, and backs off if another lanes.py
      holds the lock
+A running lane whose process is gone reads READY, like an ended one ("relaunch it, or sync its output back"); a host
+that cannot be read leaves it RUNNING (unknown is not dead). `claim` over another session's claim says whose it was.
 Every command but status reads and writes the ledger only while holding <ep>/lanes.json.lock (created exclusively; a
 write waits up to LOCK_WAIT_S for it; one older than LOCK_MIN minutes belongs to a dead holder and is taken over).
 
@@ -50,6 +57,7 @@ import csv
 import json
 import os
 import re
+import socket
 import subprocess
 import sys
 import time
@@ -64,22 +72,27 @@ INTRO = {"h1", "t1", "i1"}
 HOLD_H = 3          # a hold lapses after this many hours, so a wait is re-decided, never forgotten
 DEFAULT_MIN = 60    # a lane with no end recorded this many minutes after its start is presumed dead (STALE)
 BLOCKING = ("READY", "STALE", "FAILED")
-HOSTS = ("local", "zbook")
+MACHINES = {"zbook": "SIDHARTHA", "asus": "SPTL-184"}  # each laptop's ssh alias -> its Windows hostname
+HOSTS = ("local", *MACHINES)
 MIN_FREE_GB = 4     # a lane never starts on a host with this much free memory or less
-ACCOUNTS = Path.home() / ".claude-accounts"
 LIMIT = re.compile(r"hit your (\w+ )?limit|session limit|usage limit reached", re.I)
 LOCK_MIN = 10      # a ledger lock older than this is a dead holder's
 LOCK_WAIT_S = 120  # a ledger write waits this long for the lock before it gives up
-NO_LOG = "[lanes: no log]"  # read_log's answer for a log that does not exist; the launch redirect creates it at once
+NO_LOG = "[lanes: no log]"  # read_lane's answer for a log that does not exist; the launch redirect creates it at once
 NO_WINDOW = getattr(subprocess, "CREATE_NO_WINDOW", 0)  # no console window for the stop hook's children
 NO_LOG_MIN = 5     # a RUNNING lane with no log this many minutes after its start never ran (an unconfirmed launch)
+
+
+def is_local(host):
+    """True when host is this machine: "local", or this laptop's own alias (zbook, seen from the ZBook)."""
+    return host == "local" or MACHINES.get(host, "").lower() == socket.gethostname().lower()
 
 
 def ps(host, script, timeout=90):
     """(exit code, output) of a PowerShell script on host: the one place that knows how to reach a host."""
     argv = ["powershell", "-NoProfile", "-NonInteractive", "-EncodedCommand",
             base64.b64encode(script.encode("utf-16-le")).decode()]  # encoded, so no quoting has to survive ssh and cmd
-    if host != "local":  # shortcut: the remote shell caps a line at 8191 chars (about a 2,500-char script)
+    if not is_local(host):  # shortcut: the remote shell caps a line at 8191 chars (about a 2,500-char script)
         argv = ["ssh", "-n", "-o", "ConnectTimeout=15", host, " ".join(argv)]
     try:
         r = subprocess.run(argv, capture_output=True, text=True, encoding="utf-8", errors="replace",
@@ -94,11 +107,22 @@ def quote(s):
 
 
 def probe(host, profile):
-    """Rule 1: True only if the profile replies "ok"; a limit, a logged-out profile or an error is False."""
-    code, out = ps(host, f'$env:CLAUDE_CONFIG_DIR = "$HOME\\.claude-accounts\\{profile}"; '
-                         '& "$HOME\\.local\\bin\\claude.exe" -p \'reply with the single word ok\' --model haiku',
+    """Rule 1: True only if the profile replies "ok"; a limit, a logged-out profile or an error is False.
+    It runs the profile's wrapper by name, as the lane's {cli} does, so the probe tests the credential the lane uses."""
+    code, out = ps(host, f"& {profile} -p 'reply with the single word ok' --model haiku",
                    timeout=30)  # a relaunch may probe several profiles in a row
     return code == 0 and out.strip().strip(".").lower() == "ok"
+
+
+def profiles(host):
+    """The profiles that can run on host: each %USERPROFILE%\\bin\\claude*.cmd wrapper with a credential, a token in
+    ~/.claude-tokens (claude1-5, 7) or a login folder's .credentials.json (claude6, claudemax). The probe still decides."""
+    code, out = ps(host, "Get-ChildItem \"$env:USERPROFILE\\bin\\claude*.cmd\" | ForEach-Object BaseName | Where-Object { "
+                         "(Test-Path \"$env:USERPROFILE\\.claude-tokens\\$_\") -or "
+                         "(Test-Path \"$env:USERPROFILE\\.claude-accounts\\$_\\.credentials.json\") }", timeout=30)
+    if code:
+        sys.exit(f"[lanes] FAIL: cannot list the claude profiles on {host}: {out.strip()[-200:]}")
+    return sorted(out.split())
 
 
 def free_gb(host):
@@ -150,7 +174,7 @@ def spawn(host, cmd, log, cwd):
     # code 0: the host answered and refused it. Local has no ssh to drop, and its query would find this lanes.py, whose
     # own command line holds the log. Else ssh dropped mid-call and the Create may have run: ask the host
     # shortcut: a Create still in flight when the host answers reads as not running; a ~1 s window, rare enough here
-    up = False if code == 0 or host == "local" else alive(host, log)
+    up = False if code == 0 or is_local(host) else alive(host, log)
     if up is False:
         sys.exit(f"[lanes] FAIL: launch on {host} failed: {out.strip()[-300:]}")
     if up is None:
@@ -158,18 +182,35 @@ def spawn(host, cmd, log, cwd):
               f"so it is never launched twice; `status` calls it FAILED if its log never appears ({out.strip()[-120:]})")
 
 
-def read_log(host, log):
-    """The last lines of a lane's log, NO_LOG when it does not exist, or None when the host cannot be read."""
-    code, out = ps(host, f"$p = {quote(log)}; if (Test-Path -LiteralPath $p) {{ Get-Content -Tail 5 -LiteralPath $p }} else {{ '{NO_LOG}' }}",
-                   timeout=20)  # status runs under the Stop hook's 120 s
-    return out.strip() if code == 0 else None
+def read_lane(host, log):
+    """(running, last lines of its log): running is whether the lane's root cmd.exe still runs (alive()'s match), the
+    lines NO_LOG when the log does not exist. None when the host cannot be read. One call, as status runs under the
+    Stop hook's 120 s and an offline host costs one ssh ConnectTimeout per lane."""
+    code, out = ps(host, f"@(Get-CimInstance Win32_Process | Where-Object {{ {root_filter(log)} }}).Count; $p = {quote(log)}; "
+                         f"if (Test-Path -LiteralPath $p) {{ Get-Content -Tail 5 -LiteralPath $p }} else {{ '{NO_LOG}' }}",
+                   timeout=20)
+    n, _, tail = out.strip().partition("\n")
+    return (int(n) > 0, tail.strip()) if code == 0 and n.strip().isdigit() else None
 
 
-def profile_order(first=None, skip=None):
-    """~/.claude-accounts/claude* names, starting at first, without skip."""
-    names = sorted(p.name for p in ACCOUNTS.glob("claude*") if p.is_dir())
-    i = names.index(first) if first in names else 0
-    return [n for n in names[i:] + names[:i] if n != skip]
+def running_load(ep, now):
+    """{profile: lanes the ledgers track as running}, over every episode of this repo's checkouts (the main one and each
+    worktree). A profile is an account: a lane on another host or in another episode loads it all the same. A lane whose
+    minutes lapsed is STALE, not running."""
+    root = next((p.parent for p in ep.parents if p.name == ".worktrees"), ep.parent.parent)
+    load = {}
+    for f in [*root.glob("episodes/*/lanes.json"), *root.glob(".worktrees/*/episodes/*/lanes.json")]:
+        for run in json.loads(f.read_text(encoding="utf-8")).get("jobs", {}).values():
+            if run.get("profile") and run.get("started") and not run.get("ended") \
+                    and now - run["started"] < run.get("minutes", DEFAULT_MIN) * 60:
+                load[run["profile"]] = load.get(run["profile"], 0) + 1
+    return load
+
+
+def profile_order(host, load, first=None, skip=None):
+    """The profiles that can run on host, without skip: first (an explicit --profile) leads, the rest least loaded
+    first, ties in name order (sorted is stable over the sorted names)."""
+    return [n for n in sorted(profiles(host), key=lambda n: (n != first, load.get(n, 0))) if n != skip]
 
 
 def gate(host):
@@ -220,6 +261,13 @@ def load_ledger(ep):
 def save_ledger(ep, ledger):
     tmp = ep / "lanes.json.tmp"
     tmp.write_text(json.dumps(ledger, indent=1), encoding="utf-8")
+    # a status run reads lanes.json lock-free, and while it has the file open Windows refuses the replace (WinError 5);
+    # its read lasts ms, so the replace waits up to 5 s for it. The last try raises: a longer hold is no reader
+    for _ in range(50):
+        try:
+            return os.replace(tmp, ep / "lanes.json")
+        except PermissionError:
+            time.sleep(0.1)
     os.replace(tmp, ep / "lanes.json")
 
 
@@ -270,7 +318,8 @@ def job_table(ep):
     for root in (ep / "media" / "candidates", ep / "briefs"):
         for d in sorted(p for p in root.iterdir() if p.is_dir()) if root.is_dir() else []:
             if d.name not in groups:
-                table.append((f"orphan:{root.name}/{d.name}", False, True, "folder matches no segment group: move it or hold this"))
+                # BLOCKED, not READY: nothing can run it (a shared pool or cta folder is legitimate), so it shows but never blocks
+                table.append((f"orphan:{root.name}/{d.name}", False, False, "folder matches no segment group: move it if it belongs to one"))
     return table
 
 
@@ -293,13 +342,17 @@ def job_states(ep, ledger, now=None):
             stale = now - run["started"] >= run.get("minutes", DEFAULT_MIN) * 60
             state = "STALE" if stale else "RUNNING"
             note = f"on {run.get('host', '?')} since {time.strftime('%H:%M', time.localtime(run['started']))}"
-            log = read_log(run["host"], run["log"]) if run.get("log") else ""
-            if log is None:
-                note += " (its log is unreadable)"
+            got = read_lane(run["host"], run["log"]) if run.get("log") else (True, "")
+            up, log = got or (True, "")  # an unreadable host is unknown, never dead
+            if got is None:
+                note += " (its host is unreadable: process and log unknown)"
             elif LIMIT.search(log):
                 state, note = "FAILED", f"{run.get('profile')} hit its limit on {run['host']}: run `lanes.py relaunch`"
-            elif log == NO_LOG and now - run["started"] >= NO_LOG_MIN * 60:
-                state, note = "FAILED", f"its log never appeared on {run['host']}: the launch did not run; run `lanes.py relaunch`"
+            elif log == NO_LOG:  # no log yet: the launch may still be starting, so only NO_LOG_MIN decides
+                if now - run["started"] >= NO_LOG_MIN * 60:
+                    state, note = "FAILED", f"its log never appeared on {run['host']}: the launch did not run; run `lanes.py relaunch`"
+            elif not up:  # same as an ended lane: its output may sit unsynced on its host, so never FAILED (relaunch would redo it)
+                state, note = "READY", f"its process exited on {run['host']} and its output is not here: relaunch it, or sync its output back"
         else:
             state = "READY"
             if run.get("ended"):
@@ -329,6 +382,13 @@ def main(argv=None):
     if not (ep / "edit_script.md").exists():
         sys.exit(f"[lanes] FAIL: {ep / 'edit_script.md'} not found")
     if a.cmd == "status":  # read-only and lock-free: the Stop hook calls it
+        import stage  # here, not at the top: stage imports lanes, and stage owns the one rule for "shipped"
+        if stage.shipped(ep, stage.checkouts()[0][0]):  # its audio and candidates are gone from a fresh checkout: no jobs left to read
+            if a.json:
+                print(json.dumps({"orchestrator": None, "jobs": [], "blocking": [], "shipped": True}))
+            else:
+                print(f"shipped: {ep.name} has its final master in the main checkout; no jobs")
+            return 0
         ledger = load_ledger(ep)
         states = job_states(ep, ledger, time.time())
         if a.json:
@@ -365,7 +425,7 @@ def write(a, ep, lock):
         for s in (s for s in states if s["state"] == "FAILED"):
             run = ledger["jobs"][s["job"]]
             why = gate(run["host"])
-            new = None if why else launch(dict(run, started=now), profile_order(run.get("profile"), skip=run.get("profile")))
+            new = None if why else launch(dict(run, started=now), profile_order(run["host"], running_load(ep, now), skip=run.get("profile")))
             os.utime(lock)  # still alive: a long relaunch is never taken over
             if new:
                 ledger["jobs"][s["job"]] = new
@@ -400,7 +460,7 @@ def write(a, ep, lock):
         if a.cmd == "hold" and not a.reason.strip():
             sys.exit("[lanes] FAIL: hold needs --reason; it shows in every status")
         if a.lane_cmd and (a.cmd != "start" or len(a.jobs) != 1 or not a.log or "{cli}" not in a.lane_cmd
-                           or not (a.cwd or a.host == "local")):
+                           or not (a.cwd or is_local(a.host))):
             sys.exit("[lanes] FAIL: --cmd is for start with one job, a --log, {cli} where the profile goes, and --cwd off local")
         busy = [s["job"] for s in states if s["job"] in a.jobs and s["state"] in ("RUNNING", "DONE")]
         if a.lane_cmd and busy:
@@ -411,10 +471,13 @@ def write(a, ep, lock):
                 sys.exit(f"[lanes] FAIL: not starting: {why}")
             run = {"started": now, "host": a.host, "minutes": a.minutes}
             if a.lane_cmd:
-                run = launch(dict(run, cmd=a.lane_cmd, log=a.log, cwd=a.cwd or str(SCRIPTS.parent)), profile_order(a.profile))
+                run = launch(dict(run, cmd=a.lane_cmd, log=a.log, cwd=a.cwd or str(SCRIPTS.parent)), profile_order(a.host, running_load(ep, now), a.profile))
                 if not run:
-                    sys.exit(f"[lanes] FAIL: no profile in {ACCOUNTS} answers on {a.host}")
+                    sys.exit(f"[lanes] FAIL: no claude profile answers on {a.host}")
     if a.cmd == "claim":
+        held = ledger.get("orchestrator")
+        if held and held != a.session:  # said, not refused: the old session may be dead, and only the owner knows
+            print(f"[lanes] claim {ep.name}: takes over from session {held}; its Stop gate no longer covers this episode")
         ledger["orchestrator"] = a.session  # only claim stamps it, so a sibling session's start/end never takes the gate
     for job in a.jobs:
         if a.cmd == "start":

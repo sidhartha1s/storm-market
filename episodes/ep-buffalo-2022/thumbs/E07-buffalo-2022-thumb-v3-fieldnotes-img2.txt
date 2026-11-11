@@ -1,0 +1,2 @@
+NONE: no qualifying img2. C:\Users\Sidhartha\Automation Projects\storm-market\episodes\ep-buffalo-2022\ has no media\ folder and no provenance.csv on this laptop (main checkout or worktree).
+Candidate outside the allowed folder, no provenance row found: C:\Users\Sidhartha\Automation Projects\storm-market\.snapq\mirror\ep-buffalo-2022\media\a3\A3-S11_c3_dvids-7574755.jpg (DVIDS item 7574755; subject and licence unchecked).

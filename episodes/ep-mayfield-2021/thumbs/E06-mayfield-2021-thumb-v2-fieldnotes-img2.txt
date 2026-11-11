@@ -1,0 +1,2 @@
+NONE: no qualifying img2. C:\Users\Sidhartha\Automation Projects\storm-market\episodes\ep-mayfield-2021\ has no media\ folder and no provenance.csv on this laptop (main checkout or worktree).
+Candidate outside the allowed folder, no provenance row found: C:\Users\Sidhartha\Automation Projects\storm-market\.snapq\mirror\ep-mayfield-2021\media\stills\a2-s6-spc-day1-outlook.png (an SPC product would be US Government work, public domain; its date and row are unchecked).

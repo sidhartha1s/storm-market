@@ -11,8 +11,8 @@ tempo changes. The model IS the editor; hyperframes is the substrate; code is a 
 
 ## Edit script — the episode's source of truth
 
-`episodes/<slug>/edit_script.md`: an ordered list of typed segments, authored (and owner-gated at
-design review) before any paid generation:
+`episodes/<slug>/edit_script.md`: an ordered list of typed segments, authored before any paid generation
+(the owner's gates: CLAUDE.md "Owner gates"):
 
 | Type | Audio | Visual | Notes |
 |---|---|---|---|
@@ -101,9 +101,9 @@ shipped; these are the standing requirements for every episode's cold open:
 - Few clips, each earning its slot (ep2: warning → impact → dispatch → void). More clips ≠
   more captivating; undifferentiated montage is what scored 0.6.
 
-### CTA contract (must-keep, every episode from ep4 on)
+### CTA contract (must-keep, every episode except `config.yaml channel.cta.exempt`)
 The ebook CTA (Paul on camera, QR + "first link in the description") is a fixed element of
-every episode from ep4 on. File, duration, window and labels live in `config.yaml channel.cta`
+every episode except those in `channel.cta.exempt`. File, duration, window and labels live in `config.yaml channel.cta`
 (current file and README in `assets/cta/`) — never a
 per-episode copy of the rule, never a hand-edited path. Shape: **hook > story > tease > CTA > payoff > story > close**.
 - **Window: in a documentary the CTA sits between a tease and its payoff, around the halfway mark** (`channel.cta.window`).
@@ -127,7 +127,7 @@ per-episode copy of the rule, never a hand-edited path. Shape: **hook > story > 
   (`references/mg-quickref.md` "Paul on screen"); the 1.0s dip still sits between his line and the CTA.
 - **Not a chapter boundary:** the CTA sits inside the preceding chapter; the next chapter starts
   on the payoff sentence, so chapter-scrubbing lands on the payoff, not the ad.
-- **Deliverables:** SRT cue from `data-srt-label`; `metadata.md` description puts
+- **Deliverables (documentaries):** SRT cue from `data-srt-label`; the `E<nn>-<topic>-metadata.md` description puts
   `channel.cta.first_link` as the FIRST URL (above socials) and carries the ep2-style line
   "📘 The book mentioned at mm:ss — Storm-Ready Home ... <channel.cta.first_link>" (that same URL, never the bare home page).
 - **Never** skipped, shortened, moved to the outro, muted, or replaced by a text card. A re-cut of
@@ -220,7 +220,7 @@ floors/ceilings; taste stays with the model.
   exist for a reason.
 - **No visual repeats** in an episode. Reuse only as intentional callback:
   different crop/grade, >5 min apart, flagged with `data-callback="reason"` on the element
-  (lint-enforced; max 3 uses, each reuse flagged; last 90s = summary zone, exempt — owner OK'd recap reuse).
+  (lint enforces the flag and max 3 uses; the spacing is editorial, no gate; last 90s = summary zone, exempt — owner OK'd recap reuse).
 - **No SUBJECT repeats either (ep1 v2 RCA)**: two different files of the same visual subject
   (two night-lamp-rain shots, two town aerials of the same look) read as a repeat to the
   viewer. Dedup by what the FRAME shows, not the filename. When authoring, group the shot
@@ -236,7 +236,7 @@ floors/ceilings; taste stays with the model.
   Table the verdicts (the "is it sitting for the egg to hatch" pass). Same pass re-checks clip
   pacing. This is an AI-judgment step — never enforced by script.
 - **Cut-pacing baselines (guidance for the editor's reasoning; the still cap IS code-enforced
-  in sweep):** stills 3-6s MAX, never longer · video clips up to
+  in sweep):** stills: the number is `references/mg-quickref.md` "Gate-readable authoring" · video clips up to
   12-15s when the clip matches the narration (motion earns time); prefer video everywhere · hooks 2-4s · graphics for as
   long as they keep delivering new information (land time: quick-ref) — never cut ON motion. Deviate whenever the beat demands it — reason per shot.
   Floor from shipped cuts: ep2 had 187 windows, 10.0 s median, 2 picture gaps; uncovered picture gaps in the dozens is a bug.

@@ -5,6 +5,8 @@ refutation, showrunner synthesis). Read with `yt-packaging` before any title or 
 
 ## Title
 - No title or thumbnail is drafted before the owner has locked the angle (`references/angle.md`).
+- His pick is the title-and-thumbnail gate (CLAUDE.md "Owner gates"): record it, or his "picks later", with
+  `python3 scripts/stage.py record episodes/<slug> packaging` (or `defer:packaging`) the turn his words arrive.
 - Searchable Name + Year inside the first 40 characters; whole promise inside 52; nothing load-bearing after 60.
   Cutoffs (hypothesis, verify in Studio): TV grid ~40–60, phone home 45–55, desktop 55–70.
 - The title states the episode's script concept (`script-os.md` rule 1), never the bare topic.

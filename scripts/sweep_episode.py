@@ -13,6 +13,8 @@ import tempfile
 from collections import Counter
 from pathlib import Path
 from comp_consts import fold
+import episode
+import timeline
 
 ep = Path(sys.argv[1])
 h = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
@@ -35,41 +37,19 @@ def cut_by_ok(tag):
 
 
 wins = []
-for m in re.finditer(r'<(section|video|div)\b([^>]*)>', h):
-    a = m.group(2)
-    st, du, tr = (re.search(r'data-start="([\d.]+)"', a),
-                  re.search(r'data-duration="([\d.]+)"', a),
-                  re.search(r'data-track-index="(\d+)"', a))
-    if not (st and du and tr):
-        continue
-    cid = re.search(r'data-composition-id="([^"]+)"', a)
-    src = re.search(r'src="([^"]+)"', a)
-    cls = re.search(r'class="([^"]*)"', a)
-    is_black = bool(cls and "blackout" in cls.group(1))
-    if not src and not cid and not is_black:
-        # its own body only: the 900-char look-ahead used to read the NEXT element's src, so a designed
-        # <section class="clip ground"> was reported as a duplicate of the film cut after it (Galveston A5, 30 Oct 26)
-        close = re.search(r"</%s>" % re.escape(m.group(1)), h[m.end():m.end() + 900])
-        inner = h[m.end():m.end() + (close.start() if close else 900)]
-        s2 = re.search(r'src="([^"]+)"', inner)
-        src = s2
-    wins.append(dict(at=float(st.group(1)), dur=float(du.group(1)), tr=int(tr.group(1)), cut_by=cut_by_ok(a), tag=a,
+for w in timeline.windows(h):   # the one window reader: attributes in any order, a src-less element reads its own body
+    a = w["attrs"]
+    is_black = "blackout" in a.get("class", "")
+    wins.append(dict(at=w["at"], dur=w["dur"], tr=w["tr"], cut_by=cut_by_ok(w["tag"]), tag=w["tag"],
                      name="[blackout]" if is_black else
-                          (cid.group(1) if cid else (src.group(1) if src else
-                                                     "[" + ((re.search(r'\bid="([^"]+)"', a) or [None, "?"])[1]) + "]"))))
+                          (a.get("data-composition-id") or w["src"] or "[" + a.get("id", "?") + "]")))
 
-pic = sorted([w for w in wins if w["tr"] in (1, 2)], key=lambda w: w["at"])
+pic = sorted([w for w in wins if w["tr"] in timeline.PICTURE_TRACKS], key=lambda w: w["at"])
 
 
 # 1. picture coverage
 total = float(re.search(r'data-duration="([\d.]+)"', h).group(1))   # not rounded: 1050.9 rounded to 1051 invented a 0.1 s hole past the end
-cur, holes = 0.0, []
-for w in sorted(pic, key=lambda w: w["at"]):
-    if w["at"] > cur + 0.05:
-        holes.append((round(cur, 2), round(w["at"], 2)))
-    cur = max(cur, w["at"] + w["dur"])
-if cur < total - 0.05:
-    holes.append((round(cur, 2), total))
+holes = [(round(s, 2), round(e, 2) if e != total else total) for s, e in timeline.picture_holes(wins, total)]
 report("picture coverage (no black)", holes, lambda x: f"{x[0]}s -> {x[1]}s")
 
 # 2. same-track overlap
@@ -137,12 +117,12 @@ if not cta.get("voice_ref_md5") or cta.get("voice_ref_md5") != _voice_md5:
     cta_bad.append(f"CTA voice_ref_md5 {cta.get('voice_ref_md5')} != external.voice_ref_md5 {_voice_md5}: "
                    "the CTA is in another voice; re-voice it as a new versioned asset (assets/cta/README.md)")
 _slug = ep.resolve().name
-_cta_applies = bool(re.match(r"(ep\d*-|ms-)", _slug)) and _slug not in (cta.get("exempt") or [])
-_cta_window = (cta.get("window_by_slug") or {}).get(_slug) or (cta["window_ms"] if _slug.startswith("ms-") else cta["window"])   # news lane ~90 % (owner 17 Sep 26); per-episode owner placements in window_by_slug
+_cta_applies = (episode.is_documentary(_slug) or episode.is_mini(_slug)) and _slug not in (cta.get("exempt") or [])
+_cta_window = (cta.get("window_by_slug") or {}).get(_slug) or (cta["window_ms"] if episode.is_mini(_slug) else cta["window"])   # news lane ~90 % (owner 17 Sep 26); per-episode owner placements in window_by_slug
 cm = re.search(r'<video\b[^>]*src="([^"]*' + re.escape(cta_name) + r')"[^>]*>', h)
 if not _cta_applies:
     # episodes shipped before the contract (config channel.cta.exempt) and demo-* dirs are not re-wired
-    print(f"SKIP CTA present + placed — {_slug} is exempt (shipped pre-contract) or not an epN / ms- episode")
+    print(f"SKIP CTA present + placed — {_slug} is exempt (shipped pre-contract) or not a documentary / ms- episode")
 elif not cm:
     cta_bad.append(f"no <video> whose src ends in {cta_name} (config channel.cta.file)")
 else:
@@ -158,12 +138,16 @@ else:
         lo, hi = _cta_window
         if not (lo <= s / total <= hi):
             cta_bad.append(f"starts at {s}s = {s / total:.0%} of {total}s — outside {lo:.0%}-{hi:.0%}")
-        for n in re.finditer(r'<audio\b[^>]*id="(nx-(?!ins)[^"]*)"[^>]*>', h):
+        for n in re.finditer(r'<audio\b[^>]*\sid="([^"]*)"[^>]*>', h):
+            if not timeline.is_narration(n.group(1)):
+                continue
             ns, nd = (re.search(r'data-start="([\d.]+)"', n.group(0)),
                       re.search(r'data-duration="([\d.]+)"', n.group(0)))
             if ns and nd and float(ns.group(1)) < s + d and float(ns.group(1)) + float(nd.group(1)) > s:
                 cta_bad.append(f"narration {n.group(1)} overlaps the CTA (must be silent under it)")
-        for o in re.finditer(r'<(?:audio|video)\b[^>]*id="(?:nx-)?ins[^"]*"[^>]*>', h):
+        for o in re.finditer(r'<(?:audio|video)\b[^>]*\sid="([^"]*)"[^>]*>', h):
+            if not timeline.is_insert(o.group(1)):
+                continue
             os_ = re.search(r'data-start="([\d.]+)"', o.group(0))
             muted = o.group(0).startswith("<video") and not re.search(r'data-volume="1(?:\.0+)?"', o.group(0))
             if cta_name not in o.group(0) and not muted and os_ and -60 < float(os_.group(1)) - s < d + 60:
@@ -185,8 +169,8 @@ if _cta_applies:
 
 # 5d-2. Paul's end ask (owner 19 Oct 26): the config channel.end_ask clips, staged unchanged, back to back, near the end.
 ask = (_cfg.get("channel") or {}).get("end_ask") or {}
-if ask and not (re.match(r"ep\d*-", _slug) and _slug not in (ask.get("exempt") or [])):
-    print(f"SKIP End ask present + placed — {_slug} is exempt (built before 19 Oct 26) or not an epN documentary")
+if ask and not (episode.is_documentary(_slug) and _slug not in (ask.get("exempt") or [])):
+    print(f"SKIP End ask present + placed — {_slug} is exempt (built before 19 Oct 26) or not a documentary")
 elif ask:
     ask_bad, prev_end = [], None
     for i, f in enumerate(ask["files"]):
@@ -220,14 +204,14 @@ elif ask:
 # 5d-3. the close card carries the channel brand lockup (owner order 29 Oct 26: batch A hand-built three different closes).
 # The close = the comp host on track 2/3 that ends at the episode end. It must hold library/inhouse/outro-brand.html's
 # lockup: THE <amber>WARNING</amber> HOUR. Class names may be renamed (ou-, cl-, g-outro-); the structure may not. Applies to
-# `ep-` episodes only; every older slug (ep3-, ms-, br-) predates the lockup. Two ep- episodes shipped before the 29 Oct
+# current documentaries (`ep-`, `e10-` on: episode.is_current_documentary); every older slug (ep3-, ms-, br-) predates the lockup. Two ep- episodes shipped before the 29 Oct
 # order with another close (Palm Sunday 14 Oct: plain WARNING span; Camille 25 Oct: zc-w spans) and a shipped episode is
-# never edited, so they are exempt by name.
-_CLOSE_EXEMPT = {"ep-palm-sunday-1965", "ep-camille-1969"}
+# never edited, so they are exempt by name (config channel.close_lockup.exempt).
+_close_exempt = ((_cfg.get("channel") or {}).get("close_lockup") or {}).get("exempt") or []
 _LOCKUP = re.compile(r'\bthe\b\s*(?:</[a-z]+>)?\s*<[^>]*amber[^>]*>\s*warning\s*</[a-z]+>\s*(?:<[^>]+>)?\s*hour\b', re.I)
-if not re.match(r"ep-", _slug):
-    print(f"SKIP close card carries the brand lockup — {_slug} is not an ep- episode")
-elif _slug in _CLOSE_EXEMPT:
+if not episode.is_current_documentary(_slug):
+    print(f"SKIP close card carries the brand lockup — {_slug} is not a current documentary")
+elif _slug in _close_exempt:
     print(f"SKIP close card carries the brand lockup — {_slug} shipped before the 29 Oct 26 order")
 else:
     _closes = [w for w in wins if w["tr"] in (2, 3) and "data-composition-src=" in w["tag"]
@@ -462,8 +446,10 @@ def _wav_duration(p):
         return None
 
 stale = []
-for m in re.finditer(r'<audio\b[^>]*id="(nx-(?!ins)[^"]*)"[^>]*>', h):
+for m in re.finditer(r'<audio\b[^>]*\sid="([^"]*)"[^>]*>', h):
     a, eid = m.group(0), m.group(1)
+    if not timeline.is_narration(eid):
+        continue
     src = re.search(r'src="([^"]+)"', a)
     du = re.search(r'data-duration="([\d.]+)"', a)
     if not (src and du):

@@ -13,11 +13,11 @@ cut like news (stitched clips + stills with motion, red stat pops, vignette, mus
 and shipped in **≤3 hours wall-clock including render**, with two owner gates: the angle, then the packaging.
 
 **From 2026-09-15 the news lane ships Format C (rolling present-tense update) by default; read that section of
-FORMAT.md first, then the ops slate in `ops/programme-14d.md` and the live cards in `ops/tracker.json`.**
+FORMAT.md first.** `python3 scripts/stage.py` shows each episode's stage; `ops/programme-14d.md` and `ops/tracker.json` are no longer kept current.
 
 Repo: `C:\Users\Sidhartha\Automation Projects\storm-market`
 Format rulebook (measured from teardowns, lives in the repo): `references/mini-storms/FORMAT.md`
-Teardowns + NexLev data: `references/mini-storms/teardowns/README.md`, `references/mini-storms/nexlev-*.md`
+Teardowns + NexLev data: `references/mini-storms/teardowns/README.md`, `references/nexlev-weather.md`
 Comments of every reference video (both lanes): analysed into `references/comment-bank.md`
 
 ## Phase 0 — preflight (same as storm-episode, abbreviated)
@@ -28,7 +28,7 @@ Comments of every reference video (both lanes): analysed into `references/commen
    rules), then repo `CLAUDE.md` "Footage rules" + "Voice" + HARD RULEs, `config.yaml`. Skip
    DESIGN.md's documentary editing architecture except: CTA contract, Content ID protocol. Every MG rule
    (on-screen text, popfig, glass card, the presenter circle): `references/mg-quickref.md`.
-4. Pin current before the first render: `python3 scripts/pin_ritual.py --check-only`; exit 3 (stale) ⇒ run `python3 scripts/pin_ritual.py` (hidden schtasks) and PR the bump now, never mid-video; exit 4 (npm unreachable) ⇒ proceed on the current pin and note it in the kickoff summary.
+4. Pin current before the first render: `python3 scripts/pin_ritual.py --check-only`; exit 3 (stale) ⇒ run `python3 scripts/pin_ritual.py` (hidden schtasks) and PR the bump now, never mid-video; that full ritual's own exit 3 is METRIC DRIFT: no bump, read its drift table and tell the owner; exit 4 (npm unreachable) ⇒ proceed on the current pin and note it in the kickoff summary.
 5. Generator tripwire still applies: no script may WRITE episode HTML. The breaking template
    compositions in `library/mini-storms/` are copied and hand-retuned per cut.
 
@@ -38,16 +38,19 @@ Comments of every reference video (both lanes): analysed into `references/commen
 |---|---|---|
 | 0. Topic + ANGLE LOCK (OWNER GATE) | 15 min, then his answer | Topic picked first (step details 0). Then candidate angles shown in chat per `references/angle.md` (owner 9 Oct 26: "yes minis too"); park until he locks one in words; write `episodes/ms-<slug>/angle.md`. No title, thumbnail text or hook exists before that file does |
 | 1. Packaging | 25 min | `packaging.md`: 3 titles, thumbnail text (top-of-frame, ≤4 words, BREAKING-style kicker), the 3–5 s hook sentence, intro outline, chapter list with the per-section word/time table |
-| 2. OWNER GATE | — | Owner picks title/hook in chat. The second and last gate. Never infer approval. |
+| 2. OWNER GATE | — | Owner picks title/hook in chat. The second and last gate. Never infer approval; record his words with `python3 scripts/stage.py record episodes/ms-<slug> packaging` (CLAUDE.md "Owner gates"). |
 | 3. Script | 25 min | `edit_script.md` (storm-episode segment format so `tts_episode.py` works unchanged), then the humanise pass (3b) |
 | 4. TTS + words | 10 min | `python3 scripts/voice_tool.py` at kickoff (exit 1 names the missing piece), then `python3 scripts/tts_episode.py episodes/ms-<slug>`: TTS, lane tempo, words.json in one pass |
 | 5. Sourcing | 35 min | `media/` + `provenance.csv`; pool reused from `library/mini-storms/<topic>/` first |
 | 6. Compose | 40 min | `index.html` from the breaking template set; red popfigs on every number/place/date, every overlay start resolved from `audio/*.words.json` cues (never estimated seconds; build fails on an unmatched cue) |
-| 7. Static QC | 15 min | `python3 scripts/run_gates.py episodes/ms-<slug>` + `node scripts/freeze_scan.mjs episodes/ms-<slug>`, then the settle-frame pass in `references/mg-quickref.md` "Verify" (new/changed comps only, one subagent reader, two fix rounds max) |
+| 7. Static QC | 15 min | `python3 scripts/run_gates.py episodes/ms-<slug>` + `node scripts/freeze_scan.mjs episodes/ms-<slug>`, then the settle-frame pass in `references/mg-quickref.md` "Verify" (new/changed comps only, one subagent reader, three turns max, each shorter than the last) |
 | 8. Render | 25 min | `scripts\render.cmd ms-<slug> draft` hidden via run_hidden.vbs → owner preview → `full` |
-| 9. Deliverables | 10 min | `master_deliverables.py` (finals to main, other renders deleted; CLAUDE.md step 7), `E<nn>-<topic>-metadata.md`, thumbnail still candidates, private upload |
+| 9. Deliverables | 10 min | `master_deliverables.py`, then finals to the main checkout and other renders deleted by hand per CLAUDE.md step 7 (`ship.py` refuses a slug with no E number), the metadata file, thumbnail still candidates, private upload |
 
-**The tracker moves with the work.** Every phase change (script, TTS, checks, preview launched/done, full render launched/done, master in the main checkout, upload) runs `python3 ops/build_tracker.py set <slug> <phase> <status> "note"` in the same turn (a new video first gets `python3 ops/build_tracker.py add <slug> <lane> "<DD Mon YY>" "<title>"`), then commit + push. A status reply naming a phase the tracker page does not show is wrong (owner 2026-09-15: three full renders and masters shipped while `ops/tracker.html` still showed 06:28 previews).
+**Status replies come from disk, never from memory** (owner 2026-09-15: three full renders and masters shipped while
+`ops/tracker.html` still showed 06:28 previews). `ops/tracker.json` was last updated 19 Oct 26 and nobody keeps it;
+retire or revive is an owner question (`ops/tasks.md` "Waiting on the owner"). Until he answers, state comes from
+`python3 scripts/stage.py` and the episode folder.
 
 Total ≈ 3 h 20 of work. The waits at the two owner gates sit outside the clock. Step 0's 15 min is the agent's figure (9 Oct 26), not the owner's: before the angle gate the total was 3 h 05. If any step overruns 2×, ship what exists and list what was cut; never widen scope.
 
@@ -55,8 +58,7 @@ Total ≈ 3 h 20 of work. The waits at the two owner gates sit outside the clock
 
 ### 0. Topic + angle (`episodes/ms-<slug>/angle.md`)
 - **Angle:** the rule, the candidate tests and the lock are `references/angle.md`; this step applies it to the topic picked here.
-- **Topic source:** owner gives one, or you propose 3 from this week's outliers (NexLev via the
-  claude7 profile, ≤6 outlier calls/day: see memory `reference-nexlev-via-claude7`; plus
+- **Topic source:** owner gives one, or you propose 3 from this week's outliers (NexLev, `references/nexlev-weather.md`; plus
   `yt-dlp --flat-playlist` on the tracked breaking channels listed in FORMAT.md). Pick
   high-demand / low-supply: an event blowing up now with few 8–15 min explainers under a week old.
 - **One event, many angles, one asset pool.** Krakatoa ⇒ "what just happened", "who is at risk",
@@ -81,7 +83,7 @@ Total ≈ 3 h 20 of work. The waits at the two owner gates sit outside the clock
 - Structure (owner 2026-09-08): **HOOK is 3–5 s** (owner 27 Sep 26), one present-tense sentence that pays off the
   title (spoken + red popfig) → **INTRO to ~1:10** (base the point: stakes numbers, open loops,
   promise of the payoff/checklist) → **CHAPTERS** (8–12 × 45–75 s, one red-stat pop minimum each,
-  a "but/and/however" connective into the next, each opening on a 1–2 s caps card on black) →
+  a "but/and/however" connective into the next, butt-cut: no chapter card, see "No chapter cards" below) →
   PAYOFF (open loop closed) → WARM CLOSE (preparedness, never fearmongering) → subscribe line.
 - **Retention architecture is a hard rule from #4 on (FORMAT.md "Retention architecture", owner 2026-09-11):** the
   voice never narrates what the MG shows (dates, clock times, counts go on screen, the voice says the human line);
@@ -112,7 +114,7 @@ Priority order, per clip:
 1. Pool reuse: `library/mini-storms/<topic>/` (provenance.csv rows travel with the file).
 2. Public domain / govt: USGS, NOAA, NASA, FEMA, Coast Guard, national agencies of the event
    country, Wikimedia Commons (check licence per file).
-3. Stock: Pexels / Pixabay (owner rule: ≤10 picks ⇒ thumbs on localhost, owner picks fast).
+3. Stock: Pixabay; the Pexels keys are dead (DESIGN.md "Sourcing") (owner rule: ≤10 picks ⇒ thumbs on localhost, owner picks fast).
 4. **Eyeball every pool cutter before wiring it:** one labelled contact grid (mid-frame per clip, PIL tile) read by a
    Sonnet subagent, classified ERUPTION / AIRPORT / OFFICIALS / OTHER. provenance.csv carries the source, not the
    picture; five "2026 plume" picks by file name were departure boards (Krakatau #4, 2026-09-11).
@@ -132,9 +134,9 @@ Priority order, per clip:
   clip, our overlay layer, no clip >5 s unmodified, no single source >15 % of runtime.
 
 ### 6. Compose (fast, from templates, hand-retuned)
-`library/mini-storms/` holds the template compositions (create on the first run, then reuse):
-`clip-hold`, `still-kenburns`, `vertical-embed-credit`, `popfig-red`, `breaking-bug`
-(lower-third kicker), `overlay-vignette-grain`, `stat-card`. Copy → retune per cut. Music: one
+`library/mini-storms/` holds `breaking-bug.html` (lower-third kicker) and `stat-card.html`; popfig, data chip,
+still punch zoom, vertical embed with credit and vignette are inline CSS and JS to copy from
+`episodes/br-elnino-california/index.html` (list: `library/mini-storms/README.md`; no grain). Copy → retune per cut. Music: one
 tense bed from `assets/sfx/` (score-act1.mp3 exists) level per CLAUDE.md "Narration sits above every bed" (Two lanes section), duck 6 dB on
 popfigs. Cut cadence from FORMAT.md: median shot 3.5–4.5 s, hook ≤4.2 s, plus one labelled
 real data-feed hold (USGS/NOAA/NASA loop, 20–40 s) every 2–3 min as a credibility anchor.
@@ -156,13 +158,13 @@ narration speech spans, hidden in the hook / CTA / close. Deliverables: `master_
 - **No edits under an episode while its render is alive** (a worker reloading mid-render captures a mixed state; JMA draft 2 thrown away 17 Sep 26). Composers wait for the lead's "render done".
 - **Never write `textContent` on an element that has children** (it deletes them at runtime; the sweeping rule span vanished after the first caption in 7 alert-levels comps while every gate passed, 17 Sep 26). Swap text on a dedicated text span.
 - **The freeze scan runs before the render, not after it.** `node scripts/freeze_scan.mjs episodes/<slug> [--comp a,b]` stages each comp with the host styles, steps its timeline every 0.5 s and runs the render check's own `freezedetect` on the screenshots (about 50 s per comp, against 13 to 24 min per draft). Composers iterate on it until PASS and read its `sheets-pre/` contact sheets; a render is confirmation, never the detector. It is the one browser gate allowed beside a live render (`render_busy.py --light`, needs 2 GB free, one scan at a time). `scripts/comp_lint.py` (inside sweep) fails text written on an element with children and text set in `onStart`/`onComplete`.
-- **Every draft gets the settle-frame pass in `references/mg-quickref.md` "Verify" (new/changed comps only, one subagent reader, two fix rounds max)** before the owner sees it; green gates alone never clear a draft.
+- **Every draft gets the settle-frame pass in `references/mg-quickref.md` "Verify" (new/changed comps only, one subagent reader, three turns max, each shorter than the last)** before the owner sees it; green gates alone never clear a draft.
 
 ### 7–9. QC, render, ship
 Same scripts and hidden-window rules as storm-episode. Static gates → 3–5 slice renders (40 s windows at 10 fps
 around every new card, the CTA and the close; strip read by a subagent) → ONE draft → owner preview → full.
 **One heavy job at a time:** `scripts/render_busy.py` refuses gates and ffmpeg batches while a render is alive. Renders, TTS, the face pass and e2e also wait for each other on the heavy lock (CLAUDE.md).
-Frames: the settle-frame pass in `references/mg-quickref.md` "Verify" (new/changed comps only, one subagent reader, two fix rounds max). `metadata.md`: first URL = `channel.cta.first_link`,
+Frames: the settle-frame pass in `references/mg-quickref.md` "Verify" (new/changed comps only, one subagent reader, three turns max, each shorter than the last). The metadata file: first URL = `channel.cta.first_link`,
 courtesy credits block listing every non-PD source with @handles, chapters at each idea block.
 
 ## Standing owner rules for this format (2026-09-08)

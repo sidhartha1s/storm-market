@@ -198,4 +198,6 @@ def main(targets):
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         sys.exit(__doc__)
-    main(sys.argv[1:])
+    import render_busy  # the heavy lock: one heavy job per machine (owner 26 Oct 26)
+    with render_busy.heavy_lock("paul_voice " + os.path.basename(sys.argv[1].rstrip("\\/"))):
+        main(sys.argv[1:])

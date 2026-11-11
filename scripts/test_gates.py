@@ -376,6 +376,24 @@ with tempfile.TemporaryDirectory() as d:
     check("audio_levels: a narration wav that fades to silence is not flagged as a burst",
           "nx-a1-s1: ends in a" not in out, out)
 
+# G7: an audible <audio> with no id FAILs as unclassified (it was skipped). G9: an nx-ins element is an insert
+# (2.5 dB rule), not narration (3 dB rule, joins the median).
+with tempfile.TemporaryDirectory() as d:
+    ep = Path(d)
+    (ep / "audio").mkdir()
+    for name, vol in (("nx", 0.1), ("ins", 0.138), ("loud", 1.0)):  # 0.138 = 0.1 + 2.8 dB
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", f"sine=f=220:r=24000:d=2.0,volume={vol}",
+                        "-ac", "1", str(ep / "audio" / f"{name}.wav")], check=True)
+    nx = "".join(f'<audio id="nx-a1-s{i}" src="audio/nx.wav" data-start="{3 * i}" data-duration="2"></audio>\n' for i in range(3))
+    (ep / "index.html").write_text(nx + '<audio src="audio/loud.wav" data-start="10" data-duration="2" data-volume="1"></audio>\n',
+                                   encoding="utf-8")
+    code, out = run("audio_levels.py", ep)
+    check("G7 audio_levels: an audible <audio> with no id FAILs as unclassified", code == 1 and "unclassified" in out, out)
+    (ep / "index.html").write_text(nx + '<audio id="nx-ins-911" src="audio/ins.wav" data-start="10" data-duration="2"></audio>\n',
+                                   encoding="utf-8")
+    code, out = run("audio_levels.py", ep)
+    check("G9 audio_levels: an nx-ins element 2.8 dB off narration FAILs as an insert", code == 1 and "nx-ins-911: insert" in out, out)
+
 # ===================================================================================
 # 6. lint_timeline.py — unmuted b-roll gate, narration-vs-wav gate, bounded CTA gap
 # ===================================================================================
@@ -609,6 +627,22 @@ with tempfile.TemporaryDirectory() as d:
     check("run_gates: exits non-zero when a gate fails", r.returncode == 1, f"(exit {r.returncode})")
     check("run_gates: names the failing gate", "lint_timeline.py" in r.stdout, r.stdout[-300:])
 
+    # --all: every gate runs, one summary names every failed gate, exit 1
+    for name in ("build_srt.py", "media_budget.py"):
+        (stub_dir / name).write_text(
+            f'import sys\nopen(r"{order_log}", "a").write("{name}\\n")\nsys.exit({1 if name == "media_budget.py" else 0})\n', encoding="utf-8")
+    for name in ("blank_scan.mjs", "overlap_check.mjs", "occlusion_check.mjs", "graphics_qc.mjs"):   # ESM stubs: `require` is undefined in .mjs
+        (stub_dir / name).write_text(
+            f'import {{ appendFileSync }} from "fs"; appendFileSync(String.raw`{order_log}`, "{name}\\n");', encoding="utf-8")
+    order_log.unlink()
+    r = subprocess.run([sys.executable, str(stub_dir / "run_gates.py"), str(ep), "--all"], capture_output=True, text=True)
+    ran = order_log.read_text(encoding="utf-8").splitlines() if order_log.exists() else []
+    summary = r.stdout.split("RUN_GATES FAIL", 1)[-1]
+    check("run_gates --all: runs every gate after a failure, exits 1, lists every failed gate once at the end",
+          len(ran) == 16 and ran[-1] == "graphics_qc.mjs" and r.returncode == 1
+          and "2 of 16 gates failed" in summary and "lint_timeline.py exited 1" in summary and "media_budget.py exited 1" in summary
+          and summary.count("exited") == 2, f"ran={ran}\n{r.stdout[-500:]}{r.stderr}")
+
 # ===================================================================================
 # 9. sweep_episode.py's motion-gate _frame() helper: PID-scoped temp paths (no cross-process
 # collision) + any raised exception (locked file, timeout) reports loudly via probe_failed
@@ -716,6 +750,24 @@ with tempfile.TemporaryDirectory() as d:
     code, out = run("sweep_episode.py", close_ep(d, "close-not-ep", "<template><div>THE WARNING HOUR</div></template>"))
     check("sweep_episode close card: a non-`ep-` slug is skipped", "SKIP " + CLOSE_LABEL in out, out[-400:])
 
+# the close-card exemption list is config (channel.close_lockup.exempt), not slugs in sweep_episode.py:
+# a copy of sweep beside a config naming a slug skips it, and the same close PASSes under the real config
+with tempfile.TemporaryDirectory() as d:
+    root = Path(d) / "repo"
+    (root / "scripts").mkdir(parents=True)
+    for f in S.glob("*.py"):
+        (root / "scripts" / f.name).write_bytes(f.read_bytes())
+    cfg = (S.parent / "config.yaml").read_text(encoding="utf-8")
+    check("config: channel.close_lockup.exempt holds the two shipped exemptions",
+          yaml.safe_load(cfg)["channel"]["close_lockup"]["exempt"] == ["ep-palm-sunday-1965", "ep-camille-1969"])
+    (root / "config.yaml").write_text(cfg.replace("exempt: [ep-palm-sunday-1965, ep-camille-1969]", "exempt: [ep-close-cfg]", 1), encoding="utf-8")
+    comp = (S.parent / "episodes" / "ep-enderlin-2025" / "compositions" / "g-outro.html").read_text(encoding="utf-8")
+    for slug, want in (("ep-close-cfg", "SKIP"), ("ep-close-other", "PASS")):
+        ep = close_ep(Path(d) / slug, slug, comp)
+        r = subprocess.run([sys.executable, str(root / "scripts" / "sweep_episode.py"), str(ep)], capture_output=True, text=True)
+        check(f"sweep_episode close card: a slug in config close_lockup.exempt {want}s", close_line(r.stdout + r.stderr).startswith(want),
+              close_line(r.stdout + r.stderr) or (r.stdout + r.stderr)[-400:])
+
 # ===================================================================================
 # 10. verify_render.sh silence classifier: the closing end card (last 4 s) may be silent
 # (owner 21 Oct 26: Joplin's final failed on silence 1194.33-1196.54 under its 4 s end card).
@@ -762,6 +814,38 @@ with tempfile.TemporaryDirectory() as d:
     code, out = run("build_srt.py", ep, "--check")
     check("build_srt --check: names both the missing -v2.txt and the unlabeled insert",
           code == 1 and "a1-v2.txt" in out and "no data-srt-label" in out, out)
+
+# G1: narration tags in any attribute order, data-media-start honoured, words past a cut-by window dropped,
+# and --check FAILs a narration tag that yields no cue (it used to pass on any cue at all).
+def srt_ep(d, tags, words):
+    ep = Path(d)
+    (ep / "audio").mkdir()
+    (ep / "renders").mkdir()
+    (ep / "index.html").write_text("\n".join(tags), encoding="utf-8")
+    for stem, ws in words.items():
+        (ep / "audio" / f"{stem}.words.json").write_text(json.dumps([{"word": w, "start": s, "end": s + 0.3} for w, s in ws]), encoding="utf-8")
+        (ep / "audio" / f"{stem}.txt").write_text(" ".join(w for w, _ in ws), encoding="utf-8")
+    return ep
+
+
+_srt_tags = ['<audio id="nx-a1" src="audio/a1.wav" data-start="0" data-duration="1"></audio>',
+             '<audio id="nx-a2" data-cut-by="ins-paul-1" src="audio/a2.wav" data-start="10" data-duration="1"></audio>',
+             '<audio data-start="20" data-duration="2" data-media-start="2" src="audio/a3.wav" id="nx-a3"></audio>']
+_srt_words = {"a1": [("First", 0.1)], "a2": [("Second", 0.1), ("Paulsays", 1.5)], "a3": [("Unplayed", 0.5), ("Third", 2.3)]}
+with tempfile.TemporaryDirectory() as d:
+    ep = srt_ep(d, _srt_tags, _srt_words)
+    code, out = run("build_srt.py", ep, "t")
+    srt = (ep / "renders" / "t.srt").read_text(encoding="utf-8") if (ep / "renders" / "t.srt").exists() else out
+    check("G1 build_srt: a data-cut-by mount (cut-by before src) is captioned", "00:00:10,100 --> " in srt and "Second" in srt, srt)
+    check("G1 build_srt: words after a cut-by window are left to Paul's clip", "Paulsays" not in srt, srt)
+    check("G1 build_srt: data-media-start offsets the words and drops the unplayed head",
+          "00:00:20,300 --> " in srt and "Third" in srt and "Unplayed" not in srt, srt)
+with tempfile.TemporaryDirectory() as d:
+    ep = srt_ep(d, _srt_tags + ['<audio id="nx-a4" src="audio/a4.wav" data-start="30" data-duration="1"></audio>'],
+                dict(_srt_words, a4=[("Late", 4.0)]))
+    code, out = run("build_srt.py", ep, "--check")
+    check("G1 build_srt --check: a narration tag that yields no cue FAILs", code == 1 and "nx-a4" in out, out)
+
 _rg = (S / "run_gates.py").read_text(encoding="utf-8")
 check("run_gates: build_srt.py --check runs right after lint_timeline.py",
       _rg.index('"lint_timeline.py",') < _rg.index('"build_srt.py --check"') < _rg.index('"narration_picture_check.py"'))
@@ -835,6 +919,91 @@ with tempfile.TemporaryDirectory() as d:
 with tempfile.TemporaryDirectory() as d:
     code, out = run("lint_timeline.py", lint_nx_ep(d, 1.0, ' data-cut-by="ins-paul-9"', paul_at=1.5))
     check("lint_timeline: a data-cut-by whose clip starts 0.5 s late still FAILs", "narration window shorter" in out, out[-500:])
+
+# G5: a voiced Paul clip or a hold written with data-duration before data-start still counts (attribute order is free)
+def lint_order_ep(d, middle):
+    ep = Path(d)
+    (ep / "audio").mkdir(parents=True)
+    for n in ("a1-s1", "a1-s2"):
+        write_wav(ep / "audio" / f"{n}.wav", 4.0)
+    (ep / "p.mp4").write_bytes(b"0")
+    (ep / "index.html").write_text(
+        '<div data-composition-id="root" data-duration="12">\n'
+        '<section class="clip" id="bg" data-start="0" data-duration="12" data-track-index="1"></section>\n'
+        '<audio id="nx-a1-s1" src="audio/a1-s1.wav" data-start="0" data-duration="4"></audio>\n'
+        f'{middle}\n'
+        '<audio id="nx-a1-s2" src="audio/a1-s2.wav" data-start="8" data-duration="4"></audio>\n</div>', encoding="utf-8")
+    return ep
+
+
+for label, middle in (
+        ("a voiced Paul clip", '<video id="ins-paul-1" src="p.mp4" data-duration="4" data-start="4" data-track-index="5" '
+                               'data-volume="1" data-has-audio="true"></video>'),
+        ("a declared hold", '<section class="clip hold" id="h1" data-duration="4" data-start="4" data-track-index="2"></section>')):
+    with tempfile.TemporaryDirectory() as d:
+        code, out = run("lint_timeline.py", lint_order_ep(d, middle))
+        check(f"G5 lint_timeline: {label} with data-duration before data-start fills the pause", "narration gap" not in out, out[-400:])
+
+# G9: one narration/insert classification (scripts/timeline.py), used by sweep, build_srt, lint, npc, audio_levels
+import timeline  # noqa: E402
+check("G9 timeline: nx-a1-s1 is narration, nx-ins-911 / ins-paul-1 are inserts, sx-bed is neither",
+      [(timeline.is_narration(i), timeline.is_insert(i)) for i in ("nx-a1-s1", "nx-ins-911", "ins-paul-1", "sx-bed")]
+      == [(True, False), (False, True), (False, True), (False, False)])
+
+check("G13 timeline.muted: the bare attribute mutes, a class token named muted does not",
+      [timeline.muted(t) for t in ('<video muted src="a.mp4">', '<video class="clip muted big" src="a.mp4">')] == [True, False])
+# G13: a class or attribute that merely contains "muted" does not mute a b-roll clip
+with tempfile.TemporaryDirectory() as d:
+    v = '<video class="not-muted-really" data-muted-ok="x" src="media/broll.mp4" data-start="0" data-duration="2" data-track-index="1"></video>'
+    ep = make_lint_ep(Path(d), extra_video=v)
+    (ep / "media" / "broll.mp4").write_bytes(b"0")
+    code, out = run("lint_timeline.py", ep)
+    check("G13 lint_timeline: 'muted' inside a class name is not the muted attribute", "unmuted b-roll" in out, out[-400:])
+
+# G10: one coverage rule (timeline.picture_holes): a 0.04 s hole between two picture windows gets one verdict from
+# every gate that reports coverage (sweep used 0.05 s and passed it while lint failed it)
+with tempfile.TemporaryDirectory() as d:
+    ep = Path(d)
+    (ep / "index.html").write_text(
+        '<div data-composition-id="root" data-duration="10">\n'
+        '<section class="clip" id="a" data-start="0" data-duration="5" data-track-index="1"></section>\n'
+        '<section class="clip" id="b" data-start="5.04" data-duration="4.96" data-track-index="1"></section>\n</div>', encoding="utf-8")
+    verdicts = {"sweep_episode.py": "FAIL picture coverage" in run("sweep_episode.py", ep)[1],
+                "lint_timeline.py": "picture gap" in run("lint_timeline.py", ep)[1],
+                "clip_report.py": "uncovered picture gaps (tracks [1, 2]): 1" in run("clip_report.py", ep)[1]}
+    check("G10: sweep, lint and clip_report all report a 0.04 s picture hole", all(verdicts.values()), str(verdicts))
+
+# ===================================================================================
+# R2: a documentary named e10-<topic> (CLAUDE.md step 7) is checked exactly like an ep- one (scripts/episode.py)
+# ===================================================================================
+def _verdicts(out, slug):
+    """Each sweep check's verdict word and name, slug and counts stripped."""
+    return [re.sub(r":\s*\d+$", "", l.replace(slug, "<slug>")) for l in out.splitlines()
+            if l.startswith(("PASS ", "FAIL ", "SKIP "))]
+
+
+_radio = '<audio id="ins-radio" src="audio/a1-s1.wav" data-start="0.2" data-duration="0.5"></audio>'
+with tempfile.TemporaryDirectory() as d:
+    res = {}
+    for slug in ("ep-foo", "e10-foo", "ep4-foo"):
+        ep = make_ep(Path(d) / slug, extra=_radio)
+        res[slug] = (_verdicts(run("sweep_episode.py", ep)[1], slug), run("lint_timeline.py", ep)[1])
+    check("R2 sweep: an e10- episode gets every check an ep- episode gets (CTA, end ask, close card)",
+          res["e10-foo"][0] == res["ep-foo"][0] and not any(l.startswith("SKIP") for l in res["e10-foo"][0]),
+          f"\n ep-:  {res['ep-foo'][0]}\n e10-: {res['e10-foo'][0]}")
+    check("R2 sweep: a legacy ep4- episode still skips only the close card",
+          [l for l in res["ep4-foo"][0] if l.startswith("SKIP")] == ["SKIP close card carries the brand lockup — <slug> is not a current documentary"],
+          str(res["ep4-foo"][0]))
+    check("R2 lint: an e10- episode gets the outside-voice caption check like an ep- one",
+          all("outside voice without a caption" in res[s][1] for s in ("ep-foo", "e10-foo", "ep4-foo")),
+          res["e10-foo"][1][-400:])
+
+import render_preflight  # noqa: E402
+_bare = '<section data-duration="10"><audio id="nx-a1" src="a.wav" data-start="0" data-duration="5"></audio></section>'
+check("R2 layers: an e10- documentary must carry the layers an ep- one must",
+      render_preflight.missing_layers("e10-foo", _bare) == render_preflight.missing_layers("ep-foo", _bare) != [])
+check("R2 layers: legacy ep4- and ms- slugs keep skipping the layer gate",
+      render_preflight.missing_layers("ep4-foo", _bare) == render_preflight.missing_layers("ms-foo", _bare) == [])
 
 print()
 if FAILS:

@@ -1,11 +1,11 @@
-# library/breaking — templates for the fast lane (`/storm-breaking`)
+# library/mini-storms — templates for the fast lane (`/mini-storms`)
 
 Sub-compositions (copy into `episodes/<slug>/compositions/`, re-prefix ids, hand-retune per cut;
 never script-generate episode HTML):
 
 | file | what | mount |
 |---|---|---|
-| `chapter-card.html` | 1.6 s caps chapter card on black, glitch in, hard cut out | track 2 over a 1.6 s track-1 blackout |
+| `chapter-card.html` | 1.6 s caps chapter card on black, glitch in, hard cut out. Minis use no chapter cards (CLAUDE.md "Two lanes"); kept from the first runs | track 2 over a 1.6 s track-1 blackout |
 | `breaking-bug.html` | lower-third red kicker + channel wordmark + rotating headline strip | track 3, whole chapter or whole video |
 | `stat-card.html` | left glass list, 4 numbered rows revealed on spoken cues | track 2 over footage |
 
@@ -19,4 +19,4 @@ The rest of the grammar is inline in `index.html` (copy from `episodes/br-elnino
 - **data-feed hold**: a labelled PD loop (`.srclab` "SOURCE: NOAA CPC") held 20–40 s with a slow push; one every 2–3 min.
 - **captions**: burned word-highlight captions are NOT in v1 (needs a words.json → caption comp); add when the owner asks.
 
-Pools: `library/breaking/<event>/` + `provenance.csv` — reused across every angle on that event, reordered, never the same sequence twice.
+Pools: `library/mini-storms/<event>/` + `provenance.csv` — reused across every angle on that event, reordered, never the same sequence twice.

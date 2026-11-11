@@ -41,5 +41,21 @@ Gates: `node scripts/graphics_qc.mjs episodes/<slug> <your comp ids>` checks onl
 7. Overlay comps: one frame composited over the real picture mounted under them at that second; a transparent span names the clip that sits under it. A label that names a place, a date or an event is a claim about that picture: the file under every second of the label is footage of that place and date by its `provenance.csv` row, never stock.
 A family built on one base: send the base alone for a full-size read before copying it.
 
+## 7b. TIME BOX AND PRE-FLIGHT (owner 11 Nov 26; test: `learnings/mg.md` 11 Nov 26)
+The builder gets a clock, not an open end: turn 1 is 15 minutes, a second turn 10, a third 8, then the graphic ships
+with what is open listed (owner: "a maximum number of two to three turns ... The turns should be shorter than the last
+one"). Turn 1: the whole file written once by minute 6 (never a partial file grown by edits), gates and the contact
+sheet by minute 11, one fix pass, stop at 15 with an honest list. A later turn gets only the verifier's fix order and
+touches nothing else. The brief's writer checks these before dispatch, the builder before the receipt:
+1. The brief states the MOUNTED host length and the cue offset when the host starts inside its narration (cue = wav
+   time minus the offset), and every text is at opacity 0, or the exit done, by the host's last 0.05 s.
+2. No rule in the brief contradicts another (a push and "the last frame is P0"; a label at a radius the needle
+   sweeps; a chip that cannot fit its size inside the safe zone; a credit that would be false on that ground).
+3. `freeze_scan.mjs --comp` passes: no stretch of 6 s or more where nothing visibly moves. A shimmer its detector
+   cannot see does not count; name the motion that carries each long hold in the brief.
+4. Every text node reaches full opacity at some sampled second (a source line left hidden is a fail).
+5. Last frame: every pin and label that the brief gives a final position sits within 10 px of it.
+6. Basemap: at both ends of every camera move the visible box is inside the map's own coverage.
+
 ## 8. RECEIPT (final message, ≤15 lines)
 start/end times (`date +%H:%M:%S` first and last tool call) · loops · per loop: which §4 truths failed and the fix · gate line · final PNG folder.

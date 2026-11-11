@@ -51,6 +51,16 @@ code, out = run('css_collision.py', BAD)
 assert code != 0 and 'chip' in out, out
 code, out = run('css_collision.py', GOOD)
 assert code == 0, out
+# G8: a file extension or host name inside url(...) or quotes is not a class (url(media/a.png) read as class "png")
+with tempfile.TemporaryDirectory() as d:
+    ep = Path(d)
+    (ep / 'compositions').mkdir()
+    (ep / 'index.html').write_text("<style>.bg{background:url(media/a.png)} @import url('https://fonts.googleapis.com/x');"
+                                   '.chip{content:"a.b"}</style>', encoding='utf-8')
+    (ep / 'compositions' / 'g-x.html').write_text('<template><style>.g-x-map{background:url(../media/b.png)}</style>'
+                                                  '<div class="g-x-map com">a.png</div></template>', encoding='utf-8')
+    r = subprocess.run([sys.executable, str(S / 'css_collision.py'), str(ep)], capture_output=True, text=True)
+    assert r.returncode == 0 and '(2 host classes)' in r.stdout, f'G8: {r.stdout}'
 # a crashed sub-gate must read as a failure inside sweep, never as a pass (PR #81 review)
 import re, types
 src = (S / 'sweep_episode.py').read_text(encoding='utf-8')

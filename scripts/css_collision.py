@@ -7,7 +7,8 @@ tags stretched into 720 px panels). Usage: python3 scripts/css_collision.py epis
 import re, sys, pathlib
 
 ep = pathlib.Path(sys.argv[1])
-classes = lambda css: set(re.findall(r'\.([A-Za-z_][\w-]*)', re.sub(r'/\*.*?\*/', '', css, flags=re.S)))
+# comments, url(...) and quoted strings hold file extensions and host names (url(a.png) is not class "png")
+classes = lambda css: set(re.findall(r'\.([A-Za-z_][\w-]*)', re.sub(r'/\*.*?\*/|url\([^)]*\)|"[^"]*"|\'[^\']*\'', '', css, flags=re.S)))
 styles = lambda html: '\n'.join(re.findall(r'<style[^>]*>(.*?)</style>', html, flags=re.S))
 host = classes(styles((ep / 'index.html').read_text(encoding='utf-8')))
 bad = 0

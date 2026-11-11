@@ -511,6 +511,11 @@ check("build_srt: a leading insert spans 0.0 to the first whisper word's start",
       well["start"] == 0.0 and well["end"] == 0.5, well)
 check("build_srt: a leading insert is not zero-duration",
       well["end"] - well["start"] > 0, well)
+# G15: milliseconds round on the total, so 1.9996 s is 00:00:02,000, never the invalid 00:00:01,1000
+check("build_srt: ts rounds to a valid SRT time (no ,1000)",
+      [build_srt.ts(t) for t in (1.9996, 59.9999, 3599.9996, 0.0, 61.25)]
+      == ["00:00:02,000", "00:01:00,000", "01:00:00,000", "00:00:00,000", "00:01:01,250"],
+      [build_srt.ts(t) for t in (1.9996, 59.9999, 3599.9996, 0.0, 61.25)])
 
 # ---------------------------------------------------------------------------
 # 10. word_budget: BOTH real script formats present on main, counted correctly, read-only
@@ -520,11 +525,19 @@ check("build_srt: a leading insert is not zero-duration",
 #     in a temp dir from the REAL probe text, stands in just for the pace measurement; the
 #     narration COUNT itself still comes from the real, unmodified edit_script.md on disk).
 import subprocess
-MAIN = Path(r"C:\Users\Sidhartha\Automation Projects\storm-market\episodes")
+MAIN = S.parent / "episodes"   # this checkout's tracked episodes, never a hardcoded main-checkout path
 
-r = subprocess.run([sys.executable, str(S / "word_budget.py"), str(MAIN / "ep3-tristate"),
-                    "--target", "26", "--probe", "audio/probe1.wav", "audio/probe2.wav"],
-                   capture_output=True, text=True)
+with tempfile.TemporaryDirectory() as d:
+    # the probe wavs are gitignored media; a silent stand-in beside the tracked probe text measures the pace
+    import wave as _wave
+    for n in ("probe1", "probe2"):
+        (Path(d) / f"{n}.txt").write_text((MAIN / "ep3-tristate" / "audio" / f"{n}.txt").read_text(encoding="utf-8"), encoding="utf-8")
+        with _wave.open(str(Path(d) / f"{n}.wav"), "wb") as wf:
+            wf.setnchannels(1); wf.setsampwidth(2); wf.setframerate(24000)
+            wf.writeframes(b"\x00\x00" * (24000 * 10))
+    r = subprocess.run([sys.executable, str(S / "word_budget.py"), str(MAIN / "ep3-tristate"),
+                        "--target", "26", "--probe", str(Path(d) / "probe1.wav"), str(Path(d) / "probe2.wav")],
+                       capture_output=True, text=True)
 print("[test_audio] word_budget on real ep3-tristate (blockquote format):")
 print(r.stdout)
 check("word_budget: ep3-tristate (blockquote format) uses the parse_segments path",

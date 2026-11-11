@@ -4,7 +4,7 @@ Authoritative window list = every element on a picture track carrying
 data-start + data-duration: <section> stills, <video> clips, and
 sub-composition hosts. Audio elements live on their own tracks and are excluded.
 
-Coverage is computed over PICTURE_TRACKS only. Tracks above those carry
+Coverage is computed over timeline.PICTURE_TRACKS only (timeline.picture_holes). Tracks above those carry
 overlays (date cards, source chips, quote cards, lower-thirds) that sit ON TOP
 of picture; counting them as coverage hides real black gaps underneath.
 """
@@ -12,33 +12,22 @@ import re
 import sys
 from pathlib import Path
 
-PICTURE_TRACKS = {1, 2}  # 1 = stills/clips, 2 = full-bleed graphic compositions
+import timeline
+
 
 ep = Path(sys.argv[1])
 h = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
 
+wins = timeline.windows(h)   # the one window reader: a src-less element names the file in its own body, never the next one
 rows = []
-for m in re.finditer(r'<(section|video|img|div)\b([^>]*)>', h):
-    tag, attrs = m.group(1), m.group(2)
-    st = re.search(r'data-start="([\d.]+)"', attrs)
-    du = re.search(r'data-duration="([\d.]+)"', attrs)
-    tr = re.search(r'data-track-index="(\d+)"', attrs)
-    if not (st and du and tr):
-        continue
-    at, dur = float(st.group(1)), float(du.group(1))
-    cid = re.search(r'data-composition-id="([^"]+)"', attrs)
+for w in wins:
+    cid = w["attrs"].get("data-composition-id")
     if cid:
-        kind, name = "graphic", cid.group(1)
+        kind, name = "graphic", cid
     else:
-        src = re.search(r'src="([^"]+)"', attrs)
-        if src:
-            name = Path(src.group(1)).name
-        else:
-            inner = h[m.end():m.end() + 900]
-            s2 = re.search(r'src="([^"]+)"', inner)
-            name = Path(s2.group(1)).name if s2 else "?"
-        kind = "clip" if tag == "video" else "still"
-    rows.append((at, dur, int(tr.group(1)), kind, name))
+        name = Path(w["src"]).name if w["src"] else "?"
+        kind = "clip" if w["kind"] == "video" else "still"
+    rows.append((w["at"], w["dur"], w["tr"], kind, name))
 
 rows.sort()
 
@@ -59,15 +48,8 @@ print(f"windows: {len(rows)}  median: {lens[len(lens)//2]:.2f}s  "
 
 # coverage: any moment with no picture-track window is black
 total = float(re.search(r'data-duration="([\d.]+)"', h).group(1))
-spans = sorted((at, at + dur) for at, dur, tr, *_ in rows if tr in PICTURE_TRACKS)
-cur, holes = 0.0, []
-for a, b in spans:
-    if a > cur + 0.05:
-        holes.append((cur, a))
-    cur = max(cur, b)
-if cur < total - 0.05:
-    holes.append((cur, total))
-print(f"uncovered picture gaps (tracks {sorted(PICTURE_TRACKS)}): {len(holes)}")
+holes = timeline.picture_holes(wins, total)
+print(f"uncovered picture gaps (tracks {list(timeline.PICTURE_TRACKS)}): {len(holes)}")
 for a, b in holes:
     print(f"  {ts(a)} -> {ts(b)}  ({b-a:.2f}s BLACK)")
 

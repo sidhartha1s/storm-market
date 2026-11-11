@@ -8,6 +8,10 @@ Read this as the plan written on 20 Sep 26, not as status: the E1 (1974) and E2 
 their target dates and `[verify]` marks although both episodes have since been built. Where this file and
 `tracker.json` or an episode folder disagree, they win.
 
+**Superseded (marked 11 Nov 26).** The E labels below are plan labels, not ship numbers: ship numbers are `E<nn>` from `python3 scripts/episode.py`
+(CLAUDE.md step 7), written beside each card that shipped. Episode state is `python3 scripts/stage.py`; `tracker.json`
+stopped on 19 Oct 26.
+
 ## 1. What the Studio export says (lifetime to 20 Sep 26, `references/channel-audit-2026-09-19/studio/`)
 
 | video | lane | length | impressions | CTR | views | AVD | watched |
@@ -136,7 +140,7 @@ Per episode, 12 to 16 designed graphics, library first (`library/catalog-index.j
 - **Packaging:** "The Tornado That Invented the F Scale" / "A 20 Storey Tower Twisted and Never Fell" /
   "Lubbock 1970: Why Tornadoes Have Numbers".
 
-### E5 · Palm Sunday 1965 (11 April 1965) · target 11 Oct 26
+### E5 · Palm Sunday 1965 (11 April 1965) · target 11 Oct 26 · shipped as E02
 - **Dominant question:** the warnings were issued; why did 271 people still die, and what did the double funnel
   photograph change?
 - **Architecture:** Countdown 60 % (Indiana, Michigan, Ohio, the evening in order) + Detective 40 % (Paul
@@ -195,7 +199,7 @@ Per episode, 12 to 16 designed graphics, library first (`library/catalog-index.j
 - **Packaging:** "The Forgotten Palm Sunday: 380 Dead in 1920" / "Three Palm Sundays, One Corridor" /
   "America's Deadliest Palm Sunday Was Not 1965".
 
-### E9 · Mayfield and the Quad-State tornado (10 December 2021) · target 28 Oct 26 · added 19 Oct 26
+### E9 · Mayfield and the Quad-State tornado (10 December 2021) · target 28 Oct 26 · added 19 Oct 26 · shipped as E06
 Owner, 19 Oct 26: next doc, "something recent within the last 30 years". Picked from five uncovered US events
 1996 to 2026 (table below). Facts with a URL were read on that page on 19 Oct 26; the rest stay `[verify]`.
 - **Dominant question:** the warning was out for hours; why did 57 people still die along one track, nine of
@@ -238,7 +242,7 @@ deaths, https://www.weather.gov/oun/events-19990503, https://www.weather.gov/oun
 https://www.weather.gov/ict/toptenkstors), Rolling Fork 2023 (deadliest Mississippi Delta tornado since 1971,
 https://www.weather.gov/jan/swpw_tornadoes).
 
-### E0 · El Reno, Oklahoma (31 May 2013) · replan
+### E0 · El Reno, Oklahoma (31 May 2013) · replan · shipped as E01 (rebuilt as v4)
 - **State:** v3 draft (26:08) rendered 30 Aug in worktree `ep4-el-reno-v3`, hook v2 preview 31 Aug, full static
   suite green, three weeks parked on owner review.
 - **Recommendation:** do not rebuild. Run the script-os retention pass on the existing edit (scorecard per

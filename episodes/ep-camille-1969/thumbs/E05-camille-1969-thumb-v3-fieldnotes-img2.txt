@@ -1,0 +1,2 @@
+NONE: no qualifying img2. C:\Users\Sidhartha\Automation Projects\storm-market\episodes\ep-camille-1969\ has no media\ folder and no provenance.csv on this laptop (main checkout or worktree).
+No candidate on this laptop: a Library of Virginia aerial ("No known copyright restrictions", owner chose "use", credit by LVA negative number per E05-camille-1969-metadata.md) has to come from the ZBook with its provenance row.

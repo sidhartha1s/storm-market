@@ -14,7 +14,7 @@ import re
 import sys
 from pathlib import Path
 
-MOUNT = re.compile(r'<video\b[^>]*\bid="(ins-paul-\d+)"[^>]*\bsrc="([^"]+)"')
+import timeline
 
 
 def _jobs(path):
@@ -23,9 +23,11 @@ def _jobs(path):
 
 def start_frames(episode):
     """{clip id: start-frame file name, or None when no jobs.json gives it exactly one frame}."""
-    live = re.sub(r"<!--.*?-->", "", (episode / "index.html").read_text(encoding="utf-8"), flags=re.S)
     out = {}
-    for cid, src in MOUNT.findall(live):
+    # attributes in any order (timeline.mounts); ins-paul-e1/e2 are the end-ask clips from assets/, not Flow clips
+    clips = [(a["id"], a["src"]) for _, a in timeline.mounts((episode / "index.html").read_text(encoding="utf-8"), "video")
+             if re.fullmatch(r"ins-paul-\d+", a.get("id", "")) and "src" in a]
+    for cid, src in clips:
         beside = (episode / src).parent / "jobs.json"
         if beside.is_file():
             jobs = _jobs(beside)

@@ -1,6 +1,8 @@
-# script-quickref.md — the script writer's brief (owner rules to 27 Sep 26)
+# script-quickref.md — the script writer's brief (owner rules through 26 Oct 26)
 
-A script writer reads this file, `references/flag-words.md` and the episode research, nothing else. It condenses
+A script writer reads this file, `references/flag-words.md`, the grader's checks in `references/grader-calibration.md`
+(the grader fails a section on exactly those, so clear them before handing over: 31 of 140 later-round fixes on the
+last three episodes were TTS-unsafe text, a banned shape or a fact spent twice) and the episode research, nothing else. It condenses
 the source file named in each section header; if a rule here and its source disagree, fix the source in the same
 PR and say which one won.
 
@@ -109,7 +111,7 @@ Every 20–60 s: question → information → payoff → new question, chained w
 Scale runtime by ADDING acts, never stretching beats. Each new act needs new material (a vignette + a
 mechanism/analysis pair) and plants+pays a loop.
 
-## Voice (45–75 US viewer) — `script-os.md` Voice rules + CLAUDE.md Voice
+## Voice (45–75 US viewer) — `script-os.md` Voice rules; the TTS-safe rules below are their one home
 - Median sentence 12–18 words; 10–15% run 25–35 words as fact-chains (and/then/which); one ≤4-word kicker per 150
   words. Write the long sentence — TTS splits it at commas, don't pre-shorten for that reason.
 - Sentence one of the script is the hook in its chosen shape (above), never a bare date or place: the popfig carries those.
@@ -184,7 +186,7 @@ alternative by default, for example "lost their lives" (owner 9 Oct 26); the tab
   he speaks full frame, each about 22 to 26 words (one 10 s clip, filled: a short line wastes the clip). They sit at turning points, where the story changes
   direction, and one of them is the `cta-hinge` tease right before the CTA (that one keeps the hinge's 25-word cap below).
 
-## CTA hinge (must-keep every episode from ep4 on) — DESIGN.md "CTA contract"
+## CTA hinge (must-keep every episode except `config.yaml channel.cta.exempt`) — DESIGN.md "CTA contract"
 - Window: the CTA sits between a tease and its payoff, around the halfway mark, inside `config.yaml channel.cta.window`. Never after the final payoff.
 - Hinge is scripted: the segment BEFORE the CTA ends on a tease (`cta-hinge` loop, ≤25 words); the segment AFTER
   opens with the payoff in its first sentence (first three words ideally, e.g. "He wrote a six.").

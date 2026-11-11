@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Build an SRT from an episode's per-segment words.json files.
 
-Reads episodes/<slug>/index.html for <audio id="nx-*" src="audio/X.wav" data-start="T">,
-loads audio/X.words.json (faster-whisper word timestamps, segment-relative), offsets to
-timeline time, groups words into caption cues (<=42 chars per line, break on punctuation
+Reads every narration <audio id="nx-*" src="audio/X.wav" data-start="T"> of episodes/<slug>/index.html
+(attributes in any order, scripts/timeline.py), loads audio/X.words.json (faster-whisper word timestamps,
+wav-relative), keeps the words inside the played window (data-media-start to data-media-start + data-duration),
+offsets them to timeline time, groups words into caption cues (<=42 chars per line, break on punctuation
 or 3.5s), writes renders/<out>.srt.
 
 Caption TEXT comes from audio/X.txt (the script text that was actually voiced), aligned to
@@ -25,6 +26,8 @@ import json
 import re
 import sys
 from pathlib import Path
+
+import timeline
 
 _PUNCT = re.compile(r"[^\w']+")
 
@@ -74,9 +77,11 @@ def align_captions(whisper_words, script_text):
 
 
 def ts(t):
-    h, rem = divmod(t, 3600)
-    m, s = divmod(rem, 60)
-    return f"{int(h):02d}:{int(m):02d}:{int(s):02d},{int(round((s % 1) * 1000)):03d}"
+    # round the total first: rounding only the fraction turned 1.9996 s into the invalid 00:00:01,1000
+    h, rem = divmod(round(t * 1000), 3_600_000)
+    m, rem = divmod(rem, 60_000)
+    s, ms = divmod(rem, 1000)
+    return f"{h:02d}:{m:02d}:{s:02d},{ms:03d}"
 
 
 def main():
@@ -92,34 +97,47 @@ def main():
     # 911 caption (the old code hardcoded another episode's nx-ins1/Jasper County values).
     # <video id="ins…" data-volume="1"> inserts (ep6 WWL/C-SPAN cuts, the CTA) carry their own
     # audio on the picture track — they get a cue too (2026-08-30; muted videos are skipped).
-    for ins in re.finditer(r'<(?:audio|video) [^>]*?id="(?:nx-)?ins[^"]*"[^>]*>', html):
-        if ins.group(0).startswith("<video") and not re.search(r'data-volume="1(?:\.0+)?"', ins.group(0)):
+    tags = timeline.mounts(html)
+    for kind, a in tags:
+        if not timeline.is_insert(a.get("id", "")) or (kind == "video" and not timeline.voiced(a)):
             continue
-        st = re.search(r'data-start="([\d.]+)"', ins.group(0))
-        du = re.search(r'data-duration="([\d.]+)"', ins.group(0))
-        lab = re.search(r'data-srt-label="([^"]+)"', ins.group(0))
-        if not (st and du):
+        if not ("data-start" in a and "data-duration" in a):
             continue
-        if not lab:
-            errors.append(f"insert audio has no data-srt-label (SRT caption text): {ins.group(0)[:120]}")
+        if not a.get("data-srt-label"):
+            errors.append(f"insert audio has no data-srt-label (SRT caption text): {kind} id={a['id']}")
             continue
-        s = float(st.group(1))
-        cues.append((s + 0.4, s + float(du.group(1)) - 0.2, lab.group(1)))
+        s, e = timeline.window(a)
+        cues.append((s + 0.4, e - 0.2, a["data-srt-label"]))
 
-    for m in re.finditer(r'<audio [^>]*?id="nx-(?!ins)[^"]*" src="(audio/[^"]+)\.wav" data-start="([\d.]+)"', html):
-        wj = ep / f"{m.group(1)}.words.json"
-        txt_path = ep / f"{m.group(1)}.txt"
+    # every narration tag, whatever its attribute order (a data-cut-by mount puts that attribute before src)
+    for kind, a in tags:
+        nid = a.get("id", "")
+        if kind != "audio" or not timeline.is_narration(nid):
+            continue
+        if not ("src" in a and "data-start" in a):
+            errors.append(f"narration {nid} lacks src or data-start")
+            continue
+        stem = Path(a["src"]).with_suffix("")
+        wj = ep / f"{stem}.words.json"
+        txt_path = ep / f"{stem}.txt"
         if not wj.exists():
             errors.append(f"missing words.json: {wj}")
         if not txt_path.exists():
             errors.append(f"missing script text for caption alignment: {txt_path}")
         if not (wj.exists() and txt_path.exists()):
             continue
-        off = float(m.group(2))
+        media_start = float(a.get("data-media-start") or 0)
+        played = float(a.get("data-duration") or "inf")  # no data-duration: the wav plays to its end
+        off = float(a["data-start"]) - media_start  # word times are wav-relative; the mount plays the wav from data-media-start
         words = json.loads(wj.read_text(encoding="utf-8"))
         if isinstance(words, dict):
             words = words.get("words", [])
         words = align_captions(words, txt_path.read_text(encoding="utf-8"))
+        # only the played part is heard: a cut-by mount hands the rest of the line to Paul's clip (its own label cue)
+        words = [w for w in words if media_start <= w["start"] < media_start + played]
+        if not words:
+            errors.append(f"narration {nid} yields no caption cue: no word of {wj.name} falls inside its played window")
+            continue
         line, start = [], None
         for w in words:
             txt = w["word" if "word" in w else "text"].strip()
@@ -145,6 +163,7 @@ def main():
         return
     cues.sort()
     out = ep / "renders" / f"{out_base}.srt"
+    out.parent.mkdir(exist_ok=True)  # a fresh worktree has no renders/ (gitignored)
     with out.open("w", encoding="utf-8") as f:
         for i, (s, e, txt) in enumerate(cues, 1):
             f.write(f"{i}\n{ts(s)} --> {ts(max(e, s + 0.8))}\n{txt}\n\n")

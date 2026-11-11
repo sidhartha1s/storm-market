@@ -26,7 +26,7 @@ def check(name, ok):
         FAILS.append(name)
 
 
-def run(clip1_dir, with_jobs=True):
+def run(clip1_dir, with_jobs=True, src_first=False):
     with tempfile.TemporaryDirectory() as tmp:
         ep = Path(tmp) / "ep-mayfield-2021"
         mounts = []
@@ -36,7 +36,8 @@ def run(clip1_dir, with_jobs=True):
             folder.mkdir(parents=True, exist_ok=True)
             if with_jobs or n != 1:
                 shutil.copy(FIX / f"{d}.jobs.json", folder / "jobs.json")
-            mounts.append(f'<video id="ins-paul-{n}" src="{folder.relative_to(ep).as_posix()}/ins-paul-{n}-vc.mp4" '
+            id_, src = f'id="ins-paul-{n}"', f'src="{folder.relative_to(ep).as_posix()}/ins-paul-{n}-vc.mp4"'
+            mounts.append(f'<video {src + " " + id_ if src_first and n == 1 else id_ + " " + src} '
                           'data-start="0" data-duration="5" data-track-index="1" data-volume="1"></video>')
         (ep / "index.html").write_text("\n".join(mounts), encoding="utf-8")
         r = subprocess.run([sys.executable, str(S / "paul_start_frame.py"), str(ep)], capture_output=True, text=True)
@@ -45,6 +46,8 @@ def run(clip1_dir, with_jobs=True):
 
 rc, out = run("ins-paul-1")
 check("Mayfield before 4e606b56 (clip 1 off the character sheet) fails", rc == 1 and "paul-sheet-c.png" in out)
+rc, out = run("ins-paul-1", src_first=True)
+check("G6: clip 1 off the character sheet, written src before id, still fails", rc == 1 and "paul-sheet-c.png" in out)
 rc, out = run("ins-paul-1-retake")
 check("Mayfield after the retake passes", rc == 0 and "paul-start-frame-omni-v2.png" in out)
 rc, out = run("ins-paul-1-retake", with_jobs=False)

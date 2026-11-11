@@ -8,7 +8,7 @@ so a claim is tested against whatever is actually on screen at the instant it is
 
   ERA   a modern year (>= 1990) spoken while an archival asset is on screen.
         "Archival" is read from the episode's own data, never a hardcoded folder list:
-        every media/**/provenance.csv row names a file and (usually) an `era` column —
+        every media/**/provenance.csv or <ep>/provenance.csv row names a file and (usually) an `era` column —
         the min year found there is authoritative. Rows with no `era` column fall back to
         the oldest year mentioned anywhere else in the row (fetch-date columns excluded,
         so a 2026 scrape date never masks a 1925 photograph). A row that says
@@ -33,6 +33,8 @@ import re
 import sys
 from pathlib import Path
 
+import timeline
+
 ep = Path(sys.argv[1])
 h = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
 
@@ -55,9 +57,10 @@ def _row_year(row):
 
 
 def load_asset_years(ep):
-    """basename -> declared year, from every media/**/provenance.csv row that names a file."""
+    """basename -> declared year, from every media/**/provenance.csv and the episode-root provenance.csv
+    (Palm Sunday, El Reno, Enderlin and Nepal keep it there) row that names a file."""
     years = {}
-    for csv_path in ep.glob("media/**/provenance.csv"):
+    for csv_path in [*ep.glob("media/**/provenance.csv"), *ep.glob("provenance.csv")]:
         with csv_path.open(encoding="utf-8", newline="") as f:
             for row in csv.DictReader(f):
                 fname = (row.get("file") or "").strip()
@@ -82,32 +85,22 @@ def is_archival(name):
 
 
 # ---------------------------------------------------------------- windows
-pictures = []       # (start, end, src-or-composition-id)
-for m in re.finditer(r'<(section|video|div|img)\b([^>]*)>', h):
-    attrs = m.group(2)
-    st = re.search(r'data-start="([\d.]+)"', attrs)
-    du = re.search(r'data-duration="([\d.]+)"', attrs)
-    tr = re.search(r'data-track-index="(\d+)"', attrs)
-    if not (st and du and tr) or int(tr.group(1)) not in (1, 2):
+pictures = []       # (start, end, src-or-composition-id); timeline.windows: a src-less card names its own body's file
+for w in timeline.windows(h):
+    if w["tr"] not in timeline.PICTURE_TRACKS:
         continue
-    cid = re.search(r'data-composition-id="([^"]+)"', attrs)
-    if cid:
-        name = "composition:" + cid.group(1)
-    else:
-        src = re.search(r'src="([^"]+)"', attrs)
-        if not src:
-            inner = h[m.end():m.end() + 900]
-            src = re.search(r'src="([^"]+)"', inner)
-        name = src.group(1) if src else "?"
-    at, dur = float(st.group(1)), float(du.group(1))
-    pictures.append((at, at + dur, name))
+    cid = w["attrs"].get("data-composition-id")
+    pictures.append((w["at"], w["at"] + w["dur"], "composition:" + cid if cid else (w["src"] or "?")))
 pictures.sort()
 
-total_nx = sorted(set(re.findall(r'<audio\b[^>]*\bid="(nx-[\w-]+)"', h)))
+# narration only (timeline.is_narration): an nx-ins insert is another voice with no words.json of its own
+narration = [a for _, a in timeline.mounts(h, "audio") if timeline.is_narration(a.get("id", ""))]
+total_nx = sorted({a["id"] for a in narration})
 
 segments = {}       # segment id (dashes kept) -> (start, duration)
-for m in re.finditer(r'<audio [^>]*?id="(nx-[\w-]+)"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', h):
-    segments[m.group(1)] = (float(m.group(2)), float(m.group(3)))
+for a in narration:
+    if "data-start" in a and "data-duration" in a:
+        segments[a["id"]] = (float(a["data-start"]), float(a["data-duration"]))
 
 
 def words_file(nx_id):

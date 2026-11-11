@@ -14,17 +14,24 @@ which the repo's own rule already forbids ("cap every source asset at the
 composition's resolution before wiring it").
 
 So: trim each clip to its longest window plus a safety margin, cap height at 1080,
-and re-encode with a short GOP so seeking is cheap. Originals are moved to
-media/_orig/ — nothing is destroyed.
+and re-encode with a short GOP so seeking is cheap. Originals are kept under media/_orig/ at
+their path below media/ (media/news/clip.mp4 -> media/_orig/news/clip.mp4), so two clips named
+alike keep two originals (audit R1, 11 Nov 26). Beside each sits <name>.out.md5, the md5 of the file
+this script left at the live path: a live file that no longer matches it was replaced (a re-download)
+and becomes the new original. A flat media/_orig/<name> from before 11 Nov 26 is moved under its
+clip's path the first time; when two mounted clips share that name the run refuses (move it by hand).
 
 Usage: python3 scripts/optimize_clips.py episodes/<slug> [--apply]
 Without --apply it prints the plan and changes nothing.
 """
+import hashlib
 import re
 import shutil
 import subprocess
 import sys
 from pathlib import Path
+
+from media_budget import clip_windows
 
 ep = Path(sys.argv[1])
 apply = "--apply" in sys.argv
@@ -40,19 +47,7 @@ h = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
 root = re.search(r'id="root"[^>]*data-width="(\d+)"[^>]*data-height="(\d+)"', h)
 COMP_W, COMP_H = (int(root.group(1)), int(root.group(2))) if root else (1920, 1080)
 
-used = {}
-for m in re.finditer(r'<video\b([^>]*)>', h):
-    attrs = m.group(1)
-    src = re.search(r'src="([^"]+)"', attrs)
-    dur = re.search(r'data-duration="([\d.]+)"', attrs)
-    if not (src and dur):
-        continue
-    # data-media-start is the clip's in-point: the source must supply media_start + duration
-    # seconds, or the trim below cuts off before the in-point plays (render-05: ep1/ep6
-    # vx-warmend needs 8s + 13.1s = 21.1s, not 13.1s — --apply then wrote a 14.6s file).
-    start = re.search(r'data-media-start="([\d.]+)"', attrs)
-    need = (float(start.group(1)) if start else 0.0) + float(dur.group(1))
-    used[src.group(1)] = max(used.get(src.group(1), 0.0), need)
+used = clip_windows(h)  # media_budget.py owns the window rule (in-point + duration, longest per src)
 
 # The CTA insert and the end ask are provenance contracts (config.yaml channel.cta and channel.end_ask, md5-checked
 # by sweep_episode): re-encoding broke the md5 silently (CTA: jma-vs-nhc, 17 Sep 26; end ask: Camille and Mayfield,
@@ -91,8 +86,36 @@ print(f"\n{len(plan)} clips, {total_before:.0f} MB before")
 if not apply:
     print("dry run — pass --apply to rewrite (originals move to media/_orig/)")
     raise SystemExit(0)
+if not plan:
+    print("nothing to optimize")
+    raise SystemExit(0)
 
-orig_dir.mkdir(parents=True, exist_ok=True)
+
+def md5(p):
+    return hashlib.md5(p.read_bytes()).hexdigest()
+
+
+backups = {}
+for src, *_ in plan:
+    p, rel = ep / src, Path(src)
+    backup = orig_dir / (rel.relative_to("media") if rel.parts[0] == "media" else rel)
+    stamp = backup.with_name(backup.name + ".out.md5")
+    flat = orig_dir / rel.name
+    if not backup.exists() and flat.exists():
+        # counted on disk, not among mounted clips: the backup may belong to a clip that is no longer mounted
+        same = [f for f in (ep / "media").rglob(rel.name) if orig_dir not in f.parents]
+        if len(same) > 1:
+            sys.exit(f"FAIL: media/_orig/{rel.name} is a flat backup from before 11 Nov 26 and {len(same)} "
+                     f"clips under media/ are named {rel.name}; move it to media/_orig/<its folder>/{rel.name} by hand")
+        backup.parent.mkdir(parents=True, exist_ok=True)
+        flat.replace(backup)
+        print(f"moved pre-11-Nov flat backup {rel.name} -> {backup.relative_to(ep).as_posix()}")
+    if not backup.exists() or (stamp.exists() and stamp.read_text().strip() != md5(p)):
+        if backup.exists():
+            print(f"{src} changed since the last pass (re-downloaded?): it is the new original")
+        backup.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(p, backup)
+    backups[src] = backup, stamp
 
 def has_audio(p):
     out = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "a",
@@ -128,17 +151,17 @@ for crf in CRF_LADDER:
     total_after = 0
     for src, mb, w, hgt, dur, keep in plan:
         p = ep / src
-        backup = orig_dir / Path(src).name
-        if not backup.exists():
-            shutil.copy2(p, backup)
+        backup, stamp = backups[src]
         tmp = p.with_suffix(".opt.mp4")
         r = encode(backup, tmp, keep, crf, has_audio(backup))
         if r.returncode != 0 or not tmp.exists():
             print(f"FAILED {Path(src).name}: {r.stderr.strip()[:120]}")
             tmp.unlink(missing_ok=True)
+            stamp.write_text(md5(p))
             total_after += p.stat().st_size / 1e6
             continue
         tmp.replace(p)
+        stamp.write_text(md5(p))
         after = p.stat().st_size / 1e6
         total_after += after
         print(f"crf{crf} {Path(src).name:42} {mb:7.1f} -> {after:6.1f} MB")

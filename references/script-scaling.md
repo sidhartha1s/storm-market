@@ -97,13 +97,20 @@ A section (hook+intro first, then each act) **locks** only when ALL of:
 - (a) its `[verify]` markers are all resolved (CONFIRMED / CORRECTED / cut, none open);
 - (b) its independent grade passed (bar: `learnings/script-process.md` "independent grade on every script");
 - (c) for the hook+intro only, the owner has **explicitly** approved it in chat or on his devq page; silence is
-  never approval (SKILL.md "never infer");
+  never approval, and the approval is a `hook-intro` line in `episodes/<slug>/gates.md` (CLAUDE.md "Owner gates");
 - (d) for the hook+intro only, `python3 scripts/hook_shape.py episodes/<slug>` passes (its `Hook shape:` tag is on the
   script-quickref.md menu and is not the shape of either of the last 2 episodes, owner 26 Oct 26).
 
 Acts need no owner sign-off (owner 22 Oct 26: "i dont thinks its highly necessary for me to have thhis 'check
 acts' gate anymore. i thought you were gonna share the preview"). His next look after the hook+intro is the
 draft preview, with Paul's Flow clips in it.
+
+**Rounds are capped and shrink** (owner 11 Nov 26: "a maximum number of two to three turns maximum each time. The
+turns should be shorter than the last one"; the last three episodes ran 3.5 to 4 grade rounds a section, up to 7).
+At most 3 grade rounds per section. Round 1 reads the whole section. Rounds 2 and 3 get the previous round's fix list
+and read only the lines it changed, on the file as it stands now (Galveston A1 round 3 graded text older than round
+2's fixes). After round 3 the section locks with what is still open listed for the draft preview. A `[verify]` marker
+is not a round: it still resolves or its line is cut (rule a).
 
 A locked section goes to TTS/compose immediately — it does not wait for later acts' fan-out to
 finish. A locked section never reopens for a later section's fact-check; a cross-section
