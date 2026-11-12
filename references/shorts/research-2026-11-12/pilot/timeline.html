@@ -1,0 +1,74 @@
+<!doctype html><meta charset="utf-8"><title>Stay or Go: pilot timeline</title><meta name="viewport" content="width=device-width,initial-scale=1"><style>
+body{font:15px/1.5 var(--font-sans,system-ui,sans-serif);color:var(--foreground,#e6e8ec);margin:0}
+h2{font-size:18px;margin:26px 0 8px;border-bottom:1px solid var(--border,#2a2f3a);padding-bottom:6px} h3{font-size:15px;margin:0 0 6px}
+p{margin:6px 0} .note{font-size:13px;color:var(--muted-foreground,#8d95a5)} ul{margin:6px 0;padding-left:20px}
+.card{background:var(--card,#171a21);border:1px solid var(--border,#262b36);border-radius:var(--radius,10px);padding:16px;margin:12px 0}
+.top{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.f1{position:relative;width:180px;height:320px;flex:none;border-radius:12px;overflow:hidden;background:linear-gradient(#141821,#07080b);color:#fff;font-weight:700}
+.f1 .clock{position:absolute;top:14px;left:12px;font-size:26px;letter-spacing:.5px} .f1 .date{position:absolute;top:48px;left:12px;font-size:8px;letter-spacing:1px;opacity:.8}
+.f1 .tv{position:absolute;top:82px;left:20px;right:20px;height:104px;border-radius:14px;border:5px solid #3a3229;background:radial-gradient(#6f7f86,#2d3a40);overflow:hidden}
+.f1 .tv i{position:absolute;left:0;right:0;bottom:0;background:#c81e1e;font:700 7px/14px sans-serif;text-align:center;font-style:normal}
+.f1 .ttl{position:absolute;top:200px;left:12px;right:12px;font-size:17px;line-height:1.1} .f1 .ttl b{color:#ffcf40}
+.f1 .paul{position:absolute;left:12px;bottom:40px;width:52px;height:52px;border-radius:50%;border:3px solid #e02b2b;background:#39404d;font-size:8px;display:flex;align-items:center;justify-content:center}
+.f1 .cap{position:absolute;left:74px;bottom:56px;font-size:13px}
+.strip{overflow-x:auto;border:1px solid var(--border,#262b36);border-radius:var(--radius,10px);padding:8px 0}
+.row{position:relative;height:30px;margin:3px 0} .row>span{position:sticky;left:0;z-index:1;font-size:10px;padding:1px 5px;background:var(--card,#171a21);border-radius:4px;color:var(--muted-foreground,#8d95a5)}
+.blk{position:absolute;top:12px;height:17px;border-radius:4px;font-size:10px;line-height:17px;padding:0 4px;overflow:hidden;white-space:nowrap;box-sizing:border-box;border:1px solid var(--border,#262b36);background:var(--secondary,#232936);cursor:pointer}
+.r0 .blk{background:var(--warning,#e0b33c);color:#111;border:0} .r4 .blk{background:#e02b2b;color:#fff;border:0}
+.ruler{position:relative;height:16px;font-size:10px;color:var(--muted-foreground,#8d95a5)} .ruler b{position:absolute;font-weight:400;border-left:1px solid var(--border,#262b36);padding-left:3px}
+.beat h3 small{font-weight:400;color:var(--muted-foreground,#8d95a5)}
+label{display:block;font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted-foreground,#8d95a5);margin-top:10px}
+[contenteditable]{border:1px dashed var(--border,#3a4150);border-radius:6px;padding:6px 8px;min-height:20px;outline:0} [contenteditable]:focus{border-style:solid;border-color:var(--ring,#8ab4ff)}
+.ch{border-color:var(--warning,#e0b33c)!important} .src{font-size:12px;color:var(--muted-foreground,#8d95a5);margin-top:8px}
+button{font:inherit;padding:10px 14px;border-radius:8px;border:0;background:var(--primary,#8ab4ff);color:var(--primary-foreground,#111);font-weight:600}
+textarea{width:100%;box-sizing:border-box;height:140px;margin-top:8px;font:13px/1.4 var(--font-mono,monospace);background:transparent;color:inherit;border:1px solid var(--border,#262b36);border-radius:8px;padding:8px}
+</style>
+<p class="note">Pilot reel 1 of 3, "Stay or Go". Moore, Oklahoma, May 3 1999. Tap any dashed box and type over it. Changing Paul's words re-times the strip. When you are done, press the button at the bottom and paste the result into the chat.</p>
+
+<div class="top"><div class="f1"><div class="clock">6:26 PM</div><div class="date">MAY 3, 1999 · GRADY COUNTY, OKLAHOMA</div><div class="tv"><i>TORNADO WARNING · GRADY COUNTY</i></div><div class="ttl">A TORNADO IS <b>25 MINUTES</b> FROM YOUR FRONT DOOR.</div><div class="paul">PAUL</div><div class="cap">It's</div></div>
+<div style="flex:1;min-width:150px"><h3>Frame one (a sketch of the layout, not the design)</h3><ul><li>A clock that runs, the date and the county.</li><li>Your living room in 1999: a tube TV with a red warning crawl and the real photo of the tornado on its screen.</li><li>The title names something of yours: your front door.</li><li>Paul's face in the red circle, bottom left, speaking from the first frame.</li></ul></div></div>
+
+<h2>Timeline <span class="note" id="total"></span></h2>
+<div class="strip" id="strip"></div>
+<p class="note">Times are estimated from the word count (2.6 words a second) until Paul's voice is recorded. Tap a block to jump to its beat.</p>
+
+<div id="beats"></div>
+
+<div class="card"><h3>Anything else</h3><div contenteditable data-k="general" data-o=""></div>
+<p style="margin-top:12px"><button id="copy">Copy my changes</button></p><textarea id="out" placeholder="Your changes will appear here. Copy this text into the chat."></textarea></div>
+
+<h2>The three parts</h2>
+<div class="card"><p><b>1. Stay or Go</b> (this one). You are in a mobile home in Grady County at 6:26 PM. Hallway or the neighbor's cellar.</p><p><b>2. Drive or Shelter.</b> Opens "Most of you chose…", then the record: thirty-five people in one cellar, the door pulled open, every one came up alive; in that same county twelve people didn't survive, most of them in mobile homes, and FEMA's engineers found anchor straps that had broken. Then 6:57 PM: the first Tornado Emergency, Moore is 25 minutes ahead, you are in a house with no basement, and one TV station is urging people to get out of the path. Drive or shelter.</p><p><b>3. Gym or Hallway.</b> The record on the road: two women lost their lives under highway overpasses. Then Westmoore High, an awards ceremony, several hundred students and parents, the tornado within a hundred yards. You are the assistant principal. Ends on what the school did, and sends people to the full film.</p></div>
+
+<h2>What makes it ours, not the same animation as everyone</h2>
+<div class="card"><ul><li>It happened. Every choice is one real people faced, and the answer comes from the weather service's own report, shown as the page with the line highlighted.</li><li>Real pictures: the tornado photos by NOAA and the weather service, the real damage path map. Drawings only where no camera was.</li><li>Everything on screen is from 1999: a tube TV, a weather radio, a wall clock. No phone alerts, because there were none.</li><li>Paul. His face in the red circle and his voice, in every reel.</li></ul></div>
+
+<script>
+const B=[
+{id:"b1",name:"Hook",voice:"It's six twenty-six p.m., May third, 1999. You're in a mobile home in Grady County, Oklahoma. A tornado just touched down.",text:"Clock 6:26 PM (running) · MAY 3, 1999 · GRADY COUNTY, OKLAHOMA · title: A TORNADO IS 25 MINUTES FROM YOUR FRONT DOOR.",pic:"Your living room from the couch. A 1999 tube TV: red warning crawl, the real photo of the tornado on its screen (Mike Eilts, NOAA).",snd:"Weather radio alert tone under the first word (made by us), then room tone.",paul:"On, bottom left, red ring, from frame one.",src:"Episode script line 125: touchdown 6:26 near Amber, Grady County."},
+{id:"b2",name:"Stakes",voice:"It's coming your way, and it's about twenty-five minutes out. Before tonight is over it'll be rated F5, the top of the scale.",text:"Clock jumps to 6:27 · chip F5 · countdown 25:00 starts in the corner and stays to the end.",pic:"Map drawn by us from the real damage path: the track grows from Amber toward a dot marked YOU.",snd:"Low rumble starts, very quiet.",paul:"On.",src:"Line 209: about twenty-five minutes from touchdown to Bridge Creek. Fact check I1: F5."},
+{id:"b3",name:"What you have",voice:"Here's what you've got. A hallway. Steel straps holding your home to the ground. And a TV carrying the weather service's warning.",text:"Three items tick in, one per sentence: HALLWAY · ANCHOR STRAPS · TV WARNING.",pic:"Cut-away drawing of the mobile home on its steel frame, each item lighting up as he names it.",snd:"One soft click per item.",paul:"On.",src:"Line 227: some homes were anchored. Line 245: warnings heard on a local TV station."},
+{id:"b4",name:"The other option",voice:"And down the road, your neighbor has a storm cellar. One small room under the ground. Your neighbors are already heading for it.",text:"STORM CELLAR · BELOW GROUND · clock 6:33.",pic:"Same drawing pulls back: the road, a cellar door in the ground, small figures walking toward it.",snd:"Wind picks up.",paul:"Off for this beat: the cellar door sits in his corner.",src:"Line 245: a storm cellar, family and neighbors went down into it."},
+{id:"b5",name:"What each one costs",voice:"But getting there means going out that door, under that sky, with a mile-wide tornado coming. Stay in, and you're in a long, light box sitting on a steel frame.",text:"Captions only.",pic:"The real photo of the tornado near Bridge Creek, full height, slow push in (Erin Maxwell, weather service). Then back to the hallway.",snd:"Rumble rises.",paul:"On.",src:"Fact check I1: a mile across. Line 227: a long, light box on a steel frame."},
+{id:"b6",name:"The choice",voice:"So what do you do? Stay in the hallway, or go for the cellar?",text:"Two big words fill the frame: STAY / GO · clock 6:40 · countdown 11:00.",pic:"Split frame: the hallway on the left, the cellar door on the right.",snd:"Riser that ends exactly on 'cellar'. Then silence.",paul:"On.",src:"No new fact."},
+{id:"b7",name:"The ask",voice:"Comment stay, or go. Thirty-five people in this county made one of those choices together that night. Tomorrow I'll show you what the weather service's report says happened to them.",text:"COMMENT STAY OR GO · PART 1 OF 3 · THE WARNING HOUR.",pic:"The cover of the weather service's report, closed.",snd:"Room tone only.",paul:"Grows to about twice the size for this beat: he is asking you directly.",src:"Line 245: thirty-five people in all. Source: NWS Service Assessment p22."}];
+const F=[["voice","Paul says"],["text","On screen"],["pic","Picture"],["snd","Sound"],["paul","Paul's circle"]],PX=13,WPS=2.6;
+let S={};try{S=JSON.parse(localStorage.getItem("wh1")||"{}")}catch(e){}
+const val=(b,f)=>S[b.id+"."+f]??b[f],esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+function times(){let t=0;return B.map(b=>{const d=Math.max(2,val(b,"voice").trim().split(/\s+/).length/WPS+.4),r=[t,d];t+=d;return r})}
+function strip(){const T=times(),end=T[T.length-1][0]+T[T.length-1][1];let h='<div class="ruler" style="width:'+(end*PX+20)+'px">';
+for(let s=0;s<end;s+=5)h+='<b style="left:'+s*PX+'px">'+s+' s</b>';h+="</div>";
+F.forEach(([f,l],i)=>{h+='<div class="row r'+i+'" style="width:'+(end*PX+20)+'px"><span>'+l+"</span>";
+B.forEach((b,j)=>{const v=val(b,f);if(f=="paul"&&/^off/i.test(v))return;h+='<div class="blk" data-j="'+b.id+'" style="left:'+T[j][0]*PX+"px;width:"+(T[j][1]*PX-2)+'px">'+esc(v)+"</div>"});h+="</div>"});
+document.getElementById("strip").innerHTML=h;document.getElementById("total").textContent="about "+Math.round(end)+" s";
+B.forEach((b,j)=>{const e=document.getElementById("t-"+b.id);if(e)e.textContent=T[j][0].toFixed(1)+" to "+(T[j][0]+T[j][1]).toFixed(1)+" s"})}
+document.getElementById("beats").innerHTML=B.map((b,j)=>'<div class="card beat" id="'+b.id+'"><h3>'+(j+1)+". "+b.name+' <small id="t-'+b.id+'"></small></h3>'+F.map(([f,l])=>"<label>"+l+'</label><div contenteditable data-k="'+b.id+"."+f+'" data-o="'+esc(b[f]).replace(/"/g,"&quot;")+'">'+esc(val(b,f))+"</div>").join("")+'<label>Your note on this beat</label><div contenteditable data-k="'+b.id+'.note" data-o="">'+esc(S[b.id+".note"]||"")+'</div><div class="src">Source: '+b.src+"</div></div>").join("");
+const g=document.querySelector('[data-k="general"]');g.textContent=S.general||"";
+function mark(e){e.classList.toggle("ch",e.innerText.trim()!=e.dataset.o)}
+document.querySelectorAll("[contenteditable]").forEach(mark);
+document.addEventListener("input",ev=>{const e=ev.target;if(!e.dataset||!e.dataset.k)return;const v=e.innerText.trim();if(v==e.dataset.o)delete S[e.dataset.k];else S[e.dataset.k]=v;mark(e);try{localStorage.setItem("wh1",JSON.stringify(S))}catch(x){}if(e.dataset.k.endsWith(".voice"))strip()});
+document.getElementById("strip").addEventListener("click",ev=>{const j=ev.target.dataset.j;if(j)document.getElementById(j).scrollIntoView({behavior:"smooth"})});
+document.getElementById("copy").onclick=()=>{const L=Object.keys(S).sort().map(k=>{const[b,f]=k.split(".");const n=B.findIndex(x=>x.id==b);return(n<0?"General":"Beat "+(n+1)+" "+(f=="note"?"note":(F.find(x=>x[0]==f)||[0,f])[1]))+": "+S[k]});
+const o=document.getElementById("out");o.value=L.length?"Stay or Go timeline, my changes:\n"+L.join("\n"):"No changes yet.";o.focus();o.select();try{navigator.clipboard.writeText(o.value)}catch(x){}};
+strip();
+</script>
