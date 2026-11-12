@@ -13,6 +13,7 @@ rendered. The reel format is open: "We are still experimenting phase ... nothing
 | `transcripts/<handle>.md` | Spoken words of the 65 reels that were transcribed (small.en, unchecked) |
 | `data/` | Per account: every reel listed in the 45 days (`ig_<handle>.json`) and the ones pulled (`<handle>.picks.json`) |
 | `pilot/timeline.html` | Pilot reel 1, "Stay or Go": the spoken lines with their sources. Its layout and its one drawn frame were rejected by the owner (12 Nov 26); the concept stands |
+| `pilot/plot.html` | The plot six reels ahead: each reel's decision, what either choice costs, the real outcome with its script line, what happens when viewers take it elsewhere, the storms after |
 | `tools/` | The one-off scripts that made the above. Not pipeline code, not gated |
 
 ## Method
