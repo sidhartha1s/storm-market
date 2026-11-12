@@ -2,6 +2,16 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 12 Nov 26 - the pilot's choice had one right answer and no plan past reel 1; the owner asked where the stakes are
+- Owner on the storyboard: "Right now it's just a question right like whether they want to go on that seller or not
+  so how is that really compelling"; "You should be raising the stakes somewhere"; "at least see it two or three
+  steps ahead of the people"; "why weather service report".
+- Cause: the choice (mobile home or storm cellar) has an answer everybody knows, nothing of the viewer's was at risk,
+  the payoff promised a document, and parts 2 and 3 were an outline.
+- Rules (home: `references/shorts/research-2026-11-12/README.md` "The plot is planned ahead"): both choices cost
+  something and both outcomes are shown; stakes rise reel to reel; the promise is what happened to "you"; the plot
+  reaches him at least three reels ahead with what the next reel does for each way the comments can go.
+
 ## 12 Nov 26 - the pilot went to the owner as a text timeline and one cluttered sketch; he asked for frames
 - Owner on `pilot/timeline.html`: "the text is too heavy on every print. It is graphics less. I think you are trying
   to lead it with a lot of text"; "you mentioned Grady County twice. There are two tornado texts in front of me. Where
