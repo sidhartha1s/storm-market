@@ -39,8 +39,8 @@ rendered. The reel format is open: "We are still experimenting phase ... nothing
 - Direction 1 (the viewer-played serial on a real storm) is the one to scope.
 - "the above reels claude automated mostly, have very generic opusslop ... animations - whcih are good. But generic
   among the 1000s." The pilot must not look like them.
-- Paul's face in the circle is the branding that later sends people to the long form or the landing page, at least
-  where he is the one talking; he stays the main narrator. The Instagram handle may change if needed.
+- The red-ringed circle is the branding that later sends people to the long form or the landing page. Who sits in it
+  changed on 13 Nov 26 ("Voice and narrator" below). The Instagram handle may change if needed.
 
 ## How a reel is shown to the owner (12 Nov 26, after he rejected the text timeline)
 - As a storyboard: one real 9:16 frame per scene, read left to right, in several candidate looks. "I want different
