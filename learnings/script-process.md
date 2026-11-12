@@ -25,7 +25,7 @@ Newest first. New entries go at the top, under this line. Superseded lines point
 - Rules, with their home in `references/shorts/research-2026-11-12/README.md`: a reference account must match what
   the channel is (a named host, or fully animated); score a reel against its own account's median, never against a
   hashtag; a copied format still needs a look of its own (real photos, the report page, 1999 objects, Paul's
-  circle); a script goes to the owner as an editable timeline before anything is built; a page he must read is
+  circle); how a script is shown to him is superseded by the entry above (frames, not a text timeline); a page he must read is
   shown in the chat itself, since he reads on his phone.
 
 ## 26 Oct 26 - one owner example became the only hook, 7 episodes in a row
