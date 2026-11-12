@@ -2,6 +2,20 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 12 Nov 26 - the reels study sampled the wrong accounts, then the owner could not open it
+- Owner, on the first pass (117 reels found by hashtag): "wrong directions. these are not personalised videos u
+  pulled. just faceless pages. we have paul, we are some what branded". On the animated accounts he named: "very
+  generic opusslop ... animations - whcih are good. But generic among the 1000s". On blocked access: "if blocked one
+  way, find other ways". From his phone: "Html is not opening here" (the page was a link to the laptop).
+- Measured: against each account's own 45-day median, the two viewer-played serials hold the highest medians
+  (887,500 and 944,000 views a reel); Kallaway's first-line template is identical at 17.11x and 0.41x of his median,
+  so the opening sentence shape does not separate his hits from his misses.
+- Rules, with their home in `references/shorts/research-2026-11-12/README.md`: a reference account must match what
+  the channel is (a named host, or fully animated); score a reel against its own account's median, never against a
+  hashtag; a copied format still needs a look of its own (real photos, the report page, 1999 objects, Paul's
+  circle); a script goes to the owner as an editable timeline before anything is built; a page he must read is
+  shown in the chat itself, since he reads on his phone.
+
 ## 26 Oct 26 - one owner example became the only hook, 7 episodes in a row
 - Owner, on the batch A hooks: "Every video is having the same hook ... Every plot is the same ... when i'm giving you
   examples you take it very literally and follow only that thing moving forward like a bible".
