@@ -7,9 +7,8 @@ Newest first. New entries go at the top, under this line. Superseded lines point
   pulled. just faceless pages. we have paul, we are some what branded". On the animated accounts he named: "very
   generic opusslop ... animations - whcih are good. But generic among the 1000s". On blocked access: "if blocked one
   way, find other ways". From his phone: "Html is not opening here" (the page was a link to the laptop).
-- Measured: against each account's own 45-day median, the two viewer-played serials hold the highest medians
-  (887,500 and 944,000 views a reel); Kallaway's first-line template is identical at 17.11x and 0.41x of his median,
-  so the opening sentence shape does not separate his hits from his misses.
+- Measured (numbers in `references/shorts/research-2026-11-12/README.md`): against each account's own 45-day median, the
+  viewer-played serials lead; Kallaway's first-line template is the same on his best and his weakest reels.
 - Rules, with their home in `references/shorts/research-2026-11-12/README.md`: a reference account must match what
   the channel is (a named host, or fully animated); score a reel against its own account's median, never against a
   hashtag; a copied format still needs a look of its own (real photos, the report page, 1999 objects, Paul's
