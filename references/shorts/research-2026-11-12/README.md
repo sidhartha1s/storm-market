@@ -39,16 +39,16 @@ rendered. The reel format is open: "We are still experimenting phase ... nothing
 - Direction 1 (the viewer-played serial on a real storm) is the one to scope.
 - "the above reels claude automated mostly, have very generic opusslop ... animations - whcih are good. But generic
   among the 1000s." The pilot must not look like them.
-- The red-ringed circle is the branding that later sends people to the long form or the landing page. Who sits in it
-  changed on 13 Nov 26 ("Voice and narrator" below). The Instagram handle may change if needed.
+- Paul's face in the circle is the branding that later sends people to the long form or the landing page, at least
+  where he is the one talking; he stays the main narrator. The Instagram handle may change if needed.
 
 ## How a reel is shown to the owner (12 Nov 26, after he rejected the text timeline)
 - As a storyboard: one real 9:16 frame per scene, read left to right, in several candidate looks. "I want different
   frames of different scenes basically"; "show me the candidates". Never tracks of words.
 - One piece of text per frame at most. No date, clock or place caption: "Where should I look?"
-- Graphics lead, the words are spoken. "It is graphics less. I think you are trying to lead it with a lot of text."
+- Graphics lead, the words are Paul's voice. "It is graphics less. I think you are trying to lead it with a lot of text."
 - The brand is the long form's: its map, drawings, photos, palette and fonts (`library/inhouse/snippets/tokens.md`),
-  and the red-ringed circle on every frame. "my videos which you put on long form is much better than this."
+  and Paul's red-ringed circle on every frame. "my videos which you put on long form is much better than this."
 - The concept is not what failed: "your conceptwise direction was good. failed on how to effectivate it/ visualise
   it designwise or branding wise to the viewers."
 
@@ -66,36 +66,15 @@ and we might have to pivot midway"; "one bad episode can just shut the entire th
 - Each reel stands alone (it opens by replaying the last choice in picture), so one weak reel costs one reel.
 - Nothing in it is invented except "you": every outcome is a line of the parent film's script.
 
-## Voice and narrator (13 Nov 26, after the owner rated the plot's wit "two out of ten")
-Owner: "be somewhat witty, dude ... a bit of SASs would be nice"; "Instead of using stuff like mobile home, that's not
-really understandable"; "you can be having a bit of satire or you know mockery"; "you can say that you are a annoying
-neighbor"; "think of it from a ... gentsy girl mind—like one who gossips, one who has tea, one who is a bit sassy, one
-who is witty"; "If you want to leave Paul out of this, you are good to do that. I will just keep it as the warning
-hour"; "if you can make a stickman talk ... like you are doing for Paul in the red circle, that is also advisable ...
-at least they know that it is AI"; "if they are asking you to stay, you are fucking killing the ... Trajectory in that
-one episode, how are you going to bring it up from that"; "That was really stupid of you ... you are okay to say
-that"; "this is Instagram so people can really fuck around ... be prepared".
-- The reels talk like a sassy, gossiping Gen Z neighbor: satire and mockery, no trade words. "Mobile home" becomes what
-  it is in plain words (a long, light box that arrived on a truck, strapped to the ground).
-- Paul may stay out of the reels. The brand on them is The Warning Hour; Paul can come back as the person behind it.
-- The narrator in the red circle may be a stick figure that is plainly a drawing. Nothing pretends to be a person.
-- A wrong vote gets roasted to the voters' faces, and the series has to survive it: a plot shows the next reel for
-  every way the vote can go, including people voting to wreck it, and replies for the comments that will come.
-- Proposed, not yet his word: three shared rewinds per storm (a wrong majority burns one; at zero the season ends with
-  a score and the next storm starts); the jokes land on the vote, the house and the narrator, never on the real
-  people, and stop for one line when the real outcome is read. Unsourced materials (plywood, tin) stay comparisons.
-- Candidates shown to him (three narrators, reel 1 rewritten, reel 2 for each vote, the comment replies) sit with the
-  storyboard in the scratch folder until this merges. No narrator is picked yet; her voice is not chosen.
-
 ## The pilot: "Stay or Go" (Moore, 3 May 1999, reel 1 of 6)
 Look: the owner picked "Map room" from three storyboard looks ("A is good mate", 12 Nov 26): the film's county map
-and line drawings turned upright, all vector, the red circle with the countdown ring. The storyboard page sits in a
+and line drawings turned upright, all vector, Paul's circle with the countdown ring. The storyboard page sits in a
 scratch folder outside the repo until this merges.
 `pilot/timeline.html` holds reel 1's lines; `pilot/plot.html` holds reels 1 to 6. Every fact is the parent film's
 (`episodes/ep-moore-1999/edit_script.md`, lines named per beat; `fact_check.md`).
 What separates it from the animated accounts: the choices are ones real people faced and the answer is read from
 the weather service's report on screen; real NOAA and weather service photos and the real path map; everything on
-screen is from 1999 (tube TV, weather radio, wall clock); the red circle in every reel.
+screen is from 1999 (tube TV, weather radio, wall clock); Paul's circle and voice in every reel.
 
 ## Comment-to-DM (checked on vendor and Meta pages, 12 Nov 26)
 - SuperProfile's free plan does keyword-comment to DM on a chosen reel: "Unlimited AutoDMs on Reels & Posts", one
