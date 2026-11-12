@@ -66,9 +66,30 @@ and we might have to pivot midway"; "one bad episode can just shut the entire th
 - Each reel stands alone (it opens by replaying the last choice in picture), so one weak reel costs one reel.
 - Nothing in it is invented except "you": every outcome is a line of the parent film's script.
 
+## Voice and narrator (13 Nov 26, after the owner rated the plot's wit "two out of ten")
+Owner: "be somewhat witty, dude ... a bit of SASs would be nice"; "Instead of using stuff like mobile home, that's not
+really understandable"; "you can be having a bit of satire or you know mockery"; "you can say that you are a annoying
+neighbor"; "think of it from a ... gentsy girl mind—like one who gossips, one who has tea, one who is a bit sassy, one
+who is witty"; "If you want to leave Paul out of this, you are good to do that. I will just keep it as the warning
+hour"; "if you can make a stickman talk ... like you are doing for Paul in the red circle, that is also advisable ...
+at least they know that it is AI"; "if they are asking you to stay, you are fucking killing the ... Trajectory in that
+one episode, how are you going to bring it up from that"; "That was really stupid of you ... you are okay to say
+that"; "this is Instagram so people can really fuck around ... be prepared".
+- The reels talk like a sassy, gossiping Gen Z neighbor: satire and mockery, no trade words. "Mobile home" becomes what
+  it is in plain words (a long, light box that arrived on a truck, strapped to the ground).
+- Paul may stay out of the reels. The brand on them is The Warning Hour; Paul can come back as the person behind it.
+- The narrator in the red circle may be a stick figure that is plainly a drawing. Nothing pretends to be a person.
+- A wrong vote gets roasted to the voters' faces, and the series has to survive it: a plot shows the next reel for
+  every way the vote can go, including people voting to wreck it, and replies for the comments that will come.
+- Proposed, not yet his word: three shared rewinds per storm (a wrong majority burns one; at zero the season ends with
+  a score and the next storm starts); the jokes land on the vote, the house and the narrator, never on the real
+  people, and stop for one line when the real outcome is read. Unsourced materials (plywood, tin) stay comparisons.
+- Candidates shown to him (three narrators, reel 1 rewritten, reel 2 for each vote, the comment replies) sit with the
+  storyboard in the scratch folder until this merges. No narrator is picked yet; her voice is not chosen.
+
 ## The pilot: "Stay or Go" (Moore, 3 May 1999, reel 1 of 6)
 Look: the owner picked "Map room" from three storyboard looks ("A is good mate", 12 Nov 26): the film's county map
-and line drawings turned upright, all vector, Paul's circle with the countdown ring. The storyboard page sits in a
+and line drawings turned upright, all vector, the red circle with the countdown ring. The storyboard page sits in a
 scratch folder outside the repo until this merges.
 `pilot/timeline.html` holds reel 1's lines; `pilot/plot.html` holds reels 1 to 6. Every fact is the parent film's
 (`episodes/ep-moore-1999/edit_script.md`, lines named per beat; `fact_check.md`).
