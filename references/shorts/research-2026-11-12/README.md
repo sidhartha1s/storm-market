@@ -46,9 +46,9 @@ rendered. The reel format is open: "We are still experimenting phase ... nothing
 - As a storyboard: one real 9:16 frame per scene, read left to right, in several candidate looks. "I want different
   frames of different scenes basically"; "show me the candidates". Never tracks of words.
 - One piece of text per frame at most. No date, clock or place caption: "Where should I look?"
-- Graphics lead, the words are Paul's voice. "It is graphics less. I think you are trying to lead it with a lot of text."
+- Graphics lead, the words are spoken. "It is graphics less. I think you are trying to lead it with a lot of text."
 - The brand is the long form's: its map, drawings, photos, palette and fonts (`library/inhouse/snippets/tokens.md`),
-  and Paul's red-ringed circle on every frame. "my videos which you put on long form is much better than this."
+  and the red-ringed circle on every frame. "my videos which you put on long form is much better than this."
 - The concept is not what failed: "your conceptwise direction was good. failed on how to effectivate it/ visualise
   it designwise or branding wise to the viewers."
 
