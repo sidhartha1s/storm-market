@@ -40,7 +40,16 @@ rendered. The reel format is open: "We are still experimenting phase ... nothing
   among the 1000s." The pilot must not look like them.
 - Paul's face in the circle is the branding that later sends people to the long form or the landing page, at least
   where he is the one talking; he stays the main narrator. The Instagram handle may change if needed.
-- The script is shown as an editable timeline before anything is built.
+
+## How a reel is shown to the owner (12 Nov 26, after he rejected the text timeline)
+- As a storyboard: one real 9:16 frame per scene, read left to right, in several candidate looks. "I want different
+  frames of different scenes basically"; "show me the candidates". Never tracks of words.
+- One piece of text per frame at most. No date, clock or place caption: "Where should I look?"
+- Graphics lead, the words are Paul's voice. "It is graphics less. I think you are trying to lead it with a lot of text."
+- The brand is the long form's: its map, drawings, photos, palette and fonts (`library/inhouse/snippets/tokens.md`),
+  and Paul's red-ringed circle on every frame. "my videos which you put on long form is much better than this."
+- The concept is not what failed: "your conceptwise direction was good. failed on how to effectivate it/ visualise
+  it designwise or branding wise to the viewers."
 
 ## The pilot: "Stay or Go" (Moore, 3 May 1999, part 1 of 3)
 `pilot/timeline.html`. Every fact is the parent film's (`episodes/ep-moore-1999/edit_script.md`, lines named per
