@@ -191,7 +191,8 @@ Owner 7 Oct 26: "i want all stuff related to storm market within the repo. excep
   here); the Stop hook `~/.claude/hooks/lane-gate.py` (a harness hook; the job model it asks is `scripts/lanes.py`); the Claude profiles `lanes.py` launches lanes on
   (the `%USERPROFILE%\bin\claudeN.cmd` wrappers and their credentials: tokens in `~/.claude-tokens/`, login folders under `~/.claude-accounts/` for claude6 and claudemax) and the `zbook` and `asus` ssh aliases;
   the channel's Google accounts (`config.yaml channel`); stock-fetch keys in `~/.claude/.env`; ChatGPT image generation for thumbnails, driven by the webgen browser
-  tool in `~/Automation Projects/webgen` (a separate project). What is still to move in: `ops/tasks.md`.
+  tool in `~/Automation Projects/webgen` (a separate project); for reels research, the `opencli` browser tool and the
+  owner's Instagram login in Chrome, read and download only (`references/shorts/research-2026-11-12/tools/`). What is still to move in: `ops/tasks.md`.
 
 ## HARD RULE: worktree isolation
 Never edit tracked files in the main checkout; parallel sessions share it. Gitignored outputs (masters, `uploads/`, media, venv, models) live there by design. First action of any session: `git worktree list`
