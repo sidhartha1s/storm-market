@@ -95,7 +95,7 @@ scratch folder outside the repo until this merges.
 (`episodes/ep-moore-1999/edit_script.md`, lines named per beat; `fact_check.md`).
 What separates it from the animated accounts: the choices are ones real people faced and the answer is read from
 the weather service's report on screen; real NOAA and weather service photos and the real path map; everything on
-screen is from 1999 (tube TV, weather radio, wall clock); Paul's circle and voice in every reel.
+screen is from 1999 (tube TV, weather radio, wall clock); the red circle in every reel.
 
 ## Comment-to-DM (checked on vendor and Meta pages, 12 Nov 26)
 - SuperProfile's free plan does keyword-comment to DM on a chosen reel: "Unlimited AutoDMs on Reels & Posts", one
