@@ -52,7 +52,7 @@ An owner correction or a measured surprise lands in its single home (`references
   domain and stock clips, red popfigs with a local scrim, news bug, NO chapter cards, two owner gates (angle, then packaging). Slugs `ms-<topic>`.
 - Narration sits above every bed in both lanes: score 0.13, ambience 0.20 or less, checked with ebur128 per 15 s window.
 - Shorts: one demo built (`episodes/sh-hawaii-lowell-1`, 16 Sep 26), three Joplin shorts unrendered in open PR #179; no pilot go on record. No skill until about ten shorts stabilise.
-  Reels direction under trial since 12 Nov 26 (a viewer-played serial on a real storm, Paul in the circle): `references/shorts/research-2026-11-12/README.md`.
+  Reels direction under trial since 12 Nov 26 (a viewer-played serial on a real storm): `references/shorts/research-2026-11-12/README.md`.
 
 ## Owner gates: rules inherited from the owner's other channels (never claim or infer approval)
 - His gates per documentary, in this order and no others: the angle; the title and thumbnail (`references/packaging-rules.md`);
