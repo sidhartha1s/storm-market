@@ -2,6 +2,16 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 13 Nov 26 - the reel plot read flat and used trade words; the owner rated its wit "two out of ten"
+- Owner on `pilot/plot.html`: "Instead of using stuff like mobile home, that's not really understandable"; "You are
+  missing those spicy elements"; "if they are asking you to stay, you are fucking killing the ... Trajectory in that
+  one episode, how are you going to bring it up from that"; "Maybe Paul is the issue".
+- Cause: the lines were written in the documentary's register for an Instagram audience, and the plan had no answer
+  for a majority that picks the wrong door on purpose.
+- Rules (home: `references/shorts/research-2026-11-12/README.md` "Voice and narrator"): a sassy neighbor's voice in
+  plain words; the wrong vote is roasted and still gets a reel; the narrator may be a drawn stick figure in the red
+  circle, with Paul out of the reels; comment replies are written before the reel goes out.
+
 ## 12 Nov 26 - the pilot's choice had one right answer and no plan past reel 1; the owner asked where the stakes are
 - Owner on the storyboard: "Right now it's just a question right like whether they want to go on that seller or not
   so how is that really compelling"; "You should be raising the stakes somewhere"; "at least see it two or three
