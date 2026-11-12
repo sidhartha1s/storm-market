@@ -52,9 +52,26 @@ rendered. The reel format is open: "We are still experimenting phase ... nothing
 - The concept is not what failed: "your conceptwise direction was good. failed on how to effectivate it/ visualise
   it designwise or branding wise to the viewers."
 
-## The pilot: "Stay or Go" (Moore, 3 May 1999, part 1 of 3)
-`pilot/timeline.html`. Every fact is the parent film's (`episodes/ep-moore-1999/edit_script.md`, lines named per
-beat; `fact_check.md`). Parts 2 and 3 are outlined at the foot of the timeline.
+## The plot is planned ahead (12 Nov 26, after the owner asked where the stakes are)
+Owner on the first storyboard: "Right now it's just a question ... where is the risk factor"; "You should be raising
+the stakes somewhere"; "a really solid plot on either way whether they are choosing stay or go in nth episode"; "at
+least see it two or three steps ahead of the people"; "people can take it anyway, they will give some suggestions,
+and we might have to pivot midway"; "one bad episode can just shut the entire thing down".
+- Every choice costs something on both sides, and both outcomes are shown. A choice with one plainly right answer
+  is not a plot.
+- The stakes rise reel to reel: less time, worse shelter, more people the viewer decides for.
+- The reel's promise is what happened to "you", never "what the report says". The report is the receipt on screen.
+- A plot goes to him with at least the next three reels worked out, a view to the end of the storm and the storm
+  after, and what the next reel does for each way the comments can go. `pilot/plot.html` is that page.
+- Each reel stands alone (it opens by replaying the last choice in picture), so one weak reel costs one reel.
+- Nothing in it is invented except "you": every outcome is a line of the parent film's script.
+
+## The pilot: "Stay or Go" (Moore, 3 May 1999, reel 1 of 6)
+Look: the owner picked "Map room" from three storyboard looks ("A is good mate", 12 Nov 26): the film's county map
+and line drawings turned upright, all vector, Paul's circle with the countdown ring. The storyboard page sits in a
+scratch folder outside the repo until this merges.
+`pilot/timeline.html` holds reel 1's lines; `pilot/plot.html` holds reels 1 to 6. Every fact is the parent film's
+(`episodes/ep-moore-1999/edit_script.md`, lines named per beat; `fact_check.md`).
 What separates it from the animated accounts: the choices are ones real people faced and the answer is read from
 the weather service's report on screen; real NOAA and weather service photos and the real path map; everything on
 screen is from 1999 (tube TV, weather radio, wall clock); Paul's circle and voice in every reel.
