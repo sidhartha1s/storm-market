@@ -2,6 +2,19 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 12 Nov 26 - the pilot went to the owner as a text timeline and one cluttered sketch; he asked for frames
+- Owner on `pilot/timeline.html`: "the text is too heavy on every print. It is graphics less. I think you are trying
+  to lead it with a lot of text"; "you mentioned Grady County twice. There are two tornado texts in front of me. Where
+  should I look?"; "there is no branding, this is absolutely like anyone can create it"; "I want different frames of
+  different scenes basically"; "my videos which you put on long form is much better than this"; "if you have
+  something better, show me the candidates". Then: "your conceptwise direction was good. failed on how to effectivate
+  it/ visualise it designwise or branding wise to the viewers."
+- Cause: the script was laid out as tracks of words, and the single picture was drawn from nothing instead of from
+  the film's own map, photo, drawings and Paul.
+- Rules (home: `references/shorts/research-2026-11-12/README.md` "How a reel is shown to the owner"): a reel reaches
+  him as a storyboard, one real 9:16 frame per scene, in several candidate looks; a frame carries one piece of text
+  at most and never a date or place caption; every frame is built from the long form's own assets and tokens.
+
 ## 12 Nov 26 - the reels study sampled the wrong accounts, then the owner could not open it
 - Owner, on the first pass (117 reels found by hashtag): "wrong directions. these are not personalised videos u
   pulled. just faceless pages. we have paul, we are some what branded". On the animated accounts he named: "very
