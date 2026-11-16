@@ -4,13 +4,16 @@ Runtime 19:36 (1175.99 s). CTA (Paul, ad v9) at 599.49 s = 9:59, between A3 and 
 Master: `renders/E09-galveston-1900-final-master.mp4` + EN SRT, 31 Oct 26 01:03, main checkout on both laptops (md5 c7ceee8cbd71773cfe2611c317d05a90).
 Chapter times come from the chapter blackouts in `index.html` (a chapter starts where its blackout ends).
 
-## Title
-TBD by owner. Round 1 (29 Oct): "all sucks". Round 3 (29 Oct, six options): no pick. Round 4 candidates, 2 Nov 26, written from the locked angle, not from a score:
+## Title (locked by the owner)
+Galveston 1900: The Warning Kept Off the Wire
+
+User confirmed "Galveston 1900: The Warning Kept Off the Wire" on 111126 (devq page storm-nov11, key title_e09, option 2).
+
+Round 4 candidates, 2 Nov 26, written from the locked angle, not from a score; kept for the record (round 1, 29 Oct: "all sucks"; round 3, 29 Oct, six options: no pick):
 1. Galveston 1900: Its Own Weatherman Said It Couldn't Happen (57)
-2. Galveston 1900: The Warning Kept Off the Wire (44)
+2. Galveston 1900: The Warning Kept Off the Wire (44), the pick
 3. Galveston 1900: Havana Called It. Washington Cut the Line. (55)
 4. Galveston 1900: "An Absurd Delusion" (36)
-Pick on the DEVQ page (key title_r4_galveston), or write the line. The confirmed line goes here as `user confirmed "<title>" on DDMMYY`.
 
 ## Thumbnail
 Not locked; the owner picks later (3 Nov 26). Candidates in `thumbs/`, Paul from his character sheet, made by ChatGPT, prompt beside each:

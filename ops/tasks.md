@@ -10,9 +10,8 @@ Every task number is used once; new rows take the next free number (now 60).
 Each item: the question, the options, what is blocked meanwhile, and the reply that settles it. The session records
 his answer in `ops/decisions.md` (and with `stage.py record` when it is a gate) the turn it arrives.
 
-1. **Is the title and thumbnail a gate before the hook+intro, or a pick that blocks only the upload?** CLAUDE.md lists it as
-   gate 2 before the hook+intro; the documentary skill says thumbnails block only the upload. (A) a gate: no hook+intro is
-   shown until he picks; (B) a pick: it blocks only publishing. Meanwhile `stage.py` follows B. Reply: "packaging is a gate" or "packaging blocks only the upload".
+1. ANSWERED 11 Nov 26 (devq `pack_upload`, "yes" to "block only the upload"): the title and thumbnail block only the
+   upload; written in CLAUDE.md "Owner gates" and `ops/decisions.md`; `stage.py` already followed it.
 2. **Are the per-insert yes/no and the voice pick owner gates?** CLAUDE.md says five gates "and no others"; DESIGN.md
    asks his yes on every `insert` clip, and the skill's picks page carries voice, inserts and thumbnails. (A) they are
    gates (add them to the list); (B) they are not (insert clips go in on the editor's call). Meanwhile inserts still wait
@@ -20,7 +19,7 @@ his answer in `ops/decisions.md` (and with `stage.py record` when it is a gate) 
 3. **CTA v10 or v9?** E04, E05 and E06 mount `paul-storm-ready-v10-oct23`, which exists only on three unmerged branches;
    main tracks and pins v9 (`config.yaml channel.cta.file`), which sits 3.1 dB under Moore's narration. (A) land v10 on
    main (asset, config, decisions row); (B) keep v9 and fix its level. Meanwhile the next episode mounts v9. Reply: "land v10" or "keep v9".
-4. **Titles and thumbnails of the shipped episodes.** Titles are still "TBD by owner" on E04, E05, E06, E08, E09 and no
+4. **Titles and thumbnails of the shipped episodes.** Titles are still "TBD by owner" on E04, E05 and E06 (E08 and E09 chosen 11 Nov 26, `ops/decisions.md`) and no
    thumbnail is locked on E02 to E09. (A) he names each live title and thumbnail, and the session records them;
    (B) leave as is. Blocks: `stage.py` shows OWNER packaging on all nine. Reply: per episode, "E0n: <title>, thumb <file>".
 5. ANSWERED 11 Nov 26 ("the first three are live"): E01, E02 and E03 are public, uploaded 2, 5 and 8 Nov 26, on the
@@ -82,7 +81,7 @@ his answer in `ops/decisions.md` (and with `stage.py record` when it is a gate) 
 | 54 | "loosening the hard rules ... whatever they are conflicting with the process" | done: four loosened (`ops/decisions.md` 11 Nov 26), three contradictions closed (minis' chapter cards, CTA dip-out, main-checkout outputs) | his call on three more: gates beside a render, gates as a render precondition, the pin with several episodes open |
 | 55 | "Whatever nice to haves we have kept for later you can do now" | done: rows 40 to 44 and 46, `run_gates.py --all`, a failure marker per episode and render; e2e green | row 45 (Paul's voice conversion cannot run on the ZBook: two downloads) |
 | 56 | "the current motion graphics gate is quite long ... 15-minute timeout ... two to three turns" | tested and adopted: `references/mg-brief-template.md` 7b, `learnings/mg.md` 11 Nov 26 | a second test on overlays over footage once the media is on the ZBook; wire the pre-flight list into a gate |
-| 57 | "script writing is also taking quite a lot of time" | measured; three changes made (the writer reads the grader's checks, rounds capped at 3 and shrinking, later rounds read only the changed lines) | his pick on three rule clashes (24-word sentences, question exits, the first sentence); a test run on the next script |
+| 57 | "script writing is also taking quite a lot of time" | measured; three changes made (the writer reads the grader's checks, rounds capped at 3 and shrinking, later rounds read only the changed lines) | decided 11 Nov 26 (`ops/decisions.md`): sentences under 24 words and open-loop section ends written into `script-os.md`; the first-sentence clash is left to the session ("depends. recheck if this is relevant"), rule unchanged pending the recheck; a test run on the next script |
 | 58 | "they practically wait for the human ... that is not good for scaling up" | measured (12.9 h on one hook gate with three episodes stopped; titles open 11 to 17 days); proposals on the devq page | his yes or no on each proposal; none changes that his approval is never inferred |
 | 59 | "I want all of these asks updated in to-dos for me" | this table | |
 

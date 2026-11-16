@@ -30,7 +30,7 @@
    Bankruptcy."); the anaphora run (3+ sentences opening on the same word); the balanced-contrast engine beyond one per
    script; the "notice what he didn't do" scaffold; the characterized quote ("what sounded like mercy:"); the aphorism /
    mirrored-callback ending (exception: the one signature sign-off line, DESIGN.md "Signature closing footnote", owner kept it 4 Oct 26); the thesis opener ("this is the story of…"); the summary tag ("That's the mechanism.").
-8. **No rhetorical questions in narration.** Write the statement. Exception: the chapter-exit question + one affirming line (owner 4 Oct 26; script-os.md rule 9).
+8. **No rhetorical questions in narration** (a question the narrator answers himself). Write the statement. A real open question may end a section and is not answered in the next line (owner 11 Nov 26; script-os.md rule 9).
 9. **No em dashes.** Period, comma, or parentheses.
 10. **No hedging or filler intensifiers:** arguably, perhaps, kind of, sort of, somewhat, very, really, truly,
     incredibly, absolutely.
@@ -50,9 +50,9 @@
 - Rule 7 kills two of our reflexes: the reveal-flip ("The warning was not late. It was built for the wrong kind of
   event.") and the mirrored callback ending ("The physics did not change. The slope did."). Both sat in the #5 draft.
   Rewrite each as one plain statement or a concrete detail.
-- Retention devices survive as facts, not as announcements: a chapter ends on a question the next chapter answers
-  (script-os rule 9) is allowed only when the question is a real open fact ("Then where did the rock go?"), never a
-  rhetorical one to the viewer.
+- Retention devices survive as facts, not as announcements: a section ends on an open loop (script-os rule 9), a real
+  open question or an unresolved fact ("Then where did the rock go?"), never a rhetorical one to the viewer, and the
+  answer comes in a later section, not the next line.
 - The humanise pass is a gate before a section locks (revised 27 Sep 26, `references/script-scaling.md` "Section
   lock — the ONE definition"): run on that section's prose as it's written, not held for the whole finished script,
   with a line-by-line diff kept in the episode folder.

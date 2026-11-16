@@ -5,13 +5,16 @@ Master: `renders/E08-appalachian-1950-final-master.mp4` + EN SRT, 30 Oct 26 23:2
 Chapter times come from the chapter blackouts in `index.html` (a chapter starts where its blackout ends).
 Publish window: the anniversary is 24 to 26 November.
 
-## Title
-TBD by owner. Round 1 (29 Oct): "these suck ... still referring from the scoring thing". Round 3 (29 Oct, six options): no pick. Round 4 candidates, 2 Nov 26, written from the locked angle (two hazards at once), not from a score:
-1. Great Appalachian Storm 1950: Hurricane Winds in a Snowstorm (58)
+## Title (locked by the owner)
+Great Appalachian Storm 1950: Hurricane Winds in a Snowstorm
+
+User confirmed "Great Appalachian Storm 1950: Hurricane Winds in a Snowstorm" on 111126 (devq page storm-nov11, key title_e08, option 1).
+
+Round 4 candidates, 2 Nov 26, written from the locked angle (two hazards at once), not from a score; kept for the record (round 1, 29 Oct: "these suck ... still referring from the scoring thing"; round 3, 29 Oct, six options: no pick):
+1. Great Appalachian Storm 1950: Hurricane Winds in a Snowstorm (58), the pick
 2. Thanksgiving 1950: 108 mph on the Coast, Two Feet of Snow Inland (62)
 3. Great Appalachian Storm 1950: The Side Nobody Remembers (53)
 4. The 1950 Storm That Was Two Storms at Once (42)
-Pick on the DEVQ page (key title_r4_appalachian), or write the line. The confirmed line goes here as `user confirmed "<title>" on DDMMYY`.
 
 ## Thumbnail
 Not locked; the owner picks later (3 Nov 26). Candidates in `thumbs/`, Paul from his character sheet, made by ChatGPT, prompt beside each:

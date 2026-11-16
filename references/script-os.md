@@ -65,10 +65,10 @@ materially changes every 60–90 s (new evidence, place, number, person, mechani
 
 ## Voice rules for the 45–75 US viewer (audience audit 2026-09-14; evidence in references/teardowns/2026-09-14-audience-audit/)
 1. **Pace is measured, never assumed** (CLAUDE.md Voice, `scripts/word_budget.py`). Slow only for numbers; pause after a death count, never before a reveal.
-2. **Rhythm.** Median sentence 12–18 words; 10–15 % of sentences run 25–35 words as fact-chains joined by and / then /
-   which; one kicker of ≤4 words per 150 words, never a flip. The 24-word cap is a TTS constraint, not a writing rule:
-   write the long sentence, let the TTS layer split it at commas without changing a word (pocket-TTS mangles long
-   single chunks, measured on Krakatau #4).
+2. **Rhythm.** Median sentence 12–18 words; every narration sentence is under 24 words, written that short by the
+   writer (owner 11 Nov 26, `s24`: the voice tool repeats or mangles fragments of long ones, measured on Krakatau #4,
+   so the voice step never splits a sentence). A fact-chain that would run longer is two sentences joined by
+   and / then / which across the full stop; one kicker of ≤4 words per 150 words, never a flip.
 3. **Opening.** Sentence one is a number or a date. Inside 45 s one direct-address fact promise ("Inside twenty minutes
    you will know what a very strong El Niño did to your state the last two times"). No teaser, no "will history
    repeat", no comment ask before the closing CTA.
@@ -85,10 +85,12 @@ materially changes every 60–90 s (new evidence, place, number, person, mechani
 8. **Place anchoring.** A US state or region in the first 60 s of every script (supersedes FORMAT rule 8's "second
    minute"); every foreign distance / height restated in a US landmark and in feet, miles, °F, dollars; ≤3 unfamiliar
    foreign place names per script. Ray: "Lituya is the one time you gave me feet, and that's the one part I remember."
-9. **Transitions.** Seams are time-stamps or place-stamps ("At half past two that afternoon, in Mississippi"), never
-   "to understand X you have to understand Y". Chapter-exit questions only when the answer is an open fact, ≤3 per
-   documentary; minis end every chapter this way (mini FORMAT.md rule 3); the engine's "question" is usually implied by a stamp or an unresolved fact. Preferred form (owner 4 Oct 26):
-   a real open question, then one affirming line that re-hooks it: "But why didn't the siren sound? Nobody in town knew until the next morning." The question opens a curiosity gap the viewer stays for; the affirming line concretes it.
+9. **Transitions and section ends.** Seams are time-stamps or place-stamps ("At half past two that afternoon, in
+   Mississippi"), never "to understand X you have to understand Y". **Every section ends on an open loop** (owner 11 Nov 26,
+   `sq`: "open loops are must"): a real open question, or an unresolved fact that a later section pays off, with its row
+   in the loop table (`script-scaling.md` "open-loop registry"). A real open question may end a section; its answer
+   must not follow in the next line, the later section pays it ("But why didn't the siren sound?" then a new stamp).
+   No cap on how many sections end this way. Minis end every chapter this way (mini FORMAT.md rule 3).
 10. **Debunk block.** Live-hazard videos carry a 60–90 s sourced debunk at 60–75 % ("The problem with that story
     is…", then the measurement).
 11. **Vocabulary.** Keep the term, define it in ≤12 words, reuse it 3+ times; one plain-terms translation per
@@ -96,7 +98,7 @@ materially changes every 60–90 s (new evidence, place, number, person, mechani
     Building with its antenna").
 12. **One object per segment**, never stacked; one named victim with age, job and a sourced quote per tragedy.
 13. **Close.** Fact + dated forward window, then the CTA spine once, then the one signature line (DESIGN.md "Signature closing footnote", owner 4 Oct 26). No other aphorism, no mirrored callback.
-Owner decision 2026-09-14: humanise-rules.md stays as written. No thesis opener. Chapter exits: superseded 4 Oct 26, see rule 9 (question + affirming line). Ep2's hook at 1.5k views is not evidence.
+Owner decision 2026-09-14: humanise-rules.md stays as written. No thesis opener. Chapter exits: superseded 11 Nov 26, see rule 9 (open loop, no answer in the next line). Ep2's hook at 1.5k views is not evidence.
 ## The philosophical change
 Optimise for "what information does the viewer want right now, and when do we give it," not for "how do we make this
 more engaging." Narration and visual event are written together, never narration first.

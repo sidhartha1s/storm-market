@@ -112,8 +112,8 @@ Scale runtime by ADDING acts, never stretching beats. Each new act needs new mat
 mechanism/analysis pair) and plants+pays a loop.
 
 ## Voice (45–75 US viewer) — `script-os.md` Voice rules; the TTS-safe rules below are their one home
-- Median sentence 12–18 words; 10–15% run 25–35 words as fact-chains (and/then/which); one ≤4-word kicker per 150
-  words. Write the long sentence — TTS splits it at commas, don't pre-shorten for that reason.
+- Median sentence 12–18 words; every narration sentence under 24 words (owner 11 Nov 26): a longer fact-chain is two
+  sentences, the voice step does not split it; one ≤4-word kicker per 150 words.
 - Sentence one of the script is the hook in its chosen shape (above), never a bare date or place: the popfig carries those.
 - **Register (owner 15 Oct 26): an old friend you have not seen in years, telling you what happened.** Paul speaks in
   first person, talks to "you" and puts the viewer in the place. A first-person line earns its place with what he
@@ -130,16 +130,17 @@ mechanism/analysis pair) and plants+pays a loop.
 - One named researcher + institution per mechanism chapter; agencies named on screen; "nobody knows" in a source's mouth.
 - Flat declaratives for record/mechanism; the future in three sourced paths, never the narrator's guess.
 - A US state/region in the first 60 s; every foreign distance restated in feet/miles/°F/dollars + a US landmark.
-- Seams are time-stamps or place-stamps, never "to understand X you have to understand Y."
+- Seams are time-stamps or place-stamps, never "to understand X you have to understand Y." Every section ends on an
+  open loop (owner 11 Nov 26): a real open question or an unresolved fact a later section pays. A real open question may
+  end a section; its answer does not follow in the next line (`script-os.md` rule 9).
 - Technical terms per the Register line above; reuse them 3+ times. Every superlative gets a comparator and unit.
 - One object per segment; one named victim (age, job, sourced quote) per tragedy.
 - Close: fact + dated forward window, then the one signature line (DESIGN.md "Signature closing footnote", owner 4 Oct 26). No other aphorism, no mirrored callback.
 - TTS-safe: spell out ALL dates/times/numbers in narration, years and dollars included (nineteen sixty-nine; the
   digits 1969 voiced as "nineteenth" and stopped, Camille 25 Oct 26). Write abbreviations and initials as words
   (Doctor, Missus, Jay Aitch, You Ess): every period splits the sentence and leaves a pause. `tts_episode.py` refuses
-  a line that breaks this. No paired dashes, sentences
-  under 24 words per TTS chunk (write the long fact-chain; the TTS layer splits it at commas), probe homographs
-  before respelling (`references/homographs.md`).
+  a line that breaks this. No paired dashes, every sentence under 24 words (the writer splits a long fact-chain; the
+  voice step never does), probe homographs before respelling (`references/homographs.md`).
 
 ## Humanise pass — zero AI tells (run rules 2–14 line by line before TTS) — `humanise-rules.md`
 - No painting the picture ("picture this", personified mountains/companies). No borrowed metaphors (icebergs,
@@ -154,7 +155,7 @@ mechanism/analysis pair) and plants+pays a loop.
   end of the day, when it comes to, plays a crucial role, stands as a, serves as a, is a reminder that, the quiet
   [anything], what sounds like, what amounts to, in what can only be described as, some say, many experts believe,
   it's been reported (name the source or cut the claim).
-- No em dashes, no rhetorical questions (exception: the chapter-exit question + one affirming line, owner 4 Oct 26; `script-os.md` rule 9), no hedging/filler intensifiers (arguably, kind of, very, really).
+- No em dashes, no rhetorical questions (a real open question may end a section, unanswered in the next line, owner 11 Nov 26; `script-os.md` rule 9), no hedging/filler intensifiers (arguably, kind of, very, really).
 - No banned sentence shapes: reveal-flip ("not X, it's Y"), question-then-answer fragment, anaphora run (3+
   sentences same opener), thesis opener ("this is the story of…"), summary tag ("That's the mechanism.").
 - Specifics over abstractions: exact figures, never rounded, unless the number is a feat not the point (a rail

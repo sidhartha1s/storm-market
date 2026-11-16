@@ -90,7 +90,7 @@ Measured against a 14-minute cut that scored 5.5/10 on stakes-per-90-seconds bef
 2. **Stakes order, not chronology.** Order chapters by rising stakes for the viewer at home; a strong chapter after
    the CTA, a question before it. Time-order (this week → 2018 → 1883 → 1958) puts the peaks in the wrong places.
 3. **One open question at all times.** Every chapter ends by asking the next one ("Then where?", "So did they fix
-   it?", "And here is why faster is not enough"), then one affirming line that re-hooks it (owner 4 Oct 26; `script-os.md` rule 9). Re-mention each macro-loop once mid-way; the hook's claim gets several callbacks (owner 4 Oct 26; `script-scaling.md` "open-loop registry"); pay it explicitly
+   it?", "And here is why faster is not enough"), and the answer does not follow in the next line (owner 11 Nov 26; `script-os.md` rule 9). Re-mention each macro-loop once mid-way; the hook's claim gets several callbacks (owner 4 Oct 26; `script-scaling.md` "open-loop registry"); pay it explicitly
    ("The wrong number was the plume. The right number is the tilt.").
 4. **No roadmap, no structure announcements.** Never "in the next fourteen minutes you will see…", "the record
    first", "now the honest part". A reveal that was announced is not a reveal. Exception: hook callbacks (script-scaling.md 'open-loop registry', owner 4 Oct 26).
@@ -139,9 +139,10 @@ Measured against a 14-minute cut that scored 5.5/10 on stakes-per-90-seconds bef
 - **CTA first frame:** the clip starts 0.1 s BEFORE the 1.0 s dip-in black lifts (blackouts on their own track above
   the clip) and every audio/CTA start is frame-aligned (ceil to 1/30 s); otherwise the first syllable ("Mo…st people")
   is clipped. Dip-out after the CTA is `config.yaml channel.cta.dip_out` (1.0 s).
-- **TTS sentences over 24 words split and can repeat a fragment** ("drifting west, drifting west") or mangle a word
-  ("affected" → "lifted", "not a wave" → "not if if"): read every transcript for repeated bigrams and nonsense before
-  the timeline, re-synthesise the segment with the sentence split.
+- **TTS sentences over 24 words can repeat a fragment** ("drifting west, drifting west") or mangle a word
+  ("affected" → "lifted", "not a wave" → "not if if"): the writer keeps every sentence under 24 words
+  (`script-os.md` rule 2); read every transcript for repeated bigrams and nonsense before the timeline, and fix a hit
+  by splitting the sentence in the script, then re-synthesise the segment.
 - Numbers: red popfig (Abril, text-shadow, ≤3 words) synced to the spoken word, PLUS a bottom-left
   data chip for the running stat ("50,000 feet", "6 airports"). Never a colour-block card.
 - **Text width caps (measured on the Krakatau #4 slices, 2026-09-11):** popfig big line ≤ 16 characters (150 px
