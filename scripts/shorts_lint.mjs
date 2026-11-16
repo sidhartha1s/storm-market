@@ -11,11 +11,12 @@ import { chromium, chromiumExecutable } from './playwright_env.mjs';
 import { readFileSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { compSize } from './stage_comp.mjs';
 
 const ep = resolve(process.argv[2]);
 const html = readFileSync(join(ep, 'index.html'), 'utf-8');
-const W = +(html.match(/data-width="(\d+)"/)?.[1] ?? 0), H = +(html.match(/data-height="(\d+)"/)?.[1] ?? 0);
-if (!(W && H && H > W)) { console.log(`[shorts_lint] not a portrait composition (${W}x${H}) — nothing to do`); process.exit(0); }
+const { w: W, h: H } = compSize(html);
+if (!(H > W)) { console.log(`[shorts_lint] not a portrait composition (${W}x${H}) — nothing to do`); process.exit(0); }
 const DUR = +(html.match(/data-duration="([\d.]+)"/)?.[1] ?? 0);
 if (!DUR) { console.log('[shorts_lint] no data-duration on the root — cannot sample'); process.exit(2); }
 const TEXT = '.cap, .chip, .popfig, .quotecard, .closecard, .head, .lab, .quote, .q';

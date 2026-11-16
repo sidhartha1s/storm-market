@@ -14,7 +14,7 @@
 import { chromium, chromiumExecutable } from './playwright_env.mjs';
 import fs from 'fs';
 import path from 'path';
-import { hostCss, stageComp } from './stage_comp.mjs';
+import { compSize, hostCss, stageComp } from './stage_comp.mjs';
 
 const EXE = chromiumExecutable();
 const STEP = 0.5;
@@ -22,6 +22,7 @@ const AREA_FRAC = 0.25;   // heavy overlap = garble; line-box touches of stacked
 const epDir = path.resolve(process.argv[2] || '.');
 const indexPath = path.join(epDir, 'index.html');
 const html = fs.readFileSync(indexPath, 'utf8');
+const { w: W, h: H } = compSize(html);
 
 const els = [];
 const findings = new Set();
@@ -57,7 +58,7 @@ const LEAF_FN = `(el) => el.children.length === 0 ||
   [...el.children].every(k => /^(EM|B|I|STRONG|SUP|SUB)$/.test(k.tagName))`;
 
 const browser = await chromium.launch({ headless: true, executablePath: EXE, args: ['--allow-file-access-from-files'] });
-const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+const page = await browser.newPage({ viewport: { width: W, height: H } });
 await page.goto('file:///' + indexPath.replace(/\\/g, '/'));
 await page.waitForTimeout(600);
 
@@ -87,7 +88,7 @@ const cardInfo = await page.evaluate(({ ids, leafSrc }) => {
   }
   return out;
 }, { ids: cards.map(c => c.id), leafSrc: LEAF_FN });
-const ovInfo = await page.evaluate(({ ids, leafSrc }) => {
+const ovInfo = await page.evaluate(({ ids, leafSrc, W }) => {
   const isLeaf = eval(leafSrc);
   const out = {};
   for (const id of ids) {
@@ -101,7 +102,7 @@ const ovInfo = await page.evaluate(({ ids, leafSrc }) => {
       const cr = c.getBoundingClientRect();
       if (cr.width < 2 || cr.height < 2) continue;
       texts.push(c.textContent.trim());
-      if (cr.left < 0 || cr.right > 1920 || c.scrollWidth > c.clientWidth + 2)
+      if (cr.left < 0 || cr.right > W || c.scrollWidth > c.clientWidth + 2)
         bad.push(`"${c.textContent.trim().slice(0, 40)}" x${Math.round(cr.left)}..${Math.round(cr.right)} scroll ${c.scrollWidth}/${c.clientWidth}`);
       u = u ? { left: Math.min(u.left, cr.left), top: Math.min(u.top, cr.top), right: Math.max(u.right, cr.right), bottom: Math.max(u.bottom, cr.bottom) }
             : { left: cr.left, top: cr.top, right: cr.right, bottom: cr.bottom };
@@ -109,7 +110,7 @@ const ovInfo = await page.evaluate(({ ids, leafSrc }) => {
     if (u) out[id] = { zone: u, bad, texts };
   }
   return out;
-}, { ids: overlays.map(o => o.id), leafSrc: LEAF_FN });
+}, { ids: overlays.map(o => o.id), leafSrc: LEAF_FN, W });
 // Class F: overlay text off the frame or overflowing its nowrap box (the 25-char popfig / 84-char bug line, 2026-09-11)
 for (const o of overlays) for (const b of (ovInfo[o.id] || {}).bad || []) findings.add(`off-frame: #${o.id} ${b}`);
 // the bare index page holds ~80 <video> elements; keeping it open while comps are staged
@@ -154,7 +155,7 @@ const stage = (file) => stageComp(epDir, file, HOST_CSS, 'ov-');
 for (const h of hosts) {
   const compPath = path.join(epDir, h.compSrc);
   if (!fs.existsSync(compPath)) { findings.add(`missing comp file: ${h.compSrc}`); continue; }
-  const p2 = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+  const p2 = await browser.newPage({ viewport: { width: W, height: H } });
   await p2.goto('file:///' + stage(compPath).replace(/\\/g, '/'));
   await p2.waitForTimeout(500);
   const reg = await p2.evaluate((id) => !!((window.__timelines || {})[id]), h.comp);
@@ -162,7 +163,7 @@ for (const h of hosts) {
   const activeCardsAt = (t) => cards.filter(c => t >= c.start && t <= c.start + c.dur && cardInfo[c.id]);
   for (let rel = 0.4; rel < h.dur; rel += STEP) {
     const tAbs = h.start + rel;
-    const nodes = await p2.evaluate(({ compId, rel, leafSrc }) => {
+    const nodes = await p2.evaluate(({ compId, rel, leafSrc, W, H }) => {
       const isLeaf = eval(leafSrc);
       const tl = (window.__timelines || {})[compId];
       if (tl && tl.seek) { tl.pause && tl.pause(); tl.seek(rel, false); }
@@ -179,14 +180,14 @@ for (const h of hosts) {
         if (!vis) continue;
         const r = el.getBoundingClientRect();
         if (r.width < 4 || r.height < 4) continue;
-        if (r.right < 0 || r.bottom < 0 || r.left > 1920 || r.top > 1080) continue;
+        if (r.right < 0 || r.bottom < 0 || r.left > W || r.top > H) continue;
         const ok = el.closest('[data-overlap-ok]')?.dataset.overlapOk || null;
         const repeatOk = el.closest('[data-repeat-ok]')?.dataset.repeatOk || null;
         out.push({ text: el.textContent.trim().slice(0, 60), ok, repeatOk,
                    box: { left: r.left, top: r.top, right: r.right, bottom: r.bottom } });
       }
       return out;
-    }, { compId: h.comp, rel, leafSrc: LEAF_FN });
+    }, { compId: h.comp, rel, leafSrc: LEAF_FN, W, H });
     // a <text> and its own <tspan> (or any other nested leaf match) read as two DOM nodes for one
     // visible instance — collapse those before either collision or dup-fact counts them
     const uniqNodes = [];

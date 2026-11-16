@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Two words, 25 minutes — The Warning Hour short (sh-moore-1999-1, 11 Nov 26)</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #04070c; }
+    .clip { position: absolute; inset: 0; }
+    .h0 { opacity: 0; visibility: hidden; }  /* start-hidden: the timeline reveals it on its word */
+    .ground { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+
+    /* S1 photo: 2076x1440 scaled to 1920 tall (2768 wide), offset so the source x 645-1455 fills the frame;
+       the orange date stamp (source x >= 1580) sits right of the frame and the push-in only narrows the view */
+    #ph-moore { position: absolute; left: -860px; top: 0; width: 2768px; height: 1920px; }
+    .scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(3,5,8,0.55) 0%, rgba(3,5,8,0.05) 42%, rgba(3,5,8,0.0) 60%, rgba(3,5,8,0.45) 100%); }
+    #ph-dim { position: absolute; inset: 0; background: rgba(3,5,8,0.62); }
+
+    /* chips: glass, red edge */
+    .chip { position: absolute; inset: auto; left: 60px; z-index: 6; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 38px; letter-spacing: 3px; color: #f2f5f8;
+      background: rgba(10,16,24,0.55); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+      border: 1px solid rgba(255,255,255,0.14); border-left: 8px solid #d0121f; border-radius: 12px; padding: 14px 26px; white-space: nowrap; }
+    #chip-date { top: 250px; }
+    #chip-657 { top: 950px; }
+
+    /* hook: frame 1 is the thumbnail */
+    .head { position: absolute; inset: auto; left: 60px; right: 60px; top: 360px; z-index: 7; }
+    .head .h1 { display: block; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 112px; line-height: 1.04; color: #f2f5f8;
+      text-shadow: 0 0 24px rgba(0,0,0,0.95), 0 4px 14px #000; }
+    .head .h2 { display: block; margin-top: 8px; font-family: 'AbrilFig', Georgia, serif; font-size: 128px; line-height: 1.0; color: #d0121f; letter-spacing: 0.02em;
+      text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 50px rgba(120,0,0,0.5), 0 6px 22px rgba(0,0,0,0.9); }
+
+    /* small credit on the photo */
+    .lab { position: absolute; white-space: nowrap; inset: auto; left: 60px; top: 1200px; z-index: 6; font-family: Arial, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 1px; color: #c8d3e0;
+      text-shadow: 0 1px 6px #000, 0 0 10px rgba(0,0,0,0.9); }
+
+    /* the two words */
+    .popfig { position: absolute; inset: auto; left: 60px; right: 60px; top: 240px; z-index: 6; text-align: center; }
+    .popfig .te { display: block; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 106px; line-height: 1.02; color: #fff;
+      background: #d0121f; border-radius: 14px; padding: 18px 20px 22px; box-shadow: 0 16px 50px rgba(0,0,0,0.6); }
+
+    /* quote card: the report's words, attributed */
+    .quotecard { position: absolute; inset: auto; left: 60px; right: 150px; top: 440px; z-index: 6;
+      background: rgba(10,16,24,0.55); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+      border: 1px solid rgba(255,255,255,0.14); border-radius: 28px; padding: 60px 54px; box-sizing: border-box; }
+    .quotecard .q { font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-size: 82px; line-height: 1.16; color: #f2f5f8; }
+    .quotecard .attr { margin-top: 40px; font-family: Arial, sans-serif; font-weight: 700; font-size: 38px; letter-spacing: 2px; color: #d8a13a; }
+    .quotecard .rule { height: 4px; width: 120px; background: #d0121f; margin-bottom: 34px; }
+
+    /* phrase captions: lower third, above the Shorts UI band (bottom 420), clear of the right rail */
+    .cap { position: absolute; inset: auto; left: 60px; right: 180px; bottom: 440px; z-index: 8; text-align: center;
+      font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 64px; line-height: 1.14; color: #fff;
+      background: rgba(6,10,16,0.68); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 22px; padding: 20px 28px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+    .cap b { color: #d0121f; font-weight: 900; }
+
+    /* closing title card */
+    .closecard { position: absolute; inset: auto; left: 60px; right: 60px; top: 600px; z-index: 8; text-align: center; }
+    .closecard .c1 { font-family: 'AbrilFig', Georgia, serif; font-size: 150px; line-height: 1; color: #f2f5f8; letter-spacing: 0.02em; }
+    .closecard .c0 { height: 6px; width: 160px; background: #d0121f; margin: 30px auto 28px; }
+    .closecard .c2 { font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-size: 50px; line-height: 1.2; color: #f2f5f8; }
+
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 45%, transparent 58%, rgba(0,0,0,0.5) 100%); }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="sh-moore-1999-1" data-start="0.0" data-width="1080" data-height="1920" data-duration="24.628" data-fps="30">
+
+  <!-- ============ NARRATION (wav lengths by ffprobe, 0.25 s gaps; last ends 23.128, close card 1.5 s) ============ -->
+  <audio id="nx-s1s1" src="audio/s1-s1.wav" data-start="0.0" data-duration="3.198" data-volume="1"></audio>
+  <audio id="nx-s1s2" src="audio/s1-s2.wav" data-start="3.448" data-duration="4.250" data-volume="1"></audio>
+  <audio id="nx-s1s3" src="audio/s1-s3.wav" data-start="7.949" data-duration="3.837" data-volume="1"></audio>
+  <audio id="nx-s1s4" src="audio/s1-s4.wav" data-start="12.037" data-duration="2.142" data-volume="1"></audio>
+  <audio id="nx-s1s5" src="audio/s1-s5.wav" data-start="14.430" data-duration="8.698" data-volume="1"></audio>
+
+  <!-- ============ S1 PHOTO (track 1; NOAA NSSL, public domain; push in, dims under the two words) ============ -->
+  <section class="clip" id="p-photo" data-start="0.0" data-duration="4.888" data-track-index="1">
+    <img id="ph-moore" src="media/moore-tornado-nssl.jpg" alt="The Moore tornado of May 3, 1999 over a field">
+    <div class="scrim"></div>
+    <div id="ph-dim" class="h0"></div>
+  </section>
+
+  <!-- ============ GRAPHICS (tracks 1/2, full frame; each host starts on its word) ============ -->
+  <!-- S2-S3 path map, in on "aimed" @4.488, out before "If" @12.037 -->
+  <div id="host-g-path-map" data-composition-id="g-path-map" data-composition-src="compositions/g-path-map.html" data-start="4.488" data-duration="7.549" data-track-index="2" data-width="1080" data-height="1920"></div>
+  <!-- S4 weather radio, in on "If" @12.037, out before "Twenty" @14.43 -->
+  <div id="host-g-radio" data-composition-id="g-radio" data-composition-src="compositions/g-radio.html" data-start="12.037" data-duration="2.393" data-track-index="2" data-width="1080" data-height="1920"></div>
+  <!-- S5 the gap bar, in on "Twenty" @14.43, bar out before "phrase" @19.19; its photo background stays under the quote card to the last narration end -->
+  <div id="host-g-gap-bar" data-composition-id="g-gap-bar" data-composition-src="compositions/g-gap-bar.html" data-start="14.430" data-duration="8.698" data-track-index="2" data-width="1080" data-height="1920"></div>
+  <!-- ============ CHIPS (track 4) ============ -->
+  <section class="clip" id="p-chip-date" data-start="0.0" data-duration="3.448" data-track-index="4"><div class="chip" id="chip-date">MAY 3, 1999 · OKLAHOMA</div></section>
+  <section class="clip" id="p-chip-657" data-start="2.220" data-duration="9.817" data-track-index="6"><div class="chip h0" id="chip-657">6:57 PM</div></section>
+
+  <!-- ============ HOOK + CREDIT (track 5; on screen at frame 1, no fade from black) ============ -->
+  <section class="clip" id="p-head" data-start="0.0" data-duration="3.448" data-track-index="5">
+    <div class="head" id="head"><span class="h1">TWO WORDS.</span><span class="h2">25 MINUTES.</span></div>
+  </section>
+  <section class="clip" id="p-credit" data-start="0.0" data-duration="4.888" data-track-index="7"><div class="lab" id="credit">Photo: Mike Eilts, NOAA NSSL</div></section>
+
+  <!-- ============ THE TWO WORDS (track 5, on "tornado" @3.448) ============ -->
+  <section class="clip" id="p-te" data-start="3.448" data-duration="2.152" data-track-index="9">
+    <div class="popfig h0" id="te"><span class="te">TORNADO<br>EMERGENCY</span></div>
+  </section>
+
+  <!-- ============ QUOTE CARD (track 5; on "phrase" @19.19, lines on "prompted" / "numerous" / "to") ============ -->
+  <section class="clip" id="p-quote" data-start="19.190" data-duration="3.938" data-track-index="5">
+    <div class="quotecard h0" id="quote">
+      <div class="rule"></div>
+      <div class="q h0" id="q1">“prompted</div>
+      <div class="q h0" id="q2">numerous residents</div>
+      <div class="q h0" id="q3">to action”</div>
+      <div class="attr" id="q-attr">NWS Service Assessment, 1999</div>
+    </div>
+  </section>
+
+  <!-- ============ CAPTIONS (track 8; phrases of 2-4 words, each start a words.json time; one red word per marked sentence) ============ -->
+  <section class="clip" id="p-cap-1" data-start="0.0" data-duration="0.740" data-track-index="8"><div class="cap" id="cap-1"><b>Two</b> words went out</div></section>
+  <section class="clip" id="p-cap-2" data-start="0.740" data-duration="0.800" data-track-index="8"><div class="cap" id="cap-2">from the weather service</div></section>
+  <section class="clip" id="p-cap-3" data-start="1.540" data-duration="1.908" data-track-index="8"><div class="cap" id="cap-3">in Norman at 6:57.</div></section>
+  <section class="clip" id="p-cap-4" data-start="3.448" data-duration="1.040" data-track-index="8"><div class="cap" id="cap-4">Tornado <b>emergency</b>,</div></section>
+  <section class="clip" id="p-cap-5" data-start="4.488" data-duration="1.140" data-track-index="8"><div class="cap" id="cap-5">aimed at Moore</div></section>
+  <section class="clip" id="p-cap-6" data-start="5.628" data-duration="1.160" data-track-index="8"><div class="cap" id="cap-6">and the south side</div></section>
+  <section class="clip" id="p-cap-7" data-start="6.788" data-duration="1.161" data-track-index="8"><div class="cap" id="cap-7">of Oklahoma City.</div></section>
+  <section class="clip" id="p-cap-8" data-start="7.949" data-duration="0.900" data-track-index="8"><div class="cap" id="cap-8">The tornado had just</div></section>
+  <section class="clip" id="p-cap-9" data-start="8.849" data-duration="1.400" data-track-index="8"><div class="cap" id="cap-9">crossed <b>Bridge</b> Creek.</div></section>
+  <section class="clip" id="p-cap-10" data-start="10.249" data-duration="0.680" data-track-index="8"><div class="cap" id="cap-10">This statement was</div></section>
+  <section class="clip" id="p-cap-11" data-start="10.929" data-duration="1.108" data-track-index="8"><div class="cap" id="cap-11">aimed up the road.</div></section>
+  <section class="clip" id="p-cap-12" data-start="12.037" data-duration="0.440" data-track-index="8"><div class="cap" id="cap-12">If you had a</div></section>
+  <section class="clip" id="p-cap-13" data-start="12.477" data-duration="1.120" data-track-index="8"><div class="cap" id="cap-13">weather <b>radio</b> at home,</div></section>
+  <section class="clip" id="p-cap-14" data-start="13.597" data-duration="0.833" data-track-index="8"><div class="cap" id="cap-14">it sounded.</div></section>
+  <section class="clip" id="p-cap-15" data-start="14.430" data-duration="1.360" data-track-index="8"><div class="cap" id="cap-15"><b>25</b> minutes later,</div></section>
+  <section class="clip" id="p-cap-16" data-start="15.790" data-duration="0.820" data-track-index="8"><div class="cap" id="cap-16">the tornado crossed</div></section>
+  <section class="clip" id="p-cap-17" data-start="16.610" data-duration="1.020" data-track-index="8"><div class="cap" id="cap-17">into Moore.</div></section>
+  <section class="clip" id="p-cap-18" data-start="17.630" data-duration="0.920" data-track-index="8"><div class="cap" id="cap-18">The agency's report</div></section>
+  <section class="clip" id="p-cap-19" data-start="18.550" data-duration="1.520" data-track-index="8"><div class="cap" id="cap-19">credits that phrase.</div></section>
+  <section class="clip" id="p-cap-20" data-start="20.070" data-duration="0.840" data-track-index="8"><div class="cap" id="cap-20">It added the emphasis</div></section>
+  <section class="clip" id="p-cap-21" data-start="20.910" data-duration="0.560" data-track-index="8"><div class="cap" id="cap-21">that prompted</div></section>
+  <section class="clip" id="p-cap-22" data-start="21.470" data-duration="0.880" data-track-index="8"><div class="cap" id="cap-22"><b>numerous</b> residents</div></section>
+  <section class="clip" id="p-cap-23" data-start="22.350" data-duration="0.778" data-track-index="8"><div class="cap" id="cap-23">to action.</div></section>
+
+  <!-- ============ CLOSING TITLE CARD (last 1.5 s, from the last narration end; no loop-back) ============ -->
+  <section class="clip" id="p-close" data-start="23.128" data-duration="1.500" data-track-index="1">
+    <div class="ground"></div>
+    <div class="closecard" id="close"><div class="c1">MOORE 1999</div><div class="c0"></div><div class="c2">The full film is on The Warning Hour</div></div>
+  </section>
+
+  <div id="vignette"></div>
+</div>
+
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const DUR = 24.628;
+  const tl = gsap.timeline({ paused: true });
+
+  // S1 photo: slow push about the frame's centre (scale >= 1 only narrows the crop, the date stamp stays out)
+  tl.set("#ph-moore", { transformOrigin: "1400px 960px" }, 0);
+  tl.to("#ph-moore", { scale: 1.09, duration: 4.888, ease: "none" }, 0);
+  tl.to("#head", { y: -12, duration: 3.148, ease: "none" }, 0);                                   // hook drifts, never a frozen hold
+  // hook and date chip are fully gone by "tornado" @3.448, so the two words never land on them
+  tl.to(["#head", "#chip-date"], { y: -60, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, 3.148);
+  tl.fromTo("#chip-657", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 2.22); /* 6:57 @2.22 */
+  tl.fromTo("#ph-dim", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 3.448);
+  // the two words: top of frame, on "tornado" @3.448; shrink a little as the map lands below on "aimed" @4.488; out 5.3 (1.55 s fully readable)
+  tl.set("#te", { transformOrigin: "50% 0%" }, 0);
+  tl.fromTo("#te", { scale: 0.7, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.3, ease: "back.out(2)" }, 3.448); /* tornado emergency @3.448 */
+  tl.to("#te", { y: 8, duration: 0.74, ease: "none" }, 3.748);
+  tl.to("#te", { scale: 0.85, y: 0, duration: 0.4, ease: "power2.inOut" }, 4.488);
+  tl.to("#te", { y: 10, duration: 0.412, ease: "none" }, 4.888);
+  tl.to("#te", { y: -60, autoAlpha: 0, duration: 0.25, ease: "power3.in" }, 5.3);
+  tl.to("#credit", { x: -60, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, 4.488);
+  tl.to("#chip-657", { x: -60, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, 11.737);         // out with the map, before "If" @12.037
+
+  // the report's words: card on "phrase" @19.19, lines on "prompted" @21.19, "numerous" @21.47, "to" @22.35
+  tl.fromTo("#quote", { y: 60, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 19.19);
+  tl.to("#quote", { y: -10, duration: 3.3, ease: "none" }, 19.64);
+  tl.fromTo("#q1", { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.25, ease: "power2.out" }, 21.19);
+  tl.fromTo("#q2", { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.25, ease: "power2.out" }, 21.47);
+  tl.fromTo("#q3", { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.25, ease: "power2.out" }, 22.35);
+  tl.to("#quote", { x: -980, autoAlpha: 0, duration: 0.18, ease: "power3.in" }, 22.948);
+
+  // captions: rise in on their word (the first is on screen at frame 1)
+  const caps = [[2, 0.74], [3, 1.54], [4, 3.448], [5, 4.488], [6, 5.628], [7, 6.788], [8, 7.949], [9, 8.849], [10, 10.249], [11, 10.929],
+                [12, 12.037], [13, 12.477], [14, 13.597], [15, 14.43], [16, 15.79], [17, 16.61], [18, 17.63], [19, 18.55], [20, 20.07],
+                [21, 20.91], [22, 21.47], [23, 22.35]];
+  for (const [n, at] of caps) tl.fromTo("#cap-" + n, { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.12, ease: "power2.out" }, at);
+
+  // closing title card: the last 1.5 s
+  tl.fromTo("#close", { y: 50, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 23.128);
+  tl.to("#close", { scale: 1.03, duration: DUR - 23.528, ease: "none" }, 23.528);
+
+  window.__timelines["sh-moore-1999-1"] = tl;
+})();
+</script>
+</body>
+</html>

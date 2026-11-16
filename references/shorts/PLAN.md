@@ -84,8 +84,11 @@ What stays the same across all three (the senior spec):
 ## 3. Pipeline (reuse, not rebuild)
 
 The existing stack already does everything except the frame size. Composition size is a per-file attribute
-(`data-width="1080" data-height="1920"`), the TTS, words.json, lint, blank scan, audio-level gate and
-`render.cmd` are format-blind. Per short, in `episodes/sh-<parent-slug>-<n>/`:
+(`data-width="1080" data-height="1920"`). The TTS, words.json, audio-level gate and `render.cmd` are format-blind.
+The picture gates (`blank_scan`, `overlap_check`, `occlusion_check`, `graphics_qc`, `beat_probe`, `freeze_scan`,
+`media_budget`, `optimize_clips`, `shorts_lint`) take the frame from the root's `data-width` / `data-height`
+(`stage_comp.mjs` `compSize`, `media_budget.py` `comp_size`; 1920x1080 when the root declares none), pinned on
+`scripts/fixtures/portrait_ep` by `scripts/test_portrait_gates.py`. Per short, in `episodes/sh-<parent-slug>-<n>/`:
 
 1. `edit_script.md` — S1/S2/S3 tag, the parent video, 3–6 narration segments, per-beat picture intent.
    Written by the shorts-writer agent FROM the parent's `edit_script.md` (never from scratch when a parent

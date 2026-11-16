@@ -46,6 +46,16 @@ def probe(path):
     return int(nums[0]), int(nums[1]), float(nums[2])
 
 
+def comp_size(h):
+    """(width, height) of the composition: the root element's data-width / data-height, 1920x1080 when it
+    declares none. The one owner of this rule (optimize_clips and this gate call it; stage_comp.mjs compSize
+    is the same rule for the browser gates)."""
+    tag = re.search(r"""<[^>]*\bid=["']root["'][^>]*>""", h)  # any attribute order
+    w = tag and re.search(r"""\bdata-width=["'](\d+)""", tag.group())
+    ht = tag and re.search(r"""\bdata-height=["'](\d+)""", tag.group())
+    return (int(w.group(1)), int(ht.group(1))) if w and ht else (1920, 1080)
+
+
 def clip_windows(h):
     """{src: seconds of source the timeline needs} for every <video> in index.html carrying data-duration:
     the longest data-media-start + data-duration over its windows. The one owner of this rule (optimize_clips
@@ -121,8 +131,7 @@ def main():
     ep = Path(sys.argv[1])
     h = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
 
-    root = re.search(r'id="root"[^>]*data-width="(\d+)"[^>]*data-height="(\d+)"', h)
-    COMP_W, COMP_H = (int(root.group(1)), int(root.group(2))) if root else (1920, 1080)
+    COMP_W, COMP_H = comp_size(h)
 
     windows = clip_windows(h)
 

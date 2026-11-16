@@ -1,0 +1,54 @@
+<!-- g-radio · S1-S4 "If you had a weather radio at home, it sounded." · a drawn home weather radio; its alert light blinks once
+     on "sounded". Host 12.037 -> 14.430 (2.393 s); times host-local (episode - 12.037). -->
+<template>
+<style>
+  #g-radio-root { position:absolute; left:0; top:0; width:1080px; height:1920px; overflow:hidden;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-radio-stage { position:absolute; left:0; top:0; width:1080px; height:1920px; opacity:0; visibility:hidden; }
+  .g-radio-svg { position:absolute; left:0; top:0; width:1080px; height:1920px; }
+  .g-radio-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="g-radio-root" data-composition-id="g-radio" data-width="1080" data-height="1920">
+  <div id="g-radio-stage">
+    <svg class="g-radio-svg" viewBox="0 0 1080 1920">
+      <defs>
+        <radialGradient id="g-radio-glow-g"><stop offset="0" stop-color="#ff2a36" stop-opacity="0.9"/><stop offset="1" stop-color="#d0121f" stop-opacity="0"/></radialGradient>
+      </defs>
+      <line x1="770" y1="700" x2="850" y2="470" stroke="#93a3b2" stroke-width="10" stroke-linecap="round"/>
+      <circle cx="850" cy="470" r="14" fill="#93a3b2"/>
+      <rect x="230" y="700" width="620" height="390" rx="46" fill="#15202b" stroke="#93a3b2" stroke-width="5"/>
+      <g stroke="#4a5560" stroke-width="12" stroke-linecap="round">
+        <line x1="290" y1="800" x2="500" y2="800"/><line x1="290" y1="840" x2="500" y2="840"/><line x1="290" y1="880" x2="500" y2="880"/>
+        <line x1="290" y1="920" x2="500" y2="920"/><line x1="290" y1="960" x2="500" y2="960"/><line x1="290" y1="1000" x2="500" y2="1000"/>
+      </g>
+      <rect x="570" y="780" width="230" height="110" rx="12" fill="#0b1016" stroke="#5a768f" stroke-width="3"/>
+      <rect x="595" y="845" width="22" height="25" fill="#5a768f"/><rect x="627" y="830" width="22" height="40" fill="#5a768f"/><rect x="659" y="812" width="22" height="58" fill="#5a768f"/>
+      <circle cx="610" cy="975" r="22" fill="#2a3644"/><circle cx="685" cy="975" r="22" fill="#2a3644"/><circle cx="760" cy="975" r="22" fill="#2a3644"/>
+      <circle id="g-radio-glow" class="g-radio-hide" cx="340" cy="690" r="120" fill="url(#g-radio-glow-g)"/>
+      <path id="g-radio-wave1" class="g-radio-hide" d="M 410 610 A 110 110 0 0 1 410 770" stroke="#d0121f" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <path id="g-radio-wave2" class="g-radio-hide" d="M 450 570 A 160 160 0 0 1 450 810" stroke="#d0121f" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <circle id="g-radio-light" cx="340" cy="690" r="34" fill="#4a0a10" stroke="#93a3b2" stroke-width="4"/>
+    </svg>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-radio-";
+  /* IF @0 (ep 12.037): the radio rises in, then floats */
+  tl.fromTo(P + "stage", { autoAlpha: 0, y: 80 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0);
+  tl.to(P + "stage", { y: -16, duration: 1.543, ease: "none" }, 0.45);
+  /* SOUNDED @1.62 (ep 13.657): the alert light blinks once */
+  tl.to(P + "light", { fill: "#ff2a36", duration: 0.08 }, 1.62);
+  tl.fromTo(P + "glow", { autoAlpha: 0, scale: 0.6, svgOrigin: "340 690", smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: "340 690", smoothOrigin: false, duration: 0.12 }, 1.62);
+  tl.fromTo([P + "wave1", P + "wave2"], { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.2, stagger: 0.08, ease: "power2.out" }, 1.62);
+  tl.to(P + "light", { fill: "#4a0a10", duration: 0.25 }, 1.86);
+  tl.to([P + "glow", P + "wave1", P + "wave2"], { autoAlpha: 0, duration: 0.25 }, 1.86);
+  /* exit ends on "Twenty" (ep 14.43), the host's last 0.4 s */
+  tl.to(P + "stage", { autoAlpha: 0, x: -200, duration: 0.4, ease: "power3.in" }, 1.993);
+
+  window.__timelines["g-radio"] = tl;
+})();
+</script>
+</template>

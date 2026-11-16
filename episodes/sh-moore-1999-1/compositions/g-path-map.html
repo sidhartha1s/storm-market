@@ -1,0 +1,83 @@
+<!-- g-path-map · S1-S2 "aimed at Moore" to S1-S3 "up the road" · a schematic vertical path map: the track drawn bottom to top,
+     Moore and south Oklahoma City lit ahead, Bridge Creek marked behind, an arrow up the road to Moore. Three place labels only;
+     no other geography, no claimed track shape. Host 4.488 -> 12.037 (7.549 s); times host-local (episode - 4.488). -->
+<template>
+<style>
+  #g-path-map-root { position:absolute; left:0; top:0; width:1080px; height:1920px; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-path-map-stage { position:absolute; left:0; top:0; width:1080px; height:1920px; opacity:0; visibility:hidden; }
+  .g-path-map-svg { position:absolute; left:0; top:0; width:1080px; height:1920px; }
+  .g-path-map-lab { position:absolute; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900; color:#f2f5f8; letter-spacing:2px;
+    text-shadow:0 0 14px rgba(0,0,0,0.9), 0 2px 6px #000; opacity:0; visibility:hidden; }
+  .g-path-map-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="g-path-map-root" data-composition-id="g-path-map" data-width="1080" data-height="1920">
+  <div id="g-path-map-stage">
+    <svg class="g-path-map-svg" viewBox="0 0 1080 1920">
+      <g stroke="#2a3644" stroke-width="2" opacity="0.5">
+        <line x1="0" y1="360" x2="1080" y2="360"/><line x1="0" y1="600" x2="1080" y2="600"/><line x1="0" y1="840" x2="1080" y2="840"/>
+        <line x1="0" y1="1080" x2="1080" y2="1080"/><line x1="0" y1="1320" x2="1080" y2="1320"/>
+        <line x1="180" y1="240" x2="180" y2="1440"/><line x1="420" y1="240" x2="420" y2="1440"/><line x1="660" y1="240" x2="660" y2="1440"/><line x1="900" y1="240" x2="900" y2="1440"/>
+      </g>
+      <!-- the road, Bridge Creek up to Moore -->
+      <line x1="330" y1="1330" x2="775" y2="585" stroke="#4a5560" stroke-width="8" stroke-dasharray="22 16" stroke-linecap="round"/>
+      <!-- ahead: south Oklahoma City, Moore -->
+      <circle id="g-path-map-okc-ring" class="g-path-map-hide" cx="500" cy="500" r="26" fill="none" stroke="#e8c56a" stroke-width="4"/>
+      <circle id="g-path-map-okc" class="g-path-map-hide" cx="500" cy="500" r="16" fill="#e8c56a"/>
+      <circle id="g-path-map-moore-ring" class="g-path-map-hide" cx="775" cy="585" r="30" fill="none" stroke="#e8c56a" stroke-width="5"/>
+      <circle id="g-path-map-moore" class="g-path-map-hide" cx="775" cy="585" r="20" fill="#e8c56a"/>
+      <!-- behind: Bridge Creek -->
+      <circle id="g-path-map-bc" class="g-path-map-hide" cx="413" cy="1191" r="18" fill="#04070c" stroke="#f2f5f8" stroke-width="5"/>
+      <!-- the track, bottom to top -->
+      <path id="g-path-map-track" d="M 330 1330 L 583 906" stroke="#d0121f" stroke-width="26" stroke-linecap="round" fill="none" opacity="0.92"/>
+      <circle id="g-path-map-head" class="g-path-map-hide" cx="583" cy="906" r="22" fill="#ff4a58"/>
+      <circle id="g-path-map-head-ring" class="g-path-map-hide" cx="583" cy="906" r="22" fill="none" stroke="#ff4a58" stroke-width="4"/>
+      <!-- the statement, aimed up the road -->
+      <path id="g-path-map-arrow" class="g-path-map-hide" d="M 606 868 L 752 623" stroke="#f2f5f8" stroke-width="10" stroke-linecap="round" fill="none"/>
+      <path id="g-path-map-arrowhead" class="g-path-map-hide" d="M 768 596 L 727 618 L 760 640 Z" fill="#f2f5f8"/>
+      <!-- north mark: the map reads north-up -->
+      <path d="M 960 282 L 976 326 L 960 316 L 944 326 Z" fill="#93a3b2"/>
+    </svg>
+    <div id="g-path-map-north" style="position:absolute; left:952px; top:332px; font-weight:700; font-size:22px; line-height:26px; color:#93a3b2;">N</div>
+    <div class="g-path-map-lab" id="g-path-map-lab-okc" style="left:250px; top:360px; font-size:40px; line-height:44px;">SOUTH<br>OKLAHOMA CITY</div>
+    <div class="g-path-map-lab" id="g-path-map-lab-moore" style="left:680px; top:482px; font-size:56px; line-height:64px;">MOORE</div>
+    <div class="g-path-map-lab" id="g-path-map-lab-bc" style="left:452px; top:1170px; font-size:40px; line-height:44px;">BRIDGE CREEK</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-path-map-";
+  const trk = document.querySelector(P + "track"), TL = Math.ceil(trk.getTotalLength()) + 1;
+  const arw = document.querySelector(P + "arrow"), AL = Math.ceil(arw.getTotalLength()) + 1;
+  tl.set(trk, { strokeDasharray: TL, strokeDashoffset: TL }, 0);
+  tl.set(arw, { strokeDasharray: AL, strokeDashoffset: AL }, 0);
+  /* AIMED @0 (ep 4.488): map in, track drawn bottom to top */
+  tl.fromTo(P + "stage", { autoAlpha: 0, scale: 1.06 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power2.out" }, 0);
+  tl.to(P + "stage", { scale: 1.035, y: 30, duration: 6.749, ease: "none" }, 0.4);
+  tl.to(trk, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, 0);
+  tl.fromTo(P + "head", { autoAlpha: 0, scale: 0, svgOrigin: "583 906", smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: "583 906", smoothOrigin: false, duration: 0.25, ease: "back.out(2)" }, 0.7);
+  tl.fromTo(P + "head-ring", { autoAlpha: 0.9, scale: 1, svgOrigin: "583 906", smoothOrigin: false }, { autoAlpha: 0, scale: 2.6, svgOrigin: "583 906", smoothOrigin: false, duration: 1.2, ease: "power1.out", repeat: 5 }, 0.8);
+  /* MOORE @0.8 (ep 5.288) */
+  tl.fromTo(P + "moore", { autoAlpha: 0, scale: 0, svgOrigin: "775 585", smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: "775 585", smoothOrigin: false, duration: 0.3, ease: "back.out(2.4)" }, 0.8);
+  tl.fromTo(P + "moore-ring", { autoAlpha: 0.9, scale: 1, svgOrigin: "775 585", smoothOrigin: false }, { autoAlpha: 0, scale: 2.4, svgOrigin: "775 585", smoothOrigin: false, duration: 1.3, ease: "power1.out", repeat: 4 }, 0.8);
+  tl.fromTo(P + "lab-moore", { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 0.8);
+  /* SOUTH (side of Oklahoma City) @1.78 (ep 6.268) */
+  tl.fromTo(P + "okc", { autoAlpha: 0, scale: 0, svgOrigin: "500 500", smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: "500 500", smoothOrigin: false, duration: 0.3, ease: "back.out(2.4)" }, 1.78);
+  tl.fromTo(P + "okc-ring", { autoAlpha: 0.9, scale: 1, svgOrigin: "500 500", smoothOrigin: false }, { autoAlpha: 0, scale: 2.4, svgOrigin: "500 500", smoothOrigin: false, duration: 1.3, ease: "power1.out", repeat: 3 }, 1.78);
+  tl.fromTo(P + "lab-okc", { y: -24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 1.78);
+  /* BRIDGE (Creek) @4.661 (ep 9.149): marked behind the track */
+  tl.fromTo(P + "bc", { autoAlpha: 0, scale: 0, svgOrigin: "413 1191", smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: "413 1191", smoothOrigin: false, duration: 0.3, ease: "back.out(2.4)" }, 4.661);
+  tl.fromTo(P + "lab-bc", { x: -24, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 4.661);
+  /* UP (the road) @6.601 (ep 11.089): arrow runs up the road to Moore */
+  tl.set(arw, { autoAlpha: 1 }, 6.601);
+  tl.to(arw, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 6.601);
+  tl.fromTo(P + "arrowhead", { autoAlpha: 0, scale: 0.4, svgOrigin: "760 615", smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: "760 615", smoothOrigin: false, duration: 0.2, ease: "back.out(2)" }, 7.051);
+  /* exit ends on "If" (ep 12.037), the host's last 0.4 s */
+  tl.to(P + "stage", { autoAlpha: 0, scale: 1.12, duration: 0.4, ease: "power2.in" }, 7.149);
+
+  window.__timelines["g-path-map"] = tl;
+})();
+</script>
+</template>

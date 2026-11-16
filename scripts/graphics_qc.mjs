@@ -7,7 +7,7 @@
 import { chromium, chromiumExecutable } from './playwright_env.mjs';
 import { readFileSync, readdirSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join, resolve } from 'path';
-import { CANVAS_RENDERER, hostCss, motionSpans, stageComp } from './stage_comp.mjs';
+import { canvasRenderer, compSize, hostCss, motionSpans, stageComp } from './stage_comp.mjs';
 
 const EXECUTABLE = chromiumExecutable();
 const ep = resolve(process.argv[2] || 'episodes/ep3-tristate');
@@ -17,7 +17,8 @@ if (!existsSync(TMP)) mkdirSync(TMP, { recursive: true });
 
 const MAX_IDLE = 4.0;          // a gap this long with nothing moving fails (same number as beat_density)
 const CROP_LOSS_FAIL = 0.35;   // fraction of source image cropped away by object-fit:cover
-const SAFE = { w: 1920, h: 1080, pad: 24 };
+const INDEX_HTML = readFileSync(join(ep, 'index.html'), 'utf8');
+const SAFE = { ...compSize(INDEX_HTML), pad: 24 };   // frame = the root's data-width/height
 
 /* Hard errors block the render. Stillness has one number and no warning tier (owner, 26 Sep 26):
  * any gap of MAX_IDLE or more with nothing moving is an 'idle' error. */
@@ -81,7 +82,7 @@ const PROBE = `(() => {
   R.duration = tl.duration();
   // a canvas redrawn from the timeline onUpdate moves every frame though no DOM tween does:
   // one continuous kinetic span (MG eval 3, 26 Sep 26; rule in stage_comp.mjs)
-  if (${CANVAS_RENDERER})
+  if (${canvasRenderer(SAFE)})
     R.tweens.push({ start: 0, dur: R.duration, props: ['canvas-render'], ease: 'none', target: 'canvas', hide: false });
   for (const t of tl.getChildren(true, true, false)) {
     const st = t.startTime();
@@ -92,8 +93,8 @@ const PROBE = `(() => {
     const props = t.vars ? Object.keys(t.vars).filter(k => !['duration','ease','onUpdate','onComplete','delay','stagger'].includes(k)) : [];
     const tgt = (t.targets && t.targets()[0]) ? (t.targets()[0].id || t.targets()[0].tagName || 'obj') : 'obj';
     const v = t.vars || {};
-    const off = (x) => typeof x === 'number' && Math.abs(x) >= 1000 || /^[-+]?(1\\d\\d|[2-9]\\d\\d)%$/.test(String(x));
-    const hide = v.opacity === 0 || v.autoAlpha === 0 || off(v.x) || off(v.y) || Math.abs(v.xPercent || 0) >= 100 || Math.abs(v.yPercent || 0) >= 100;
+    const off = (x, px) => typeof x === 'number' && Math.abs(x) >= px || /^[-+]?(1\\d\\d|[2-9]\\d\\d)%$/.test(String(x));
+    const hide = v.opacity === 0 || v.autoAlpha === 0 || off(v.x, ${1000 * SAFE.w / 1920}) || off(v.y, ${1000 * SAFE.h / 1080}) || Math.abs(v.xPercent || 0) >= 100 || Math.abs(v.yPercent || 0) >= 100;
     R.tweens.push({ start: +st.toFixed(2), dur: +td.toFixed(2), props, ease: String(t.vars && t.vars.ease || 'none'), target: tgt, hide });
     R.beats.push(+st.toFixed(2));
     if (td > 4) R.beats.push(+(st + td).toFixed(2)); // long tweens = continuous motion
@@ -155,7 +156,7 @@ const MEASURE = `((t) => {
         if (w >= MINBOX && h >= MINBOX)
           rects.push({ el, id: el.id || el.className || el.tagName, text: node.textContent.trim().slice(0, 42),
                        x, y, w, h, fs: parseFloat(cs.fontSize) });
-        if (ir.x < -SAFEPAD || ir.y < -SAFEPAD || ir.right > 1920 + SAFEPAD || ir.bottom > 1080 + SAFEPAD)
+        if (ir.x < -SAFEPAD || ir.y < -SAFEPAD || ir.right > FRAMEW + SAFEPAD || ir.bottom > FRAMEH + SAFEPAD)
           out.oob.push({ id: el.id || el.className, text: node.textContent.trim().slice(0,42),
                          x: Math.round(ir.x), y: Math.round(ir.y), right: Math.round(ir.right), bottom: Math.round(ir.bottom) });
       }
@@ -219,7 +220,7 @@ const MEASURE = `((t) => {
     const solid = (cs3.backgroundColor && !/rgba\(0, 0, 0, 0\)/.test(cs3.backgroundColor) &&
                    !/rgba\([^)]+,\s*0?\.[0-5]\d*\)/.test(cs3.backgroundColor)) ||
                   (cs3.backgroundImage !== 'none' && !/transparent/.test(cs3.backgroundImage));
-    if (solid) cover = Math.max(cover, (Math.min(r3.width,1920) * Math.min(r3.height,1080)) / (1920*1080));
+    if (solid) cover = Math.max(cover, (Math.min(r3.width,FRAMEW) * Math.min(r3.height,FRAMEH)) / (FRAMEW*FRAMEH));
   }
   out.coverage = +cover.toFixed(2);
   let painted = 0, grad = false;
@@ -233,7 +234,7 @@ const MEASURE = `((t) => {
     if (/gradient/.test(cs.backgroundImage) || /blur/.test(cs.backdropFilter || cs.webkitBackdropFilter || '')) grad = true;
     // a canvas covering a quarter of the frame or more (Three.js/WebGL) is a rendered background the DOM
     // cannot read; without this every WebGL comp read as "flat background" (MG eval 2, 26 Sep 26)
-    if (el.tagName === 'CANVAS' && r4.width * r4.height >= 0.25 * 1920 * 1080) grad = true;
+    if (el.tagName === 'CANVAS' && r4.width * r4.height >= 0.25 * FRAMEW * FRAMEH) grad = true;
   }
   out.elements = painted; out.gradient = grad;
   out.textNodes = out.fonts.length;
@@ -246,7 +247,6 @@ const MEASURE = `((t) => {
 // Host-style injection: hyperframes mounts comps INSIDE index.html's DOM, so the page stylesheet
 // applies to comp elements (17 Sep 26: host `.chip{bottom:300px}` stretched a comp chip into a 720 px
 // panel; every standalone gate passed). Staging must carry the host <style> blocks.
-const INDEX_HTML = readFileSync(join(ep, 'index.html'), 'utf8');
 const HOST_CSS = hostCss(INDEX_HTML);
 // per-composition host window: the duration the master timeline mounts it for (assets-comps-05)
 const HOSTS = {};
@@ -264,7 +264,7 @@ const files = ONLY.length ? ONLY.map(id => id + '.html') : all;
 if (ONLY.length) console.log(`[graphics_qc] scoped to ${files.length} of ${all.length} compositions: ${ONLY.join(' ')} (not the pre-render gate)`);
 
 const browser = await chromium.launch({ executablePath: EXECUTABLE, args: ['--allow-file-access-from-files'] });
-const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+const page = await browser.newPage({ viewport: { width: SAFE.w, height: SAFE.h } });
 page.on('pageerror', e => add('RUNTIME', 'js-error', String(e).slice(0, 200)));
 
 for (const f of files) {
@@ -302,7 +302,7 @@ for (const f of files) {
   const beats = probe.beats.filter(b => b <= windowEnd + 0.01);
   const idleEnd = hostDur ?? probe.duration;
   // ponytail: rule 3 samples at most 600 s; an unmounted repeat:-1 comp is covered by rule 1 anyway
-  const spans = (await page.evaluate(`(() => { const tl = window.__timelines[${JSON.stringify(probe.id)}]; return ${motionSpans(Math.min(idleEnd, 600))}; })()`))
+  const spans = (await page.evaluate(`(() => { const tl = window.__timelines[${JSON.stringify(probe.id)}]; return ${motionSpans(Math.min(idleEnd, 600), SAFE)}; })()`))
     .sort((a, b) => a[0] - b[0]);
   let still = 0, frozen = 0;
   const idle = (a, b) => {
@@ -327,7 +327,7 @@ for (const f of files) {
   const seenOverlap = new Set(), seenCrop = new Set(), seenOob = new Set(), seenEmpty = new Set(), seenBroken = new Set();
   let tierMax = 0, maxCoverage = 0, maxTextNodes = 0; const elemSamples = []; let gradAny = false;
   for (const t of samples) {
-    const m = await page.evaluate(`${MEASURE.replace(/SAFEPAD/g, SAFE.pad).replace(/CROPFAIL/g, CROP_LOSS_FAIL)}(${t})`);
+    const m = await page.evaluate(`${MEASURE.replace(/SAFEPAD/g, SAFE.pad).replace(/FRAMEW/g, SAFE.w).replace(/FRAMEH/g, SAFE.h).replace(/CROPFAIL/g, CROP_LOSS_FAIL)}(${t})`);
     tierMax = Math.max(tierMax, m.tierCount);
     maxCoverage = Math.max(maxCoverage, m.coverage || 0);
     maxTextNodes = Math.max(maxTextNodes, m.textNodes || 0);
