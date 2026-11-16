@@ -49,5 +49,6 @@ point at the owner's machine; change them before running anything.
 
 ## License
 
-No license is granted. All rights reserved. Third-party media in this repo (stock audio and footage, archive clips,
-news material) stays under its original owners' terms, listed in the provenance files beside it.
+Code and docs are [MIT](LICENSE). Not covered: third-party media (stock audio and footage, archive and news clips,
+saved web pages), which stays under its original owners' terms listed in the provenance files beside it, and the
+presenter's likeness and voice, the channel brand and the ebook manuscript (all rights reserved).
