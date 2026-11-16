@@ -69,6 +69,11 @@ An owner correction or a measured surprise lands in its single home (`references
   lines without waiting for that gate (owner 17 Oct 26, flow page f1). A paid or licensed buy still waits for it.
 - Every review cut is a DRAFT render at 98 % production quality: a full-quality cut at draft encode settings, never a
   placeholder. Post the absolute path in one line and PARK. His chat approval resumes. Full render only after that.
+  While a draft waits (owner 11 Nov 26, `park_prep`: yes) the free prep runs: captions, the description, the
+  thumbnails and the upload folder. Only the full render and anything paid wait for his approval.
+- What reaches him before each gate, and what runs while the hook+intro waits (owner 11 Nov 26, `hooks_all` and
+  `acts_ahead`): `references/packaging-rules.md` "Options reach the owner finished"; `references/script-scaling.md`
+  "Section lock" (acts go ahead, no act to TTS before his yes).
 - Studio preview cannot play 15 min media-heavy compositions in real time. Do not offer it for review.
 - When he calls the remaining defects minor, the open work is the items he named. Anything else is a note in the summary.
 - When his named items are done, hand over the file and stop.
@@ -145,8 +150,8 @@ Script method and hook wording live in `references/script-os.md` and `script-fra
 ## Pipeline
 Per episode in `episodes/<slug>/`. The skill's phase map points at these step numbers. Never edit a shipped episode.
 1. `edit_script.md`: started only once `episodes/<slug>/angle.md` holds the owner's locked angle (`references/angle.md`). Typed segment list plus per-beat visual intent, written on `references/script-scaling.md`. A
-   section goes to TTS only once LOCKED (`references/script-scaling.md` "Section lock"; hook+intro first), never the
-   whole script waiting on the last act. The CTA hinge is named (segment before, segment after, estimated time).
+   section goes to TTS only once LOCKED, hook+intro first, and no act before his hook+intro yes (`references/script-scaling.md`
+   "Section lock"), never the whole script waiting on the last act. The CTA hinge is named (segment before, segment after, estimated time).
 2. TTS: `python3 scripts/tts_episode.py episodes/<slug>` makes per-segment wavs at the lane tempo plus words.json (faster-whisper) in one pass.
 3. Sourcing: runs beside the script from the first Picture lines (lanes and roles: skill phase 5). The owner confirms only `insert` clips.
 4. Compose `index.html` by hand as a hyperframes composition, one sub-composition per act, graphics library-first and built to

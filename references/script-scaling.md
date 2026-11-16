@@ -96,7 +96,8 @@ script anywhere. Fixed:
 A section (hook+intro first, then each act) **locks** only when ALL of:
 - (a) its `[verify]` markers are all resolved (CONFIRMED / CORRECTED / cut, none open);
 - (b) its independent grade passed (bar: `learnings/script-process.md` "independent grade on every script");
-- (c) for the hook+intro only, the owner has **explicitly** approved it in chat or on his devq page; silence is
+- (c) for the hook+intro only, the owner has **explicitly** approved it in chat or on his devq page, picking among
+  finished options (`references/packaging-rules.md` "Options reach the owner finished"); silence is
   never approval, and the approval is a `hook-intro` line in `episodes/<slug>/gates.md` (CLAUDE.md "Owner gates");
 - (d) for the hook+intro only, `python3 scripts/hook_shape.py episodes/<slug>` passes (its `Hook shape:` tag is on the
   script-quickref.md menu and is not the shape of either of the last 2 episodes, owner 26 Oct 26).
@@ -105,6 +106,14 @@ Acts need no owner sign-off (owner 22 Oct 26: "i dont thinks its highly necessar
 acts' gate anymore. i thought you were gonna share the preview"). His next look after the hook+intro is the
 draft preview, with Paul's Flow clips in it.
 
+**Acts go ahead while the hook+intro waits** (owner 11 Nov 26, `acts_ahead`: yes). From the moment the hook+intro is
+with the owner, the acts are drafted, fact-checked and graded, and an act locks on (a) and (b) alone. If he rejects the
+hook, only the seams that touch it are rewritten (the hook+intro, the lines where act 1 picks it up, any later line that
+calls it back); the acts are not redrafted. The stricter TTS rule stays explicit: **no act goes to TTS before his yes
+on the hook+intro** (the `hook-intro` line in `gates.md`), and nothing paid starts before it either (CLAUDE.md "Owner
+gates"). The hook+intro goes to TTS first, then every act that already locked, each as it locks after that. Before
+11 Nov 26 this file let an act go to TTS the moment it locked; that is withdrawn.
+
 **Rounds are capped and shrink** (owner 11 Nov 26: "a maximum number of two to three turns maximum each time. The
 turns should be shorter than the last one"; the last three episodes ran 3.5 to 4 grade rounds a section, up to 7).
 At most 3 grade rounds per section. Round 1 reads the whole section. Rounds 2 and 3 get the previous round's fix list
@@ -112,7 +121,7 @@ and read only the lines it changed, on the file as it stands now (Galveston A1 r
 2's fixes). After round 3 the section locks with what is still open listed for the draft preview. A `[verify]` marker
 is not a round: it still resolves or its line is cut (rule a).
 
-A locked section goes to TTS/compose immediately — it does not wait for later acts' fan-out to
+A locked section goes to TTS/compose immediately (an act only after the owner's hook+intro yes, above) — it does not wait for later acts' fan-out to
 finish. A locked section never reopens for a later section's fact-check; a cross-section
 contradiction found late is a new `[verify]` on the LATER section.
 

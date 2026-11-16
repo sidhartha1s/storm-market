@@ -180,7 +180,8 @@ alternative by default, for example "lost their lives" (owner 9 Oct 26); the tab
 - Hand off hook+intro as soon as it's written. Section lock (markers resolved, independent grade
   passed, owner's explicit approval for the hook+intro only) lives in
   `script-scaling.md` "Section lock — the ONE definition"; that section goes to TTS the moment
-  IT locks, without waiting for later acts.
+  IT locks, without waiting for later acts (an act also waits for the owner's hook+intro yes, same place). The orchestrator
+  checks and grades every hook option before the owner sees it: `packaging-rules.md` "Options reach the owner finished".
 - Every audio-carrying insert is transcribed in full before cut selection; cut chosen at the transcript's peak.
 - Paul on camera (documentaries; `references/mg-quickref.md` "Paul on screen"): besides the hook sentence, mark up to 5 lines
   he speaks full frame, each about 22 to 26 words (one 10 s clip, filled: a short line wastes the clip). They sit at turning points, where the story changes
