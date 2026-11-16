@@ -2,6 +2,42 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 12 Nov 26 - the pilot's choice had one right answer and no plan past reel 1; the owner asked where the stakes are
+- Owner on the storyboard: "Right now it's just a question right like whether they want to go on that seller or not
+  so how is that really compelling"; "You should be raising the stakes somewhere"; "at least see it two or three
+  steps ahead of the people"; "why weather service report".
+- Cause: the choice (mobile home or storm cellar) has an answer everybody knows, nothing of the viewer's was at risk,
+  the payoff promised a document, and parts 2 and 3 were an outline.
+- Rules (home: `references/shorts/research-2026-11-12/README.md` "The plot is planned ahead"): both choices cost
+  something and both outcomes are shown; stakes rise reel to reel; the promise is what happened to "you"; the plot
+  reaches him at least three reels ahead with what the next reel does for each way the comments can go.
+
+## 12 Nov 26 - the pilot went to the owner as a text timeline and one cluttered sketch; he asked for frames
+- Owner on `pilot/timeline.html`: "the text is too heavy on every print. It is graphics less. I think you are trying
+  to lead it with a lot of text"; "you mentioned Grady County twice. There are two tornado texts in front of me. Where
+  should I look?"; "there is no branding, this is absolutely like anyone can create it"; "I want different frames of
+  different scenes basically"; "my videos which you put on long form is much better than this"; "if you have
+  something better, show me the candidates". Then: "your conceptwise direction was good. failed on how to effectivate
+  it/ visualise it designwise or branding wise to the viewers."
+- Cause: the script was laid out as tracks of words, and the single picture was drawn from nothing instead of from
+  the film's own map, photo, drawings and Paul.
+- Rules (home: `references/shorts/research-2026-11-12/README.md` "How a reel is shown to the owner"): a reel reaches
+  him as a storyboard, one real 9:16 frame per scene, in several candidate looks; a frame carries one piece of text
+  at most and never a date or place caption; every frame is built from the long form's own assets and tokens.
+
+## 12 Nov 26 - the reels study sampled the wrong accounts, then the owner could not open it
+- Owner, on the first pass (117 reels found by hashtag): "wrong directions. these are not personalised videos u
+  pulled. just faceless pages. we have paul, we are some what branded". On the animated accounts he named: "very
+  generic opusslop ... animations - whcih are good. But generic among the 1000s". On blocked access: "if blocked one
+  way, find other ways". From his phone: "Html is not opening here" (the page was a link to the laptop).
+- Measured (numbers in `references/shorts/research-2026-11-12/README.md`): against each account's own 45-day median, the
+  viewer-played serials lead; Kallaway's first-line template is the same on his best and his weakest reels.
+- Rules, with their home in `references/shorts/research-2026-11-12/README.md`: a reference account must match what
+  the channel is (a named host, or fully animated); score a reel against its own account's median, never against a
+  hashtag; a copied format still needs a look of its own (real photos, the report page, 1999 objects, Paul's
+  circle); how a script is shown to him is superseded by the entry above (frames, not a text timeline); a page he must read is
+  shown in the chat itself, since he reads on his phone.
+
 ## 26 Oct 26 - one owner example became the only hook, 7 episodes in a row
 - Owner, on the batch A hooks: "Every video is having the same hook ... Every plot is the same ... when i'm giving you
   examples you take it very literally and follow only that thing moving forward like a bible".

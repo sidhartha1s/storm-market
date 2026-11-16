@@ -1,0 +1,48 @@
+{
+ "handle": "zhscience",
+ "header": "zhscience\nzhscience\n10 posts\n2,607 followers\n1 following\n\ud83c\udf0e A world of curiosities\n\ud83e\udde0 Science, history, technology & much more\n\ud83d\udcc2 Unlock your next curiosity \ud83d\udc47\nFollow",
+ "recent_n": 10,
+ "median_views": 105400.0,
+ "picks": [
+  {
+   "code": "DfbCFfAIQj1",
+   "views": 3000000,
+   "date": "2026-11-07",
+   "age_days": 5,
+   "x_median": 28.46,
+   "ok": true
+  },
+  {
+   "code": "DfQ04aSod4d",
+   "views": 1000000,
+   "date": "2026-11-03",
+   "age_days": 9,
+   "x_median": 9.49,
+   "ok": true
+  },
+  {
+   "code": "DfYCQC2oWOj",
+   "views": 223000,
+   "date": "2026-11-05",
+   "age_days": 6,
+   "x_median": 2.12,
+   "ok": true
+  },
+  {
+   "code": "DfX4G2-I67z",
+   "views": 214000,
+   "date": "2026-11-05",
+   "age_days": 6,
+   "x_median": 2.03,
+   "ok": true
+  },
+  {
+   "code": "Dff52hRo61G",
+   "views": 165000,
+   "date": "2026-11-08",
+   "age_days": 3,
+   "x_median": 1.57,
+   "ok": true
+  }
+ ]
+}
